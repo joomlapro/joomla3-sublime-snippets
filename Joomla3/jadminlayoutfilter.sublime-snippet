@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<select name="filter_${1:hello}_id" class="inputbox" onchange="this.form.submit()">
+	<option value=""><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SELECT_${1/(.+)/\U\1/g}'); ?></option>
+	<?php echo JHtml::_('select.options', ${TM_PROJECT/(.+)/\u\1/g}Helper::get${1/(.+)/\u\1/g}Options(), 'value', 'text', \$this->state->get('filter.${1/(.+)/\L\1/g}_id')); ?>
+</select>]]></content>
+	<tabTrigger>jadminlayoutfilter</tabTrigger>
+</snippet>

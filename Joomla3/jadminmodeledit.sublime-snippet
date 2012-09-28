@@ -1,0 +1,75 @@
+<snippet>
+	<content><![CDATA[jimport('joomla.application.component.modeladmin');
+
+/**
+ * ${1/(.+)/\u\1/g} model.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelAdmin
+{
+	/**
+	 * Returns a JTable object, always creating it.
+	 *
+	 * @param   string  \$type    The table type to instantiate. [optional]
+	 * @param   string  \$prefix  A prefix for the table class name. [optional]
+	 * @param   array   \$config  Configuration array for model. [optional]
+	 *
+	 * @return  JTable  A database object
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_PROJECT/(.+)/\u\1/g}Table', \$config = array())
+	{
+		return JTable::getInstance(\$type, \$prefix, \$config);
+	}
+
+	/**
+	 * Method to get the record form.
+	 *
+	 * @param   array    \$data      Data for the form. [optional]
+	 * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not. [optional]
+	 *
+	 * @return  mixed  A JForm object on success, false on failure
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getForm(\$data = array(), \$loadData = true)
+	{
+		// Get the form.
+		\$form = \$this->loadForm('com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+
+		if (empty(\$form))
+		{
+			return false;
+		}
+
+		return \$form;
+	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return  array  The default data is an empty array.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		\$data = JFactory::getApplication()->getUserState('com_${TM_PROJECT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
+
+		if (empty(\$data))
+		{
+			\$data = \$this->getItem();
+		}
+
+		return \$data;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodeledit</tabTrigger>
+</snippet>

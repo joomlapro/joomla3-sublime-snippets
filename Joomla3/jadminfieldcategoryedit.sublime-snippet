@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<field name="${1:catid}" type="categoryedit" extension="com_${TM_PROJECT/(.+)/\L\1/g}" class="inputbox" required="true" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields" label="JCATEGORY" description="JFIELD_CATEGORY_DESC">
+	<option value="">JSELECT</option>
+</field>]]></content>
+	<tabTrigger>jadminfieldcategoryedit</tabTrigger>
+</snippet>

@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[<?php
+/**
+ * @package     ${1:Hello}
+ * @subpackage  plg_${2:user}_${1/(.+)/\L\1/g}
+ * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+// No direct access
+defined('_JEXEC') or die;
+
+
+]]></content>
+	<tabTrigger>jheaderplg</tabTrigger>
+</snippet>

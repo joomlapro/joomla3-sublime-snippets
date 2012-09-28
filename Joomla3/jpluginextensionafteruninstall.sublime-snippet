@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[/**
+ * Handle extension uninstall
+ *
+ * @param   JInstaller  \$installer  Installer instance.
+ * @param   int         \$eid        Extension id.
+ * @param   int         \$result     Installation result.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+function onExtensionAfterUninstall(\$installer, \$eid, \$result)
+{
+	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionAfterUninstall: Uninstallation of ' . \$eid . ' was a ' . (\$result ? 'success' : 'failure'));
+}
+
+]]></content>
+	<tabTrigger>jpluginextensionafteruninstall</tabTrigger>
+</snippet>

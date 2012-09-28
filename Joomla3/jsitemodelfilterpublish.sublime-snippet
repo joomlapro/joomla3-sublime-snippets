@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[// Filter by start and end dates.
+\$nullDate = \$db->Quote(\$db->getNullDate());
+\$date = JFactory::getDate();
+\$nowDate = \$db->Quote(\$date->format(\$db->getDateFormat()));
+
+if (\$this->getState('filter.publish_date')){
+	\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')');
+	\$query->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
+}]]></content>
+	<tabTrigger>jsitemodelfilterpublish</tabTrigger>
+</snippet>

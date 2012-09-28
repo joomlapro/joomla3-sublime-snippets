@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<params>
+	<param name="${1:hello}" default="$2" />
+</params>]]></content>
+	<tabTrigger>jcomponentmanifestparams</tabTrigger>
+</snippet>

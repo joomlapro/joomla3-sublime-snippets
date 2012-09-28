@@ -1,0 +1,52 @@
+<snippet>
+	<content><![CDATA[/**
+ * Prepare and sanitise the table prior to saving.
+ *
+ * @param   JTable  &\$table  A JTable object.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+protected function prepareTable(&\$table)
+{
+	\$date = JFactory::getDate();
+	\$user = JFactory::getUser();
+
+	\$table->${1:title} = htmlspecialchars_decode(\$table->${1/(.+)/\L\1/g}, ENT_QUOTES);
+	\$table->alias = JApplication::stringURLSafe(\$table->${1/(.+)/\L\1/g});
+
+	if (empty(\$table->alias))
+	{
+		\$table->alias = JApplication::stringURLSafe(\$table->${1/(.+)/\L\1/g});
+	}
+
+	// Set the publish date to now
+	\$db = \$this->getDbo();
+
+	if (\$table->published == 1 && intval(\$table->publish_up) == 0)
+	{
+		\$table->publish_up = JFactory::getDate()->toSql();
+	}
+
+	if (empty(\$table->id))
+	{
+		// Set the values
+
+		// Set ordering to the last item if not set
+		if (empty(\$table->ordering))
+		{
+			\$db = JFactory::getDbo();
+			\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_PROJECT/(.+)/\L\1/g}');
+			\$max = \$db->loadResult();
+
+			\$table->ordering = \$max + 1;
+		}
+	}
+	else
+	{
+		// Set the values
+	}
+}]]></content>
+	<tabTrigger>jadminmodeleditpreparetable</tabTrigger>
+</snippet>

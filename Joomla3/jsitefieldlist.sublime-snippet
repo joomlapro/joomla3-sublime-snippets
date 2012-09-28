@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:hello}" type="list" class="inputbox" size="1" default="1" message="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
+	<option value="0">JNO</option>
+	<option value="1">JYES</option>
+</field>]]></content>
+	<tabTrigger>jsitefieldlist</tabTrigger>
+</snippet>

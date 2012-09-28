@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field name="${1:hello}" type="text" class="inputbox" label="MOD_${2:HELLO}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="MOD_${2/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jmodulefieldtext</tabTrigger>
+</snippet>

@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JHtml::_('string.truncate', \$this->item->${1:introtext}, ${2:\$params->get('readmore_limit')});]]></content>
+	<tabTrigger>jhtmltruncate</tabTrigger>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[; ${1:Hello}
+; Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
+; License GNU General Public License version 2 or later; see LICENSE.txt, see LICENSE.php
+; Note : All ini files need to be saved as UTF-8 - No BOM
+
+
+]]></content>
+	<tabTrigger>jheaderini</tabTrigger>
+</snippet>

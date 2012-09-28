@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[// Filter by search in ${1/(.+)/\L\1/g}.
+\$search = \$this->getState('filter.search');
+if (!empty(\$search))
+{
+	switch (\$this->getState('filter.select'))
+	{
+		case 'id':
+			\$query->where('a.id = ' . (int) \$search);
+			break;
+		default:
+			\$search = \$db->Quote('%' . \$db->escape(\$search, true) . '%');
+			\$query->where('(a.${1:title} LIKE ' . \$search . ' OR a.alias LIKE ' . \$search . ')');
+			break;
+	}
+}]]></content>
+	<tabTrigger>jadminmodelsearch</tabTrigger>
+</snippet>

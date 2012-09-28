@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[// Define variables
+\$path = \$this->baseurl . '/templates/' . \$this->template;
+?>
+<!DOCTYPE HTML>
+<html lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>">
+<head>
+	<jdoc:include type="head" />
+	<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/general.css">
+	<link rel="stylesheet" href="<?php echo \$path; ?>/css/template.css">
+	<?php if (\$this->direction == 'rtl'): ?>
+		<link rel="stylesheet" href="<?php echo \$path; ?>/css/template_rtl.css">
+	<?php endif; ?>
+</head>
+<body class="contentpane">
+	<jdoc:include type="message" />
+	<jdoc:include type="component" />
+</body>
+</html>
+
+]]></content>
+	<tabTrigger>jsitetemplatecomponent</tabTrigger>
+</snippet>

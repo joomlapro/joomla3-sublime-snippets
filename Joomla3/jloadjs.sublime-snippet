@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Load JavaScript
+JHtml::script('com_${TM_PROJECT/(.+)/\L\1/g}/${1:jquery.custom}.js', false, true);]]></content>
+	<tabTrigger>jloadjs</tabTrigger>
+</snippet>

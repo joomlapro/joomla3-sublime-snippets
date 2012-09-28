@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<li><?php echo \$this->form->getLabel('${1:hello}'); ?>
+<?php echo \$this->form->getInput('${1/(.+)/\L\1/g}'); ?></li>]]></content>
+	<tabTrigger>jadminlist</tabTrigger>
+</snippet>

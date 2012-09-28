@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field name="${1:hello}" type="textarea" class="inputbox" rows="3" cols="30" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jadminfieldtextarea</tabTrigger>
+</snippet>

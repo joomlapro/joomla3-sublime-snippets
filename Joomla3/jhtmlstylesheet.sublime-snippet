@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JHtml::stylesheet('com_${TM_PROJECT/(.+)/\L\1/g}/${2:backend}.css', false, true, false);]]></content>
+	<tabTrigger>jhtmlstylesheet</tabTrigger>
+</snippet>

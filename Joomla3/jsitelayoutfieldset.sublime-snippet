@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[<fieldset id="${TM_PROJECT/(.+)/\L\1/g}-${1:view}-${2:fieldset}">
+	<legend>
+		<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_LEGEND'); ?>
+	</legend>
+	<dl>
+
+	</dl>
+</fieldset>
+
+]]></content>
+	<tabTrigger>jsitelayoutfieldset</tabTrigger>
+</snippet>

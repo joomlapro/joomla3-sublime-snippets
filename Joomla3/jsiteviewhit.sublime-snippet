@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Increment the hit counter of the ${1:hello}.
+if (\$offset == 0)
+{
+	\$model = \$this->getModel();
+	\$model->hit();
+}]]></content>
+	<tabTrigger>jsiteviewhit</tabTrigger>
+</snippet>

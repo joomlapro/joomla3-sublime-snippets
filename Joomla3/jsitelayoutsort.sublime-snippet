@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[<div class="sort">
+	<form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
+		<span class="prefix"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SORT'); ?>:</span>
+		<span class="orderby">
+			<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_NAME', 'a.name', \$listDirn, \$listOrder); ?> <span class="sep">|</span>
+			<?php echo JHtml::_('grid.sort', 'JDATE', 'a.created', \$listDirn, \$listOrder); ?> <span class="sep">|</span>
+			<?php echo JHtml::_('grid.sort', 'JGLOBAL_HITS', 'a.hits', \$listDirn, \$listOrder); ?>
+		</span>
+		<input type="hidden" name="filter_order" value="<?php echo \$listOrder; ?>" />
+		<input type="hidden" name="filter_order_Dir" value="<?php echo \$listDirn; ?>" />
+	</form>
+</div>]]></content>
+	<tabTrigger>jsitelayoutsort</tabTrigger>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$app = JFactory::getApplication();
+\$path = \$this->baseurl . '/templates/' . \$this->template;
+
+]]></content>
+	<tabTrigger>jsitetemplate</tabTrigger>
+</snippet>

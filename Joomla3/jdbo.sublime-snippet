@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$db = JFactory::getDbo();
+//\$db = \$this->getDbo();
+\$query = \$db->getQuery(true);
+
+// Prepare query.
+\$query->select('a.*');
+\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${1:hellos} AS a');
+\$query->where('a.published = 1');
+\$query->order('a.ordering ASC');
+
+// Inject the query and load the result.
+\$db->setQuery(\$query);
+\$result = \$db->loadObjectList();
+
+// Check for a database error.
+if (\$db->getErrorNum())
+{
+	JError::raiseWarning(500, \$db->getErrorMsg());
+	return null;
+}
+
+]]></content>
+	<tabTrigger>jdbo</tabTrigger>
+</snippet>

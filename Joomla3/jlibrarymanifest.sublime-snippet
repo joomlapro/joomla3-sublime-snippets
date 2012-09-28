@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension type="library" version="2.5" method="upgrade">
+	<name>${1:Hello}</name>
+	<libraryname>${2:hello}</libraryname>
+	<author>$TM_FULLNAME</author>
+	<creationDate>$3/$TM_YEAR</creationDate>
+	<copyright>(C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>LIB_${2/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<files>
+		<folder>${2/(.+)/\L\1/g}</folder>
+	</files>
+	<languages>
+		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE.lib_${2/(.+)/\L\1/g}.sys.ini</language>
+	</languages>
+</extension>
+
+]]></content>
+	<tabTrigger>jlibrarymanifest</tabTrigger>
+</snippet>

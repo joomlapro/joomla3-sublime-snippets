@@ -1,0 +1,113 @@
+<snippet>
+	<content><![CDATA[jimport('joomla.database.table');
+
+/**
+ * ${1/(.+)/\u\1/g} table class.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Hello} extends JTable
+{
+	/**
+	 * Constructor
+	 *
+	 * @param   object  &\$db  JDatabase connector object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(&\$db)
+	{
+		parent::__construct('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos}', 'id', \$db);
+	}
+
+	/**
+	 * Method to perform sanity checks on the JTable instance properties to ensure
+	 * they are safe to store in the database.  Child classes should override this
+	 * method to make sure the data they are storing in the database is safe and
+	 * as expected before storage.
+	 *
+	 * @return  boolean  True if the instance is sane and able to be stored in the database.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function check()
+	{
+		// Check for valid ${3/(.+)/\L\1/g}.
+		if (trim(\$this->${3/(.+)/\L\1/g}) == '')
+		{
+			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_WARNING_PROVIDE_VALID_NAME'));
+
+			return false;
+		}
+
+		if (trim(\$this->alias) == '')
+		{
+			\$this->alias = \$this->${3:title};
+		}
+
+		\$this->alias = JApplication::stringURLSafe(\$this->alias);
+
+		if (trim(str_replace('-', '', \$this->alias)) == '')
+		{
+			\$this->alias = JFactory::getDate()->format('Y-m-d-H-i-s');
+		}
+
+		return true;
+	}
+
+	/**
+	 * Method to store a row in the database from the JTable instance properties.
+	 * If a primary key value is set the row with that primary key value will be
+	 * updated with the instance property values.  If no primary key value is set
+	 * a new row will be inserted into the database with the properties from the
+	 * JTable instance.
+	 *
+	 * @param   boolean  \$updateNulls  True to update fields even if they are null. [optional]
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function store(\$updateNulls = false)
+	{
+		\$date = JFactory::getDate();
+		\$user = JFactory::getUser();
+
+		if (\$this->id)
+		{
+			// Existing item
+			\$this->modified = \$date->toMySQL();
+			\$this->modified_by = \$user->get('id');
+		}
+		else
+		{
+			// New item. A filter's created field can be set by the user,
+			// so we don't touch it if it is set.
+			if (!intval(\$this->created))
+			{
+				\$this->created = \$date->toMySQL();
+			}
+			if (empty(\$this->created_by))
+			{
+				\$this->created_by = \$user->get('id');
+			}
+		}
+
+		// Verify that the alias is unique
+		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
+		{
+			\$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));
+
+			return false;
+		}
+
+		return parent::store(\$updateNulls);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadmintable-simple</tabTrigger>
+</snippet>

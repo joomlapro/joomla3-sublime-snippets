@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<jdoc:include type="modules" name="${1:hello-mainmenu}" style="${2:none}" />]]></content>
+	<tabTrigger>jdocmodules</tabTrigger>
+</snippet>

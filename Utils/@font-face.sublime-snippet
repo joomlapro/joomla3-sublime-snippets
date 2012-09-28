@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[@font-face {
+	font-family: '$1';
+	src: url('../font/$2.eot');
+	src: url('../font/$2.eot?#iefix') format('embedded-opentype'),
+		 url('../font/$2.woff') format('woff'),
+		 url('../font/$2.ttf') format('truetype'),
+		 url('../font/$2.svg#${1/(.+)/\L\1/g}') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}]]></content>
+	<tabTrigger>@font-face</tabTrigger>
+</snippet>

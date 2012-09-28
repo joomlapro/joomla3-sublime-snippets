@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JToolBarHelper::custom('${1:hello}.${2:hello}', 'featured.png', 'featured_f2.png', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}', true);]]></content>
+	<tabTrigger>jtoolbarcustom</tabTrigger>
+</snippet>

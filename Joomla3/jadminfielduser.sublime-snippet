@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field name="${1:hello}" type="user" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jadminfielduser</tabTrigger>
+</snippet>

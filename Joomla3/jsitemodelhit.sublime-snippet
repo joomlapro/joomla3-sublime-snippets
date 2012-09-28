@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to increment the hit counter for the ${1/(.+)/\L\1/g}
+ *
+ * @param   int  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
+ *
+ * @return  boolean  True on success
+ *
+ * @since   $TM_VERSION
+ */
+public function hit(\$id = null)
+{
+	if (empty(\$id))
+	{
+		\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
+	}
+
+	\$${1/(.+)/\L\1/g} = \$this->getTable('${1:Hello}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+
+	return \$${1/(.+)/\L\1/g}->hit(\$id);
+}
+]]></content>
+	<tabTrigger>jsitemodelhit</tabTrigger>
+</snippet>

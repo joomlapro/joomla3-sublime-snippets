@@ -1,0 +1,58 @@
+<snippet>
+	<content><![CDATA[jimport('joomla.application.component.modellist');
+
+/**
+ * ${1/(.+)/\u\1/g} model.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
+{
+	/**
+	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
+	 *
+	 * @param   int     \$ordering   The order to show.
+	 * @param   string  \$direction  The direction desc|asc.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function populateState(\$ordering = null, \$direction = null)
+	{
+		// Initialise variables.
+		\$app    = JFactory::getApplication();
+		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$itemid = JRequest::getInt('Itemid', 0);
+
+		// Load the parameters.
+		\$this->setState('params', \$params);
+	}
+
+	/**
+	 * Gets a list of ${1/(.+)/\L\1/g}
+	 *
+	 * @return  array  An array of banner objects.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getListQuery()
+	{
+		// Initialiase variables.
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Prepare query.
+		\$query->select('');
+		\$query->from('#__');
+		\$query->where('');
+
+		return \$query;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodel</tabTrigger>
+</snippet>

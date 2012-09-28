@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method is called by the view and the results are imploded and displayed in a placeholder
+ *
+ * @param   string  \$context     The context for the content passed to the plugin.
+ * @param   object  &\$article    The content object.  Note \$article->text is also available
+ * @param   object  &\$params     The content params
+ * @param   int     \$limitstart  The 'page' number
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+public function onContentBeforeDisplay(\$context, &\$article, &\$params, \$limitstart)
+{
+	\$app = JFactory::getApplication();
+
+	return '';
+}
+
+]]></content>
+	<tabTrigger>jplugincontentbeforedisplay</tabTrigger>
+</snippet>

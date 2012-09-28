@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension version="$TM_VERSION" type="plugin" group="quickicon">
+	<name>plg_quickicon_${1:hello}</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>$2/$TM_YEAR</creationDate>
+	<copyright>(C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>PLG_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="${2/(.+)/\L\1/g}">${2/(.+)/\L\1/g}.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages folder="language">
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.plg_${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.plg_${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+		</fields>
+	</config>
+</extension>
+
+]]></content>
+	<tabTrigger>jpluginmanifest-quickicon</tabTrigger>
+</snippet>

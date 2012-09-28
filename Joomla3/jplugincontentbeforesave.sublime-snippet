@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[/**
+ * Example before save content method
+ *
+ * Method is called right before content is saved into the database.
+ * Article object is passed by reference, so any changes will be saved!
+ * NOTE:  Returning false will abort the save with an error.
+ * You can set the error by calling \$article->setError(\$message)
+ *
+ * @param   string  \$context   The context of the content passed to the plugin.
+ * @param   object  &\$article  A JTableContent object
+ * @param   bool    \$isNew     If the content is just about to be created
+ *
+ * @return  bool  If false, abort the save
+ *
+ * @since   $TM_VERSION
+ */
+public function onContentBeforeSave(\$context, &\$article, \$isNew)
+{
+	\$app = JFactory::getApplication();
+
+	return true;
+}
+
+]]></content>
+	<tabTrigger>jplugincontentbeforesave</tabTrigger>
+</snippet>

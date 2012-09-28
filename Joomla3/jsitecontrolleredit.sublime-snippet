@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[Hello, ${1:this} is a ${2:snippet}.]]></content>
+	<tabTrigger>jsitecontrolleredit</tabTrigger>
+</snippet>

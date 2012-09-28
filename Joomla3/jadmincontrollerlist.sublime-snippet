@@ -1,0 +1,53 @@
+<snippet>
+	<content><![CDATA[jimport('joomla.application.component.controlleradmin');
+
+/**
+ * ${1/(.+)/\u\1/g} list controller class.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Hellos} extends JControllerAdmin
+{
+	/**
+	 * @var		string	The prefix to use with controller messages.
+	 * @since	$TM_VERSION
+	 */
+	protected \$text_prefix = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  \$config  An optional associative array of configuration settings.
+     *
+	 * @see     JController
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(\$config = array())
+	{
+		parent::__construct(\$config);
+	}
+
+	/**
+	 * Proxy for getModel.
+     *
+	 * @param   string  \$name    The model name. Optional.
+	 * @param   string  \$prefix  The class prefix. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+     *
+	 * @return  object  The model.
+     *
+	 * @since	$TM_VERSION
+	 */
+	public function getModel(\$name = '${2:Hello}', \$prefix = '${TM_PROJECT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
+	{
+		\$model = parent::getModel(\$name, \$prefix, \$config);
+
+		return \$model;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadmincontrollerlist</tabTrigger>
+</snippet>

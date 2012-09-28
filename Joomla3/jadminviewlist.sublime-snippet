@@ -1,0 +1,125 @@
+<snippet>
+	<content><![CDATA[jimport('joomla.application.component.view');
+
+/**
+ * View class for a list of ${2/(.+)/\L\1/g}.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}View${2:Hellos} extends JView
+{
+	protected \$items;
+
+	protected \$pagination;
+
+	protected \$state;
+
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  A string if successful, otherwise a JError object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function display(\$tpl = null)
+	{
+		// Initialise variables.
+		\$this->items      = \$this->get('Items');
+		\$this->pagination = \$this->get('Pagination');
+		\$this->state      = \$this->get('State');
+
+		// Check for errors.
+		if (count(\$errors = \$this->get('Errors')))
+		{
+			JError::raiseError(500, implode("\n", \$errors));
+			return false;
+		}
+
+		\$this->addToolbar();
+
+		parent::display(\$tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function addToolbar()
+	{
+		require_once JPATH_COMPONENT . '/helpers/${TM_PROJECT/(.+)/\L\1/g}.php';
+
+		\$state = \$this->get('State');
+		\$canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions(\$state->get('filter.category_id'));
+		\$user  = JFactory::getUser();
+
+		JToolBarHelper::title(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}'), '${2/(.+)/\L\1/g}.png');
+
+		if (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create')) > 0)
+		{
+			JToolBarHelper::addNew('${9:hello}.add');
+		}
+
+		if ((\$canDo->get('core.edit')))
+		{
+			JToolBarHelper::editList('$9.edit');
+		}
+
+		if (\$canDo->get('core.edit.state'))
+		{
+			if (\$state->get('filter.published') != 2)
+			{
+				JToolBarHelper::divider();
+				JToolBarHelper::publish('${2/(.+)/\L\1/g}.publish', 'JTOOLBAR_PUBLISH', true);
+				JToolBarHelper::unpublish('${2/(.+)/\L\1/g}.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+			}
+
+			if (\$state->get('filter.published') != -1)
+			{
+				JToolBarHelper::divider();
+				if (\$state->get('filter.published') != 2)
+				{
+					JToolBarHelper::archiveList('${2/(.+)/\L\1/g}.archive');
+				}
+				elseif (\$state->get('filter.published') == 2)
+				{
+					JToolBarHelper::unarchiveList('${2/(.+)/\L\1/g}.publish');
+				}
+			}
+		}
+
+		if (\$canDo->get('core.edit.state'))
+		{
+			JToolBarHelper::checkin('${2/(.+)/\L\1/g}.checkin');
+		}
+
+		if (\$state->get('filter.published') == -2 && \$canDo->get('core.delete'))
+		{
+			JToolBarHelper::deleteList('', '${2/(.+)/\L\1/g}.delete', 'JTOOLBAR_EMPTY_TRASH');
+			JToolBarHelper::divider();
+		}
+		elseif (\$canDo->get('core.edit.state'))
+		{
+			JToolBarHelper::trash('${2/(.+)/\L\1/g}.trash');
+			JToolBarHelper::divider();
+		}
+
+		if (\$canDo->get('core.admin'))
+		{
+			JToolBarHelper::preferences('com_${TM_PROJECT/(.+)/\L\1/g}');
+			JToolBarHelper::divider();
+		}
+
+		JToolBarHelper::help('${2/(.+)/\L\1/g}', \$com = true);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminviewlist</tabTrigger>
+</snippet>

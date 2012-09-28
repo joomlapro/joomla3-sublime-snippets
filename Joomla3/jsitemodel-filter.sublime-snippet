@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[// Filter by ${1:hello}.
+if (\$${1/(.+)/\L\1/g} = \$this->getState('filter.${1/(.+)/\L\1/g}'))
+{
+	\$query->where('a.${1/(.+)/\L\1/g} = ' . (int) \$${1/(.+)/\L\1/g});
+}]]></content>
+	<tabTrigger>jsitemodel-filter</tabTrigger>
+</snippet>

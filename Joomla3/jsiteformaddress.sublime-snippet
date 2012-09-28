@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<field id="zip_code" name="zip_code" type="text" class="inputbox zipcode" size="9" message="COM_${TM_PROJECT/(.+)/\U\1/g}_ZIP_CODE_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIP_CODE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIP_CODE_DESC" />
+<field id="address" name="address" type="textarea" class="inputbox" rows="1" cols="40" message="COM_${TM_PROJECT/(.+)/\U\1/g}_ADDRESS_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ADDRESS_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ADDRESS_DESC" />
+<field id="number" name="number" type="text" class="inputbox" size="5" message="COM_${TM_PROJECT/(.+)/\U\1/g}_NUMBER_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_NUMBER_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_NUMBER_DESC" />
+<field id="complement" name="complement" type="text" class="inputbox" size="12" message="COM_${TM_PROJECT/(.+)/\U\1/g}_COMPLEMENT_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COMPLEMENT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COMPLEMENT_DESC" />
+<field id="district" name="district" type="text" class="inputbox" size="15" message="COM_${TM_PROJECT/(.+)/\U\1/g}_DISTRICT_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_DESC" />
+<field id="city" name="city" type="text" class="inputbox" size="15" message="COM_${TM_PROJECT/(.+)/\U\1/g}_CITY_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_DESC" />
+<field id="state" name="state" type="state" class="inputbox" message="COM_${TM_PROJECT/(.+)/\U\1/g}_STATE_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_DESC" />
+<field id="country" name="country" type="country" class="inputbox" message="COM_${TM_PROJECT/(.+)/\U\1/g}_ZIP_COUNTRY_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_DESC" />]]></content>
+	<tabTrigger>jsiteformaddress</tabTrigger>
+</snippet>

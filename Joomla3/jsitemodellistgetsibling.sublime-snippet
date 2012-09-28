@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get the sibling (adjacent) categories.
+ *
+ * @return  mixed  An array of categories or false if an error occurs.
+ *
+ * @since   2.5
+ */
+public function &getLeftSibling()
+{
+	if (!is_object(\$this->_item))
+	{
+		\$this->getCategory();
+	}
+
+	return \$this->_leftsibling;
+}
+
+/**
+ * Get the sibling (adjacent) categories.
+ *
+ * @return  mixed  An array of categories or false if an error occurs.
+ *
+ * @since   2.5
+ */
+public function &getRightSibling()
+{
+	if (!is_object(\$this->_item))
+	{
+		\$this->getCategory();
+	}
+
+	return \$this->_rightsibling;
+}]]></content>
+	<tabTrigger>jsitemodellistgetsibling</tabTrigger>
+</snippet>

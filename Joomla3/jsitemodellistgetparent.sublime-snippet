@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get the parent category.
+ *
+ * @return  mixed  An array of categories or false if an error occurs.
+ *
+ * @since   $TM_PROJECT
+ */
+public function getParent()
+{
+	if (!is_object(\$this->_item))
+	{
+		\$this->getCategory();
+	}
+
+	return \$this->_parent;
+}]]></content>
+	<tabTrigger>jsitemodellistgetparent</tabTrigger>
+</snippet>

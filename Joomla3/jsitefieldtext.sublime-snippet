@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:hello}" type="text" class="inputbox" size="30" message="COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jsitefieldtext</tabTrigger>
+</snippet>

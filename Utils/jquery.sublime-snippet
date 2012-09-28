@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+]]></content>
+<tabTrigger>jquery</tabTrigger>
+</snippet>

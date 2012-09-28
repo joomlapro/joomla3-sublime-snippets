@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[\$modules = JModuleHelper::getModules('${1:hello}');
+
+foreach (\$modules as \$module)
+{
+	// Render the modules
+	echo JModuleHelper::renderModule(\$module, array('style' => '${2:none}'));
+}]]></content>
+	<tabTrigger>jsitetemplategetmodules</tabTrigger>
+</snippet>

@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${2/(.+)/\u\1/g} ${1/(.+)/\u\1/g} plugin
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  plg_${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class plg${1:Folder}${2:Hello} extends JPlugin
+{
+	/**
+	 * Constructor
+	 *
+	 * @param   object  &\$subject  The object to observe
+	 * @param   array   \$config    An array that holds the plugin configuration
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(&\$subject, \$config)
+	{
+		parent::__construct(\$subject, \$config);
+
+		\$this->loadLanguage();
+	}
+}
+
+]]></content>
+	<tabTrigger>jplugin</tabTrigger>
+</snippet>

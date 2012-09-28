@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_${1:HELLO}_N_ITEMS_ARCHIVED="%d ${2:hellos} successfully archived"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_0="No ${3:Hello} archived."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_1="%d ${3/(.+)/\L\1/g} successfully archived"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_MORE="%d ${2/(.+)/\L\1/g} successfully checked in"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_0="No ${3/(.+)/\L\1/g} successfully checked in"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_1="%d ${3/(.+)/\L\1/g} successfully checked in"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED="%d ${2/(.+)/\L\1/g} successfully deleted"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED_0="No ${3/(.+)/\L\1/g} deleted."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED_1="%d ${3/(.+)/\L\1/g} successfully deleted"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED="%d ${2/(.+)/\L\1/g} successfully published"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED_0="No ${3/(.+)/\L\1/g} published."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED_1="%d ${3/(.+)/\L\1/g} successfully published"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED="%d ${2/(.+)/\L\1/g} successfully trashed"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED_0="No ${3/(.+)/\L\1/g} trashed."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED_1="%d ${3/(.+)/\L\1/g} successfully trashed"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED="%d ${2/(.+)/\L\1/g} successfully unpublished"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_0="No ${3/(.+)/\L\1/g} unpublished."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_1="%d ${3/(.+)/\L\1/g} successfully unpublished"]]></content>
+	<tabTrigger>jadminlanguagelisten</tabTrigger>
+</snippet>

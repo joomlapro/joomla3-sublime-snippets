@@ -1,0 +1,42 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method is called after user data is stored in the database
+ *
+ * @param   array    \$user     Holds the new user data.
+ * @param   boolean  \$isnew    True if a new user is stored.
+ * @param   boolean  \$success  True if user was succesfully stored in the database.
+ * @param   string   \$msg      Message.
+ *
+ * @return	void
+ *
+ * @since	$TM_VERSION
+ * @throws	Exception on error.
+ */
+public function onUserAfterSave(\$user, \$isnew, \$success, \$msg)
+{
+	\$app = JFactory::getApplication();
+
+	// convert the user parameters passed to the event
+	// to a format the external application
+
+	\$args = array();
+	\$args['username']	= \$user['username'];
+	\$args['email']		= \$user['email'];
+	\$args['fullname']	= \$user['name'];
+	\$args['password']	= \$user['password'];
+
+	if (\$isnew)
+	{
+		// Call a function in the external app to create the user
+		// ThirdPartyApp::createUser(\$user['id'], \$args);
+	}
+	else
+	{
+		// Call a function in the external app to update the user
+		// ThirdPartyApp::updateUser(\$user['id'], \$args);
+	}
+}
+
+]]></content>
+	<tabTrigger>jpluginuseraftersave</tabTrigger>
+</snippet>

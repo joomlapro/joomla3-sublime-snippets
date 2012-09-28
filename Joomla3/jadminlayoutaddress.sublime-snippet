@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[echo JHtml::_('sliders.panel', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_ADDRESS'), 'address-panel'); ?>
+<fieldset class="panelform">
+	<ul class="adminformlist">
+		<li><?php echo \$this->form->getLabel('zip_code'); ?>
+		<?php echo \$this->form->getInput('zip_code'); ?></li>
+		<li><?php echo \$this->form->getLabel('address'); ?>
+		<?php echo \$this->form->getInput('address'); ?></li>
+		<li><?php echo \$this->form->getLabel('number'); ?>
+		<?php echo \$this->form->getInput('number'); ?></li>
+		<li><?php echo \$this->form->getLabel('complement'); ?>
+		<?php echo \$this->form->getInput('complement'); ?></li>
+		<li><?php echo \$this->form->getLabel('district'); ?>
+		<?php echo \$this->form->getInput('district'); ?></li>
+		<li><?php echo \$this->form->getLabel('city'); ?>
+		<?php echo \$this->form->getInput('city'); ?></li>
+		<li><?php echo \$this->form->getLabel('state'); ?>
+		<?php echo \$this->form->getInput('state'); ?></li>
+		<li><?php echo \$this->form->getLabel('latitude'); ?>
+		<?php echo \$this->form->getInput('latitude'); ?></li>
+		<li><?php echo \$this->form->getLabel('longitude'); ?>
+		<?php echo \$this->form->getInput('longitude'); ?></li>
+	</ul>
+</fieldset>
+
+]]></content>
+	<tabTrigger>jadminlayoutaddress</tabTrigger>
+</snippet>

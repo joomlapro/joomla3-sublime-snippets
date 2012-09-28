@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Join over the ${1:hello}.
+\$query->select('${1/(.)(.+)/\L\1/g}.*');
+\$query->join('LEFT', '#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g} AS ${1/(.)(.+)/\L\1/g} ON ${1/(.)(.+)/\L\1/g}.id = a.${2:id}');]]></content>
+	<tabTrigger>jjoin</tabTrigger>
+</snippet>

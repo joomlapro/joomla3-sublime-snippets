@@ -1,0 +1,75 @@
+<snippet>
+	<content><![CDATA[/**
+ * Form Field ZipCode class.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       2.5
+ */
+class JFormFieldZipCode extends JFormFieldText
+{
+	/**
+	 * The field type.
+	 *
+	 * @var    string
+	 */
+	protected \$type = 'ZipCode';
+
+	/**
+	 * Method to get the field input.
+	 *
+	 * @return  string The field input.
+	 *
+	 * @since   2.5
+	 */
+	public function getInput()
+	{
+		\$script = <<<ENDSCRIPT
+		function getZip() {
+			var onRequest = function () {
+					document.id('reload').setStyle('display', 'block');
+				};
+			var onComplete = function () {
+					document.id('reload').setStyle('display', 'none');
+				};
+			var onSuccess = function (response) {
+					var responseJSON = JSON.parse(response);
+					document.id('jform_address').value = responseJSON.tipo_logradouro + ', ' + responseJSON.logradouro;
+					document.id('jform_district').value = responseJSON.bairro;
+					document.id('jform_city').value = responseJSON.cidade;
+					document.id('jform_state').value = responseJSON.uf;
+				};
+			var queryString = {
+				'option': 'com_${TM_PROJECT/(.+)/\L\1/g}',
+				'task': '${1:hellos}.getzip',
+				'zip': document.id('jform_zip_code').value,
+				'format': 'raw'
+			};
+			var options = {
+				url: 'index.php',
+				method: 'get',
+				update: null,
+				data: queryString,
+				onSuccess: onSuccess,
+				onComplete: onComplete,
+				onRequest: onRequest
+			};
+			var ajaxReq = new Request(options).send();
+		};
+ENDSCRIPT;
+
+		\$doc = JFactory::getDocument();
+		\$doc->addScriptDeclaration(\$script);
+
+		\$html = parent::getInput();
+
+		\$html .= '<input type="button" onClick="getZip()" value="' . JText::_('JSEARCH_FILTER_SUBMIT') . '" />';
+		\$html .= '<div id="reload" style="display:none;"><img src="' . JURI::root() . 'media/system/images/mootree_loader.gif" alt="" /></div>';
+
+		return \$html;
+	}
+}
+
+]]></content>
+	<tabTrigger>jfieldzipcode</tabTrigger>
+</snippet>

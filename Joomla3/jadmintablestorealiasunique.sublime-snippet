@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[// Verify that the alias is unique
+\$table = JTable::getInstance('Order', '${TM_PROJECT/(.+)/\u\1/g}Table');
+if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
+{
+	\$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));
+
+	return false;
+}]]></content>
+	<tabTrigger>jadmintablestorealiasunique</tabTrigger>
+</snippet>

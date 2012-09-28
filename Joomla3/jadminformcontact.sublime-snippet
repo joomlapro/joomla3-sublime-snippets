@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<field name="website" type="text" class="inputbox" size="40" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_WEBSITE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_WEBSITE_DESC" />
+<field name="email" type="text" class="inputbox" size="40" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_EMAIL_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_EMAIL_DESC" />
+<field name="phone" type="text" class="inputbox" size="14" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_PHONE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_PHONE_DESC" />
+<field name="mobile" type="text" class="inputbox" size="14" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_MOBILE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_MOBILE_DESC" />]]></content>
+	<tabTrigger>jadminformcontact</tabTrigger>
+</snippet>

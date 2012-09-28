@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[\$db = JFactory::getDbo();
+\$aquery = \$db->setQuery(\$db->getQuery(true)
+	->select('alias')
+	->from('#__${1:hellos}')
+	->where('id=' . (int) \$query['id'])
+);
+\$alias = \$db->loadResult();
+\$query['id'] = \$query['id'] . ':' . \$alias;
+
+]]></content>
+	<tabTrigger>jsiterouteralias</tabTrigger>
+</snippet>

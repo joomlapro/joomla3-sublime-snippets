@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[if (isset(\$array['metadata']) && is_array(\$array['metadata']))
+{
+	\$registry = new JRegistry;
+	\$registry->loadArray(\$array['metadata']);
+	\$array['metadata'] = (string) \$registry;
+}
+
+]]></content>
+	<tabTrigger>jadmintablebindmetadata</tabTrigger>
+</snippet>

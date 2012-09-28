@@ -1,0 +1,55 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to toggle the featured setting of ${TM_PROJECT/(.+)/\L\1/g}.
+ *
+ * @param   array  \$pks    The ids of the items to toggle.
+ * @param   int    \$value  The value to toggle to.
+ *
+ * @return  boolean  True on success.
+ *
+ * @since   $TM_VERSION
+ */
+public function featured(\$pks, \$value = 0)
+{
+	// Sanitize the ids.
+	\$pks = (array) \$pks;
+	JArrayHelper::toInteger(\$pks);
+
+	if (empty(\$pks))
+	{
+		\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+		return false;
+	}
+
+	\$table = \$this->getTable();
+
+	try
+	{
+		\$db = \$this->getDbo();
+
+		\$db->setQuery(
+			'UPDATE #__${TM_PROJECT/(.+)/\L\1/g}'
+			. ' SET featured = ' . (int) \$value
+			. ' WHERE id IN (' . implode(',', \$pks) . ')'
+		);
+
+		if (!\$db->query())
+		{
+			throw new Exception(\$db->getErrorMsg());
+		}
+	}
+	catch (Exception \$e)
+	{
+		\$this->setError(\$e->getMessage());
+		return false;
+	}
+
+	\$table->reorder();
+
+	// Clean component's cache
+	\$this->cleanCache();
+
+	return true;
+}]]></content>
+	<tabTrigger>jadminmodeleditfeatured</tabTrigger>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:helloId} = \$this->getUserStateFromRequest(\$this->context . '.filter.${2:hello}_id', 'filter_${2}_id', '');
+\$this->setState('filter.${2}_id', \$${1});]]></content>
+	<tabTrigger>jadminmodelstate</tabTrigger>
+</snippet>

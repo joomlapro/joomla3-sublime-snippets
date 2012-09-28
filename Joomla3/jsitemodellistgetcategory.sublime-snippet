@@ -1,0 +1,51 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get category data for the current category
+ *
+ * @return  object
+ *
+ * @since   $TM_VERSION
+ */
+public function getCategory()
+{
+	if (!is_object(\$this->_item))
+	{
+		\$app = JFactory::getApplication();
+		\$menu = \$app->getMenu();
+		\$active = \$menu->getActive();
+		\$params = new JRegistry;
+
+		if (\$active)
+		{
+			\$params->loadString(\$active->params);
+		}
+
+		\$options = array();
+		\$options['countItems'] = \$params->get('show_cat_items', 1) || \$params->get('show_empty_categories', 0);
+		\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
+		\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
+
+		if (is_object(\$this->_item))
+		{
+			\$this->_children = \$this->_item->getChildren();
+			\$this->_parent = false;
+
+			if (\$this->_item->getParent())
+			{
+				\$this->_parent = \$this->_item->getParent();
+			}
+
+			\$this->_rightsibling = \$this->_item->getSibling();
+			\$this->_leftsibling = \$this->_item->getSibling(false);
+		}
+		else
+		{
+			\$this->_children = false;
+			\$this->_parent = false;
+		}
+	}
+
+	return \$this->_item;
+}]]></content>
+	<tabTrigger>jsitemodellistgetcategory</tabTrigger>
+</snippet>

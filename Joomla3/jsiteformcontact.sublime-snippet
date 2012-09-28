@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<field id="phone" name="phone" type="text" class="inputbox" size="30" message="COM_${TM_PROJECT/(.+)/\U\1/g}_PHONE_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_PHONE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_PHONE_DESC" />
+<field id="mobile" name="mobile" type="text" class="inputbox" size="30" message="COM_${TM_PROJECT/(.+)/\U\1/g}_MOBILE_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_MOBILE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_MOBILE_DESC" />]]></content>
+	<tabTrigger>jsiteformcontact</tabTrigger>
+</snippet>

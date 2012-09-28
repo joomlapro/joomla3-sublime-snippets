@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<?php echo \$this->escape(${1:\$item->name}); ?>]]></content>
+	<tabTrigger>jescape</tabTrigger>
+</snippet>

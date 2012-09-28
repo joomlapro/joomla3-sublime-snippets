@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[/**
+ * @param   string  \$context  The context for the content passed to the plugin.
+ * @param   object  \$data     The data relating to the content that was deleted.
+ *
+ * @return  boolean
+ *
+ * @since   $TM_VERSION
+ */
+public function onContentAfterDelete(\$context, \$data)
+{
+	return true;
+}
+
+]]></content>
+	<tabTrigger>jplugincontentafterdelete</tabTrigger>
+</snippet>

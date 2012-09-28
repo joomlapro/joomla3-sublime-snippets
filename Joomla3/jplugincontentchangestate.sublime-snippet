@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * @param   string  \$context  The context for the content passed to the plugin.
+ * @param   array   \$pks      A list of primary key ids of the content that has changed state.
+ * @param   int     \$value    The value of the state that the content has been changed to.
+ *
+ * @return  boolean
+ *
+ * @since   $TM_VERSION
+ */
+public function onContentChangeState(\$context, \$pks, \$value)
+{
+	return true;
+}
+
+]]></content>
+	<tabTrigger>jplugincontentchangestate</tabTrigger>
+</snippet>

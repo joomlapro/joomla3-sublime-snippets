@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[<media destination="${1:com_hello}" folder="media">
+	<folder>css</folder>
+	<folder>images</folder>
+	<folder>js</folder>
+	<filename>index.html</filename>
+</media>]]></content>
+	<tabTrigger>jmanifestmedia</tabTrigger>
+</snippet>

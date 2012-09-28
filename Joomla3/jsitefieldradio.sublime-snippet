@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:hello}" type="radio" default="0" filter="integer" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
+	<option value="1">JYES</option>
+	<option value="0">JNO</option>
+</field>]]></content>
+	<tabTrigger>jsitefieldradio</tabTrigger>
+</snippet>

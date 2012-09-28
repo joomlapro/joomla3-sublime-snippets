@@ -1,0 +1,57 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to toggle the ${1/(.+)/\L\1/g} setting of a list of ${2/(.+)/\L\1/g}.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function ${1:hello}()
+{
+	// Check for request forgeries
+	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+	// Initialise variables.
+	\$user   = JFactory::getUser();
+	\$ids    = JRequest::getVar('cid', array(), '', 'array');
+	\$values = array('${3:active}' => 1, '${4:inactive}' => 0);
+	\$task   = \$this->getTask();
+	\$value  = JArrayHelper::getValue(\$values, \$task, 0, 'int');
+
+	// Get the model.
+	\$model = \$this->getModel();
+
+	// Access checks.
+	foreach (\$ids as \$i => \$id)
+	{
+		\$item = \$model->getItem(\$id);
+
+		if (isset(\$item->catid))
+		{
+			if (!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
+			{
+				// Prune items that you can't change.
+				unset(\$ids[\$i]);
+
+				JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+			}
+		}
+	}
+
+	if (empty(\$ids))
+	{
+		JError::raiseWarning(500, JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+	}
+	else
+	{
+		// Publish the items.
+		if (!\$model->${1/(.+)/\L\1/g}(\$ids, \$value))
+		{
+			JError::raiseWarning(500, \$model->getError());
+		}
+	}
+
+	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${2:hellos}');
+}]]></content>
+	<tabTrigger>jadmincontrollercustom</tabTrigger>
+</snippet>

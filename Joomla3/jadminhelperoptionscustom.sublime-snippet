@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get a list of the ${1/(.+)/\L\1/g} for filtering.
+ *
+ * @return  array  An array of JHtmlOption elements.
+ *
+ * @since   $TM_VERSION
+ */
+public static function get${1:Hello}Options()
+{
+	// Build the filter options.
+	\$options = array();
+
+	\$options[] = JHtml::_('select.option', '0', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_${2:HELLO}'));
+
+	return \$options;
+}]]></content>
+	<tabTrigger>jadminhelperoptionscustom</tabTrigger>
+</snippet>

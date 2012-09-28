@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[// Component Helper
+jimport('joomla.application.component.helper');
+jimport('joomla.application.categories');
+
+/**
+ * ${TM_PROJECT/(.+)/\u\1/g} Component Category Tree
+ *
+ * @static
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ *
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Categories extends JCategories
+{
+	/**
+	 * Class constructor
+	 *
+	 * @param   array  \$options  Array of options
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(\$options = array())
+	{
+		\$options['table'] = '#__${TM_PROJECT/(.+)/\L\1/g}';
+		\$options['extension'] = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+		\$options['statefield'] = 'published';
+		// \$options['countItems'] = 1;
+
+		parent::__construct(\$options);
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitehelpercategory</tabTrigger>
+</snippet>

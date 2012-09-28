@@ -1,0 +1,61 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadFieldClass('list');
+
+/**
+ * Form Field State class.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ *
+ * @since       $TM_VERSION
+ */
+class JFormField${1:Hello} extends JFormFieldList
+{
+	/**
+	 * The field type.
+	 *
+	 * @var  string
+	 */
+	protected \$type = '${1/(.+)/\u\1/g}';
+
+	/**
+	 * Method to get the field options.
+	 *
+	 * @return  array  The field option objects.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getOptions()
+	{
+		// Initialiase variables.
+		\$options = array();
+
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Prepare query.
+		\$query->select('a.id AS value, a.name AS text');
+		\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos} AS a');
+		\$query->where('a.published = 1');
+		\$query->order('a.ordering ASC');
+
+		// Get the options.
+		\$db->setQuery(\$query);
+		\$options = \$db->loadObjectList();
+
+		// Check for a database error.
+		if (\$db->getErrorNum())
+		{
+			JError::raiseWarning(500, \$db->getErrorMsg());
+		}
+
+		// Merge any additional options in the XML definition.
+		\$options = array_merge(parent::getOptions(), \$options);
+
+		return \$options;
+	}
+}
+
+]]></content>
+	<tabTrigger>jfieldlist</tabTrigger>
+</snippet>

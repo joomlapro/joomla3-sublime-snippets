@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Filter by ${1:hello}.
+\$${1/(.+)/\L\1/g} = \$params->get('${1/(.+)/\L\1/g}');
+\$this->setState('filter.${1/(.+)/\L\1/g}', \$${1/(.+)/\L\1/g});]]></content>
+	<tabTrigger>jsitemodel-state</tabTrigger>
+</snippet>

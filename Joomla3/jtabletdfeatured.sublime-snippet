@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<td class="center">
+	<?php echo JHtml::_('${1:hello}.featured', \$item->featured, \$i, \$canChange); ?>
+</td>]]></content>
+	<tabTrigger>jtabletdfeatured</tabTrigger>
+</snippet>

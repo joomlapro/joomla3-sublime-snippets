@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$module = JModuleHelper::getModule('${1:hello}');
+echo JModuleHelper::renderModule(\$module, array('style' => '${2:none}'));]]></content>
+	<tabTrigger>jsitetemplategetmodule</tabTrigger>
+</snippet>

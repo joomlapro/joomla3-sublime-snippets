@@ -1,0 +1,66 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="$TM_VERSION" method="upgrade">
+	<name>com_${TM_PROJECT/(.+)/\L\1/g}</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>$2/$TM_YEAR</creationDate>
+	<copyright>(C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>COM_${TM_PROJECT/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<files folder="site">
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+		<filename>${TM_PROJECT/(.+)/\L\1/g}.php</filename>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>metadata.xml</filename>
+		<filename>router.php</filename>
+	</files>
+	<languages folder="site">
+		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${TM_PROJECT/(.+)/\L\1/g}.ini</language>
+	</languages>
+	<administration>
+		<menu img="../media/com_${TM_PROJECT/(.+)/\L\1/g}/images/menu/${3:hello}.png">com_${TM_PROJECT/(.+)/\L\1/g}</menu>
+		<submenu>
+			<menu link="option=com_${TM_PROJECT/(.+)/\L\1/g}" view="${TM_PROJECT/(.+)/\L\1/g}" img="../media/com_${TM_PROJECT/(.+)/\L\1/g}/images/menu/${3/(.+)/\L\1/g}.png" alt="${TM_PROJECT/(.+)/\u\1/g}/${TM_PROJECT/(.+)/\u\1/g}">com_${TM_PROJECT/(.+)/\L\1/g}</menu>
+			<menu link="option=com_categories&amp;extension=com_${TM_PROJECT/(.+)/\L\1/g}" view="categories" img="class:category" alt="${TM_PROJECT/(.+)/\u\1/g}/Categories">com_${TM_PROJECT/(.+)/\L\1/g}_categories</menu>
+		</submenu>
+		<files folder="admin">
+			<folder>controllers</folder>
+			<folder>help</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+			<filename>${TM_PROJECT/(.+)/\L\1/g}.php</filename>
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+		</files>
+		<languages folder="admin">
+			<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${TM_PROJECT/(.+)/\L\1/g}.ini</language>
+			<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${TM_PROJECT/(.+)/\L\1/g}.sys.ini</language>
+		</languages>
+	</administration>
+</extension>
+
+]]></content>
+	<tabTrigger>jcomponentmanifest</tabTrigger>
+</snippet>

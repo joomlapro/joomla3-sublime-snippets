@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[CREATE TABLE `${1:#_}_${2:hello}` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `${3:title}` varchar(100) NOT NULL DEFAULT '',
+  `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
+  `description` mediumtext NOT NULL,
+  `ordering` int(11) NOT NULL DEFAULT '0',
+  `published` tinyint(1) NOT NULL DEFAULT '0',
+  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `params` text NOT NULL,
+  `language` char(7) NOT NULL DEFAULT '',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by_alias` varchar(255) NOT NULL DEFAULT '',
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `metakey` text NOT NULL,
+  `metadesc` text NOT NULL,
+  `metadata` text NOT NULL,
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `xreference` varchar(50) NOT NULL DEFAULT '',
+  `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+]]></content>
+	<tabTrigger>jdb-category</tabTrigger>
+</snippet>

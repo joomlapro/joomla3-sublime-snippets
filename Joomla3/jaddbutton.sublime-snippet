@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<?php echo ${TM_PROJECT/(.+)/\u\1/g}Helper::button('${1:hello}', '${1/(.+)(s\b)/\L\1/g}.png', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_${1/(.+)/\U\1/g}')); ?>]]></content>
+	<tabTrigger>jaddbutton</tabTrigger>
+</snippet>

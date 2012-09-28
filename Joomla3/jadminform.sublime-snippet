@@ -1,0 +1,59 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields">
+		<field name="id" type="text" default="0" readonly="true" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
+		<field name="${1:title}" type="text" class="inputbox" size="40" required="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
+		<field name="alias" type="text" class="inputbox" size="40" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
+		<field name="catid" type="categoryedit" extension="com_${TM_PROJECT/(.+)/\L\1/g}" class="inputbox" required="true" label="JCATEGORY" description="JFIELD_CATEGORY_DESC" addfieldpath="/administrator/components/com_categories/models/fields">
+			<option value="">JSELECT</option>
+		</field>
+		<field name="published" type="list" class="inputbox" size="1" default="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+		<field name="access" type="accesslevel" class="inputbox" size="1" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
+		<field name="hits" type="text" class="readonly" size="6" readonly="true" filter="unset" label="JGLOBAL_HITS" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_HITS_DESC" />
+		<field name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
+		<field name="language" type="contentlanguage" class="inputbox" label="JFIELD_LANGUAGE_LABEL" description="JFIELD_LANGUAGE_DESC">
+			<option value="*">JALL</option>
+		</field>
+		<field name="description" type="editor" class="inputbox" filter="JComponentHelper::filterText" buttons="true" hide="readmore,pagebreak" label="JGLOBAL_DESCRIPTION" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
+		<field name="created" type="calendar" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC" />
+		<field name="created_by" type="user" label="JGLOBAL_FIELD_CREATED_BY_LABEL" description="JGLOBAL_FIELD_CREATED_BY_DESC" />
+		<field name="created_by_alias" type="text" class="inputbox" size="20" label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL" description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC" />
+		<field name="modified" type="calendar" class="readonly" size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" label="JGLOBAL_FIELD_MODIFIED_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_MODIFIED_DESC" />
+		<field name="modified_by" type="user" class="readonly" readonly="true" filter="unset" label="JGLOBAL_FIELD_MODIFIED_BY_LABEL" />
+		<field name="checked_out" type="Text" class="inputbox" size="6" label="JGLOBAL_FIELD_CHECKEDOUT_LABEL" description="JGLOBAL_FIELD_CHECKEDOUT_DESC" readonly="true" filter="unset" />
+		<field name="checked_out_time" type="Text" class="inputbox" size="6" readonly="true" filter="unset" label="JGLOBAL_FIELD_CHECKEDOUT_TIME_LABEL" description="JGLOBAL_FIELD_CHECKEDOUT_TIME_DESC" />
+		<field name="publish_up" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_UP_LABEL" description="JGLOBAL_FIELD_PUBLISH_UP_DESC" />
+		<field name="publish_down" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_DOWN_LABEL" description="JGLOBAL_FIELD_PUBLISH_DOWN_DESC" />
+		<field name="metakey" type="textarea" class="inputbox" rows="3" cols="30" label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
+		<field name="metadesc" type="textarea" class="inputbox" rows="3" cols="30" label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
+		<field name="xreference" type="text" class="inputbox" size="20" label="JFIELD_XREFERENCE_LABEL" description="JFIELD_XREFERENCE_DESC" />
+	</fieldset>
+	<fields name="params">
+		<fieldset name="jbasic" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+
+		</fieldset>
+	</fields>
+	<fields name="metadata">
+		<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+			<field name="robots" type="list" label="JFIELD_METADATA_ROBOTS_LABEL" description="JFIELD_METADATA_ROBOTS_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="index, follow">JGLOBAL_INDEX_FOLLOW</option>
+				<option value="noindex, follow">JGLOBAL_NOINDEX_FOLLOW</option>
+				<option value="index, nofollow">JGLOBAL_INDEX_NOFOLLOW</option>
+				<option value="noindex, nofollow">JGLOBAL_NOINDEX_NOFOLLOW</option>
+			</field>
+			<field name="author" type="text" size="20" label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC" />
+			<field name="rights" type="text" label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC" required="false" filter="string" cols="30" rows="2" />
+		</fieldset>
+	</fields>
+</form>
+
+]]></content>
+	<tabTrigger>jadminform</tabTrigger>
+</snippet>

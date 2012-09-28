@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get a list of the ${1/(.+)/\L\1/g} for filtering.
+ *
+ * @return  array  An array of JHtmlOption elements.
+ *
+ * @since   $TM_VERSION
+ */
+public static function get${1:Hello}Options()
+{
+	// Initialiase variables.
+	\$options = array();
+
+	\$db    = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Prepare query.
+	\$query->select('a.id AS value, a.name AS text');
+	\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos} AS a');
+	\$query->where('a.published = 1');
+	\$query->order('a.ordering ASC');
+
+	// Inject the query and load the result.
+	\$db->setQuery(\$query);
+	\$options = \$db->loadObjectList();
+
+	// Check for a database error.
+	if (\$db->getErrorNum())
+	{
+		JError::raiseWarning(500, \$db->getErrorMsg());
+		return null;
+	}
+
+	return \$options;
+}]]></content>
+	<tabTrigger>jadminhelperoptions</tabTrigger>
+</snippet>

@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[require_once dirname(__FILE__) . '/../../helpers/${TM_PROJECT/(.+)/\L\1/g}.php';]]></content>
+	<tabTrigger>jfield-require</tabTrigger>
+</snippet>

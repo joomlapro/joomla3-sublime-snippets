@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[<?php
+// Initialiase variables.
+\$messages = \$app->getMessageQueue();
+
+if (count(\$messages))
+{
+	foreach (\$messages as \$message)
+	{
+		\$text = JText::_(strtoupper(\$message['type']));
+
+		\$html = '<div class="message-box ' . strtolower(\$message['type']) . '">';
+		\$html .= '<strong>' . \$text . ':</strong> ' . \$message['message'] . ' <span class="close"></span>';
+		\$html .= '</div>';
+		\$html .= '<script type="text/javascript">\$(\'.close\').click(function(){\$(\'.message-box\').fadeOut(\'slow\');});</script>';
+
+		echo \$html;
+	}
+}
+?>
+<script type="text/javascript">\$('.close').click(function(){\$('.message-box').fadeOut('slow');});</script>
+]]></content>
+	<tabTrigger>jsitetemplatemessage</tabTrigger>
+</snippet>

@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[`$1` char(${2:10}) NOT NULL DEFAULT '',]]></content>
+	<tabTrigger>jdbchar</tabTrigger>
+</snippet>

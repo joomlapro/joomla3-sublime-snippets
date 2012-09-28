@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<fieldset name="${1:hello}">
+
+</fieldset>]]></content>
+	<tabTrigger>jadminfieldset</tabTrigger>
+</snippet>

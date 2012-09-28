@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field name="id" type="category" extension="com_${TM_PROJECT/(.+)/\L\1/g}" show_root="true" required="true" label="JGLOBAL_CHOOSE_CATEGORY_LABEL" description="JGLOBAL_CHOOSE_CATEGORY_DESC" />]]></content>
+	<tabTrigger>jadminfieldcategory</tabTrigger>
+</snippet>

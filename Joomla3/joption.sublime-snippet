@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<option value="${1}">${2:JSELECT}</option>]]></content>
+	<tabTrigger>joption</tabTrigger>
+</snippet>

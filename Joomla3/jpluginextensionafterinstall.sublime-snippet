@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[/**
+ * Handle post extension install update sites
+ *
+ * @param   JInstaller  \$installer  Installer object
+ * @param   int         \$eid        Extension Identifier
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+function onExtensionAfterInstall(\$installer, \$eid)
+{
+	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionAfterInstall: ' . (\$eid === false ? 'Failed extension install: ' . \$installer->getError() : 'Extension install successful') . (\$eid ? ' with new extension ID ' . \$eid : ' with no extension ID detected or multiple extension IDs assigned'));
+}
+
+]]></content>
+	<tabTrigger>jpluginextensionafterinstall</tabTrigger>
+</snippet>

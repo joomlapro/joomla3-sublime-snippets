@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Check for edit form.
+if ($vName == '${1:form}' && !$this->checkEditId('com_${TM_PROJECT/(.+)/\L\1/g}.edit.${2:hello}', $id))
+{
+	// Somehow the person just went to the form - we don't allow that.
+	return JError::raiseError(403, JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id));
+}]]></content>
+	<tabTrigger>jsitecontrollereditform</tabTrigger>
+</snippet>

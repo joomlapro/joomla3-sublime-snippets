@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[<?php
+\$messages = \$app->getMessageQueue();
+
+if (count(\$messages)) {
+	foreach (\$messages as \$message) {
+		\$html = '<div class="alert alert-' . strtolower(\$message['type']) . '">';
+		\$html .= '<button data-dismiss="alert" class="close">×</button>';
+		\$html .= '<strong>' . JText::_('TPL_BOOTSTRAP_MESSAGE_' . strtoupper(\$message['type'])) . '!</strong> ' . \$message['message'];
+		\$html .= '</div>';
+
+		echo \$html;
+	}
+}
+?>]]></content>
+	<tabTrigger>jdocmessage</tabTrigger>
+</snippet>

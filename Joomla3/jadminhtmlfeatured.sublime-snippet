@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to create a clickable icon to change the featured of an item
+ *
+ * @param   int   \$value      The featured value
+ * @param   int   \$i          The row index
+ * @param   bool  \$canChange  Whether the value can be changed or not
+ *
+ * @return  string  The anchor tag to toggle featured/unfeatured ${1/(.+)/\L\1/g}.
+ *
+ * @since   2.5
+ */
+static function featured(\$value = 0, \$i, \$canChange = true)
+{
+	// Array of image, task, title, action
+	\$states	= array(
+		0 => array('disabled.png', '${1:hello}.featured', 'COM_${TM_PROJECT/(.+)/\U\1/g}_UNFEATURED', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_FEATURE'),
+		1 => array('featured.png', '${1/(.+)/\L\1/g}.unfeatured', 'COM_${TM_PROJECT/(.+)/\U\1/g}_FEATURED', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE'),
+	);
+
+	\$state = JArrayHelper::getValue(\$states, (int) \$value, \$states[1]);
+	\$html  = JHtml::_('image', 'admin/' . \$state[0], JText::_(\$state[2]), null, true);
+
+	if (\$canChange)
+	{
+		\$html = '<a href="#" onclick="return listItemTask(\'cb' . \$i . '\',\'' . \$state[1] . '\')" title="' . JText::_(\$state[3]) . '">' . \$html . '</a>';
+	}
+
+	return \$html;
+}]]></content>
+	<tabTrigger>jadminhtmlfeatured</tabTrigger>
+</snippet>

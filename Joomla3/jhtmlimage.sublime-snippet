@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JHtml::_('image', '${1:mod_hello}/${2:image.png}', '${3:Hello}', array('title' => '${3/(.+)/\u\1/g}'), true);]]></content>
+	<tabTrigger>jhtmlimage</tabTrigger>
+</snippet>

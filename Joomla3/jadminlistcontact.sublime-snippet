@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<li><?php echo \$this->form->getLabel('website'); ?>
+<?php echo \$this->form->getInput('website'); ?></li>
+<li><?php echo \$this->form->getLabel('email'); ?>
+<?php echo \$this->form->getInput('email'); ?></li>
+<li><?php echo \$this->form->getLabel('phone'); ?>
+<?php echo \$this->form->getInput('phone'); ?></li>
+<li><?php echo \$this->form->getLabel('mobile'); ?>
+<?php echo \$this->form->getInput('mobile'); ?></li>]]></content>
+	<tabTrigger>jadminlistcontact</tabTrigger>
+</snippet>

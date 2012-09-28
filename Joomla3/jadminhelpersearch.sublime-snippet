@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get a list of the select for searching.
+ *
+ * @return  array  An array of JHtmlOption elements.
+ *
+ * @since   $TM_VERSION
+ */
+public static function getSearchSelect()
+{
+	// Build the filter options.
+	\$options = array();
+
+	\$options[] = JHtml::_('select.option', 'id', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_ID'));
+
+	return \$options;
+}]]></content>
+	<tabTrigger>jadminhelpersearch</tabTrigger>
+</snippet>

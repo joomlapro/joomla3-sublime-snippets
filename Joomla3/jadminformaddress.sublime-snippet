@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[<field name="zip_code" type="text" class="inputbox zipcode" size="9" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIP_CODE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIP_CODE_DESC" />
+<field name="address" type="textarea" class="inputbox" rows="1" cols="40" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ADDRESS_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ADDRESS_DESC" />
+<field name="number" type="text" class="inputbox" size="5" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_NUMBER_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_NUMBER_DESC" />
+<field name="complement" type="text" class="inputbox" size="12" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COMPLEMENT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COMPLEMENT_DESC" />
+<field name="district" type="text" class="inputbox" size="15" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_DESC" />
+<field name="city" type="text" class="inputbox" size="15" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_DESC" />
+<field name="state" type="state" class="inputbox" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_DESC" />
+<field name="country" type="country" class="inputbox" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_DESC" />
+<field name="latitude" type="text" class="inputbox" size="10" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC" />
+<field name="longitude" type="text" class="inputbox" size="10" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC" />]]></content>
+	<tabTrigger>jadminformaddress</tabTrigger>
+</snippet>

@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[<field name="catid" type="category" extension="com_${TM_PROJECT/(.+)/\L\1/g}" multiple="true" size="10" default="" label="JCATEGORY" description="MOD_${1:HELLO}_FIELD_CATEGORY_DESC">
+	<option value="">JOPTION_ALL_CATEGORIES</option>
+</field>
+<field name="count" type="text" default="5" label="MOD_${1/(.+)/\U\1/g}_FIELD_COUNT_LABEL" description="MOD_${1/(.+)/\U\1/g}_FIELD_COUNT_DESC" />
+<field name="show_featured" type="list" default="" label="MOD_${1/(.+)/\U\1/g}_FIELD_FEATURED_LABEL" description="MOD_${1/(.+)/\U\1/g}_FIELD_FEATURED_DESC">
+	<option value="">JSHOW</option>
+	<option value="0">JHIDE</option>
+	<option value="1">MOD_${1/(.+)/\U\1/g}_VALUE_ONLY_SHOW_FEATURED</option>
+</field>
+<field name="ordering" type="list" default="published" label="MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_LABEL" description="MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_DESC">
+	<option value="c_dsc">MOD_${1/(.+)/\U\1/g}_VALUE_RECENT_ADDED</option>
+	<option value="m_dsc">MOD_${1/(.+)/\U\1/g}_VALUE_RECENT_MODIFIED</option>
+	<option value="p_dsc">MOD_${1/(.+)/\U\1/g}_VALUE_RECENT_PUBLISHED</option>
+	<option value="mc_dsc">MOD_${1/(.+)/\U\1/g}_VALUE_RECENT_TOUCHED</option>
+</field>
+<field name="user_id" type="list" default="0" label="MOD_${1/(.+)/\U\1/g}_FIELD_USER_LABEL" description="MOD_${1/(.+)/\U\1/g}_FIELD_USER_DESC">
+	<option value="0">MOD_${1/(.+)/\U\1/g}_VALUE_ANYONE</option>
+	<option value="by_me">MOD_${1/(.+)/\U\1/g}_VALUE_ADDED_BY_ME</option>
+	<option value="not_me">MOD_${1/(.+)/\U\1/g}_VALUE_NOTADDED_BY_ME</option>
+</field>]]></content>
+	<tabTrigger>jsitemodulemanifestadvanced</tabTrigger>
+</snippet>

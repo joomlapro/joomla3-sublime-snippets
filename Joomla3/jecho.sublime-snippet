@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<?php echo htmlspecialchars(${1:\$this->item->}${2}); ?>]]></content>
+	<tabTrigger>jecho</tabTrigger>
+</snippet>

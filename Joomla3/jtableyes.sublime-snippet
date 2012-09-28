@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+<td class="center">
+	<?php if (\$item->${1:hello} == '1'): ?>
+		<?php echo JText::_('JYES'); ?>
+	<?php else: ?>
+		<?php echo JText::_('JNO'); ?>
+	<?php endif; ?>
+</td>
+]]></content>
+	<tabTrigger>jtableyes</tabTrigger>
+</snippet>

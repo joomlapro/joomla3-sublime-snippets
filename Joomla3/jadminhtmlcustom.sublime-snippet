@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to create a clickable icon to change the ${1/(.+)/\L\1/g} of an item
+ *
+ * @param   int   \$value      The ${1/(.+)/\L\1/g} value
+ * @param   int   \$i          The row index
+ * @param   bool  \$canChange  Whether the value can be changed or not
+ *
+ * @return  string  The anchor tag to toggle ${3/(.+)/\L\1/g}/${4/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
+ *
+ * @since   2.5
+ */
+static function ${1:hello}(\$value = 0, \$i, \$canChange = true)
+{
+	// Array of image, task, title, action
+	\$states	= array(
+		0 => array('disabled.png', '${2:hello}.${3:active}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${4/(.+)/\U\1/g}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_${3/(.+)/\U\1/g}'),
+		1 => array('featured.png', '${2/(.+)/\L\1/g}.${4:inactive}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${3/(.+)/\U\1/g}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_${4/(.+)/\U\1/g}'),
+	);
+
+	\$state = JArrayHelper::getValue(\$states, (int) \$value, \$states[1]);
+	\$html  = JHtml::_('image', 'admin/' . \$state[0], JText::_(\$state[2]), null, true);
+
+	if (\$canChange)
+	{
+		\$html = '<a href="#" onclick="return listItemTask(\'cb' . \$i . '\',\'' . \$state[1] . '\')" title="' . JText::_(\$state[3]) . '">' . \$html . '</a>';
+	}
+
+	return \$html;
+}]]></content>
+	<tabTrigger>jadminhtmlcustom</tabTrigger>
+</snippet>

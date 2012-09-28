@@ -1,0 +1,53 @@
+<snippet>
+	<content><![CDATA[<?php echo JHtml::_('sliders.start', 'stat-pane'); ?>
+<?php echo JHtml::_('sliders.panel', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}'), '${1:hello}-panel'); ?>
+<table class="adminlist">
+	<thead>
+		<tr>
+			<th width="1%" class="nowrap">
+				<?php echo JText::_('JGRID_HEADING_ID'); ?>
+			</th>
+			<th class="left">
+				<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_NAME'); ?>
+			</th>
+			<th width="10%">
+				<?php echo JText::_('JDATE'); ?>
+			</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td colspan="3">&nbsp;</td>
+		</tr>
+	</tfoot>
+	<tbody>
+	<?php
+	\$k = 0;
+	if (\$this->items):
+		foreach (\$this->items as \$item):
+
+		// Define variables
+		\$link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:hello}.edit&id=' . \$item->id);
+		\$component = JRequest::getCmd('option');
+		?>
+		<tr class="row<?php echo \$k; ?>">
+			<td class="center">
+				<?php echo \$this->escape(\$item->id); ?>
+			</td>
+			<td>
+				<a href="<?php echo \$link; ?>"><?php echo \$this->escape(\$item->name); ?></a>
+			</td>
+			<td class="center nowrap">
+				<?php echo JHtml::_('date', \$item->created, JText::_('DATE_FORMAT_LC4')); ?>
+			</td>
+		</tr>
+		<?php \$k = 1 - \$k; ?>
+		<?php endforeach; ?>
+	<?php else: ?>
+		<?php echo '<tr class="row' . \$k . '"><td colspan="3" align="center">' . JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_RESULTS') . '</td></tr>'; ?>
+	<?php endif; ?>
+	</tbody>
+</table>
+<?php echo JHtml::_('sliders.end'); ?>]]></content>
+	<tabTrigger>jadminlayoutstats</tabTrigger>
+</snippet>

@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Allow to processing of extension data after it is saved.
+ *
+ * @param   object   \$data   The data representing the extension.
+ * @param   boolean  \$isNew  True is this is new data, false if it is existing data.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+function onExtensionAfterSave(\$data, \$isNew)
+{
+}
+
+]]></content>
+	<tabTrigger>jpluginextensionaftersave</tabTrigger>
+</snippet>

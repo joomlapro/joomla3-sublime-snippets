@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Add router helpers.
+\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+\$item->catslug = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
+\$item->parent_slug = \$item->category_alias ? (\$item->parent_id . ':' . \$item->parent_alias) : \$item->parent_id;]]></content>
+	<tabTrigger>jsiteviewrouter</tabTrigger>
+</snippet>

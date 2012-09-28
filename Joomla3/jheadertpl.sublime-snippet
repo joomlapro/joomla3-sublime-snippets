@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[<?php
+/**
+ * @package     ${TM_TEMPLATE/(.+)/\u\1/g}
+ * @subpackage  tpl_${TM_TEMPLATE/(.+)/\L\1/g}
+ * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+// No direct access
+defined('_JEXEC') or die;
+
+
+]]></content>
+	<tabTrigger>jheadertpl</tabTrigger>
+</snippet>

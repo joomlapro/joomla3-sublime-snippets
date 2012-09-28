@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[/**
+ * Gets a list of the actions that can be performed.
+ *
+ * @param   int  \$categoryId  The category ID.
+ *
+ * @return  JObject
+ *
+ * @since   $TM_VERSION
+ */
+public static function getActions(\$categoryId = 0)
+{
+	\$user   = JFactory::getUser();
+	\$result = new JObject;
+
+	if (empty(\$categoryId))
+	{
+		\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+		\$level = 'component';
+	}
+	else
+	{
+		\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$categoryId;
+		\$level = 'category';
+	}
+
+	\$actions = JAccess::getActions('com_${TM_PROJECT/(.+)/\L\1/g}', \$level);
+
+	foreach (\$actions as \$action)
+	{
+		\$result->set(\$action->name, \$user->authorise(\$action->name, \$assetName));
+	}
+
+	return \$result;
+}]]></content>
+	<tabTrigger>jadminhelpergetactions</tabTrigger>
+</snippet>

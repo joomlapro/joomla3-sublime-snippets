@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<?php echo JHtml::_('sliders.start', '${1:hello}-sliders-' . \$this->item->id, array('useCookie' => 1)); ?>
+
+<?php echo JHtml::_('sliders.panel', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${3:TITLE}'), '${4:class_name}'); ?>
+
+
+<?php echo JHtml::_('sliders.end'); ?>
+
+]]></content>
+	<tabTrigger>jsliders</tabTrigger>
+</snippet>

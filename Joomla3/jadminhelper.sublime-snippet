@@ -1,0 +1,74 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${TM_PROJECT/(.+)/\u\1/g} component helper.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Helper
+{
+	public static \$extension = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+
+	/**
+	 * Configure the Linkbar.
+	 *
+	 * @param   string  \$vName  The name of the active view.
+	 *
+	 * @return  void
+     *
+	 * @since   $TM_VERSION
+	 */
+	public static function addSubmenu(\$vName)
+	{
+		JSubMenuHelper::addEntry(
+			JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_${TM_PROJECT/(.+)/\U\1/g}'),
+			'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${TM_PROJECT/(.+)/\L\1/g}',
+			\$vName == '${TM_PROJECT/(.+)/\L\1/g}'
+		);
+		JSubMenuHelper::addEntry(
+			JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_CATEGORIES'),
+			'index.php?option=com_categories&extension=com_${TM_PROJECT/(.+)/\L\1/g}',
+			\$vName == 'categories'
+		);
+	}
+
+	/**
+	 * Gets a list of the actions that can be performed.
+	 *
+	 * @param   int  \$categoryId  The category ID.
+	 *
+	 * @return  JObject
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function getActions(\$categoryId = 0)
+	{
+		\$user   = JFactory::getUser();
+		\$result = new JObject;
+
+		if (empty(\$categoryId))
+		{
+			\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+			\$level = 'component';
+		}
+		else
+		{
+			\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$categoryId;
+			\$level = 'category';
+		}
+
+		\$actions = JAccess::getActions('com_${TM_PROJECT/(.+)/\L\1/g}', \$level);
+
+		foreach (\$actions as \$action)
+		{
+			\$result->set(\$action->name, \$user->authorise(\$action->name, \$assetName));
+		}
+
+		return \$result;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminhelper</tabTrigger>
+</snippet>

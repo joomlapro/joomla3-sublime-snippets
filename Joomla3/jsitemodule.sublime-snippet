@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[// Include the syndicate functions only once
+require_once dirname(__FILE__) . '/helper.php';
+
+//\$list = mod${1/(.+)/\u\1/g}Helper::getList(\$params);
+\$moduleclass_sfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
+
+require JModuleHelper::getLayoutPath('mod_${1:hello}', \$params->get('layout', 'default'));
+
+]]></content>
+	<tabTrigger>jsitemodule</tabTrigger>
+</snippet>

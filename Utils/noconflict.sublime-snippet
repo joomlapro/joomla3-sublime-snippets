@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+jQuery.noConflict();
+
+(function (\$) {
+	\$(function () {
+		${1:// more code using \$ as alias to jQuery}
+	});
+})(jQuery);
+]]></content>
+	<tabTrigger>noconflict</tabTrigger>
+</snippet>

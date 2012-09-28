@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Filter by ${2/(.+)/\L\1/g}.
+\$${1:helloId} = \$this->getState('filter.${2:hello}_id');
+if (${3:is_numeric}(\$$1))
+{
+	\$query->where('a.${4:hello} = ' . (${5:int}) \$$1);
+}]]></content>
+	<tabTrigger>jadminmodelfilter</tabTrigger>
+</snippet>

@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:description}" type="editor" buttons="true" hide="pagebreak,readmore" filter="safehtml" asset_id="com_${TM_PROJECT/(.+)/\L\1/g}" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jsitefieldeditor</tabTrigger>
+</snippet>

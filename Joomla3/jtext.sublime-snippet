@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<?php echo JText::_('$1'); ?>]]></content>
+	<tabTrigger>jtext</tabTrigger>
+</snippet>

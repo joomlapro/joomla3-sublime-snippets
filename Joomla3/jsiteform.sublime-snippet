@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="default" label="COM_${TM_PROJECT/(.+)/\U\1/g}_${1:VIEW}_DEFAULT_LEGEND" addfieldpath="/administrator/components/com_categories/models/fields">
+		<field id="id" name="id" type="hidden" class="inputbox" size="10" default="0" readonly="true" filter="integer" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
+		<field id="${2/(.+)/\L\1/g}" name="${2:title}" type="text" class="inputbox" size="30" required="true" label="JGLOBAL_TITLE" description="JFIELD_TITLE_DESC" />
+		<field id="alias" name="alias" type="text" class="inputbox" size="45" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
+		<field id="catid" name="catid" type="categoryedit" extension="com_${TM_PROJECT/(.+)/\L\1/g}" class="inputbox" required="true" label="JCATEGORY" description="JFIELD_CATEGORY_DESC">
+			<option value="">COM_${TM_PROJECT/(.+)/\U\1/g}_SELECT</option>
+		</field>
+		<field id="published" name="state" type="list" class="inputbox" size="1" default="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+		<field id="access" name="access" type="accesslevel" class="inputbox" size="1" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
+		<field name="language" type="contentlanguage" class="inputbox" label="JFIELD_LANGUAGE_LABEL" description="JFIELD_LANGUAGE_DESC">
+			<option value="*">JALL</option>
+		</field>
+		<field name="description" type="editor" buttons="true" class="inputbox" filter="ContentHelper::filterText" asset_id="com_${TM_PROJECT/(.+)/\L\1/g}" label="JGLOBAL_DESCRIPTION" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
+		<field id="created" name="created" type="calendar" filter="unset" />
+		<field id="created_by" name="created_by" type="text" filter="unset" />
+		<field id="created_by_alias" name="created_by_alias" type="text" class="inputbox" size="20" label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL" description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC" />
+		<field id="publish_up" name="publish_up" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_UP_LABEL" description="JGLOBAL_FIELD_PUBLISH_UP_DESC" />
+		<field id="publish_down" name="publish_down" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_DOWN_LABEL" description="JGLOBAL_FIELD_PUBLISH_DOWN_DESC" />
+		<field id="metakey" name="metakey" type="textarea" class="inputbox" rows="5" cols="50" label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
+		<field id="metadesc" name="metadesc" type="textarea" class="inputbox" rows="5" cols="50" label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
+	</fieldset>
+</form>
+
+]]></content>
+	<tabTrigger>jsiteform</tabTrigger>
+</snippet>

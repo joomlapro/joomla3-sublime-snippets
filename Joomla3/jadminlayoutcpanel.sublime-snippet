@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[<div class="adminform">
+	<div class="cpanel-left">
+		<div id="cpanel">
+			<?php echo ${TM_PROJECT/(.+)/\u\1/g}Helper::button('${1:hellos}', '${1/(.+)(s\b)/\L\1/g}.png', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_${1/(.+)/\U\1/g}')); ?>
+		</div>
+	</div>
+	<div class="cpanel-right">
+		<?php echo \$this->loadTemplate('${3:stats}'); ?>
+	</div>
+</div>
+
+]]></content>
+	<tabTrigger>jadminlayoutcpanel</tabTrigger>
+</snippet>

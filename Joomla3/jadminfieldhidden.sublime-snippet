@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field name="${1:hello}" type="hidden" filter="unset" />]]></content>
+	<tabTrigger>jadminfieldhidden</tabTrigger>
+</snippet>

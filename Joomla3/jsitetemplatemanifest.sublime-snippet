@@ -1,0 +1,51 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.6//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
+<extension version="$TM_VERSION" type="template" client="site">
+	<name>${TM_TEMPLATE/(.+)/\L\1/g}</name>
+	<creationDate>$1/$TM_YEAR</creationDate>
+	<author>$TM_FULLNAME</author>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>TPL_${TM_TEMPLATE/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<files>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>offline.php</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>templateDetails.xml</filename>
+	</files>
+	<positions>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-mainmenu</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-search</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-sidebar</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footer</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footermenu</position>
+	</positions>
+	<languages folder="language">
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${TM_TEMPLATE/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${TM_TEMPLATE/(.+)/\L\1/g}.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			</fieldset>
+		</fields>
+	</config>
+</extension>
+
+]]></content>
+	<tabTrigger>jsitetemplatemanifest</tabTrigger>
+</snippet>

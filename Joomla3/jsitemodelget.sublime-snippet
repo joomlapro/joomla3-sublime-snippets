@@ -1,0 +1,42 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get ${1/(.+)/\L\1/g} data.
+ *
+ * @return  mixed  Menu item data object on success, false on failure.
+ *
+ * @since   2.5
+ */
+public function get${1:Hellos}()
+{
+	// Initialiase variables.
+	\$id = \$this->getItem()->id;
+	\$options = array();
+
+	if (\$id)
+	{
+		\$db    = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Prepare query.
+		\$query->select('a.*');
+		\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g} AS a');
+		\$query->where('a.${2:hello_id} = ' . (int) \$id);
+		\$query->where('a.published = 1');
+		\$query->order('a.ordering ASC');
+
+		// Inject the query and load the result.
+		\$db->setQuery(\$query);
+		\$items = \$db->loadObjectList();
+
+		// Check for a database error.
+		if (\$db->getErrorNum())
+		{
+			JError::raiseWarning(500, \$db->getErrorMsg());
+			return null;
+		}
+
+		return \$items;
+	}
+}]]></content>
+	<tabTrigger>jsitemodelget</tabTrigger>
+</snippet>

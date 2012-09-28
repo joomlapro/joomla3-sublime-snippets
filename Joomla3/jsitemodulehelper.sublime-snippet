@@ -1,0 +1,49 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} module helper.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  mod_${1/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+abstract class mod${1:Hello}Helper
+{
+	/**
+	 * Get a list of the ${2:hello} items.
+	 *
+	 * @param   JRegistry  &\$params  The module options.
+	 *
+	 * @return  array
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function getList(&\$params)
+	{
+		// Initialiase variables.
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Prepare query.
+		\$query->select('a.*');
+		\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${3:hellos} AS a');
+		\$query->where('a.published = 1');
+		\$query->order('a.ordering ASC');
+
+		// Inject the query and load the items.
+		\$db->setQuery(\$query);
+		\$items = \$db->loadObjectList();
+
+		// Check for a database error.
+		if (\$db->getErrorNum())
+		{
+			JError::raiseWarning(500, \$db->getErrorMsg());
+			return null;
+		}
+
+		return \$items;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodulehelper</tabTrigger>
+</snippet>

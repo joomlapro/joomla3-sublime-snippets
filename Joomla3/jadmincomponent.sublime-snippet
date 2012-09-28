@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[// Access check.
+if (!JFactory::getUser()->authorise('core.manage', 'com_${TM_PROJECT/(.+)/\L\1/g}'))
+{
+	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+}
+
+// Include dependancies
+jimport('joomla.application.component.controller');
+
+// Execute the task.
+\$controller = JController::getInstance('${TM_PROJECT/(.+)/\u\1/g}');
+\$controller->execute(JRequest::getCmd('task'));
+\$controller->redirect();
+
+]]></content>
+	<tabTrigger>jadmincomponent</tabTrigger>
+</snippet>

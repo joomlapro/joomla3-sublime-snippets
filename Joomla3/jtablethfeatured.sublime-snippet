@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<th width="5%">
+	<?php echo JHtml::_('grid.sort', 'JFEATURED', 'a.featured', \$listDirn, \$listOrder, NULL, 'desc'); ?>
+</th>]]></content>
+	<tabTrigger>jtablethfeatured</tabTrigger>
+</snippet>

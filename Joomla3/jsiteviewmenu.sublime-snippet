@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_${TM_PROJECT/(.+)/\U\1/g}_${1:HELLO}_VIEW_DEFAULT_TITLE" option="COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION">
+		<message>
+			<![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_VIEW_DEFAULT_DESC]] >
+		</message>
+	</layout>
+</metadata>
+
+]]></content>
+	<tabTrigger>jsiteviewmenu</tabTrigger>
+</snippet>

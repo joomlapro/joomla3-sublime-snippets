@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[jimport('joomla.application.component.controller');
+
+/**
+ * ${TM_PROJECT/(.+)/\u\1/g} Component Controller
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JController
+{
+	/**
+	 * @var		string	The default view.
+	 * @since	$TM_VERSION
+	 */
+	protected \$default_view = '${1:cpanel}';
+
+	/**
+	 * Method to display a view.
+	 *
+	 * @param   boolean  \$cachable   If true, the view output will be cached.
+	 * @param   array    \$urlparams  An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
+	 *
+	 * @return  JController  This object to support chaining.
+     *
+	 * @since   $TM_VERSION
+	 */
+	public function display(\$cachable = false, \$urlparams = false)
+	{
+		require_once JPATH_COMPONENT . '/helpers/${TM_PROJECT/(.+)/\L\1/g}.php';
+
+		// Load the submenu.
+		${TM_PROJECT/(.+)/\u\1/g}Helper::addSubmenu(JRequest::getCmd('view', '${1/(.+)/\L\1/g}'));
+
+		\$view   = JRequest::getCmd('view', '${1/(.+)/\L\1/g}');
+		\$layout = JRequest::getCmd('layout', 'default');
+		\$id     = JRequest::getInt('id');
+
+		parent::display();
+
+		return \$this;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadmincontroller</tabTrigger>
+</snippet>

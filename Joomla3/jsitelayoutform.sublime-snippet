@@ -1,0 +1,75 @@
+<snippet>
+	<content><![CDATA[// Load the tooltip behavior.
+JHtml::_('behavior.keepalive');
+JHtml::_('behavior.tooltip');
+JHtml::_('behavior.formvalidation');
+
+// Create shortcut to parameters.
+\$params = \$this->state->get('params');
+?>
+<script type="text/javascript">
+	Joomla.submitbutton = function(task) {
+		if (task == '${2:hello}.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
+			<?php echo \$this->form->getField('description')->save(); ?>
+			Joomla.submitform(task);
+		}
+		else {
+			alert('<?php echo \$this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED'));?>');
+		}
+	}
+</script>
+<div class="edit<?php echo \$this->pageclass_sfx; ?>">
+	<?php if (\$this->params->get('show_page_heading', 1)): ?>
+	<h1>
+		<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
+	</h1>
+	<?php endif; ?>
+	<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:form}&${TM_PROJECT/(.)(.+)/\L\1/g}_id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="${1/(.+)/\L\1/g}-validate">
+		<fieldset>
+			<legend><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}'); ?></legend>
+			<div class="formelm">
+				<?php echo \$this->form->getLabel('title'); ?>
+				<?php echo \$this->form->getInput('title'); ?>
+			</div>
+			<div class="formelm">
+				<?php echo \$this->form->getLabel('alias'); ?>
+				<?php echo \$this->form->getInput('alias'); ?>
+			</div>
+			<div class="formelm">
+				<?php echo \$this->form->getLabel('catid'); ?>
+				<?php echo \$this->form->getInput('catid'); ?>
+			</div>
+
+			<?php if (\$this->user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}')): ?>
+			<div class="formelm">
+				<?php echo \$this->form->getLabel('published'); ?>
+				<?php echo \$this->form->getInput('published'); ?>
+			</div>
+			<?php endif; ?>
+
+			<div class="formelm">
+				<?php echo \$this->form->getLabel('language'); ?>
+				<?php echo \$this->form->getInput('language'); ?>
+			</div>
+
+			<div class="formelm-buttons">
+				<button type="button" onclick="Joomla.submitbutton('${2/(.+)/\L\1/g}.save')"><?php echo JText::_('JSAVE') ?></button>
+				<button type="button" onclick="Joomla.submitbutton('${2/(.+)/\L\1/g}.cancel')"><?php echo JText::_('JCANCEL') ?></button>
+			</div>
+
+			<div>
+				<?php echo \$this->form->getLabel('description'); ?>
+				<?php echo \$this->form->getInput('description'); ?>
+			</div>
+		</fieldset>
+		<div>
+			<input type="hidden" name="return" value="<?php echo \$this->return_page; ?>" />
+			<input type="hidden" name="task" value="" />
+			<?php echo JHtml::_('form.token'); ?>
+		</div>
+	</form>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayoutform</tabTrigger>
+</snippet>

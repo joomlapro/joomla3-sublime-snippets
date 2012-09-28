@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIP_CODE_LABEL="CEP"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIP_CODE_DESC="CEP"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ADDRESS_LABEL="Endereço"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ADDRESS_DESC="Endereço"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_NUMBER_LABEL="Número"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_NUMBER_DESC="Número"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COMPLEMENT_LABEL="Complemento"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COMPLEMENT_DESC="Complemento"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_LABEL="Bairro"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_DESC="Bairro"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_LABEL="Cidade"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_DESC="Cidade"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_LABEL="Estado"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_DESC="Estado"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL="País"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_DESC="País"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL="Latitude"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC="Latitude"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL="Longitude"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC="Longitude"]]></content>
+	<tabTrigger>jlanguageaddress</tabTrigger>
+</snippet>

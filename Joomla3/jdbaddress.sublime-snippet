@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[`zip_code` char(8) NOT NULL DEFAULT '',
+`address` varchar(136) NOT NULL DEFAULT '',
+`number` varchar(5) NOT NULL DEFAULT '',
+`complement` varchar(12) NOT NULL DEFAULT '',
+`district` varchar(72) NOT NULL DEFAULT '',
+`city` varchar(72) NOT NULL DEFAULT '',
+`state` char(2) NOT NULL DEFAULT '',
+`country` char(3) NOT NULL DEFAULT '',]]></content>
+	<tabTrigger>jdbaddress</tabTrigger>
+</snippet>
