@@ -1,32 +1,31 @@
 <snippet>
 	<content><![CDATA[/**
- * Form Field ${1/(.+)/\u\1/g} class.
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_PROJECT/(.+)/\u\1/g}.
  *
- * @package     $TM_PROJECT
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @since       1.6
  */
-class JFormField${1:Name} extends JFormField
+class JFormField${1:Field} extends JFormField
 {
 	/**
-	 * The field type.
+	 * The form field type.
 	 *
-	 * @var  string
+	 * @var     string
+	 * @since   1.6
 	 */
 	protected \$type = '${1/(.+)/\u\1/g}';
 
 	/**
-	 * Method to get the field input.
+	 * Method to get the field input markup.
 	 *
-	 * @return  string  The field input.
+	 * @return  string  The field input markup.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
-	public function getInput()
+	protected function getInput()
 	{
-		\$return = '';
-
-		return \$return;
+		return '';
 	}
 }
 

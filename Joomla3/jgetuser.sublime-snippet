@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Add current user information
+\$user = JFactory::getUser();]]></content>
+	<tabTrigger>jgetuser</tabTrigger>
+</snippet>

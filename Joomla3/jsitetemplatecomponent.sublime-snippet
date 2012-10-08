@@ -1,18 +1,21 @@
 <snippet>
-	<content><![CDATA[// Define variables
+	<content><![CDATA[// Initialiase variables.
+\$app = JFactory::getApplication();
+\$doc = JFactory::getDocument();
+\$this->language = \$doc->language;
+\$this->direction = \$doc->direction;
+
+// Define path
 \$path = \$this->baseurl . '/templates/' . \$this->template;
 ?>
 <!DOCTYPE HTML>
 <html lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>">
 <head>
 	<jdoc:include type="head" />
-	<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/general.css">
-	<link rel="stylesheet" href="<?php echo \$path; ?>/css/template.css">
-	<?php if (\$this->direction == 'rtl'): ?>
-		<link rel="stylesheet" href="<?php echo \$path; ?>/css/template_rtl.css">
-	<?php endif; ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo \$path; ?>/css/template.css">
+	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo \$this->baseurl; ?>/media/jui/js/html5.js"></script><![endif]-->
 </head>
-<body class="contentpane">
+<body class="contentpane modal">
 	<jdoc:include type="message" />
 	<jdoc:include type="component" />
 </body>

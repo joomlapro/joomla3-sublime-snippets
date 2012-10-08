@@ -2,19 +2,19 @@
 	<content><![CDATA[JFormHelper::loadFieldClass('list');
 
 /**
- * Form Field State class.
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_PROJECT/(.+)/\u\1/g}.
  *
- * @package     $TM_PROJECT
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- *
- * @since       $TM_VERSION
+ * @since       1.6
  */
-class JFormField${1:Hello} extends JFormFieldList
+class JFormField${1:Field_list} extends JFormFieldList
 {
 	/**
-	 * The field type.
+	 * The form field type.
 	 *
-	 * @var  string
+	 * @var     string
+	 * @since   1.6
 	 */
 	protected \$type = '${1/(.+)/\u\1/g}';
 
@@ -23,30 +23,30 @@ class JFormField${1:Hello} extends JFormFieldList
 	 *
 	 * @return  array  The field option objects.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
-	public function getOptions()
+	protected function getOptions()
 	{
 		// Initialiase variables.
 		\$options = array();
 
-		\$db = JFactory::getDbo();
+		\$db    = JFactory::getDbo();
 		\$query = \$db->getQuery(true);
 
-		// Prepare query.
-		\$query->select('a.id AS value, a.name AS text');
-		\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos} AS a');
-		\$query->where('a.published = 1');
-		\$query->order('a.ordering ASC');
+		\$query->select('id As value, name As text');
+		\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}${2:_table} AS a');
+		\$query->order('a.name');
 
 		// Get the options.
 		\$db->setQuery(\$query);
-		\$options = \$db->loadObjectList();
 
-		// Check for a database error.
-		if (\$db->getErrorNum())
+		try
 		{
-			JError::raiseWarning(500, \$db->getErrorMsg());
+			\$options = \$db->loadObjectList();
+		}
+		catch (RuntimeException \$e)
+		{
+			JError::raiseWarning(500, \$db->getMessage());
 		}
 
 		// Merge any additional options in the XML definition.

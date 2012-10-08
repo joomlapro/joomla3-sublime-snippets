@@ -5,7 +5,7 @@ JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR . '/tables');
 
 // Execute the task.
 \$controller = JControllerLegacy::getInstance('${TM_PROJECT/(.+)/\u\1/g}');
-\$controller->execute(JRequest::getCmd('task'));
+\$controller->execute(JFactory::getApplication()->input->get('task'));
 \$controller->redirect();
 
 ]]></content>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Globals</string>
+	<key>scope</key>
+	<string></string>
+	<key>settings</key>
+	<dict>
+		<key>shellVariables</key>
+		<array>
+			<dict>
+				<key>name</key>
+				<string>TM_FULLNAME</string>
+				<key>value</key>
+				<string><![CDATA[Bruno Batista]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_EMAIL</string>
+				<key>value</key>
+				<string><![CDATA[bruno@atomtech.com.br]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_ORGANIZATION_NAME</string>
+				<key>value</key>
+				<string><![CDATA[AtomTech, Inc]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_YEAR</string>
+				<key>value</key>
+				<string><![CDATA[2012]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_WEBSITE</string>
+				<key>value</key>
+				<string><![CDATA[http://www.atomtech.com.br]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_PROJECT</string>
+				<key>value</key>
+				<string><![CDATA[Affiliates]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_TEMPLATE</string>
+				<key>value</key>
+				<string><![CDATA[Orange]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_MANIFEST_VERSION</string>
+				<key>value</key>
+				<string><![CDATA[3.0.0]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_VERSION</string>
+				<key>value</key>
+				<string><![CDATA[3.0]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_LANGUAGE</string>
+				<key>value</key>
+				<string><![CDATA[pt-BR]]></string>
+			</dict>
+		</array>
+	</dict>
+	<key>uuid</key>
+	<string>0ef292cd-943a-4fb0-b43d-65959c5e6b06</string>
+</dict>
+</plist>

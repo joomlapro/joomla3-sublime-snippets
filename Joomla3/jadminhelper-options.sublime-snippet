@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get a list of filter options for the ${2/(.+)/\L\1/g}.
+ *
+ * @return  array  An array of JHtmlOption elements.
+ *
+ * @return  3.0
+ */
+public static function get${1:Field}Options()
+{
+	// Initialize variables.
+	\$options = array();
+
+	\$db    = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	\$query->select('id As value, name As text');
+	\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s} AS a');
+	\$query->order('a.name');
+
+	// Get the options.
+	\$db->setQuery(\$query);
+
+	try
+	{
+		\$options = \$db->loadObjectList();
+	}
+	catch (RuntimeException \$e)
+	{
+		JError::raiseWarning(500, \$e->getMessage());
+	}
+
+	// array_unshift(\$options, JHtml::_('select.option', '0', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_${1/(.+)/\U\1/g}')));
+
+	return \$options;
+}]]></content>
+	<tabTrigger>jadminhelper-options</tabTrigger>
+</snippet>

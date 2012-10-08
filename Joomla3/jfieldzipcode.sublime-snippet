@@ -1,28 +1,29 @@
 <snippet>
 	<content><![CDATA[/**
- * Form Field ZipCode class.
+ * ZipCode Field class for the ${TM_PROJECT/(.+)/\u\1/g}.
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       2.5
+ * @since       1.6
  */
 class JFormFieldZipCode extends JFormFieldText
 {
 	/**
-	 * The field type.
+	 * The form field type.
 	 *
-	 * @var    string
+	 * @var     string
+	 * @since   1.6
 	 */
 	protected \$type = 'ZipCode';
 
 	/**
-	 * Method to get the field input.
+	 * Method to get the field options.
 	 *
-	 * @return  string The field input.
+	 * @return  array  The field option objects.
 	 *
-	 * @since   2.5
+	 * @since   1.6
 	 */
-	public function getInput()
+	protected function getOptions()
 	{
 		\$script = <<<ENDSCRIPT
 		function getZip() {

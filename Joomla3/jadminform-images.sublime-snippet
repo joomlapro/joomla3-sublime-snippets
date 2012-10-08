@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[<fields name="images">
+	<field name="image_first" type="media" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FIRST_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FIRST_DESC" />
+	<field name="float_first" type="list" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FLOAT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FLOAT_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="right">JGLOBAL_RIGHT</option>
+		<option value="left">JGLOBAL_LEFT</option>
+		<option value="none">JFIELD_OPTION_NONE</option>
+	</field>
+	<field name="image_first_alt" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_DESC" />
+	<field name="image_first_caption" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_DESC" />
+	<field name="image_second" type="media" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_SECOND_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_SECOND_DESC" />
+	<field name="float_second" type="list" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FLOAT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FLOAT_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="right">JGLOBAL_RIGHT</option>
+		<option value="left">JGLOBAL_LEFT</option>
+		<option value="none">JFIELD_OPTION_NONE</option>
+	</field>
+	<field name="image_second_alt" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_DESC" />
+	<field name="image_second_caption" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_DESC" />
+</fields>]]></content>
+	<tabTrigger>jadminform-images</tabTrigger>
+</snippet>

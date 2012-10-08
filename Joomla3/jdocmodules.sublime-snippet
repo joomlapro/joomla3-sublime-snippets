@@ -1,4 +1,4 @@
 <snippet>
-	<content><![CDATA[<jdoc:include type="modules" name="${1:hello-mainmenu}" style="${2:none}" />]]></content>
+	<content><![CDATA[<jdoc:include type="modules" name="position-${1:1}" style="${2:none}" />]]></content>
 	<tabTrigger>jdocmodules</tabTrigger>
 </snippet>

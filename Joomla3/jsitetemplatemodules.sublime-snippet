@@ -1,19 +1,17 @@
 <snippet>
 	<content><![CDATA[/*
- * ${1:Hello}
+ * ${1/(.+)/\u\1/g}
  */
-function modChrome_${1/(.+)/\L\1/g}(\$module, &\$params, &\$attribs)
+function modChrome_${1:style}(\$module, &\$params, &\$attribs)
 {
 	if (!empty (\$module->content)): ?>
-		<div class="moduletable<?php echo htmlspecialchars(\$params->get('moduleclass_sfx')); ?>">
-		<?php if (\$module->showtitle != 0): ?>
+		<div class="${2:class}<?php echo htmlspecialchars(\$params->get('moduleclass_sfx')); ?>">
+		<?php if ((bool) \$module->showtitle): ?>
 			<h3><?php echo \$module->title; ?></h3>
 		<?php endif; ?>
 			<?php echo \$module->content; ?>
 		</div>
 	<?php endif;
-}
-
-]]></content>
+}]]></content>
 	<tabTrigger>jsitetemplatemodules</tabTrigger>
 </snippet>

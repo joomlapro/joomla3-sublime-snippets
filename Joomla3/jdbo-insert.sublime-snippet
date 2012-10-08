@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$db = JFactory::getDbo();
+// \$db = \$this->getDbo();
+\$query = \$db->getQuery(true);
+
+// Create the base insert statement.
+\$query->clear();
+\$query->insert('#__${TM_PROJECT/(.+)/\L\1/g}_${1:hello}');
+\$query->columns(
+	array(
+		\$db->quoteName('${2:hello}'),
+		\$db->quoteName('${3:hello}')
+		)
+	);
+\$query->values(\$this->${2/(.+)/\L\1/g} . ', ' . \$this->${3/(.+)/\L\1/g});
+
+// Set the query and execute the insert.
+\$db->setQuery(\$query);
+\$db->execute();]]></content>
+	<tabTrigger>jdbo-insert</tabTrigger>
+</snippet>

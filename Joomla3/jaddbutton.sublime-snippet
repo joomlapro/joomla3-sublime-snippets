@@ -1,4 +1,9 @@
 <snippet>
-	<content><![CDATA[<?php echo ${TM_PROJECT/(.+)/\u\1/g}Helper::button('${1:hello}', '${1/(.+)(s\b)/\L\1/g}.png', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_${1/(.+)/\U\1/g}')); ?>]]></content>
+	<content><![CDATA[array(
+	'link' => JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:${TM_PROJECT/(.+)/\L\1/g}}'),
+	'image' => '${2:home}',
+	'text' => JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_${1/(.+)/\U\1/g}_MANAGER'),
+	'access' => array('core.manage', 'com_${TM_PROJECT/(.+)/\L\1/g}')
+),]]></content>
 	<tabTrigger>jaddbutton</tabTrigger>
 </snippet>

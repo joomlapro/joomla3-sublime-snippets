@@ -1,6 +1,4 @@
 <snippet>
-	<content><![CDATA[
-\${$1/(.+)(s\b)/\\${2:l|L|u|U}\1/g}
-]]></content>
-<tabTrigger>$s</tabTrigger>
+	<content><![CDATA[\${$1/(.+)(s\b)/\\${2:l|L|u|U}\1/g}]]></content>
+	<tabTrigger>$s</tabTrigger>
 </snippet>

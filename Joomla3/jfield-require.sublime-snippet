@@ -1,4 +1,4 @@
 <snippet>
-	<content><![CDATA[require_once dirname(__FILE__) . '/../../helpers/${TM_PROJECT/(.+)/\L\1/g}.php';]]></content>
+	<content><![CDATA[require_once __DIR__ . '/../../helpers/${TM_PROJECT/(.+)/\L\1/g}.php';]]></content>
 	<tabTrigger>jfield-require</tabTrigger>
 </snippet>

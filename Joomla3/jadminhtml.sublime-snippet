@@ -4,9 +4,9 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       2.5
+ * @since       1.6
  */
-abstract class JHtml${1:Hello}
+abstract class JHtml${1:${TM_PROJECT/(.+)/\u\1/g}}
 {
 
 }

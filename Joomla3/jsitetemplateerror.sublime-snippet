@@ -1,61 +1,38 @@
 <snippet>
-	<content><![CDATA[jimport('joomla.application.module.helper');
-
-if (!isset(\$this->error))
-{
-	\$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
-	\$this->debug = false;
-}
-
-// Get template params
+	<content><![CDATA[// Getting params from template
 \$params = JFactory::getApplication()->getTemplate(true)->params;
 
-// Get language and direction
+// Initialiase variables.
+\$app = JFactory::getApplication();
 \$doc = JFactory::getDocument();
 \$this->language = \$doc->language;
 \$this->direction = \$doc->direction;
+
+// Detecting Active Variables
+\$option   = \$app->input->getCmd('option', '');
+\$view     = \$app->input->getCmd('view', '');
+\$layout   = \$app->input->getCmd('layout', '');
+\$task     = \$app->input->getCmd('task', '');
+\$itemid   = \$app->input->getCmd('Itemid', '');
+\$sitename = \$app->getCfg('sitename');
+
+// Define path
+\$path = \$this->baseurl . '/templates/' . \$this->template;
 ?>
 <!DOCTYPE HTML>
 <html lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>">
 <head>
-	<title><?php echo \$this->error->getCode(); ?> - <?php echo \$this->title; ?></title>
-	<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/error.css">
+	<title><?php echo \$this->title; ?> <?php echo \$this->error->getMessage(); ?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="language" content="<?php echo \$this->language; ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo \$path; ?>/css/template.css">
 	<?php if (\$this->direction == 'rtl'): ?>
-		<link rel="stylesheet" href="<?php echo \$this->baseurl; ?>/templates/system/css/error_rtl.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo \$this->baseurl; ?>/media/jui/css/bootstrap-rtl.css">
 	<?php endif; ?>
 </head>
 <body>
-	<div class="error">
-		<div id="outline">
-			<div id="errorboxoutline">
-				<div id="errorboxheader"><?php echo \$this->error->getCode(); ?> - <?php echo \$this->error->getMessage(); ?></div>
-				<div id="errorboxbody">
-					<p><strong><?php echo JText::_('JERROR_LAYOUT_NOT_ABLE_TO_VISIT'); ?></strong></p>
-					<ol>
-						<li><?php echo JText::_('JERROR_LAYOUT_AN_OUT_OF_DATE_BOOKMARK_FAVOURITE'); ?></li>
-						<li><?php echo JText::_('JERROR_LAYOUT_SEARCH_ENGINE_OUT_OF_DATE_LISTING'); ?></li>
-						<li><?php echo JText::_('JERROR_LAYOUT_MIS_TYPED_ADDRESS'); ?></li>
-						<li><?php echo JText::_('JERROR_LAYOUT_YOU_HAVE_NO_ACCESS_TO_THIS_PAGE'); ?></li>
-						<li><?php echo JText::_('JERROR_LAYOUT_REQUESTED_RESOURCE_WAS_NOT_FOUND'); ?></li>
-						<li><?php echo JText::_('JERROR_LAYOUT_ERROR_HAS_OCCURRED_WHILE_PROCESSING_YOUR_REQUEST'); ?></li>
-					</ol>
-					<p><strong><?php echo JText::_('JERROR_LAYOUT_PLEASE_TRY_ONE_OF_THE_FOLLOWING_PAGES'); ?></strong></p>
-					<ul>
-						<li><a href="<?php echo \$this->baseurl; ?>/index.php" title="<?php echo JText::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?>"><?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></li>
-					</ul>
-					<p><?php echo JText::_('JERROR_LAYOUT_PLEASE_CONTACT_THE_SYSTEM_ADMINISTRATOR'); ?>.</p>
-					<div id="techinfo">
-						<p><?php echo \$this->error->getMessage(); ?></p>
-						<p>
-							<?php if (\$this->debug): ?>
-								<?php echo \$this->renderBacktrace(); ?>
-							<?php endif; ?>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
 </body>
 </html>
 

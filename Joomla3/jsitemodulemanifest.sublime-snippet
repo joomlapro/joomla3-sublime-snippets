@@ -1,21 +1,21 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="$TM_VERSION" client="site" method="upgrade">
-	<name>mod_${1:hello}</name>
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>mod_${1:module}</name>
 	<author>$TM_FULLNAME</author>
-	<creationDate>$2/$TM_YEAR</creationDate>
+	<creationDate>$2 $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
-	<version>$TM_MANIFEST_VERSION</version>
+	<version>3.0.0</version>
 	<description>MOD_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_${1/(.+)/\L\1/g}">mod_${1/(.+)/\L\1/g}.php</filename>
 		<folder>tmpl</folder>
-		<filename>mod_${1/(.+)/\L\1/g}.xml</filename>
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
+		<filename>mod_${1/(.+)/\L\1/g}.xml</filename>
 	</files>
 	<languages folder="language">
 		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${1/(.+)/\L\1/g}.ini</language>
@@ -34,8 +34,8 @@
 					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
 				</field>
 				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
-				<field name="cachemode" type="hidden" default="static">
-					<option value="static"></option>
+				<field name="cachemode" type="hidden" default="itemid">
+					<option value="itemid"></option>
 				</field>
 			</fieldset>
 		</fields>
