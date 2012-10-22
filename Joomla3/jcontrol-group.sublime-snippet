@@ -3,5 +3,5 @@
 	<div class="control-label"><?php echo \$this->form->getLabel('${1:field}'); ?></div>
 	<div class="controls"><?php echo \$this->form->getInput('${1/(.+)/\L\1/g}'); ?></div>
 </div>]]></content>
-	<tabTrigger>hello</tabTrigger>
+	<tabTrigger>jcontrol-group</tabTrigger>
 </snippet>

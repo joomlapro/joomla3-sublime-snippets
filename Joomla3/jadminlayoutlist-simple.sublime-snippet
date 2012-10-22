@@ -25,15 +25,15 @@ if (\$saveOrder)
 ?>
 <script type="text/javascript">
 	Joomla.orderTable = function () {
-	    table = document.getElementById("sortTable");
-	    direction = document.getElementById("directionTable");
-	    order = table.options[table.selectedIndex].value;
-	    if (order != '<?php echo \$listOrder; ?>') {
-	        dirn = 'asc';
-	    } else {
-	        dirn = direction.options[direction.selectedIndex].value;
-	    }
-	    Joomla.tableOrdering(order, dirn, '');
+		table = document.getElementById("sortTable");
+		direction = document.getElementById("directionTable");
+		order = table.options[table.selectedIndex].value;
+		if (order != '<?php echo \$listOrder; ?>') {
+			dirn = 'asc';
+		} else {
+			dirn = direction.options[direction.selectedIndex].value;
+		}
+		Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
 <form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:view_list}'); ?>" method="post" name="adminForm" id="adminForm">
@@ -156,8 +156,6 @@ if (\$saveOrder)
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		<?php // Load the batch processing form. ?>
-		<?php echo \$this->loadTemplate('batch'); ?>
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />
 		<input type="hidden" name="filter_order" value="<?php echo \$listOrder; ?>" />

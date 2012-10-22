@@ -16,7 +16,7 @@
 			<option value="2">JARCHIVED</option>
 			<option value="-2">JTRASHED</option>
 		</field>
-		<field name="ordering" type="Ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
+		<field name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
 		<field name="access" type="accesslevel" class="inputbox span12 small" size="1" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
 		<field name="language" type="contentlanguage" class="inputbox span12 small" label="JFIELD_LANGUAGE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LANGUAGE_DESC">
 			<option value="*">JALL</option>

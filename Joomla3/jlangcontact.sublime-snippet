@@ -3,5 +3,5 @@
 COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_EMAIL_LABEL="E-mail"
 COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_PHONE_LABEL="Telefone"
 COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_MOBILE_LABEL="Celular"]]></content>
-	<tabTrigger>jlanguagecontact</tabTrigger>
+	<tabTrigger>jlangcontact</tabTrigger>
 </snippet>

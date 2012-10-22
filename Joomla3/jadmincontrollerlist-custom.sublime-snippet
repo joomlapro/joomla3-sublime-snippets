@@ -30,7 +30,7 @@ public function ${1:action}()
 		JArrayHelper::toInteger(\$ids);
 
 		// Change the state of the records.
-		if (!\$model->stick(\$ids, \$value))
+		if (!\$model->${1/(.+)/\L\1/g}(\$ids, \$value))
 		{
 			JError::raiseWarning(500, \$model->getError());
 		}
@@ -38,11 +38,11 @@ public function ${1:action}()
 		{
 			if (\$value == 1)
 			{
-				\$ntext = 'COM_${TM_PROJECT/(.+)/\U\1/g}_N_${4/(.+)/\U\1/g}_${2/(.+)/\U\1/g}';
+				\$ntext = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${4/(.+)/\U\1/g}_N_ITEMS_${2/(.+)/\U\1/g}';
 			}
 			else
 			{
-				\$ntext = 'COM_${TM_PROJECT/(.+)/\U\1/g}_N_${4/(.+)/\U\1/g}_${3/(.+)/\U\1/g}';
+				\$ntext = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${4/(.+)/\U\1/g}_N_ITEMS_${3/(.+)/\U\1/g}';
 			}
 
 			\$this->setMessage(JText::plural(\$ntext, count(\$ids)));

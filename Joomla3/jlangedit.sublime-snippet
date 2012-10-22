@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1:VIEW_EDIT}_NEW="Administrar ${2:Component}: Nov${4:o} ${3:View_edit}"
+COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_EDIT="Administrar ${2/(.+)/\u\1/g}: Editar ${3/(.+)/\u\1/g}"
+COM_${TM_PROJECT/(.+)/\U\1/g}_NEW_${1/(.+)/\U\1/g}="Nov${4/(.+)/\L\1/g} ${3/(.+)/\u\1/g}"
+COM_${TM_PROJECT/(.+)/\U\1/g}_EDIT_${1/(.+)/\U\1/g}="Editar ${3/(.+)/\u\1/g}"
+]]></content>
+	<tabTrigger>jlangedit</tabTrigger>
+</snippet>

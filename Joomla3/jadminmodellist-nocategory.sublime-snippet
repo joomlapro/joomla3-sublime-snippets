@@ -131,8 +131,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 			\$this->getState(
 				'list.select',
 				'a.id, a.${3/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time' .
-				'a.hits,' .
-				'a.state, a.access, a.ordering, a.language, a.publish_up, a.publish_down'
+				', a.hits' .
+				', a.state, a.access, a.ordering, a.language, a.publish_up, a.publish_down'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');

@@ -38,7 +38,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
 		}
 
 		// Load the submenu.
-		${TM_PROJECT/(.+)/\u\1/g}Helper::addSubmenu('${TM_PROJECT/(.+)/\L\1/g}');
+		${TM_PROJECT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
 
 		\$this->addToolbar();
 		\$this->sidebar = JHtmlSidebar::render();

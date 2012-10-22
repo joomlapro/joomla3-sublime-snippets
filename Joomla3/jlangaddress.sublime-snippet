@@ -19,5 +19,5 @@ COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL="Latitude"
 COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC="Latitude"
 COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL="Longitude"
 COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC="Longitude"]]></content>
-	<tabTrigger>jlanguageaddress</tabTrigger>
+	<tabTrigger>jlangaddress</tabTrigger>
 </snippet>

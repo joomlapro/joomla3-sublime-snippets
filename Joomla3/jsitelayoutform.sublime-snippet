@@ -14,7 +14,7 @@ JHtml::_('behavior.formvalidation');
 			Joomla.submitform(task);
 		}
 		else {
-			alert('<?php echo \$this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED'));?>');
+			alert('<?php echo \$this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED')); ?>');
 		}
 	}
 </script>

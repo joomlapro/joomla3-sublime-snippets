@@ -3,5 +3,5 @@
 	<option value=""><?php echo JText::_('JOPTION_SELECT_LANGUAGE'); ?></option>
 	<?php echo JHtml::_('select.options', JHtml::_('contentlanguage.existing', true, true), 'value', 'text', \$this->state->get('filter.language')); ?>
 </select>]]></content>
-	<tabTrigger>jadminlayoutfilterlanguage</tabTrigger>
+	<tabTrigger>jadminlayoutfilter-language</tabTrigger>
 </snippet>

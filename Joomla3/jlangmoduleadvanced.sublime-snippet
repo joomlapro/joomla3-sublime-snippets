@@ -16,5 +16,5 @@ MOD_${1/(.+)/\U\1/g}_VALUE_RECENT_ADDED="Primeiro os adicionados recentemente"
 MOD_${1/(.+)/\U\1/g}_VALUE_RECENT_MODIFIED="Primeiro os modificados recentemente"
 MOD_${1/(.+)/\U\1/g}_VALUE_RECENT_PUBLISHED="Primeiro os recém publicados"
 MOD_${1/(.+)/\U\1/g}_VALUE_RECENT_TOUCHED="Primeiro os acessados recentemente"]]></content>
-	<tabTrigger>jlanguagemoduleadvanced</tabTrigger>
+	<tabTrigger>jlangmoduleadvanced</tabTrigger>
 </snippet>

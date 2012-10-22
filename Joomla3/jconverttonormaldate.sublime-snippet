@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[// Converts the ${1/(.+)/\L\1/g} sql date to normal date.
+if (empty(\$item->${1/(.+)/\L\1/g}) || \$item->${1:field} == '0000-00-00')
+{
+	\$item->${1/(.+)/\L\1/g} = '00-00-0000';
+}
+else
+{
+	\$item->${1/(.+)/\L\1/g} = date('d-m-Y', strtotime(\$item->${1/(.+)/\L\1/g}));
+}]]></content>
+	<tabTrigger>jconverttonormaldate</tabTrigger>
+</snippet>
