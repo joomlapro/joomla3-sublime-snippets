@@ -26,7 +26,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 
 		// Set the default view name and format from the Request.
 		// Note we are using ${TM_PROJECT/(.)(.+)/\L\1/g}_id to avoid collisions with the router and the return page.
-		// Frontend is a bit messier than the backend.
 		\$id    = \$this->input->getInt('${TM_PROJECT/(.)(.+)/\L\1/g}_id');
 		\$vName = \$this->input->get('view', '${1:categories}');
 		\$this->input->set('view', \$vName);

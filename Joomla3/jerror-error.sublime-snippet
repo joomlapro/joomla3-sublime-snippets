@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JError::raiseError(${1:4711}, ${2:'A severe error occurred'});]]></content>
+	<tabTrigger>jerror-error</tabTrigger>
+</snippet>

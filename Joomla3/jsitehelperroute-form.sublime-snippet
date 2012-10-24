@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get a route configuration for the form view.
+ *
+ * @param   int     \$id      The id of the ${1/(.+)/\L\1/g}.
+ * @param   string  \$return  The return page variable.
+ *
+ * @return  string
+ *
+ * @since   1.6
+ */
+public static function getFormRoute(\$id, \$return = null)
+{
+	// Create the link.
+	if (\$id)
+	{
+		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:view_edit}.edit&w_id=' . \$id;
+	}
+	else
+	{
+		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.add&w_id=0';
+	}
+
+	if (\$return)
+	{
+		\$link .= '&return=' . \$return;
+	}
+
+	return \$link;
+}]]></content>
+	<tabTrigger>jsitehelperroute-form</tabTrigger>
+</snippet>

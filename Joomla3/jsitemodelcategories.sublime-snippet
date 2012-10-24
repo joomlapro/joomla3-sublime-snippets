@@ -1,19 +1,19 @@
 <snippet>
 	<content><![CDATA[/**
- * This models supports retrieving lists of ${TM_PROJECT/(.+)(s\b)/\L\1/g} ${2/(.+)/\L\1/g}.
+ * This models supports retrieving lists of ${1:${TM_PROJECT/(.+)(s\b)/\L\1/g}} categories.
  *
- * @package     $TM_PROJECT
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @since       1.6
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
+class ${TM_PROJECT/(.+)/\u\1/g}ModelCategories extends JModelLegacy
 {
 	/**
 	 * Model context string.
 	 *
 	 * @var     string
 	 */
-	public \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}';
+	public \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.categories';
 
 	/**
 	 * The category context (allows other extensions to derived from this model).
@@ -33,7 +33,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since	$TM_VERSION
+	 * @since   1.6
 	 */
 	protected function populateState()
 	{
@@ -41,13 +41,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 		\$this->setState('filter.extension', \$this->_extension);
 
 		// Get the parent id if defined.
-		\$parentId = JRequest::getInt('id');
+		\$parentId = \$app->input->getInt('id');
 		\$this->setState('filter.parentId', \$parentId);
 
 		\$params = \$app->getParams();
 		\$this->setState('params', \$params);
 
-		\$this->setState('filter.published',	1);
+		\$this->setState('filter.published', 1);
 		\$this->setState('filter.access', true);
 	}
 
@@ -62,25 +62,25 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	protected function getStoreId(\$id = '')
 	{
 		// Compile the store id.
-		\$id	.= ':' . \$this->getState('filter.extension');
-		\$id	.= ':' . \$this->getState('filter.published');
-		\$id	.= ':' . \$this->getState('filter.access');
-		\$id	.= ':' . \$this->getState('filter.parentId');
+		\$id .= ':' . \$this->getState('filter.extension');
+		\$id .= ':' . \$this->getState('filter.published');
+		\$id .= ':' . \$this->getState('filter.access');
+		\$id .= ':' . \$this->getState('filter.parentId');
 
 		return parent::getStoreId(\$id);
 	}
 
 	/**
-	 * Redefine the function an add some properties to make the styling more easy
+	 * redefine the function an add some properties to make the styling more easy
 	 *
 	 * @return  mixed  An array of data items on success, false on failure.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	public function getItems()
 	{
@@ -97,7 +97,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 			}
 
 			\$options = array();
-			\$options['countItems'] = \$params->get('show_cat_items_cat', 1) || !\$params->get('show_empty_categories_cat', 0);
+			\$options['countItems'] = \$params->get('show_cat_num_links', 1) || !\$params->get('show_empty_categories_cat', 0);
 			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
 			\$this->_parent = \$categories->get(\$this->getState('filter.parentId', 'root'));
 
@@ -115,11 +115,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${2:Categories} extends JModelLegacy
 	}
 
 	/**
-	 * Get the parent item.
+	 * Get the parent categorie.
 	 *
-	 * @return  mixed  An array of items or false if an error occurs.
+	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	public function getParent()
 	{
