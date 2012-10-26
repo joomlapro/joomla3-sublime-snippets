@@ -17,5 +17,5 @@ COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED_1="%d ${3/(.+)/\L
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED="%d ${2/(.+)/\L\1/g} successfully unpublished"
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_0="No ${3/(.+)/\L\1/g} unpublished."
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_1="%d ${3/(.+)/\L\1/g} successfully unpublished"]]></content>
-	<tabTrigger>jadminlanguagelisten</tabTrigger>
+	<tabTrigger>jadminlang_listen</tabTrigger>
 </snippet>

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<div class="${TM_PROJECT/(.+)(s\b)/\L\1/g}<?php echo \$this->pageclass_sfx; ?>">
+	<content><![CDATA[<div class="${TM_PROJECT/(.+)(s\b)/\L\1/g}-${1:view_item}<?php echo \$this->pageclass_sfx; ?>">
 	<?php if (\$this->params->get('show_page_heading')): ?>
 	<h1>
 		<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
@@ -7,7 +7,7 @@
 	<?php endif; ?>
 
 	<h2>
-		<?php echo \$this->escape(\$this->item->${1:title}); ?>
+		<?php echo \$this->escape(\$this->item->${2:title}); ?>
 	</h2>
 
 	<?php var_dump(\$this->item); ?>

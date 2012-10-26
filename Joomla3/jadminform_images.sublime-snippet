@@ -19,5 +19,5 @@
 	<field name="image_second_alt" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_DESC" />
 	<field name="image_second_caption" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_DESC" />
 </fields>]]></content>
-	<tabTrigger>jadminform-images</tabTrigger>
+	<tabTrigger>jadminform_images</tabTrigger>
 </snippet>

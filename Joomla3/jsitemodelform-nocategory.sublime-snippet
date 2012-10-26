@@ -43,9 +43,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		// Add compatibility variable for default naming conventions.
 		\$this->setState('${1/(.+)/\L\1/g}.id', \$pk);
 
-		\$categoryId = \$app->input->getInt('catid');
-		\$this->setState('${2/(.+)/\L\1/g}.catid', \$categoryId);
-
 		\$return = \$app->input->get('return', null, 'base64');
 
 		if (!JUri::isInternal(base64_decode(\$return)))
@@ -124,17 +121,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		else
 		{
 			// New item.
-			\$catId = (int) \$this->getState('${2/(.+)/\L\1/g}.catid');
-
-			if (\$catId)
-			{
-				\$value->params->set('access-change', \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . \$catId));
-				\$value->catid = \$catId;
-			}
-			else
-			{
-				\$value->params->set('access-change', \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}'));
-			}
+			\$value->params->set('access-change', \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}'));
 		}
 
 		return \$value;
@@ -142,5 +129,5 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 }
 
 ]]></content>
-	<tabTrigger>jsitemodelform</tabTrigger>
+	<tabTrigger>jsitemodelform-nocategory</tabTrigger>
 </snippet>

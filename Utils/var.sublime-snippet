@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[var_dump($1);
+die;]]></content>
+	<tabTrigger>var</tabTrigger>
+</snippet>

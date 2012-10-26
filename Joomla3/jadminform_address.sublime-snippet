@@ -9,5 +9,5 @@
 <field name="country" type="country" class="inputbox" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_DESC" />
 <field name="latitude" type="text" class="inputbox" size="10" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC" />
 <field name="longitude" type="text" class="inputbox" size="10" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC" />]]></content>
-	<tabTrigger>jadminform-address</tabTrigger>
+	<tabTrigger>jadminform_address</tabTrigger>
 </snippet>

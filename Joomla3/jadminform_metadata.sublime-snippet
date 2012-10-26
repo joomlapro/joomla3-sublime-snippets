@@ -12,5 +12,5 @@
 		<field name="rights" type="text" required="false" filter="string" cols="30" rows="2" label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC" />
 	</fieldset>
 </fields>]]></content>
-	<tabTrigger>jadminform-metadata</tabTrigger>
+	<tabTrigger>jadminform_metadata</tabTrigger>
 </snippet>

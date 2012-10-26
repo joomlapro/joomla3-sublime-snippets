@@ -9,5 +9,5 @@
 \$query['id'] = \$query['id'] . ':' . \$alias;
 
 ]]></content>
-	<tabTrigger>jsiterouteralias</tabTrigger>
+	<tabTrigger>jsiterouter_alias</tabTrigger>
 </snippet>

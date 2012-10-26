@@ -1,19 +1,17 @@
 <snippet>
-	<content><![CDATA[jimport('joomla.application.component.modellist');
-
-/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model
+	<content><![CDATA[/**
+ * ${TM_PROJECT/(.+)/\u\1/g} Component ${1:${TM_PROJECT/(.+)(s\b)/\u\1/g}} Model
  *
- * @package     $TM_PROJECT
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @since       1.5
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
+class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 {
 	/**
-	 * ${1/(.+)/\u\1/g} items data
+	 * Category items data
 	 *
-	 * @var     array
+	 * @var array
 	 */
 	protected \$_item = null;
 
@@ -26,28 +24,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	protected \$_parent = null;
 
 	/**
-	 * The category that applies.
-	 *
-	 * @access  protected
-	 * @var     object
-	 */
-	protected \$_category = null;
-
-	/**
-	 * The list of other ${TM_PROJECT/(.+)(s\b)/\L\1/g} categories.
-	 *
-	 * @access	protected
-	 * @var		array
-	 */
-	protected \$_categories = null;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
 	 * @see     JController
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	public function __construct(\$config = array())
 	{
@@ -55,7 +37,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 		{
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
-				'name', 'a.name',
+				'title', 'a.title',
+				'hits', 'a.hits',
 				'ordering', 'a.ordering',
 			);
 		}
@@ -64,11 +47,25 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	}
 
 	/**
+	 * The category that applies.
+	 *
+	 * @access  protected
+	 * @var     object
+	 */
+	protected \$_category = null;
+
+	/**
+	 * The list of other ${1/(.+)/\L\1/g} categories.
+	 *
+	 * @access  protected
+	 * @var     array
+	 */
+	protected \$_categories = null;
+
+	/**
 	 * Method to get a list of items.
 	 *
 	 * @return  mixed  An array of objects on success, false on failure.
-	 *
-	 * @since   $TM_VERSION
 	 */
 	public function getItems()
 	{
@@ -78,12 +75,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 		// Convert the params field into an object, saving original in _params
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
-			\$item = &\$items[\$i];
 			if (!isset(\$this->_params))
 			{
 				\$params = new JRegistry;
-				\$item->params = \$params;
-				\$params->loadString(\$item->params);
+				\$params->loadString(\$items[\$i]->params);
+				\$items[\$i]->params = \$params;
 			}
 		}
 
@@ -95,16 +91,16 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  string  An SQL query
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	protected function getListQuery()
 	{
-		\$user	= JFactory::getUser();
-		\$groups	= implode(',', \$user->getAuthorisedViewLevels());
+		\$user   = JFactory::getUser();
+		\$groups = implode(',', \$user->getAuthorisedViewLevels());
 
 		// Create a new query object.
-		\$db		= \$this->getDbo();
-		\$query	= \$db->getQuery(true);
+		\$db     = \$this->getDbo();
+		\$query  = \$db->getQuery(true);
 
 		// Select required fields from the categories.
 		\$query->select(\$this->getState('list.select', 'a.*'));
@@ -115,22 +111,40 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 		if (\$categoryId = \$this->getState('category.id'))
 		{
 			\$query->where('a.catid = ' . (int) \$categoryId);
-			\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
 			\$query->join('LEFT', '#__categories AS c ON c.id = a.catid');
 			\$query->where('c.access IN (' . \$groups . ')');
+
+			// Filter by published category
+			\$cpublished = \$this->getState('filter.c.published');
+
+			if (is_numeric(\$cpublished))
+			{
+				\$query->where('c.published = ' . (int) \$cpublished);
+			}
 		}
 
+		// Join over the users for the author and modified_by names.
+		\$query->select("CASE WHEN a.created_by_alias > ' ' THEN a.created_by_alias ELSE ua.name END AS author");
+		\$query->select("ua.email AS author_email");
+
+		\$query->join('LEFT', '#__users AS ua ON ua.id = a.created_by');
+		\$query->join('LEFT', '#__users AS uam ON uam.id = a.modified_by');
+
 		// Filter by state
-		\$state = \$this->getState('filter.published');
+		\$state = \$this->getState('filter.state');
+
 		if (is_numeric(\$state))
 		{
-			\$query->where('a.published = ' . (int) \$state);
+			\$query->where('a.state = ' . (int) \$state);
 		}
+
+		// Do not show trashed links on the front-end
+		\$query->where('a.state != -2');
 
 		// Filter by start and end dates.
 		\$nullDate = \$db->Quote(\$db->getNullDate());
 		\$date = JFactory::getDate();
-		\$nowDate = \$db->Quote(\$date->format(\$db->getDateFormat()));
+		\$nowDate = \$db->Quote(\$date->toSql());
 
 		if (\$this->getState('filter.publish_date'))
 		{
@@ -160,22 +174,21 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
-		// Initialise variables.
-		\$app	= JFactory::getApplication();
-		\$params	= JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$app    = JFactory::getApplication();
+		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
 
 		// List state information
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
 		\$this->setState('list.limit', \$limit);
 
-		\$limitstart = JRequest::getUInt('limitstart', 0);
+		\$limitstart = \$app->input->get('limitstart', 0, 'uint');
 		\$this->setState('list.start', \$limitstart);
 
-		\$orderCol = JRequest::getCmd('filter_order', 'ordering');
+		\$orderCol = \$app->input->get('filter_order', 'ordering');
 
 		if (!in_array(\$orderCol, \$this->filter_fields))
 		{
@@ -184,7 +197,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 
 		\$this->setState('list.ordering', \$orderCol);
 
-		\$listOrder = JRequest::getCmd('filter_order_Dir', 'ASC');
+		\$listOrder = \$app->input->get('filter_order_Dir', 'ASC');
 
 		if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
 		{
@@ -193,16 +206,15 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 
 		\$this->setState('list.direction', \$listOrder);
 
-		\$id = JRequest::getVar('id', 0, '', 'int');
+		\$id = \$app->input->get('id', 0, 'int');
 		\$this->setState('category.id', \$id);
 
-		// Get the user object.
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', '${1/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', '${1/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
-			\$this->setState('filter.published',	1);
+			\$this->setState('filter.state', 1);
 
 			// Filter by start and end dates.
 			\$this->setState('filter.publish_date', true);
@@ -215,13 +227,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	}
 
 	/**
-	 * Method to get ${1/(.+)/\L\1/g} data for the current ${1/(.+)/\L\1/g}
+	 * Method to get category data for the current category
 	 *
 	 * @return  object
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.5
 	 */
-	public function get${1/(.+)/\u\1/g}()
+	public function getCategory()
 	{
 		if (!is_object(\$this->_item))
 		{
@@ -236,7 +248,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 			}
 
 			\$options = array();
-			\$options['countItems'] = \$params->get('show_cat_items', 1) || \$params->get('show_empty_categories', 0);
+			\$options['countItems'] = \$params->get('show_cat_num_links_cat', 1) || \$params->get('show_empty_categories', 0);
 			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
 			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
 
@@ -244,10 +256,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 			{
 				\$this->_children = \$this->_item->getChildren();
 				\$this->_parent = false;
+
 				if (\$this->_item->getParent())
 				{
 					\$this->_parent = \$this->_item->getParent();
 				}
+
 				\$this->_rightsibling = \$this->_item->getSibling();
 				\$this->_leftsibling = \$this->_item->getSibling(false);
 			}
@@ -262,17 +276,17 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	}
 
 	/**
-	 * Get the parent ${1/(.+)/\L\1/g}.
+	 * Get the parent category
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	public function getParent()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get${1/(.+)/\u\1/g}();
+			\$this->getCategory();
 		}
 
 		return \$this->_parent;
@@ -283,13 +297,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	function &getLeftSibling()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get${1/(.+)/\u\1/g}();
+			\$this->getCategory();
 		}
 
 		return \$this->_leftsibling;
@@ -300,13 +314,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	function &getRightSibling()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get${1/(.+)/\u\1/g}();
+			\$this->getCategory();
 		}
 
 		return \$this->_rightsibling;
@@ -317,13 +331,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Category} extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	function &getChildren()
 	{
 		if (!is_object(\$this->_item))
 		{
-			\$this->get${1/(.+)/\u\1/g}();
+			\$this->getCategory();
 		}
 
 		return \$this->_children;

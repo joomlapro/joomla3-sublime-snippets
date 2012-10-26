@@ -51,55 +51,15 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
 	if (isset(\$query['view']) && (\$mView == \$query['view']) and (isset(\$query['id'])) and (\$mId == (int) \$query['id']))
 	{
 		unset(\$query['view']);
-		unset(\$query['catid']);
 		unset(\$query['id']);
 
 		return \$segments;
 	}
 
-	if (isset(\$view) and (\$view == 'category' or \$view == '${1/(.+)/\L\1/g}'))
+	if (isset(\$view) and \$view == '${1/(.+)/\L\1/g}')
 	{
 		if (\$mId != (int) \$query['id'] || \$mView != \$view)
 		{
-			if (\$view == '${1/(.+)/\L\1/g}' && isset(\$query['catid']))
-			{
-				\$catid = \$query['catid'];
-			}
-			elseif (isset(\$query['id']))
-			{
-				\$catid = \$query['id'];
-			}
-
-			\$menuCatid = \$mId;
-			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}');
-			\$category = \$categories->get(\$catid);
-
-			if (\$category)
-			{
-				// TODO Throw error that the category either not exists or is unpublished
-				\$path = \$category->getPath();
-				\$path = array_reverse(\$path);
-
-				\$array = array();
-
-				foreach (\$path as \$id)
-				{
-					if ((int) \$id == (int) \$menuCatid)
-					{
-						break;
-					}
-
-					if (\$advanced)
-					{
-						list(\$tmp, \$id) = explode(':', \$id, 2);
-					}
-
-					\$array[] = \$id;
-				}
-
-				\$segments = array_merge(\$segments, array_reverse(\$array));
-			}
-
 			if (\$view == '${1/(.+)/\L\1/g}')
 			{
 				if (\$advanced)
@@ -116,7 +76,6 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
 		}
 
 		unset(\$query['id']);
-		unset(\$query['catid']);
 	}
 
 	if (isset(\$query['layout']))
@@ -171,37 +130,18 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 		return \$vars;
 	}
 
-	// From the categories view, we can only jump to a category.
-	\$id = (isset(\$item->query['id']) && \$item->query['id'] > 1) ? \$item->query['id'] : 'root';
-	\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}')->get(\$id)->getChildren();
-	\$vars['catid'] = \$id;
-	\$vars['id'] = \$id;
 	\$found = 0;
 
 	foreach (\$segments as \$segment)
 	{
 		\$segment = \$advanced ? str_replace(':', '-', \$segment) : \$segment;
 
-		foreach (\$categories as \$category)
-		{
-			if (\$category->slug == \$segment || \$category->alias == \$segment)
-			{
-				\$vars['id']    = \$category->id;
-				\$vars['catid'] = \$category->id;
-				\$vars['view']  = 'category';
-				\$categories    = \$category->getChildren();
-				\$found         = 1;
-
-				break;
-			}
-		}
-
 		if (\$found == 0)
 		{
 			if (\$advanced)
 			{
 				\$db = JFactory::getDBO();
-				\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g} WHERE catid = ' . \$vars['catid'] . ' AND alias = ' . \$db->Quote(\$segment);
+				\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g} WHERE alias = ' . \$db->Quote(\$segment);
 				\$db->setQuery(\$query);
 				\$nid = \$db->loadResult();
 			}
@@ -221,5 +161,5 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 }
 
 ]]></content>
-	<tabTrigger>jsiterouter</tabTrigger>
+	<tabTrigger>jsiterouter-nocategory</tabTrigger>
 </snippet>

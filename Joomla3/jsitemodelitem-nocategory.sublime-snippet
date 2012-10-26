@@ -1,20 +1,18 @@
 <snippet>
-	<content><![CDATA[jimport('joomla.application.component.modelitem');
-
-/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model
+	<content><![CDATA[/**
+ * ${TM_PROJECT/(.+)/\u\1/g} Component Model for a ${1/(.+)/\u\1/g} record
  *
- * @package     $TM_PROJECT
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @since       1.5
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_item} extends JModelItem
 {
 	/**
 	 * Model context string.
 	 *
+	 * @access  protected
 	 * @var     string
-	 * @since   $TM_VERSION
 	 */
 	protected \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
 
@@ -25,24 +23,20 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	protected function populateState()
 	{
-		\$app = JFactory::getApplication('site');
+		\$app    = JFactory::getApplication();
+		\$params = \$app->getParams();
 
-		// Load state from the request.
-		\$pk = JRequest::getInt('id');
-		\$this->setState('${1/(.+)/\L\1/g}.id', \$pk);
-
-		\$offset = JRequest::getUInt('limitstart', 0);
-		\$this->setState('list.offset', \$offset);
+		// Load the object state.
+		\$id = \$app->input->getInt('id');
+		\$this->setState('${1/(.+)/\L\1/g}.id', \$id);
 
 		// Load the parameters.
-		\$params = \$app->getParams();
 		\$this->setState('params', \$params);
 
-		// Get the user object.
 		\$user = JFactory::getUser();
 
 		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
@@ -53,110 +47,70 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelItem
 	}
 
 	/**
-	 * Method to get ${1/(.+)/\L\1/g} data.
+	 * Method to get an object.
 	 *
-	 * @param   integer  \$pk  The id of the ${1/(.+)/\L\1/g}.
+	 * @param   integer  \$id  The id of the object to get.
 	 *
-	 * @return  mixed  Menu item data object on success, false on failure.
-	 *
-	 * @since   $TM_VERSION
+	 * @return  mixed  Object on success, false on failure.
 	 */
-	public function &getItem(\$pk = null)
+	public function &getItem(\$id = null)
 	{
-		// Initialise variables.
-		\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
-
 		if (\$this->_item === null)
 		{
-			\$this->_item = array();
+			\$this->_item = false;
+
+			if (empty(\$id))
+			{
+				\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
+			}
+
+			// Get a level row instance.
+			\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+
+			// Attempt to load the row.
+			if (\$table->load(\$id))
+			{
+				// Check published state.
+				if (\$published = \$this->getState('filter.published'))
+				{
+					if (\$table->state != \$published)
+					{
+						return \$this->_item;
+					}
+				}
+
+				// Convert the JTable to a clean JObject.
+				\$properties = \$table->getProperties(1);
+				\$this->_item = JArrayHelper::toObject(\$properties, 'JObject');
+			}
+			elseif (\$error = \$table->getError())
+			{
+				\$this->setError(\$error);
+			}
 		}
 
-		if (!isset(\$this->_item[\$pk]))
+		return \$this->_item;
+	}
+
+	/**
+	 * Method to increment the hit counter for the ${1/(.+)/\L\1/g}
+	 *
+	 * @param   int  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
+	 *
+	 * @return  boolean  True on success
+	 *
+	 * @since   1.5
+	 */
+	public function hit(\$id = null)
+	{
+		if (empty(\$id))
 		{
-			try
-			{
-				\$db = \$this->getDbo();
-				\$query = \$db->getQuery(true);
-
-				\$query->select(\$this->getState('item.select', 'a.*'));
-				\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hellos} AS a');
-
-				// Join on user table.
-				\$query->select('u.name AS author');
-				\$query->join('LEFT', '#__users AS u on u.id = a.created_by');
-
-				\$query->where('a.id = ' . (int) \$pk);
-
-				// Filter by start and end dates.
-				\$nullDate = \$db->Quote(\$db->getNullDate());
-				\$nowDate = \$db->Quote(JFactory::getDate()->toSql());
-
-				// Filter by published state.
-				\$published = \$this->getState('filter.published');
-				\$archived = \$this->getState('filter.archived');
-
-				if (is_numeric(\$published))
-				{
-					\$query->where('(a.published = ' . (int) \$published . ' OR a.published =' . (int) \$archived . ')');
-					\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')');
-					\$query->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
-				}
-
-				\$db->setQuery(\$query);
-
-				\$data = \$db->loadObject();
-
-				if (\$error = \$db->getErrorMsg())
-				{
-					throw new Exception(\$error);
-				}
-
-				if (empty(\$data))
-				{
-					throw new JException(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
-				}
-
-				// Check for published state if filter set.
-				if (((is_numeric(\$published)) || (is_numeric(\$archived))) && ((\$data->published != \$published) && (\$data->published != \$archived)))
-				{
-					JError::raiseError(404, JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
-				}
-
-				// Convert parameter fields to objects.
-				\$registry = new JRegistry;
-				\$registry->loadString(\$data->params);
-				\$data->params = clone \$this->getState('params');
-				\$data->params->merge(\$registry);
-
-				\$registry = new JRegistry;
-				\$registry->loadString(\$data->metadata);
-				\$data->metadata = \$registry;
-
-				// Compute access permissions.
-				if (\$access = \$this->getState('filter.access'))
-				{
-					// If the access filter has been set, we already know this user can view.
-					\$data->params->set('access-view', true);
-				}
-				else
-				{
-					// If no access filter is set, the layout takes some responsibility for display of limited information.
-					\$user = JFactory::getUser();
-					\$groups = \$user->getAuthorisedViewLevels();
-
-					\$data->params->set('access-view', in_array(\$data->access, \$groups));
-				}
-
-				\$this->_item[\$pk] = \$data;
-			}
-			catch (JException \$e)
-			{
-				\$this->setError(\$e);
-				\$this->_item[\$pk] = false;
-			}
+			\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
 		}
 
-		return \$this->_item[\$pk];
+		\$${1/(.+)/\L\1/g} = \$this->getTable('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+
+		return \$${1/(.+)/\L\1/g}->hit(\$id);
 	}
 }
 
