@@ -1,7 +1,6 @@
 <snippet>
 	<content><![CDATA[// Include dependancies
 require_once JPATH_COMPONENT . '/helpers/route.php';
-JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR . '/tables');
 
 // Execute the task.
 \$controller = JControllerLegacy::getInstance('${TM_PROJECT/(.+)/\u\1/g}');

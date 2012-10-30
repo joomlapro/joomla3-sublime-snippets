@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_CATEGORIES_VIEW_DEFAULT_TITLE="Categorias"
+COM_${TM_PROJECT/(.+)/\U\1/g}_CATEGORIES_VIEW_DEFAULT_DESC="Exibir uma lista de todas as categorias de convênios dentro de uma categoria."
+COM_${TM_PROJECT/(.+)/\U\1/g}_CATEGORY_VIEW_DEFAULT_TITLE="Categoria"
+COM_${TM_PROJECT/(.+)/\U\1/g}_CATEGORY_VIEW_DEFAULT_DESC="Exibir uma lista de convênios de uma categoria."
+COM_${TM_PROJECT/(.+)/\U\1/g}_COVENANT_VIEW_DEFAULT_TITLE="Convênio"
+COM_${TM_PROJECT/(.+)/\U\1/g}_COVENANT_VIEW_DEFAULT_DESC="Exibir um convênio simples."
+COM_${TM_PROJECT/(.+)/\U\1/g}_FEATURED_VIEW_DEFAULT_TITLE="Destaques"
+COM_${TM_PROJECT/(.+)/\U\1/g}_FEATURED_VIEW_DEFAULT_DESC="Exibir todos os convênios em destaque de uma, ou mais categorias."]]></content>
+	<tabTrigger>jadminlang-sys</tabTrigger>
+</snippet>

@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.5
+ * @since       1.6
  */
 class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 {
@@ -22,6 +22,22 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	protected \$_children = null;
 
 	protected \$_parent = null;
+
+	/**
+	 * The category that applies.
+	 *
+	 * @access  protected
+	 * @var     object
+	 */
+	protected \$_category = null;
+
+	/**
+	 * The list of other ${1/(.+)/\L\1/g} categories.
+	 *
+	 * @access  protected
+	 * @var     array
+	 */
+	protected \$_categories = null;
 
 	/**
 	 * Constructor.
@@ -45,22 +61,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 
 		parent::__construct(\$config);
 	}
-
-	/**
-	 * The category that applies.
-	 *
-	 * @access  protected
-	 * @var     object
-	 */
-	protected \$_category = null;
-
-	/**
-	 * The list of other ${1/(.+)/\L\1/g} categories.
-	 *
-	 * @access  protected
-	 * @var     array
-	 */
-	protected \$_categories = null;
 
 	/**
 	 * Method to get a list of items.
@@ -231,7 +231,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @return  object
 	 *
-	 * @since   1.5
+	 * @since   1.6
 	 */
 	public function getCategory()
 	{

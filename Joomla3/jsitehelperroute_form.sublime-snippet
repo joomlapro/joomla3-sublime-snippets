@@ -14,7 +14,7 @@ public static function getFormRoute(\$id, \$return = null)
 	// Create the link.
 	if (\$id)
 	{
-		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:view_edit}.edit&w_id=' . \$id;
+		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:edit}.edit&w_id=' . \$id;
 	}
 	else
 	{

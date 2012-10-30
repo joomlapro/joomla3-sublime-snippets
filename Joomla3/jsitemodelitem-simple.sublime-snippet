@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.5
+ * @since       1.6
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_item} extends JModelItem
 {
@@ -27,6 +27,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_item} extends JModelItem
 	 */
 	protected function populateState()
 	{
+		// Initialiase variables.
 		\$app    = JFactory::getApplication();
 		\$params = \$app->getParams();
 

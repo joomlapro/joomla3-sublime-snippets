@@ -4,7 +4,7 @@
  *
  * @return  array  An array of JHtmlOption elements.
  *
- * @return  3.0
+ * @return  1.6
  */
 public static function get${1:Field}Options()
 {
@@ -14,7 +14,7 @@ public static function get${1:Field}Options()
 	\$db    = JFactory::getDbo();
 	\$query = \$db->getQuery(true);
 
-	\$query->select('id As value, name As text');
+	\$query->select('id AS value, name AS text');
 	\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s} AS a');
 	\$query->order('a.name');
 

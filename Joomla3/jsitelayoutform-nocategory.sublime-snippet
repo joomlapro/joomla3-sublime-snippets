@@ -39,16 +39,16 @@ JHtml::_('behavior.formvalidation');
 		</div>
 		<hr class="hr-condensed" />
 		<div class="control-group">
-			<div class="control-label"><?php echo \$this->form->getLabel('${3:title}'); ?></div>
-			<div class="controls"><?php echo \$this->form->getInput('${3/(.+)/\L\1/g}'); ?></div>
+			<div class="control-label">
+				<?php echo \$this->form->getLabel('${3:title}'); ?>
+			</div>
+			<div class="controls">
+				<?php echo \$this->form->getInput('${3/(.+)/\L\1/g}'); ?>
+			</div>
 		</div>
 		<div class="control-group">
 			<div class="control-label"><?php echo \$this->form->getLabel('alias'); ?></div>
 			<div class="controls"><?php echo \$this->form->getInput('alias'); ?></div>
-		</div>
-		<div class="control-group">
-			<div class="control-label"><?php echo \$this->form->getLabel('catid'); ?></div>
-			<div class="controls"><?php echo \$this->form->getInput('catid'); ?></div>
 		</div>
 		<?php if (\$this->user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}')): ?>
 			<div class="control-group">
@@ -71,5 +71,5 @@ JHtml::_('behavior.formvalidation');
 </div>
 
 ]]></content>
-	<tabTrigger>jsitelayoutform</tabTrigger>
+	<tabTrigger>jsitelayoutform-nocategory</tabTrigger>
 </snippet>

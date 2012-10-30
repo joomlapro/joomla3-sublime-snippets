@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Base this model on the backend version.
-require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/${2:view_edit}.php';
+require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/${2:edit}.php';
 
 /**
  * ${TM_PROJECT/(.+)/\u\1/g} Component ${2/(.+)/\u\1/g} Model

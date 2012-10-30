@@ -6,8 +6,17 @@
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       1.6
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_list} extends JModelList
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 {
+	/**
+	 * Category items data
+	 *
+	 * @var     array
+	 */
+	protected \$_item = null;
+
+	protected \$_children = null;
+
 	/**
 	 * Constructor.
 	 *
@@ -180,6 +189,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_list} extends JModelList
 	 */
 	protected function getListQuery()
 	{
+		// Initialiase variables.
 		\$user   = JFactory::getUser();
 		\$groups = implode(',', \$user->getAuthorisedViewLevels());
 
@@ -193,7 +203,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_list} extends JModelList
 				'list.select',
 				'a.id, a.catid, a.${2/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time'
 				. ', a.hits'
-				. ', a.state, a.access, a.ordering, a.language, a.publish_up, a.publish_down'
+				. ', a.state, a.access, a.ordering, a.language, a.params, a.publish_up, a.publish_down'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}}') . ' AS a');
@@ -222,7 +232,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_list} extends JModelList
 		\$subquery .= 'WHERE parent.extension = ' . \$db->quote('com_${TM_PROJECT/(.+)/\L\1/g}');
 
 		// Find any up-path categories that are not published
-		// If all categories are published, badcats.id will be null, and we just use the ${3:${1/(.+)(s\b)/\L\1/g}} state
+		// If all categories are published, badcats.id will be null, and we just use the ${4:${1/(.+)(s\b)/\L\1/g}} state
 		\$subquery .= ' AND parent.published != 1 GROUP BY cat.id ';
 
 		// Select state to unpublished if up-path category is unpublished
@@ -256,6 +266,72 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_list} extends JModelList
 		\$query->order(\$db->escape(\$orderCol) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
 
 		return \$query;
+	}
+
+	/**
+	 * Method to get category data for the current category
+	 *
+	 * @return  object
+	 *
+	 * @since   1.6
+	 */
+	public function getCategory()
+	{
+		if (!is_object(\$this->_item))
+		{
+			\$app = JFactory::getApplication();
+			\$menu = \$app->getMenu();
+			\$active = \$menu->getActive();
+			\$params = new JRegistry;
+
+			if (\$active)
+			{
+				\$params->loadString(\$active->params);
+			}
+
+			\$options = array();
+			\$options['countItems'] = \$params->get('show_cat_items', 1) || \$params->get('show_empty_categories', 0);
+			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
+			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
+
+			if (is_object(\$this->_item))
+			{
+				\$this->_children = \$this->_item->getChildren();
+				\$this->_parent = false;
+
+				if (\$this->_item->getParent())
+				{
+					\$this->_parent = \$this->_item->getParent();
+				}
+
+				\$this->_rightsibling = \$this->_item->getSibling();
+				\$this->_leftsibling = \$this->_item->getSibling(false);
+			}
+			else
+			{
+				\$this->_children = false;
+				\$this->_parent = false;
+			}
+		}
+
+		return \$this->_item;
+	}
+
+	/**
+	 * Get the child categories.
+	 *
+	 * @return  mixed  An array of categories or false if an error occurs.
+	 *
+	 * @since   1.6
+	 */
+	public function &getChildren()
+	{
+		if (!is_object(\$this->_item))
+		{
+			\$this->getCategory();
+		}
+
+		return \$this->_children;
 	}
 }
 

@@ -1,10 +1,10 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML ${1/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\u\1/g} component
+ * HTML ${2/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\u\1/g} component
  *
- * @package     $TM_PROJECT
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @since       1.6
  */
 class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 {
@@ -19,31 +19,31 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 	/**
 	 * Method to display the view.
 	 *
-	 * @param   string  \$tpl  A template file to load. [optional]
+	 * @param   string  \$tpl  The template file to include.
 	 *
 	 * @return  mixed  False on error, null otherwise.
 	 *
-	 * @return  $TM_VERSION
+	 * @since   1.6
 	 */
 	public function display(\$tpl = null)
 	{
-		// Initialise variables.
-		\$app   = JFactory::getApplication();
-		\$user  = JFactory::getUser();
+		// Initialiase variables.
+		\$app         = JFactory::getApplication();
+		\$user        = JFactory::getUser();
 
 		// Get model data.
-		\$this->state       = \$this->get('State');
-		\$this->item        = \$this->get('Item');
-		\$this->form        = \$this->get('Form');
-		\$this->return_page = \$this->get('ReturnPage');
+		\$state       = \$this->get('State');
+		\$item        = \$this->get('Item');
+		\$form        = \$this->get('Form');
+		\$return_page = \$this->get('ReturnPage');
 
-		if (empty(\$this->item->id))
+		if (empty(\$item->id))
 		{
 			\$authorised = (\$user->authorise('core.create', 'com_${TM_PROJECT/(.+)/\L\1/g}') || (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create'))));
 		}
 		else
 		{
-			\$authorised = \$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}.${3:hello}.' . \$this->item->id);
+			\$authorised = \$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}.${2:${TM_PROJECT/(.+)(s\b)/\L\1/g}}.' . \$item->id);
 		}
 
 		if (\$authorised !== true)
@@ -52,9 +52,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 			return false;
 		}
 
-		if (!empty(\$this->item))
+		if (!empty(\$item))
 		{
-			\$this->form->bind(\$this->item);
+			\$form->bind(\$item);
 		}
 
 		// Check for errors.
@@ -65,13 +65,17 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 		}
 
 		// Create a shortcut to the parameters.
-		\$params	= &\$this->state->params;
+		\$params = &\$state->params;
 
 		// Escape strings for HTML output
 		\$this->pageclass_sfx = htmlspecialchars(\$params->get('pageclass_sfx'));
 
-		\$this->params = \$params;
-		\$this->user   = \$user;
+		\$this->state       = &\$state;
+		\$this->item        = &\$item;
+		\$this->form        = &\$form;
+		\$this->return_page = &\$return_page;
+		\$this->params      = &\$params;
+		\$this->user        = &\$user;
 
 		\$this->_prepareDocument();
 
@@ -79,17 +83,18 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 	}
 
 	/**
-	 * Prepares the document
+	 * Prepares the document.
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	protected function _prepareDocument()
 	{
-		\$app	= JFactory::getApplication();
-		\$menus	= \$app->getMenu();
-		\$title	= null;
+		// Initialiase variables.
+		\$app   = JFactory::getApplication();
+		\$menus = \$app->getMenu();
+		\$title = null;
 
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself
@@ -97,11 +102,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 
 		if (empty(\$this->item->id))
 		{
-			\$head = JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FORM_SUBMIT_${3/(.+)/\U\1/g}');
+			\$head = JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_SUBMIT_${2/(.+)/\U\1/g}');
 		}
 		else
 		{
-			\$head = JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FORM_EDIT_${3/(.+)/\U\1/g}');
+			\$head = JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_EDIT_${2/(.+)/\U\1/g}');
 		}
 
 		if (\$menu)

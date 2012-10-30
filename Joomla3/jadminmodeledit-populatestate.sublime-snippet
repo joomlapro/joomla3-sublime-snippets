@@ -14,7 +14,7 @@ protected function populateState()
 
 	// Load the User state.
 	\$pk = \$app->input->getInt('id');
-	\$this->setState('${1:view_edit}.id', \$pk);
+	\$this->setState('${1:edit}.id', \$pk);
 
 	// Load the parameters.
 	\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');

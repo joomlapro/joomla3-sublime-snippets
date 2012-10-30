@@ -46,20 +46,12 @@ JHtml::_('behavior.formvalidation');
 			<div class="control-label"><?php echo \$this->form->getLabel('alias'); ?></div>
 			<div class="controls"><?php echo \$this->form->getInput('alias'); ?></div>
 		</div>
-		<div class="control-group">
-			<div class="control-label"><?php echo \$this->form->getLabel('catid'); ?></div>
-			<div class="controls"><?php echo \$this->form->getInput('catid'); ?></div>
-		</div>
 		<?php if (\$this->user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}')): ?>
 			<div class="control-group">
 				<div class="control-label"><?php echo \$this->form->getLabel('state'); ?></div>
 				<div class="controls"><?php echo \$this->form->getInput('state'); ?></div>
 			</div>
 		<?php endif; ?>
-		<div class="control-group">
-			<div class="control-label"><?php echo \$this->form->getLabel('language'); ?></div>
-			<div class="controls"><?php echo \$this->form->getInput('language'); ?></div>
-		</div>
 		<div class="control-group">
 			<div class="control-label"><?php echo \$this->form->getLabel('description'); ?></div>
 			<div class="controls"><?php echo \$this->form->getInput('description'); ?></div>
@@ -71,5 +63,5 @@ JHtml::_('behavior.formvalidation');
 </div>
 
 ]]></content>
-	<tabTrigger>jsitelayoutform</tabTrigger>
+	<tabTrigger>jsitelayoutform-simple</tabTrigger>
 </snippet>

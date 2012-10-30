@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       1.6
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_list} extends JModelList
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 {
 	/**
 	 * Constructor.
@@ -192,7 +192,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_list} extends JModelList
 				'list.select',
 				'a.id, a.${2/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time'
 				. ', a.hits'
-				. ', a.state, a.access, a.ordering, a.language, a.publish_up, a.publish_down'
+				. ', a.state, a.access, a.ordering, a.language, a.params, a.publish_up, a.publish_down'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}}') . ' AS a');

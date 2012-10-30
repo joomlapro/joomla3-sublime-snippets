@@ -5,7 +5,7 @@
 
 	</fieldset>
 	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
-		<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" class="inputbox" filter="rules" validate="rules" component="com_${TM_PROJECT/(.+)/\L\1/g}" section="component" />
+		<field name="rules" type="rules" label="JCONFIG_PERMISSIONS_LABEL" filter="rules" validate="rules" component="com_${TM_PROJECT/(.+)/\L\1/g}" section="component" />
 	</fieldset>
 </config>
 

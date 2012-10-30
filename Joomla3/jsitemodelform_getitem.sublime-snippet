@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * Method to get ${1/(.+)/\L\1/g} data.
  *
- * @param   integer  \$itemId  The id of the ${1:view_edit}.
+ * @param   integer  \$itemId  The id of the ${1:edit}.
  *
  * @return  mixed  ${TM_PROJECT/(.+)/\u\1/g} item data object on success, false on failure.
  *

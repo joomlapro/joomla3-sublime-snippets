@@ -49,7 +49,7 @@ public function ${1:action}()
 		}
 	}
 
-	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${4:view_list}');
+	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${4:list}');
 }]]></content>
 	<tabTrigger>jadmincontrollerlist-custom</tabTrigger>
 </snippet>

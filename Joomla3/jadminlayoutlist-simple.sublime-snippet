@@ -36,7 +36,7 @@ if (\$saveOrder)
 		Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:view_list}'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:list}'); ?>" method="post" name="adminForm" id="adminForm">
 <?php if(!empty( \$this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
 		<?php echo \$this->sidebar; ?>

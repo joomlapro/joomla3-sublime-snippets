@@ -5,7 +5,7 @@
  * @return  boolean  True on success.
  *
  * @see     JTable::check
- * @since   1.5
+ * @since   1.6
  */
 public function check()
 {

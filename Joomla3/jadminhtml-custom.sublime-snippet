@@ -16,7 +16,7 @@ public static function ${1:action}(\$value = 0, \$i, \$canChange = true)
 
 	// Array of image, task, title, action
 	\$states = array(
-		0 => array('${5:star-empty}', '${2:view_list}.${3:active}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${4/(.+)/\U\1/g}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_${3/(.+)/\U\1/g}'),
+		0 => array('${5:star-empty}', '${2:list}.${3:active}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${4/(.+)/\U\1/g}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_${3/(.+)/\U\1/g}'),
 		1 => array('${6:star}', '${2/(.+)/\L\1/g}.${4:inactive}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${3/(.+)/\U\1/g}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_${4/(.+)/\U\1/g}'),
 	);
 

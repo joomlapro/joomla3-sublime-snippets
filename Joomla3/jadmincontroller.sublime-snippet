@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.5
+ * @since       1.6
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 {
@@ -22,7 +22,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 	 *
 	 * @return  JController  This object to support chaining.
 	 *
-	 * @since   1.5
+	 * @since   1.6
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{

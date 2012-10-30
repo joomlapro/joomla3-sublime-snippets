@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML ${1/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\u\1/g} component
+ * HTML Categories View class for the ${TM_PROJECT/(.+)/\u\1/g} component.
  *
- * @package     $TM_PROJECT
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @since       1.6
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Categories} extends JViewLegacy
+class ${TM_PROJECT/(.+)/\u\1/g}ViewCategories extends JViewLegacy
 {
 	protected \$state = null;
 
@@ -14,14 +14,16 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Categories} extends JViewLegacy
 
 	protected \$items = null;
 
+	protected \$pagination = null;
+
 	/**
 	 * Method to display the view.
 	 *
-	 * @param   string  \$tpl  A template file to load. [optional]
+	 * @param   string  \$tpl  The template file to include.
 	 *
-	 * @return  mixed  JError object on failure, void on success.
+	 * @return  mixed  False on error, null otherwise.
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	public function display(\$tpl = null)
 	{
@@ -55,9 +57,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Categories} extends JViewLegacy
 		\$this->pageclass_sfx = htmlspecialchars(\$params->get('pageclass_sfx'));
 
 		\$this->maxLevelcat = \$params->get('maxLevelcat', -1);
-		\$this->assignRef('params', \$params);
-		\$this->assignRef('parent', \$parent);
-		\$this->assignRef('items', \$items);
+		\$this->params = &\$params;
+		\$this->parent = &\$parent;
+		\$this->items = &\$items;
 
 		\$this->_prepareDocument();
 
@@ -69,13 +71,14 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Categories} extends JViewLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	protected function _prepareDocument()
 	{
-		\$app	= JFactory::getApplication();
-		\$menus	= \$app->getMenu();
-		\$title	= null;
+		// Initialise variables
+		\$app   = JFactory::getApplication();
+		\$menus = \$app->getMenu();
+		\$title = null;
 
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself

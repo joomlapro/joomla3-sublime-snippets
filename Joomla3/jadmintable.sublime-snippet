@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.5
+ * @since       1.6
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 {
@@ -30,7 +30,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 * @return  null|string  null is operation was satisfactory, otherwise returns an error
 	 *
 	 * @see     JTable:bind
-	 * @since   1.5
+	 * @since   1.6
 	 */
 	public function bind(\$array, \$ignore = '')
 	{
@@ -64,7 +64,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 * @return  boolean  True on success.
 	 *
 	 * @see     JTable::check
-	 * @since   1.5
+	 * @since   1.6
 	 */
 	public function check()
 	{

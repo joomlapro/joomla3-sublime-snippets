@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.5
+ * @since       1.6
  */
 class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 {
@@ -21,7 +21,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 	/**
 	 * Method to display the view.
 	 *
-	 * @param   string  \$tpl  The template file to include
+	 * @param   string  \$tpl  The template file to include.
 	 *
 	 * @return  mixed  False on error, null otherwise.
 	 *

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_${1:VIEW_LIST}_N_ITEMS_ARCHIVED="%d ${2:View_plural} arquivad${4:o}s com sucesso."
+	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_${1:LIST}_N_ITEMS_ARCHIVED="%d ${2:View_plural} arquivad${4:o}s com sucesso."
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_0="Nenhum ${3:View_sigular} arquivad${4/(.+)/\L\1/g}."
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_1="%d ${3/(.+)/\u\1/g} arquivad${4/(.+)/\L\1/g} com sucesso."
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_MORE="%d ${2/(.+)/\u\1/g} desbloquead${4/(.+)/\L\1/g}s com sucesso."

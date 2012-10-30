@@ -9,7 +9,7 @@
  * @return  null|string  null is operation was satisfactory, otherwise returns an error
  *
  * @see     JTable:bind
- * @since   1.5
+ * @since   1.6
  */
 public function bind(\$array, \$ignore = '')
 {

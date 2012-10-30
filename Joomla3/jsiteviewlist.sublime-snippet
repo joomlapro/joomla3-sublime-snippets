@@ -4,9 +4,9 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.0
+ * @since       1.6
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
+class ${TM_PROJECT/(.+)/\u\1/g}View${1:List} extends JViewLegacy
 {
 	protected \$state;
 
@@ -39,7 +39,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
 		\$items      = \$this->get('Items');
 		\$category   = \$this->get('Category');
 		\$children   = \$this->get('Children');
-		\$parent     = \$this->get('Parent');
 		\$pagination = \$this->get('Pagination');
 
 		// Check for errors.
@@ -50,11 +49,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
 		}
 
 		if (\$category == false)
-		{
-			return JError::raiseError(404, JText::_('JGLOBAL_CATEGORY_NOT_FOUND'));
-		}
-
-		if (\$parent == false)
 		{
 			return JError::raiseError(404, JText::_('JGLOBAL_CATEGORY_NOT_FOUND'));
 		}
@@ -71,12 +65,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
 		// Compute the ${2:${1/(.+)(s\b)/\L\1/g}} slug.
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
-			\$item       = &\$items[\$i];
-			\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+			\$item          = &\$items[\$i];
+			\$item->slug    = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+			\$item->catslug = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
 
-			\$temp       = new JRegistry;
+			\$temp          = new JRegistry;
 			\$temp->loadString(\$item->params);
-			\$item->params = clone(\$params);
+			\$item->params  = clone(\$params);
 			\$item->params->merge(\$temp);
 		}
 
@@ -97,7 +92,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
 		\$this->category   = &\$category;
 		\$this->children   = &\$children;
 		\$this->params     = &\$params;
-		\$this->parent     = &\$parent;
 		\$this->pagination = &\$pagination;
 		\$this->user       = &\$user;
 
