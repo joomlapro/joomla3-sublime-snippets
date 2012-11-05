@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML ${2/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\u\1/g} component
+ * HTML ${2:Edit} View class for the ${TM_PROJECT/(.+)/\u\1/g} component.
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
@@ -28,7 +28,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 	public function display(\$tpl = null)
 	{
 		// Initialiase variables.
-		\$app         = JFactory::getApplication();
+		\$app		 = JFactory::getApplication();
 		\$user        = JFactory::getUser();
 
 		// Get model data.
@@ -39,11 +39,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 
 		if (empty(\$item->id))
 		{
-			\$authorised = (\$user->authorise('core.create', 'com_${TM_PROJECT/(.+)/\L\1/g}') || (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create'))));
+			\$authorised = \$user->authorise('core.create', 'com_${TM_PROJECT/(.+)/\L\1/g}') || (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create')));
 		}
 		else
 		{
-			\$authorised = \$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}.${2:${TM_PROJECT/(.+)(s\b)/\L\1/g}}.' . \$item->id);
+			\$authorised = \$item->params->get('access-edit');
 		}
 
 		if (\$authorised !== true)
@@ -52,9 +52,16 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 			return false;
 		}
 
-		if (!empty(\$item))
+		if (!empty(\$item) && isset(\$item->id))
 		{
-			\$form->bind(\$item);
+			// Create shortcuts.
+			\$item->metadata = json_decode(\$item->metadata);
+			\$item->images   = json_decode(\$item->images);
+
+			\$tmp = new stdClass;
+			\$tmp->metadata = \$item->metadata;
+			\$tmp->images   = \$item->images;
+			\$form->bind(\$tmp);
 		}
 
 		// Check for errors.
@@ -65,7 +72,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 		}
 
 		// Create a shortcut to the parameters.
-		\$params = &\$state->params;
+		\$params	= &\$state->params;
 
 		// Escape strings for HTML output
 		\$this->pageclass_sfx = htmlspecialchars(\$params->get('pageclass_sfx'));
@@ -77,13 +84,18 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 		\$this->params      = &\$params;
 		\$this->user        = &\$user;
 
+		if (\$this->params->get('enable_category') == 1)
+		{
+			\$this->form->setFieldAttribute('catid', 'default', \$params->get('catid', 1));
+		}
+
 		\$this->_prepareDocument();
 
 		parent::display(\$tpl);
 	}
 
 	/**
-	 * Prepares the document.
+	 * Prepares the document
 	 *
 	 * @return  void
 	 *
@@ -92,9 +104,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 	protected function _prepareDocument()
 	{
 		// Initialiase variables.
-		\$app   = JFactory::getApplication();
-		\$menus = \$app->getMenu();
-		\$title = null;
+		\$app     = JFactory::getApplication();
+		\$menus   = \$app->getMenu();
+		\$pathway = \$app->getPathway();
+		\$title   = null;
 
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself
@@ -130,6 +143,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 		}
 
 		\$this->document->setTitle(\$title);
+
+		\$pathway = \$app->getPathWay();
+		\$pathway->addItem(\$title, '');
 
 		if (\$this->params->get('menu-meta_description'))
 		{

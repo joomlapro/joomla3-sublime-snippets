@@ -44,13 +44,13 @@
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Affiliates]]></string>
+				<string><![CDATA[Products]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_TEMPLATE</string>
 				<key>value</key>
-				<string><![CDATA[Orange]]></string>
+				<string><![CDATA[Icecream]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -69,6 +69,24 @@
 				<string>TM_LANGUAGE</string>
 				<key>value</key>
 				<string><![CDATA[pt-BR]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_MODULE</string>
+				<key>value</key>
+				<string><![CDATA[Social]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_PLUGIN</string>
+				<key>value</key>
+				<string><![CDATA[Client]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_PLUGIN_GROUP</string>
+				<key>value</key>
+				<string><![CDATA[User]]></string>
 			</dict>
 		</array>
 	</dict>

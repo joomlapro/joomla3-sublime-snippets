@@ -4,5 +4,5 @@
 		<schemapath type="mysql">sql/updates/mysql</schemapath>
 	</schemas>
 </update>]]></content>
-	<tabTrigger>jcomponentmanifestupdate</tabTrigger>
+	<tabTrigger>jcomponentmanifest-update</tabTrigger>
 </snippet>

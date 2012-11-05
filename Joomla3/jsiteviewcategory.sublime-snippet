@@ -71,12 +71,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}ViewCategory extends JViewLegacy
 		// Compute the newsfeed slug.
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
-			\$item       = &\$items[\$i];
-			\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+			\$item          = &\$items[\$i];
+			\$item->slug    = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+			\$item->catslug = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
 
-			\$temp       = new JRegistry;
+			\$temp          = new JRegistry;
 			\$temp->loadString(\$item->params);
-			\$item->params = clone(\$params);
+			\$item->params  = clone(\$params);
 			\$item->params->merge(\$temp);
 		}
 

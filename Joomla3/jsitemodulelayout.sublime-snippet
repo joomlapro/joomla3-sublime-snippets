@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[?>
+<div class="${1:module}<?php echo $moduleclass_sfx; ?>">
+
+</div>
+
+]]></content>
+	<tabTrigger>jsitemodulelayout</tabTrigger>
+</snippet>

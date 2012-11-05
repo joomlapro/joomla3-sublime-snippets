@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to get ${1:${TM_PROJECT/(.+)(s\b)/\L\1/g}} data.
+ * Method to get ${1/(.+)/\L\1/g} data.
  *
  * @param   integer  \$pk  The id of the ${1/(.+)/\L\1/g}.
  *
@@ -10,7 +10,7 @@
  */
 public function &getItem(\$pk = null)
 {
-	\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
+	\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1:edit}.id');
 
 	if (\$this->_item === null)
 	{
@@ -75,6 +75,7 @@ public function &getItem(\$pk = null)
 			// Convert parameter fields to objects.
 			\$registry = new JRegistry;
 			\$registry->loadString(\$data->params);
+
 			\$data->params = clone \$this->getState('params');
 			\$data->params->merge(\$registry);
 
@@ -82,7 +83,32 @@ public function &getItem(\$pk = null)
 			\$registry->loadString(\$data->metadata);
 			\$data->metadata = \$registry;
 
-			// Compute access permissions.
+			// Compute selected asset permissions.
+			\$user = JFactory::getUser();
+
+			// Technically guest could edit an article, but lets not check that to improve performance a little.
+			if (!\$user->get('guest'))
+			{
+				\$userId = \$user->get('id');
+				\$asset  = 'com_content.article.' . \$data->id;
+
+				// Check general edit permission first.
+				if (\$user->authorise('core.edit', \$asset))
+				{
+					\$data->params->set('access-edit', true);
+				}
+				// Now check if edit.own is available.
+				elseif (!empty(\$userId) && \$user->authorise('core.edit.own', \$asset))
+				{
+					// Check for a valid user and that they are the owner.
+					if (\$userId == \$data->created_by)
+					{
+						\$data->params->set('access-edit', true);
+					}
+				}
+			}
+
+			// Compute view access permissions.
 			if (\$access = \$this->getState('filter.access'))
 			{
 				// If the access filter has been set, we already know this user can view.
@@ -100,8 +126,16 @@ public function &getItem(\$pk = null)
 		}
 		catch (Exception \$e)
 		{
-			\$this->setError(\$e);
-			\$this->_item[\$pk] = false;
+			if (\$e->getCode() == 404)
+			{
+				// Need to go thru the error handler to allow Redirect to work.
+				JError::raiseError(404, \$e->getMessage());
+			}
+			else
+			{
+				\$this->setError(\$e);
+				\$this->_item[\$pk] = false;
+			}
 		}
 	}
 

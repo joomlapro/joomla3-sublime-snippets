@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Base this model on the backend version.
-require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/${2:edit}.php';
+require_once JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/${2:edit}.php';
 
 /**
  * ${TM_PROJECT/(.+)/\u\1/g} Component ${2/(.+)/\u\1/g} Model
@@ -12,18 +12,6 @@ require_once JPATH_COMPONENT_ADMINISTRATOR . '/models/${2:edit}.php';
 class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
 {
 	/**
-	 * Get the return URL.
-	 *
-	 * @return  string  The return URL.
-	 *
-	 * @since   1.6
-	 */
-	public function getReturnPage()
-	{
-		return base64_encode(\$this->getState('return_page'));
-	}
-
-	/**
 	 * Method to auto-populate the model state.
 	 *
 	 * Note. Calling getState in this method will result in recursion.
@@ -34,22 +22,14 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 	 */
 	protected function populateState()
 	{
+		// Initialiase variables.
 		\$app = JFactory::getApplication();
 
 		// Load state from the request.
-		\$pk = \$app->input->getInt('${2/(.)(.+)/\L\1/g}_id');
+		\$pk = \$app->input->getInt('a_id');
 		\$this->setState('${2/(.+)/\L\1/g}.id', \$pk);
 
-		// Add compatibility variable for default naming conventions.
-		\$this->setState('${1/(.+)/\L\1/g}.id', \$pk);
-
 		\$return = \$app->input->get('return', null, 'base64');
-
-		if (!JUri::isInternal(base64_decode(\$return)))
-		{
-			\$return = null;
-		}
-
 		\$this->setState('return_page', base64_decode(\$return));
 
 		// Load the parameters.
@@ -65,11 +45,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 	 * @param   integer  \$itemId  The id of the ${2/(.+)/\L\1/g}.
 	 *
 	 * @return  mixed  ${TM_PROJECT/(.+)/\u\1/g} item data object on success, false on failure.
-	 *
-	 * @since   1.6
 	 */
 	public function getItem(\$itemId = null)
 	{
+		// Initialiase variables.
 		\$itemId = (int) (!empty(\$itemId)) ? \$itemId : \$this->getState('${2/(.+)/\L\1/g}.id');
 
 		// Get a row instance.
@@ -88,9 +67,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		\$properties = \$table->getProperties(1);
 		\$value = JArrayHelper::toObject(\$properties, 'JObject');
 
-		// Convert attrib field to Registry.
+		// Convert param field to Registry.
 		\$value->params = new JRegistry;
-		\$value->params->loadString(\$value->attribs);
+		\$value->params->loadString(\$value->params);
 
 		// Compute selected asset permissions.
 		\$user   = JFactory::getUser();
@@ -115,16 +94,27 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		// Check edit state permission.
 		if (\$itemId)
 		{
-			// Existing item
+			// Existing item.
 			\$value->params->set('access-change', \$user->authorise('core.edit.state', \$asset));
 		}
 		else
 		{
-			// New item.
 			\$value->params->set('access-change', \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}'));
 		}
 
 		return \$value;
+	}
+
+	/**
+	 * Get the return URL.
+	 *
+	 * @return  string  The return URL.
+	 *
+	 * @since   1.6
+	 */
+	public function getReturnPage()
+	{
+		return base64_encode(\$this->getState('return_page'));
 	}
 }
 

@@ -8,7 +8,7 @@
  */
 public function ${1:hello}()
 {
-	// Check for request forgeries
+	// Check for request forgeries.
 	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 	// Initialise variables.

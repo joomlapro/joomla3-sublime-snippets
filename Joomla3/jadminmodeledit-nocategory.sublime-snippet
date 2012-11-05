@@ -154,14 +154,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 	{
 		if (\$item = parent::getItem(\$pk))
 		{
-			// Convert the params field to an array.
+			// Convert the metadata field to an array.
 			\$registry = new JRegistry;
 			\$registry->loadString(\$item->metadata);
 			\$item->metadata = \$registry->toArray();
-		}
 
-		if (\$item = parent::getItem(\$pk))
-		{
 			// Convert the images field to an array.
 			\$registry = new JRegistry;
 			\$registry->loadString(\$item->images);

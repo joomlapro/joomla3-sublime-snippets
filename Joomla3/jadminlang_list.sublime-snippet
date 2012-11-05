@@ -17,5 +17,5 @@ COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED_1="%d ${3/(.+)/\u
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED="%d ${2/(.+)/\u\1/g} despublicad${4/(.+)/\L\1/g}s com sucesso."
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_0="Nenhum ${3/(.+)/\u\1/g} despublicad${4/(.+)/\L\1/g}."
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_1="%d ${3/(.+)/\u\1/g} despublicad${4/(.+)/\L\1/g} com sucesso."]]></content>
-	<tabTrigger>jadminlanguage_list</tabTrigger>
+	<tabTrigger>jadminlang_list</tabTrigger>
 </snippet>

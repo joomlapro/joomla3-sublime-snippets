@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Supports an HTML select list of ${1:${TM_PROJECT/(.+)/\L\1/g}}
+ * Supports an HTML select list of ${TM_PROJECT/(.+)/\L\1/g}
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
@@ -37,11 +37,11 @@ class JFormFieldOrdering extends JFormField
 		\$attr .= \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
 
 		// Get some field values from the form.
-		\$${2:${1/(.+)(s\b)/\L\1/g}}Id   = (int) \$this->form->getValue('id');
+		\$${2:${TM_PROJECT/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
 		\$categoryId = (int) \$this->form->getValue('catid');
 
 		// Build the query for the ordering list.
-		\$query = 'SELECT ordering AS value, name AS text' .
+		\$query = 'SELECT ordering AS value, ${1:title} AS text' .
 				' FROM #__${TM_PROJECT/(.+)/\L\1/g}' .
 				' WHERE catid = ' . (int) \$categoryId .
 				' ORDER BY ordering';

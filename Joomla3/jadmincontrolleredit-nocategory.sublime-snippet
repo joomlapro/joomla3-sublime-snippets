@@ -25,6 +25,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControlle
 	 */
 	public function batch(\$model = null)
 	{
+		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		// Set the model

@@ -19,5 +19,5 @@
 	<option value="by_me">MOD_${1/(.+)/\U\1/g}_VALUE_ADDED_BY_ME</option>
 	<option value="not_me">MOD_${1/(.+)/\U\1/g}_VALUE_NOTADDED_BY_ME</option>
 </field>]]></content>
-	<tabTrigger>jsitemodulemanifestadvanced</tabTrigger>
+	<tabTrigger>jsitemodulemanifest-advanced</tabTrigger>
 </snippet>

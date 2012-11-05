@@ -1,16 +1,16 @@
 <snippet>
-	<content><![CDATA[require_once JPATH_SITE . '/components/com_content/helpers/route.php';
+	<content><![CDATA[require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
 
-JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_content/models', 'ContentModel');
+JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models', '${TM_PROJECT/(.+)/\u\1/g}Model');
 
 /**
- * ${1/(.+)/\u\1/g} module helper.
+ * Helper for mod_${1/(.+)/\L\1/g}
  *
- * @package     ${1/(.+)/\u\1/g}
+ * @package     Joomla.Site
  * @subpackage  mod_${1/(.+)/\L\1/g}
- * @since       3.0
+ * @since       1.6
  */
-abstract class mod${1:Module}Helper
+abstract class Mod${1:Module}Helper
 {
 	/**
 	 * Get a list of the hello items.
@@ -19,15 +19,15 @@ abstract class mod${1:Module}Helper
 	 *
 	 * @return  array
 	 *
-	 * @since   3.0
+	 * @since   1.6
 	 */
 	public static function getList(&\$params)
 	{
 		// Get the dbo
 		\$db = JFactory::getDbo();
 
-		// Get an instance of the generic articles model
-		\$model = JModelLegacy::getInstance('Articles', 'ContentModel', array('ignore_request' => true));
+		// Get an instance of the generic ${2:${1/(.+)/\L\1/g}} model
+		\$model = JModelLegacy::getInstance('${2/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
 
 		// Set application parameters in model
 		\$app = JFactory::getApplication();
@@ -40,7 +40,7 @@ abstract class mod${1:Module}Helper
 		\$model->setState('filter.published', 1);
 
 		// Access filter
-		\$access = !JComponentHelper::getParams('com_content')->get('show_noauth');
+		\$access = !JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}')->get('show_noauth');
 		\$authorised = JAccess::getAuthorisedViewLevels(JFactory::getUser()->get('id'));
 		\$model->setState('filter.access', \$access);
 
@@ -106,8 +106,8 @@ abstract class mod${1:Module}Helper
 
 			if (\$access || in_array(\$item->access, \$authorised))
 			{
-				// We know that user has the privilege to view the article
-				\$item->link = JRoute::_(ContentHelperRoute::getArticleRoute(\$item->slug, \$item->catslug));
+				// We know that user has the privilege to view the ${3:view}
+				\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${3/(.+)/\u\1/g}Route(\$item->slug, \$item->catslug));
 			}
 			else
 			{

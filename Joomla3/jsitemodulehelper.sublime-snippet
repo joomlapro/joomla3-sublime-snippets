@@ -4,9 +4,9 @@
  *
  * @package     $TM_PROJECT
  * @subpackage  mod_${1/(.+)/\L\1/g}
- * @since       $TM_VERSION
+ * @since       1.6
  */
-abstract class mod${1:Hello}Helper
+abstract class Mod${1:Hello}Helper
 {
 	/**
 	 * Get a list of the ${2:hello} items.
@@ -15,7 +15,7 @@ abstract class mod${1:Hello}Helper
 	 *
 	 * @return  array
 	 *
-	 * @since   $TM_VERSION
+	 * @since   1.6
 	 */
 	public static function getList(&\$params)
 	{

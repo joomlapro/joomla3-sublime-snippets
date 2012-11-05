@@ -37,13 +37,13 @@
 		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${TM_PROJECT/(.+)/\L\1/g}.ini</language>
 	</languages>
 	<administration>
-		<menu img="../media/com_${TM_PROJECT/(.+)/\L\1/g}/images/menu/${TM_PROJECT/(.+)(s\b)/\L\1/g}.png">com_${TM_PROJECT/(.+)/\L\1/g}</menu>
+		<menu img="../media/com_${TM_PROJECT/(.+)/\L\1/g}/images/menu/${TM_PROJECT/(.+)/\L\1/g}.png">com_${TM_PROJECT/(.+)/\L\1/g}</menu>
 		<submenu>
 			<!--
 				Note that all & must be escaped to &amp; for the file to be valid
 				XML and be parsed by the installer
 			-->
-			<menu link="option=com_${TM_PROJECT/(.+)/\L\1/g}" view="${TM_PROJECT/(.+)/\L\1/g}" img="../media/com_${TM_PROJECT/(.+)/\L\1/g}/images/menu/${TM_PROJECT/(.+)(s\b)/\L\1/g}.png" alt="${TM_PROJECT/(.+)/\u\1/g}/${TM_PROJECT/(.+)/\u\1/g}">com_${TM_PROJECT/(.+)/\L\1/g}_${TM_PROJECT/(.+)/\L\1/g}</menu>
+			<menu link="option=com_${TM_PROJECT/(.+)/\L\1/g}" view="${TM_PROJECT/(.+)/\L\1/g}" img="../media/com_${TM_PROJECT/(.+)/\L\1/g}/images/menu/${TM_PROJECT/(.+)/\L\1/g}.png" alt="${TM_PROJECT/(.+)/\u\1/g}/${TM_PROJECT/(.+)/\u\1/g}">com_${TM_PROJECT/(.+)/\L\1/g}_${TM_PROJECT/(.+)/\L\1/g}</menu>
 			<menu link="option=com_categories&amp;extension=com_${TM_PROJECT/(.+)/\L\1/g}" view="categories" img="class:category" alt="${TM_PROJECT/(.+)/\L\1/g}/Categories">com_${TM_PROJECT/(.+)/\L\1/g}_categories</menu>
 		</submenu>
 		<files folder="admin">

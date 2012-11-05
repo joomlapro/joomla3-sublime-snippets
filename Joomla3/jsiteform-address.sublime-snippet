@@ -7,5 +7,5 @@
 <field id="city" name="city" type="text" class="inputbox" size="15" message="COM_${TM_PROJECT/(.+)/\U\1/g}_CITY_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_DESC" />
 <field id="state" name="state" type="state" class="inputbox" message="COM_${TM_PROJECT/(.+)/\U\1/g}_STATE_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_DESC" />
 <field id="country" name="country" type="country" class="inputbox" message="COM_${TM_PROJECT/(.+)/\U\1/g}_ZIP_COUNTRY_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_DESC" />]]></content>
-	<tabTrigger>jsiteformaddress</tabTrigger>
+	<tabTrigger>jsiteform-address</tabTrigger>
 </snippet>

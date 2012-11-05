@@ -2,5 +2,5 @@
 	<content><![CDATA[<plugins>
 	<plugin folder="plugins" plugin="plg_${1:hello}" group="${2:user}" />
 </plugins>]]></content>
-	<tabTrigger>jcomponentmanifestplugin</tabTrigger>
+	<tabTrigger>jcomponentmanifest-plugin</tabTrigger>
 </snippet>
