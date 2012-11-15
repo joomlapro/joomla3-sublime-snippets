@@ -35,7 +35,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 	public function onContentSearchAreas()
 	{
 		static \$areas = array(
-			'${1/(.+)/\L\1/g}' => 'PLG_SEARCH_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}'
+			'${1/(.+)/\L\1/g}' => 'PLG_SEARCH_${1/(.+)/\U\1/g}_${1/(.+)/\U\1/g}'
 		);
 
 		return \$areas;
@@ -95,7 +95,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			return array();
 		}
 
-		\$section = JText::_('PLG_SEARCH_${TM_PROJECT/(.+)/\U\1/g}');
+		\$section = JText::_('PLG_SEARCH_${1/(.+)/\U\1/g}');
 		\$wheres	= array();
 
 		switch (\$phrase)
@@ -163,7 +163,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 
 			\$query->select('a.${3/(.+)/\L\1/g} AS title, a.description AS text, a.created AS created, '
 				. \$case_when . ', '
-				. ' AS section, \'2\' AS browsernav');
+				. \$db->Quote(\$section) . ' AS section, \'2\' AS browsernav');
 			\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}} AS a');
 			\$query->where('(' . \$where . ')' . ' AND a.state in (' . implode(', ', \$state) . ')');
 			\$query->order(\$order);
