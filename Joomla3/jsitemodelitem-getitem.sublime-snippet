@@ -1,48 +1,23 @@
 <snippet>
-	<content><![CDATA[/**
- * Method to get an object.
- *
- * @param   integer  \$id  The id of the object to get.
- *
- * @return  mixed  Object on success, false on failure.
- */
-public function &getItem(\$id = null)
-{
-	if (\$this->_item === null)
-	{
-		\$this->_item = false;
-
-		if (empty(\$id))
-		{
-			\$id = \$this->getState('${1:${TM_PROJECT/(.+)(s\b)/\L\1/g}}.id');
-		}
-
-		// Get a level row instance.
-		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
-
-		// Attempt to load the row.
-		if (\$table->load(\$id))
-		{
-			// Check published state.
-			if (\$published = \$this->getState('filter.published'))
-			{
-				if (\$table->state != \$published)
-				{
-					return \$this->_item;
-				}
-			}
-
-			// Convert the JTable to a clean JObject.
-			\$properties = \$table->getProperties(1);
-			\$this->_item = JArrayHelper::toObject(\$properties, 'JObject');
-		}
-		elseif (\$error = \$table->getError())
-		{
-			\$this->setError(\$error);
-		}
-	}
-
-	return \$this->_item;
-}]]></content>
-	<tabTrigger>jsitemodelitem-getitem</tabTrigger>
-</snippet>
+	<content><![CDATA[
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="pt-br" dir="ltr">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Your Page Title Here :)</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/skeleton.css">
+	<link rel="stylesheet" type="text/css" href="css/layout.css">
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114"

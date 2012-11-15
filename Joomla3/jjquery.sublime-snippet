@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[// Add JavaScript Frameworks.
-JHtml::_('jquery.framework');]]></content>
-	<tabTrigger>jjquery</tabTrigger>
-</snippet>

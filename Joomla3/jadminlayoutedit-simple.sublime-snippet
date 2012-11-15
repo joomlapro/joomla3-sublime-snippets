@@ -1,100 +1,69 @@
-<snippet>
-	<content><![CDATA[// Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-
-// Load the tooltip behavior.
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
-JHtml::_('formbehavior.chosen', 'select');
-?>
-<script type="text/javascript">
-	Joomla.submitbutton = function (task) {
-		if (task == '${1:edit}.cancel' || document.formvalidator.isValid(document.id('${1/(.+)/\L\1/g}-form'))) {
-			<?php echo \$this->form->getField('description')->save(); ?>
-			Joomla.submitform(task, document.getElementById('${1/(.+)/\L\1/g}-form'));
-		} else {
-			alert('<?php echo \$this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED')); ?>');
-		}
-	}
-</script>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1/(.+)/\L\1/g}-form" class="form-validate">
-	<div class="row-fluid">
-		<!-- Begin ${2:${1/(.+)/\u\1/g}s} -->
-		<div class="span10 form-horizontal">
-			<fieldset>
-				<ul class="nav nav-tabs">
-					<li class="active"><a href="#details" data-toggle="tab"><?php echo empty(\$this->item->id) ? JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NEW_${1/(.+)/\U\1/g}') : JText::sprintf('COM_${TM_PROJECT/(.+)/\U\1/g}_EDIT_${1/(.+)/\U\1/g}', \$this->item->id); ?></a></li>
-					<li><a href="#publishing" data-toggle="tab"><?php echo JText::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></a></li>
-				</ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="details">
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('${3:title}'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('${3/(.+)/\L\1/g}'); ?></div>
-						</div>
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('ordering'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('ordering'); ?></div>
-						</div>
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('description'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('description'); ?></div>
-						</div>
-					</div>
-					<div class="tab-pane" id="publishing">
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('alias'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('alias'); ?></div>
-						</div>
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('id'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('id'); ?></div>
-						</div>
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('created_by'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('created_by'); ?></div>
-						</div>
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('created_by_alias'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('created_by_alias'); ?></div>
-						</div>
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('created'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('created'); ?></div>
-						</div>
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('modified_by'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('modified_by'); ?></div>
-						</div>
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('modified'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('modified'); ?></div>
-						</div>
-					</div>
-				</div>
-			</fieldset>
-			<input type="hidden" name="task" value="" />
-			<?php echo JHtml::_('form.token'); ?>
-		</div>
-		<!-- End ${2/(.+)/\u\1/g} -->
-		<!-- Begin Sidebar -->
-		<div class="span2">
-			<h4><?php echo JText::_('JDETAILS'); ?></h4>
-			<hr />
-			<fieldset class="form-vertical">
-				<div class="control-group">
-					<div class="controls"><?php echo \$this->form->getValue('${3/(.+)/\L\1/g}'); ?></div>
-				</div>
-				<div class="control-group">
-					<div class="control-label"><?php echo \$this->form->getLabel('state'); ?></div>
-					<div class="controls"><?php echo \$this->form->getInput('state'); ?></div>
-				</div>
-			</fieldset>
-		</div>
-		<!-- End Sidebar -->
-	</div>
-</form>
-
-]]></content>
-	<tabTrigger>jadminlayoutedit-simple</tabTrigger>
-</snippet>
+>
+				<field name="register-require_aboutme" type="list" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_DESC">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="register-require_tos" type="list" default="0" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_DESC">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="register_tos_article" type="modal_article" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_ARTICLE_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_ARTICLE_DESC" />
+				<field name="register-require_dob" type="list" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_DESC">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="spacer1" type="spacer" hr="true" />
+				<field name="profile-require-user" type="spacer" class="text" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_${1/(.+)/\U\1/g}_REQUIRE_USER" />
+				<field name="profile-require_address1" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_LABEL">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_address2" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS2_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS2_LABEL">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_city" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_CITY_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_CITY_LABEL">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_region" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_REGION_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_REGION_LABEL">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_country" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_COUNTRY_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_postal_code" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_POSTAL_CODE_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_POSTAL_CODE_LABEL">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_phone" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_PHONE_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_PHONE_LABEL">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_website" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_WEB_SITE_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_WEB_SITE_LABEL">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_favoritebook" type="list" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_FAVORITE_BOOK_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_FAVORITE_BOOK_DESC">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_aboutme" type="list" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_DESC">
+					<option value="2">JOPTION_REQUIRED</option>
+					<option value="1">JOPTION_OPTIONAL</option>
+					<option value="0">JDISABLED</option>
+				</field>
+				<field name="profile-require_dob" type="list" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_LABEL" 

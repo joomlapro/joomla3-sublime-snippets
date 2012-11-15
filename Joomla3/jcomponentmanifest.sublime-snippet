@@ -10,6 +10,7 @@
 	<authorUrl>$TM_WEBSITE</authorUrl>
 	<version>$TM_MANIFEST_VERSION</version>
 	<description>COM_${TM_PROJECT/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile />
 	<!-- Runs on install -->
 	<install>
 		<sql>
@@ -44,7 +45,7 @@
 				XML and be parsed by the installer
 			-->
 			<menu link="option=com_${TM_PROJECT/(.+)/\L\1/g}" view="${TM_PROJECT/(.+)/\L\1/g}" img="../media/com_${TM_PROJECT/(.+)/\L\1/g}/images/menu/${TM_PROJECT/(.+)/\L\1/g}.png" alt="${TM_PROJECT/(.+)/\u\1/g}/${TM_PROJECT/(.+)/\u\1/g}">com_${TM_PROJECT/(.+)/\L\1/g}_${TM_PROJECT/(.+)/\L\1/g}</menu>
-			<menu link="option=com_categories&amp;extension=com_${TM_PROJECT/(.+)/\L\1/g}" view="categories" img="class:category" alt="${TM_PROJECT/(.+)/\L\1/g}/Categories">com_${TM_PROJECT/(.+)/\L\1/g}_categories</menu>
+			<menu link="option=com_categories&amp;extension=com_${TM_PROJECT/(.+)/\L\1/g}" view="categories" img="class:category" alt="${TM_PROJECT/(.+)/\u\1/g}/Categories">com_${TM_PROJECT/(.+)/\L\1/g}_categories</menu>
 		</submenu>
 		<files folder="admin">
 			<filename>access.xml</filename>
@@ -53,8 +54,10 @@
 			<filename>index.html</filename>
 			<filename>${TM_PROJECT/(.+)/\L\1/g}.php</filename>
 			<folder>controllers</folder>
+			<folder>help</folder>
 			<folder>helpers</folder>
 			<folder>models</folder>
+			<folder>sql</folder>
 			<folder>tables</folder>
 			<folder>views</folder>
 		</files>

@@ -1,123 +1,13 @@
-<snippet>
-	<content><![CDATA[// Base this model on the backend version.
-require_once JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/${2:edit}.php';
-
-/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${2/(.+)/\u\1/g} Model
- *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
- */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
-{
-	/**
-	 * Method to auto-populate the model state.
-	 *
-	 * Note. Calling getState in this method will result in recursion.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.6
-	 */
-	protected function populateState()
-	{
-		// Initialiase variables.
-		\$app = JFactory::getApplication();
-
-		// Load state from the request.
-		\$pk = \$app->input->getInt('a_id');
-		\$this->setState('${2/(.+)/\L\1/g}.id', \$pk);
-
-		\$return = \$app->input->get('return', null, 'base64');
-		\$this->setState('return_page', base64_decode(\$return));
-
-		// Load the parameters.
-		\$params = \$app->getParams();
-		\$this->setState('params', \$params);
-
-		\$this->setState('layout', \$app->input->get('layout'));
-	}
-
-	/**
-	 * Method to get ${2/(.+)/\L\1/g} data.
-	 *
-	 * @param   integer  \$itemId  The id of the ${2/(.+)/\L\1/g}.
-	 *
-	 * @return  mixed  ${TM_PROJECT/(.+)/\u\1/g} item data object on success, false on failure.
-	 */
-	public function getItem(\$itemId = null)
-	{
-		// Initialiase variables.
-		\$itemId = (int) (!empty(\$itemId)) ? \$itemId : \$this->getState('${2/(.+)/\L\1/g}.id');
-
-		// Get a row instance.
-		\$table = \$this->getTable();
-
-		// Attempt to load the row.
-		\$return = \$table->load(\$itemId);
-
-		// Check for a table object error.
-		if (\$return === false && \$table->getError())
-		{
-			\$this->setError(\$table->getError());
-			return false;
-		}
-
-		\$properties = \$table->getProperties(1);
-		\$value = JArrayHelper::toObject(\$properties, 'JObject');
-
-		// Convert param field to Registry.
-		\$value->params = new JRegistry;
-		\$value->params->loadString(\$value->params);
-
-		// Compute selected asset permissions.
-		\$user   = JFactory::getUser();
-		\$userId = \$user->get('id');
-		\$asset  = 'com_${TM_PROJECT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . \$value->id;
-
-		// Check general edit permission first.
-		if (\$user->authorise('core.edit', \$asset))
-		{
-			\$value->params->set('access-edit', true);
-		}
-		// Now check if edit.own is available.
-		elseif (!empty(\$userId) && \$user->authorise('core.edit.own', \$asset))
-		{
-			// Check for a valid user and that they are the owner.
-			if (\$userId == \$value->created_by)
-			{
-				\$value->params->set('access-edit', true);
-			}
-		}
-
-		// Check edit state permission.
-		if (\$itemId)
-		{
-			// Existing item.
-			\$value->params->set('access-change', \$user->authorise('core.edit.state', \$asset));
-		}
-		else
-		{
-			\$value->params->set('access-change', \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}'));
-		}
-
-		return \$value;
-	}
-
-	/**
-	 * Get the return URL.
-	 *
-	 * @return  string  The return URL.
-	 *
-	 * @since   1.6
-	 */
-	public function getReturnPage()
-	{
-		return base64_encode(\$this->getState('return_page'));
-	}
-}
-
-]]></content>
-	<tabTrigger>jsitemodelform-nocategory</tabTrigger>
-</snippet>
+{"Key":"System.Tuple`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]___joomlapro/joomla-scaffold:master:ahead|behind","Value":{"CreatedAt":"2012-09-24T15:53:41.5689784-03:00","ExpiresAt":"2012-09-24T18:55:41.5649781+00:00"}}
+{"Key":"GitHub.Api.GitHubUser___user","Value":{"CreatedAt":"2012-09-16T09:37:41.2634454-03:00","ExpiresAt":null}}
+{"Key":"System.Tuple`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]___joomlapro/plg_user_client:master:ahead|behind","Value":{"CreatedAt":"2012-11-09T12:22:08.0349718-02:00","ExpiresAt":"2012-11-09T14:24:08.0329716+00:00"}}
+{"Key":"System.Tuple`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]___joomlapro/joomla3-scaffold:master:ahead|behind","Value":{"CreatedAt":"2012-11-15T14:47:40.0297173-02:00","ExpiresAt":"2012-11-15T16:49:40.0257168+00:00"}}
+{"Key":"System.Tuple`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]___joomlapro/joomla-bundle:master:ahead|behind","Value":{"CreatedAt":"2012-09-28T09:06:53.2622224-03:00","ExpiresAt":"2012-09-28T12:08:53.2582222+00:00"}}
+{"Key":"System.Tuple`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]___brunobatista/sublime-joomla-snippets:master:ahead|behind","Value":{"CreatedAt":"2012-09-16T11:58:37.6119067-03:00","ExpiresAt":"2012-09-16T15:00:37.6109066+00:00"}}
+{"Key":"System.Tuple`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]___brunobatista/easy:master:ahead|behind","Value":{"CreatedAt":"2012-10-19T13:41:36.4378895-03:00","ExpiresAt":"2012-10-19T16:43:36.4328892+00:00"}}
+{"Key":"GitHub.Api.GitHubOrganization___amofutebol","Value":{"CreatedAt":"2012-11-15T14:46:55.809102-02:00","ExpiresAt":null}}
+{"Key":"GitHub.Extensions.Windows.Native.WINDOWPLACEMENT___Application:WindowPlacement","Value":{"CreatedAt":"2012-11-15T14:51:33.167322-02:00","ExpiresAt":null}}
+{"Key":"System.Boolean_____StaffOnlySettings__:IsStaffMode","Value":{"CreatedAt":"2012-09-18T14:03:28.9589734-03:00","ExpiresAt":null}}
+{"Key":"GitHub.Api.GitHubOrganization___atomtech","Value":{"CreatedAt":"2012-11-15T14:46:55.0905107-02:00","ExpiresAt":null}}
+{"Key":"System.Tuple`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]___joomlapro/joomla3-bundle:master:ahead|behind","Value":{"CreatedAt":"2012-11-05T08:36:47.0564878-02:00","ExpiresAt":"2012-11-05T10:38:47.0524876+00:00"}}
+{"Key":"System.

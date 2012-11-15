@@ -1,42 +1,53 @@
-<snippet>
-	<content><![CDATA[\$config	= JFactory::getConfig();
+ordId = null, \$urlVar = null)
+	{
+		\$append = parent::getRedirectToItemAppend(\$recordId, \$urlVar);
+		\$itemId = \$this->input->getInt('Itemid');
+		\$return = \$this->getReturnPage();
 
-// Load user_joomla plugin language (not done automatically).
-\$lang = JFactory::getLanguage();
-\$lang->load('plg_user_joomla', JPATH_ADMINISTRATOR);
+		if (\$itemId)
+		{
+			\$append .= '&Itemid=' . \$itemId;
+		}
 
-// Compute the mail subject.
-\$emailSubject = JText::sprintf(
-	'PLG_USER_JOOMLA_NEW_USER_EMAIL_SUBJECT',
-	\$user['name'],
-	\$config->get('sitename')
-);
+		if (\$return)
+		{
+			\$append .= '&return=' . base64_encode(\$return);
+		}
 
-// Compute the mail body.
-\$emailBody = JText::sprintf(
-	'PLG_USER_JOOMLA_NEW_USER_EMAIL_BODY',
-	\$user['name'],
-	\$config->get('sitename'),
-	JUri::root(),
-	\$user['username'],
-	\$user['password_clear']
-);
+		return \$append;
+	}
 
-// Assemble the email data...the sexy way!
-\$mail = JFactory::getMailer()
-	->setSender(
-		array(
-			\$config->get('mailfrom'),
-			\$config->get('fromname')
-		)
-	)
-	->addRecipient(\$user['email'])
-	->setSubject(\$emailSubject)
-	->setBody(\$emailBody);
+	/**
+	 * Get the return URL.
+	 *
+	 * If a "return" variable has been passed in the request
+	 *
+	 * @return  string  The return URL.
+	 *
+	 * @since   1.6
+	 */
+	protected function getReturnPage()
+	{
+		\$return = \$this->input->get('return', null, 'base64');
 
-if (!\$mail->Send()) {
-	// TODO: Probably should raise a plugin error but this event is not error checked.
-	JError::raiseWarning(500, JText::_('ERROR_SENDING_EMAIL'));
-}]]></content>
-	<tabTrigger>jsendmail-user</tabTrigger>
-</snippet>
+		if (empty(\$return) || !JUri::isInternal(base64_decode(\$return)))
+		{
+			return JURI::base();
+		}
+		else
+		{
+			return base64_decode(\$return);
+		}
+	}
+
+	/**
+	 * Function that allows child controller access to model data after the data has been saved.
+	 *
+	 * @param   JModelLegacy  \$model      The data model object.
+	 * @param   array         \$validData  The validated data.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function postS

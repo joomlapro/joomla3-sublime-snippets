@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} controller for ${TM_PROJECT/(.+)/\u\1/g} Component.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       1.6
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Item} extends JControllerForm
+{
+	/**
+	 * @since   1.6
+	 */
+	protected \$view_item = '${2:form}';
+
+	/**
+	 * @since   1.6
+	 */
+	protected \$view_list = '${3:categories}';
+
+	/**
+	 * Method to add a new record.
+	 *
+	 * @return  boolean True if the article can be added, false if not.
+	 *
+	 * @since   1.6
+	 */
+	public function add()
+	{
+		if (!parent::add())
+		{
+			// Redirect to the return page.
+			\$this->s

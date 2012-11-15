@@ -1,31 +1,58 @@
-<snippet>
-	<content><![CDATA[/**
- * Method to create a clickable icon to change the featured of an item
- *
- * @param   int   \$value      The featured value
- * @param   int   \$i          The row index
- * @param   bool  \$canChange  Whether the value can be changed or not
- *
- * @return  string  The anchor tag to toggle featured/unfeatured ${2/(.+)/\L\1/g}.
- *
- * @since   $TM_VERSION
- */
-public static function featured(\$value = 0, \$i, \$canChange = true)
-{
-	// Array of image, task, title, action
-	\$states	= array(
-		0	=> array('disabled.png', '${2:hello}.featured', 'COM_${TM_PROJECT/(.+)/\U\1/g}_UNFEATURED', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_FEATURE'),
-		1	=> array('featured.png', '${2/(.+)/\L\1/g}.unfeatured', 'JFEATURED', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE'),
-	);
-	\$state	= JArrayHelper::getValue(\$states, (int) \$value, \$states[1]);
-	\$html	= JHtml::_('image', 'admin/' . \$state[0], JText::_(\$state[2]), null, true);
+nu();
+			\$active = \$menu->getActive();
+			\$params = new JRegistry;
 
-	if (\$canChange)
-	{
-		\$html	= '<a href="#" onclick="return listItemTask(\'cb' . \$i . '\',\'' . \$state[1] . '\')" title="' . JText::_(\$state[3]) . '">' . \$html . '</a>';
+			if (\$active)
+			{
+				\$params->loadString(\$active->params);
+			}
+
+			\$options = array();
+			\$options['countItems'] = \$params->get('show_cat_items', 1) || \$params->get('show_empty_categories', 0);
+			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
+			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
+
+			if (is_object(\$this->_item))
+			{
+				\$this->_children = \$this->_item->getChildren();
+				\$this->_parent = false;
+
+				if (\$this->_item->getParent())
+				{
+					\$this->_parent = \$this->_item->getParent();
+				}
+
+				\$this->_rightsibling = \$this->_item->getSibling();
+				\$this->_leftsibling = \$this->_item->getSibling(false);
+			}
+			else
+			{
+				\$this->_children = false;
+				\$this->_parent = false;
+			}
+		}
+
+		return \$this->_item;
 	}
 
-	return \$html;
-}]]></content>
-	<tabTrigger>jadminmodelhtmlfeatured</tabTrigger>
-</snippet>
+	/**
+	 * Get the child categories.
+	 *
+	 * @return  mixed  An array of categories or false if an error occurs.
+	 *
+	 * @since   1.6
+	 */
+	public function &getChildren()
+	{
+		if (!is_object(\$this->_item))
+		{
+			\$this->getCategory();
+		}
+
+		return \$this->_children;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodellist</tabTrigger>
+</sni

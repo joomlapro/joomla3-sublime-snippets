@@ -1,51 +1,43 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to toggle the featured setting of ${2:${1/(.+)/\L\1/g}s}.
+ * This models supports retrieving lists of ${1/(.+)/\L\1/g}.
  *
- * @param   array  \$pks    The ids of the items to toggle.
- * @param   int    \$value  The value to toggle to.
- *
- * @return  boolean  True on success.
- *
- * @since   1.6
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       1.6
  */
-public function featured(\$pks, \$value = 0)
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 {
-	// Sanitize the ids.
-	\$pks = (array) \$pks;
-	JArrayHelper::toInteger(\$pks);
+	/**
+	 * Category items data
+	 *
+	 * @var     array
+	 */
+	protected \$_item = null;
 
-	if (empty(\$pks))
+	protected \$_children = null;
+
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  \$config  An optional associative array of configuration settings.
+	 *
+	 * @see     JController
+	 * @since   1.6
+	 */
+	public function __construct(\$config = array())
 	{
-		\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
-		return false;
-	}
-
-	\$table = \$this->getTable();
-
-	try
-	{
-		\$db = \$this->getDbo();
-
-		\$db->setQuery(
-			'UPDATE #__${TM_PROJECT/(.+)/\L\1/g}_${1:edit}' .
-			' SET featured = ' . (int) \$value .
-			' WHERE id IN (' . implode(',', \$pks) . ')'
-		);
-		\$db->execute();
-	}
-	catch (Exception \$e)
-	{
-		\$this->setError(\$e->getMessage());
-		return false;
-	}
-
-	\$table->reorder();
-
-	// Clean component's cache
-	\$this->cleanCache();
-
-	return true;
-}]]></content>
-	<tabTrigger>jadminmodeledit-featured</tabTrigger>
-</snippet>
+		if (empty(\$config['filter_fields']))
+		{
+			\$config['filter_fields'] = array(
+				'id', 'a.id',
+				'${2:title}', 'a.${2/(.+)/\L\1/g}',
+				'alias', 'a.alias',
+				'checked_out', 'a.checked_out',
+				'checked_out_time', 'a.checked_out_time',
+				'catid', 'a.catid', 'category_title',
+				'state', 'a.state',
+				'access', 'a.access', 'access_level',
+				'created', 'a.created',
+				'created_by', 'a.created_by',
+				'or

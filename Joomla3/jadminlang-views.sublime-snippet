@@ -1,15 +1,15 @@
 <snippet>
-	<content><![CDATA[; ${1:LIST}
+	<content><![CDATA[/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {}
 
-COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}="Gerenciador de ${3:Component}: ${4:List}"
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {}
 
-; ${2:EDIT}
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {}
 
-COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}_NEW="Gerenciador de ${3/(.+)/\u\1/g}: Novo ${5:Edit}"
-COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}_EDIT="Gerenciador de ${3/(.+)/\u\1/g}: Editar ${5/(.+)/\u\1/g}"
-COM_${TM_PROJECT/(.+)/\U\1/g}_NEW_${2/(.+)/\U\1/g}="Novo ${5/(.+)/\u\1/g}"
-COM_${TM_PROJECT/(.+)/\U\1/g}_EDIT_${2/(.+)/\U\1/g}="Editar ${5/(.+)/\u\1/g}"
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
 
-]]></content>
-	<tabTrigger>jadminlang-views</tabTrigger>
-</snippet>
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {}]]></conte

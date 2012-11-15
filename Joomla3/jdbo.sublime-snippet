@@ -1,26 +1,14 @@
-<snippet>
-	<content><![CDATA[// Initialiase variables.
-\$db = JFactory::getDbo();
-//\$db = \$this->getDbo();
-\$query = \$db->getQuery(true);
-
-// Prepare query.
-\$query->select('a.*');
-\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${1:hellos} AS a');
-\$query->where('a.state = 1');
-\$query->order('a.ordering ASC');
-
-// Inject the query and load the result.
-\$db->setQuery(\$query);
-\$result = \$db->loadObjectList();
-
-// Check for a database error.
-if (\$db->getErrorNum())
-{
-	JError::raiseWarning(500, \$db->getErrorMsg());
-	return null;
+//Set initial value of numbers in the page	
+function setlink1(){
+	document.getElementById('img1').innerHTML = "<span>1</span>";
 }
 
-]]></content>
-	<tabTrigger>jdbo</tabTrigger>
-</snippet>
+//Create numbered menu
+function setlinks(){
+	mytext = "<ul id='img-select'>"
+	+ "<li id=\"img1\"><a href=\"javascript:changeImage('1');\">1</a></li>"
+	+ "<li id=\"img2\"><a href=\"javascript:changeImage('2');\">2</a></li>"
+	+ "<li id=\"img3\"><a href=\"javascript:changeImage('3');\">3</a></li>";
+	//If screen has 4th Screenshot, create menu item for it
+	if (document.getElementById('screen-gal-4')) {
+		mytext = mytext + "<li id=\"img4\"><a href=\"javascript:changeImage('4');\">4</a></l

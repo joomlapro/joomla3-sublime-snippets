@@ -1,32 +1,28 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to get a route configuration for the form view.
+ * ${1/(.+)/\u\1/g} Table class
  *
- * @param   int     \$id      The id of the ${1/(.+)/\L\1/g}.
- * @param   string  \$return  The return page variable.
- *
- * @return  string
- *
- * @since   1.6
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       1.6
  */
-public static function getFormRoute(\$id, \$return = null)
+class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 {
-	// Create the link.
-	if (\$id)
+	/**
+	 * Constructor
+	 *
+	 * @param   JDatabase  &\$db  Driver A database connector object.
+	 *
+	 * @since   1.6
+	 */
+	public function __construct(&\$db)
 	{
-		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:edit}.edit&w_id=' . \$id;
-	}
-	else
-	{
-		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.add&w_id=0';
-	}
-
-	if (\$return)
-	{
-		\$link .= '&return=' . \$return;
+		parent::__construct('#__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'id', \$db);
 	}
 
-	return \$link;
-}]]></content>
-	<tabTrigger>jsitehelperroute_form</tabTrigger>
-</snippet>
+	/**
+	 * Overloaded bind function to pre-process the params.
+	 *
+	 * @param   array  \$array   Named array
+	 * @param   mixed  \$ignore  An optional array or space separated list of properties
+	 *        

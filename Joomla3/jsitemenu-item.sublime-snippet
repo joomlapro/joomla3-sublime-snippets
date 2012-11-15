@@ -1,0 +1,55 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} controller for ${TM_PROJECT/(.+)/\u\1/g} Component.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       1.6
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Item} extends JControllerForm
+{
+	/**
+	 * @since   1.6
+	 */
+	protected \$view_item = '${2:form}';
+
+	/**
+	 * @since   1.6
+	 */
+	protected \$view_list = '${3:list}';
+
+	/**
+	 * Method to add a new record.
+	 *
+	 * @return  boolean True if the article can be added, false if not.
+	 *
+	 * @since   1.6
+	 */
+	public function add()
+	{
+		if (!parent::add())
+		{
+			// Redirect to the return page.
+			\$this->setRedirect(\$this->getReturnPage());
+		}
+	}
+
+	/**
+	 * Method to cancel an edit.
+	 *
+	 * @param   string  \$key  The name of the primary key of the URL variable.
+	 *
+	 * @return  Boolean  True if access level checks pass, false otherwise.
+	 *
+	 * @since   1.6
+	 */
+	public function cancel(\$key = '${1/(.)(.+)/\L\1/g}_id')
+	{
+		parent::cancel(\$key);
+
+		// Redirect to the return page.
+		\$this->setRedirect(\$this->getReturnPage());
+	}
+
+	/**
+	 * Method to edit an existi

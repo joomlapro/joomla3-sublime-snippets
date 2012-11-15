@@ -1,15 +1,27 @@
 <snippet>
-	<content><![CDATA[<div class="adminform">
-	<div class="cpanel-left">
-		<div id="cpanel">
-			<?php echo ${TM_PROJECT/(.+)/\u\1/g}Helper::button('${1:hellos}', '${1/(.+)(s\b)/\L\1/g}.png', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_${1/(.+)/\U\1/g}')); ?>
-		</div>
-	</div>
-	<div class="cpanel-right">
-		<?php echo \$this->loadTemplate('${3:stats}'); ?>
-	</div>
-</div>
-
-]]></content>
-	<tabTrigger>jadminlayoutcpanel</tabTrigger>
-</snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="user">
+	<name>plg_user_${1:client}</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>$2 $TM_YEAR</creationDate>
+	<copyright>(C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>3.0.0</version>
+	<description>PLG_USER_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="${1/(.+)/\L\1/g}">${1/(.+)/\L\1/g}.php</filename>
+		<filename>index.html</filename>
+		<folder>profiles</folder>
+	</files>
+	<languages>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE.plg_user_${1/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE.plg_user_${1/(.+)/\L\1/g}.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" addfieldpath="/administrator/components/com_content/models/fields">
+				<field name="register-require-user" type="spacer" class="text" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_REGISTER_REQUIRE_USER" />
+				<field name="register-require_address1" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_LABEL">
+	

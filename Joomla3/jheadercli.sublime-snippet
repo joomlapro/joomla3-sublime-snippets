@@ -1,40 +1,6 @@
-<snippet>
-	<content><![CDATA[<?php
-/**
- * @package    Joomla.$TM_PROJECT
- *
- * @copyright  Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- */
-
-// We are a valid entry point.
-const _JEXEC = 1;
-
-// Load system defines
-if (file_exists(dirname(__DIR__) . '/defines.php'))
-{
-	require_once dirname(__DIR__) . '/defines.php';
-}
-
-if (!defined('_JDEFINES'))
-{
-	define('JPATH_BASE', dirname(__DIR__));
-	require_once JPATH_BASE . '/includes/defines.php';
-}
-
-// Get the framework.
-require_once JPATH_LIBRARIES . '/import.legacy.php';
-
-// Bootstrap the CMS libraries.
-require_once JPATH_LIBRARIES . '/cms.php';
-
-// Import the configuration.
-require_once JPATH_CONFIGURATION . '/configuration.php';
-
-// Configure error reporting to maximum for CLI output.
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-]]></content>
-	<tabTrigger>jheadercli</tabTrigger>
-</snippet>
+{"Key":"System.String___brunobatista/cli_assetfix:README","Value":{"CreatedAt":"2012-10-19T13:41:07.24922-03:00","ExpiresAt":null}}
+{"Key":"https://secure.gravatar.com/avatar/405acc2c70300a0c90a6731dc19868d6?s=140&d=https://github.com/images/gravatars/windows_user.png","Value":{"CreatedAt":"2012-09-16T10:13:29.5474622-03:00","ExpiresAt":null}}
+{"Key":"https://secure.gravatar.com/avatar/287bab058535afb35e81d9a250817e49?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png&d=https://github.com/images/gravatars/windows_org.png","Value":{"CreatedAt":"2012-11-15T14:46:55.1225148-02:00","ExpiresAt":null}}
+{"Key":"System.String___brunobatista/ajaxphp:README","Value":{"CreatedAt":"2012-11-09T19:43:06.5652785-02:00","ExpiresAt":null}}
+{"Key":"GitHub.ViewModels.HistogramViewModel___joomlapro/com_books:histogram","Value":{"CreatedAt":"2012-11-09T19:43:00.8570536-02:00","ExpiresAt":null}}
+{"Key":"System.String___Laravel
