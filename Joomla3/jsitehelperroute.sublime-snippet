@@ -5,7 +5,7 @@
  * @static
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 {
@@ -19,7 +19,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 	 *
 	 * @return  string
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public static function get${1:${TM_PROJECT/(.+)(s\b)/\u\1/g}}Route(\$id, \$catid)
 	{
@@ -63,7 +63,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 	 *
 	 * @return  string
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public static function getFormRoute(\$id, \$return = null)
 	{
@@ -92,7 +92,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 	 *
 	 * @return  string
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public static function getCategoryRoute(\$catid)
 	{
@@ -156,7 +156,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 	 *
 	 * @return  null
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected static function _findItem(\$needles = null)
 	{

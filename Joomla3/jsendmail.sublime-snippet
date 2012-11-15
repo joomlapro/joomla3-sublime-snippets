@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[// Define variables
+	<content><![CDATA[// Initialise variables.
 \$app     = JFactory::getApplication();
 
 \$site    = \$app->getCfg('sitename');

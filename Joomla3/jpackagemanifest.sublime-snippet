@@ -8,7 +8,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
-	<version>3.0.0</version>
+	<version>$TM_MANIFEST_VERSION</version>
 	<description>${1/(.+)/\u\1/g} package to combine multiple extensions</description>
 	<packagename>${3:${1/(.+)/\L\1/g}}</packagename>
 	<url>$TM_WEBSITE</url>

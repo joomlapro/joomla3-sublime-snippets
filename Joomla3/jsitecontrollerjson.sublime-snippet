@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_finder
- * @since       2.5
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:List} extends JControllerLegacy
 {
@@ -16,7 +16,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:List} extends JControllerLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{

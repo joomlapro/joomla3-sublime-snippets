@@ -8,7 +8,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
-	<version>3.0.0</version>
+	<version>$TM_MANIFEST_VERSION</version>
 	<description>MOD_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_${1/(.+)/\L\1/g}">mod_${1/(.+)/\L\1/g}.php</filename>

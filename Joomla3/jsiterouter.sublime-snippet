@@ -6,7 +6,7 @@
  *
  * @return  array  The URL arguments to use to assemble the subsequent URL.
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
 {
@@ -146,7 +146,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
  *
  * @return  array  The URL attributes to be used by the application.
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 {

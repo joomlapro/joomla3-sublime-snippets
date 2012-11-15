@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class JFormFieldZipCode extends JFormFieldText
 {
@@ -12,7 +12,7 @@ class JFormFieldZipCode extends JFormFieldText
 	 * The form field type.
 	 *
 	 * @var     string
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected \$type = 'ZipCode';
 
@@ -21,7 +21,7 @@ class JFormFieldZipCode extends JFormFieldText
 	 *
 	 * @return  array  The field option objects.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function getOptions()
 	{

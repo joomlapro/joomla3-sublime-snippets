@@ -6,7 +6,7 @@
  *
  * @return  JObject  A JObject containing the allowed actions.
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 public static function getActions(\$categoryId = 0)
 {

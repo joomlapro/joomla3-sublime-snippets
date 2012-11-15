@@ -4,7 +4,7 @@
  *
  * @package     Joomla.Plugin
  * @subpackage  User.${1/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class PlgUser${1:Client} extends JPlugin
 {
@@ -15,7 +15,7 @@ class PlgUser${1:Client} extends JPlugin
 	 * @param   array   \$config    An array that holds the plugin configuration.
 	 *
 	 * @access  protected
-	 * @since   1.5
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(&\$subject, \$config)
 	{
@@ -34,7 +34,7 @@ class PlgUser${1:Client} extends JPlugin
 	 *
 	 * @return  boolean
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function onContentPrepareData(\$context, \$data)
 	{
@@ -76,11 +76,6 @@ class PlgUser${1:Client} extends JPlugin
 			{
 				JHtml::register('users.calendar', array(__CLASS__, 'calendar'));
 			}
-
-			if (!JHtml::isRegistered('users.tos'))
-			{
-				JHtml::register('users.tos', array(__CLASS__, 'tos'));
-			}
 		}
 
 		return true;
@@ -93,7 +88,7 @@ class PlgUser${1:Client} extends JPlugin
 	 *
 	 * @return  string
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public static function url(\$value)
 	{
@@ -122,7 +117,7 @@ class PlgUser${1:Client} extends JPlugin
 	 *
 	 * @return  string
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public static function calendar(\$value)
 	{
@@ -137,27 +132,6 @@ class PlgUser${1:Client} extends JPlugin
 	}
 
 	/**
-	 * TOS Field
-	 *
-	 * @param   int  \$value  The value.
-	 *
-	 * @return  string
-	 *
-	 * @since   1.6
-	 */
-	public static function tos(\$value)
-	{
-		if (\$value)
-		{
-			return JText::_('JYES');
-		}
-		else
-		{
-			return JText::_('JNO');
-		}
-	}
-
-	/**
 	 * Called before a JForm is rendered.
 	 *
 	 * It can be used to modify the JForm object in memory before rendering.
@@ -167,7 +141,7 @@ class PlgUser${1:Client} extends JPlugin
 	 *
 	 * @return  boolean
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function onContentPrepareForm(\$form, \$data)
 	{
@@ -200,23 +174,7 @@ class PlgUser${1:Client} extends JPlugin
 			'website',
 			'favoritebook',
 			'aboutme',
-			'dob',
 		);
-
-		\$tosarticle = \$this->params->get('register_tos_article');
-		\$tosenabled = \$this->params->get('register-require_tos', 0);
-
-		// We need to be in the registration form, field needs to be enabled and we need an article ID
-		if (\$name != 'com_users.registration' || !\$tosenabled || !\$tosarticle)
-		{
-			// We only want the TOS in the registration form
-			\$form->removeField('tos', 'profile');
-		}
-		else
-		{
-			// Push the TOS article ID into the TOS field.
-			\$form->setFieldAttribute('tos', 'article', \$tosarticle, 'profile');
-		}
 
 		foreach (\$fields as \$field)
 		{
@@ -273,7 +231,7 @@ class PlgUser${1:Client} extends JPlugin
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function onUserAfterSave(\$data, \$isNew, \$result, \$error)
 	{
@@ -283,13 +241,6 @@ class PlgUser${1:Client} extends JPlugin
 		{
 			try
 			{
-				// Sanitize the date
-				if (!empty(\$data['profile']['dob']))
-				{
-					\$date = new JDate(\$data['profile']['dob']);
-					\$data['profile']['dob'] = \$date->format('Y-m-d');
-				}
-
 				\$db = JFactory::getDbo();
 				\$db->setQuery(
 					'DELETE FROM #__${TM_PROJECT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId
@@ -327,7 +278,7 @@ class PlgUser${1:Client} extends JPlugin
 	 *
 	 * @return  boolean
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function onUserAfterDelete(\$user, \$success, \$msg)
 	{
@@ -361,5 +312,5 @@ class PlgUser${1:Client} extends JPlugin
 }
 
 ]]></content>
-	<tabTrigger>jpluginuser-user</tabTrigger>
+	<tabTrigger>jpluginuser-simple</tabTrigger>
 </snippet>

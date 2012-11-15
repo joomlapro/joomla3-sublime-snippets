@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 {
@@ -45,7 +45,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
 	 * @see     JController
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
 	{
@@ -91,12 +91,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @return  string  An SQL query
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function getListQuery()
 	{
 		\$user   = JFactory::getUser();
-		\$groups = implode(',', \$user->getAuthorisedViewLevels());
+		\$groups = implode(', ', \$user->getAuthorisedViewLevels());
 
 		// Create a new query object.
 		\$db     = \$this->getDbo();
@@ -158,7 +158,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 		// Filter by language
 		if (\$this->getState('filter.language'))
 		{
-			\$query->where('a.language in (' . \$db->Quote(JFactory::getLanguage()->getTag()) . ',' . \$db->Quote('*') . ')');
+			\$query->where('a.language in (' . \$db->Quote(JFactory::getLanguage()->getTag()) . ', ' . \$db->Quote('*') . ')');
 		}
 
 		// Add the list ordering clause.
@@ -177,10 +177,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
+		// Initialiase variables.
 		\$app    = JFactory::getApplication();
 		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
 
@@ -234,7 +235,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @return  object
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function getCategory()
 	{
@@ -283,7 +284,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function getParent()
 	{
@@ -300,7 +301,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	function &getLeftSibling()
 	{
@@ -317,7 +318,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	function &getRightSibling()
 	{
@@ -334,7 +335,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	function &getChildren()
 	{

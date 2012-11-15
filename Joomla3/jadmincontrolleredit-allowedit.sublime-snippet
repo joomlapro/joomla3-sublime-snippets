@@ -7,7 +7,7 @@
  *
  * @return  boolean
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 protected function allowEdit(\$data = array(), \$key = 'id')
 {

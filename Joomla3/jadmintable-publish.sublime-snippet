@@ -11,7 +11,7 @@
  *
  * @return  boolean  True on success.
  *
- * @since   1.0.4
+ * @since   $TM_VERSION
  */
 public function publish(\$pks = null, \$state = 1, \$userId = 0)
 {

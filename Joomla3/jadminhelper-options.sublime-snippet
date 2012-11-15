@@ -4,7 +4,7 @@
  *
  * @return  array  An array of JHtmlOption elements.
  *
- * @return  1.6
+ * @return  $TM_VERSION
  */
 public static function get${1:Field}Options()
 {

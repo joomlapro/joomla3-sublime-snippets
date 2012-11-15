@@ -5,7 +5,7 @@
 	<libraryname>${2:hello}</libraryname>
 	<author>$TM_FULLNAME</author>
 	<creationDate>$3/$TM_YEAR</creationDate>
-	<copyright>(C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>

@@ -4,7 +4,7 @@
  *
  * @return  void
  *
- * @since	1.6
+ * @since	$TM_VERSION
  */
 public function setDefault()
 {

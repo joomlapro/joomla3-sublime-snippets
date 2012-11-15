@@ -6,7 +6,7 @@
  *
  * @return  array  An array of conditions to add to add to ordering queries.
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 protected function getReorderConditions(\$table)
 {

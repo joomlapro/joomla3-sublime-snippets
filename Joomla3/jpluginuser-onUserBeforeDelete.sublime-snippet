@@ -10,9 +10,10 @@
  */
 public function onUserBeforeDelete(\$user)
 {
+	// Initialiase variables.
 	\$app = JFactory::getApplication();
 }
 
 ]]></content>
-	<tabTrigger>jpluginuserbeforedelete</tabTrigger>
+	<tabTrigger>jpluginuser-onUserBeforeDelete</tabTrigger>
 </snippet>

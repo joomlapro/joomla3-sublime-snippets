@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 {
@@ -17,7 +17,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 	 *
 	 * @return  JTable  A database object
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_PROJECT/(.+)/\u\1/g}Table', \$config = array())
 	{
@@ -32,7 +32,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 	 *
 	 * @return  JForm  A JForm object on success, false on failure
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function getForm(\$data = array(), \$loadData = true)
 	{
@@ -67,7 +67,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 	 *
 	 * @return  mixed  The data for the form.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function loadFormData()
 	{
@@ -89,7 +89,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function prepareTable(\$table)
 	{

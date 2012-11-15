@@ -3,13 +3,13 @@
  * Method to create thumb image.
  *
  * @param   string   \$image   The path to full image.
- * @param   array    \$sizes   The thumb sizes. Example: array('50x50','120x250');
+ * @param   array    \$sizes   The thumb sizes. Example: array('50x50', '120x250');
  * @param   string   \$folder  The thumbs destination folder. Example: 'cache/folder';
  * @param   integer  \$method  The thumbnail creation method. 1,2,3 => Resize, 4 => Crop.
  *
  * @return  array of generated thumbnails
  *
- * @since   2.5
+ * @since   $TM_VERSION
  */
 public static function createThumb(\$image, \$sizes, \$folder, \$method = 2)
 {

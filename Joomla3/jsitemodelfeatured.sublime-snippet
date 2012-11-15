@@ -4,9 +4,9 @@
 /**
  * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model
  *
- * @package     Products
- * @subpackage  com_products
- * @since       2.5
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 {
@@ -47,7 +47,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
 	 * @see     JController
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
 	{
@@ -69,7 +69,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 	 *
 	 * @return	mixed  An array of objects on success, false on failure.
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	public function getItems()
 	{
@@ -97,12 +97,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 	 *
 	 * @return  string  An SQL query
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function getListQuery()
 	{
 		\$user	= JFactory::getUser();
-		\$groups	= implode(',', \$user->getAuthorisedViewLevels());
+		\$groups	= implode(', ', \$user->getAuthorisedViewLevels());
 
 		// Create a new query object.
 		\$db		= \$this->getDbo();
@@ -161,7 +161,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 		// Filter by language
 		if (\$this->getState('filter.language'))
 		{
-			\$query->where('a.language in (' . \$db->Quote(JFactory::getLanguage()->getTag()) . ',' . \$db->Quote('*') . ')');
+			\$query->where('a.language in (' . \$db->Quote(JFactory::getLanguage()->getTag()) . ', ' . \$db->Quote('*') . ')');
 		}
 
 		// Add the list ordering clause.
@@ -180,7 +180,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since   2.5
+	 * @since   $TM_VERSION
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{

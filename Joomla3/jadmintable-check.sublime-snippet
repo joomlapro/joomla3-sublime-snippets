@@ -5,7 +5,7 @@
  * @return  boolean  True on success.
  *
  * @see     JTable::check
- * @since   1.6
+ * @since   $TM_VERSION
  */
 public function check()
 {
@@ -60,7 +60,7 @@ public function check()
 		\$after_clean = JString::str_ireplace(\$bad_characters, "", \$this->metakey);
 
 		// Create array using commas as delimiter.
-		\$keys = explode(',', \$after_clean);
+		\$keys = explode(', ', \$after_clean);
 		\$clean_keys = array();
 
 		foreach (\$keys as \$key)

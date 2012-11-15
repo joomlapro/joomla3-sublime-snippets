@@ -8,7 +8,7 @@
  *
  * @return  string  The anchor tag to toggle featured/unfeatured \${TM_PROJECT/(.+)/\L\1/g}.
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 public static function featured(\$value = 0, \$i, \$canChange = true)
 {

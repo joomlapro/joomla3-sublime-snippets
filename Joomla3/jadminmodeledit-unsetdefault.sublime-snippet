@@ -7,7 +7,7 @@
  * @return  boolean  True if successful.
  *
  * @throws  Exception
- * @return  1.6
+ * @return  $TM_VERSION
  */
 public function unset${1/(.+)/\u\1/g}(\$id = 0)
 {

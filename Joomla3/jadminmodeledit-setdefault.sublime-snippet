@@ -7,7 +7,7 @@
  * @return  boolean  True if successful.
  *
  * @throws  Exception
- * @since   1.6
+ * @since   $TM_VERSION
  */
 public function set${1:Home}(\$id = 0)
 {

@@ -6,7 +6,7 @@
  *
  * @return  boolean  True if successful, false otherwise and internal error is set.
  *
- * @since   1.7
+ * @since   $TM_VERSION
  */
 public function batch(\$model = null)
 {

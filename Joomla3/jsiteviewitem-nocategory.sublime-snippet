@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 {
@@ -25,7 +25,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 	 *
 	 * @return  mixed  False on error, null otherwise.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$tpl = null)
 	{
@@ -135,7 +135,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function _prepareDocument()
 	{
@@ -174,12 +174,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 			\$title = JText::sprintf('JPAGETITLE', \$title, \$app->getCfg('sitename'));
 		}
 
-		if (empty(\$title))
-		{
-			\$title = \$this->item->${2:title};
-		}
-
 		\$this->document->setTitle(\$title);
+
+		\$pathway->addItem(\$this->item->${2:title}, '');
 
 		if (\$this->item->metadesc)
 		{

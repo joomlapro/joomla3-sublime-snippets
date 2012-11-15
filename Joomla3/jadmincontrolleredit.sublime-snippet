@@ -4,13 +4,13 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControllerForm
 {
 	/**
 	 * @var     string  The prefix to use with controller messages.
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected \$text_prefix = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
 
@@ -21,7 +21,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControlle
 	 *
 	 * @return  boolean
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function allowAdd(\$data = array())
 	{
@@ -54,7 +54,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControlle
 	 *
 	 * @return  boolean
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function allowEdit(\$data = array(), \$key = 'id')
 	{
@@ -85,7 +85,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControlle
 	 *
 	 * @return  boolean  True if successful, false otherwise and internal error is set.
 	 *
-	 * @since   1.7
+	 * @since   $TM_VERSION
 	 */
 	public function batch(\$model = null)
 	{

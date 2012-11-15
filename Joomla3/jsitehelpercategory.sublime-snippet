@@ -5,7 +5,7 @@
  * @static
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Categories extends JCategories
 {
@@ -14,7 +14,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Categories extends JCategories
 	 *
 	 * @param   array  \$options  Array of options
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$options = array())
 	{

@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}View${1:Cpanel} extends JViewLegacy
 {
@@ -19,7 +19,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Cpanel} extends JViewLegacy
 	 *
 	 * @return  mixed  A string if successful, otherwise a JError object.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$tpl = null)
 	{
@@ -48,7 +48,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Cpanel} extends JViewLegacy
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function addToolbar()
 	{

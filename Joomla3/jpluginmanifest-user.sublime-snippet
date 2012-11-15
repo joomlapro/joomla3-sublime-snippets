@@ -4,11 +4,11 @@
 	<name>plg_user_${1:client}</name>
 	<author>$TM_FULLNAME</author>
 	<creationDate>$2 $TM_YEAR</creationDate>
-	<copyright>(C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
-	<version>3.0.0</version>
+	<version>$TM_MANIFEST_VERSION</version>
 	<description>PLG_USER_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<files>
 		<filename plugin="${1/(.+)/\L\1/g}">${1/(.+)/\L\1/g}.php</filename>

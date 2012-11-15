@@ -8,7 +8,7 @@
  *
  * @return  string  The anchor tag to toggle ${3/(.+)/\L\1/g}/${4/(.+)/\L\1/g} \${TM_PROJECT/(.+)/\L\1/g}.
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 public static function ${1:action}(\$value = 0, \$i, \$canChange = true)
 {

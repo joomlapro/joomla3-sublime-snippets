@@ -7,7 +7,7 @@
  *
  * @return  boolean  True on success.
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 public function featured(\$pks, \$value = 0)
 {
@@ -30,7 +30,7 @@ public function featured(\$pks, \$value = 0)
 		\$db->setQuery(
 			'UPDATE #__${TM_PROJECT/(.+)/\L\1/g}_${1:edit}' .
 			' SET featured = ' . (int) \$value .
-			' WHERE id IN (' . implode(',', \$pks) . ')'
+			' WHERE id IN (' . implode(', ', \$pks) . ')'
 		);
 		\$db->execute();
 	}

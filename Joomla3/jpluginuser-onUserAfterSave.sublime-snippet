@@ -38,5 +38,5 @@ public function onUserAfterSave(\$user, \$isnew, \$success, \$msg)
 }
 
 ]]></content>
-	<tabTrigger>jpluginuseraftersave</tabTrigger>
+	<tabTrigger>jpluginuser-onUserAfterSave</tabTrigger>
 </snippet>

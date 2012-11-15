@@ -4,7 +4,7 @@
  *
  * @return  mixed  Menu item data object on success, false on failure.
  *
- * @since   2.5
+ * @since   $TM_VERSION
  */
 public function get${1:Hellos}()
 {

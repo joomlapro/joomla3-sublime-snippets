@@ -7,7 +7,7 @@
  *
  * @return  string
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 public static function getFormRoute(\$id, \$return = null)
 {

@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Helper
 {
@@ -15,7 +15,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Helper
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public static function addSubmenu(\$vName = '${1:${TM_PROJECT/(.+)/\L\1/g}}')
 	{
@@ -46,7 +46,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Helper
 	 *
 	 * @return  JObject  A JObject containing the allowed actions.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public static function getActions(\$categoryId = 0)
 	{

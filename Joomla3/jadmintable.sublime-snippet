@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 {
@@ -13,7 +13,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 *
 	 * @param   JDatabase  &\$db  Driver A database connector object.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(&\$db)
 	{
@@ -30,7 +30,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 * @return  null|string  Null is operation was satisfactory, otherwise returns an error.
 	 *
 	 * @see     JTable:bind
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function bind(\$array, \$ignore = '')
 	{
@@ -64,7 +64,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 * @return  boolean  True on success.
 	 *
 	 * @see     JTable::check
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function check()
 	{
@@ -119,7 +119,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 			\$after_clean = JString::str_ireplace(\$bad_characters, "", \$this->metakey);
 
 			// Create array using commas as delimiter.
-			\$keys = explode(',', \$after_clean);
+			\$keys = explode(', ', \$after_clean);
 			\$clean_keys = array();
 
 			foreach (\$keys as \$key)
@@ -145,7 +145,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function store(\$updateNulls = false)
 	{
@@ -211,7 +211,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 *
 	 * @return  boolean  True on success.
 	 *
-	 * @since   1.0.4
+	 * @since   $TM_VERSION
 	 */
 	public function publish(\$pks = null, \$state = 1, \$userId = 0)
 	{

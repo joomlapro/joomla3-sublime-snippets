@@ -7,7 +7,7 @@ require_once JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/mo
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
 {
@@ -18,7 +18,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function populateState()
 	{
@@ -110,7 +110,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 	 *
 	 * @return  string  The return URL.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function getReturnPage()
 	{

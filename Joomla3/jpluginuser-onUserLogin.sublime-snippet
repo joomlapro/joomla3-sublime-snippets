@@ -29,5 +29,5 @@ public function onUserLogin(\$user, \$options)
 }
 
 ]]></content>
-	<tabTrigger>jpluginuserlogin</tabTrigger>
+	<tabTrigger>jpluginuser-onUserLogin</tabTrigger>
 </snippet>

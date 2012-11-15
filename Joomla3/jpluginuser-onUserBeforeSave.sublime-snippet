@@ -19,5 +19,5 @@ public function onUserBeforeSave(\$user, \$isnew, \$new)
 }
 
 ]]></content>
-	<tabTrigger>jpluginuserbeforesave</tabTrigger>
+	<tabTrigger>jpluginuser-onUserBeforeSave</tabTrigger>
 </snippet>

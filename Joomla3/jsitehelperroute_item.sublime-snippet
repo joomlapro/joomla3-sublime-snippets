@@ -6,7 +6,7 @@
  *
  * @return  string
  *
- * @since   1.6
+ * @since   $TM_VERSION
  */
 public static function get${1:View_item}Route(\$id)
 {

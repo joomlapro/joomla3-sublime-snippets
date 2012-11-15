@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class JFormField${1:Field} extends JFormField
 {
@@ -12,7 +12,7 @@ class JFormField${1:Field} extends JFormField
 	 * The form field type.
 	 *
 	 * @var     string
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected \$type = '${1/(.+)/\u\1/g}';
 
@@ -21,7 +21,7 @@ class JFormField${1:Field} extends JFormField
 	 *
 	 * @return  string  The field input markup.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function getInput()
 	{

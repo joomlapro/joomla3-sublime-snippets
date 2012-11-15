@@ -4,7 +4,7 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 {
@@ -14,7 +14,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
 	 * @see     JController
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
 	{
@@ -46,7 +46,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 	 *
 	 * @return  void
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
@@ -110,7 +110,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 	 *
 	 * @return  string  A store id.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function getStoreId(\$id = '')
 	{
@@ -126,12 +126,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 	 *
 	 * @return  string  An SQL query
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected function getListQuery()
 	{
 		\$user   = JFactory::getUser();
-		\$groups = implode(',', \$user->getAuthorisedViewLevels());
+		\$groups = implode(', ', \$user->getAuthorisedViewLevels());
 
 		// Create a new query object.
 		\$db     = \$this->getDbo();

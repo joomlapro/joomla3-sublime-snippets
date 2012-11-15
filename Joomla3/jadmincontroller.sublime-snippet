@@ -4,13 +4,13 @@
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 {
 	/**
 	 * @var     string  The default view.
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	protected \$default_view = '${1:cpanel}';
 
@@ -22,7 +22,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 	 *
 	 * @return  JController  This object to support chaining.
 	 *
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{
