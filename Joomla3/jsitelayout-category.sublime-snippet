@@ -1,41 +1,35 @@
 <snippet>
-	<content><![CDATA[/**
- * ${1/(.+)/\u\1/g} Table class
- *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
- */
-class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
-{
-	/**
-	 * Constructor
-	 *
-	 * @param   JDatabase  &\$db  Driver A database connector object.
-	 *
-	 * @since   1.6
-	 */
-	public function __construct(&\$db)
-	{
-		parent::__construct('#__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'id', \$db);
-	}
+	<content><![CDATA[<div class="${TM_PROJECT/(.+)/\L\1/g}-${1:hello}<?php echo \$this->pageclass_sfx; ?>">
+	<?php if (\$this->params->get('show_page_heading')): ?>
+	<h1>
+		<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
+	</h1>
+	<?php endif; ?>
 
-	/**
-	 * Overloaded check method to ensure data integrity.
-	 *
-	 * @return  boolean  True on success.
-	 *
-	 * @see     JTable::check
-	 * @since   1.6
-	 */
-	public function check()
-	{
-		// Check for valid ${4/(.+)/\L\1/g}.
-		if (trim(\$this->${4:title}) == '')
-		{
-			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}'));
-			return false;
-		}
+	<?php if(\$this->params->get('show_category_title', 1)): ?>
+	<div class="page-header">
+		<h2>
+			<?php echo JHtml::_('content.prepare', \$this->category->title, '', 'com_products.category'); ?>
+		</h2>
+	</div>
+	<?php endif; ?>
 
-		// Check for existing ${4/(.+)/\L\1/g}.
-		\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g}${2/(.+)/\
+	<div class="row-fluid">
+		<?php var_dump(\$this->items); ?>
+	</div>
+
+	<?php if (\$this->params->get('show_pagination')): ?>
+		<div class="pagination">
+		<?php if (\$this->params->def('show_pagination_results', 1)): ?>
+			<p class="counter">
+				<?php echo \$this->pagination->getPagesCounter(); ?>
+			</p>
+		<?php endif; ?>
+		<?php echo \$this->pagination->getPagesLinks(); ?>
+		</div>
+	<?php endif; ?>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayout-category</tabTrigger>
+</snippet>

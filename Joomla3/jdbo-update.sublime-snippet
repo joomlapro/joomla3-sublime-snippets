@@ -1,33 +1,26 @@
 <snippet>
-	<content><![CDATA[/**
- * ${1/(.+)/\u\1/g} controller for ${TM_PROJECT/(.+)/\u\1/g} Component.
- *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
- */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Item} extends JControllerForm
+	<content><![CDATA[// Initialiase variables.
+\$db = JFactory::getDbo();
+// \$db = \$this->getDbo();
+\$query = \$db->getQuery(true);
+
+// Create the base update statement.
+\$query->update(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${1:_table}'));
+\$query->set(\$db->quoteName('${2:column1}') . ' = ' . \$db->quote(${3:\$value1}));
+\$query->where(\$db->quoteName('${4:column2}') . ' = ' . \$db->quote(${5:\$value2}));
+
+// Set the query and execute the update.
+\$db->setQuery(\$query);
+
+try
 {
-	/**
-	 * @since   1.6
-	 */
-	protected \$view_item = '${2:form}';
-
-	/**
-	 * @since   1.6
-	 */
-	protected \$view_list = '${3:categories}';
-
-	/**
-	 * Method to add a new record.
-	 *
-	 * @return  boolean True if the article can be added, false if not.
-	 *
-	 * @since   1.6
-	 */
-	public function add()
-	{
-		if (!parent::add())
-		{
-			// Redirect to the return page.
-			\$this->s
+	\$db->execute();
+}
+catch (RuntimeException \$e)
+{
+	\$this->setError(\$e->getMessage());
+	return false;
+}
+]]></content>
+	<tabTrigger>jdbo-update</tabTrigger>
+</snippet>

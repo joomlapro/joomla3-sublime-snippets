@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JHtml::_('email.cloak', ${1:'demo@exmaple.com'}, 1, ${2:'click here to email me'}, 0);]]></content>
+	<tabTrigger>jhtmlemail</tabTrigger>
+</snippet>

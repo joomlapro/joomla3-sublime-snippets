@@ -1,27 +1,34 @@
 <snippet>
-	<content><![CDATA[// Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+	<content><![CDATA[/**
+ * Method to create a clickable icon to change the ${1/(.+)/\L\1/g} of an item.
+ *
+ * @param   int   \$value      The state value.
+ * @param   int   \$i          The row index.
+ * @param   bool  \$canChange  Whether the value can be changed or not.
+ *
+ * @return  string  The anchor tag to toggle ${3/(.+)/\L\1/g}/${4/(.+)/\L\1/g} \${TM_PROJECT/(.+)/\L\1/g}.
+ *
+ * @since   1.6
+ */
+public static function ${1:action}(\$value = 0, \$i, \$canChange = true)
+{
+	JHtml::_('bootstrap.tooltip');
 
-// Load the tooltip behavior.
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.formvalidation');
-JHtml::_('formbehavior.chosen', 'select');
-?>
-<script type="text/javascript">
-	Joomla.submitbutton = function (task) {
-		if (task == '${1:edit}.cancel' || document.formvalidator.isValid(document.id('${1/(.+)/\L\1/g}-form'))) {
-			<?php echo \$this->form->getField('description')->save(); ?>
-			Joomla.submitform(task, document.getElementById('${1/(.+)/\L\1/g}-form'));
-		} else {
-			alert('<?php echo \$this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED')); ?>');
-		}
+	// Array of image, task, title, action
+	\$states = array(
+		0 => array('${5:star-empty}', '${2:list}.${3:active}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${4/(.+)/\U\1/g}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_${3/(.+)/\U\1/g}'),
+		1 => array('${6:star}', '${2/(.+)/\L\1/g}.${4:inactive}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${3/(.+)/\U\1/g}', 'COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_${4/(.+)/\U\1/g}'),
+	);
+
+	\$state = JArrayHelper::getValue(\$states, (int) \$value, \$states[1]);
+	\$icon  = \$state[0];
+
+	if (\$canChange)
+	{
+		\$html = '<a href="#" onclick="return listItemTask(\'cb' . \$i . '\',\'' . \$state[1] . '\')" class="btn btn-micro hasTooltip' . (\$value == 1 ? ' active' : '') . '" title="' . JText::_(\$state[3]) . '"><i class="icon-' . \$icon . '"></i></a>';
 	}
-</script>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1/(.+)/\L\1/g}-form" class="form-validate">
-	<div class="row-fluid">
-		<!-- Begin ${2:${1/(.+)/\u\1/g}s} -->
-		<div class="span10 form-horizontal">
-			<fieldset>
-				<ul class="nav nav-tabs">
-					<li class="active"><a href="#details" data-toggle="tab"><?php echo empty(\$this->item->id) ? JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NEW_${1/(.+)/\U\1/g}') : JText::sprintf('COM_${TM_PROJECT/(.+)/\U\1/g}_EDIT_${1/(.+)/\U\1/g}', \$this->item->id); ?></a></li>
-					<li><a href="#publishing" data-toggle="tab">
+
+	return \$html;
+}]]></content>
+	<tabTrigger>jadminhtml-custom</tabTrigger>
+</snippet>

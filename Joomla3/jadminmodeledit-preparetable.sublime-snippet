@@ -1,51 +1,50 @@
-.
-	 *
-	 * @return  mixed  An array of objects on success, false on failure.
-	 *
-	 * @since   1.6
-	 */
-	public function getItems()
+<snippet>
+	<content><![CDATA[/**
+ * Prepare and sanitise the table prior to saving.
+ *
+ * @param   JTable  \$table  A JTable object.
+ *
+ * @return  void
+ *
+ * @since   1.6
+ */
+protected function prepareTable(\$table)
+{
+	// Initialise variables.
+	\$date = JFactory::getDate();
+	\$user = JFactory::getUser();
+
+	\$table->${1:title} = htmlspecialchars_decode(\$table->${1/(.+)/\L\1/g}, ENT_QUOTES);
+	\$table->alias = JApplication::stringURLSafe(\$table->alias);
+
+	if (empty(\$table->alias))
 	{
-		// Invoke the parent getItems method to get the main list
-		\$items = parent::getItems();
-
-		// Convert the params field into an object, saving original in _params
-		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
-		{
-			\$item = &\$items[\$i];
-
-			if (!isset(\$this->_params))
-			{
-				\$params = new JRegistry;
-				\$params->loadString(\$item->params);
-				\$item->params = \$params;
-			}
-		}
-
-		return \$items;
+		\$table->alias = JApplication::stringURLSafe(\$table->${1/(.+)/\L\1/g});
 	}
 
-	/**
-	 * Method to build an SQL query to load the list data.
-	 *
-	 * @return  string  An SQL query
-	 *
-	 * @since   1.6
-	 */
-	protected function getListQuery()
+	if (empty(\$table->id))
 	{
-		// Initialiase variables.
-		\$user   = JFactory::getUser();
-		\$groups = implode(',', \$user->getAuthorisedViewLevels());
+		// Set the values
 
-		// Create a new query object.
-		\$db     = \$this->getDbo();
-		\$query  = \$db->getQuery(true);
+		// Set ordering to the last item if not set
+		if (empty(\$table->ordering))
+		{
+			\$db = JFactory::getDbo();
+			\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_PROJECT/(.+)/\L\1/g}${2:_list}');
+			\$max = \$db->loadResult();
 
-		// Select the required fields from the table.
-		\$query->select(
-			\$this->getState(
-				'list.select',
-				'a.id, a.catid, a.${2/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time'
-				. ', a.hits'
-				.
+			\$table->ordering = \$max + 1;
+		}
+		else
+		{
+			// Set the values
+			\$table->modified    = \$date->toSql();
+			\$table->modified_by = \$user->get('id');
+		}
+	}
+
+	// Increment the content version number.
+	\$table->version++;
+}]]></content>
+	<tabTrigger>jadminmodeledit-preparetable</tabTrigger>
+</snippet>

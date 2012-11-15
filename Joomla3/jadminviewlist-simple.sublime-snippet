@@ -1,35 +1,135 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<form>
-	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields">
-		<field name="id" type="text" default="0" readonly="true" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
-		<field name="${1:title}" type="text" class="inputbox" required="true" size="40" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
-		<field name="alias" type="text" class="inputbox" size="40" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
-		<field name="catid" type="categoryedit" extension="com_${TM_PROJECT/(.+)/\L\1/g}" class="inputbox" required="true" addfieldpath="/administrator/components/com_categories/models/fields" label="JCATEGORY" description="JFIELD_CATEGORY_DESC">
-			<option value="">JSELECT</option>
-		</field>
-		<field name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
-		<field name="description" type="editor" buttons="true" hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText" label="JGLOBAL_DESCRIPTION" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
-		<field name="state" type="list" class="inputbox span12 small" size="1" default="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC">
-			<option value="1">JPUBLISHED</option>
-			<option value="0">JUNPUBLISHED</option>
-			<option value="2">JARCHIVED</option>
-			<option value="-2">JTRASHED</option>
-		</field>
-		<field name="access" type="accesslevel" class="inputbox span12 small" size="1" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
-		<field name="featured" type="list" label="JFEATURED" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FEATURED_DESC" default="0" class="span12 small">
-			<option value="0">JNO</option>
-			<option value="1">JYES</option>
-		</field>
-		<field name="language" type="contentlanguage" class="inputbox span12 small" label="JFIELD_LANGUAGE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LANGUAGE_DESC">
-			<option value="*">JALL</option>
-		</field>
-		<field name="metadesc" type="textarea" class="inputbox" rows="3" cols="30" label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
-		<field name="metakey" type="textarea" class="inputbox" rows="3" cols="30" label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
-		<field name="xreference" type="text" class="inputbox" size="20" labelclass="control-label" label="JFIELD_XREFERENCE_LABEL" description="JFIELD_XREFERENCE_DESC" />
-	</fieldset>
-	<fieldset name="publish" label="JGLOBAL_FIELDSET_PUBLISHING">
-		<field name="created" type="calendar" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC" />
-		<field name="created_by" type="user" label="JGLOBAL_FIELD_CREATED_BY_LABEL" description="JGLOBAL_FIELD_CREATED_BY_Desc" />
-		<field name="created_by_alias" type="text" class="inputbox" size="20" label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL" description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC" />
-		<field name="modified" type="calendar" class="readonly" size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" label="JGLOBAL_FIELD_MODIFIED_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_MODIFIED_DESC" />
+	<content><![CDATA[/**
+ * View class for a list of ${1/(.+)/\L\1/g}.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       1.6
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}View${1:List} extends JViewLegacy
+{
+	protected \$items;
+
+	protected \$pagination;
+
+	protected \$state;
+
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  A string if successful, otherwise a JError object.
+	 *
+	 * @since   1.6
+	 */
+	public function display(\$tpl = null)
+	{
+		// Initialise variables.
+		\$this->state      = \$this->get('State');
+		\$this->pagination = \$this->get('Pagination');
+		\$this->items      = \$this->get('Items');
+
+		// Check for errors.
+		if (count(\$errors = \$this->get('Errors')))
+		{
+			JError::raiseError(500, implode("\n", \$errors));
+			return false;
+		}
+
+		// Load the submenu.
+		${TM_PROJECT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+
+		\$this->addToolbar();
+		\$this->sidebar = JHtmlSidebar::render();
+
+		parent::display(\$tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function addToolbar()
+	{
+		// Include dependancies.
+		require_once JPATH_COMPONENT . '/helpers/${TM_PROJECT/(.+)/\L\1/g}.php';
+
+		// Initialise variables.
+		\$state = \$this->get('State');
+		\$canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions();
+		\$user  = JFactory::getUser();
+
+		// Get the toolbar object instance
+		\$bar = JToolBar::getInstance('toolbar');
+
+		JToolbarHelper::title(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}'), '${1/(.+)/\L\1/g}.png');
+
+		if (\$canDo->get('core.create'))
+		{
+			JToolbarHelper::addNew('${2:${1/(.+)(s\b)/\L\1/g}}.add');
+		}
+
+		if (\$canDo->get('core.edit'))
+		{
+			JToolbarHelper::editList('${2/(.+)/\L\1/g}.edit');
+		}
+
+		if (\$canDo->get('core.edit.state'))
+		{
+			JToolbarHelper::publish('${1/(.+)/\L\1/g}.publish', 'JTOOLBAR_PUBLISH', true);
+			JToolbarHelper::unpublish('${1/(.+)/\L\1/g}.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+
+			JToolbarHelper::archiveList('${1/(.+)/\L\1/g}.archive');
+			JToolbarHelper::checkin('${1/(.+)/\L\1/g}.checkin');
+		}
+
+		if (\$state->get('filter.state') == -2 && \$canDo->get('core.delete'))
+		{
+			JToolbarHelper::deleteList('', '${1/(.+)/\L\1/g}.delete', 'JTOOLBAR_EMPTY_TRASH');
+		}
+		elseif (\$canDo->get('core.edit.state'))
+		{
+			JToolbarHelper::trash('${1/(.+)/\L\1/g}.trash');
+		}
+
+		if (\$canDo->get('core.admin'))
+		{
+			JToolbarHelper::preferences('com_${TM_PROJECT/(.+)/\L\1/g}');
+		}
+
+		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
+
+		JHtmlSidebar::setAction('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+
+		JHtmlSidebar::addFilter(
+			JText::_('JOPTION_SELECT_PUBLISHED'),
+			'filter_state',
+			JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', \$this->state->get('filter.state'), true)
+		);
+	}
+
+	/**
+	 * Returns an array of fields the table can be sorted by
+	 *
+	 * @return  array  Array containing the field name to sort by as the key and display text as value
+	 *
+	 * @since   3.0
+	 */
+	protected function getSortFields()
+	{
+		return array(
+			'a.ordering' => JText::_('JGRID_HEADING_ORDERING'),
+			'a.state' => JText::_('JSTATUS'),
+			'a.${3:title}' => JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}'),
+			'a.id' => JText::_('JGRID_HEADING_ID')
+		);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminviewlist-simple</tabTrigger>
+</snippet>

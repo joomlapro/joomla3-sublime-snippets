@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[// Get an instance of the generic ${1/(.+)/\L\1/g} model.
 \$model = JModelLegacy::getInstance('${1:List}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
-\$model->setState('list.limit', ${2:5});
-\$model->setState('list.ordering', '${3:a}.${4:id}');
-\$model->setState('list.direction', '${5:desc}');
+\$model->setState('list.limit', 5);
+\$model->setState('list.ordering', 'a.id');
+\$model->setState('list.direction', 'desc');
 
 \$this->${1/(.+)/\L\1/g} = \$model->getItems();
 

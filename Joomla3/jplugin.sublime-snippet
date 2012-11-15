@@ -1,25 +1,29 @@
 <snippet>
 	<content><![CDATA[/**
- * Methods supporting a list of ${2:${1/(.+)(s\b)/\L\1/g}} records.
+ * ${2/(.+)/\u\1/g} ${1/(.+)/\u\1/g} plugin
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
+ * @package     $TM_PROJECT
+ * @subpackage  plg_${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}
+ * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
+class plg${1:Folder}${2:Hello} extends JPlugin
 {
 	/**
-	 * Constructor.
+	 * Constructor
 	 *
-	 * @param   array  \$config  An optional associative array of configuration settings.
+	 * @param   object  &\$subject  The object to observe
+	 * @param   array   \$config    An array that holds the plugin configuration
 	 *
-	 * @see     JController
-	 * @since   1.6
+	 * @since   $TM_VERSION
 	 */
-	public function __construct(\$config = array())
+	public function __construct(&\$subject, \$config)
 	{
-		if (empty(\$config['filter_fields']))
-		{
-			\$config['filter_fields'] = array(
-				'id', 'a.id',
-				'${3:title}', 'a
+		parent::__construct(\$subject, \$config);
+
+		\$this->loadLanguage();
+	}
+}
+
+]]></content>
+	<tabTrigger>jplugin</tabTrigger>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Display the ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
+\$this->${2:modules} = JModuleHelper::getModules('${1:cpanel}');]]></content>
+	<tabTrigger>jgetmodules</tabTrigger>
+</snippet>

@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[/**
+ * This method should handle any login logic and report back to the subject
+ *
+ * @param   array  \$user     Holds the user data.
+ * @param   array  \$options  Extra options.
+ *
+ * @return  boolean	True on success
+ *
+ * @since   $TM_VERSION
+ */
+public function onUserLogin(\$user, \$options)
+{
+	// Initialise variables.
+	\$success = false;
+
+	// Here you would do whatever you need for a login routine with the credentials
+	//
+	// Remember, this is not the authentication routine as that is done separately.
+	// The most common use of this routine would be logging the user into a third party
+	// application.
+	//
+	// In this example the boolean variable \$success would be set to true
+	// if the login routine succeeds
+
+	// ThirdPartyApp::loginUser(\$user['username'], \$user['password']);
+
+	return \$success;
+}
+
+]]></content>
+	<tabTrigger>jpluginuserlogin</tabTrigger>
+</snippet>

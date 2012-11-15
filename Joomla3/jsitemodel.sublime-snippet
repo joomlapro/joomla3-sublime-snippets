@@ -1,52 +1,58 @@
-tory::getDate();
-		\$user = JFactory::getUser();
+<snippet>
+	<content><![CDATA[jimport('joomla.application.component.modellist');
 
-		if (\$this->id)
-		{
-			// Existing item.
-			\$this->modified    = \$date->toSql();
-			\$this->modified_by = \$user->get('id');
-		}
-		else
-		{
-			// New ${1/(.+)/\L\1/g}. A ${1/(.+)/\L\1/g} created and created_by field can be set by the user,
-			// so we don't touch either of these if they are set.
-			if (!(int) \$this->created)
-			{
-				\$this->created = \$date->toSql();
-			}
+/**
+ * ${1/(.+)/\u\1/g} model.
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
+{
+	/**
+	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
+	 *
+	 * @param   int     \$ordering   The order to show.
+	 * @param   string  \$direction  The direction desc|asc.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function populateState(\$ordering = null, \$direction = null)
+	{
+		// Initialise variables.
+		\$app    = JFactory::getApplication();
+		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$itemid = JRequest::getInt('Itemid', 0);
 
-			if (empty(\$this->created_by))
-			{
-				\$this->created_by = \$user->get('id');
-			}
-		}
-
-		// Set publish_up to null date if not set.
-		if (!\$this->publish_up)
-		{
-			\$this->publish_up = \$this->_db->getNullDate();
-		}
-
-		// Set publish_down to null date if not set.
-		if (!\$this->publish_down)
-		{
-			\$this->publish_down = \$this->_db->getNullDate();
-		}
-
-		// Verify that the alias is unique.
-		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
-
-		if (\$table->load(array('alias' => \$this->alias, 'catid' => \$this->catid)) && (\$table->id != \$this->id || \$this->id == 0))
-		{
-			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_UNIQUE_ALIAS'));
-			return false;
-		}
-
-		// Attempt to store the user data.
-		return parent::store(\$updateNulls);
+		// Load the parameters.
+		\$this->setState('params', \$params);
 	}
 
 	/**
-	 * Method to set the publishing state for a row or list of rows in the database
-	 * tabl
+	 * Gets a list of ${1/(.+)/\L\1/g}
+	 *
+	 * @return  array  An array of banner objects.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getListQuery()
+	{
+		// Initialiase variables.
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Prepare query.
+		\$query->select('');
+		\$query->from('#__');
+		\$query->where('');
+
+		return \$query;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodel</tabTrigger>
+</snippet>

@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}="$1"
+COM_${TM_PROJECT/(.+)/\U\1/g}_XML_DESCRIPTION="$2"
+
+; MENU
+
+COM_${TM_PROJECT/(.+)/\U\1/g}_${TM_PROJECT/(.+)/\U\1/g}="${1/(.+)/\u\1/g}"
+COM_${TM_PROJECT/(.+)/\U\1/g}_CATEGORIES="${2/(.+)/\u\1/g}"
+
+; SUBMENU
+
+COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_${TM_PROJECT/(.+)/\U\1/g}="${1/(.+)/\u\1/g}"
+COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_CATEGORIES="${2/(.+)/\u\1/g}"
+
+]]></content>
+	<tabTrigger>jlangmanifest</tabTrigger>
+</snippet>

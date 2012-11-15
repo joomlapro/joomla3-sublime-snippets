@@ -1,51 +1,21 @@
 <snippet>
-	<content><![CDATA[// Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-
-// Load the tooltip behavior.
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
-
-// Initialise variables.
-\$user      = JFactory::getUser();
-\$userId    = \$user->get('id');
-\$listOrder = \$this->escape(\$this->state->get('list.ordering'));
-\$listDirn  = \$this->escape(\$this->state->get('list.direction'));
-\$canOrder  = \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category');
-\$saveOrder = \$listOrder == 'a.ordering';
-
-if (\$saveOrder)
-{
-	\$saveOrderingUrl = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', '${2/(.+)/\L\1/g}List', 'adminForm', strtolower(\$listDirn), \$saveOrderingUrl);
-}
-
-\$sortFields = \$this->getSortFields();
-?>
-<script type="text/javascript">
-	Joomla.orderTable = function () {
-		table = document.getElementById("sortTable");
-		direction = document.getElementById("directionTable");
-		order = table.options[table.selectedIndex].value;
-		if (order != '<?php echo \$listOrder; ?>') {
-			dirn = 'asc';
-		} else {
-			dirn = direction.options[direction.selectedIndex].value;
-		}
-		Joomla.tableOrdering(order, dirn, '');
-	}
-</script>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:list}'); ?>" method="post" name="adminForm" id="adminForm">
-<?php if(!empty( \$this->sidebar)): ?>
-	<div id="j-sidebar-container" class="span2">
-		<?php echo \$this->sidebar; ?>
-	</div>
-	<div id="j-main-container" class="span10">
-<?php else: ?>
-	<div id="j-main-container">
-<?php endif; ?>
-		<div id="filter-bar" class="btn-toolbar">
-			<div class="filter-search btn-group pull-left">
-				<label for="filter_search" class="element-invisible"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?></label>
-				<input type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" value="<?php echo \$this->escape(\$this->state->get('filter.search')); ?>" title="<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_S
+	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_${1:LIST}_N_ITEMS_ARCHIVED="%d ${2:View_plural} arquivad${4:o}s com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_0="Nenhum ${3:View_sigular} arquivad${4/(.+)/\L\1/g}."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_1="%d ${3/(.+)/\u\1/g} arquivad${4/(.+)/\L\1/g} com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_MORE="%d ${2/(.+)/\u\1/g} desbloquead${4/(.+)/\L\1/g}s com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_0="Nenhum ${3/(.+)/\u\1/g} desbloquead${4/(.+)/\L\1/g}."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_1="%d ${3/(.+)/\u\1/g} desbloquead${4/(.+)/\L\1/g} com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED="%d ${2/(.+)/\u\1/g} deletad${4/(.+)/\L\1/g}s com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED_0="Nenhum ${3/(.+)/\u\1/g} deletad${4/(.+)/\L\1/g}."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED_1="%d ${3/(.+)/\u\1/g} deletad${4/(.+)/\L\1/g} com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED="%d ${2/(.+)/\u\1/g} publicad${4/(.+)/\L\1/g}s com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED_0="Nenhum ${3/(.+)/\u\1/g} publicad${4/(.+)/\L\1/g}."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED_1="%d ${3/(.+)/\u\1/g} publicad${4/(.+)/\L\1/g} com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED="%d ${2/(.+)/\u\1/g} lixeira com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED_0="Nenhum ${3/(.+)/\u\1/g} lixeira."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED_1="%d ${3/(.+)/\u\1/g} lixeira com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED="%d ${2/(.+)/\u\1/g} despublicad${4/(.+)/\L\1/g}s com sucesso."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_0="Nenhum ${3/(.+)/\u\1/g} despublicad${4/(.+)/\L\1/g}."
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_1="%d ${3/(.+)/\u\1/g} despublicad${4/(.+)/\L\1/g} com sucesso."]]></content>
+	<tabTrigger>jadminlang_list</tabTrigger>
+</snippet>

@@ -1,8 +1,16 @@
-iresAt":null}}
-{"Key":"GitHub.ViewModels.HistogramViewModel___joomlapro/joomla-scaffold:histogram","Value":{"CreatedAt":"2012-11-09T19:57:07.4840616-02:00","ExpiresAt":null}}
-{"Key":"GitHub.ViewModels.HistogramViewModel___joomlapro/joomla-bundle:histogram","Value":{"CreatedAt":"2012-09-30T14:36:08.6080168-03:00","ExpiresAt":null}}
-{"Key":"System.String___brunobatista/package_control_channel:README","Value":{"CreatedAt":"2012-09-16T10:14:11.7155079-03:00","ExpiresAt":null}}
-{"Key":"System.String___joomlapro/coding-standards:README","Value":{"CreatedAt":"2012-09-28T09:00:15.6504804-03:00","ExpiresAt":null}}
-{"Key":"GitHub.ViewModels.HistogramViewModel___brunobatista/easy:histogram","Value":{"CreatedAt":"2012-10-19T13:41:06.4391736-03:00","ExpiresAt":null}}
-{"Key":"System.String___joomlapro/joomla3-scaffold:README","Value":{"CreatedAt":"2012-11-15T14:48:06.5705875-02:00","ExpiresAt":null}}
-{"Key":"GitHub.ViewModels.H
+<snippet>
+	<content><![CDATA[<fields name="metadata">
+	<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+		<field name="robots" type="list" label="JFIELD_METADATA_ROBOTS_LABEL" description="JFIELD_METADATA_ROBOTS_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="index, follow">JGLOBAL_INDEX_FOLLOW</option>
+			<option value="noindex, follow">JGLOBAL_NOINDEX_FOLLOW</option>
+			<option value="index, nofollow">JGLOBAL_INDEX_NOFOLLOW</option>
+			<option value="noindex, nofollow">JGLOBAL_NOINDEX_NOFOLLOW</option>
+		</field>
+		<field name="author" type="text" size="20" label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC" />
+		<field name="rights" type="text" required="false" filter="string" cols="30" rows="2" label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC" />
+	</fieldset>
+</fields>]]></content>
+	<tabTrigger>jadminform_metadata</tabTrigger>
+</snippet>

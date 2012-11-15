@@ -1,33 +1,15 @@
 <snippet>
-	<content><![CDATA[/**
- * ${1/(.+)/\u\1/g} Table class
- *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
- * @since       1.6
- */
-class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
-{
-	/**
-	 * Constructor
-	 *
-	 * @param   JDatabase  &\$db  Driver A database connector object.
-	 *
-	 * @since   1.6
-	 */
-	public function __construct(&\$db)
-	{
-		parent::__construct('#__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'id', \$db);
-	}
-
-	/**
-	 * Overloaded bind function to pre-process the params.
-	 *
-	 * @param   array  \$array   Named array.
-	 * @param   mixed  \$ignore  An optional array or space separated list of properties
-	 *                          to ignore while binding. [optional]
-	 *
-	 * @return  null|string  Null is operation was satisfactory, otherwise returns an error.
-	 *
-	 * @see     JTable:bind
-	 * @since   1
+	<content><![CDATA[<div class="sort">
+	<form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
+		<span class="prefix"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SORT'); ?>:</span>
+		<span class="orderby">
+			<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_NAME', 'a.name', \$listDirn, \$listOrder); ?> <span class="sep">|</span>
+			<?php echo JHtml::_('grid.sort', 'JDATE', 'a.created', \$listDirn, \$listOrder); ?> <span class="sep">|</span>
+			<?php echo JHtml::_('grid.sort', 'JGLOBAL_HITS', 'a.hits', \$listDirn, \$listOrder); ?>
+		</span>
+		<input type="hidden" name="filter_order" value="<?php echo \$listOrder; ?>" />
+		<input type="hidden" name="filter_order_Dir" value="<?php echo \$listDirn; ?>" />
+	</form>
+</div>]]></content>
+	<tabTrigger>jsitelayout-sort</tabTrigger>
+</snippet>

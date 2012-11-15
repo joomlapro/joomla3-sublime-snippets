@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[/**
+ * This method should handle any logout logic and report back to the subject
+ *
+ * @param   array  \$user  Holds the user data.
+ *
+ * @return  boolean  True on success
+ *
+ * @since   $TM_VERSION
+ */
+public function onUserLogout(\$user)
+{
+	// Initialise variables.
+	\$success = false;
+
+	// Here you would do whatever you need for a logout routine with the credentials
+	//
+	// In this example the boolean variable \$success would be set to true
+	// if the logout routine succeeds
+
+	// ThirdPartyApp::loginUser(\$user['username'], \$user['password']);
+
+	return \$success;
+}
+
+]]></content>
+	<tabTrigger>jpluginuserlogout</tabTrigger>
+</snippet>

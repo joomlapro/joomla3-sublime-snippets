@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method is called after user data is deleted from the database
+ *
+ * @param   array    \$user    Holds the user data.
+ * @param   boolean  \$succes  True if user was succesfully stored in the database.
+ * @param   string   \$msg     Message.
+ *
+ * @return	void
+ *
+ * @since	$TM_VERSION
+ */
+public function onUserAfterDelete(\$user, \$succes, \$msg)
+{
+	\$app = JFactory::getApplication();
+
+	// only the \$user['id'] exists and carries valid information
+
+	// Call a function in the external app to delete the user
+	// ThirdPartyApp::deleteUser(\$user['id']);
+}
+
+]]></content>
+	<tabTrigger>jpluginuserafterdelete</tabTrigger>
+</snippet>

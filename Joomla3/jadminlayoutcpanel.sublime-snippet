@@ -1,27 +1,41 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<extension version="3.0" type="plugin" group="user">
-	<name>plg_user_${1:client}</name>
-	<author>$TM_FULLNAME</author>
-	<creationDate>$2 $TM_YEAR</creationDate>
-	<copyright>(C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>$TM_EMAIL</authorEmail>
-	<authorUrl>$TM_WEBSITE</authorUrl>
-	<version>3.0.0</version>
-	<description>PLG_USER_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
-	<files>
-		<filename plugin="${1/(.+)/\L\1/g}">${1/(.+)/\L\1/g}.php</filename>
-		<filename>index.html</filename>
-		<folder>profiles</folder>
-	</files>
-	<languages>
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE.plg_user_${1/(.+)/\L\1/g}.ini</language>
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE.plg_user_${1/(.+)/\L\1/g}.sys.ini</language>
-	</languages>
-	<config>
-		<fields name="params">
-			<fieldset name="basic" addfieldpath="/administrator/components/com_content/models/fields">
-				<field name="register-require-user" type="spacer" class="text" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_REGISTER_REQUIRE_USER" />
-				<field name="register-require_address1" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_LABEL">
-	
+	<content><![CDATA[// Get the current user object.
+\$user = JFactory::getUser();
+?>
+<div class="row-fluid">
+	<div class="span2">
+		<div class="sidebar-nav">
+			<ul class="nav nav-list">
+				<li class="nav-header"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_HEADER_SUBMENU'); ?></li>
+				<li class="active"><a href="<?php echo \$this->baseurl; ?>/index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_LINK_DASHBOARD'); ?></a></li>
+				<li><a href="<?php echo \$this->baseurl; ?>/index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&amp;view=${1:${TM_PROJECT/(.+)/\L\1/g}}"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_LINK_${1/(.+)/\U\1/g}'); ?></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="span6">
+		<?php
+		foreach (\$this->modules as \$module)
+		{
+			\$output = JModuleHelper::renderModule(\$module, array('style' => 'well'));
+			\$params = new JRegistry;
+			\$params->loadString(\$module->params);
+			echo \$output;
+		}
+		?>
+	</div>
+	<div class="span4">
+		<?php
+		foreach (\$this->iconmodules as \$iconmodule)
+		{
+			\$output = JModuleHelper::renderModule(\$iconmodule, array('style' => 'well'));
+			\$params = new JRegistry;
+			\$params->loadString(\$iconmodule->params);
+			echo \$output;
+		}
+		?>
+	</div>
+</div>
+
+]]></content>
+	<tabTrigger>jadminlayoutcpanel</tabTrigger>
+</snippet>

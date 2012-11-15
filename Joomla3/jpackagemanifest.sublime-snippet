@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension type="package" version="3.0">
+	<name>${1:Hello} Package</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>$2 2012</creationDate>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>3.0.0</version>
+	<description>${1/(.+)/\u\1/g} package to combine multiple extensions</description>
+	<packagename>${3:${1/(.+)/\L\1/g}}</packagename>
+	<url>$TM_WEBSITE</url>
+	<packager>${1/(.+)/\u\1/g} Package Team</packager>
+	<packagerurl>$TM_WEBSITE</packagerurl>
+	<update>$TM_WEBSITE/update</update>
+	<files folder="packages">
+		<file type="component" id="${3/(.+)/\L\1/g}">com_${3/(.+)/\L\1/g}.zip</file>
+		<file type="module" id="${3/(.+)/\L\1/g}" client="site">mod_${3/(.+)/\L\1/g}.zip</file>
+		<file type="library" id="${3/(.+)/\L\1/g}">lib_${3/(.+)/\L\1/g}.zip</file>
+		<file type="plugin" id="${3/(.+)/\L\1/g}" group="${4:user}">plg_${4/(.+)/\L\1/g}_${3/(.+)/\L\1/g}.zip</file>
+		<file type="template" id="${3/(.+)/\L\1/g}" client="site">tpl_${3/(.+)/\L\1/g}.zip</file>
+	</files>
+</extension>
+
+]]></content>
+	<tabTrigger>jpackagemanifest</tabTrigger>
+</snippet>
