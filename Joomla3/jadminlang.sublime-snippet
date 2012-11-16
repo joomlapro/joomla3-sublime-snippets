@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[
+COM_${TM_PROJECT/(.+)/\U\1/g}="${2:Component}"
+COM_${TM_PROJECT/(.+)/\U\1/g}_XML_DESCRIPTION="Componente para gerenciamento de ${3:${2/(.+)/\L\1/g}}."
+]]></content>
+	<tabTrigger>jadminlang</tabTrigger>
+</snippet>
