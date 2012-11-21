@@ -62,12 +62,10 @@ JHtml::_('behavior.formvalidation');
 						<div class="controls"><?php echo \$this->form->getInput('${2/(.+)/\L\1/g}'); ?></div>
 					</div>
 
-					<?php if (is_null(\$this->item->id)): ?>
 					<div class="control-group">
 						<div class="control-label"><?php echo \$this->form->getLabel('alias'); ?></div>
 						<div class="controls"><?php echo \$this->form->getInput('alias'); ?></div>
 					</div>
-					<?php endif; ?>
 
 					<div class="control-group">
 						<div class="control-label"><?php echo \$this->form->getLabel('ordering'); ?></div>

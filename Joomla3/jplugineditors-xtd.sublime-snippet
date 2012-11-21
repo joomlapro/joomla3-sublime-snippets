@@ -61,7 +61,7 @@ class PlgButton${1:Field} extends JPlugin
 		 * Use the built-in element view to select the ${2/(.+)/\L\1/g}.
 		 * Currently uses blank class.
 		 */
-		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&amp;view=${3:${1/(.+)/\L\1/g}s}&amp;layout=${4:modal}&amp;tmpl=component&amp;' . JSession::getFormToken() . '=1';
+		\$link = JUri::root(true) . 'administrator/index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&amp;view=${3:${1/(.+)/\L\1/g}s}&amp;layout=${4:modal}&amp;tmpl=component&amp;' . JSession::getFormToken() . '=1';
 
 		\$button = new JObject;
 		\$button->modal = true;

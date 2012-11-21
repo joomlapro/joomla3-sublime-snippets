@@ -14,12 +14,15 @@
 	</fields>
 	<!-- Add fields to the parameters object for the layout. -->
 	<fields name="params">
+		<!-- Basic options. -->
 		<fieldset name="basic" label="JGLOBAL_CATEGORIES_OPTIONS">
 
 		</fieldset>
+		<!-- Category options. -->
 		<fieldset name="category" label="JGLOBAL_CATEGORY_OPTIONS">
 
 		</fieldset>
+		<!-- Advanced options. -->
 		<fieldset name="advanced" label="JGLOBAL_LIST_LAYOUT_OPTIONS">
 
 		</fieldset>

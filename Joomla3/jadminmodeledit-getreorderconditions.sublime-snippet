@@ -11,7 +11,7 @@
 protected function getReorderConditions(\$table)
 {
 	\$condition = array();
-	\$condition[] = 'catid = ' . (int) \$table->catid;
+	\$condition[] = '${1:catid} = ' . (int) \$table->${1/(.+)/\L\1/g};
 
 	return \$condition;
 }]]></content>

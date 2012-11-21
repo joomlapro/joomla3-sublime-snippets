@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[if (isset(\$view) and \$view == '${1:view_item}')
+{
+	if (\$mId != (int) \$query['id'] || \$mView != \$view)
+	{
+		if (\$view == '${1/(.+)/\L\1/g}')
+		{
+			if (\$advanced)
+			{
+				list(\$tmp, \$id) = explode(':', \$query['id'], 2);
+			}
+			else
+			{
+				\$id = \$query['id'];
+			}
+
+			\$segments[] = \$id;
+		}
+	}
+
+	unset(\$query['id']);
+}]]></content>
+	<tabTrigger>jsiterouterbuild_advanced</tabTrigger>
+</snippet>

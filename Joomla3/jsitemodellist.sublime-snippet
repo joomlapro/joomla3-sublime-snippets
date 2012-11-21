@@ -203,10 +203,17 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 				'list.select',
 				'a.id, a.catid, a.${2/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time'
 				. ', a.hits'
-				. ', a.state, a.access, a.ordering, a.language, a.params, a.publish_up, a.publish_down'
+				. ', a.state, a.access, a.ordering, a.language, a.params, a.created_by_alias, a.publish_up, a.publish_down'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}}') . ' AS a');
+
+		// Join over the users for the author and modified_by names.
+		\$query->select("CASE WHEN a.created_by_alias > ' ' THEN a.created_by_alias ELSE ua.name END AS author");
+		\$query->select("ua.email AS author_email");
+
+		\$query->join('LEFT', '#__users AS ua ON ua.id = a.created_by');
+		\$query->join('LEFT', '#__users AS uam ON uam.id = a.modified_by');
 
 		// Join over the categories.
 		\$query->select('c.title AS category_title, c.path AS category_route, c.access AS category_access, c.alias AS category_alias');

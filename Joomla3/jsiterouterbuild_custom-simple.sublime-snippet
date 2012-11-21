@@ -10,5 +10,5 @@
 
 	unset(\$query['id']);
 }]]></content>
-	<tabTrigger>jsiterouterbuild_simple</tabTrigger>
+	<tabTrigger>jsiterouterbuild_custom-simple</tabTrigger>
 </snippet>

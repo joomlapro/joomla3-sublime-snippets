@@ -119,5 +119,5 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 }
 
 ]]></content>
-	<tabTrigger>jsitemodelform-nocategory</tabTrigger>
+	<tabTrigger>jsitemodelform-simple</tabTrigger>
 </snippet>

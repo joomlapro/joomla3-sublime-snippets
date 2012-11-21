@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+case '${1:view_list}':
+	if (\$advanced)
+	{
+		\$db = JFactory::getDBO();
+		\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}} WHERE alias = ' . \$db->Quote(\$segment);
+		\$db->setQuery(\$query);
+		\$nid = \$db->loadResult();
+	}
+	else
+	{
+		\$nid = \$segment;
+	}
+
+	\$vars['id']   = \$nid;
+	\$vars['view'] = '${3:${1/(.+)(s\b)/\L\1/g}}';
+
+	break;
+]]></content>
+	<tabTrigger>jsiterouterparse_advanced</tabTrigger>
+</snippet>
