@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 {
 	/**
 	 * Category items data
@@ -279,6 +279,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:List} extends JModelList
 	{
 		if (!is_object(\$this->_item))
 		{
+			// Initialiase variables.
 			\$app = JFactory::getApplication();
 			\$menu = \$app->getMenu();
 			\$active = \$menu->getActive();

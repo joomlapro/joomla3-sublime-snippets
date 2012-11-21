@@ -176,7 +176,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			\$query->select('a.${3/(.+)/\L\1/g} AS title, a.description AS text, a.created AS created, '
 				. \$case_when . ', ' . \$case_when1 . ', '
 				. \$query->concatenate(array(\$db->Quote(\$section), "c.title"), " / ") . ' AS section, \'2\' AS browsernav');
-			\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}} AS a');
+			\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
 			\$query->innerJoin('#__categories AS c ON c.id = a.catid');
 			\$query->where('(' . \$where . ')' . ' AND a.state in (' . implode(', ', \$state) . ') AND c.published=1 AND c.access IN (' . \$groups . ')');
 			\$query->order(\$order);

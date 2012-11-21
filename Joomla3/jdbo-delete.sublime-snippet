@@ -6,7 +6,7 @@
 
 // Create the base delete statement.
 \$query->delete();
-\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}${1:_table}');
+\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${1:_table}'));
 \$query->where('${2:column} = ' . (int) ${3:\$value});
 
 // Set the query and execute the delete.

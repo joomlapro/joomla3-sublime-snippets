@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML ${2:Edit} View class for the ${TM_PROJECT/(.+)/\u\1/g} component.
+ * HTML ${2:View_edit} View class for the ${TM_PROJECT/(.+)/\u\1/g} component.
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
@@ -146,16 +146,19 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 
 		\$pathway->addItem(\$title, '');
 
+		// Configure the document meta-description.
 		if (\$this->params->get('menu-meta_description'))
 		{
 			\$this->document->setDescription(\$this->params->get('menu-meta_description'));
 		}
 
+		// Configure the document meta-keywords.
 		if (\$this->params->get('menu-meta_keywords'))
 		{
 			\$this->document->setMetadata('keywords', \$this->params->get('menu-meta_keywords'));
 		}
 
+		// Configure the document robots.
 		if (\$this->params->get('robots'))
 		{
 			\$this->document->setMetadata('robots', \$this->params->get('robots'));

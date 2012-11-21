@@ -15,8 +15,8 @@
 		<filename>index.html</filename>
 	</files>
 	<languages>
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE.plg_search_${2/(.+)/\L\1/g}.ini</language>
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE.plg_search_${2/(.+)/\L\1/g}.sys.ini</language>
+		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.plg_search_${2/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.plg_search_${2/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 	<config>
 		<fields name="params">

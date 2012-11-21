@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Item} extends JControllerForm
+class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_item} extends JControllerForm
 {
 	/**
 	 * @since   $TM_VERSION

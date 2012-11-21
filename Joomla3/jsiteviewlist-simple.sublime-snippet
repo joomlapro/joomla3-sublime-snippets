@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:List} extends JViewLegacy
+class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
 {
 	protected \$state;
 
@@ -121,16 +121,19 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:List} extends JViewLegacy
 
 		\$this->document->setTitle(\$title);
 
+		// Configure the document meta-description.
 		if (\$this->params->get('menu-meta_description'))
 		{
 			\$this->document->setDescription(\$this->params->get('menu-meta_description'));
 		}
 
+		// Configure the document meta-keywords.
 		if (\$this->params->get('menu-meta_keywords'))
 		{
 			\$this->document->setMetadata('keywords', \$this->params->get('menu-meta_keywords'));
 		}
 
+		// Configure the document robots.
 		if (\$this->params->get('robots'))
 		{
 			\$this->document->setMetadata('robots', \$this->params->get('robots'));

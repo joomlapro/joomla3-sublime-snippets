@@ -12,6 +12,7 @@
  */
 public function onUserAfterDelete(\$user, \$succes, \$msg)
 {
+	// Initialiase variables.
 	\$app = JFactory::getApplication();
 
 	// only the \$user['id'] exists and carries valid information

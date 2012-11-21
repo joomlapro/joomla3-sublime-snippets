@@ -241,6 +241,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	{
 		if (!is_object(\$this->_item))
 		{
+			// Initialiase variables.
 			\$app = JFactory::getApplication();
 			\$menu = \$app->getMenu();
 			\$active = \$menu->getActive();

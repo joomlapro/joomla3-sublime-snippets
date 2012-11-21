@@ -6,7 +6,7 @@
  * @subpackage  com_finder
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:List} extends JControllerLegacy
+class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_list} extends JControllerLegacy
 {
 	/**
 	 * Method to find search query suggestions.

@@ -7,6 +7,7 @@ jQuery.noConflict();
 		${1:// more code using \$ as alias to jQuery}
 	});
 })(jQuery);
+
 ]]></content>
 	<tabTrigger>noconflict</tabTrigger>
 </snippet>

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[// Define variables
+	<content><![CDATA[// Initialiase variables.
 \$app = JFactory::getApplication();
 \$path = \$this->baseurl . '/templates/' . \$this->template;
 ?>

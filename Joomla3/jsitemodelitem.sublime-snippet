@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_item} extends JModelItem
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_item} extends JModelItem
 {
 	/**
 	 * Model context string.
@@ -73,7 +73,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:View_item} extends JModelItem
 				\$query = \$db->getQuery(true);
 
 				\$query->select(\$this->getState('item.select', 'a.*'));
-				\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s} AS a');
+				\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}') . ' AS a');
 
 				// Join on category table.
 				\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');

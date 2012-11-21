@@ -98,6 +98,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
 
 	return \$segments;
 }
+
 /**
  * Parse the segments of a URL.
  *

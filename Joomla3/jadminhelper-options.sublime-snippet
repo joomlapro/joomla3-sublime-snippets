@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Get a list of filter options for the ${2/(.+)/\L\1/g}.
+ * Get a list of filter options for the ${3/(.+)/\L\1/g}.
  *
  * @return  array  An array of JHtmlOption elements.
  *
@@ -14,9 +14,9 @@ public static function get${1:Field}Options()
 	\$db    = JFactory::getDbo();
 	\$query = \$db->getQuery(true);
 
-	\$query->select('id AS value, name AS text');
-	\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s} AS a');
-	\$query->order('a.name');
+	\$query->select('a.id AS value, a.${2:title} AS text');
+	\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}s}') . ' AS a');
+	\$query->order('a.${4:ordering}');
 
 	// Get the options.
 	\$db->setQuery(\$query);

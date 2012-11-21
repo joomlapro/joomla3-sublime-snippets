@@ -164,7 +164,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			\$query->select('a.${3/(.+)/\L\1/g} AS title, a.description AS text, a.created AS created, '
 				. \$case_when . ', '
 				. \$db->Quote(\$section) . ' AS section, \'2\' AS browsernav');
-			\$query->from('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}} AS a');
+			\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
 			\$query->where('(' . \$where . ')' . ' AND a.state in (' . implode(', ', \$state) . ')');
 			\$query->order(\$order);
 

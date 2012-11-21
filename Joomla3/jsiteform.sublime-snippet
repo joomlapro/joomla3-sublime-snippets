@@ -4,7 +4,7 @@
 	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\U\1/g}/models/fields">
 		<field id="id" name="id" type="hidden" class="inputbox"  size="10" default="0" readonly="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_ID_LABEL" />
 		<field name="asset_id" type="hidden" filter="unset" />
-		<field id="${1:title}" name="name" type="text" class="inputbox span6" size="30" required="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
+		<field id="${1/(.+)/\L\1/g}" name="${1:title}" type="text" class="inputbox span6" size="30" required="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
 		<field id="alias" name="alias" type="text" class="inputbox" size="45" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
 		<field id="catid" name="catid" type="categoryedit" extension="com_${TM_PROJECT/(.+)/\U\1/g}" class="inputbox" required="true" addfieldpath="/administrator/components/com_categories/models/fields" label="JCATEGORY" description="JFIELD_CATEGORY_DESC">
 			<option value="">JSELECT</option>
@@ -65,7 +65,7 @@
 				<option value="index, nofollow">COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_INDEX_NOFOLLOW</option>
 				<option value="noindex, nofollow">COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_NOINDEX_NOFOLLOW</option>
 			</field>
-			<field name="author" type="text" size="20" labelclass="control-label" label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC" />
+			<field name="author" type="text" size="20" labelclass="control-label" label="JAUTHOR" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_AUTHOR_DESC" />
 			<field name="rights" type="textarea" required="false" filter="string" cols="30" rows="2" labelclass="control-label" label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC" />
 		</fieldset>
 	</fields>

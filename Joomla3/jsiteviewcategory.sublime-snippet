@@ -190,6 +190,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ViewCategory extends JViewLegacy
 
 		\$this->document->setTitle(\$title);
 
+		// Configure the document meta-description.
 		if (\$this->category->metadesc)
 		{
 			\$this->document->setDescription(\$this->category->metadesc);
@@ -199,6 +200,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ViewCategory extends JViewLegacy
 			\$this->document->setDescription(\$this->params->get('menu-meta_description'));
 		}
 
+		// Configure the document meta-keywords.
 		if (\$this->category->metakey)
 		{
 			\$this->document->setMetadata('keywords', \$this->category->metakey);
@@ -208,6 +210,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ViewCategory extends JViewLegacy
 			\$this->document->setMetadata('keywords', \$this->params->get('menu-meta_keywords'));
 		}
 
+		// Configure the document robots.
 		if (\$this->params->get('robots'))
 		{
 			\$this->document->setMetadata('robots', \$this->params->get('robots'));

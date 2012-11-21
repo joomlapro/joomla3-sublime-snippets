@@ -55,7 +55,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 		{
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
-				'name', 'a.name',
+				'${2:title}', 'a.${2/(.+)/\L\1/g}',
 				'state', 'a.state',
 				'ordering', 'a.ordering',
 			);
@@ -110,7 +110,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 
 		// Select required fields from the categories.
 		\$query->select(\$this->getState('list.select', 'a.*'));
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${2:hello}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}') . ' AS a');
 		\$query->where('a.featured = 1');
 
 		// Join over the categories.
@@ -242,6 +242,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 	{
 		if (!is_object(\$this->_item))
 		{
+			// Initialiase variables.
 			\$app = JFactory::getApplication();
 			\$menu = \$app->getMenu();
 			\$active = \$menu->getActive();

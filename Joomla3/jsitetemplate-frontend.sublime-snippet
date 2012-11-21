@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[// Verify if is frontend
+	<content><![CDATA[// Verify if is frontend.
 \$menu = \$app->getMenu();
 \$frontend = \$menu->getActive() == \$menu->getDefault();]]></content>
 	<tabTrigger>jsitetemplate-frontend</tabTrigger>

@@ -13,6 +13,7 @@
  */
 public function onContentAfterSave(\$context, &\$article, \$isNew)
 {
+	// Initialiase variables.
 	\$app = JFactory::getApplication();
 
 	return true;

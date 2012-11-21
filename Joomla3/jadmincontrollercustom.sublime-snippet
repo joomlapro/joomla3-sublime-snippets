@@ -6,7 +6,7 @@
  *
  * @since   $TM_VERSION
  */
-public function ${1:hello}()
+public function ${1:action}()
 {
 	// Check for request forgeries.
 	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
@@ -51,7 +51,7 @@ public function ${1:hello}()
 		}
 	}
 
-	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${2:hellos}');
+	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${2:view_list}');
 }]]></content>
 	<tabTrigger>jadmincontrollercustom</tabTrigger>
 </snippet>

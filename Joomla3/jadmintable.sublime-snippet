@@ -107,7 +107,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 			return false;
 		}
 
-		// Clean up keywords -- eliminate extra spaces between phrases.
+		// Clean up keywords -- eliminate extra spaces between phrases
 		// and cr (\r) and lf (\n) characters from string.
 		if (!empty(\$this->metakey))
 		{

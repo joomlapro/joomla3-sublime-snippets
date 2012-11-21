@@ -46,7 +46,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
 
 		// Prepare query.
 		\$query->select('');
-		\$query->from('#__');
+		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}'));
 		\$query->where('');
 
 		return \$query;

@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[if (isset(\$view) and \$view == '${1:view}')
+{
+	\$segments[] = '${1/(.+)/\L\1/g}';
+
+	if (isset(\$query['id']))
+	{
+		\$segments[] = \$query['id'];
+	}
+
+	unset(\$query['id']);
+}]]></content>
+	<tabTrigger>jsiterouterbuild_simple</tabTrigger>
+</snippet>

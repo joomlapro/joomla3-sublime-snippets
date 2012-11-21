@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[<?php echo JHtml::_('sliders.start', 'stat-pane'); ?>
-<?php echo JHtml::_('sliders.panel', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}'), '${1:hello}-panel'); ?>
+<?php echo JHtml::_('sliders.panel', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}'), '${1:view}-panel'); ?>
 <table class="adminlist">
 	<thead>
 		<tr>
@@ -27,7 +27,7 @@
 		foreach (\$this->items as \$item):
 
 		// Define variables
-		\$link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:hello}.edit&id=' . \$item->id);
+		\$link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:controller_edit}.edit&id=' . \$item->id);
 		\$component = JRequest::getCmd('option');
 		?>
 		<tr class="row<?php echo \$k; ?>">

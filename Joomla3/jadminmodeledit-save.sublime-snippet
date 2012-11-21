@@ -10,6 +10,7 @@
  */
 public function save(\$data)
 {
+	// Initialiase variables.
 	\$app = JFactory::getApplication();
 
 	if (isset(\$data['${1:images}']) && is_array(\$data['${1/(.+)/\L\1/g}']))

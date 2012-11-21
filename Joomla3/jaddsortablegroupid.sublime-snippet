@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[sortable-group-id="<?php echo \$item->${1:field}?>"]]></content>
+	<tabTrigger>jaddsortablegroupid</tabTrigger>
+</snippet>

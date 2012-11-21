@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[if (isset(\$needles['view']))
+{
+	// Get the items.
+	\$items  = self::getItems();
+	\$itemid = null;
+
+	// Search for a suitable menu id.
+	foreach (\$items as \$item)
+	{
+		if (isset(\$item->query['view']) && \$item->query['view'] === \$needles['view'])
+		{
+			return \$item->id;
+			break;
+		}
+	}
+}]]></content>
+	<tabTrigger>jsitehelperroute-_findItem-codefix</tabTrigger>
+</snippet>

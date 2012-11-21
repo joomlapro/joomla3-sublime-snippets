@@ -13,6 +13,7 @@
  */
 public function onUserBeforeSave(\$user, \$isnew, \$new)
 {
+	// Initialiase variables.
 	\$app = JFactory::getApplication();
 
 	// throw new Exception('Some error occurred. Please do not save me');

@@ -1,6 +1,6 @@
 <snippet>
-	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_${1:HELLO}_N_ITEMS_ARCHIVED="%d ${2:hellos} successfully archived"
-COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_0="No ${3:Hello} archived."
+	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_${1:LIST}_N_ITEMS_ARCHIVED="%d ${2:List} successfully archived"
+COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_0="No ${3:Edit} archived."
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_1="%d ${3/(.+)/\L\1/g} successfully archived"
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_MORE="%d ${2/(.+)/\L\1/g} successfully checked in"
 COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_0="No ${3/(.+)/\L\1/g} successfully checked in"

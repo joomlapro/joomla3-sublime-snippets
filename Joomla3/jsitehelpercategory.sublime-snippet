@@ -22,6 +22,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Categories extends JCategories
 		\$options['extension'] = 'com_${TM_PROJECT/(.+)/\L\1/g}';
 		\$options['statefield'] = 'state';
 		// \$options['countItems'] = 1;
+		// \$options['allLanguages'] = true;
 
 		parent::__construct(\$options);
 	}

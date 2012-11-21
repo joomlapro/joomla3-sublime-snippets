@@ -37,6 +37,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategories extends JModelLegacy
 	 */
 	protected function populateState()
 	{
+		// Initialiase variables.
 		\$app = JFactory::getApplication();
 		\$this->setState('filter.extension', \$this->_extension);
 
@@ -86,6 +87,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategories extends JModelLegacy
 	{
 		if (!count(\$this->_items))
 		{
+			// Initialiase variables.
 			\$app = JFactory::getApplication();
 			\$menu = \$app->getMenu();
 			\$active = \$menu->getActive();

@@ -12,7 +12,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 	protected static \$lookup;
 
 	/**
-	 * Method to get a route configuration for the hello view.
+	 * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
 	 *
 	 * @param   int  \$id     The route of the ${1/(.+)/\L\1/g}.
 	 * @param   int  \$catid  The id of the category.
@@ -23,8 +23,9 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 	 */
 	public static function get${1:${TM_PROJECT/(.+)(s\b)/\u\1/g}}Route(\$id, \$catid)
 	{
+		// Initialiase variables.
 		\$needles = array(
-			'${1/(.+)/\L\1/g}'  => array((int) \$id)
+			'${1/(.+)/\L\1/g}' => array((int) \$id)
 		);
 
 		// Create the link
@@ -160,6 +161,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 	 */
 	protected static function _findItem(\$needles = null)
 	{
+		// Initialiase variables.
 		\$app   = JFactory::getApplication();
 		\$menus = \$app->getMenu('site');
 

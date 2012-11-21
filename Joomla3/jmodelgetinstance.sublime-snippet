@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[JModelLegacy::getInstance('${1:Hello}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));]]></content>
-	<tabTrigger>jmodelgetinstance</tabTrigger>
-</snippet>

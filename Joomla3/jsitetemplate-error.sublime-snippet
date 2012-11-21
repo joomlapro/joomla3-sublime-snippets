@@ -2,6 +2,7 @@
 	<content><![CDATA[// Getting params from template
 \$params = JFactory::getApplication()->getTemplate(true)->params;
 
+// Initialiase variables.
 \$app = JFactory::getApplication();
 \$doc = JFactory::getDocument();
 \$this->language = \$doc->language;

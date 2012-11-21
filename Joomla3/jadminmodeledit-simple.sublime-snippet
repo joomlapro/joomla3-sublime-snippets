@@ -36,6 +36,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 	 */
 	public function getForm(\$data = array(), \$loadData = true)
 	{
+		// Initialiase variables.
 		\$app = JFactory::getApplication();
 
 		// Get the form.

@@ -13,6 +13,7 @@
  */
 public function onContentBeforeDisplay(\$context, &\$article, &\$params, \$limitstart)
 {
+	// Initialiase variables.
 	\$app = JFactory::getApplication();
 
 	return '';

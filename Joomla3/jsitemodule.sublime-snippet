@@ -3,7 +3,7 @@
 require_once __DIR__ . '/helper.php';
 
 // Get the ${1/(.+)/\L\1/g}.
-\$${2:list} = mod${1/(.+)/\u\1/g}Helper::get${2/(.+)/\u\1/g}(\$params);
+\$${2:list} = Mod${1/(.+)/\u\1/g}Helper::get${2/(.+)/\u\1/g}(\$params);
 
 // Initialise variables.
 \$moduleclass_sfx = htmlspecialchars(\$params->get('moduleclass_sfx'));

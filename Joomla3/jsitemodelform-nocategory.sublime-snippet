@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Base this model on the backend version.
-require_once JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/${2:edit}.php';
+require_once JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/${2:model_edit}.php';
 
 /**
  * ${TM_PROJECT/(.+)/\u\1/g} Component ${2/(.+)/\u\1/g} Model
@@ -26,7 +26,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		\$app = JFactory::getApplication();
 
 		// Load state from the request.
-		\$pk = \$app->input->getInt('a_id');
+		\$pk = \$app->input->getInt('${2/(.)(.+)/\L\1/g}_id');
 		\$this->setState('${2/(.+)/\L\1/g}.id', \$pk);
 
 		\$return = \$app->input->get('return', null, 'base64');
