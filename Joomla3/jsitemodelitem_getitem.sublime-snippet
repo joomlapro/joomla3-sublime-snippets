@@ -86,11 +86,11 @@ public function &getItem(\$pk = null)
 			// Compute selected asset permissions.
 			\$user = JFactory::getUser();
 
-			// Technically guest could edit an article, but lets not check that to improve performance a little.
+			// Technically guest could edit an ${1/(.+)/\L\1/g}, but lets not check that to improve performance a little.
 			if (!\$user->get('guest'))
 			{
 				\$userId = \$user->get('id');
-				\$asset  = 'com_content.article.' . \$data->id;
+				\$asset  = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
 
 				// Check general edit permission first.
 				if (\$user->authorise('core.edit', \$asset))
@@ -141,5 +141,5 @@ public function &getItem(\$pk = null)
 
 	return \$this->_item[\$pk];
 }]]></content>
-	<tabTrigger>jsitemodelitem-getitem_query</tabTrigger>
+	<tabTrigger>jsitemodelitem_getitem</tabTrigger>
 </snippet>

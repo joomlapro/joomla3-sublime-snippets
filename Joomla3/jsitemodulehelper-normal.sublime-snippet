@@ -1,0 +1,100 @@
+<snippet>
+	<content><![CDATA[// Load dependent classes.
+require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
+
+// Include the component models.
+JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models', '${TM_PROJECT/(.+)/\u\1/g}Model');
+
+/**
+ * Helper for mod_${1/(.+)/\L\1/g}
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  mod_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+abstract class Mod${1:Module}Helper
+{
+	/**
+	 * Get a list of the ${3:category} items.
+	 *
+	 * @param   JRegistry  &\$params  The module options.
+	 *
+	 * @return  array
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function getList(& \$params)
+	{
+		// Initialiase variables.
+		\$app = JFactory::getApplication();
+
+		// Get an instance of the generic ${2/(.+)/\L\1/g} model.
+		\$model = JModelLegacy::getInstance('${2:${1/(.+)/\u\1/g}}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+
+		// Set application parameters in model.
+		\$appParams = JFactory::getApplication()->getParams();
+		\$model->setState('params', \$appParams);
+
+		// Set the filters based on the module params.
+		\$model->setState('list.start', 0);
+		\$model->setState('list.limit', (int) \$params->get('count', 5));
+
+		\$model->setState('filter.state', 1);
+
+		\$model->setState('list.select', 'a.id, a.catid, a.${4:title}, a.alias, a.state, a.created, a.created_by, a.created_by_alias' .
+			', a.modified, a.modified_by, a.publish_up, a.publish_down, a.images, a.metadata, a.metakey, a.metadesc, a.access, a.params' .
+			', a.hits, a.featured');
+
+		// Access filter.
+		\$access = !JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}')->get('show_noauth');
+		\$authorised = JAccess::getAuthorisedViewLevels(JFactory::getUser()->get('id'));
+		\$model->setState('filter.access', \$access);
+
+		// Category filter.
+		\$model->setState('filter.category_id', \$params->get('catid', array()));
+
+		// Filter by language.
+		\$model->setState('filter.language', \$app->getLanguageFilter());
+
+		// Set ordering.
+		\$ordering = \$params->get('ordering', 'a.publish_up');
+		\$model->setState('list.ordering', \$ordering);
+
+		if (trim(\$ordering) == 'rand()')
+		{
+			\$model->setState('list.direction', '');
+		}
+		else
+		{
+			\$model->setState('list.direction', 'DESC');
+		}
+
+		// Retrieve ${TM_PROJECT/(.+)/\u\1/g}.
+		\$items = \$model->getItems();
+
+		foreach (\$items as &\$item)
+		{
+			// Compute the ${5/(.+)/\L\1/g} slug.
+			\$item->slug = \$item->id . ':' . \$item->alias;
+			\$item->catslug = \$item->catid . ':' . \$item->category_alias;
+
+			if (\$access || in_array(\$item->access, \$authorised))
+			{
+				// We know that user has the privilege to view the ${5/(.+)/\L\1/g}.
+				\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${5:${2/(.+)(s\b)/\u\1/g}}Route(\$item->slug, \$item->catid));
+				\$item->linkText = JText::_('MOD_${1/(.+)/\U\1/g}_READMORE');
+			}
+			else
+			{
+				\$item->link = JRoute::_('index.php?option=com_users&view=login');
+				\$item->linkText = JText::_('MOD_${1/(.+)/\U\1/g}_READMORE_REGISTER');
+			}
+		}
+
+		return \$items;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodulehelper-normal</tabTrigger>
+</snippet>

@@ -1,6 +1,8 @@
 <snippet>
-	<content><![CDATA[require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
+	<content><![CDATA[// Load dependent classes.
+require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
 
+// Include the component models.
 JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models', '${TM_PROJECT/(.+)/\u\1/g}Model');
 
 /**
@@ -21,7 +23,7 @@ abstract class Mod${1:Module}Helper
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function getList(&\$params)
+	public static function getList(& \$params)
 	{
 		// Get the dbo
 		\$db = JFactory::getDbo();
@@ -37,7 +39,7 @@ abstract class Mod${1:Module}Helper
 		// Set the filters based on the module params
 		\$model->setState('list.start', 0);
 		\$model->setState('list.limit', (int) \$params->get('count', 5));
-		\$model->setState('filter.published', 1);
+		\$model->setState('filter.state', 1);
 
 		// Access filter
 		\$access = !JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}')->get('show_noauth');
@@ -49,6 +51,7 @@ abstract class Mod${1:Module}Helper
 
 		// User filter
 		\$userId = JFactory::getUser()->get('id');
+
 		switch (\$params->get('user_id'))
 		{
 			case 'by_me':
@@ -70,7 +73,7 @@ abstract class Mod${1:Module}Helper
 		// Filter by language
 		\$model->setState('filter.language', \$app->getLanguageFilter());
 
-		//  Featured switch
+		// Featured switch
 		switch (\$params->get('show_featured'))
 		{
 			case '1':
@@ -101,6 +104,7 @@ abstract class Mod${1:Module}Helper
 
 		foreach (\$items as &\$item)
 		{
+			// Compute the ${3/(.+)/\L\1/g} slug.
 			\$item->slug = \$item->id . ':' . \$item->alias;
 			\$item->catslug = \$item->catid . ':' . \$item->category_alias;
 

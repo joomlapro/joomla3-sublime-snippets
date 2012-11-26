@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * ${1} component helper.
+ * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Helper
  *
- * @package     $TM_PROJECT
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-abstract class ${1}Helper
+abstract class ${1:Function}Helper
 {
 
 }

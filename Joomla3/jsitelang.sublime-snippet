@@ -16,6 +16,8 @@ COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_INDEX_FOLLOW="Indexar, Seguir"
 COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_NOINDEX_FOLLOW="Não indexar, seguir"
 COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_INDEX_NOFOLLOW="Indexar, Não seguir"
 COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_NOINDEX_NOFOLLOW="Não indexar, não seguir"
+JOPTION_ORDER_FIRST="Ordem Primeiro"
+JOPTION_ORDER_LAST="Ordem Último"
 
 ; MISC
 

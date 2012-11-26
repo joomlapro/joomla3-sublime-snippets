@@ -17,7 +17,7 @@ abstract class Mod${1:Hello}Helper
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function getList(&\$params)
+	public static function getList(& \$params)
 	{
 		// Initialiase variables.
 		\$db = JFactory::getDbo();

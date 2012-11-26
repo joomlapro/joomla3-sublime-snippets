@@ -8,7 +8,7 @@
  *
  * @since   $TM_VERSION
  */
-public static function get${1:List}(&\$params)
+public static function get${1:List}(& \$params)
 {
 	// Initialiase variables.
 	\$db = JFactory::getDbo();

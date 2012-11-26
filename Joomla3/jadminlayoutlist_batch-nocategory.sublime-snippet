@@ -1,5 +1,7 @@
 <snippet>
-	<content><![CDATA[
+	<content><![CDATA[// Include the component HTML helpers.
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+
 \$published = \$this->state->get('filter.state');
 ?>
 <div class="modal hide fade" id="collapseModal">
@@ -22,7 +24,7 @@
 		<?php if (\$published >= 0): ?>
 		<div class="control-group">
 			<div class="controls">
-				<?php echo JHtml::_('batch.item', 'com_${TM_PROJECT/(.+)/\L\1/g}'); ?>
+				<?php echo JHtml::_('${TM_PROJECT/(.+)/\L\1/g}.item', 'com_${TM_PROJECT/(.+)/\L\1/g}'); ?>
 			</div>
 		</div>
 		<?php endif; ?>

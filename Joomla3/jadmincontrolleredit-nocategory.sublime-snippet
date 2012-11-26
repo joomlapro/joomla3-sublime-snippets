@@ -1,4 +1,4 @@
-<snippet>
+	<snippet>
 	<content><![CDATA[/**
  * ${1/(.+)/\u\1/g} controller class.
  *
@@ -32,8 +32,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControlle
 		\$model = \$this->getModel('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Model', array());
 
 		// Preset the redirect
-		\$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}' . \$this->getRedirectToListAppend(), false));
-
+		\$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${2:${1/(.+)/\L\1/g}s}' . \$this->getRedirectToListAppend(), false));
 		return parent::batch(\$model);
 	}
 }

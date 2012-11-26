@@ -154,7 +154,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_item} extends JControlle
 
 		if (\$task == 'save')
 		{
-			\$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$validData['id'], false));
+			\$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$validData['id'] . ':' . \$validData['alias'], false));
 		}
 	}
 

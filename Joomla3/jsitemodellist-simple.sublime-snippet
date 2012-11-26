@@ -143,7 +143,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 				'list.select',
 				'a.id, a.${2/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time'
 				. ', a.state, a.ordering'
-				. ', a.created_by_alias'
+				. ', a.created, a.created_by_alias'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}}') . ' AS a');

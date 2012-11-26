@@ -17,5 +17,5 @@ if (isset(\$array['${2:${1:article}text}']))
 }
 
 ]]></content>
-	<tabTrigger>jadmintablebind_text</tabTrigger>
+	<tabTrigger>jadmintable-bind_text</tabTrigger>
 </snippet>

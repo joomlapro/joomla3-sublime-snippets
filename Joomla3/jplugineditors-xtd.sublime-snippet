@@ -17,7 +17,7 @@ class PlgButton${1:Field} extends JPlugin
 	 * @access  protected
 	 * @since   $TM_VERSION
 	 */
-	public function __construct(&\$subject, \$config)
+	public function __construct(& \$subject, \$config)
 	{
 		parent::__construct(\$subject, \$config);
 		\$this->loadLanguage();

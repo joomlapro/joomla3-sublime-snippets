@@ -21,7 +21,7 @@ JHtml::_('behavior.formvalidation');
 		}
 	}
 </script>
-<div class="edit item-page<?php echo \$this->pageclass_sfx; ?>">
+<div class="${TM_PROJECT/(.+)/\L\1/g} edit item-page<?php echo \$this->pageclass_sfx; ?>">
 	<?php if (\$params->get('show_page_heading', 1)): ?>
 		<div class="page-header">
 			<h1>

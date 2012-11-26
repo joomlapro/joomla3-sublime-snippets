@@ -28,7 +28,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 	public function display(\$tpl = null)
 	{
 		// Initialiase variables.
-		\$app		 = JFactory::getApplication();
+		\$app		  = JFactory::getApplication();
 		\$user        = JFactory::getUser();
 
 		// Get model data.

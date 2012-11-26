@@ -8,7 +8,7 @@
  *
  * @since   $TM_VERSION
  */
-function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(&\$query)
+function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(& \$query)
 {
 	\$segments = array();
 
