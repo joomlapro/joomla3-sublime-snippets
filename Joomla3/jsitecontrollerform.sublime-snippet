@@ -107,7 +107,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_item} extends JControlle
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function cancel(\$key = '${1/(.)(.+)/\L\1/g}_id')
+	public function cancel(\$key = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
 	{
 		parent::cancel(\$key);
 
@@ -125,7 +125,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_item} extends JControlle
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function edit(\$key = null, \$urlVar = '${1/(.)(.+)/\L\1/g}_id')
+	public function edit(\$key = null, \$urlVar = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
 	{
 		\$result = parent::edit(\$key, \$urlVar);
 
@@ -232,7 +232,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_item} extends JControlle
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function save(\$key = null, \$urlVar = '${1/(.)(.+)/\L\1/g}_id')
+	public function save(\$key = null, \$urlVar = '${TM_PROJECT/(.)(.+)/\L\1/g}_id')
 	{
 		\$result = parent::save(\$key, \$urlVar);
 

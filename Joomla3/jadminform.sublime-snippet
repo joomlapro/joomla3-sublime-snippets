@@ -39,7 +39,7 @@
 		<field name="publish_up" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_UP_LABEL" description="JGLOBAL_FIELD_PUBLISH_UP_DESC" />
 		<field name="publish_down" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_DOWN_LABEL" description="JGLOBAL_FIELD_PUBLISH_DOWN_DESC" />
 		<field name="version" type="text" class="readonly" readonly="true" filter="unset" size="6" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_VERSION_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_VERSION_DESC" />
-		<field name="hits" type="text" class="readonly" size="6" readonly="true" filter="unset" label="JGLOBAL_HITS" description="COM_${TM_PROJECT/(.+)/\U\1/g}_HITS_DESC" />
+		<field name="hits" type="text" class="readonly" size="6" readonly="true" filter="unset" label="JGLOBAL_HITS" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_HITS_DESC" />
 	</fieldset>
 	<fields name="images">
 		<field name="image_first" type="media" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FIRST_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FIRST_DESC" />

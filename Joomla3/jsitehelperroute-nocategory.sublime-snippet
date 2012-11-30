@@ -57,11 +57,11 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 		// Create the link.
 		if (\$id)
 		{
-			\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&w_id=' . \$id;
+			\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&${TM_PROJECT/(.)(.+)/\L\1/g}_id=' . \$id;
 		}
 		else
 		{
-			\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.add&w_id=0';
+			\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.add&${TM_PROJECT/(.)(.+)/\L\1/g}_id=0';
 		}
 
 		if (\$return)

@@ -30,7 +30,7 @@ JHtml::_('behavior.formvalidation');
 		</div>
 	<?php endif; ?>
 
-	<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&${1/(.)(.+)/\L\1/g}_id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
+	<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&${TM_PROJECT/(.)(.+)/\L\1/g}_id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
 		<div class="btn-toolbar">
 			<div class="btn-group">
 				<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('${1/(.+)/\L\1/g}.save')">

@@ -23,7 +23,7 @@ class JHtmlIcon
 		// Initialiase variables.
 		\$uri = JURI::getInstance();
 
-		\$url = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:controller_item}.add&return=' . base64_encode(\$uri) . '&${1/(.)(.+)/\L\1/g}_id=0';
+		\$url = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:controller_item}.add&return=' . base64_encode(\$uri) . '&${TM_PROJECT/(.)(.+)/\L\1/g}_id=0';
 
 		if (\$params->get('show_icons', 1))
 		{
@@ -127,7 +127,7 @@ class JHtmlIcon
 			return '<span class="hasTip" title="' . htmlspecialchars(\$tooltip, ENT_COMPAT, 'UTF-8') . '">' . \$button . '</span>';
 		}
 
-		\$url = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&${1/(.)(.+)/\L\1/g}_id=' . \$${1/(.+)/\L\1/g}->id . '&return=' . base64_encode(\$uri);
+		\$url = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&${TM_PROJECT/(.)(.+)/\L\1/g}_id=' . \$${1/(.+)/\L\1/g}->id . '&return=' . base64_encode(\$uri);
 
 		if (\$${1/(.+)/\L\1/g}->state == 0)
 		{

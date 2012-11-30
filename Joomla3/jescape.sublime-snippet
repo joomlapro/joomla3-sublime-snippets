@@ -1,4 +1,4 @@
 <snippet>
-	<content><![CDATA[\$this->escape(${1:\$item->name});]]></content>
+	<content><![CDATA[\$this->escape(\$item->$1);]]></content>
 	<tabTrigger>jescape</tabTrigger>
 </snippet>

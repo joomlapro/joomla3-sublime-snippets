@@ -95,6 +95,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 */
 	protected function getListQuery()
 	{
+		// Initialiase variables.
 		\$user   = JFactory::getUser();
 		\$groups = implode(', ', \$user->getAuthorisedViewLevels());
 

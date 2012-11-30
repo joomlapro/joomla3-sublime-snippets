@@ -44,13 +44,13 @@
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Magazines]]></string>
+				<string><![CDATA[Bolsas]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_TEMPLATE</string>
 				<key>value</key>
-				<string><![CDATA[Town]]></string>
+				<string><![CDATA[Education]]></string>
 			</dict>
 			<dict>
 				<key>name</key>

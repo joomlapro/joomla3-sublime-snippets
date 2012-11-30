@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:view}&layout=complete', false));]]></content>
+	<tabTrigger>jsetredirect</tabTrigger>
+</snippet>
