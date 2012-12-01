@@ -142,7 +142,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 			if (\$advanced)
 			{
 				\$db = JFactory::getDBO();
-				\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g} WHERE alias = ' . \$db->Quote(\$segment);
+				\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g} WHERE alias = ' . \$db->quote(\$segment);
 				\$db->setQuery(\$query);
 				\$nid = \$db->loadResult();
 			}

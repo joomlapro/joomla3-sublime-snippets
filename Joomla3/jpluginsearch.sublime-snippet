@@ -101,7 +101,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 		switch (\$phrase)
 		{
 			case 'exact':
-				\$text      = \$db->Quote('%' . \$db->escape(\$text, true) . '%', false);
+				\$text      = \$db->quote('%' . \$db->escape(\$text, true) . '%', false);
 				\$wheres2   = array();
 				\$wheres2[] = 'a.description LIKE ' . \$text;
 				\$wheres2[] = 'a.${3:title} LIKE ' . \$text;
@@ -116,7 +116,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 
 				foreach (\$words as \$word)
 				{
-					\$word      = \$db->Quote('%' . \$db->escape(\$word, true) . '%', false);
+					\$word      = \$db->quote('%' . \$db->escape(\$word, true) . '%', false);
 					\$wheres2   = array();
 					\$wheres2[] = 'a.description LIKE ' . \$word;
 					\$wheres2[] = 'a.${3/(.+)/\L\1/g} LIKE ' . \$word;
@@ -175,7 +175,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 
 			\$query->select('a.${3/(.+)/\L\1/g} AS title, a.description AS text, a.created AS created, '
 				. \$case_when . ', ' . \$case_when1 . ', '
-				. \$query->concatenate(array(\$db->Quote(\$section), "c.title"), " / ") . ' AS section, \'2\' AS browsernav');
+				. \$query->concatenate(array(\$db->quote(\$section), "c.title"), " / ") . ' AS section, \'2\' AS browsernav');
 			\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
 			\$query->innerJoin('#__categories AS c ON c.id = a.catid');
 			\$query->where('(' . \$where . ')' . ' AND a.state in (' . implode(', ', \$state) . ') AND c.published=1 AND c.access IN (' . \$groups . ')');
@@ -185,8 +185,8 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			if (\$app->isSite() && \$app->getLanguageFilter())
 			{
 				\$tag = JFactory::getLanguage()->getTag();
-				\$query->where('a.language in (' . \$db->Quote(\$tag) . ', ' . \$db->Quote('*') . ')');
-				\$query->where('c.language in (' . \$db->Quote(\$tag) . ', ' . \$db->Quote('*') . ')');
+				\$query->where('a.language in (' . \$db->quote(\$tag) . ', ' . \$db->quote('*') . ')');
+				\$query->where('c.language in (' . \$db->quote(\$tag) . ', ' . \$db->quote('*') . ')');
 			}
 
 			// Set the query and load the result.

@@ -9,7 +9,7 @@ if (!empty(\$search))
 			\$query->where('a.id = ' . (int) \$search);
 			break;
 		default:
-			\$search = \$db->Quote('%' . \$db->escape(\$search, true) . '%');
+			\$search = \$db->quote('%' . \$db->escape(\$search, true) . '%');
 			\$query->where('(a.${1:title} LIKE ' . \$search . ' OR a.alias LIKE ' . \$search . ')');
 			break;
 	}

@@ -146,9 +146,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 		\$query->where('a.state != -2');
 
 		// Filter by start and end dates.
-		\$nullDate = \$db->Quote(\$db->getNullDate());
+		\$nullDate = \$db->quote(\$db->getNullDate());
 		\$date = JFactory::getDate();
-		\$nowDate = \$db->Quote(\$date->toSql());
+		\$nowDate = \$db->quote(\$date->toSql());
 
 		if (\$this->getState('filter.publish_date'))
 		{
@@ -159,7 +159,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 		// Filter by language
 		if (\$this->getState('filter.language'))
 		{
-			\$query->where('a.language in (' . \$db->Quote(JFactory::getLanguage()->getTag()) . ', ' . \$db->Quote('*') . ')');
+			\$query->where('a.language in (' . \$db->quote(JFactory::getLanguage()->getTag()) . ', ' . \$db->quote('*') . ')');
 		}
 
 		// Add the list ordering clause.

@@ -3,7 +3,7 @@
  * ${1/(.+)/\u\1/g} JSON controller for ${TM_PROJECT/(.+)/\u\1/g} Component.
  *
  * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_finder
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
 class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_list} extends JControllerLegacy
@@ -22,7 +22,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_list} extends JControlle
 	{
 		\$return = array();
 
-		\$params = JComponentHelper::getParams('com_finder');
+		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
 
 		if (\$params->get('show_autosuggest', 1))
 		{
