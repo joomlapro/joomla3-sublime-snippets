@@ -3,7 +3,7 @@
 <extension version="3.0" type="plugin" group="${1:user}">
 	<name>plg_${1/(.+)/\L\1/g}_${2:plugin}</name>
 	<author>$TM_FULLNAME</author>
-	<creationDate>$3 $TM_YEAR</creationDate>
+	<creationDate>${3:$TM_MONTH} $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>$TM_EMAIL</authorEmail>

@@ -37,11 +37,11 @@ class JFormFieldOrdering${1:Field} extends JFormField
 		\$attr .= \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
 
 		// Get some field values from the form.
-		\$${3:${TM_PROJECT/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
+		\$${3:${1/(.+)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
 
 		// Build the query for the ordering list.
 		\$query = 'SELECT ordering AS value, ${2:title} AS text' .
-				' FROM #__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}' .
+				' FROM #__${TM_PROJECT/(.+)/\L\1/g}_${4:${1/(.+)/\L\1/g}s}' .
 				' ORDER BY ordering';
 
 		// Create a read-only list (no name) with a hidden input to store the value.

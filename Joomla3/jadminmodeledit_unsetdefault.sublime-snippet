@@ -51,5 +51,5 @@ public function unset${1/(.+)/\u\1/g}(\$id = 0)
 
 	return true;
 }]]></content>
-	<tabTrigger>jadminmodeledit-unsetdefault</tabTrigger>
+	<tabTrigger>jadminmodeledit_unsetdefault</tabTrigger>
 </snippet>

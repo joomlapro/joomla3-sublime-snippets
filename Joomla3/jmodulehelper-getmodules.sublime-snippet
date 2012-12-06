@@ -9,5 +9,5 @@ foreach (\$modules as \$module)
 	\$params->loadString(\$module->params);
 	echo \$output;
 }]]></content>
-	<tabTrigger>jaddmodule</tabTrigger>
+	<tabTrigger>jmodulehelper-getmodules</tabTrigger>
 </snippet>

@@ -1,24 +1,44 @@
 <snippet>
-	<content><![CDATA[<?php
-// Initialiase variables.
-\$messages = \$app->getMessageQueue();
-
-if (count(\$messages))
+	<content><![CDATA[/**
+ * Render the system message.
+ *
+ * @param   array  \$msgList  An array contains system message.
+ *
+ * @return  string  System message markup.
+ *
+ * @since   $TM_VERSION
+ */
+function renderMessage(\$msgList)
 {
-	foreach (\$messages as \$message)
+	// Initialiase variables.
+	\$buffer  = null;
+	\$buffer .= "\n<div id=\"system-message-container\">";
+	\$alert   = array('error' => 'alert-error', 'warning' => '', 'notice' => 'alert-info', 'message' => 'alert-success');
+
+	if (is_array(\$msgList))
 	{
-		\$text = JText::_(strtoupper(\$message['type']));
+		foreach (\$msgList as \$type => \$msgs)
+		{
+			\$buffer .= '<div class="alert ' . \$alert[\$type] . '">';
+			\$buffer .= "\n<h4 class=\"alert-heading\">" . JText::_(\$type) . "</h4>";
 
-		\$html = '<div class="message-box ' . strtolower(\$message['type']) . '">';
-		\$html .= '<strong>' . \$text . ':</strong> ' . \$message['message'] . ' <span class="close"></span>';
-		\$html .= '</div>';
-		\$html .= '<script type="text/javascript">\$(\'.close\').click(function(){\$(\'.message-box\').fadeOut(\'slow\');});</script>';
+			if (count(\$msgs))
+			{
+				foreach (\$msgs as \$msg)
+				{
+					\$buffer .= "\n\t\t<p>" . \$msg . "</p>";
+				}
+			}
 
-		echo \$html;
+			\$buffer .= "\n</div>";
+		}
 	}
+
+	\$buffer .= "\n</div>";
+
+	return \$buffer;
 }
-?>
-<script type="text/javascript">\$('.close').click(function(){\$('.message-box').fadeOut('slow');});</script>
+
 ]]></content>
 	<tabTrigger>jsitetemplate-message</tabTrigger>
 </snippet>

@@ -8,5 +8,5 @@
 protected \$view_list = '${1:view_list}';
 
 ]]></content>
-	<tabTrigger>jadmincontrolleredit-view_list</tabTrigger>
+	<tabTrigger>jadmincontrolleredit_view_list</tabTrigger>
 </snippet>

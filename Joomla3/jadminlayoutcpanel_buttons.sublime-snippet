@@ -7,5 +7,5 @@
 		<?php endif; ?>
 	</div>
 </div>]]></content>
-	<tabTrigger>jadminlayoutcpanel-buttons</tabTrigger>
+	<tabTrigger>jadminlayoutcpanel_buttons</tabTrigger>
 </snippet>

@@ -36,5 +36,5 @@ JHtml::_('bootstrap.tooltip');
 </div>
 
 ]]></content>
-	<tabTrigger>jadminlayoutcpanel-modules</tabTrigger>
+	<tabTrigger>jadminlayoutcpanel_modules</tabTrigger>
 </snippet>

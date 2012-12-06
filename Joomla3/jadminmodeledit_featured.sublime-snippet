@@ -47,5 +47,5 @@ public function featured(\$pks, \$value = 0)
 
 	return true;
 }]]></content>
-	<tabTrigger>jadminmodeledit-featured</tabTrigger>
+	<tabTrigger>jadminmodeledit_featured</tabTrigger>
 </snippet>

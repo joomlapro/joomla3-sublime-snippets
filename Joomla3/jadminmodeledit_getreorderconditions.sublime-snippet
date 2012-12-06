@@ -15,5 +15,5 @@ protected function getReorderConditions(\$table)
 
 	return \$condition;
 }]]></content>
-	<tabTrigger>jadminmodeledit-getreorderconditions</tabTrigger>
+	<tabTrigger>jadminmodeledit_getreorderconditions</tabTrigger>
 </snippet>

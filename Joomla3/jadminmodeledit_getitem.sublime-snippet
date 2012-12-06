@@ -27,5 +27,5 @@ public function getItem(\$pk = null)
 	return \$item;
 }
 ]]></content>
-	<tabTrigger>jadminmodeledit-getitem</tabTrigger>
+	<tabTrigger>jadminmodeledit_getitem</tabTrigger>
 </snippet>

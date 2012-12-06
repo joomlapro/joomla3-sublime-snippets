@@ -61,5 +61,5 @@ public function set${1:Home}(\$id = 0)
 
 	return true;
 }]]></content>
-	<tabTrigger>jadminmodeledit-setdefault</tabTrigger>
+	<tabTrigger>jadminmodeledit_setdefault</tabTrigger>
 </snippet>

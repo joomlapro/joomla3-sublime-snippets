@@ -5,5 +5,5 @@
 	$registry->loadArray($data['${1/(.+)/\L\1/g}']);
 	$data['${1/(.+)/\L\1/g}'] = (string) $registry;
 }]]></content>
-	<tabTrigger>jadminmodeledit-getitem_array</tabTrigger>
+	<tabTrigger>jadminmodeledit_getitem-array</tabTrigger>
 </snippet>

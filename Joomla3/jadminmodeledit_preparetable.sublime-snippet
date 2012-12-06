@@ -46,5 +46,5 @@ protected function prepareTable(\$table)
 	// Increment the content version number.
 	\$table->version++;
 }]]></content>
-	<tabTrigger>jadminmodeledit-preparetable</tabTrigger>
+	<tabTrigger>jadminmodeledit_preparetable</tabTrigger>
 </snippet>

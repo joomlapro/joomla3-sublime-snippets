@@ -35,5 +35,5 @@ public function save(\$data)
 
 	return false;
 }]]></content>
-<tabTrigger>jadminmodeledit-save</tabTrigger>
+<tabTrigger>jadminmodeledit_save</tabTrigger>
 </snippet>

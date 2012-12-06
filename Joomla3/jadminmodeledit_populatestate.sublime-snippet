@@ -20,5 +20,5 @@ protected function populateState()
 	\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
 	\$this->setState('params', \$params);
 }]]></content>
-	<tabTrigger>jadminmodeledit-populatestate</tabTrigger>
+	<tabTrigger>jadminmodeledit_populatestate</tabTrigger>
 </snippet>

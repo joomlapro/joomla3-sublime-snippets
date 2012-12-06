@@ -47,5 +47,5 @@ public function ${1:action}(\$pks, \$value = 0)
 
 	return true;
 }]]></content>
-	<tabTrigger>jadminmodeledit-custom</tabTrigger>
+	<tabTrigger>jadminmodeledit_custom</tabTrigger>
 </snippet>

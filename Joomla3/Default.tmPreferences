@@ -44,13 +44,13 @@
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Magazines]]></string>
+				<string><![CDATA[Bolsas]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_TEMPLATE</string>
 				<key>value</key>
-				<string><![CDATA[Education]]></string>
+				<string><![CDATA[Dashboard]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -92,7 +92,7 @@
 				<key>name</key>
 				<string>TM_MONTH</string>
 				<key>value</key>
-				<string><![CDATA[November]]></string>
+				<string><![CDATA[December]]></string>
 			</dict>
 		</array>
 	</dict>
