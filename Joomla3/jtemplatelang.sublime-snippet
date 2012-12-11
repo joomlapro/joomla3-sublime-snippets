@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[TPL_${TM_TEMPLATE/(.+)/\U\1/g}_XML_DESCRIPTION="Template acessível para o Joomla!, ${TM_TEMPLATE/(.+)/\u\1/g} na versão HTML 5."
+
+]]></content>
+	<tabTrigger>jtemplatelang</tabTrigger>
+</snippet>

@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <extension type="package" version="3.0">
-	<name>${1:Hello} Package</name>
+	<name>${1:Name} Package</name>
 	<author>$TM_FULLNAME</author>
-	<creationDate>$2 2012</creationDate>
+	<creationDate>${2:$TM_MONTH} 2012</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>$TM_EMAIL</authorEmail>

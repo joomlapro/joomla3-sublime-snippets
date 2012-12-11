@@ -21,7 +21,7 @@
 		<?php var_dump(\$this->items); ?>
 	</div>
 
-	<?php if (\$this->params->get('show_pagination')): ?>
+	<?php if (\$this->params->get('show_pagination', 1)): ?>
 		<div class="pagination">
 			<?php if (\$this->params->def('show_pagination_results', 1)): ?>
 				<p class="counter">

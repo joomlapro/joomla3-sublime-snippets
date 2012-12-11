@@ -165,5 +165,5 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 }
 
 ]]></content>
-	<tabTrigger>jsiteviewitem-simple</tabTrigger>
+	<tabTrigger>jsiteviewitem-mini</tabTrigger>
 </snippet>
