@@ -5,7 +5,6 @@
 		<field name="id" type="text" default="0" readonly="true" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
 		<field name="${1:title}" type="text" class="inputbox" required="true" size="40" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
 		<field name="alias" type="text" class="inputbox" size="40" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
-		<field name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
 		<field name="description" type="editor" buttons="true" hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText" label="JGLOBAL_DESCRIPTION" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
 		<field name="state" type="list" class="inputbox span12 small" size="1" default="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC">
 			<option value="1">JPUBLISHED</option>
@@ -13,16 +12,17 @@
 			<option value="2">JARCHIVED</option>
 			<option value="-2">JTRASHED</option>
 		</field>
+		<field name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
 		<field name="access" type="accesslevel" class="inputbox span12 small" size="1" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
-		<field name="featured" type="list" label="JFEATURED" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FEATURED_DESC" default="0" class="span12 small">
-			<option value="0">JNO</option>
-			<option value="1">JYES</option>
-		</field>
 		<field name="language" type="contentlanguage" class="inputbox span12 small" label="JFIELD_LANGUAGE_LABEL" description="JFIELD_LANGUAGE_DESC">
 			<option value="*">JALL</option>
 		</field>
 		<field name="metadesc" type="textarea" class="inputbox" rows="3" cols="30" label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
 		<field name="metakey" type="textarea" class="inputbox" rows="3" cols="30" label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
+		<field name="featured" type="list" label="JFEATURED" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FEATURED_DESC" default="0" class="span12 small">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
 		<field name="xreference" type="text" class="inputbox" size="20" labelclass="control-label" label="JFIELD_XREFERENCE_LABEL" description="JFIELD_XREFERENCE_DESC" />
 	</fieldset>
 	<fieldset name="publish" label="JGLOBAL_FIELDSET_PUBLISHING">

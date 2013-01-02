@@ -9,11 +9,17 @@
 class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_item} extends JControllerForm
 {
 	/**
+	 * The URL view item variable.
+	 *
+	 * @var     string
 	 * @since   $TM_VERSION
 	 */
 	protected \$view_item = '${2:form}';
 
 	/**
+	 * The URL view list variable.
+	 *
+	 * @var     string
 	 * @since   $TM_VERSION
 	 */
 	protected \$view_list = '${3:categories}';

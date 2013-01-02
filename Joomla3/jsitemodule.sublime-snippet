@@ -8,7 +8,7 @@ require_once __DIR__ . '/helper.php';
 // Initialise variables.
 \$moduleclass_sfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
 
-require JModuleHelper::getLayoutPath('mod_${1:module}', \$params->get('layout', 'default'));
+require JModuleHelper::getLayoutPath('mod_${1:${TM_MODULE/(.+)/\L\1/g}}', \$params->get('layout', 'default'));
 
 ]]></content>
 	<tabTrigger>jsitemodule</tabTrigger>

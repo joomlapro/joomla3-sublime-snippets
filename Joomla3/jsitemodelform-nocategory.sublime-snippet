@@ -26,7 +26,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		\$app = JFactory::getApplication();
 
 		// Load state from the request.
-		\$pk = \$app->input->getInt('${2/(.)(.+)/\L\1/g}_id');
+		\$pk = \$app->input->getInt('${TM_PROJECT/(.)(.+)/\L\1/g}_id');
 		\$this->setState('${2/(.+)/\L\1/g}.id', \$pk);
 
 		\$return = \$app->input->get('return', null, 'base64');

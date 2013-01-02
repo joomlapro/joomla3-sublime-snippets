@@ -38,6 +38,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_item} extends JModelItem
 		// Load the parameters.
 		\$this->setState('params', \$params);
 
+		// Get the current user object.
 		\$user = JFactory::getUser();
 
 		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
@@ -123,7 +124,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_item} extends JModelItem
 				// Convert parameter fields to objects.
 				\$registry = new JRegistry;
 				\$registry->loadString(\$data->params);
-
 				\$data->params = clone \$this->getState('params');
 				\$data->params->merge(\$registry);
 

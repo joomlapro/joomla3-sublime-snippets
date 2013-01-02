@@ -62,7 +62,7 @@
 				<option value="index, nofollow">COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_INDEX_NOFOLLOW</option>
 				<option value="noindex, nofollow">COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_NOINDEX_NOFOLLOW</option>
 			</field>
-			<field name="author" type="text" size="20" labelclass="control-label" label="JAUTHOR" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_AUTHOR_DESC" />
+			<field name="author" type="text" size="20" labelclass="control-label" label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC" />
 			<field name="rights" type="textarea" required="false" filter="string" cols="30" rows="2" labelclass="control-label" label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC" />
 		</fieldset>
 	</fields>

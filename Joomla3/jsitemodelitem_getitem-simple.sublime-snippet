@@ -64,7 +64,6 @@ public function &getItem(\$pk = null)
 			// Convert parameter fields to objects.
 			\$registry = new JRegistry;
 			\$registry->loadString(\$data->params);
-
 			\$data->params = clone \$this->getState('params');
 			\$data->params->merge(\$registry);
 

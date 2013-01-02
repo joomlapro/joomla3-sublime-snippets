@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[
-// Turn radios into btn-group
+// Turn radios into btn-group.
 \$('.radio.btn-group label').addClass('btn');
 
 \$(".btn-group label:not(.active)").click(function () {

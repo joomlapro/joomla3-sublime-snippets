@@ -26,10 +26,12 @@ JHtml::_('formbehavior.chosen', 'select');
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="details">
-						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('id'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('id'); ?></div>
-						</div>
+						<?php if (\$this->item->id): ?>
+							<div class="control-group">
+								<div class="control-label"><?php echo \$this->form->getLabel('id'); ?></div>
+								<div class="controls"><?php echo \$this->form->getInput('id'); ?></div>
+							</div>
+						<?php endif; ?>
 						<div class="control-group">
 							<div class="control-label"><?php echo \$this->form->getLabel('${3:title}'); ?></div>
 							<div class="controls"><?php echo \$this->form->getInput('${3/(.+)/\L\1/g}'); ?></div>

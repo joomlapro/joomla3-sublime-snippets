@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Get an instance of the ${1/(.+)/\L\1/g} table
-\$${1:user} = JTable::getInstance('${1/(.+)/\u\1/g}');
-\$${1/(.+)/\L\1/g}->load(\$item->${2:user_id});]]></content>
-	<tabTrigger>jinstancetable</tabTrigger>
-</snippet>

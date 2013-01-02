@@ -5,5 +5,5 @@ if (\$offset == 0)
 	\$model = \$this->getModel();
 	\$model->hit();
 }]]></content>
-	<tabTrigger>jsiteview_hit</tabTrigger>
+	<tabTrigger>jsiteviewitem_hit</tabTrigger>
 </snippet>

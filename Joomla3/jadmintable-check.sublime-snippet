@@ -9,14 +9,14 @@
  */
 public function check()
 {
-	// Check for valid ${2/(.+)/\L\1/g}
+	// Check for valid ${2/(.+)/\L\1/g}.
 	if (trim(\$this->${2:title}) == '')
 	{
 		\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERR_TABLES_${2/(.+)/\U\1/g}'));
 		return false;
 	}
 
-	// Check for existing ${2/(.+)/\L\1/g}
+	// Check for existing ${2/(.+)/\L\1/g}.
 	\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g}${1:_table} WHERE ${2/(.+)/\L\1/g} = ' . \$this->_db->Quote(\$this->${2/(.+)/\L\1/g}) . ' AND catid = ' . (int) \$this->catid;
 	\$this->_db->setQuery(\$query);
 
@@ -28,7 +28,7 @@ public function check()
 		return false;
 	}
 
-	// Set alias
+	// Set alias.
 	if (empty(\$this->alias))
 	{
 		\$this->alias = \$this->${2/(.+)/\L\1/g};

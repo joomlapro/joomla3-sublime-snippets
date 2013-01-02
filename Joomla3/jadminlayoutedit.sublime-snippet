@@ -27,11 +27,11 @@ JHtml::_('formbehavior.chosen', 'select');
 					<li><a href="#publishing" data-toggle="tab"><?php echo JText::_('JGLOBAL_FIELDSET_PUBLISHING'); ?></a></li>
 					<?php \$fieldSets = \$this->form->getFieldsets('params');
 					foreach (\$fieldSets as \$name => \$fieldSet): ?>
-					<li><a href="#params-<?php echo \$name; ?>" data-toggle="tab"><?php echo JText::_(\$fieldSet->label); ?></a></li>
+						<li><a href="#params-<?php echo \$name; ?>" data-toggle="tab"><?php echo JText::_(\$fieldSet->label); ?></a></li>
 					<?php endforeach; ?>
 					<?php \$fieldSets = \$this->form->getFieldsets('metadata');
 					foreach (\$fieldSets as \$name => \$fieldSet): ?>
-					<li><a href="#metadata-<?php echo \$name; ?>" data-toggle="tab"><?php echo JText::_(\$fieldSet->label); ?></a></li>
+						<li><a href="#metadata-<?php echo \$name; ?>" data-toggle="tab"><?php echo JText::_(\$fieldSet->label); ?></a></li>
 					<?php endforeach; ?>
 				</ul>
 				<div class="tab-content">
@@ -73,10 +73,12 @@ JHtml::_('formbehavior.chosen', 'select');
 									<div class="control-label"><?php echo \$this->form->getLabel('alias'); ?></div>
 									<div class="controls"><?php echo \$this->form->getInput('alias'); ?></div>
 								</div>
-								<div class="control-group">
-									<div class="control-label"><?php echo \$this->form->getLabel('id'); ?></div>
-									<div class="controls"><?php echo \$this->form->getInput('id'); ?></div>
-								</div>
+								<?php if (\$this->item->id): ?>
+									<div class="control-group">
+										<div class="control-label"><?php echo \$this->form->getLabel('id'); ?></div>
+										<div class="controls"><?php echo \$this->form->getInput('id'); ?></div>
+									</div>
+								<?php endif; ?>
 								<div class="control-group">
 									<div class="control-label"><?php echo \$this->form->getLabel('created_by'); ?></div>
 									<div class="controls"><?php echo \$this->form->getInput('created_by'); ?></div>
@@ -89,8 +91,6 @@ JHtml::_('formbehavior.chosen', 'select');
 									<div class="control-label"><?php echo \$this->form->getLabel('created'); ?></div>
 									<div class="controls"><?php echo \$this->form->getInput('created'); ?></div>
 								</div>
-							</div>
-							<div class="span6">
 								<div class="control-group">
 									<div class="control-label"><?php echo \$this->form->getLabel('publish_up'); ?></div>
 									<div class="controls"><?php echo \$this->form->getInput('publish_up'); ?></div>
@@ -99,6 +99,8 @@ JHtml::_('formbehavior.chosen', 'select');
 									<div class="control-label"><?php echo \$this->form->getLabel('publish_down'); ?></div>
 									<div class="controls"><?php echo \$this->form->getInput('publish_down'); ?></div>
 								</div>
+							</div>
+							<div class="span6">
 								<div class="control-group">
 									<div class="control-label"><?php echo \$this->form->getLabel('version'); ?></div>
 									<div class="controls"><?php echo \$this->form->getInput('version'); ?></div>

@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Check that the token is in a valid format.
+if (\$token === null || strlen(\$token) !== 32)
+{
+	JError::raiseError(403, JText::_('JINVALID_TOKEN'));
+	return false;
+}]]></content>
+	<tabTrigger>jchecktoken-valid_format</tabTrigger>
+</snippet>

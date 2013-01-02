@@ -79,7 +79,7 @@ ENDSCRIPT;
 
 		\$html[] = '<div class="input-append">';
 		\$html[] = '<input type="text" name="' . \$this->name . '" id="' . \$this->id . '"' . ' value="' . htmlspecialchars(\$this->value, ENT_COMPAT, 'UTF-8') . '"' . \$class . \$size . \$disabled . \$readonly . \$onchange . \$maxLength . '/>';
-		\$html[] = '<button class="btn btn-primary" onClick="getZipcode()" type="button">' . JText::_('JSEARCH_FILTER_SUBMIT') . '</button>';
+		\$html[] = '<button class="btn btn-primary" onclick="getZipcode()" type="button">' . JText::_('JSEARCH_FILTER_SUBMIT') . '</button>';
 		\$html[] = '</div>';
 
 		\$html[] = '<div id="loader" style="display:none;margin-left:10px;"><img src="' . JUri::root() . 'media/system/images/mootree_loader.gif" alt="" /></div>';

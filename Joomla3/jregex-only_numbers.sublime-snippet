@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Store only numbers.
+\$table->${1:field} = preg_replace('/[^\d]/', '', \$table->${1/(.+)/\L\1/g});]]></content>
+	<tabTrigger>jregex-only_numbers</tabTrigger>
+</snippet>

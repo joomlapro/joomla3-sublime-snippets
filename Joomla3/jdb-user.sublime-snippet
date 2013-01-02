@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[CREATE TABLE `${1:#_}_${2:${TM_PROJECT/(.+)/\L\1/g}}$3` (
+	<content><![CDATA[CREATE TABLE `${1:$TM_PREFIX}_${2:${TM_PROJECT/(.+)/\L\1/g}}$3` (
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `address1` varchar(255) NOT NULL DEFAULT '',
   `address2` varchar(255) NOT NULL DEFAULT '',

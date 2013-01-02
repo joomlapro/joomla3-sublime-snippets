@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class JFormFieldOrdering${1:Field} extends JFormField
+class JFormField${1:Field}Ordering extends JFormField
 {
 	/**
 	 * The form field type.
@@ -14,7 +14,7 @@ class JFormFieldOrdering${1:Field} extends JFormField
 	 * @var     string
 	 * @since   $TM_VERSION
 	 */
-	protected \$type = 'Ordering${1/(.+)/\u\1/g}';
+	protected \$type = '${1/(.+)/\u\1/g}Ordering';
 
 	/**
 	 * Method to get the field input markup.

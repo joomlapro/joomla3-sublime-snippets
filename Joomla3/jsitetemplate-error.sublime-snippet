@@ -28,9 +28,8 @@ else
 // Add JavaScript Frameworks
 JHtml::_('bootstrap.framework');
 
-// Add current user information
+// Get the current user object.
 \$user = JFactory::getUser();
-
 
 // Logo file
 if (\$params->get('logoFile'))

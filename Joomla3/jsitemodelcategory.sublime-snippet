@@ -214,6 +214,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 		\$id = \$app->input->get('id', 0, 'int');
 		\$this->setState('category.id', \$id);
 
+		// Get the current user object.
 		\$user = JFactory::getUser();
 
 		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))

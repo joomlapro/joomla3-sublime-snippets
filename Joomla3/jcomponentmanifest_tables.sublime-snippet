@@ -4,5 +4,5 @@
 	<table>#__alpha_install</table>
 	<table type="optional">#__alpha_update</table>
 </tables>]]></content>
-	<tabTrigger>jcomponentmanifest-tables</tabTrigger>
+	<tabTrigger>jcomponentmanifest_tables</tabTrigger>
 </snippet>

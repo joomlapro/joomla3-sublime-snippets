@@ -44,13 +44,25 @@
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Clipping]]></string>
+				<string><![CDATA[Jobs]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_TEMPLATE</string>
 				<key>value</key>
-				<string><![CDATA[Bridal]]></string>
+				<string><![CDATA[Whiteboard]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_MODULE</string>
+				<key>value</key>
+				<string><![CDATA[Cities]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_LANGUAGE</string>
+				<key>value</key>
+				<string><![CDATA[pt-BR]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -66,21 +78,15 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>TM_LANGUAGE</string>
-				<key>value</key>
-				<string><![CDATA[pt-BR]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>TM_MODULE</string>
-				<key>value</key>
-				<string><![CDATA[Slideshow]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>TM_PLUGIN</string>
 				<key>value</key>
 				<string><![CDATA[Client]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>TM_PREFIX</string>
+				<key>value</key>
+				<string><![CDATA[r1wel]]></string>
 			</dict>
 			<dict>
 				<key>name</key>

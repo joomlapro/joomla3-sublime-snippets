@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[?>
-<div class="${1:module}<?php echo \$moduleclass_sfx; ?>">
+<div class="${1:${TM_MODULE/(.+)/\L\1/g}}<?php echo \$moduleclass_sfx; ?>">
 
 </div>
 

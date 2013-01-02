@@ -3,9 +3,9 @@
 
 foreach (\$fieldSets as \$name => \$fieldSet): ?>
 	<div class="tab-pane" id="metadata-<?php echo \$name; ?>">
-	<?php if (isset(\$fieldSet->description) && trim(\$fieldSet->description)):
-		echo '<p class="alert alert-info">' . \$this->escape(JText::_(\$fieldSet->description)) . '</p>';
-	endif; ?>
+		<?php if (isset(\$fieldSet->description) && trim(\$fieldSet->description)):
+			echo '<p class="alert alert-info">' . \$this->escape(JText::_(\$fieldSet->description)) . '</p>';
+		endif; ?>
 		<?php if (\$name == 'jmetadata'): // Include the real fields in this panel. ?>
 			<div class="control-group">
 				<div class="control-label"><?php echo \$this->form->getLabel('metadesc'); ?></div>

@@ -2,14 +2,14 @@
 	<content><![CDATA[; FIELD
 
 MOD_${1:${TM_MODULE/(.+)/\U\1/g}}_FIELD_CATEGORY_DESC="Selecione ${2:list} de uma, ou mais categorias. Se nenhuma seleção for feita, exibirá por padrão todas as categorias."
-MOD_${1/(.+)/\U\1/g}_FIELD_COUNT_DESC="O número de ${2/(.+)/\L\1/g} para exibir(padrão: 5)"
 MOD_${1/(.+)/\U\1/g}_FIELD_COUNT_LABEL="Contagem"
-MOD_${1/(.+)/\U\1/g}_FIELD_FEATURED_DESC="Exibir/Ocultar ${2/(.+)/\L\1/g} designados como Destaque"
+MOD_${1/(.+)/\U\1/g}_FIELD_COUNT_DESC="O número de ${2/(.+)/\L\1/g} para exibir (padrão: 5)"
 MOD_${1/(.+)/\U\1/g}_FIELD_FEATURED_LABEL="${2/(.+)/\u\1/g} em Destaque"
-MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_DESC="Opções de Ordenação. Modificados primeiro significa: -Modificado Primeiro se o artigo foi editado pelo menos uma vez e -Criado se um artigo foi apenas criado."
+MOD_${1/(.+)/\U\1/g}_FIELD_FEATURED_DESC="Exibir/Ocultar ${2/(.+)/\L\1/g} designados como Destaque"
 MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_LABEL="Ordenar"
-MOD_${1/(.+)/\U\1/g}_FIELD_USER_DESC="Filtrar por autor"
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_DESC="Opções de Ordenação. Modificados primeiro significa: -Modificado Primeiro se o artigo foi editado pelo menos uma vez e -Criado se um artigo foi apenas criado."
 MOD_${1/(.+)/\U\1/g}_FIELD_USER_LABEL="Autores"
+MOD_${1/(.+)/\U\1/g}_FIELD_USER_DESC="Filtrar por autor"
 
 ; VALUE
 

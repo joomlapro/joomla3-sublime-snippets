@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[/**
+ * The URL view item variable.
+ *
+ * @var     string
+ * @since   $TM_VERSION
+ */
+protected \$view_item = '${1:view_item}';]]></content>
+	<tabTrigger>jadmincontrolleredit_view_item</tabTrigger>
+</snippet>

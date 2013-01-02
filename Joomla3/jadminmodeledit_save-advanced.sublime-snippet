@@ -4,50 +4,92 @@
  *
  * @param   array  \$data  The form data.
  *
- * @return  boolean  True on success.
+ * @return  boolean  True on success, False on error.
  *
  * @since   $TM_VERSION
  */
 public function save(\$data)
 {
 	// Initialiase variables.
-	\$pk = (!empty(\$data['id'])) ? \$data['id'] : (int) \$this->getState(\$this->getName() . '.id');
-
-	// Get an instance of the this table.
+	\$dispatcher = JEventDispatcher::getInstance();
 	\$table = \$this->getTable();
+	\$key = \$table->getKeyName();
+	\$pk = (!empty(\$data[\$key])) ? \$data[\$key] : (int) \$this->getState(\$this->getName() . '.id');
+	\$isNew = true;
 
-	\$${1/(.+)/\L\1/g} = (array) \$data['${1:array}'];
-
-	unset(\$data['${1/(.+)/\L\1/g}']);
-
-	// Load the row if saving an existing ${2:sigular}.
-	if (\$pk > 0)
+	if (\$data['${1/(.+)/\L\1/g}'])
 	{
-		\$table->load(\$pk);
+		\$${1/(.+)/\L\1/g} = (array) \$data['${1:array}'];
+		unset(\$data['${1/(.+)/\L\1/g}']);
 	}
 
-	// Bind the data.
-	if (!\$table->bind(\$data))
+	// Include the content plugins for the on save events.
+	JPluginHelper::importPlugin('content');
+
+	// Allow an exception to be thrown.
+	try
 	{
-		\$this->setError(\$table->getError());
+		// Load the row if saving an existing record.
+		if (\$pk > 0)
+		{
+			\$table->load(\$pk);
+			\$isNew = false;
+		}
+
+		// Bind the data.
+		if (!\$table->bind(\$data))
+		{
+			\$this->setError(\$table->getError());
+			return false;
+		}
+
+		// Prepare the row for saving.
+		\$this->prepareTable(\$table);
+
+		// Check the data.
+		if (!\$table->check())
+		{
+			\$this->setError(\$table->getError());
+			return false;
+		}
+
+		// Trigger the onContentBeforeSave event.
+		\$result = \$dispatcher->trigger(\$this->event_before_save, array(\$this->option . '.' . \$this->name, \$table, \$isNew));
+
+		if (in_array(false, \$result, true))
+		{
+			\$this->setError(\$table->getError());
+			return false;
+		}
+
+		// Store the data.
+		if (!\$table->store())
+		{
+			\$this->setError(\$table->getError());
+			return false;
+		}
+
+		// Clean the cache.
+		\$this->cleanCache();
+
+		// Trigger the onContentAfterSave event.
+		\$dispatcher->trigger(\$this->event_after_save, array(\$this->option . '.' . \$this->name, \$table, \$isNew));
+	}
+	catch (Exception \$e)
+	{
+		\$this->setError(\$e->getMessage());
+
 		return false;
 	}
 
-	// Check the data.
-	if (!\$table->check())
+	\$pkName = \$table->getKeyName();
+
+	if (isset(\$table->\$pkName))
 	{
-		\$this->setError(\$table->getError());
-		return false;
+		\$this->setState(\$this->getName() . '.id', \$table->\$pkName);
 	}
 
-	// Store the data.
-	if (!\$table->store())
-	{
-		\$this->setError(\$table->getError());
-		return false;
-	}
-
-	\$this->setState('${2/(.+)/\L\1/g}.id', \$table->id);
+	\$this->setState(\$this->getName() . '.new', \$isNew);
 
 	\$properties = \$table->getProperties(1);
 	\$value = JArrayHelper::toObject(\$properties, 'JObject');

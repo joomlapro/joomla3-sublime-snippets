@@ -9,7 +9,9 @@
 class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_list} extends JControllerAdmin
 {
 	/**
-	 * @var     string  The prefix to use with controller messages.
+	 * The prefix to use with controller messages.
+	 *
+	 * @var     string
 	 * @since   $TM_VERSION
 	 */
 	protected \$text_prefix = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';

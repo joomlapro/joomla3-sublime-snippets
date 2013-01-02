@@ -190,7 +190,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 			\$query->where('a.catid = ' . (int) \$categoryId);
 		}
 
-		// Filter by search in ${3/(.+)/\L\1/g}
+		// Filter by search in ${3/(.+)/\L\1/g}.
 		\$search = \$this->getState('filter.search');
 
 		if (!empty(\$search))

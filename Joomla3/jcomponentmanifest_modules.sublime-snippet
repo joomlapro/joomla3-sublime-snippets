@@ -2,5 +2,5 @@
 	<content><![CDATA[<modules>
 	<module folder="modules" module="mod_${1:hello}" />
 </modules>]]></content>
-	<tabTrigger>jcomponentmanifest-modules</tabTrigger>
+	<tabTrigger>jcomponentmanifest_modules</tabTrigger>
 </snippet>

@@ -10,6 +10,7 @@
  */
 protected function allowAdd(\$data = array())
 {
+	// Initialiase variables.
 	\$user = JFactory::getUser();
 	\$categoryId = JArrayHelper::getValue(\$data, 'catid', \$this->input->getInt('filter_category_id'), 'int');
 	\$allow = null;

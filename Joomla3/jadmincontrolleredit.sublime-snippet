@@ -25,6 +25,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControlle
 	 */
 	protected function allowAdd(\$data = array())
 	{
+		// Initialiase variables.
 		\$user = JFactory::getUser();
 		\$categoryId = JArrayHelper::getValue(\$data, 'catid', \$this->input->getInt('filter_category_id'), 'int');
 		\$allow = null;
@@ -58,6 +59,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControlle
 	 */
 	protected function allowEdit(\$data = array(), \$key = 'id')
 	{
+		// Initialiase variables.
 		\$recordId = (int) isset(\$data[\$key]) ? \$data[\$key] : 0;
 		\$categoryId = 0;
 

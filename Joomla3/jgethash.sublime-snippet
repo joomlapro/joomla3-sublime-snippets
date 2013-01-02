@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JApplication::getHash(JUserHelper::genRandomPassword());]]></content>
+	<tabTrigger>jgethash</tabTrigger>
+</snippet>

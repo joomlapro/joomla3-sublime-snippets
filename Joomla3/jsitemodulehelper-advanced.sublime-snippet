@@ -8,7 +8,7 @@ JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\
 /**
  * Helper for mod_${1/(.+)/\L\1/g}
  *
- * @package     Joomla.Site
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
  * @subpackage  mod_${1/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
@@ -25,31 +25,31 @@ abstract class Mod${1:Module}Helper
 	 */
 	public static function getList(& \$params)
 	{
-		// Get the dbo
+		// Get the dbo.
 		\$db = JFactory::getDbo();
 
-		// Get an instance of the generic ${2:${1/(.+)/\L\1/g}} model
+		// Get an instance of the generic ${2:${1/(.+)/\L\1/g}} model.
 		\$model = JModelLegacy::getInstance('${2/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
 
-		// Set application parameters in model
+		// Set application parameters in model.
 		\$app = JFactory::getApplication();
 		\$appParams = \$app->getParams();
 		\$model->setState('params', \$appParams);
 
-		// Set the filters based on the module params
+		// Set the filters based on the module params.
 		\$model->setState('list.start', 0);
 		\$model->setState('list.limit', (int) \$params->get('count', 5));
 		\$model->setState('filter.state', 1);
 
-		// Access filter
+		// Access filter.
 		\$access = !JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}')->get('show_noauth');
 		\$authorised = JAccess::getAuthorisedViewLevels(JFactory::getUser()->get('id'));
 		\$model->setState('filter.access', \$access);
 
-		// Category filter
+		// Category filter.
 		\$model->setState('filter.category_id', \$params->get('catid', array()));
 
-		// User filter
+		// User filter.
 		\$userId = JFactory::getUser()->get('id');
 
 		switch (\$params->get('user_id'))
@@ -70,10 +70,10 @@ abstract class Mod${1:Module}Helper
 				break;
 		}
 
-		// Filter by language
+		// Filter by language.
 		\$model->setState('filter.language', \$app->getLanguageFilter());
 
-		// Featured switch
+		// Featured switch.
 		switch (\$params->get('show_featured'))
 		{
 			case '1':
@@ -87,7 +87,7 @@ abstract class Mod${1:Module}Helper
 				break;
 		}
 
-		// Set ordering
+		// Set ordering.
 		\$order_map = array(
 			'm_dsc' => 'a.modified DESC, a.created',
 			'mc_dsc' => 'CASE WHEN (a.modified = ' . \$db->quote(\$db->getNullDate()) . ') THEN a.created ELSE a.modified END',
@@ -110,7 +110,7 @@ abstract class Mod${1:Module}Helper
 
 			if (\$access || in_array(\$item->access, \$authorised))
 			{
-				// We know that user has the privilege to view the ${3:view}
+				// We know that user has the privilege to view the ${3:view}.
 				\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${3/(.+)/\u\1/g}Route(\$item->slug, \$item->catslug));
 			}
 			else

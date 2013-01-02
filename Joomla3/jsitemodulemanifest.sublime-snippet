@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="3.0" client="site" method="upgrade">
-	<name>mod_${1:module}</name>
+	<name>mod_${1:${TM_MODULE/(.+)/\L\1/g}}</name>
 	<author>$TM_FULLNAME</author>
 	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>

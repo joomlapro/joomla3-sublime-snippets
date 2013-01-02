@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Include dependancies.
+JTable::addIncludePath(JPATH_COMPONENT_ADMINISTRATOR . '/tables');]]></content>
+	<tabTrigger>jtable-addincludepath</tabTrigger>
+</snippet>

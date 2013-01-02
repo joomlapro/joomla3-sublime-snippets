@@ -9,7 +9,9 @@
 class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 {
 	/**
-	 * @var     string  The prefix to use with controller messages.
+	 * The prefix to use with controller messages.
+	 *
+	 * @var     string
 	 * @since   $TM_VERSION
 	 */
 	protected \$text_prefix = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
@@ -32,6 +34,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 				return;
 			}
 
+			// Get the current user object.
 			\$user = JFactory::getUser();
 
 			return \$user->authorise('core.delete', 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
@@ -49,6 +52,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 	 */
 	protected function canEditState(\$record)
 	{
+		// Get the current user object.
 		\$user = JFactory::getUser();
 
 		// Check for existing ${1/(.+)/\L\1/g}.
@@ -91,9 +95,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
 	 */
 	public function getForm(\$data = array(), \$loadData = true)
 	{
-		// Initialiase variables.
-		\$app = JFactory::getApplication();
-
 		// Get the form.
 		\$form = \$this->loadForm('com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
 

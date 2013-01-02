@@ -68,14 +68,14 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 */
 	public function check()
 	{
-		// Check for valid ${4/(.+)/\L\1/g}
+		// Check for valid ${4/(.+)/\L\1/g}.
 		if (trim(\$this->${4:title}) == '')
 		{
 			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}'));
 			return false;
 		}
 
-		// Check for existing ${4/(.+)/\L\1/g}
+		// Check for existing ${4/(.+)/\L\1/g}.
 		\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE ${4/(.+)/\L\1/g} = ' . \$this->_db->Quote(\$this->${4/(.+)/\L\1/g});
 		\$this->_db->setQuery(\$query);
 
