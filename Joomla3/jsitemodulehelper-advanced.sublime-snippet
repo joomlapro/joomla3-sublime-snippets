@@ -12,7 +12,7 @@ JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\
  * @subpackage  mod_${1/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-abstract class Mod${1:Module}Helper
+abstract class Mod${1:$TM_MODULE}Helper
 {
 	/**
 	 * Get a list of the ${4:${2/(.+)(s\b)/\L\1/g}} items.

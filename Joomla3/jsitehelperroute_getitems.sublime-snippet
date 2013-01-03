@@ -2,9 +2,9 @@
 	<content><![CDATA[/**
  * Method to get the menu items for the component.
  *
- * @return  array An array of menu items.
+ * @return  array  An array of menu items.
  *
- * @since   1.6
+ * @since   \$TM_VERSION
  */
 public static function &getItems()
 {
@@ -30,5 +30,5 @@ public static function &getItems()
 
 	return \$items;
 }]]></content>
-	<tabTrigger>jsitehelperroute-getitems</tabTrigger>
+	<tabTrigger>jsitehelperroute_getitems</tabTrigger>
 </snippet>

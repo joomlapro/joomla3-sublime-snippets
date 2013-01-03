@@ -30,12 +30,6 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>TM_YEAR</string>
-				<key>value</key>
-				<string><![CDATA[2012]]></string>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>TM_WEBSITE</string>
 				<key>value</key>
 				<string><![CDATA[http://www.atomtech.com.br]]></string>
@@ -44,7 +38,7 @@
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Jobs]]></string>
+				<string><![CDATA[Bolsas]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -56,7 +50,7 @@
 				<key>name</key>
 				<string>TM_MODULE</string>
 				<key>value</key>
-				<string><![CDATA[Cities]]></string>
+				<string><![CDATA[Bolsas_Login]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -96,9 +90,15 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>TM_YEAR</string>
+				<key>value</key>
+				<string><![CDATA[2013]]></string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>TM_MONTH</string>
 				<key>value</key>
-				<string><![CDATA[December]]></string>
+				<string><![CDATA[January]]></string>
 			</dict>
 		</array>
 	</dict>

@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[// Add JavaScript Frameworks.
-JHtml::_('bootstrap.tooltip');]]></content>
-	<tabTrigger>jhtmltooltip</tabTrigger>
-</snippet>

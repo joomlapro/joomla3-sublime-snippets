@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[// Set maskMoney settings.
 if (\$.fn.maskMoney) {
-	\$(".money").maskMoney({
+	\$('.money').maskMoney({
 		symbol: 'R\$ ',
 		showSymbol: true,
 		symbolStay: false,
