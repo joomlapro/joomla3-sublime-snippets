@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<img src="$1" alt="$2" title="$2" />
-]]></content>
-<tabTrigger>img</tabTrigger>
-</snippet>

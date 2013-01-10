@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[JHtml::_('iframe', ${1:\$url}, ${2:\$name}${3:, array('width' => '100%')}${4:, ${5:\$message}});]]></content>
-	<tabTrigger>jhtmliframe</tabTrigger>
-</snippet>

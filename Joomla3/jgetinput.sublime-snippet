@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[\$this->form->getInput('${1:field}'${2:${3:, null}${4:, \$${1/(.+)/\L\1/g}}});]]></content>
-	<tabTrigger>jgetinput</tabTrigger>
-</snippet>

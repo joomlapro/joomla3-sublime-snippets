@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[<fields name="params">
-	<fieldset name="jbasic" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
-
-	</fieldset>
-</fields>]]></content>
-	<tabTrigger>jadminform_params</tabTrigger>
-</snippet>

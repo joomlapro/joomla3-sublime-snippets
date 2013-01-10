@@ -1,9 +1,0 @@
-<snippet>
-	<content><![CDATA[<update>
-	<schemas>
-		<schemapath type="mysql">sql/updates/mysql</schemapath>
-		<schemapath type="sqlsrv">sql/updates/sqlsrv</schemapath>
-	</schemas>
-</update>]]></content>
-	<tabTrigger>jmanifest-update</tabTrigger>
-</snippet>

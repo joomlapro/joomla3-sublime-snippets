@@ -1,9 +1,0 @@
-<snippet>
-	<content><![CDATA[<field id="address_zipcode" name="address_zipcode" type="zipcode" class="inputbox zipcode" size="9" message="COM_${TM_PROJECT/(.+)/\U\1/g}_ZIPCODE_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIPCODE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIPCODE_DESC" />
-<field id="address_street" name="address_street" type="textarea" class="inputbox" rows="1" cols="40" message="COM_${TM_PROJECT/(.+)/\U\1/g}_ADDRESS_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ADDRESS_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ADDRESS_DESC" />
-<field id="addressdistrict" name="addressdistrict" type="text" class="inputbox" size="15" message="COM_${TM_PROJECT/(.+)/\U\1/g}_DISTRICT_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_DESC" />
-<field id="address_city" name="address_city" type="text" class="inputbox" size="15" message="COM_${TM_PROJECT/(.+)/\U\1/g}_CITY_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_DESC" />
-<field id="address_state" name="address_state" type="state" class="inputbox" message="COM_${TM_PROJECT/(.+)/\U\1/g}_STATE_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_DESC" />
-<field id="address_country" name="address_country" type="country" class="inputbox" message="COM_${TM_PROJECT/(.+)/\U\1/g}_ZIP_COUNTRY_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_COUNTRY_DESC" />]]></content>
-	<tabTrigger>jsiteform_address</tabTrigger>
-</snippet>

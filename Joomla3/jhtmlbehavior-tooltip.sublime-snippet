@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[// Load the tooltip behavior.
-JHtml::_('behavior.tooltip');]]></content>
-	<tabTrigger>jhtmlbehavior-tooltip</tabTrigger>
-</snippet>

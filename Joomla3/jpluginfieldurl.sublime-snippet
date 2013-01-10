@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:field}" type="url" filter="url" size="30" label="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jpluginfieldurl</tabTrigger>
-</snippet>

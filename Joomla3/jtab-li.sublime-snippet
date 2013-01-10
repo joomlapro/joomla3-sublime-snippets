@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[<li><a href="#${1:fields}" data-toggle="tab"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}'); ?></a></li>]]></content>
-	<tabTrigger>jtab-li</tabTrigger>
-</snippet>

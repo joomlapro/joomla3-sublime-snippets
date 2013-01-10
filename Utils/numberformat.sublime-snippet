@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[
-number_format(${1}, 2, ',', '.');
-]]></content>
-<tabTrigger>numberformat</tabTrigger>
-</snippet>

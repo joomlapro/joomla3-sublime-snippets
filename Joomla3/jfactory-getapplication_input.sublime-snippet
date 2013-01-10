@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[// Get the input.
-\$input = JFactory::getApplication()->input;]]></content>
-	<tabTrigger>jfactory-getapplication_input</tabTrigger>
-</snippet>
