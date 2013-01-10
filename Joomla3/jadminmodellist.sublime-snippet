@@ -223,7 +223,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 
 		\$query->order(\$db->escape(\$orderCol . ' ' . \$orderDirn));
 
-		// echo nl2br(str_replace('#__', 'jos_',\$query));
+		// echo nl2br(str_replace('#__', 'jos_', \$query));
 
 		return \$query;
 	}

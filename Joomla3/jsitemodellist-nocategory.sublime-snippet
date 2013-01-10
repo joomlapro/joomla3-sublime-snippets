@@ -62,6 +62,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
 		\$user   = JFactory::getUser();
 
+		// Optional filter text.
+		\$search = \$input->getString('filter-search');
+		\$this->setState('list.filter', \$search);
+
 		// List state information.
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
 		\$this->setState('list.limit', \$limit);
@@ -70,11 +74,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 		\$this->setState('list.start', \$limitstart);
 
 		// Load the ordering.
-		\$orderCol = \$input->get('filter_order', 'ordering');
+		\$orderCol = \$input->get('filter_order', 'a.ordering');
 
 		if (!in_array(\$orderCol, \$this->filter_fields))
 		{
-			\$orderCol = 'ordering';
+			\$orderCol = 'a.ordering';
 		}
 
 		\$this->setState('list.ordering', \$orderCol);
@@ -151,10 +155,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 	 */
 	public function getItems()
 	{
-		// Invoke the parent getItems method to get the main list
+		// Invoke the parent getItems method to get the main list.
 		\$items = parent::getItems();
 
-		// Convert the params field into an object, saving original in _params
+		// Convert the params field into an object, saving original in _params.
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
 			\$item = &\$items[\$i];
@@ -224,6 +228,15 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 			\$nowDate = \$db->quote(\$date->toSql());
 			\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')');
 			\$query->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
+		}
+
+		// Filter by search in ${2/(.+)/\L\1/g}.
+		\$search = \$this->getState('list.filter');
+
+		if (!empty(\$search))
+		{
+			\$search = \$db->Quote('%' . \$db->escape(\$search, true) . '%');
+			\$query->where('(a.${2/(.+)/\L\1/g} LIKE ' . \$search . ')');
 		}
 
 		// Filter by language

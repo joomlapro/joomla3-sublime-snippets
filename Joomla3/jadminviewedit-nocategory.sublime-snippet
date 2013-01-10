@@ -29,6 +29,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_edit} extends JViewLegacy
 		\$this->form  = \$this->get('Form');
 		\$this->item  = \$this->get('Item');
 		\$this->state = \$this->get('State');
+		\$this->canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions();
 
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))

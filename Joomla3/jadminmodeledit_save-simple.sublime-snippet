@@ -16,8 +16,9 @@ public function save(\$data)
 	\$key = \$table->getKeyName();
 	\$pk = (!empty(\$data[\$key])) ? \$data[\$key] : (int) \$this->getState(\$this->getName() . '.id');
 	\$isNew = true;
+	\$${1/(.+)/\L\1/g} = array();
 
-	if (\$data['${1/(.+)/\L\1/g}'])
+	if (isset(\$data['${1/(.+)/\L\1/g}']))
 	{
 		\$${1/(.+)/\L\1/g} = (array) \$data['${1:array}'];
 		unset(\$data['${1/(.+)/\L\1/g}']);

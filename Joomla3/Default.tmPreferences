@@ -38,13 +38,13 @@
 				<key>name</key>
 				<string>TM_PROJECT</string>
 				<key>value</key>
-				<string><![CDATA[Bolsas]]></string>
+				<string><![CDATA[Jobs]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_TEMPLATE</string>
 				<key>value</key>
-				<string><![CDATA[Whiteboard]]></string>
+				<string><![CDATA[Dashboard]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -74,7 +74,7 @@
 				<key>name</key>
 				<string>TM_PLUGIN</string>
 				<key>value</key>
-				<string><![CDATA[Client]]></string>
+				<string><![CDATA[Products_Client]]></string>
 			</dict>
 			<dict>
 				<key>name</key>

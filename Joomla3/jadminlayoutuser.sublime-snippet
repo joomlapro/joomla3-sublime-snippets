@@ -89,27 +89,27 @@ JHtml::_('formbehavior.chosen', 'select');
 				</tr>
 			</tfoot>
 			<tbody>
-			<?php foreach (\$this->items as \$i => \$item) :
-				\$canEdit  = \$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}');
-				?>
-				<tr class="row<?php echo \$i % 2; ?>">
-					<td class="center hidden-phone">
-						<?php echo JHtml::_('grid.id', \$i, \$item->user_id); ?>
-					</td>
-					<td class="nowrap">
-						<?php if (\$canEdit): ?>
-							<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id=' . (int) \$item->user_id); ?>"><?php echo \$this->escape(\$item->name); ?></a>
-						<?php else: ?>
-							<?php echo \$this->escape(\$item->name); ?>
-						<?php endif; ?>
-						<span class="small">
-							<?php echo JText::sprintf('COM_${TM_PROJECT/(.+)/\U\1/g}_LIST_USERNAME', \$this->escape(\$item->username)); ?>
-						</span>
-					</td>
-					<td class="center hidden-phone">
-						<?php echo (int) \$item->user_id; ?>
-					</td>
-				</tr>
+				<?php foreach (\$this->items as \$i => \$item):
+					\$canEdit  = \$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}');
+					?>
+					<tr class="row<?php echo \$i % 2; ?>">
+						<td class="center hidden-phone">
+							<?php echo JHtml::_('grid.id', \$i, \$item->user_id); ?>
+						</td>
+						<td class="nowrap">
+							<?php if (\$canEdit): ?>
+								<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.edit&id=' . (int) \$item->user_id); ?>"><?php echo \$this->escape(\$item->name); ?></a>
+							<?php else: ?>
+								<?php echo \$this->escape(\$item->name); ?>
+							<?php endif; ?>
+							<span class="small">
+								<?php echo JText::sprintf('COM_${TM_PROJECT/(.+)/\U\1/g}_LIST_USERNAME', \$this->escape(\$item->username)); ?>
+							</span>
+						</td>
+						<td class="center hidden-phone">
+							<?php echo (int) \$item->user_id; ?>
+						</td>
+					</tr>
 				<?php endforeach; ?>
 			</tbody>
 		</table>

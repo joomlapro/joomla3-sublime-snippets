@@ -20,5 +20,5 @@ public function hit(\$id = null)
 	return \$${1/(.+)/\L\1/g}->hit(\$id);
 }
 ]]></content>
-	<tabTrigger>jsitemodelhit</tabTrigger>
+	<tabTrigger>jsitemodelitem_hit_simple</tabTrigger>
 </snippet>

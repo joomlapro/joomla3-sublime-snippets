@@ -12,14 +12,14 @@ if (\$.fn.setMask) {
 	\$('.cc').setMask('cc');
 	\$('.integer').setMask('integer');
 	\$('.integer-limit5').setMask({
-	    mask: '999.99',
-	    'maxLength': 5,
-	    type: 'reverse'
+		mask: '999.99',
+		'maxLength': 5,
+		type: 'reverse'
 	});
 	\$('.decimal').setMask('decimal');
 	\$('.decimal-us').setMask('decimal-us');
 	\$('.signed-decimal').setMask('decimal-us');
 	\$('.signed-decimal-us').setMask('decimal-us');
-};]]></content>
+}]]></content>
 	<tabTrigger>meiomask</tabTrigger>
 </snippet>

@@ -2,5 +2,5 @@
 	<content><![CDATA[<fieldset name="${1:component}" label="COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_DESC">
 
 </fieldset>]]></content>
-	<tabTrigger>jadminconfig-fieldset</tabTrigger>
+	<tabTrigger>jadminconfig_fieldset</tabTrigger>
 </snippet>

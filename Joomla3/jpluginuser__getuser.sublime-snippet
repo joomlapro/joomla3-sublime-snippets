@@ -7,7 +7,7 @@
  * @param   array  \$user     Holds the user data.
  * @param   array  \$options  Array holding options (remember, autoregister, group).
  *
- * @return	object	A JUser object.
+ * @return  object  A JUser object.
  *
  * @since   $TM_VERSION
  */
@@ -24,7 +24,7 @@ protected function _getUser(\$user, \$options = array())
 	}
 
 	// TODO: move this out of the plugin.
-	\$config	= JComponentHelper::getParams('com_users');
+	\$config = JComponentHelper::getParams('com_users');
 
 	// Default to Registered.
 	\$defaultUserGroup = \$config->get('new_usertype', 2);

@@ -21,31 +21,30 @@
 		</tr>
 	</tfoot>
 	<tbody>
-	<?php
-	\$k = 0;
-	if (\$this->items):
-		foreach (\$this->items as \$item):
+		<?php \$k = 0;
+		if (\$this->items):
+			foreach (\$this->items as \$item):
 
-		// Define variables
-		\$link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:controller_edit}.edit&id=' . \$item->id);
-		\$component = JRequest::getCmd('option');
-		?>
-		<tr class="row<?php echo \$k; ?>">
-			<td class="center">
-				<?php echo \$this->escape(\$item->id); ?>
-			</td>
-			<td>
-				<a href="<?php echo \$link; ?>"><?php echo \$this->escape(\$item->name); ?></a>
-			</td>
-			<td class="center nowrap">
-				<?php echo JHtml::_('date', \$item->created, JText::_('DATE_FORMAT_LC4')); ?>
-			</td>
-		</tr>
-		<?php \$k = 1 - \$k; ?>
-		<?php endforeach; ?>
-	<?php else: ?>
-		<?php echo '<tr class="row' . \$k . '"><td colspan="3" align="center">' . JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_RESULTS') . '</td></tr>'; ?>
-	<?php endif; ?>
+			// Define variables
+			\$link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:controller_edit}.edit&id=' . \$item->id);
+			\$component = JRequest::getCmd('option');
+			?>
+			<tr class="row<?php echo \$k; ?>">
+				<td class="center">
+					<?php echo \$this->escape(\$item->id); ?>
+				</td>
+				<td>
+					<a href="<?php echo \$link; ?>"><?php echo \$this->escape(\$item->name); ?></a>
+				</td>
+				<td class="center nowrap">
+					<?php echo JHtml::_('date', \$item->created, JText::_('DATE_FORMAT_LC4')); ?>
+				</td>
+			</tr>
+			<?php \$k = 1 - \$k; ?>
+			<?php endforeach; ?>
+		<?php else: ?>
+			<?php echo '<tr class="row' . \$k . '"><td colspan="3" align="center">' . JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_RESULTS') . '</td></tr>'; ?>
+		<?php endif; ?>
 	</tbody>
 </table>
 <?php echo JHtml::_('sliders.end'); ?>]]></content>
