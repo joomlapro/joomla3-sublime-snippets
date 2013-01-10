@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<?php echo $item->${1:title}; ?>]]></content>
+	<tabTrigger>jitem</tabTrigger>
+</snippet>

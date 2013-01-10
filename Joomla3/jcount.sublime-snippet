@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[\$this->countModules('${1:hello-mainmenu}');]]></content>
+	<tabTrigger>jcount</tabTrigger>
+</snippet>

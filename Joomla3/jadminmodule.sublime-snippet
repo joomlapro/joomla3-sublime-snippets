@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[// Include the ${1/(.+)/\L\1/g} functions only once.
+require_once __DIR__ . '/helper.php';
+
+// Get the ${1/(.+)/\L\1/g}.
+\$${2:list} = mod${1/(.+)/\u\1/g}Helper::get${2/(.+)/\u\1/g}(\$params);
+
+// Initialise variables.
+\$moduleclass_sfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
+
+require JModuleHelper::getLayoutPath('mod_${1:module}', \$params->get('layout', 'default'));
+
+]]></content>
+	<tabTrigger>jadminmodule</tabTrigger>
+</snippet>

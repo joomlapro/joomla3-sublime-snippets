@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Display button list.
+\$this->buttons = ${TM_PROJECT/(.+)/\u\1/g}Helper::getButtons();]]></content>
+	<tabTrigger>jadminviewcpanel-getbuttons</tabTrigger>
+</snippet>

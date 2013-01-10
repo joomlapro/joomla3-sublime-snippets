@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Invert date.
+\$item->${1:column} = preg_replace('/(\\d{4})-(\\d{2})-(\\d{2})/', "\\\\3-\\\\2-\\\\1", \$item->${1/(.+)/\L\1/g});]]></content>
+	<tabTrigger>jregex-invert_date</tabTrigger>
+</snippet>

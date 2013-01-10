@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JHtml::_('formbehavior.chosen', 'select');]]></content>
+	<tabTrigger>jhtmlformbehavior-chosen</tabTrigger>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[/**
+ * The context for storing internal data, e.g. record.
+ *
+ * @var     string
+ * @since   $TM_VERSION
+ */
+protected \$context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1:controller}';]]></content>
+	<tabTrigger>jsitecontroller_context</tabTrigger>
+</snippet>

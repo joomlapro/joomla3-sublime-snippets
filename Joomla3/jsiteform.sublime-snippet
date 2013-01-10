@@ -1,0 +1,76 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields">
+		<field id="id" name="id" type="hidden" class="inputbox"  size="10" default="0" readonly="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_ID_LABEL" />
+		<field name="asset_id" type="hidden" filter="unset" />
+		<field id="${1/(.+)/\L\1/g}" name="${1:title}" type="text" class="inputbox span6" size="30" required="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
+		<field id="alias" name="alias" type="text" class="inputbox" size="45" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
+		<field id="catid" name="catid" type="categoryedit" extension="com_${TM_PROJECT/(.+)/\U\1/g}" class="inputbox" required="true" addfieldpath="/administrator/components/com_categories/models/fields" label="JCATEGORY" description="JFIELD_CATEGORY_DESC">
+			<option value="">JSELECT</option>
+		</field>
+		<field id="ordering" name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
+		<field id="description" name="description" type="editor" buttons="true" hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_${TM_PROJECT/(.+)/\L\1/g}" label="JGLOBAL_DESCRIPTION" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
+		<field id="state" name="state" type="list" class="inputbox" size="1" default="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+		<field id="access" name="access" type="accesslevel" class="inputbox" size="1" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />
+		<field id="featured" name="featured" type="list" class="inputbox" default="0" label="JGLOBAL_FIELD_FEATURED_LABEL" description="JGLOBAL_FIELD_FEATURED_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field id="language" name="language" type="contentlanguage" class="inputbox" label="JFIELD_LANGUAGE_LABEL" description="JFIELD_LANGUAGE_DESC">
+			<option value="*">JALL</option>
+		</field>
+		<field id="metadesc" name="metadesc" type="textarea" class="inputbox" rows="5" cols="50" label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" />
+		<field id="metakey" name="metakey" type="textarea" class="inputbox" rows="5" cols="50" label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" />
+		<field id="xreference" name="xreference" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_XREFERENCE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_XREFERENCE_DESC" />
+	</fieldset>
+	<fieldset name="publish">
+		<field id="created" name="created" type="calendar" filter="unset" />
+		<field id="created_by" name="created_by" type="text" filter="unset" />
+		<field id="created_by_alias" name="created_by_alias" type="text" class="inputbox" size="20" label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL" description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC" />
+		<field id="publish_up" name="publish_up" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_UP_LABEL" description="JGLOBAL_FIELD_PUBLISH_UP_DESC" />
+		<field id="publish_down" name="publish_down" type="calendar" class="inputbox" format="%Y-%m-%d %H:%M:%S" size="22" filter="user_utc" label="JGLOBAL_FIELD_PUBLISH_DOWN_LABEL" description="JGLOBAL_FIELD_PUBLISH_DOWN_DESC" />
+	</fieldset>
+	<fields name="images">
+		<field name="image_first" type="media" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FIRST_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_FIRST_DESC" />
+		<field name="float_first" type="list" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FLOAT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FLOAT_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="right">JGLOBAL_RIGHT</option>
+			<option value="left">JGLOBAL_LEFT</option>
+			<option value="none">JFIELD_OPTION_NONE</option>
+		</field>
+		<field name="image_first_alt" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_DESC" />
+		<field name="image_first_caption" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_DESC" />
+		<field name="image_second" type="media" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_SECOND_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_SECOND_DESC" />
+		<field name="float_second" type="list" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FLOAT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FLOAT_DESC">
+			<option value="">JGLOBAL_USE_GLOBAL</option>
+			<option value="right">JGLOBAL_RIGHT</option>
+			<option value="left">JGLOBAL_LEFT</option>
+			<option value="none">JFIELD_OPTION_NONE</option>
+		</field>
+		<field name="image_second_alt" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_DESC" />
+		<field name="image_second_caption" type="text" class="inputbox" size="20" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_DESC" />
+	</fields>
+	<fields name="metadata">
+		<fieldset name="jmetadata">
+			<field name="robots" type="list" labelclass="control-label" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ROBOTS_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ROBOTS_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="index, follow">COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_INDEX_FOLLOW</option>
+				<option value="noindex, follow">COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_NOINDEX_FOLLOW</option>
+				<option value="index, nofollow">COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_INDEX_NOFOLLOW</option>
+				<option value="noindex, nofollow">COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_NOINDEX_NOFOLLOW</option>
+			</field>
+			<field name="author" type="text" size="20" labelclass="control-label" label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC" />
+			<field name="rights" type="textarea" required="false" filter="string" cols="30" rows="2" labelclass="control-label" label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC" />
+		</fieldset>
+	</fields>
+</form>
+
+]]></content>
+	<tabTrigger>jsiteform</tabTrigger>
+</snippet>

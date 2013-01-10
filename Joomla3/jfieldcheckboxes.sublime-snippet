@@ -1,0 +1,69 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadFieldClass('checkboxes');
+
+/**
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_PROJECT/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class JFormField${1:Field} extends JFormFieldCheckboxes
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = '${1/(.+)/\u\1/g}';
+
+	/**
+	 * Flag to tell the field to always be in multiple values mode.
+	 *
+	 * @var     boolean
+	 * @since   $TM_VERSION
+	 */
+	protected \$forceMultiple = true;
+
+	/**
+	 * Method to get the field options.
+	 *
+	 * @return  array  The field option objects.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getOptions()
+	{
+		// Initialiase variables.
+		\$options = array();
+
+		\$db    = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		\$query->select('id AS value, ${2:title} AS text');
+		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}') . ' AS a');
+		\$query->order('a.ordering');
+
+		// Get the options.
+		\$db->setQuery(\$query);
+
+		try
+		{
+			\$options = \$db->loadObjectList();
+		}
+		catch (RuntimeException \$e)
+		{
+			JError::raiseWarning(500, \$db->getMessage());
+		}
+
+		// Merge any additional options in the XML definition.
+		\$options = array_merge(parent::getOptions(), \$options);
+
+		return \$options;
+	}
+}
+
+]]></content>
+	<tabTrigger>jfieldcheckboxes</tabTrigger>
+</snippet>

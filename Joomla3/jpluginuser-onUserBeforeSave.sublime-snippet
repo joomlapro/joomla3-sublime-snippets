@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method is called before user data is stored in the database
+ *
+ * @param   array    \$user   Holds the old user data.
+ * @param   boolean  \$isnew  True if a new user is stored.
+ * @param   array    \$new    Holds the new user data.
+ *
+ * @return	void
+ *
+ * @since	$TM_VERSION
+ * @throws	Exception on error.
+ */
+public function onUserBeforeSave(\$user, \$isnew, \$new)
+{
+	// Initialiase variables.
+	\$app = JFactory::getApplication();
+
+	// throw new Exception('Some error occurred. Please do not save me');
+}
+
+]]></content>
+	<tabTrigger>jpluginuser-onUserBeforeSave</tabTrigger>
+</snippet>

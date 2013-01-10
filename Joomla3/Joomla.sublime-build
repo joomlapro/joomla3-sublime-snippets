@@ -1,0 +1,5 @@
+{
+	"cmd": ["joomla3", "$file"],
+	"file_regex": "^(...*?):([0-9]*):?([0-9]*)",
+	"selector": "source.joomla3"
+}

@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<select name="filter_select" id="filter_select" class="inputbox">
+	<option value=""><?php echo JText::_('JSELECT'); ?></option>
+	<?php echo JHtml::_('select.options', ${TM_PROJECT/(.+)/\u\1/g}Helper::getSearchSelect(), 'value', 'text', \$this->state->get('filter.select')); ?>
+</select>]]></content>
+	<tabTrigger>jadminlayoutsearchselect</tabTrigger>
+</snippet>

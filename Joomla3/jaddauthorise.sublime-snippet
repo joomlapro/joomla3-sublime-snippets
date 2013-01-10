@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<?php if (\$user->authorise('${1:core}.${2:admin}')): ?>
+	$3
+<?php endif; ?>]]></content>
+	<tabTrigger>jaddauthorise</tabTrigger>
+</snippet>

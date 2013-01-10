@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to auto-populate the model state.
+ *
+ * Note. Calling getState in this method will result in recursion.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+protected function populateState()
+{
+	\$app = JFactory::getApplication('administrator');
+
+	// Load the User state.
+	\$pk = \$app->input->getInt('id');
+	\$this->setState('${1:edit}.id', \$pk);
+
+	// Load the parameters.
+	\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+	\$this->setState('params', \$params);
+}]]></content>
+	<tabTrigger>jadminmodeledit_populatestate</tabTrigger>
+</snippet>

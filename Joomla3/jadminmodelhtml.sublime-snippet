@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[/**
+ * Utility class working with ${2/(.+)/\L\1/g}
+ *
+ * @package     $TM_PROJECT
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+abstract class JHtml${2:Hello}
+{
+
+}
+
+]]></content>
+	<tabTrigger>jadminmodelhtml</tabTrigger>
+</snippet>

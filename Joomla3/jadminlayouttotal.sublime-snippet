@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<label>
+	<strong><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_TOTAL'); ?></strong>
+	<?php echo \$this->pagination->total; ?>
+</label>]]></content>
+	<tabTrigger>jadminlayouttotal</tabTrigger>
+</snippet>

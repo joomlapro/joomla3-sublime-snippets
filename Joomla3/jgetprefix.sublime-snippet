@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[\$${1:hello} = preg_replace('/#__/', \$db->getPrefix(), \$${1/(.+)/\L\1/g});]]></content>
+	<tabTrigger>jgetprefix</tabTrigger>
+</snippet>

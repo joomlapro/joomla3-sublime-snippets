@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JHtml::script('com_${TM_PROJECT/(.+)/\L\1/g}/${2:jquery.custom}.js', false, true);]]></content>
+	<tabTrigger>jhtmlscript</tabTrigger>
+</snippet>

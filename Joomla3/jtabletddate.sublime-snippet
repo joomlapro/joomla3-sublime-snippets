@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<td class="center">
+	<?php echo JHtml::_('date', \$item->${1:created}, JText::_('DATE_FORMAT_LC4')); ?>
+</td>]]></content>
+	<tabTrigger>jtabletddate</tabTrigger>
+</snippet>

@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[Gerenciador de ${1:Hello}: ${2:Hello}]]></content>
+	<tabTrigger>ger</tabTrigger>
+</snippet>

@@ -1,0 +1,60 @@
+<snippet>
+	<content><![CDATA[/**
+ * This method will return a user object.
+ *
+ * If options['autoregister'] is true, if the user doesn't exist yet he will be created.
+ *
+ * @param   array  \$user     Holds the user data.
+ * @param   array  \$options  Array holding options (remember, autoregister, group).
+ *
+ * @return  object  A JUser object.
+ *
+ * @since   $TM_VERSION
+ */
+protected function _getUser(\$user, \$options = array())
+{
+	// Initialiase variables.
+	\$instance = JUser::getInstance();
+	\$id       = (int) JUserHelper::getUserId(\$user['username']);
+
+	if (\$id)
+	{
+		\$instance->load(\$id);
+		return \$instance;
+	}
+
+	// TODO: move this out of the plugin.
+	\$config = JComponentHelper::getParams('com_users');
+
+	// Default to Registered.
+	\$defaultUserGroup = \$config->get('new_usertype', 2);
+
+	\$instance->set('id',             0);
+	\$instance->set('name',           \$user['fullname']);
+	\$instance->set('username',       \$user['username']);
+	\$instance->set('password_clear', \$user['password_clear']);
+
+	// Result should contain an email (check).
+	\$instance->set('email',          \$user['email']);
+	\$instance->set('groups',         array(\$defaultUserGroup));
+
+	// If autoregister is set let's register the user.
+	\$autoregister = isset(\$options['autoregister']) ? \$options['autoregister'] :  \$this->params->get('autoregister', 1);
+
+	if (\$autoregister)
+	{
+		if (!\$instance->save())
+		{
+			return JError::raiseWarning('SOME_ERROR_CODE', \$instance->getError());
+		}
+	}
+	else
+	{
+		// No existing user and autoregister off, this is a temporary user.
+		\$instance->set('tmp_user', true);
+	}
+
+	return \$instance;
+}]]></content>
+	<tabTrigger>jpluginuser__getuser</tabTrigger>
+</snippet>

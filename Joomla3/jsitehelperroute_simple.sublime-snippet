@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
+ *
+ * @return  mixed  Integer menu id on success, null on failure.
+ *
+ * @since   $TM_VERSION
+ * @static
+ */
+public static function get${1:Route}Route()
+{
+	// Get the items.
+	\$items  = self::getItems();
+	\$itemid = null;
+
+	// Search for a suitable menu id.
+	foreach (\$items as \$item)
+	{
+		if (isset(\$item->query['view']) && \$item->query['view'] === '${1/(.+)/\L\1/g}')
+		{
+			\$itemid = \$item->id;
+			break;
+		}
+	}
+
+	// Create the link
+	\$link = 'index.php?option=com_bolsas&view=${1/(.+)/\L\1/g}';
+
+	if (\$itemid)
+	{
+		\$link .= '&Itemid=' . \$itemid;
+	}
+
+	return \$link;
+}]]></content>
+	<tabTrigger>jsitehelperroute_simple</tabTrigger>
+</snippet>

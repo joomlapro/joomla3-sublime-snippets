@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Register dependent classes.
+JLoader::register('${TM_PROJECT/(.+)/\u\1/g}Helper', JPATH_${1:ADMINISTRATOR} . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/${2:${TM_PROJECT/(.+)/\L\1/g}}.php');]]></content>
+	<tabTrigger>jloader-register</tabTrigger>
+</snippet>

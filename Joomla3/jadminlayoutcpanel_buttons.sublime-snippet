@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<div class="well well-small">
+	<div class="module-title nav-header"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_HEADER_QUICKICONS'); ?></div>
+	<div class="row-striped">
+		<?php if (!empty(\$this->buttons)): ?>
+			<?php echo \$this->buttons; ?>
+		<?php endif; ?>
+	</div>
+</div>]]></content>
+	<tabTrigger>jadminlayoutcpanel_buttons</tabTrigger>
+</snippet>

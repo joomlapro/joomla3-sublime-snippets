@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<jdoc:include type="${1:component}" />]]></content>
+	<tabTrigger>jdoc</tabTrigger>
+</snippet>

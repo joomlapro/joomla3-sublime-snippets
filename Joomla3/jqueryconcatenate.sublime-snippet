@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[\$query->concatenate(array(\$db->quote(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}')), "a.${1:field}"), " ")]]></content>
+	<tabTrigger>jqueryconcatenate</tabTrigger>
+</snippet>

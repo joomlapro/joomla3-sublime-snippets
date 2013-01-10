@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[\$this->registerTask('${1:unfeatured}', '${2:featured}');]]></content>
+	<tabTrigger>jaddregistertask</tabTrigger>
+</snippet>

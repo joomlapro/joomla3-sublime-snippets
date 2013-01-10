@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[/**
+ * Constructor.
+ *
+ * @param   array  \$config  An optional associative array of configuration settings.
+ *
+ * @see     JController
+ * @since   $TM_VERSION
+ */
+public function __construct(\$config = array())
+{
+	parent::__construct(\$config);
+
+	\$this->registerTask('${1:task_unpublish}', '${2:task_publish}');
+}]]></content>
+	<tabTrigger>jadmincontrollerlist-construct</tabTrigger>
+</snippet>

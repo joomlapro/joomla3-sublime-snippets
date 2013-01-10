@@ -1,0 +1,159 @@
+<snippet>
+	<content><![CDATA[/**
+ * Methods supporting a list of ${2:${1/(.+)(s\b)/\L\1/g}} records.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
+{
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  \$config  An optional associative array of configuration settings.
+	 *
+	 * @see     JController
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(\$config = array())
+	{
+		if (empty(\$config['filter_fields']))
+		{
+			\$config['filter_fields'] = array(
+				'id', 'a.id',
+				'${3:title}', 'a.${3/(.+)/\L\1/g}',
+				'state', 'a.state',
+				'ordering', 'a.ordering',
+			);
+		}
+
+		parent::__construct(\$config);
+	}
+
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @param   string  \$ordering   An optional ordering field.
+	 * @param   string  \$direction  An optional direction (asc|desc).
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function populateState(\$ordering = null, \$direction = null)
+	{
+		// Initialise variables.
+		\$app = JFactory::getApplication('administrator');
+		\$input = \$app->input;
+
+		// Adjust the context to support modal layouts.
+		if (\$layout = \$input->get('layout'))
+		{
+			\$this->context .= '.' . \$layout;
+		}
+
+		// Load the filter state.
+		\$search = \$this->getUserStateFromRequest(\$this->context . '.filter.search', 'filter_search');
+		\$this->setState('filter.search', \$search);
+
+		\$published = \$this->getUserStateFromRequest(\$this->context . '.filter.state', 'filter_state', '', 'string');
+		\$this->setState('filter.state', \$published);
+
+		// Load the parameters.
+		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$this->setState('params', \$params);
+
+		// List state information.
+		parent::populateState('a.${3/(.+)/\L\1/g}', 'asc');
+	}
+
+	/**
+	 * Method to get a store id based on model configuration state.
+	 *
+	 * This is necessary because the model is used by the component and
+	 * different modules that might need different sets of data or different
+	 * ordering requirements.
+	 *
+	 * @param   string  \$id  A prefix for the store id.
+	 *
+	 * @return  string  A store id.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getStoreId(\$id = '')
+	{
+		// Compile the store id.
+		\$id .= ':' . \$this->getState('filter.search');
+		\$id .= ':' . \$this->getState('filter.state');
+
+		return parent::getStoreId(\$id);
+	}
+
+	/**
+	 * Build an SQL query to load the list data.
+	 *
+	 * @return  JDatabaseQuery
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getListQuery()
+	{
+		// Create a new query object.
+		\$db    = \$this->getDbo();
+		\$query = \$db->getQuery(true);
+		\$user  = JFactory::getUser();
+
+		// Select the required fields from the table.
+		\$query->select(
+			\$this->getState(
+				'list.select',
+				'a.id, a.${3/(.+)/\L\1/g}' .
+				', a.state, a.ordering'
+			)
+		);
+		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
+
+		// Filter by published state
+		\$published = \$this->getState('filter.state');
+
+		if (is_numeric(\$published))
+		{
+			\$query->where('a.state = ' . (int) \$published);
+		}
+		elseif (\$published === '')
+		{
+			\$query->where('(a.state IN (0, 1))');
+		}
+
+		// Filter by search in ${3/(.+)/\L\1/g}.
+		\$search = \$this->getState('filter.search');
+
+		if (!empty(\$search))
+		{
+			if (stripos(\$search, 'id:') === 0)
+			{
+				\$query->where('a.id = ' . (int) substr(\$search, 3));
+			}
+			else
+			{
+				\$search = \$db->quote('%' . \$db->escape(\$search, true) . '%');
+				\$query->where('(a.${3/(.+)/\L\1/g} LIKE ' . \$search . ')');
+			}
+		}
+
+		// Add the list ordering clause.
+		\$orderCol = \$this->getState('list.ordering', 'a.${3/(.+)/\L\1/g}');
+		\$query->order(\$db->escape(\$orderCol) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
+
+		// echo nl2br(str_replace('#__', 'jos_', \$query));
+
+		return \$query;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodellist-mini</tabTrigger>
+</snippet>

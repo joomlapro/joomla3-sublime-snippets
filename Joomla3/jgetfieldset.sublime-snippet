@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[<div class="tab-pane" id="${1/(.+)/\L\1/g}">
+<?php foreach(\$this->form->getFieldset('${1:fields}') as \$field): ?>
+	<div class="control-group">
+		<?php if (!\$field->hidden): ?>
+			<div class="control-label">
+				<?php echo \$field->label; ?>
+			</div>
+		<?php endif; ?>
+		<div class="controls">
+			<?php echo \$field->input; ?>
+		</div>
+	</div>
+<?php endforeach; ?>
+</div>]]></content>
+	<tabTrigger>jgetfieldset</tabTrigger>
+</snippet>

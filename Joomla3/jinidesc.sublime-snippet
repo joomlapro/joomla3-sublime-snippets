@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_XML_DESCRIPTION="Este componente gerencia $1"]]></content>
+	<tabTrigger>jinidesc</tabTrigger>
+</snippet>

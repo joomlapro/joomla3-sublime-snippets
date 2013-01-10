@@ -1,0 +1,40 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="search">
+	<name>plg_search_${2:${TM_PLUGIN/(.+)/\L\1/g}}</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>${3:$TM_MONTH} $TM_YEAR</creationDate>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>PLG_SEARCH_${2/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="${2/(.+)/\L\1/g}">${2/(.+)/\L\1/g}.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.plg_search_${2/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.plg_search_${2/(.+)/\L\1/g}.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="search_limit" type="text" default="50" size="5" label="JFIELD_PLG_SEARCH_SEARCHLIMIT_LABEL" description="JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC" />
+				<field name="search_content" type="radio" class="btn-group" default="0" label="JFIELD_PLG_SEARCH_ALL_LABEL" description="JFIELD_PLG_SEARCH_ALL_DESC">
+					<option value="0">JOFF</option>
+					<option value="1">JON</option>
+				</field>
+				<field name="search_archived" type="radio" class="btn-group" default="0" label="JFIELD_PLG_SEARCH_ARCHIVED_LABEL" description="JFIELD_PLG_SEARCH_ARCHIVED_DESC">
+					<option value="0">JOFF</option>
+					<option value="1">JON</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
+
+]]></content>
+	<tabTrigger>jpluginmanifest-search</tabTrigger>
+</snippet>

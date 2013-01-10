@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[<table class="adminlist">
+	<thead>
+		<tr>
+			<th></th>
+			<th class="nowrap" width="10%"></th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<td colspan="2"></td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td></td>
+			<td class="center"></td>
+		</tr>
+	</tbody>
+</table>]]></content>
+	<tabTrigger>jadminlayouttable</tabTrigger>
+</snippet>

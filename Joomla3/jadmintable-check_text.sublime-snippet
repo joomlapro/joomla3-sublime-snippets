@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[if (trim(str_replace('&nbsp;', '', $this->fulltext)) == '')
+{
+	\$this->fulltext = '';
+}
+
+]]></content>
+	<tabTrigger>jadmintable-check_text</tabTrigger>
+</snippet>

@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$item->${1:slug}));]]></content>
+	<tabTrigger>jroute_getcategoryroute</tabTrigger>
+</snippet>

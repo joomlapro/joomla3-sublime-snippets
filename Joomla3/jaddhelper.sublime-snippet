@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Include dependancies.
+require_once JPATH_COMPONENT . '/helpers/${1:helper}.php';]]></content>
+	<tabTrigger>jaddhelper</tabTrigger>
+</snippet>

@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[`$1` tinyint(1) NOT NULL DEFAULT '${2:0}',]]></content>
+	<tabTrigger>jdbtinyint</tabTrigger>
+</snippet>

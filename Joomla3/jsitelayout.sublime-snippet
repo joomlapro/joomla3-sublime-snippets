@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[<div class="${TM_PROJECT/(.+)(s\b)/\L\1/g}<?php echo \$this->pageclass_sfx; ?>">
+	<?php if (\$this->params->get('show_page_heading', 1)): ?>
+		<div class="page-header">
+			<h1>
+				<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
+			</h1>
+		</div>
+	<?php endif; ?>
+
+	<div class="row-fluid">
+		<?php var_dump(\$this->items); ?>
+	</div>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayout</tabTrigger>
+</snippet>

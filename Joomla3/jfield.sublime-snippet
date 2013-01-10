@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_PROJECT/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class JFormField${1:Field} extends JFormField
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = '${1/(.+)/\u\1/g}';
+
+	/**
+	 * Method to get the field input markup.
+	 *
+	 * @return  string  The field input markup.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getInput()
+	{
+		return '';
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield</tabTrigger>
+</snippet>

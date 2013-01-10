@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<?php echo \$this->loadTemplate('${1:publish}'); ?>]]></content>
+	<tabTrigger>jloadtemplate</tabTrigger>
+</snippet>

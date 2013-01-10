@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[/**
+ * @return  string
+ *
+ * @since	$TM_VERSION
+ */
+function onExtensionBeforeInstall(\$method, \$type, \$manifest, \$eid)
+{
+	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionBeforeInstall: Installing ' . \$type . ' from ' . \$method . (\$method == 'install' ? ' with manifest supplied' : ' using discovered extension ID ' . \$eid));
+}
+
+]]></content>
+	<tabTrigger>jpluginextensionbeforeinstall</tabTrigger>
+</snippet>

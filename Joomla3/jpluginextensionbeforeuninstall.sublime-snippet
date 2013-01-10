@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[/**
+ * @param   int  \$eid  extension id
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+function onExtensionBeforeUninstall(\$eid)
+{
+	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionBeforeUninstall: Uninstalling ' . \$eid);
+}
+
+]]></content>
+	<tabTrigger>jpluginextensionbeforeuninstall</tabTrigger>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Load the modal behavior script.
+JHtml::_('behavior.framework');]]></content>
+	<tabTrigger>jhtmlbehavior-framework</tabTrigger>
+</snippet>

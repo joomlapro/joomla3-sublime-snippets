@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$app = JFactory::getApplication();
+\$doc = JFactory::getDocument();
+\$browser = JBrowser::getInstance();
+\$this->language = \$doc->language;
+\$this->direction = \$doc->direction;
+
+// Detecting Active Variables
+\$option   = \$app->input->getCmd('option', '');
+\$view     = \$app->input->getCmd('view', '');
+\$layout   = \$app->input->getCmd('layout', '');
+\$task     = \$app->input->getCmd('task', '');
+\$itemid   = \$app->input->getCmd('Itemid', '');
+\$sitename = \$app->getCfg('sitename');
+
+// Define path
+\$path = \$this->baseurl . '/templates/' . \$this->template;
+
+// Add Stylesheets
+\$doc->addStyleSheet(\$path . '/css/template.css');
+
+]]></content>
+	<tabTrigger>jsitetemplate</tabTrigger>
+</snippet>

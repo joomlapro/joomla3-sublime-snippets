@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[array_unshift(\$options, JHtml::_('select.option', '0', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${2:MESSAGE}')));]]></content>
+	<tabTrigger>jarrayunshift</tabTrigger>
+</snippet>

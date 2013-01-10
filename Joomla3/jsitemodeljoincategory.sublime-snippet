@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Join on category table.
+\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
+\$query->join('LEFT', '#__categories AS c on c.id = a.catid');]]></content>
+	<tabTrigger>jsitemodeljoincategory</tabTrigger>
+</snippet>

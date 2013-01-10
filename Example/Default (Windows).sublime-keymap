@@ -1,0 +1,5 @@
+[
+	{ "keys": ["f12"], "command": "reindent", "args": {"single_line": false} },
+	{ "keys": ["ctrl+d"], "command": "run_macro_file", "args": {"file": "Packages/Default/Delete Line.sublime-macro"} },
+	{ "keys": ["ctrl+alt+t"], "command": "phpcs_clear_sniffer_marks" }
+]

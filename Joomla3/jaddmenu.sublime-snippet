@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<menu link="option=com_${TM_PROJECT/(.+)/\L\1/g}&amp;view=${1:view_list}" view="${1/(.+)/\L\1/g}" img="class:${1/(.+)/\L\1/g}" alt="${TM_PROJECT/(.+)/\u\1/g}/${1/(.+)/\u\1/g}">com_${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}</menu>]]></content>
+	<tabTrigger>jaddmenu</tabTrigger>
+</snippet>

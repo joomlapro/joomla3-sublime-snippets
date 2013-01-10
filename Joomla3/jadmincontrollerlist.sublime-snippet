@@ -1,0 +1,73 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} list controller class.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller_list} extends JControllerAdmin
+{
+	/**
+	 * The prefix to use with controller messages.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$text_prefix = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+
+	/**
+	 * Method to get a model object, loading it if required.
+	 *
+	 * @param   string  \$name    The model name. Optional.
+	 * @param   string  \$prefix  The class prefix. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+	 *
+	 * @return  object  The model.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getModel(\$name = '${2:${1/(.+)(s\b)/\u\1/g}}', \$prefix = '${TM_PROJECT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
+	{
+		\$model = parent::getModel(\$name, \$prefix, \$config);
+
+		return \$model;
+	}
+
+	/**
+	 * Method to save the submitted ordering values for records via AJAX.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function saveOrderAjax()
+	{
+		// Get the input
+		\$input = JFactory::getApplication()->input;
+		\$pks = \$input->post->get('cid', array(), 'array');
+		\$order = \$input->post->get('order', array(), 'array');
+
+		// Sanitize the input
+		JArrayHelper::toInteger(\$pks);
+		JArrayHelper::toInteger(\$order);
+
+		// Get the model
+		\$model = \$this->getModel();
+
+		// Save the ordering
+		\$return = \$model->saveorder(\$pks, \$order);
+
+		if (\$return)
+		{
+			echo "1";
+		}
+
+		// Close the application
+		JFactory::getApplication()->close();
+	}
+}
+
+]]></content>
+	<tabTrigger>jadmincontrollerlist</tabTrigger>
+</snippet>

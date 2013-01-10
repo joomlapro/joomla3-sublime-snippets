@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[\$this->form->setFieldAttribute('${1:field}', '${2:class}', '${3:input-xlarge}');]]></content>
+	<tabTrigger>jform-setfieldattribute</tabTrigger>
+</snippet>

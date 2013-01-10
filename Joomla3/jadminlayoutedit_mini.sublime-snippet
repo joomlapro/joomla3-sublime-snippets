@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[?>
+<div class="tab-pane" id="${1:fieldset}">
+
+</div>
+
+]]></content>
+	<tabTrigger>jadminlayoutedit_mini</tabTrigger>
+</snippet>

@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[// ${1:Hello} plugins
+JPluginHelper::importPlugin('${1/(.+)/\L\1/g}');
+
+// Get the dispatcher.
+\$dispatcher = JDispatcher::getInstance();
+
+// Trigger the form preparation event.
+\$dispatcher->trigger('on${1/(.+)/\u\1/g}${2:After}${3:Save}', array(\$id, \$user));]]></content>
+	<tabTrigger>jsiteplugin</tabTrigger>
+</snippet>
