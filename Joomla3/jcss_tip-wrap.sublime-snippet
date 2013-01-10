@@ -1,0 +1,46 @@
+<snippet>
+	<content><![CDATA[/* Tip */
+.tip-wrap:before {
+	content: '';
+	display: inline-block;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-bottom: 7px solid #222;
+	border-bottom-color: rgba(34,34,34,1);
+	position: absolute;
+	top: -7px;
+	left: 9px;
+}
+.tip-wrap:after {
+	content: '';
+	display: inline-block;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid #333;
+	position: absolute;
+	top: -6px;
+	left: 10px;
+}
+
+.tip-wrap {
+	max-width: 400px;
+	padding: 7px 10px;
+	color: #fff;
+	text-align: left;
+	text-decoration: none;
+	background-color: #333;
+	border-radius: 4px;
+	border: 1px solid #222;
+	z-index: 100;
+}
+
+.tip-title {
+	font-weight: 700;
+	border-bottom: 1px solid #444;
+	margin-bottom: 3px;
+	padding-bottom: 3px;
+}
+
+]]></content>
+	<tabTrigger>jcss_tip-wrap</tabTrigger>
+</snippet>
