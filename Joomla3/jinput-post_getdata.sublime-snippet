@@ -1,5 +1,5 @@
 <snippet>
 	<content><![CDATA[// Get the data from POST.
 \$data = \$this->input->post->get('jform', array(), 'array');]]></content>
-	<tabTrigger>jgetdata</tabTrigger>
+	<tabTrigger>jinput-post_getdata</tabTrigger>
 </snippet>

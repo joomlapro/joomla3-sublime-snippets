@@ -92,6 +92,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
 		// Initialiase variables.
 		\$app     = JFactory::getApplication();
 		\$menus   = \$app->getMenu();
+		\$pathway = \$app->getPathway();
 		\$title   = null;
 
 		// Because the application sets a default page title,
@@ -108,6 +109,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_list} extends JViewLegacy
 		}
 
 		\$title = \$this->params->get('page_title', '');
+
+		\$pathway->addItem(\$title, '');
 
 		if (empty(\$title))
 		{

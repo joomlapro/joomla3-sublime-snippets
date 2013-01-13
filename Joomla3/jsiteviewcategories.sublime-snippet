@@ -76,9 +76,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}ViewCategories extends JViewLegacy
 	protected function _prepareDocument()
 	{
 		// Initialise variables
-		\$app   = JFactory::getApplication();
-		\$menus = \$app->getMenu();
-		\$title = null;
+		\$app     = JFactory::getApplication();
+		\$menus   = \$app->getMenu();
+		\$pathway = \$app->getPathway();
+		\$title   = null;
 
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself
@@ -94,6 +95,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}ViewCategories extends JViewLegacy
 		}
 
 		\$title = \$this->params->get('page_title', '');
+
+		\$pathway->addItem(\$title, '');
 
 		if (empty(\$title))
 		{

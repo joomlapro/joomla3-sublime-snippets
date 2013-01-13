@@ -160,6 +160,38 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 
 		\$title = \$this->params->get('page_title', '');
 
+		\$id = (int) @\$menu->query['id'];
+
+		// If the menu item does not concern this city.
+		if (\$menu && (\$menu->query['option'] != 'com_cities' || \$menu->query['view'] != 'city' || \$id != \$this->item->id))
+		{
+			// If this is not a single city menu item, set the page title to the city ${2/(.+)/\L\1/g}.
+			if (\$this->item->${2/(.+)/\L\1/g})
+			{
+				\$title = \$this->item->${2/(.+)/\L\1/g};
+			}
+
+			\$path = array(
+				array(
+					'title' => \$menu->title,
+					'link' => \$menu->link
+				),
+				array(
+					'title' => \$this->item->${2/(.+)/\L\1/g},
+					'link' => ''
+				)
+			);
+
+			foreach (\$path as \$item)
+			{
+				\$pathway->addItem(\$item['title'], \$item['link']);
+			}
+		}
+		else
+		{
+			\$pathway->addItem(\$this->item->${2:title}, '');
+		}
+
 		// Check for empty title and add site name if param is set
 		if (empty(\$title))
 		{
@@ -175,8 +207,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:View_item} extends JViewLegacy
 		}
 
 		\$this->document->setTitle(\$title);
-
-		\$pathway->addItem(\$this->item->${2:title}, '');
 
 		// Configure the document meta-description.
 		if (\$this->item->metadesc)

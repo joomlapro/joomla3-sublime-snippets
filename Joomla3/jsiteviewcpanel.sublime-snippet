@@ -20,9 +20,9 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Cpanel} extends JViewLegacy
 	public function display(\$tpl = null)
 	{
 		// Initialiase variables.
-		\$app        = JFactory::getApplication();
-		\$user       = JFactory::getUser();
-		\$params     = \$app->getParams();
+		\$app    = JFactory::getApplication();
+		\$user   = JFactory::getUser();
+		\$params = \$app->getParams();
 
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))
@@ -63,9 +63,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Cpanel} extends JViewLegacy
 	protected function _prepareDocument()
 	{
 		// Initialiase variables.
-		\$app   = JFactory::getApplication();
-		\$menus = \$app->getMenu();
-		\$title = null;
+		\$app     = JFactory::getApplication();
+		\$menus   = \$app->getMenu();
+		\$pathway = \$app->getPathway();
+		\$title   = null;
 
 		// Because the application sets a default page title,
 		// we need to get it from the menu item itself
@@ -81,6 +82,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Cpanel} extends JViewLegacy
 		}
 
 		\$title = \$this->params->get('page_title', '');
+
+		\$pathway->addItem(\$title, '');
 
 		if (empty(\$title))
 		{

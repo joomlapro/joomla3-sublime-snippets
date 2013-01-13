@@ -36,6 +36,8 @@ COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_VERSION_DESC="A quantidade de vezes que este
 
 ; FIELDSET
 
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_MORE_OPTIONS_LABEL="Mais Opções"
+
 ; FILTER
 
 COM_${TM_PROJECT/(.+)/\U\1/g}_FILTER_SEARCH_DESC="Filtrar a lista por um ${6:título}."

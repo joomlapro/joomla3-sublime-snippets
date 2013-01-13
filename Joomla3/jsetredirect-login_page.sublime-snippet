@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[// Get the current user object.
+\$user = JFactory::getUser();
+
+if (\$user->get('guest') == 1)
+{
+	// Redirect to login page.
+	\$this->setRedirect(JRoute::_('index.php?option=com_users&view=login', false));
+	return;
+}]]></content>
+	<tabTrigger>jsetredirect-login_page</tabTrigger>
+</snippet>

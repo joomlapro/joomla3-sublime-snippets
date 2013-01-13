@@ -5,17 +5,19 @@
 \$this->language = \$doc->language;
 \$this->direction = \$doc->direction;
 
-// Define path
+// Define path.
 \$path = \$this->baseurl . '/templates/' . \$this->template;
+
+// Add Stylesheets.
+\$doc->addStyleSheet(\$path . '/css/template.css');
 ?>
 <!DOCTYPE HTML>
 <html lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>">
 <head>
 	<jdoc:include type="head" />
-	<link rel="stylesheet" type="text/css" href="<?php echo \$path; ?>/css/template.css">
-	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo \$this->baseurl; ?>/media/jui/js/html5.js"></script><![endif]-->
+	<!--[if lt IE 9]><script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body class="contentpane modal">
+<body class="contentpane">
 	<jdoc:include type="message" />
 	<jdoc:include type="component" />
 </body>

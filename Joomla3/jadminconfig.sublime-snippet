@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
 <config>
 	<fieldset name="component" label="COM_${TM_PROJECT/(.+)/\U\1/g}_COMPONENT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_COMPONENT_DESC" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields">
 

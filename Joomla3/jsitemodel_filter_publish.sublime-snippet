@@ -8,5 +8,5 @@ if (\$this->getState('filter.publish_date')){
 	\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')');
 	\$query->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
 }]]></content>
-	<tabTrigger>jsitemodelfilterpublish</tabTrigger>
+	<tabTrigger>jsitemodel_filter_publish</tabTrigger>
 </snippet>

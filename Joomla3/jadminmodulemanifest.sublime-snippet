@@ -1,6 +1,6 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="3.0" client="administrator">
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="module" version="$TM_VERSION" client="administrator">
 	<name>mod_${1:module}</name>
 	<author>$TM_FULLNAME</author>
 	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>

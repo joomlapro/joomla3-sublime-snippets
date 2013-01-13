@@ -128,6 +128,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 
 		\$title = \$this->params->def('page_title', \$head);
 
+		\$pathway->addItem(\$title, '');
+
 		if (\$app->getCfg('sitename_pagetitles', 0) == 1)
 		{
 			\$title = JText::sprintf('JPAGETITLE', \$app->getCfg('sitename'), \$title);
@@ -138,8 +140,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 		}
 
 		\$this->document->setTitle(\$title);
-
-		\$pathway->addItem(\$title, '');
 
 		// Configure the document meta-description.
 		if (\$this->params->get('menu-meta_description'))

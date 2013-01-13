@@ -56,7 +56,7 @@
  *
  * @return  string  HTML markup for the full pagination footer
  *
- * @since   3.0
+ * @since   $TM_VERSION
  */
 function pagination_list_footer(\$list)
 {
@@ -75,7 +75,7 @@ function pagination_list_footer(\$list)
  *
  * @return  string  HTML markup for the full pagination object
  *
- * @since   3.0
+ * @since   $TM_VERSION
  */
 function pagination_list_render(\$list)
 {
@@ -133,7 +133,7 @@ function pagination_list_render(\$list)
  *
  * @return  string  HTML markup for active item
  *
- * @since   3.0
+ * @since   $TM_VERSION
  */
 function pagination_item_active(& \$item)
 {
@@ -177,7 +177,7 @@ function pagination_item_active(& \$item)
  *
  * @return  string  HTML markup for inactive item
  *
- * @since   3.0
+ * @since   $TM_VERSION
  */
 function pagination_item_inactive(& \$item)
 {

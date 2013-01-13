@@ -212,7 +212,7 @@ class com_sermonspeakerInstallerScript
 	 *
 	 * @return  array
 	 *
-	 * @since   3.0
+	 * @since   $TM_VERSION
 	 */
 	function getParam($name)
 	{
@@ -229,7 +229,7 @@ class com_sermonspeakerInstallerScript
 	 *
 	 * @return  void
 	 *
-	 * @since   3.0
+	 * @since   $TM_VERSION
 	 */
 	function setParams($param_array)
 	{

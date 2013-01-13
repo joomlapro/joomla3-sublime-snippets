@@ -132,8 +132,10 @@ JHtml::_('formbehavior.chosen', 'select');
 					<?php endif; ?>
 				</div>
 			</fieldset>
-			<input type="hidden" name="task" value="" />
-			<?php echo JHtml::_('form.token'); ?>
+			<div>
+				<input type="hidden" name="task" value="" />
+				<?php echo JHtml::_('form.token'); ?>
+			</div>
 		</div>
 		<!-- End ${2/(.+)/\u\1/g} -->
 		<!-- Begin Sidebar -->

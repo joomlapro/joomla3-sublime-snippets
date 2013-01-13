@@ -1,6 +1,6 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="3.0" method="upgrade">
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="component" version="$TM_VERSION" method="upgrade">
 	<name>com_${TM_PROJECT/(.+)/\L\1/g}</name>
 	<author>$TM_FULLNAME</author>
 	<creationDate>${1:$TM_MONTH} $TM_YEAR</creationDate>

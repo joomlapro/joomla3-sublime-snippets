@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[<div class="tab-pane" id="${1/(.+)/\L\1/g}">
-<?php foreach(\$this->form->getGroup('${1:fields}') as \$field): ?>
+<?php foreach(\$this->form->getFieldset('${1:fields}') as \$field): ?>
 	<div class="control-group">
 		<?php if (!\$field->hidden): ?>
 			<div class="control-label">
@@ -13,5 +13,5 @@
 	</div>
 <?php endforeach; ?>
 </div>]]></content>
-	<tabTrigger>jgetgroup</tabTrigger>
+	<tabTrigger>jform-getfieldset</tabTrigger>
 </snippet>

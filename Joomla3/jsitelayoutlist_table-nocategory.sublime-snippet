@@ -138,10 +138,12 @@ if (!empty(\$this->items))
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		<input type="hidden" name="task" value="" />
-		<input type="hidden" name="limitstart" value="" />
-		<input type="hidden" name="filter_order" value="" />
-		<input type="hidden" name="filter_order_Dir" value="" />
+		<div>
+			<input type="hidden" name="task" value="" />
+			<input type="hidden" name="limitstart" value="" />
+			<input type="hidden" name="filter_order" value="" />
+			<input type="hidden" name="filter_order_Dir" value="" />
+		</div>
 	<?php endif; ?>
 </form>
 

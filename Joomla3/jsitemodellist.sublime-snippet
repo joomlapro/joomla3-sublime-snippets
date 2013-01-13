@@ -116,7 +116,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_list} extends JModelList
 			\$this->setState('filter.access', false);
 		}
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
 			\$this->setState('filter.state', 1);

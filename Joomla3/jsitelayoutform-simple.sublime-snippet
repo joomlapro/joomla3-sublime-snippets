@@ -86,8 +86,10 @@ JHtml::_('behavior.formvalidation');
 						</div>
 					<?php endif; ?>
 				</div>
-				<input type="hidden" name="task" value="" />
-				<input type="hidden" name="return" value="<?php echo \$this->return_page; ?>" />
+				<div>
+					<input type="hidden" name="task" value="" />
+					<input type="hidden" name="return" value="<?php echo \$this->return_page; ?>" />
+				</div>
 			</div>
 			<?php echo JHtml::_('form.token'); ?>
 		</fieldset>
