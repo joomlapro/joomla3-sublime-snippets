@@ -3,5 +3,5 @@
 	<option value="0">JNO</option>
 	<option value="1">JYES</option>
 </field>]]></content>
-	<tabTrigger>jsitetemplatefieldboolean</tabTrigger>
+	<tabTrigger>jtemplatefieldboolean</tabTrigger>
 </snippet>
