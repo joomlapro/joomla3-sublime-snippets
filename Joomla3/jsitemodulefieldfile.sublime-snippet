@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field name="${1:field}" type="file" accept="audio/*,video/*,image/*" size="40" ${2:disabled="true" }${3:onchange="$4" }label="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jsitemodulefieldfile</tabTrigger>
+</snippet>
