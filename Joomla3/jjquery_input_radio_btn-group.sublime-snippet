@@ -47,5 +47,5 @@ fieldset.radio.btn-group {
 	display: none;
 }
 ]]></content>
-	<tabTrigger>jjquery_radio_btn-group</tabTrigger>
+	<tabTrigger>jjquery_input_radio_btn-group</tabTrigger>
 </snippet>
