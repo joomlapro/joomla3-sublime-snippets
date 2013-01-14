@@ -1,0 +1,98 @@
+<snippet>
+	<content><![CDATA[/**
+ * Script file of ${TM_PROJECT/(.+)/\u\1/g} Component.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class com_${TM_PROJECT/(.+)/\L\1/g}InstallerScript
+{
+	/**
+	 * Constructor.
+	 *
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  void
+	 */
+	public function __constructor(JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called before any type of action.
+	 *
+	 * @param   string            \$route    Which action is happening (install|uninstall|discover_install).
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function preflight(\$route, JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called after any type of action.
+	 *
+	 * @param   string            \$route    Which action is happening (install|uninstall|discover_install).
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function postflight(\$route, JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called on installation.
+	 *
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function install(JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called on update.
+	 *
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function update(JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called on uninstallation.
+	 *
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function uninstall(JAdapterInstance \$adapter)
+	{
+
+	}
+}
+
+]]></content>
+	<tabTrigger>jscript</tabTrigger>
+</snippet>
