@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<!--[if (gte IE 6)&(lte IE 8)]><script type="text/javascript" src="selectivizr-min.js"></script><![endif]-->
-]]></content>
-<tabTrigger>selectivizr</tabTrigger>
-</snippet>

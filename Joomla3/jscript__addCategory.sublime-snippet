@@ -1,0 +1,54 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to add a default category "uncategorized".
+ *
+ * @return  integer  Id of the created category.
+ *
+ * @since   $TM_VERSION
+ */
+function _addCategory()
+{
+	// Create categories for our component
+	\$basePath = JPATH_ADMINISTRATOR . '/components/com_categories';
+
+	require_once \$basePath . '/models/category.php';
+
+	\$config   = array('table_path' => \$basePath . '/tables');
+	\$catmodel = new CategoriesModelCategory(\$config);
+
+	\$catData  = array(
+		'id' => 0,
+		'parent_id' => 0,
+		'level' => 1,
+		'path' => 'uncategorized',
+		'extension' => 'com_${TM_PROJECT/(.+)/\L\1/g}',
+		'title' => 'Uncategorized',
+		'alias' => 'uncategorized',
+		'description' => '',
+		'published' => 1,
+		'language' => '*'
+	);
+
+	\$catmodel->save(\$catData);
+	\$id = \$catmodel->getItem()->id;
+
+	\$db = JFactory::getDBO();
+
+	// Updating all ${TM_PROJECT/(.+)/\L\1/g} without category to have this new one.
+	\$query = \$db->getQuery(true);
+	\$query->update('#__${TM_PROJECT/(.+)/\L\1/g}');
+	\$query->set('catid = ' . (int) \$id);
+	\$query->where('catid = 0');
+	\$db->setQuery(\$query);
+	\$db->query();
+
+	// ${1/(.+)/\u\1/g}.
+	\$query->update('#__${TM_PROJECT/(.+)/\L\1/g}_${1:table}');
+	\$db->setQuery(\$query);
+	\$db->query();
+
+	return;
+}
+]]></content>
+	<tabTrigger>jscript__addCategory</tabTrigger>
+</snippet>
