@@ -1,0 +1,54 @@
+<snippet>
+	<content><![CDATA[
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"><![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="pt-br" dir="ltr">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Your Name Here</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body>
+	<header>
+		<h1><a href="/">Your Name Here</a></h1>
+		<nav>
+			<ul>
+				<li><a href="">Nav Link 1</a></li>
+				<li><a href="">Nav Link 2</a></li>
+				<li><a href="">Nav Link 3</a></li>
+			</ul>
+		</nav>
+	</header>
+	<section>
+		<article>
+			<h2>Article title</h2>
+			<p>Posted on <time datetime="2009-09-04T16:31:24+02:00">September 4th 2009</time> by <a href="#">Writer</a> - <a href="#comments">6 comments</a></p>
+			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		</article>
+		<article>
+			<h2>Article title</h2>
+			<p>Posted on <time datetime="2009-09-04T16:31:24+02:00">September 4th 2009</time> by <a href="#">Writer</a> - <a href="#comments">6 comments</a></p>
+			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+		</article>
+	</section>
+	<aside>
+		<h2>Sidebar Content</h2>
+		<p>Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+	</aside>
+	<footer>
+		<p>&copy; Copyright Your Name Here 2012. All Rights Reserved.</p>
+	</footer>
+	<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-XXXXXXXX-X']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s)})();</script>
+</body>
+</html>
+
+]]></content>
+<tabTrigger>html5</tabTrigger>
+</snippet>

@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[\${TM_PROJECT/(.+)/\\${2:l|L|u|U}\1/g}]]></content>
+	<tabTrigger>$t</tabTrigger>
+</snippet>
