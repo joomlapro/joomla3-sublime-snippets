@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field name="${1:field}" type="textarea" class="inputbox" ${2:disabled="" }cols="30" rows="3" ${3:onchange="" }label="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jmodulefieldtextarea</tabTrigger>
+</snippet>
