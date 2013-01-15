@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<field name="${1:field}" type="color" class="inputbox" ${2:disabled="true" }${3:onchange="" }default="#${4:000000}" validate="color" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jadminfieldcolor</tabTrigger>
+</snippet>
