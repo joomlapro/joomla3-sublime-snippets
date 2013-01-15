@@ -15,5 +15,5 @@ public static function getSearchSelect()
 
 	return \$options;
 }]]></content>
-	<tabTrigger>jadminhelper-search</tabTrigger>
+	<tabTrigger>jadminhelper_getsearchselect</tabTrigger>
 </snippet>

@@ -83,7 +83,7 @@ class JFormFieldModal_${1:Field} extends JFormField
 
 		// Build the script.
 		\$script = array();
-		\$script[] = '	function jSelect${1/(.+)/\u\1/g}_' . \$this->id . '(id, ${2:title}, catid, object) {';
+		\$script[] = '	function jSelect${1/(.+)/\u\1/g}_' . \$this->id . '(id, ${2:title}) {';
 		\$script[] = '		document.id("' . \$this->id . '_id").value = id;';
 		\$script[] = '		document.id("' . \$this->id . '_name").value = ${2/(.+)/\L\1/g};';
 		\$script[] = '		SqueezeBox.close();';
@@ -95,11 +95,6 @@ class JFormFieldModal_${1:Field} extends JFormField
 		// Setup variables for display.
 		\$html = array();
 		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&amp;view=${1/(.+)/\L\1/g}&amp;layout=modal&amp;tmpl=component&amp;function=jSelect${1/(.+)/\u\1/g}_' . \$this->id;
-
-		if (isset(\$this->element['language']))
-		{
-			\$link .= '&amp;forcedLanguage=' . \$this->element['language'];
-		}
 
 		\$db = JFactory::getDBO();
 		\$db->setQuery(
@@ -154,5 +149,5 @@ class JFormFieldModal_${1:Field} extends JFormField
 }
 
 ]]></content>
-	<tabTrigger>jfieldmodal</tabTrigger>
+	<tabTrigger>jfieldmodal-mini</tabTrigger>
 </snippet>

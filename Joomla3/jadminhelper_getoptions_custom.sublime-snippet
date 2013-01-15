@@ -16,5 +16,5 @@ public static function get${1:Field}Options()
 
 	return \$options;
 }]]></content>
-	<tabTrigger>jadminhelper-options_custom</tabTrigger>
+	<tabTrigger>jadminhelper_getoptions_custom</tabTrigger>
 </snippet>

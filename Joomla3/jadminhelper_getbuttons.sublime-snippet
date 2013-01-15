@@ -19,5 +19,5 @@ public static function getButtons()
 
 	return JHtml::_('icons.buttons', \$buttons);
 }]]></content>
-	<tabTrigger>jadminhelper-getbuttons</tabTrigger>
+	<tabTrigger>jadminhelper_getbuttons</tabTrigger>
 </snippet>

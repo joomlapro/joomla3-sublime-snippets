@@ -33,5 +33,5 @@ public static function getActions(\$categoryId = 0)
 
 	return \$result;
 }]]></content>
-	<tabTrigger>jadminhelpergetactions</tabTrigger>
+	<tabTrigger>jadminhelper_getactions</tabTrigger>
 </snippet>
