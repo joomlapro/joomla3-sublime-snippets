@@ -1,4 +1,4 @@
 <snippet>
 	<content><![CDATA[<?php echo JHtml::_('form.token'); ?>]]></content>
-	<tabTrigger>jtoken</tabTrigger>
+	<tabTrigger>jhtml-form_token</tabTrigger>
 </snippet>

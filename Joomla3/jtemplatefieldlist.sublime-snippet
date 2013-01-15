@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<field name="${1:field}" type="list" class="inputbox" ${2:readonly="true" }${3:disabled="true" }size="1" ${4:multiple="true" }${5:onchange="" }default="1" filter="integer" label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
-	<option value="">JSELECT</option>
-</field>
-]]></content>
-	<tabTrigger>jtemplatefieldlist</tabTrigger>
-</snippet>
