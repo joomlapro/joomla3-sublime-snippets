@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields">
+		<field id="id" name="id" type="hidden" size="10" readonly="true" default="0" required="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_ID_LABEL" />
+		<field name="asset_id" type="hidden" filter="unset" />
+		<field id="${1/(.+)/\L\1/g}" name="${1:title}" type="text" class="inputbox span6" size="30" required="true" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
+		<field id="alias" name="alias" type="text" class="inputbox" size="45" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" />
+		<field id="ordering" name="ordering" type="ordering" class="inputbox" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" />
+		<field id="description" name="description" type="editor" buttons="true" hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText" asset_id="com_${TM_PROJECT/(.+)/\L\1/g}" label="JGLOBAL_DESCRIPTION" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" />
+		<field id="state" name="state" type="list" class="inputbox" size="1" default="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+	</fieldset>
+	<fieldset name="publish">
+		<field id="created" name="created" type="calendar" filter="unset" />
+		<field id="created_by" name="created_by" type="text" filter="unset" />
+		<field id="created_by_alias" name="created_by_alias" type="text" class="inputbox" size="20" label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL" description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC" />
+	</fieldset>
+</form>
+
+]]></content>
+	<tabTrigger>jsiteform-simple</tabTrigger>
+</snippet>
