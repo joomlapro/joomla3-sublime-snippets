@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:field}" type="checkboxes" class="inputbox" ${2:checked="" }label="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
+	<option value="">JOPTIONS</option>
+</field>]]></content>
+	<tabTrigger>jmodulefieldcheckboxes</tabTrigger>
+</snippet>
