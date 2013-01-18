@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Move uploaded file.
+jimport('joomla.filesystem.file');
+\$uploaded = JFile::upload(\$${1:tmp_src}, \$${2:tmp_dest});
+]]></content>
+	<tabTrigger>jfile-upload</tabTrigger>
+</snippet>
