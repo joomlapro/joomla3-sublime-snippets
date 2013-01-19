@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[JRoute::_('index.php', false);]]></content>
+	<tabTrigger>jroute_index</tabTrigger>
+</snippet>

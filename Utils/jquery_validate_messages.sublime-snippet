@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[// Validate forms.
+\$('${1:.class}').each(function () {
+	\$(this).validate({
+		messages: {
+			${2:input}: {
+				required: '$3'
+			}
+		}
+	});
+});]]></content>
+	<tabTrigger>jquery_validate_messages</tabTrigger>
+</snippet>

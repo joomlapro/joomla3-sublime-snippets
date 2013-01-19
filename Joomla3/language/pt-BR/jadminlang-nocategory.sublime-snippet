@@ -36,6 +36,7 @@ COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_VERSION_DESC="A quantidade de vezes que este
 
 ; FIELDSET
 
+COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_RULES="Permissões do ${4/(.+)/\u\1/g}"
 COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_MORE_OPTIONS_LABEL="Mais Opções"
 
 ; FILTER
@@ -52,12 +53,10 @@ COM_${TM_PROJECT/(.+)/\U\1/g}_HEADER_SUBMENU="Submenu"
 
 COM_${TM_PROJECT/(.+)/\U\1/g}_LINK_DASHBOARD="Painel de Controle"
 COM_${TM_PROJECT/(.+)/\U\1/g}_LINK_${TM_PROJECT/(.+)/\U\1/g}="${2/(.+)/\u\1/g}"
-COM_${TM_PROJECT/(.+)/\U\1/g}_LINK_CATEGORIES="Categorias"
 
 ; MENU
 
 COM_${TM_PROJECT/(.+)/\U\1/g}_${TM_PROJECT/(.+)/\U\1/g}="${2/(.+)/\u\1/g}"
-COM_${TM_PROJECT/(.+)/\U\1/g}_CATEGORIES="Categorias"
 
 ; MISC
 
@@ -71,9 +70,9 @@ COM_${TM_PROJECT/(.+)/\U\1/g}_SELECT_AN_${1:${TM_PROJECT/(.+)(s\b)/\U\1/g}}="Sel
 
 ; SUBMENU
 
+COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_CPANEL="Painel de Controle"
 COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_${TM_PROJECT/(.+)/\U\1/g}="${2/(.+)/\u\1/g}"
-COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_CATEGORIES="Categorias"
 
 ]]></content>
-	<tabTrigger>jadminlang</tabTrigger>
+	<tabTrigger>jadminlang-nocategory</tabTrigger>
 </snippet>
