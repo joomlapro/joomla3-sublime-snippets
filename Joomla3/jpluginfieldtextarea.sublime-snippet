@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[<field name="${1:field}" type="textarea" class="inputbox" ${2:disabled="" }cols="30" rows="3" ${3:onchange="" }filter="safehtml" label="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jpluginfieldtextarea</tabTrigger>
-</snippet>

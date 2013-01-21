@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Load mooTools.
+JHtml::_('behavior.framework', true);]]></content>
+	<tabTrigger>jhtmlbehavior_framework_mootools</tabTrigger>
+</snippet>
