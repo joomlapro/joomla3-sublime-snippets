@@ -20,5 +20,5 @@
 	},
 	minLength: 3
 });]]></content>
-	<tabTrigger>jjquery_ajax-autocomplete</tabTrigger>
+	<tabTrigger>jjquery_autocomplete</tabTrigger>
 </snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[// Make the filename safe.
+\$file['${1:name}'] = JFile::makeSafe(\$file['${1/(.+)/\L\1/g}']);]]></content>
+	<tabTrigger>jfile-makesafe</tabTrigger>
+</snippet>

@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[var xhr;
+
+\$('#searchname').typeahead({
+	source: function (typeahead, query) {
+		if (typeof (xhr) != 'undefined') {
+			xhr.abort()
+		};
+
+		xhr = \$.ajax({
+			url: 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:controller}.${2:method}&tmpl=component&format=json',
+			type: 'GET',
+			data: {
+				name: query
+			},
+			dataType: 'JSON',
+			async: true,
+			success: function (data) {
+				var return_list = [],
+					i = data.length;
+				while (i--) {
+					return_list[i] = {
+						id: data[i].id,
+						value: data[i].name
+					};
+				}
+				typeahead.process(return_list);
+			}
+		});
+	},
+	items: 10,
+	minLength: 3
+});]]></content>
+	<tabTrigger>jjquery_typeahead2</tabTrigger>
+</snippet>
