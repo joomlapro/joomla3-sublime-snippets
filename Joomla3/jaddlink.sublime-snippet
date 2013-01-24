@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<li><a href="<?php echo \$this->baseurl; ?>/index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&amp;view=${1:view_list}"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_LINK_${1/(.+)/\U\1/g}'); ?></a></li>]]></content>
-	<tabTrigger>jaddlink</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

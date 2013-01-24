@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:field}" type="calendar" class="inputbox" size="22" ${2:maxlength="" }${3:readonly="true" }${4:disabled="true" }format="%Y-%m-%d %H:%M:%S" ${5:onchange="" }filter="user_utc" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jsitefieldcalendar</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

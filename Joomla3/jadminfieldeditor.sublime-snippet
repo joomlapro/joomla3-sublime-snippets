@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<field name="${1:field}" type="editor" buttons="true" hide="pagebreak,readmore" class="inputbox" filter="JComponentHelper::filterText" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jadminfieldeditor</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

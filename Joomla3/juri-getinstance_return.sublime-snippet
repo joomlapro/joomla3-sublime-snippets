@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Get the full current URI.
+\$uri = JURI::getInstance();
+\$return = base64_encode(\$uri);]]></content>
+	<tabTrigger>juri-getinstance_return</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<field name="${1:field}" type="file" accept="audio/*,video/*,image/*" size="40" class="inputbox" ${2:disabled="true" }${3:onchange="" }label="PLG_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="PLG_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jpluginfieldfile</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

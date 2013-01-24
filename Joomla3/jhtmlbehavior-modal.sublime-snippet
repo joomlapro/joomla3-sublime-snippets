@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the modal behavior script.
+JHtml::_('behavior.modal');]]></content>
+	<tabTrigger>jhtmlbehavior-modal</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

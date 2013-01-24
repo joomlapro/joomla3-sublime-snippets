@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1:FIELD_NAME}_LABEL="$2"
-COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC="$3"]]></content>
-	<tabTrigger>jlangfield</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

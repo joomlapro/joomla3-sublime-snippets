@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:field}" type="list" class="inputbox" ${2:readonly="true" }${3:disabled="true" }size="1" ${4:multiple="true" }${5:onchange="" }default="" message="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_MESSAGE" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
-	<option value="">JSELECT</option>
-</field>]]></content>
-	<tabTrigger>jsitefieldlist</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

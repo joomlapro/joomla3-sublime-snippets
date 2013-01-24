@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<field name="${1:field}" type="checkboxes" class="inputbox" ${2:disabled="true" }value="" ${3:checked="true" }${4:onclick="" }label="PLG_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="PLG_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jpluginfieldcheckbox</tabTrigger>
-	<scope>source.php</scope>
-</snippet>
