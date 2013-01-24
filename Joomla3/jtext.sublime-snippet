@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[JText::_('$1');]]></content>
-	<tabTrigger>jtext</tabTrigger>
-</snippet>

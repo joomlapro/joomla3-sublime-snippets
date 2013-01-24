@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[// Get the current user object.
-\$user = JFactory::getUser();]]></content>
-	<tabTrigger>jfactory-getuser</tabTrigger>
-</snippet>

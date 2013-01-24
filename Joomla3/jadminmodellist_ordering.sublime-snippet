@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Add the list ordering clause.
-\$orderCol = \$this->getState('list.ordering', 'a.${1:title}');
-\$query->order(\$db->escape(\$orderCol) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));]]></content>
-	<tabTrigger>jadminmodellist_ordering</tabTrigger>
-</snippet>

@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[\$this->setMessage(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MSG_$1')${2:, '${3:error|warning|notice|message}'});]]></content>
-	<tabTrigger>jsetmessage</tabTrigger>
-</snippet>

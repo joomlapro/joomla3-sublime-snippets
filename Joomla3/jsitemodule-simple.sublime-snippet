@@ -1,9 +1,0 @@
-<snippet>
-	<content><![CDATA[// Initialise variables.
-\$moduleclass_sfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
-
-require JModuleHelper::getLayoutPath('mod_${1:${TM_MODULE/(.+)/\L\1/g}}', \$params->get('layout', 'default'));
-
-]]></content>
-	<tabTrigger>jsitemodule-simple</tabTrigger>
-</snippet>

@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Get an instance of the ${1/(.+)/\L\1/g} table.
-\$${1:table} = JTable::getInstance('${2:${1/(.+)/\u\1/g}}'${3:, '${TM_PROJECT/(.+)/\u\1/g}Table'});
-\$${1/(.+)/\L\1/g}->load(\$item->${4:user_id});]]></content>
-	<tabTrigger>jtable-getinstance</tabTrigger>
-</snippet>

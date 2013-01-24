@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[// Unpack the downloaded file.
-\$${1:file} = JInstallerHelper::unpack(\$${2:tmp_dest});]]></content>
-	<tabTrigger>jinstallerhelper-unpack</tabTrigger>
-</snippet>

@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Redirect to login page.
-\$app->redirect(JRoute::_('index.php?option=com_users&view=login'), JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MSG_${1:MESSAGE}'), '${2:notice}');
-]]></content>
-	<tabTrigger>jredirect-login</tabTrigger>
-</snippet>

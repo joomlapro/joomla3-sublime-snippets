@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[$app = JFactory::getApplication();
-$app->enqueueMessage(JText::_('${1:SOME_ERROR_OCCURRED}'), '${2:error}');]]></content>
-	<tabTrigger>jfactory-message</tabTrigger>
-</snippet>

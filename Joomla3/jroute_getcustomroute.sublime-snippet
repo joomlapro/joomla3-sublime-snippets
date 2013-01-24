@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${1:Name}Route(\$item->slug${2:, \$item->catslug}));]]></content>
-	<tabTrigger>jroute_getcustomroute</tabTrigger>
-</snippet>
