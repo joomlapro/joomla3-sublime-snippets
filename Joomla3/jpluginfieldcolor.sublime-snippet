@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<field name="${1:field}" type="color" class="inputbox" ${2:disabled="true" }${3:onchange="" }default="#${4:000000}" validate="color" label="PLG_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="PLG_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jpluginfieldcolor</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

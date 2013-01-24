@@ -1,0 +1,61 @@
+<snippet>
+	<content><![CDATA[// Include the component HTML helpers.
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+
+// Create shortcuts to some parameters.
+\$params  = \$this->item->params;
+\$images  = json_decode(\$this->item->images);
+\$canEdit = \$params->get('access-edit');
+\$user    = JFactory::getUser();
+
+// Load the tooltip behavior script.
+JHtml::_('behavior.caption');
+?>
+<div class="${TM_PROJECT/(.+)/\L\1/g} ${1:view_item}-item<?php echo \$this->pageclass_sfx; ?>">
+	<?php if (\$this->params->get('show_page_heading', 1)): ?>
+		<div class="page-header">
+			<h1>
+				<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
+			</h1>
+		</div>
+	<?php endif; ?>
+
+	<?php if (!\$this->print): ?>
+		<?php if (\$canEdit || \$params->get('show_print_icon', 1) || \$params->get('show_email_icon', 1)): ?>
+			<div class="btn-group pull-right">
+				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-cog"></i> <span class="caret"></span></a>
+				<?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
+				<ul class="dropdown-menu actions">
+					<?php if (\$params->get('show_print_icon', 1)): ?>
+						<li class="print-icon"><?php echo JHtml::_('icon.print_popup', \$this->item, \$params); ?></li>
+					<?php endif; ?>
+					<?php if (\$params->get('show_email_icon', 1)): ?>
+						<li class="email-icon"><?php echo JHtml::_('icon.email', \$this->item, \$params); ?></li>
+					<?php endif; ?>
+					<?php if (\$canEdit): ?>
+						<li class="edit-icon"><?php echo JHtml::_('icon.edit', \$this->item, \$params); ?></li>
+					<?php endif; ?>
+				</ul>
+			</div>
+		<?php endif; ?>
+	<?php else : ?>
+		<div class="pull-right">
+			<?php echo JHtml::_('icon.print_screen', \$this->item, \$params); ?>
+		</div>
+	<?php endif; ?>
+
+	<div class="page-header">
+		<h2>
+			<?php echo \$this->escape(\$this->item->${2:title}); ?>
+		</h2>
+	</div>
+
+	<div class="row-fluid">
+		<?php var_dump(\$this->item); ?>
+	</div>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayoutitem</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

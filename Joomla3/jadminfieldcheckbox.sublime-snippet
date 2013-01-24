@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<field name="${1:field}" type="checkboxes" class="inputbox" ${2:disabled="true" }value="" ${3:checked="true" }${4:onclick="" }label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jadminfieldcheckbox</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>
