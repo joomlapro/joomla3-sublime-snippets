@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[array_unshift(\$options, JHtml::_('select.option', '0', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_${1:SIGULAR}')));]]></content>
+	<tabTrigger>jarray_unshift</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

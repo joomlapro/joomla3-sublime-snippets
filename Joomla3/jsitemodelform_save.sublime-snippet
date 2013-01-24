@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to save the form data.
+ *
+ * @param   array  \$data  The form data.
+ *
+ * @return  boolean  True on success, False on error.
+ *
+ * @since   $TM_VERSION
+ */
+public function save(\$data)
+{
+	// Proceed with the save
+	return parent::save(\$data);
+}]]></content>
+	<tabTrigger>jsitemodelform_save</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

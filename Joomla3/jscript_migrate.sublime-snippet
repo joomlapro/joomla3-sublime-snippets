@@ -1,0 +1,64 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to run if tables are from ${TM_PROJECT/(.+)/\u\1/g} ${1:1.0}. Will apply the needed changes for ${TM_PROJECT/(.+)/\u\1/g} ${2:2.0}.
+ *
+ * @return  void
+ *
+ * @since   \$TM_VERSION
+ */
+function _migrate()
+{
+	// Initialiase variables.
+	\$db      = JFactory::getDBO();
+	\$fields  = \$db->getTableFields('#__${TM_PROJECT/(.+)/\L\1/g}');
+	\$${3:${TM_PROJECT/(.+)/\L\1/g}} = \$fields['#__${TM_PROJECT/(.+)/\L\1/g}'];
+
+	if (\$${3/(.+)/\L\1/g} && array_key_exists('published', \$${3/(.+)/\L\1/g}))
+	{
+		\$sqlfile = dirname(__FILE__) . '/migrate.sql';
+		\$buffer = file_get_contents(\$sqlfile);
+
+		jimport('joomla.installer.helper');
+
+		\$queries = JInstallerHelper::splitSql(\$buffer);
+
+		if (count(\$queries))
+		{
+			foreach (\$queries as \$query)
+			{
+				\$query = trim(\$query);
+
+				if (\$query != '' && \$query{0} != '#')
+				{
+					\$db->setQuery(\$query);
+
+					if (!\$db->query())
+					{
+						JError::raiseWarning(1, JText::sprintf('JLIB_INSTALLER_ERROR_SQL_ERROR', \$db->stderr(true)));
+						return;
+					}
+				}
+			}
+
+			if (array_key_exists('${4:title}', \$${3/(.+)/\L\1/g}))
+			{
+				\$query = "ALTER TABLE #__${TM_PROJECT/(.+)/\L\1/g} DROP COLUMN `${4/(.+)/\L\1/g}`, DROP COLUMN `alias`";
+				\$db->setQuery(\$query);
+
+				if (!\$db->query())
+				{
+					JError::raiseWarning(1, JText::sprintf('JLIB_INSTALLER_ERROR_SQL_ERROR', \$db->stderr(true)));
+					return;
+				}
+			}
+
+			echo '<div style="background-color:orange;">' . JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MIGRATION_TEXT') . '</div>';
+		}
+	}
+
+	return;
+}
+]]></content>
+	<tabTrigger>jscript_migrate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

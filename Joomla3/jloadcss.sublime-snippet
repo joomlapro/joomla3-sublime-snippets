@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load CSS
+JHtml::stylesheet('com_${TM_PROJECT/(.+)/\L\1/g}/${1:backend}.css', false, true, false);]]></content>
+	<tabTrigger>jloadcss</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

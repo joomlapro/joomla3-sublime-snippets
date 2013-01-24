@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[/**
+ * The URL view list variable.
+ *
+ * @var     string
+ * @since   $TM_VERSION
+ */
+protected \$view_list = '${1:view_list}';]]></content>
+	<tabTrigger>jadmincontrolleredit_view_list</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

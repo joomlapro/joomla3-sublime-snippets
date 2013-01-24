@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Called on uninstallation.
+ *
+ * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+ *
+ * @return  boolean  True on success.
+ *
+ * @since   $TM_VERSION
+ */
+public function uninstall(JAdapterInstance \$adapter)
+{
+	echo '<p>' . JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_UNINSTALL_TEXT') . '</p>';
+}
+]]></content>
+	<tabTrigger>jscript_uninstall</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

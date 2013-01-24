@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[// Filter by search in ${1:title}.
+\$search = \$this->getState('filter.search');
+
+if (!empty(\$search))
+{
+	\$search = \$db->Quote('%' . \$db->escape(\$search, true) . '%');
+	\$query->where('(a.${1/(.+)/\L\1/g} LIKE ' . \$search . ')');
+}]]></content>
+	<tabTrigger>jfilter_title</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

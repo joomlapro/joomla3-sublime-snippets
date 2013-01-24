@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Close the application.
+JFactory::getApplication()->close();]]></content>
+	<tabTrigger>jfactory-getapplication_close</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

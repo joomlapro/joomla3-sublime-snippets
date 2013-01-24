@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<?php echo JHtml::_('form.token'); ?>]]></content>
+	<tabTrigger>jhtml-form_token</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

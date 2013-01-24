@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[`$1` varchar(${2:255}) NOT NULL DEFAULT '',]]></content>
+	<tabTrigger>jdbvarchar</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

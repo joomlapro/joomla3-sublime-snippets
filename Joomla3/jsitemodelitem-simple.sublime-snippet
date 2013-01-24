@@ -1,0 +1,101 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${TM_PROJECT/(.+)/\u\1/g} Component Model for a ${1/(.+)/\u\1/g} record
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_item} extends JModelItem
+{
+	/**
+	 * Model context string.
+	 *
+	 * @access  protected
+	 * @var     string
+	 */
+	protected \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
+
+	/**
+	 * Method to auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function populateState()
+	{
+		// Initialiase variables.
+		\$app    = JFactory::getApplication();
+		\$params = \$app->getParams();
+
+		// Load the object state.
+		\$id = \$app->input->getInt('id');
+		\$this->setState('${1/(.+)/\L\1/g}.id', \$id);
+
+		// Load the parameters.
+		\$this->setState('params', \$params);
+
+		// Get the current user object.
+		\$user = JFactory::getUser();
+
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		{
+			\$this->setState('filter.published', 1);
+			\$this->setState('filter.archived', 2);
+		}
+	}
+
+	/**
+	 * Method to get an object.
+	 *
+	 * @param   integer  \$id  The id of the object to get.
+	 *
+	 * @return  mixed  Object on success, false on failure.
+	 */
+	public function &getItem(\$id = null)
+	{
+		if (\$this->_item === null)
+		{
+			\$this->_item = false;
+
+			if (empty(\$id))
+			{
+				\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
+			}
+
+			// Get a level row instance.
+			\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+
+			// Attempt to load the row.
+			if (\$table->load(\$id))
+			{
+				// Check published state.
+				if (\$published = \$this->getState('filter.published'))
+				{
+					if (\$table->state != \$published)
+					{
+						return \$this->_item;
+					}
+				}
+
+				// Convert the JTable to a clean JObject.
+				\$properties = \$table->getProperties(1);
+				\$this->_item = JArrayHelper::toObject(\$properties, 'JObject');
+			}
+			elseif (\$error = \$table->getError())
+			{
+				\$this->setError(\$error);
+			}
+		}
+
+		return \$this->_item;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodelitem-simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[// Get the application.
+\$app = JFactory::getApplication();
+
+// Get the form.
+JForm::addFormPath(JPATH_COMPONENT . '/models/forms');
+JForm::addFieldPath(JPATH_COMPONENT . '/models/fields');
+
+\$form = JForm::getInstance('com_${TM_PROJECT/(.+)/\L\1/g}.${1:form}', '${2:${1/(.+)/\L\1/g}}', array('load_data' => \$loadData));
+
+// Check for an error.
+if (\$form == false)
+{
+	\$this->setError(\$form->getMessage());
+	return false;
+}
+
+// Check the session for previously entered form data.
+\$data = \$this->loadFormData();
+
+// Bind the form data if present.
+if (!empty(\$data))
+{
+	\$form->bind(\$data);
+}]]></content>
+	<tabTrigger>jform-getinstance</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

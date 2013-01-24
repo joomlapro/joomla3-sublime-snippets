@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+public static function get${1:List}Route()
+{
+	// Create the link
+	\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}';
+
+	if (\$item = self::_findItem())
+	{
+		\$link .= '&Itemid=' . \$item;
+	}
+
+	return \$link;
+}]]></content>
+	<tabTrigger>jsitehelperroute-list</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[elseif (\$item = self::_findItem(array('${1:view_list}' => array(0))))
+{
+	\$link .= '&Itemid=' . \$item;
+}]]></content>
+	<tabTrigger>jsitehelperroute-fix</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

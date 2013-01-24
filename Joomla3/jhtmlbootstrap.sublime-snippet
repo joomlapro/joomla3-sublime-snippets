@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Add JavaScript Frameworks.
+JHtml::_('bootstrap.framework');
+
+// Load optional rtl Bootstrap css and Bootstrap bugfixes.
+JHtmlBootstrap::loadCss(\$includeMaincss = true, \$this->direction);]]></content>
+	<tabTrigger>jhtmlbootstrap</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

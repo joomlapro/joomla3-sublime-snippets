@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<!-- Add fields to the parameters object for the layout. -->
+<fields name="params">
+	<!-- Basic options. -->
+	<fieldset name="basic" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_MORE_OPTIONS_LABEL">
+
+	</fieldset>
+</fields>]]></content>
+	<tabTrigger>jsitemenu_params</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

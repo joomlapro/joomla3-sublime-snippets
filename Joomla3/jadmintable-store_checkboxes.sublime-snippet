@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[JArrayHelper::toInteger(\$this->${1:hello});
+\$this->${1/(.+)/\L\1/g} = implode(', ', \$this->${1/(.+)/\L\1/g});]]></content>
+	<tabTrigger>jadmintable-store_checkboxes</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

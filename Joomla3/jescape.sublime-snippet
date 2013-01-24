@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->escape($1);]]></content>
+	<tabTrigger>jescape</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

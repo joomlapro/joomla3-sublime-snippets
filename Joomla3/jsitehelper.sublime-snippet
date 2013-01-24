@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Helper
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+abstract class ${1:Function}Helper
+{
+
+}
+
+]]></content>
+	<tabTrigger>jsitehelper</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
