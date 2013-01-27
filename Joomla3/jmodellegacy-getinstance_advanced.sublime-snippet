@@ -10,6 +10,6 @@
 \$this->${1/(.+)/\L\1/g} = \$model->getItems();
 
 ]]></content>
-	<tabTrigger>jmodel-getinstance</tabTrigger>
+	<tabTrigger>jmodellegacy-getinstance_advanced</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

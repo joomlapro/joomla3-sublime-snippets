@@ -31,6 +31,6 @@ protected function allowAdd(\$data = array())
 		return \$allow;
 	}
 }]]></content>
-	<tabTrigger>jadmincontrolleredit-allowadd</tabTrigger>
+	<tabTrigger>jadmincontrolleredit_allowadd</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

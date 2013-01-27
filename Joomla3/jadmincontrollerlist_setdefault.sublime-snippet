@@ -23,7 +23,7 @@ public function setDefault()
 		JArrayHelper::toInteger(\$pks);
 
 		// Pop off the first element.
-		\$id = array_shift(\$pks);
+		\$id    = array_shift(\$pks);
 		\$model = \$this->getModel();
 		\$model->set${1:Home}(\$id);
 		\$this->setMessage(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUCCESS_${1/(.+)/\U\1/g}_SET'));
@@ -36,6 +36,6 @@ public function setDefault()
 
 	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${3:${2/(.+)/\L\1/g}s}');
 }]]></content>
-	<tabTrigger>jadmincontrollerlist-setdefault</tabTrigger>
+	<tabTrigger>jadmincontrollerlist_setdefault</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

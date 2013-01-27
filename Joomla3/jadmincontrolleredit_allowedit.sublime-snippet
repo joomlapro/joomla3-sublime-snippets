@@ -31,6 +31,6 @@ protected function allowEdit(\$data = array(), \$key = 'id')
 		return parent::allowEdit(\$data, \$key);
 	}
 }]]></content>
-	<tabTrigger>jadmincontrolleredit-allowedit</tabTrigger>
+	<tabTrigger>jadmincontrolleredit_allowedit</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

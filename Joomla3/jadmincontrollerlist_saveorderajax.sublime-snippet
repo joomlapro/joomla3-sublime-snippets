@@ -8,19 +8,19 @@
  */
 public function saveOrderAjax()
 {
-	// Get the input
+	// Get the input.
 	\$input = JFactory::getApplication()->input;
-	\$pks = \$input->post->get('cid', array(), 'array');
+	\$pks   = \$input->post->get('cid', array(), 'array');
 	\$order = \$input->post->get('order', array(), 'array');
 
-	// Sanitize the input
+	// Sanitize the input.
 	JArrayHelper::toInteger(\$pks);
 	JArrayHelper::toInteger(\$order);
 
-	// Get the model
+	// Get the model.
 	\$model = \$this->getModel();
 
-	// Save the ordering
+	// Save the ordering.
 	\$return = \$model->saveorder(\$pks, \$order);
 
 	if (\$return)
@@ -28,9 +28,9 @@ public function saveOrderAjax()
 		echo "1";
 	}
 
-	// Close the application
+	// Close the application.
 	JFactory::getApplication()->close();
 }]]></content>
-	<tabTrigger>jadmincontrollerlist-saveorderajax</tabTrigger>
+	<tabTrigger>jadmincontrollerlist_saveorderajax</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

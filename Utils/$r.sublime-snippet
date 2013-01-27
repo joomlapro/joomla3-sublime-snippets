@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[\${$1/${2:(\.+)}/${3:_}/g}]]></content>
+	<tabTrigger>$r</tabTrigger>
+</snippet>

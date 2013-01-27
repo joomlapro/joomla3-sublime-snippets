@@ -47,6 +47,6 @@ public function featured()
 
 	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:view_list}');
 }]]></content>
-	<tabTrigger>jadmincontrollerlist-featured_nocategory</tabTrigger>
+	<tabTrigger>jadmincontrollerlist_featured_nocategory</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

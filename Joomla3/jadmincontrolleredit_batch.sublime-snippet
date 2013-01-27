@@ -13,14 +13,14 @@ public function batch(\$model = null)
 	// Check for request forgeries.
 	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
-	// Set the model
+	// Set the model.
 	\$model = \$this->getModel('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Model', array());
 
-	// Preset the redirect
+	// Preset the redirect.
 	\$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:edit}' . \$this->getRedirectToListAppend(), false));
 
 	return parent::batch(\$model);
 }]]></content>
-	<tabTrigger>jadmincontrolleredit-batch</tabTrigger>
+	<tabTrigger>jadmincontrolleredit_batch</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
