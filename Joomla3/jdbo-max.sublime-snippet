@@ -5,6 +5,6 @@
 
 \$item->${1:field} = \$max + 1;
 ]]></content>
-	<tabTrigger>jdb-max</tabTrigger>
-	<scope>text.plain</scope>
+	<tabTrigger>jdbo-max</tabTrigger>
+	<scope>source.php</scope>
 </snippet>

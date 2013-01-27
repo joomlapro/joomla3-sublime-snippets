@@ -1,5 +1,5 @@
 <snippet>
 	<content><![CDATA[`$1` decimal(10,2) NOT NULL DEFAULT '0.00',]]></content>
-	<tabTrigger>jdbdecimal</tabTrigger>
+	<tabTrigger>jdb_decimal</tabTrigger>
 	<scope>text.plain</scope>
 </snippet>

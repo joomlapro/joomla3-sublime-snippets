@@ -2,6 +2,6 @@
 	<content><![CDATA[
 `$1` datetime NOT NULL DEFAULT '${2:0000-00-00 00:00:00}',
 ]]></content>
-	<tabTrigger>jdbdatetime</tabTrigger>
+	<tabTrigger>jdb_datetime</tabTrigger>
 	<scope>text.plain</scope>
 </snippet>
