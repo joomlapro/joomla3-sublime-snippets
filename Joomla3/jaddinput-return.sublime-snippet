@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<input type="hidden" name="return" value="<?php echo JFactory::getApplication()->input->get('return', '', 'cmd'); ?>" />]]></content>
+	<tabTrigger>jaddinput-return</tabTrigger>
+	<scope>text.html</scope>
+</snippet>
