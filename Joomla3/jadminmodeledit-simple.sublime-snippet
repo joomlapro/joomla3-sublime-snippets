@@ -1,0 +1,132 @@
+<snippet>
+	<content><![CDATA[/**
+ * Item Model for an ${1/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Model_edit} extends JModelAdmin
+{
+	/**
+	 * Returns a reference to the a Table object, always creating it.
+	 *
+	 * @param   type    \$type    The table type to instantiate.
+	 * @param   string  \$prefix  A prefix for the table class name. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+	 *
+	 * @return  JTable  A database object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_PROJECT/(.+)/\u\1/g}Table', \$config = array())
+	{
+		return JTable::getInstance(\$type, \$prefix, \$config);
+	}
+
+	/**
+	 * Method to get the record form.
+	 *
+	 * @param   array    \$data      An optional array of data for the form to interogate.
+	 * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not.
+	 *
+	 * @return  JForm  A JForm object on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getForm(\$data = array(), \$loadData = true)
+	{
+		// Get the form.
+		\$form = \$this->loadForm('com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+
+		if (empty(\$form))
+		{
+			return false;
+		}
+
+		// Modify the form based on access controls.
+		if (!\$this->canEditState((object) \$data))
+		{
+			// Disable fields for display.
+			\$form->setFieldAttribute('ordering', 'disabled', 'true');
+			\$form->setFieldAttribute('state', 'disabled', 'true');
+
+			// Disable fields while saving.
+			// The controller has already verified this is a record you can edit.
+			\$form->setFieldAttribute('ordering', 'filter', 'unset');
+			\$form->setFieldAttribute('state', 'filter', 'unset');
+		}
+
+		return \$form;
+	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return  mixed  The data for the form.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		\$data = JFactory::getApplication()->getUserState('com_${TM_PROJECT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
+
+		if (empty(\$data))
+		{
+			\$data = \$this->getItem();
+		}
+
+		return \$data;
+	}
+
+	/**
+	 * Prepare and sanitise the table prior to saving.
+	 *
+	 * @param   JTable  \$table  A JTable object.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function prepareTable(\$table)
+	{
+		// Initialise variables.
+		\$date = JFactory::getDate();
+		\$user = JFactory::getUser();
+
+		\$table->${3:title} = htmlspecialchars_decode(\$table->${3/(.+)/\L\1/g}, ENT_QUOTES);
+		\$table->alias = JApplication::stringURLSafe(\$table->alias);
+
+		if (empty(\$table->alias))
+		{
+			\$table->alias = JApplication::stringURLSafe(\$table->${3/(.+)/\L\1/g});
+		}
+
+		if (empty(\$table->id))
+		{
+			// Set the values.
+
+			// Set ordering to the last item if not set.
+			if (empty(\$table->ordering))
+			{
+				\$db = JFactory::getDbo();
+				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}');
+				\$max = \$db->loadResult();
+
+				\$table->ordering = \$max + 1;
+			}
+			else
+			{
+				// Set the values.
+				\$table->modified    = \$date->toSql();
+				\$table->modified_by = \$user->get('id');
+			}
+		}
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodeledit-simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
