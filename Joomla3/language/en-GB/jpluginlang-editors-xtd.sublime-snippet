@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[PLG_EDITORS-XTD_${1:FIELD}="Botão - ${2:Field}"
+PLG_EDITORS-XTD_${1/(.+)/\U\1/g}_BUTTON_${1/(.+)/\U\1/g}="${2/(.+)/\u\1/g}"
+PLG_EDITORS-XTD_${1/(.+)/\U\1/g}_XML_DESCRIPTION="Exibe um botão para inserir em um ${3:artigo}, links para outros ${4:artigos}. Exibe um popup permitindo você escolher um ${3/(.+)/\L\1/g}."
+
+]]></content>
+	<tabTrigger>jpluginlang-editors-xtd</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

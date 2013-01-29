@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[; POSITION
+
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-DEBUG="Debug"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-TOPMENU="Top Menu"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-MAINMENU="Main Menu"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-SEARCH="Search"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-SLIDESHOW="Slideshow"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-SIDEBAR="Sidebar"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-FOOTER="Footer"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-FOOTERMENU="Footer Menu"]]></content>
+	<tabTrigger>jlangtemplate-position</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

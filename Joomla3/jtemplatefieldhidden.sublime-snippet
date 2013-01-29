@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<field name="${1:field}" type="hidden" ${2:class="" }${3:disabled="true" }${4:onchange="" }filter="unset" />]]></content>
-	<tabTrigger>jtemplatefieldhidden</tabTrigger>
-	<scope>text.xml</scope>
-</snippet>
