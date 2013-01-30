@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[<div class="${TM_PROJECT/(.+)/\L\1/g} ${1:singular}-list<?php echo \$this->pageclass_sfx; ?>">
+	<?php if (\$this->params->get('show_page_heading')): ?>
+		<div class="page-header">
+			<h1>
+				<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
+			</h1>
+		</div>
+	<?php endif; ?>
+
+	<div class="row-fluid">
+		<?php var_dump(\$this->items); ?>
+	</div>
+
+	<?php if (\$this->params->get('show_pagination', 1)): ?>
+		<div class="pagination">
+			<?php if (\$this->params->def('show_pagination_results', 1)): ?>
+				<p class="counter">
+					<?php echo \$this->pagination->getPagesCounter(); ?>
+				</p>
+			<?php endif; ?>
+			<?php echo \$this->pagination->getPagesLinks(); ?>
+		</div>
+	<?php endif; ?>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayoutlist</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
