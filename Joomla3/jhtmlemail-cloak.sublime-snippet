@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JHtml::_('email.cloak', ${1:\$email}${2:, true, ${3:\$text}, false});]]></content>
-	<tabTrigger>jhtmlemail-cloak</tabTrigger>
-	<scope>source.php</scope>
-</snippet>
