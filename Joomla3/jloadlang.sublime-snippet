@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[// Load the ${1:${TM_PROJECT/(.+)/\L\1/g}} component language file.
+\$lang = JFactory::getLanguage();
+\$lang->load('com_${1/(.+)/\L\1/g}', ${2:JPATH_ADMINISTRATOR});
+//\$lang->load('com_${1/(.+)/\L\1/g}', ${2:JPATH_ADMINISTRATOR} . '/components/com_${1/(.+)/\L\1/g}');]]></content>
+	<tabTrigger>jloadlang</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

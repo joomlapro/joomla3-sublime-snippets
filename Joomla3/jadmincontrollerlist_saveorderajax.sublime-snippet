@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to save the submitted ordering values for records via AJAX.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function saveOrderAjax()
+{
+	// Get the input.
+	\$app   = JFactory::getApplication();
+	\$input = \$app->input;
+	\$pks   = \$input->post->get('cid', array(), 'array');
+	\$order = \$input->post->get('order', array(), 'array');
+
+	// Sanitize the input.
+	JArrayHelper::toInteger(\$pks);
+	JArrayHelper::toInteger(\$order);
+
+	// Get the model.
+	\$model = \$this->getModel();
+
+	// Save the ordering.
+	\$return = \$model->saveorder(\$pks, \$order);
+
+	if (\$return)
+	{
+		echo "1";
+	}
+
+	// Close the application.
+	\$app->close();
+}]]></content>
+	<tabTrigger>jadmincontrollerlist_saveorderajax</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

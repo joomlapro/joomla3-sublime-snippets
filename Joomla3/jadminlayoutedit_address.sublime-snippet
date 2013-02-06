@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[?>
+<div class="tab-pane" id="address">
+	<div class="control-group">
+		<div class="control-label"><?php echo \$this->form->getLabel('address_zipcode'); ?></div>
+		<div class="controls"><?php echo \$this->form->getInput('address_zipcode'); ?></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><?php echo \$this->form->getLabel('address_street'); ?></div>
+		<div class="controls"><?php echo \$this->form->getInput('address_street'); ?></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><?php echo \$this->form->getLabel('address_district'); ?></div>
+		<div class="controls"><?php echo \$this->form->getInput('address_district'); ?></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><?php echo \$this->form->getLabel('address_city'); ?></div>
+		<div class="controls"><?php echo \$this->form->getInput('address_city'); ?></div>
+	</div>
+	<div class="control-group">
+		<div class="control-label"><?php echo \$this->form->getLabel('address_state'); ?></div>
+		<div class="controls"><?php echo \$this->form->getInput('address_state'); ?></div>
+	</div>
+</div>
+
+]]></content>
+	<tabTrigger>jadminlayoutedit_address</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
