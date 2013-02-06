@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[`$1` int(${2:10}) unsigned NOT NULL DEFAULT '${3:0}',]]></content>
-	<tabTrigger>jdb_int</tabTrigger>
-	<scope>text.plain</scope>
-</snippet>

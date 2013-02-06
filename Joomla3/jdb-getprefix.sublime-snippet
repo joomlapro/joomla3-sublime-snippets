@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[\$${1:hello} = preg_replace('/#__/', \$db->getPrefix(), \$${1/(.+)/\L\1/g});]]></content>
-	<tabTrigger>jdb-getprefix</tabTrigger>
-	<scope>text.plain</scope>
-</snippet>

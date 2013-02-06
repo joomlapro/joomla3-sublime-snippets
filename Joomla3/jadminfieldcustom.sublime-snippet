@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<field name="${1:field}" type="${2:custom}" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jadminfieldcustom</tabTrigger>
-	<scope>text.xml</scope>
-</snippet>

@@ -1,0 +1,137 @@
+<snippet>
+	<content><![CDATA[/**
+ * View class for a list of ${1/(.+)/\L\1/g}.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
+{
+	protected \$items;
+
+	protected \$pagination;
+
+	protected \$state;
+
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  A string if successful, otherwise a JError object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function display(\$tpl = null)
+	{
+		// Initialise variables.
+		\$this->items      = \$this->get('Items');
+		\$this->pagination = \$this->get('Pagination');
+		\$this->state      = \$this->get('State');
+
+		// Check for errors.
+		if (count(\$errors = \$this->get('Errors')))
+		{
+			JError::raiseError(500, implode("\n", \$errors));
+			return false;
+		}
+
+		// Load the users component language file.
+		\$lang = JFactory::getLanguage();
+		\$lang->load('com_users', JPATH_ADMINISTRATOR);
+		\$lang->load('com_users', JPATH_ADMINISTRATOR . '/components/com_users');
+
+		// Load the submenu.
+		${TM_PROJECT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+
+		\$this->addToolbar();
+		\$this->sidebar = JHtmlSidebar::render();
+
+		parent::display(\$tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function addToolbar()
+	{
+		// Include dependancies.
+		require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
+
+		// Initialise variables.
+		\$state = \$this->get('State');
+		\$canDo = UsersHelper::getActions();
+		\$user  = JFactory::getUser();
+
+		JToolbarHelper::title(JText::_('COM_USERS_VIEW_USERS_TITLE'), '${1/(.+)/\L\1/g}');
+
+		if (\$canDo->get('core.create'))
+		{
+			JToolbarHelper::addNew('${2:${1/(.+)(s\b)/\L\1/g}}.add');
+		}
+
+		if (\$canDo->get('core.edit'))
+		{
+			JToolbarHelper::editList('${2/(.+)/\L\1/g}.edit');
+		}
+
+		if (\$canDo->get('core.edit.state'))
+		{
+			JToolbarHelper::divider();
+			JToolbarHelper::publish('${1/(.+)/\L\1/g}.activate', 'COM_USERS_TOOLBAR_ACTIVATE', true);
+			JToolbarHelper::unpublish('${1/(.+)/\L\1/g}.block', 'COM_USERS_TOOLBAR_BLOCK', true);
+			JToolbarHelper::custom('${1/(.+)/\L\1/g}.unblock', 'unblock.png', 'unblock_f2.png', 'COM_USERS_TOOLBAR_UNBLOCK', true);
+			JToolbarHelper::divider();
+		}
+
+		if (\$canDo->get('core.delete'))
+		{
+			JToolbarHelper::deleteList('', '${1/(.+)/\L\1/g}.delete');
+			JToolbarHelper::divider();
+		}
+
+		if (\$canDo->get('core.admin'))
+		{
+			JToolbarHelper::preferences('com_users');
+			JToolbarHelper::divider();
+		}
+
+		JToolbarHelper::help('JHELP_USERS_USER_MANAGER');
+
+		JHtmlSidebar::setAction('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+
+		JHtmlSidebar::addFilter(
+			JText::_('COM_USERS_FILTER_STATE'),
+			'filter_state',
+			JHtml::_('select.options', UsersHelper::getStateOptions(), 'value', 'text', \$this->state->get('filter.state'))
+		);
+
+		JHtmlSidebar::addFilter(
+			JText::_('COM_USERS_FILTER_ACTIVE'),
+			'filter_active',
+			JHtml::_('select.options', UsersHelper::getActiveOptions(), 'value', 'text', \$this->state->get('filter.active'))
+		);
+
+		JHtmlSidebar::addFilter(
+			JText::_('COM_USERS_FILTER_USERGROUP'),
+			'filter_group_id',
+			JHtml::_('select.options', UsersHelper::getGroups(), 'value', 'text', \$this->state->get('filter.group_id'))
+		);
+
+		JHtmlSidebar::addFilter(
+			JText::_('COM_USERS_OPTION_FILTER_DATE'),
+			'filter_range',
+			JHtml::_('select.options', Usershelper::getRangeOptions(), 'value', 'text', \$this->state->get('filter.range'))
+		);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminviewlist-users</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

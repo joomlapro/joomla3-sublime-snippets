@@ -1,9 +1,0 @@
-<snippet>
-	<content><![CDATA[COM_${TM_PROJECT/(.+)/\U\1/g}_FEATURED="Featured ${1:singular}"
-COM_${TM_PROJECT/(.+)/\U\1/g}_UNFEATURED="Unfeatured ${1/(.+)/\L\1/g}"
-COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_FEATURE="Toggle to change ${1/(.+)/\L\1/g} state to 'Featured'"
-COM_${TM_PROJECT/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE="Toggle to change ${1/(.+)/\L\1/g} state to 'Unfeatured'"
-]]></content>
-	<tabTrigger>jadminlang_featured</tabTrigger>
-	<scope>text.plain</scope>
-</snippet>

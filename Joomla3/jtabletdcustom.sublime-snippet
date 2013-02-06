@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[<td class="center">
-	<?php echo JHtml::_('${1:helper}.${2:method}', \$item->${2/(.+)/\L\1/g}, \$i, \$canChange); ?>
-</td>]]></content>
-	<tabTrigger>jtabletdcustom</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

@@ -1,0 +1,103 @@
+<snippet>
+	<content><![CDATA[// Include dependancies.
+JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models', '${TM_PROJECT/(.+)/\u\1/g}Model');
+
+/**
+ * Helper for mod_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\L\1/g}.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}_${1/(.+)/\u\1/g}
+ * @subpackage  mod_${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+abstract class Mod${TM_PROJECT/(.+)/\u\1/g}${1:Plural}Helper
+{
+	/**
+	 * Get a list of the ${1/(.+)/\L\1/g}.
+	 *
+	 * @param   JObject  \$params  The module parameters.
+	 *
+	 * @return  array
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function getList(\$params)
+	{
+		\$user = JFactory::getuser();
+
+		// Get an instance of the generic ${1/(.+)/\L\1/g} model.
+		\$model = JModelLegacy::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+
+		// Set List SELECT.
+		\$model->setState('list.select', 'a.id, a.${2:title}, a.checked_out, a.checked_out_time, a.created, a.hits');
+
+		// Set Ordering filter.
+		\$model->setState('list.ordering', 'a.created');
+		\$model->setState('list.direction', 'DESC');
+
+		// Set User Filter.
+		\$userId = \$user->get('id');
+
+		switch (\$params->get('user_id'))
+		{
+			case 'by_me':
+				\$model->setState('filter.author_id', \$userId);
+				break;
+
+			case 'not_me':
+				\$model->setState('filter.author_id', \$userId);
+				\$model->setState('filter.author_id.include', false);
+				break;
+		}
+
+		// Set the Start and Limit.
+		\$model->setState('list.start', 0);
+		\$model->setState('list.limit', \$params->get('count', 5));
+
+		\$items = \$model->getItems();
+
+		if (\$error = \$model->getError())
+		{
+			JError::raiseError(500, \$error);
+			return false;
+		}
+
+		// Set the links.
+		foreach (\$items as &\$item)
+		{
+			if (\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}.${3:${1/(.+)(s\b)/\L\1/g}}.' . \$item->id))
+			{
+				\$item->link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${3/(.+)/\L\1/g}.edit&id=' . \$item->id);
+			}
+			else
+			{
+				\$item->link = '';
+			}
+		}
+
+		return \$items;
+	}
+
+	/**
+	 * Get the alternate title for the module.
+	 *
+	 * @param   JObject  \$params  The module parameters.
+	 *
+	 * @return  string  The alternate title for the module.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function getTitle(\$params)
+	{
+		// Initialiase variables.
+		\$who = \$params->get('user_id');
+
+		\$title = JText::_('MOD_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_UNEXISTING');
+
+		return JText::plural('MOD_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_TITLE' . (\$who != '0' ? "_\$who" : ''), (int) \$params->get('count'), \$title);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodulehelper-nocategory-advanced</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

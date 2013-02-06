@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JHtml::_('jgrid.isdefault', \$item->${1:home} != '0', \$i, '${2:controller_list}.', \$canChange && \$item->${1/(.+)/\L\1/g} != '1');]]></content>
-	<tabTrigger>jhtml_jgrid.isdefault</tabTrigger>
-	<scope>source.php</scope>
-</snippet>
