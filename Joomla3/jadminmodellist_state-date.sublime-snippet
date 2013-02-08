@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[\$begin = \$this->getUserStateFromRequest(\$this->context.'.filter.begin', 'filter_begin', '', 'string');
+\$this->setState('filter.begin', \$begin);
+
+\$end = \$this->getUserStateFromRequest(\$this->context.'.filter.end', 'filter_end', '', 'string');
+\$this->setState('filter.end', \$end);]]></content>
+	<tabTrigger>jadminmodellist_state-date</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
