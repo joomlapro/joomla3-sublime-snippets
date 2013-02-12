@@ -3,7 +3,7 @@
 require_once __DIR__ . '/helper.php';
 
 // Get module data.
-\$${2:list} = mod${1/(.+)/\u\1/g}Helper::get${2/(.+)/\u\1/g}(\$params);
+\$${2:list} = Mod${3:${TM_MODULE/(\_+)//g}}Helper::get${2/(.+)/\u\1/g}(\$params);
 
 // Initialise variables.
 \$moduleclass_sfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
@@ -12,6 +12,6 @@ require_once __DIR__ . '/helper.php';
 require JModuleHelper::getLayoutPath('mod_${1:${TM_MODULE/(.+)/\L\1/g}}', \$params->get('layout', 'default'));
 
 ]]></content>
-	<tabTrigger>jadminmodule</tabTrigger>
+	<tabTrigger>jadminmodule-advanced</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
