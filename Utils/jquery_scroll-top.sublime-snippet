@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[/* Scroll Top */
+\$('.scroll-top').click(function () {
+	\$(this).stop().animate({
+		opacity: '0'
+	}, 200, function () {
+		\$('html, body').animate({
+			scrollTop: '0'
+		}, 600, function () {
+			\$('.scroll-top').stop().animate({
+				opacity: '1'
+			});
+		});
+	});
+	return false;
+});
+
+\$(window).scroll(function () {
+	if (\$(this).scrollTop() > 200) {
+		\$('a[href=#top]').fadeIn();
+	} else {
+		\$('a[href=#top]').fadeOut();
+	}
+});]]></content>
+	<tabTrigger>jquery_scroll-top</tabTrigger>
+	<scope>source.js</scope>
+</snippet>
