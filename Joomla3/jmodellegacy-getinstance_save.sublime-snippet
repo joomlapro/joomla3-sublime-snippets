@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[// Get an instance of the generic ${1/(.+)/\L\1/g} model.
+\$model = JModelLegacy::getInstance('${1:Sigular}', '${TM_PROJECT/(.+)/\u\1/g}Model'${2:, array('ignore_request' => true)});
+
+// Attempt to save the ${1/(.+)/\L\1/g}.
+\$data = array(
+	'id'       => 0,
+	'title'    => 'Title',
+	'state'    => 1,
+	'ordering' => 0
+);
+
+// Save the data.
+\$model->save(\$data);
+
+// Get the item.
+\$item = \$model->getItem();
+]]></content>
+	<tabTrigger>jmodellegacy-getinstance_save</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
