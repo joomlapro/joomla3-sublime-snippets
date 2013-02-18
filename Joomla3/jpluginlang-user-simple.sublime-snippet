@@ -1,6 +1,6 @@
 <snippet>
-	<content><![CDATA[PLG_USER_${1:${1/(.+)/\U\1/g}}="Usuário - ${2:Cliente}"
-PLG_USER_${1/(.+)/\U\1/g}_SLIDER_LABEL="Perfil de Usuário"
+	<content><![CDATA[PLG_USER_${1:${TM_PLUGIN/(.+)/\U\1/g}}="Usuário - ${2:Cliente}"
+PLG_USER_${1/(.+)/\U\1/g}_PROFILE_LABEL="Perfil de Usuário"
 PLG_USER_${1/(.+)/\U\1/g}_XML_DESCRIPTION="Plugin de ${2/(.+)/\u\1/g} do Usuário."
 
 ; FIELD
@@ -45,6 +45,6 @@ COM_CONTENT_CHANGE_ARTICLE_BUTTON="Selecionar / Alterar"
 COM_CONTENT_SELECT_AN_ARTICLE="Selecionar um Artigo"
 
 ]]></content>
-	<tabTrigger>jpluginlang-user</tabTrigger>
-	<scope>source.php</scope>
+	<tabTrigger>jpluginlang-user-simple</tabTrigger>
+	<scope>text.plain</scope>
 </snippet>

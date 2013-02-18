@@ -73,18 +73,8 @@
 					<option value="1">JOPTION_OPTIONAL</option>
 					<option value="0">JDISABLED</option>
 				</field>
-				<field name="register-require_tos" type="list" default="0" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_DESC">
-					<option value="2">JOPTION_REQUIRED</option>
-					<option value="0">JDISABLED</option>
-				</field>
-				<field name="register_tos_article" type="modal_article" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_ARTICLE_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_ARTICLE_DESC" />
-				<field name="register-require_dob" type="list" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_DESC">
-					<option value="2">JOPTION_REQUIRED</option>
-					<option value="1">JOPTION_OPTIONAL</option>
-					<option value="0">JDISABLED</option>
-				</field>
 				<field name="spacer1" type="spacer" hr="true" />
-				<field name="profile-require-user" type="spacer" class="text" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_${1/(.+)/\U\1/g}_REQUIRE_USER" />
+				<field name="profile-require-user" type="spacer" class="text" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_PROFILE_REQUIRE_USER" />
 				<field name="profile-require_address1" type="list" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_DESC" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_LABEL">
 					<option value="2">JOPTION_REQUIRED</option>
 					<option value="1">JOPTION_OPTIONAL</option>
@@ -135,17 +125,12 @@
 					<option value="1">JOPTION_OPTIONAL</option>
 					<option value="0">JDISABLED</option>
 				</field>
-				<field name="profile-require_dob" type="list" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_DESC">
-					<option value="2">JOPTION_REQUIRED</option>
-					<option value="1">JOPTION_OPTIONAL</option>
-					<option value="0">JDISABLED</option>
-				</field>
 			</fieldset>
 		</fields>
 	</config>
 </extension>
 
 ]]></content>
-	<tabTrigger>jpluginmanifest-user</tabTrigger>
+	<tabTrigger>jpluginmanifest-user-simple</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

@@ -20,6 +20,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 	public function __construct(& \$subject, \$config)
 	{
 		parent::__construct(\$subject, \$config);
+
 		\$this->loadLanguage();
 		JFormHelper::addFieldPath(__DIR__ . '/fields');
 	}
@@ -66,69 +67,9 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 					return false;
 				}
 			}
-
-			if (!JHtml::isRegistered('users.url'))
-			{
-				JHtml::register('users.url', array(__CLASS__, 'url'));
-			}
-
-			if (!JHtml::isRegistered('users.calendar'))
-			{
-				JHtml::register('users.calendar', array(__CLASS__, 'calendar'));
-			}
 		}
 
 		return true;
-	}
-
-	/**
-	 * URL Field.
-	 *
-	 * @param   int  \$value  The value.
-	 *
-	 * @return  string
-	 *
-	 * @since   $TM_VERSION
-	 */
-	public static function url(\$value)
-	{
-		if (empty(\$value))
-		{
-			return JHtml::_('users.value', \$value);
-		}
-		else
-		{
-			\$value = htmlspecialchars(\$value);
-			if (substr(\$value, 0, 4) == "http")
-			{
-				return '<a href="' . \$value . '">' . \$value . '</a>';
-			}
-			else
-			{
-				return '<a href="http://' . \$value . '">' . \$value . '</a>';
-			}
-		}
-	}
-
-	/**
-	 * Calendar Field.
-	 *
-	 * @param   int  \$value  The value.
-	 *
-	 * @return  string
-	 *
-	 * @since   $TM_VERSION
-	 */
-	public static function calendar(\$value)
-	{
-		if (empty(\$value))
-		{
-			return JHtml::_('users.value', \$value);
-		}
-		else
-		{
-			return JHtml::_('date', \$value, null, null);
-		}
 	}
 
 	/**
@@ -164,16 +105,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 		\$form->loadFile('profile', false);
 
 		\$fields = array(
-			'address1',
-			'address2',
-			'city',
-			'region',
-			'country',
-			'postal_code',
-			'phone',
-			'website',
-			'favoritebook',
-			'aboutme',
+
 		);
 
 		foreach (\$fields as \$field)
@@ -312,6 +244,6 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 }
 
 ]]></content>
-	<tabTrigger>jpluginuser-simple</tabTrigger>
+	<tabTrigger>jpluginuser-mini</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

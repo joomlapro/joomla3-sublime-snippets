@@ -2,7 +2,7 @@
 	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<fields name="profile">
-		<fieldset name="profile" label="PLG_USER_${1:CLIENT}_SLIDER_LABEL">
+		<fieldset name="profile" label="PLG_USER_${1:${TM_PLUGIN/(.+)/\U\1/g}}_PROFILE_LABEL">
 			<field name="address1" type="text" id="address1" filter="string" size="30" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_DESC" />
 			<field name="address2" type="text" id="address2" filter="string" size="30" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS2_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS2_DESC" />
 			<field name="city" type="text" id="city" filter="string" size="30" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_CITY_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_CITY_DESC" />
@@ -13,11 +13,15 @@
 			<field name="website" type="url" id="website" filter="string" size="30" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_WEB_SITE_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_WEB_SITE_DESC" />
 			<field name="favoritebook" type="text" filter="string" size="30" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_FAVORITE_BOOK_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_FAVORITE_BOOK_DESC" />
 			<field name="aboutme" type="textarea" cols="30" rows="5" filter="safehtml" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_DESC" />
+			<field name="dob" type="calendar" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_DESC" />
+			<field name="tos" type="tos" label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_LABEL" description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_DESC">
+				<option value="1">PLG_USER_${1/(.+)/\U\1/g}_OPTION_AGREE</option>
+			</field>
 		</fieldset>
 	</fields>
 </form>
 
 ]]></content>
-	<tabTrigger>jpluginuser-form_simple</tabTrigger>
-	<scope>source.php</scope>
+	<tabTrigger>jpluginuserform</tabTrigger>
+	<scope>text.xml</scope>
 </snippet>
