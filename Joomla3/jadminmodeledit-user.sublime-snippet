@@ -1,0 +1,130 @@
+<snippet>
+	<content><![CDATA[// Load the backend model.
+require_once JPATH_ADMINISTRATOR . '/components/com_users/models/user.php';
+require_once JPATH_ADMINISTRATOR . '/components/com_users/models/groups.php';
+
+/**
+ * Item Model for an ${1/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends UsersModelUser
+{
+	/**
+	 * Method to get the record form.
+	 *
+	 * @param   array    \$data      An optional array of data for the form to interogate.
+	 * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not.
+	 *
+	 * @return  mixed  A JForm object on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getForm(\$data = array(), \$loadData = true)
+	{
+		// Get the form.
+		JForm::addFormPath(JPATH_ADMINISTRATOR . '/components/com_users/models/forms');
+
+		return parent::getForm(\$data, \$loadData);
+	}
+
+	/**
+	 * Method to save the form data.
+	 *
+	 * @param   array  \$data  The form data.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function save(\$data)
+	{
+		// Initialiase variables.
+		\$pk   = (!empty(\$data['id'])) ? \$data['id'] : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
+		\$user = JUser::getInstance(\$pk);
+
+		\$my   = JFactory::getUser();
+
+		if (\$data['block'] && \$pk == \$my->id && !\$my->block)
+		{
+			\$this->setError(JText::_('COM_USERS_USERS_ERROR_CANNOT_BLOCK_SELF'));
+			return false;
+		}
+
+		// Make sure that we are not removing ourself from Super Admin group.
+		\$iAmSuperAdmin = \$my->authorise('core.admin');
+
+		if (\$iAmSuperAdmin && \$my->get('id') == \$pk)
+		{
+			// Check that at least one of our new groups is Super Admin.
+			\$stillSuperAdmin = false;
+			\$myNewGroups = \$data['groups'];
+			foreach (\$myNewGroups as \$group)
+			{
+				\$stillSuperAdmin = (\$stillSuperAdmin) ? (\$stillSuperAdmin) : JAccess::checkGroup(\$group, 'core.admin');
+			}
+			if (!\$stillSuperAdmin)
+			{
+				\$this->setError(JText::_('COM_USERS_USERS_ERROR_CANNOT_DEMOTE_SELF'));
+				return false;
+			}
+		}
+
+		// Bind the data.
+		if (!\$user->bind(\$data))
+		{
+			\$this->setError(\$user->getError());
+			return false;
+		}
+
+		// Store the data.
+		if (!\$user->save())
+		{
+			\$this->setError(\$user->getError());
+			return false;
+		}
+
+		\$this->setState('${1/(.+)/\L\1/g}.id', \$user->id);
+
+		return true;
+	}
+
+	/**
+	 * Gets the groups this object is assigned to.
+	 *
+	 * @param   integer  \$userId  The user ID to retrieve the groups for.
+	 *
+	 * @return  array  An array of assigned groups.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getAssignedGroups(\$userId = null)
+	{
+		// Get the user id.
+		\$userId = (!empty(\$userId)) ? \$userId : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
+
+		if (empty(\$userId))
+		{
+			\$result = array();
+			\$config = JComponentHelper::getParams('com_users');
+
+			if (\$groupId = \$config->get('new_usertype'))
+			{
+				\$result[] = \$groupId;
+			}
+		}
+		else
+		{
+			\$result = JUserHelper::getUserGroups(\$userId);
+		}
+
+		return \$result;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodeledit-user</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
