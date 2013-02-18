@@ -15,6 +15,9 @@
 @media (max-width: 767px) {}
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
-@media (max-width: 480px) {}]]></content>
-	<tabTrigger>mediaquery</tabTrigger>
+@media (max-width: 480px) {}
+
+]]></content>
+	<tabTrigger>mediaquery-custom</tabTrigger>
+	<scope>source.css</scope>
 </snippet>

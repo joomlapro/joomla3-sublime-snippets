@@ -15,6 +15,6 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends UsersModelUsers
 }
 
 ]]></content>
-	<tabTrigger>jadminmodellist-user</tabTrigger>
+	<tabTrigger>jadminmodellist-users</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
