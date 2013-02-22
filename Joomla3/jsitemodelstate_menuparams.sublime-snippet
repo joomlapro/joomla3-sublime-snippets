@@ -10,6 +10,6 @@ if (\$menu = \$app->getMenu()->getActive())
 
 \$mergedParams = clone \$menuParams;
 \$mergedParams->merge(\$params);]]></content>
-	<tabTrigger>jsitemodel-menuparams</tabTrigger>
+	<tabTrigger>jsitemodelstate_menuparams</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

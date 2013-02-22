@@ -38,6 +38,6 @@ public function get${1:Hellos}()
 		return \$items;
 	}
 }]]></content>
-	<tabTrigger>jsitemodelget</tabTrigger>
+	<tabTrigger>jsitemodel_get</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
