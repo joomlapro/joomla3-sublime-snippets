@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolbarHelper::editList('${1:singular}.edit');]]></content>
+	<tabTrigger>jtoolbarhelper-editlist</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

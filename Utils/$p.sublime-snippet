@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[\${TM_PLUGIN/(.+)/\\${2:l|L|u|U}\1/g}]]></content>
-	<tabTrigger>$p</tabTrigger>
-</snippet>

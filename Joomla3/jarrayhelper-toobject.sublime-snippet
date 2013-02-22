@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JArrayHelper::toObject(${1:\$array});]]></content>
+	<tabTrigger>jarrayhelper-toobject</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

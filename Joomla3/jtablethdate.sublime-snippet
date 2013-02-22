@@ -8,6 +8,6 @@
 		<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_' . strtoupper(\$date) . '_DATE', 'a.publish_up', \$listDirn, \$listOrder); ?>
 	<?php endif; ?>
 </th>]]></content>
-	<tabTrigger>jtableth-date</tabTrigger>
+	<tabTrigger>jtablethdate</tabTrigger>
 	<scope>text.html</scope>
 </snippet>
