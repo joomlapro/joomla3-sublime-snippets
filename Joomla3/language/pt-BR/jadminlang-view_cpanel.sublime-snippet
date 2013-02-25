@@ -1,9 +1,0 @@
-<snippet>
-	<content><![CDATA[; CPANEL
-
-COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_CPANEL="Gerenciador de ${1:Component}: Painel de Controle"
-
-]]></content>
-	<tabTrigger>jadminlang-view_cpanel</tabTrigger>
-	<scope>text.plain</scope>
-</snippet>

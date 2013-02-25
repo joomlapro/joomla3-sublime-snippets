@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:field}" type="textarea" class="inputbox" ${2:disabled="" }cols="30" rows="3" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
-	<tabTrigger>jsitefieldtextarea</tabTrigger>
-	<scope>text.xml</scope>
-</snippet>

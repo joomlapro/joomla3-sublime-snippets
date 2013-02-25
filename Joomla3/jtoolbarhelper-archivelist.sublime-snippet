@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolbarHelper::archiveList('${1:plural}.archive');]]></content>
-	<tabTrigger>jtoolbarhelper-archivelist</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

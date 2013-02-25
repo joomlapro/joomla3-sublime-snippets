@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[ALTER TABLE ${1:$TM_PREFIX}_${TM_PROJECT/(.+)/\L\1/g}
-ADD `access` int(10) unsigned NOT NULL DEFAULT '0',
-ADD `params` text NOT NULL]]></content>
-	<tabTrigger>jdb-add_access_params</tabTrigger>
-	<scope>text.plain,source.sql</scope>
-</snippet>

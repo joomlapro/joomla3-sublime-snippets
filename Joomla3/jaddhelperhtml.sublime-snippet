@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');]]></content>
-	<tabTrigger>jaddhelperhtml</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

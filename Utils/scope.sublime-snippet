@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<scope>source.${1:php}</scope>
-]]></content>
-	<tabTrigger>scope</tabTrigger>
-</snippet>

@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JUri::getInstance()->toString(array(${1:'scheme', 'user', 'pass', 'host', 'port', 'path', 'query', 'fragment'}));]]></content>
-	<tabTrigger>juri-getinstance_tostring</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

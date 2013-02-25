@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolbarHelper::publish('${1:plural}.publish', 'JTOOLBAR_PUBLISH', true);]]></content>
-	<tabTrigger>jtoolbarhelper-publish</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

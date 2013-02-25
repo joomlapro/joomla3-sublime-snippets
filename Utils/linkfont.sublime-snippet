@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=$1">
-]]></content>
-<tabTrigger>linkfont</tabTrigger>
-</snippet>

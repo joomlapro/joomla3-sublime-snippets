@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[// Optional filter text.
-\$search = urldecode(\$input->getString('searchword'));
-\$this->setState('filter.search', \$search);]]></content>
-	<tabTrigger>jsitemodellist_state_searchword</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

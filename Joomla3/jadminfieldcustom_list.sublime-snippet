@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[<field name="${1:field}" type="${2:custom}" class="inputbox" size="1" default="" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_DESC">
-	<option value="">JSELECT</option>
-</field>]]></content>
-	<tabTrigger>jadminfieldcustom_list</tabTrigger>
-	<scope>text.xml</scope>
-</snippet>

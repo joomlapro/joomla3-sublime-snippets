@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolbarHelper::custom('${1:plural}.featured', 'featured.png', 'featured_f2.png', 'JFEATURED', true);]]></content>
-	<tabTrigger>jtoolbarhelper-custom_featured</tabTrigger>
-	<scope>source.php</scope>
-</snippet>
