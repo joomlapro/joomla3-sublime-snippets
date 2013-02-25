@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[case 'clipping':
+	\$vars['view'] = 'clipping';
+
+	if (isset(\$segments[1]))
+	{
+		\$vars['id'] = \$segments[1];
+	}
+
+	break;]]></content>
+	<tabTrigger>jsiterouterparse_custom-simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

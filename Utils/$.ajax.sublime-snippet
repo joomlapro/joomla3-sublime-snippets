@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[\$.ajax({
+	url: '$1',
+	type: '${2:GET}',
+	data: '$3',
+	dataType: '${4:JSON}',
+	async: ${5:true},
+	beforeSend: function () {
+		// Do something...
+	},
+	success: function () {
+		// Do something...
+	}
+});]]></content>
+	<tabTrigger>$.ajax</tabTrigger>
+</snippet>

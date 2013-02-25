@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolbarHelper::deleteList('', '${1:plural}.delete', 'JTOOLBAR_EMPTY_TRASH');]]></content>
+	<tabTrigger>jtoolbarhelper-deletelist</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[<?php \$fieldSets = \$this->form->getFieldsets('${1:name}');
+foreach (\$fieldSets as \$name => \$fieldSet): ?>
+	<li><a href="#${1/(.+)/\L\1/g}-<?php echo \$name; ?>" data-toggle="tab"><?php echo JText::_(\$fieldSet->label); ?></a></li>
+<?php endforeach; ?>
+]]></content>
+	<tabTrigger>jaddlink_tab-advanced</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

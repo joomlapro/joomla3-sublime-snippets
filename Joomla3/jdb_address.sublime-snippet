@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[`address_zipcode` char(8) NOT NULL DEFAULT '',
+`address_street` varchar(255) NOT NULL DEFAULT '',
+`address_district` varchar(40) NOT NULL DEFAULT '',
+`address_city` varchar(40) NOT NULL DEFAULT '',
+`address_state` char(2) NOT NULL DEFAULT '',
+`latitude` float(10,6) NOT NULL DEFAULT '0.000000',
+`longitude` float(10,6) NOT NULL DEFAULT '0.000000',]]></content>
+	<tabTrigger>jdb_address</tabTrigger>
+	<scope>text.plain,source.sql</scope>
+</snippet>

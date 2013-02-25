@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[// Flexslider.
+\$(window).load(function() {
+	if (\$.fn.flexslider) {
+		// Latest Posts.
+		\$('${1:.class}').flexslider({
+			animation: 'slide',
+			controlNav: false,
+			animationLoop: false,
+			slideshowSpeed: 10000,
+			pauseOnHover: true,
+			itemWidth: 244,
+			itemMargin: 19,
+			minItems: 2,
+			maxItems: 3,
+			prevText: '<i class="icon-chevron-left"></i>',
+			nextText: '<i class="icon-chevron-right"></i>'
+		});
+	}
+});]]></content>
+	<tabTrigger>jquery_call_flexslider</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

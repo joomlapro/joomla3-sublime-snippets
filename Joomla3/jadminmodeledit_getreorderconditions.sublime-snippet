@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[/**
+ * A protected method to get a set of ordering conditions.
+ *
+ * @param   object  \$table  A record object.
+ *
+ * @return  array  An array of conditions to add to add to ordering queries.
+ *
+ * @since   $TM_VERSION
+ */
+protected function getReorderConditions(\$table)
+{
+	\$condition = array();
+	\$condition[] = '${1:catid} = ' . (int) \$table->${1/(.+)/\L\1/g};
+
+	return \$condition;
+}]]></content>
+	<tabTrigger>jadminmodeledit_getreorderconditions</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

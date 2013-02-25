@@ -1,0 +1,106 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to create thumb image.
+ *
+ * @param   string   \$image   The path to full image.
+ * @param   array    \$sizes   The thumb sizes. Example: array('50x50', '120x250');
+ * @param   string   \$folder  The thumbs destination folder. Example: 'cache/folder';
+ * @param   integer  \$method  The thumbnail creation method. 1,2,3 => Resize, 4 => Crop.
+ *
+ * @return  array of generated thumbnails
+ *
+ * @since   $TM_VERSION
+ */
+public static function createThumb(\$image, \$sizes, \$folder, \$method = 2)
+{
+	jimport('joomla.filesystem.folder');
+
+	if (!empty(\$sizes) && JFile::exists(\$image))
+	{
+		// Accept a single size string as parameter.
+		if (!is_array(\$sizes))
+		{
+			\$sizes = array(\$sizes);
+		}
+
+		// Check | try to creaate folder.
+		if (JFolder::exists(\$folder) || JFolder::create(\$folder))
+		{
+			\$generated = array();
+
+			// Process thumbs.
+			foreach (\$sizes as \$size)
+			{
+				// Get thumb size.
+				\$size = explode('x', strtolower(\$size));
+
+				if (count(\$size) != 2)
+				{
+					return false;
+				}
+
+				\$width = \$size[0];
+				\$height = \$size[1];
+
+				// Source object.
+				\$sourceImage = new JImage(\$image);
+				\$srcHeight = \$sourceImage->getHeight();
+				\$srcWidth = \$sourceImage->getWidth();
+				\$properties = JImage::getImageFileProperties(\$image);
+
+				// Generate thumb name.
+				\$filename = JFile::getName(\$image);
+				\$extension = JFile::getExt(\$filename);
+				\$thumbname = str_replace('.' . \$extension, '_' . \$width . 'x' . \$height . '.' . \$extension, \$filename);
+
+				// Try to generate the thumb.
+				if (\$method == 4)
+				{
+					// Auto crop centered coordinates.
+					\$left = round((\$srcWidth - \$width) / 2);
+					\$top = round((\$srcHeight - \$height) / 2);
+
+					// Crop image.
+					\$thumb = \$sourceImage->crop(\$width, \$height, \$left, \$top, true);
+				}
+				else
+				{
+					// Resize image.
+					\$thumb = \$sourceImage->resize(\$width, \$height, true, \$method);
+				}
+
+				if (\$properties->type == 3)
+				{
+					\$quality = 9;
+				}
+				elseif (\$properties->type == 2)
+				{
+					\$quality = 60;
+				}
+				elseif (\$properties->type == 1)
+				{
+					\$quality = 9;
+				}
+
+				\$thumbname = \$folder . '/' . \$thumbname;
+
+				if (!JFile::exists(\$thumbname))
+				{
+					\$thumb->toFile(\$thumbname, \$properties->type, array('quality' => \$quality));
+					\$generated[] = \$thumbname;
+				}
+				else
+				{
+					\$generated[] = \$thumbname;
+				}
+			}
+
+			return \$generated;
+		}
+	}
+
+	return false;
+}]]></content>
+	<tabTrigger>jsitehelper-image</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

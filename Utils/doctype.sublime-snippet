@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[
+<!DOCTYPE HTML>
+<html lang="pt-br" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<title>$0</title>
+</head>
+<body>
+	<h1>$0</h1>
+
+</body>
+</html>
+]]></content>
+<tabTrigger>doctype</tabTrigger>
+</snippet>

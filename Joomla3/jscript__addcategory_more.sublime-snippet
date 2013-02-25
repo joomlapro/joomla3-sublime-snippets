@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[\$data2 = (array) \$data;
+\$data2['extension'] = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1:plural}';
+
+// Save the data.
+\$model->save(\$data2);
+
+// Initialiase variables.
+\$id    = \$model->getItem()->id;
+
+// Updating all albums without category to have this new one.
+\$query->clear();
+\$query->update(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'));
+\$query->set(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$id));
+\$query->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
+\$db->setQuery(\$query);
+\$db->query();]]></content>
+	<tabTrigger>jscript__addcategory_more</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

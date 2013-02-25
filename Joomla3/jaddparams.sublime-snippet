@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the parameters.
+\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');]]></content>
+	<tabTrigger>jaddparams</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

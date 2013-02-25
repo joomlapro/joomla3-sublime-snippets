@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\${$1:$2}]]></content>
+	<tabTrigger>$</tabTrigger>
+	<!-- <scope>text.plain,text.xml</scope> -->
+</snippet>

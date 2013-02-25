@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to check whether an ID is in the edit list.
+ *
+ * @param   string   \$context  The context for the session storage.
+ * @param   integer  \$id       The ID of the record to add to the edit list.
+ *
+ * @return  boolean  True if the ID is in the edit list.
+ *
+ * @since   $TM_VERSION
+ */
+protected function checkEditId(\$context, \$id)
+{
+	return true;
+}]]></content>
+	<tabTrigger>jadmincontrolleredit_checkeditid</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

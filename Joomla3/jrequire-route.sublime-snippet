@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load dependent classes.
+require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';]]></content>
+	<tabTrigger>jrequire-route</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

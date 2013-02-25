@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[/* Smaller than standard 1200 (devices and browsers) */
+@media (min-width: 1200px) {}
+
+/* Tablet Portrait size to Landscape and Desktop */
+@media (min-width: 980px) and (max-width: 1199px) {}
+
+/* Smaller than standard 980 (devices and browsers) */
+@media (max-width: 979px) {}
+
+/* Tablet Portrait size to standard 980 (devices and browsers) */
+@media (min-width: 768px) and (max-width: 979px) {}
+
+/* All Mobile Sizes (devices and browser) */
+@media (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media (max-width: 480px) {}
+
+]]></content>
+	<tabTrigger>mediaquery-custom</tabTrigger>
+	<scope>source.css</scope>
+</snippet>

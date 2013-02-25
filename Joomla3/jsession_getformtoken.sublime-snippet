@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JSession::getFormToken()]]></content>
+	<tabTrigger>jsession_getformtoken</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[?>
+<?php echo JHtml::_('access.usergroups', 'jform[groups]', \$this->groups, true);]]></content>
+	<tabTrigger>jadminlayoutedit_groups</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
