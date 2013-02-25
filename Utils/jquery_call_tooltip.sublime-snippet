@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Call tooltip.
+\$('[data-toggle="tooltip"]').tooltip();]]></content>
+	<tabTrigger>jquery_call_tooltip</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

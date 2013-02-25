@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[var map;
+
+\$(document).ready(function () {
+	map = new GMaps({
+		div: '#map',
+		lat: -12.043333,
+		lng: -77.028333
+	});
+
+	map.addMarker({
+		lat: -12.042,
+		lng: -77.028333,
+		title: 'Marker with InfoWindow',
+		infoWindow: {
+			content: '<p>HTML Content</p>'
+		}
+	});
+});]]></content>
+	<tabTrigger>jquery_call_gmaps</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[// Equal Height Blocks.
+var currentTallest = 0,
+	currentRowStart = 0,
+	rowDivs = [],
+	\$el,
+	topPosition = 0;
+
+\$('${1:.class}${2: [class*="span"]}').each(function () {
+	\$el = \$(this);
+	topPostion = \$el.position().top;
+
+	if (currentRowStart != topPostion) {
+		// We just came to a new row. Set all the heights on the completed row.
+		for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+			rowDivs[currentDiv].height(currentTallest);
+		}
+
+		// Set the variables for the new row.
+		rowDivs.length = 0; // Empty the array.
+		currentRowStart = topPostion;
+		currentTallest = \$el.height();
+		rowDivs.push(\$el);
+
+	} else {
+		// Another div on the current row. Add it to the list and check if it's taller.
+		rowDivs.push(\$el);
+		currentTallest = (currentTallest < \$el.height()) ? (\$el.height()) : (currentTallest);
+	}
+
+	// Do the last row.
+	for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+		rowDivs[currentDiv].height(currentTallest);
+	}
+});]]></content>
+	<tabTrigger>jquery_equal_height</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

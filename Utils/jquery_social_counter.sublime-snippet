@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[// Twitter and facebook social counter.
+\$(document).ready(function () {
+	var t_page = 'clickbrasilia';
+	var f_page = '284270138260455';
+
+	// Grab from Twitter.
+	\$.getJSON('http://api.twitter.com/1/users/show.json?screen_name=' + t_page + '&callback=?', function (data) {
+		twit_count = data['followers_count'].toString();
+		\$('#twitter').html(twit_count);
+	});
+
+	// Grab from Facebook.
+	\$.getJSON('https://graph.facebook.com/' + f_page + '?callback=?', function (data) {
+		var fb_count = data['likes'].toString();
+		\$('#facebook').html(fb_count);
+	});
+});]]></content>
+	<tabTrigger>jquery_social_counter</tabTrigger>
+	<scope>source.js</scope>
+</snippet>
