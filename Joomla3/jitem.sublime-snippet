@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<?php echo $item->${1:title}; ?>]]></content>
-	<tabTrigger>jitem</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

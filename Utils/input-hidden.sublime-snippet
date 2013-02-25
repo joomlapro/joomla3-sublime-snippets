@@ -1,4 +1,0 @@
-<snippet>
-	<content><![CDATA[<input type="hidden" name="$1" value="$2" />]]></content>
-	<tabTrigger>input-hidden</tabTrigger>
-</snippet>

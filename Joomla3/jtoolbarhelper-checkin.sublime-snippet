@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolbarHelper::checkin('${1:plural}.checkin');]]></content>
-	<tabTrigger>jtoolbarhelper-checkin</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[INSERT INTO `sh56b_menu` VALUES ('104', 'main', 'com_boleto_boletos', 'com-boleto-boletos', '', 'com-boleto/com-boleto-boletos', 'index.php?option=com_boleto&view=boletos', 'component', '0', '102', '2', '10004', '0', '0000-00-00 00:00:00', '0', '1', '../media/com_boleto/images/menu/boleto.png', '0', '', '46', '47', '0', '', '1');]]></content>
-	<tabTrigger>hello</tabTrigger>
-	<scope>text.plain,source.sql</scope>
-</snippet>

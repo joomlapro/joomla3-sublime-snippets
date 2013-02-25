@@ -1,7 +1,0 @@
-<snippet>
-	<content><![CDATA[<modules>
-	<module folder="modules" module="mod_${1:hello}" />
-</modules>]]></content>
-	<tabTrigger>jcomponentmanifest_modules</tabTrigger>
-	<scope>text.xml</scope>
-</snippet>

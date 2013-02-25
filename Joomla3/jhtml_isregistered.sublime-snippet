@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[if (!JHtml::isRegistered('users.${1:field}'))
-{
-	JHtml::register('users.${1/(.+)/\L\1/g}', array(__CLASS__, '${1/(.+)/\L\1/g}'));
-}]]></content>
-	<tabTrigger>jhtml_isregistered</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

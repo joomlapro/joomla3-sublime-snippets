@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Load the formvalidation behavior script.
-JHtml::_('behavior.formvalidation');]]></content>
-	<tabTrigger>jhtml_behavior.formvalidation</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JError::raiseWarning(${1:100}, ${2:'Warning'});]]></content>
-	<tabTrigger>jerror-warning</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

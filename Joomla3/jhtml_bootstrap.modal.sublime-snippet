@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Load the modal bootstrap script.
-JHtml::_('bootstrap.modal', '${1:modal}');]]></content>
-	<tabTrigger>jhtml_bootstrap.modal</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

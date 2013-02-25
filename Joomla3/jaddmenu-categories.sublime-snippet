@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<menu link="option=com_categories&amp;extension=com_${TM_PROJECT/(.+)/\L\1/g}$1" view="categories" img="class:category" alt="${TM_PROJECT/(.+)/\u\1/g}/Categories${1/(\.+)/ /g}">com_${TM_PROJECT/(.+)/\L\1/g}_categories${1/(\.+)/_/g}</menu>]]></content>
-	<tabTrigger>jaddmenu-categories</tabTrigger>
-	<scope>text.xml</scope>
-</snippet>

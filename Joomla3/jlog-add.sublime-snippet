@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JLog::add('${1:JHtmlSelect::optgroup} is ${1:deprecated}.', JLog::WARNING, '${1/(.+)/\L\1/g}');]]></content>
-	<tabTrigger>jlog-add</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

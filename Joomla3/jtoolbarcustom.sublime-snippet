@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolBarHelper::custom('${1:controller}.${2:method}', 'featured.png', 'featured_f2.png', 'COM_${TM_PROJECT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}', true);]]></content>
-	<tabTrigger>jtoolbarcustom</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

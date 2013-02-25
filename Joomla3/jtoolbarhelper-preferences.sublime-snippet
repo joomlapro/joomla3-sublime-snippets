@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolbarHelper::preferences('com_${TM_PROJECT/(.+)/\L\1/g}');]]></content>
-	<tabTrigger>jtoolbarhelper-preferences</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

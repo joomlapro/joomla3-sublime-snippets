@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[// Load the ${2/(.+)/\L\1/g}.
-\$${1:field} = \$input->get('${2:field}', null, '${4:uint}');
-\$this->setState('filter.${3:field}', \$$1);
-]]></content>
-	<tabTrigger>jsitemodellist_state</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

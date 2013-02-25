@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<li><a href="<?php echo \$this->baseurl; ?>/index.php?option=com_categories&amp;extension=com_${TM_PROJECT/(.+)/\L\1/g}$1"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_LINK_CATEGORIES${1/(\.+)/_/g}'); ?></a></li>]]></content>
-	<tabTrigger>jaddlink-categories</tabTrigger>
-	<scope>text.html</scope>
-</snippet>

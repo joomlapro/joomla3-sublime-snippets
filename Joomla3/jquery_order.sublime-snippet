@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[\$query->order('a.${1:column} ${2:ASC}');]]></content>
-	<tabTrigger>jquery_order</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

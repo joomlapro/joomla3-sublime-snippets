@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JHtml::_('date', \$item->${1:created}, JText::_('Y-m-d\TH:i:s'));]]></content>
-	<tabTrigger>jhtml_date_html5</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

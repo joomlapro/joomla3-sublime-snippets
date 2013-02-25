@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[
-<div class="grid_${1:12}">
-
-</div>
-]]></content>
-<tabTrigger>grid</tabTrigger>
-</snippet>

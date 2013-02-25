@@ -1,9 +1,0 @@
-<snippet>
-	<content><![CDATA[if (JFilterInput::checkAttribute(array ('${2:href}', \$this->${1:url})))
-{
-	\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERR_TABLES_PROVIDE_${1/(.+)/\U\1/g}'));
-	return false;
-}]]></content>
-	<tabTrigger>jcheckattribute</tabTrigger>
-	<scope>source.php</scope>
-</snippet>
