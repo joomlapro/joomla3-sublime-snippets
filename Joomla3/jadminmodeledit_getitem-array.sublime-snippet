@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[if (isset($data['${1:array}']) && is_array($data['${1/(.+)/\L\1/g}']))
+{
+	$registry = new JRegistry;
+	$registry->loadArray($data['${1/(.+)/\L\1/g}']);
+	$data['${1/(.+)/\L\1/g}'] = (string) $registry;
+}]]></content>
+	<tabTrigger>jadminmodeledit_getitem-array</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

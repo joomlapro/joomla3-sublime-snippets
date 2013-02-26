@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[
+<!-- Integration options. -->
+<fieldset name="integration">
+	<field name="show_feed_link" type="list" label="JGLOBAL_SHOW_FEED_LINK_LABEL" description="JGLOBAL_SHOW_FEED_LINK_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JHIDE</option>
+		<option value="1">JSHOW</option>
+	</field>
+	<field name="feed_summary" type="list" label="JGLOBAL_FEED_SUMMARY_LABEL" description="JGLOBAL_FEED_SUMMARY_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="0">JGLOBAL_INTRO_TEXT</option>
+		<option value="1">JGLOBAL_FULL_TEXT</option>
+	</field>
+</fieldset>]]></content>
+	<tabTrigger>jsitemenu_integration</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

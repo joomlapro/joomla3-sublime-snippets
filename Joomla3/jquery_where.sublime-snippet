@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$query->where('a.${1:column} = ' . (${2:int}) \$${3:value});]]></content>
+	<tabTrigger>jquery_where</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

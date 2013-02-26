@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JRoute::_($1);]]></content>
+	<tabTrigger>jroute</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

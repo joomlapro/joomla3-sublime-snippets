@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[/**
+ * Context string for the model type.
+ *
+ * @var     string
+ * @since   $TM_VERSION
+ */
+protected \$context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1:model}';]]></content>
+	<tabTrigger>jsitemodel_context</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

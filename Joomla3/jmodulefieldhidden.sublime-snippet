@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<field name="${1:field}" type="hidden" ${2:class="" }filter="unset" />]]></content>
+	<tabTrigger>jmodulefieldhidden</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method is called before user data is deleted from the database.
+ *
+ * @param   array  \$user  Holds the user data.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function onUserBeforeDelete(\$user)
+{
+	// Initialiase variables.
+	\$app = JFactory::getApplication();
+}
+
+]]></content>
+	<tabTrigger>jpluginuser-onUserBeforeDelete</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

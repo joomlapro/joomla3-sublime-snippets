@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the multiselect behavior script.
+JHtml::_('behavior.multiselect');]]></content>
+	<tabTrigger>jhtml_behavior.multiselect</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

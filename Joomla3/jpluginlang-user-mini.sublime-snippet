@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[PLG_USER_${1:${TM_PLUGIN/(.+)/\U\1/g}}="Usuário - ${2:Cliente}"
+PLG_USER_${1/(.+)/\U\1/g}_PROFILE_LABEL="Perfil de Usuário"
+PLG_USER_${1/(.+)/\U\1/g}_XML_DESCRIPTION="Plugin de ${2/(.+)/\u\1/g} do Usuário."
+
+; FIELD
+
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_PROFILE_REQUIRE_USER="Campos de Perfil de Usuário para formulário de edição"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_REGISTER_REQUIRE_USER="Campos de Perfil de Usuário para formulários de cadastro e administração</strong>"
+
+]]></content>
+	<tabTrigger>jpluginlang-user-mini</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[; FIELD
+
+MOD_${1:${TM_MODULE/(.+)/\U\1/g}}_FIELD_CATEGORY_DESC="Selecione ${2:list} de uma, ou mais categorias. Se nenhuma seleção for feita, exibirá por padrão todas as categorias."
+MOD_${1/(.+)/\U\1/g}_FIELD_IMAGES_LABEL="Exibir Imagens"
+MOD_${1/(.+)/\U\1/g}_FIELD_IMAGES_DESC="Exibir imagens no ${3:item}"
+MOD_${1/(.+)/\U\1/g}_FIELD_ITEMS_LABEL="# ${2/(.+)/\u\1/g}"
+MOD_${1/(.+)/\U\1/g}_FIELD_ITEMS_DESC="O número de ${2/(.+)/\L\1/g} a exibir dentro deste módulo"
+MOD_${1/(.+)/\U\1/g}_FIELD_LINKTITLE_LABEL="Ligar Títulos"
+MOD_${1/(.+)/\U\1/g}_FIELD_LINKTITLE_DESC="Ligar títulos do ${2/(.+)/\L\1/g} para os ${2/(.+)/\L\1/g}."
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_LABEL="Ordem dos Resultados"
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_DESC="Selecione a ordem que deseja para os resultados da busca."
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_CREATED_DATE="Data da Criação"
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_PUBLISHED_DATE="Data de Publicação"
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_ORDERING="Ordem"
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_RANDOM="Aleatória"
+MOD_${1/(.+)/\U\1/g}_FIELD_READMORE_LABEL="Link 'Leia mais...'"
+MOD_${1/(.+)/\U\1/g}_FIELD_READMORE_DESC="Se configurado como exibir, o link 'Leia mais...' será exibido se o ${3/(.+)/\L\1/g} tiver o texto principal."
+MOD_${1/(.+)/\U\1/g}_FIELD_SEPARATOR_LABEL="Exibir Último Separador"
+MOD_${1/(.+)/\U\1/g}_FIELD_SEPARATOR_DESC="Exibir separador após último ${3/(.+)/\L\1/g}"
+MOD_${1/(.+)/\U\1/g}_FIELD_TITLE_LABEL="Exibir Títulos do ${3/(.+)/\u\1/g}"
+MOD_${1/(.+)/\U\1/g}_FIELD_TITLE_DESC="Exibir/Ocultar títulos de ${2/(.+)/\L\1/g}"
+
+; MISC
+
+MOD_${1/(.+)/\U\1/g}_READMORE="Leia mais..."
+MOD_${1/(.+)/\U\1/g}_READMORE_REGISTER="Cadastre-se para ler mais"
+
+; TITLE
+
+MOD_${1/(.+)/\U\1/g}_TITLE_HEADING="Nível de Cabeçalho"
+MOD_${1/(.+)/\U\1/g}_TITLE_HEADING_DESCRIPTION="Selecione o nível desejado de cabeçalho HTML para os títulos dos ${2/(.+)/\L\1/g}."
+
+]]></content>
+	<tabTrigger>jsitelangmodule-normal</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$db = JFactory::getDbo();
+// \$db = \$this->getDbo();
+\$query = \$db->getQuery(true);
+
+// Create the base select statement.
+\$query->select('a.*');
+\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1:table}') . ' AS a');
+\$query->where(\$db->quoteName('a.state') . ' = 1');
+\$query->order(\$db->quoteName('a.ordering') . ' ASC');
+
+// Set the query and load the result.
+\$db->setQuery(\$query);
+\$result = \$db->loadObjectList();
+
+// Check for a database error.
+if (\$db->getErrorNum())
+{
+	JError::raiseWarning(500, \$db->getErrorMsg());
+	return null;
+}]]></content>
+	<tabTrigger>jdbo</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

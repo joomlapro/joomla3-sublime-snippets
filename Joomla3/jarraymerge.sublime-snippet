@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Merge any additional options in the XML definition.
+\$options = array_merge(parent::getOptions(), \$options);]]></content>
+	<tabTrigger>jarraymerge</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

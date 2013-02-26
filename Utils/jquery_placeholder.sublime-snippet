@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[// Placeholder.
+if (\$.fn.placeholder) {
+	\$('${1:input, textarea}').placeholder();
+}]]></content>
+	<tabTrigger>jquery_placeholder</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

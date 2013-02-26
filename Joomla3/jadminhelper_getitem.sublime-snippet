@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get an ${2:${1/(.+)/\L\1/g}}.
+ *
+ * @param   integer  \$${3/(.+)/\L\1/g}  The ${1/(.+)/\L\1/g} id.
+ *
+ * @return  array
+ *
+ * @since   $TM_VERSION
+ */
+public static function get${1:Item}(\$${3:id})
+{
+	// Initialiase variables.
+	\$db = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Create the base select statement.
+	\$query->select('a.*');
+	\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${4:${1/(.+)/\L\1/g}}') . ' AS a');
+	\$query->where('a.${5:state} = 1');
+
+	// Set the query and load the result.
+	\$db->setQuery(\$query);
+	\$result = \$db->loadColumn();
+
+	return \$result;
+}]]></content>
+	<tabTrigger>jadminhelper_getitem</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

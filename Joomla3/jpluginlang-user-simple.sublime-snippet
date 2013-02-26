@@ -1,0 +1,50 @@
+<snippet>
+	<content><![CDATA[PLG_USER_${1:${TM_PLUGIN/(.+)/\U\1/g}}="Usuário - ${2:Cliente}"
+PLG_USER_${1/(.+)/\U\1/g}_PROFILE_LABEL="Perfil de Usuário"
+PLG_USER_${1/(.+)/\U\1/g}_XML_DESCRIPTION="Plugin de ${2/(.+)/\u\1/g} do Usuário."
+
+; FIELD
+
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_DESC="Selecione uma opção para o campo 'endereço1'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_LABEL="Endereço1"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS2_DESC="Selecione uma opção para o campo 'endereço2'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS2_LABEL="Endereço2"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_CITY_DESC="Selecione uma opção para o campo 'cidade'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_CITY_LABEL="Cidade"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_REGION_DESC="Selecione uma opção para o campo 'estado'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_REGION_LABEL="Estado"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_COUNTRY_DESC="Selecione uma opção para o campo 'país'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL="País"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_POSTAL_CODE_DESC="Selecione uma opção para o campo 'CEP'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_POSTAL_CODE_LABEL="CEP"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_PHONE_DESC="Selecione uma opção para o campo 'telefone'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_PHONE_LABEL="Telefone"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_WEB_SITE_DESC="Selecione uma opção para o campo 'website'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_WEB_SITE_LABEL="Website"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_FAVORITE_BOOK_DESC="Selecione uma opção para o campo 'livro favorito'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_FAVORITE_BOOK_LABEL="Livro Favorito"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_DESC="Selecione uma opção para o campo 'sobre mim'."
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_LABEL="Sobre Mim"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_DESC="Selecione uma opção para o campo 'data de nascimento'"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_LABEL="Data de Nascimento"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_ARTICLE_DESC="Selecione os Termos de Uso desejados para o artigo da lista"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_ARTICLE_LABEL="Selecione o Artigo Termos de Uso:"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_DESC="Concorda com os Termos de Serviço"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_LABEL="Termos de Serviço"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_PROFILE_REQUIRE_USER="Campos de Perfil de Usuário para formulário de edição"
+PLG_USER_${1/(.+)/\U\1/g}_FIELD_NAME_REGISTER_REQUIRE_USER="Campos de Perfil de Usuário para formulários de cadastro e administração</strong>"
+
+; OPTION
+
+PLG_USER_${1/(.+)/\U\1/g}_OPTION_AGREE="Concordo"
+
+; CONTENT
+
+COM_CONTENT_CHANGE_ARTICLE="Selecione ou Altere o artigo"
+COM_CONTENT_CHANGE_ARTICLE_BUTTON="Selecionar / Alterar"
+COM_CONTENT_SELECT_AN_ARTICLE="Selecionar um Artigo"
+
+]]></content>
+	<tabTrigger>jpluginlang-user-simple</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

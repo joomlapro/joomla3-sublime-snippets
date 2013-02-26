@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolbarHelper::addNew('${1:singular}.add');]]></content>
+	<tabTrigger>jtoolbarhelper-addnew</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

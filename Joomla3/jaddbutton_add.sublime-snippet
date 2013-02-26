@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[array(
+	'link' => JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:singular}.add'),
+	'image' => 'file-add',
+	'text' => JText::_('MOD_${TM_MODULE/(.+)/\U\1/g}_ADD_NEW_${1/(.+)/\U\1/g}'),
+	'access' => array('core.manage', 'com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create', 'com_${TM_PROJECT/(.+)/\L\1/g}', )
+),]]></content>
+	<tabTrigger>jaddbutton_add</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

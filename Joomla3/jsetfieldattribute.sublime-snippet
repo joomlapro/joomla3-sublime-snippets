@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<?php \$this->form->setFieldAttribute('${1:field}', 'readonly', 'true'); ?>]]></content>
+	<tabTrigger>jsetfieldattribute</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[`$1` text NOT NULL,]]></content>
+	<tabTrigger>jdb_text</tabTrigger>
+	<scope>text.plain,source.sql</scope>
+</snippet>

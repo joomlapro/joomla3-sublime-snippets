@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
+
+</form>]]></content>
+	<tabTrigger>jsitetag-form</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

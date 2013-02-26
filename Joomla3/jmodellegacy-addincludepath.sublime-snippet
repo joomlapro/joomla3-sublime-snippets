@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Include dependancies.
+JModelLegacy::addIncludePath(${1:JPATH_ADMINISTRATOR} . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models', '${TM_PROJECT/(.+)/\u\1/g}Model');]]></content>
+	<tabTrigger>jmodellegacy-addincludepath</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

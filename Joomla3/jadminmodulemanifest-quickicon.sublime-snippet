@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="module" version="$TM_VERSION" client="administrator" method="upgrade">
+	<name>mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>${1:$TM_MONTH} $TM_YEAR</creationDate>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>MOD_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon">mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>tmpl</folder>
+	</files>
+	<languages folder="language">
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="context" type="text" size="40" class="inputbox" default="mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon" label="MOD_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_FIELD_GROUP_LABEL" description="MOD_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_FIELD_GROUP_DESC" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field name="automatic_title" type="radio" class="btn-group" default="0" label="COM_MODULES_FIELD_AUTOMATIC_TITLE_LABEL" description="COM_MODULES_FIELD_AUTOMATIC_TITLE_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
+
+]]></content>
+	<tabTrigger>jadminmodulemanifest-quickicon</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

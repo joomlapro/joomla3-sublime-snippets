@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[<config>
+	<fields name="params">
+		<fieldset name="basic">
+
+		</fieldset>
+		<fieldset name="advanced">
+
+		</fieldset>
+	</fields>
+</config>]]></content>
+	<tabTrigger>jpluginmanifest_config</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>
