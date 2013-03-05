@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolbarHelper::title(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}'), '${TM_PROJECT/(.+)/\L\1/g}-${1:plural}.png');]]></content>
+	<tabTrigger>jtoolbarhelper-title</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

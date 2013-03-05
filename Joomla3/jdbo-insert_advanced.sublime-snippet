@@ -44,6 +44,6 @@ catch (RuntimeException \$e)
 	JError::raiseWarning(500, \$e->getMessage());
 	return false;
 }]]></content>
-	<tabTrigger>jdbo-insert</tabTrigger>
+	<tabTrigger>jdbo-insert_advanced</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

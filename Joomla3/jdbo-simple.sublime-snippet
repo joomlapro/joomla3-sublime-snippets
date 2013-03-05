@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[// Build the query for the ${1:plural} list.
+\$db = JFactory::getDBO();
+\$db->setQuery(
+	'SELECT ${1:title}' .
+	' FROM #__${TM_PROJECT/(.+)/\L\1/g}_${1:table}' .
+	' WHERE ${1:id} = ' . (int) \$this->id
+);
+
+\$result = \$db->loadResult();
+]]></content>
+	<tabTrigger>jdbo-simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

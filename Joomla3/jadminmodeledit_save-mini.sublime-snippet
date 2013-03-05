@@ -1,0 +1,72 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to save the form data.
+ *
+ * @param   array  \$data  The form data.
+ *
+ * @return  boolean  True on success, False on error.
+ *
+ * @since   $TM_VERSION
+ */
+public function save(\$data)
+{
+	// Initialiase variables.
+	\$app = JFactory::getApplication();
+
+	if (isset(\$data['companies']) && is_array(\$data['companies']))
+	{
+		\$companies = \$data['companies'];
+		unset(\$data['companies']);
+	}
+
+	// Initialiase variables.
+	\$db = \$this->getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Create the base delete statement.
+	\$query->delete();
+	\$query->from(\$db->quoteName('#__atomtech_company_employees_companies'));
+	\$query->where(\$db->quoteName('employee_id') . ' = ' . \$db->quote((int) \$data['id']));
+
+	// Set the query and execute the delete.
+	\$db->setQuery(\$query);
+
+	if (\$db->execute())
+	{
+		if (isset(\$companies))
+		{
+			foreach (\$companies as \$company)
+			{
+				\$query->clear();
+
+				// Create the base insert statement.
+				\$query->insert(\$db->quoteName('#__atomtech_company_employees_companies'));
+				\$query->columns(array(\$db->quoteName('employee_id'), \$db->quoteName('company_id')));
+				\$query->values(\$db->quote(\$data['id']) . ', ' . \$db->quote(\$company));
+
+				// Set the query and execute the insert.
+				\$db->setQuery(\$query);
+
+				try
+				{
+					\$db->execute();
+				}
+				catch (RuntimeException \$e)
+				{
+					\$this->setError(\$e->getMessage());
+					return false;
+				}
+			}
+		}
+	}
+
+	if (parent::save(\$data))
+	{
+		return true;
+	}
+
+	return false;
+}]]></content>
+	<tabTrigger>jadminmodeledit_save-mini</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

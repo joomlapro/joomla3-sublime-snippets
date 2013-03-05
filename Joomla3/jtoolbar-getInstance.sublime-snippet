@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Get the toolbar object instance.
-\$bar = JToolBar::getInstance('toolbar');]]></content>
-	<tabTrigger>jtoolbar-getInstance</tabTrigger>
-	<scope>source.php</scope>
-</snippet>
