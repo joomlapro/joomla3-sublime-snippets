@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the ${1:backend} helper.
+require_once JPATH_${2:ADMINISTRATOR} . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/${3:${TM_PROJECT/(.+)/\L\1/g}}.php';]]></content>
+	<tabTrigger>jrequire-helper</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

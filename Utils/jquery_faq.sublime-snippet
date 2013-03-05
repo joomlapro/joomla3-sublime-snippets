@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[// FAQ.
+\$(document).ready(function() {
+	var \$accordionItems = \$('#${1:accordion2} .accordion-group');
+
+	\$('#accordion-filter a').click(function() {
+		\$('#accordion-filter li').removeClass('active');
+
+		\$(this).parent('li').addClass('active');
+
+		var accordionSelector = \$(this).attr('data-filter');
+
+		\$accordionItems.css('display', 'none');
+
+		if (accordionSelector != 'all') {
+			\$(accordionSelector).fadeIn(500);
+		} else {
+			\$accordionItems.fadeIn(500);
+		}
+
+		return false;
+	});
+});]]></content>
+	<tabTrigger>jquery_faq</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

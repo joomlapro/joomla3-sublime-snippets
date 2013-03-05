@@ -1,0 +1,52 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} manually ${2/(.+)/\L\1/g} record.
+ *
+ * @param   integer  \$${3/(.+)/\L\1/g}     An primary key id.
+ * @param   integer  \$${4/(.+)/\L\1/g}  The id of ${4/(.+)/\L\1/g}.
+ *
+ * @return  mixed
+ *
+ * @since   $TM_VERSION
+ */
+public function ${1:add}${2:user}(\$${3:pk} = null, \$${4:group} = null)
+{
+	// Initialiase variables.
+	\$table = \$this->getTable();
+
+	if (empty(\$${3/(.+)/\L\1/g}) && empty(\$${4/(.+)/\L\1/g}))
+	{
+		return JError::raiseWarning(500, JText::_(\$this->text_prefix . '_ERROR_NO_ITEMS_SELECTED'));
+	}
+
+	// ${1/(.+)/\u\1/g} ${2/(.+)/\L\1/g} record.
+	\$table->load(
+		array(
+			'${5:user_id}' => (int) \$${3/(.+)/\L\1/g},
+			'${6:group}'   => (int) \$${4/(.+)/\L\1/g}
+		)
+	);
+
+	// Access checks.
+	if (!\$this->canEditState(\$table))
+	{
+		// Prune items that you can't change.
+		unset(\$${3/(.+)/\L\1/g});
+		unset(\$${4/(.+)/\L\1/g});
+		JLog::add(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), JLog::WARNING, 'jerror');
+	}
+
+	if (!\$table->store())
+	{
+		\$this->setError(\$table->getError());
+		return false;
+	}
+
+	// Clear the component's cache.
+	\$this->cleanCache();
+
+	return true;
+}]]></content>
+	<tabTrigger>jadminmodeledit_adduser-simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

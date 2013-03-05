@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Convert to the JObject before adding other data.
+\$properties = \$table->getProperties(1);
+\$value = JArrayHelper::toObject(\$properties, 'JObject');]]></content>
+	<tabTrigger>jtable-getproperties</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

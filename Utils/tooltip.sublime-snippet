@@ -1,0 +1,4 @@
+<snippet>
+	<content><![CDATA[<a data-placement="${1:top|right|bottom|left}" rel="tooltip" href="#" data-original-title="$2">$3</a>]]></content>
+	<tabTrigger>tooltip</tabTrigger>
+</snippet>

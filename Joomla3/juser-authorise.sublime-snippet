@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$user->authorise('${1:core}.${2:admin}', 'com_${TM_PROJECT/(.+)/\L\1/g}');]]></content>
+	<tabTrigger>juser-authorise</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

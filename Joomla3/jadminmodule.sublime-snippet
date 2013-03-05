@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[// Include the mod_${1/(.+)/\L\1/g} functions only once.
+require_once __DIR__ . '/helper.php';
+
+// Get module data.
+\$${2:list} = Mod${1/(.+)/\u\1/g}Helper::get${2/(.+)/\u\1/g}(\$params);
+
+// Initialise variables.
+\$moduleclass_sfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
+
+// Render the module.
+require JModuleHelper::getLayoutPath('mod_${1:${TM_MODULE/(.+)/\L\1/g}}', \$params->get('layout', 'default'));
+
+]]></content>
+	<tabTrigger>jadminmodule</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

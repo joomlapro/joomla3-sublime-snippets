@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[<update>
+	<schemas>
+		<schemapath type="mysql">sql/updates/mysql</schemapath>
+	</schemas>
+</update>]]></content>
+	<tabTrigger>jcomponentmanifest_update</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

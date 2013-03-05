@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[if (\$user->get('id') || (\$this->input->getMethod() == 'POST' && ((\$vName == '${1:category}' && \$this->input->get('layout') != '${2:blog}') || \$vName == '${3:archive}' )))
+{
+	\$cachable = false;
+}]]></content>
+	<tabTrigger>jsitecontroller_cachable</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

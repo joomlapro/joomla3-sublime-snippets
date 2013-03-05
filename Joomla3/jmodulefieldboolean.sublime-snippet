@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<field name="${1:field}" type="radio" class="btn-group" default="0" filter="integer" label="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
+	<option value="1">JYES</option>
+	<option value="0">JNO</option>
+</field>]]></content>
+	<tabTrigger>jmodulefieldboolean</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

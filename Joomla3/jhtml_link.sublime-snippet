@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('link', ${1:\$url}, ${2:\$text}${3:, array('target' => '_blank')});]]></content>
+	<tabTrigger>jhtml_link</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

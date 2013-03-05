@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$query->select('a.*');]]></content>
+	<tabTrigger>jquery_select</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

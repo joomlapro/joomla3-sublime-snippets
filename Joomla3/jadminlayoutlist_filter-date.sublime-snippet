@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[
+<div class="filter-search btn-group pull-left">
+	<label for="filter_begin" class="element-invisible"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_BEGIN_LABEL'); ?></label>
+	<?php echo JHtml::_('calendar', \$this->state->get('filter.begin'), 'filter_begin', 'filter_begin', '%Y-%m-%d', array('size' => 10, 'placeholder' => JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_BEGIN_LABEL'), 'class' => 'input-small'));?>
+</div>
+<div class="filter-search btn-group pull-left">
+	<label for="filter_end" class="element-invisible"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_END_LABEL'); ?></label>
+	<?php echo JHtml::_('calendar', \$this->state->get('filter.end'), 'filter_end', 'filter_end', '%Y-%m-%d', array('size' => 10, 'placeholder' => JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_END_LABEL'), 'class' => 'input-small'));?>
+</div>
+]]></content>
+	<tabTrigger>jadminlayoutlist_filter-date</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

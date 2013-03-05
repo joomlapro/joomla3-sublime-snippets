@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$query->group('a.${1:column}');]]></content>
+	<tabTrigger>jquery_group</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

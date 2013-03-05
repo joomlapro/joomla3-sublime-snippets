@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[// Add a ${1:custom} button.
+if (\$canDo->get('core.edit'))
+{
+	JHtml::_('bootstrap.modal', 'collapseModal');
+	\$title = JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_TOOLBAR_${2:BUTTON}');
+	\$dhtml = "<button data-toggle=\"modal\" data-target=\"#collapseModal\" class=\"btn btn-small\">
+				<i class=\"icon-${3:user}\" title=\"\$title\"></i>
+				\$title</button>";
+	\$bar->appendButton('Custom', \$dhtml, '${1/(.+)/\L\1/g}');
+}]]></content>
+	<tabTrigger>jbar-appendbutton_custom_modal</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

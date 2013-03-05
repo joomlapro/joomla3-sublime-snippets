@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get lists for filters.
+ *
+ * @return  array
+ *
+ * @since   $TM_VERSION
+ */
+public function getLists()
+{
+	// Initialiase variables.
+	\$lists = array();
+
+	// Built ${1/(.+)/\L\1/g} list.
+	\$${1:list} = array();
+	\$${1/(.+)/\L\1/g}[] = JHtml::_('select.option', 'all', JText::_('JSELECT'));
+
+	\$lists['${2:${1/(.+)(s\b)/\L\1/g}}'] = JHtml::_('select.genericlist', \$${1/(.+)/\L\1/g}, '${2/(.+)/\L\1/g}', 'class="inputbox"', 'value', 'text', \$this->getState('filter.${3:${2/(.+)/\L\1/g}_id}'));
+
+	return \$lists;
+}
+]]></content>
+	<tabTrigger>jsitemodellist_getlists</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

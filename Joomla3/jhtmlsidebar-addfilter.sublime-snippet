@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[JHtmlSidebar::addFilter(
+	JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SELECT_${1/(.+)/\U\1/g}'),
+	'filter_${1:filter}_id',
+	JHtml::_('select.options', ${TM_PROJECT/(.+)/\u\1/g}Helper::get${1/(.+)/\u\1/g}Options(), 'value', 'text', \$this->state->get('filter.$1_id'))
+);]]></content>
+	<tabTrigger>jhtmlsidebar-addfilter</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[http://placehold.it/$1x$2]]></content>
+	<tabTrigger>placehold</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

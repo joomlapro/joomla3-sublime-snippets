@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<!--[if lt IE 9]><script type="text/javascript" src="<?php echo \$this->baseurl; ?>/media/jui/js/html5.js"></script><![endif]-->]]></content>
+	<tabTrigger>jaddhtml5</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\${TM_MODULE/(.+)/\\${2:l|L|u|U}\1/g}]]></content>
+	<tabTrigger>$m</tabTrigger>
+	<!-- <scope>text.plain,text.xml</scope> -->
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Create a shortcut for params.
+\$params = &\$this->item->params;]]></content>
+	<tabTrigger>jshortcut-params</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

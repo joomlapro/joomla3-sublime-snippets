@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\${TM_PLUGIN_GROUP/(.+)/\\${2:l|L|u|U}\1/g}]]></content>
+	<tabTrigger>$pg</tabTrigger>
+	<!-- <scope>text.plain,text.xml</scope> -->
+</snippet>

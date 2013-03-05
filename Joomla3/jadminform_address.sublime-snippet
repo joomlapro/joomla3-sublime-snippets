@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[<fieldset name="address" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_ADDRESS">
+	<field name="address_zipcode" type="zipcode" class="inputbox zip" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIPCODE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZIPCODE_DESC" />
+	<field name="address_street" type="textarea" class="inputbox" rows="1" cols="40" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STREET_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STREET_DESC" />
+	<field name="address_district" type="text" class="inputbox" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_DISTRICT_DESC" />
+	<field name="address_city" type="text" class="inputbox" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_CITY_DESC" />
+	<field name="address_state" type="state" class="inputbox" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_STATE_DESC" />
+	<field name="latitude" type="text" class="inputbox" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC" />
+	<field name="longitude" type="text" class="inputbox" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC" />
+</fieldset>]]></content>
+	<tabTrigger>jadminform_address</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

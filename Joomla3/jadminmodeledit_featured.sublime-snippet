@@ -1,0 +1,52 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to toggle the featured setting of ${2:${1/(.+)/\L\1/g}}.
+ *
+ * @param   array  \$pks    The ids of the items to toggle.
+ * @param   int    \$value  The value to toggle to.
+ *
+ * @return  boolean  True on success.
+ *
+ * @since   $TM_VERSION
+ */
+public function featured(\$pks, \$value = 0)
+{
+	// Sanitize the ids.
+	\$pks = (array) \$pks;
+	JArrayHelper::toInteger(\$pks);
+
+	if (empty(\$pks))
+	{
+		\$this->setError(JText::_('JGLOBAL_NO_ITEM_SELECTED'));
+		return false;
+	}
+
+	\$table = \$this->getTable();
+
+	try
+	{
+		\$db = \$this->getDbo();
+
+		\$db->setQuery(
+			'UPDATE #__${TM_PROJECT/(.+)/\L\1/g}_${1:plural}' .
+			' SET featured = ' . (int) \$value .
+			' WHERE id IN (' . implode(', ', \$pks) . ')'
+		);
+		\$db->execute();
+	}
+	catch (Exception \$e)
+	{
+		\$this->setError(\$e->getMessage());
+		return false;
+	}
+
+	\$table->reorder();
+
+	// Clean component's cache.
+	\$this->cleanCache();
+
+	return true;
+}]]></content>
+	<tabTrigger>jadminmodeledit_featured</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

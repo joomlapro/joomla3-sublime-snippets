@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[http://lorempixel.com/$1/$2/${3:$4/}$5]]></content>
+	<tabTrigger>lorempixel</tabTrigger>
+	<!-- <scope>source.python</scope> -->
+</snippet>

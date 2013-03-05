@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JText::plural('COM_${TM_PROJECT/(.+)/\U\1/g}_$1', \$${2:number})]]></content>
+	<tabTrigger>jtext-plural</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

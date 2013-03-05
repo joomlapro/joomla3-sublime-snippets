@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<field name="${1:field}" type="category" extension="com_${TM_PROJECT/(.+)/\L\1/g}" multiple="true" default="" size="10" label="JCATEGORY" description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_CATEGORY_DESC">
+	<option value="">JOPTION_ALL_CATEGORIES</option>
+</field>]]></content>
+	<tabTrigger>jmodulefieldcategory</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>
