@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<menu link="option=com_${TM_PROJECT/(.+)/\L\1/g}" view="cpanel" img="class:${TM_PROJECT/(.+)/\L\1/g}-cpanel" alt="${TM_PROJECT/(.+)/\u\1/g}/Cpanel">com_${TM_PROJECT/(.+)/\L\1/g}_cpanel</menu>]]></content>
-	<tabTrigger>jaddmenu-cpanel</tabTrigger>
-	<scope>text.xml</scope>
-</snippet>

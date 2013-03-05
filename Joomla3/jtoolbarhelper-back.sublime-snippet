@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolBarHelper::back();]]></content>
-	<tabTrigger>jtoolbarhelper-back</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

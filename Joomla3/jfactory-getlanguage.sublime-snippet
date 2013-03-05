@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Get the language.
-\$lang = JFactory::getLanguage();]]></content>
-	<tabTrigger>jfactory-getlanguage</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

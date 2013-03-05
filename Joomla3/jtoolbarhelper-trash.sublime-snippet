@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolbarHelper::trash('${1:plural}.trash');]]></content>
-	<tabTrigger>jtoolbarhelper-trash</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

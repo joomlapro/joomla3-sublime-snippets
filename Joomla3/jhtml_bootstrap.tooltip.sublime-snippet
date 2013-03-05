@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Load the tooltip bootstrap script.
-JHtml::_('bootstrap.tooltip');]]></content>
-	<tabTrigger>jhtml_bootstrap.tooltip</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

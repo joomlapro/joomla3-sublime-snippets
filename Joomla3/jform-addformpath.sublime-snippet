@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Get the form.
-JForm::addFormPath(JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/forms');]]></content>
-	<tabTrigger>jform-addformpath</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

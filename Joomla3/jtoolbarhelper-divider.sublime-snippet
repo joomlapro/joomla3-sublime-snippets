@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JToolbarHelper::divider();]]></content>
-	<tabTrigger>jtoolbarhelper-divider</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

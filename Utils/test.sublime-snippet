@@ -1,9 +1,0 @@
-<snippet>
-	<content><![CDATA[
-USER NAME:          $TM_FULLNAME
-FILE NAME:          $TM_FILENAME
- TAB SIZE:          $TM_TAB_SIZE
-SOFT TABS:          $TM_SOFT_TABS
-]]></content>
-	<tabTrigger>test</tabTrigger>
-</snippet>

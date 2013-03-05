@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Get the application.
-\$app = JFactory::getApplication();]]></content>
-	<tabTrigger>jfactory-getapplication</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

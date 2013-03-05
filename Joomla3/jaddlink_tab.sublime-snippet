@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[<li><a href="#${1:tab}" data-toggle="tab"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}'); ?></a></li>]]></content>
-	<tabTrigger>jaddlink_tab</tabTrigger>
-	<scope>text.html</scope>
-</snippet>

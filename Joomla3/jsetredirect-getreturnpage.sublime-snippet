@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Redirect to the return page.
-\$this->setRedirect(\$this->getReturnPage());]]></content>
-	<tabTrigger>jsetredirect-getreturnpage</tabTrigger>
-	<scope>source.php</scope>
-</snippet>
