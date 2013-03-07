@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[\$db = JFactory::getDbo();
-\$db->setQuery('SELECT MAX(id) FROM #__${TM_PROJECT/(.+)/\L\1/g}');
+\$db->setQuery('SELECT MAX(id) FROM #__${TM_COMPONENT/(.+)/\L\1/g}');
 \$max = \$db->loadResult();
 
 \$item->${1:field} = \$max + 1;

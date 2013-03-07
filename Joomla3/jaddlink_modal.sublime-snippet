@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<a class="modal" href="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:controller}.${2:edit}&id=' . \$${3:item}->id . '&return=' . \$return . '&tmpl=component&layout=modal');?>" rel="{handler: 'iframe', size: {x: 1024, y: 450}, onClose: function() {window.location.reload()}}" title="<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_$4'); ?>"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_${4/(.+)/\U\1/g}'); ?></a>]]></content>
+	<content><![CDATA[<a class="modal" href="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.${2:edit}&id=' . \$${3:item}->id . '&return=' . \$return . '&tmpl=component&layout=modal');?>" rel="{handler: 'iframe', size: {x: 1024, y: 450}, onClose: function() {window.location.reload()}}" title="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_$4'); ?>"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_${4/(.+)/\U\1/g}'); ?></a>]]></content>
 	<tabTrigger>jaddlink_modal</tabTrigger>
 	<scope>text.html</scope>
 </snippet>

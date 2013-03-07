@@ -100,7 +100,7 @@ public function save(\$data)
 
 	// Delete all ${1/(.+)/\L\1/g}.
 	\$query->delete();
-	\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'));
+	\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'));
 	\$query->where('${3:${2:column}_id} = ' . (int) \$value->id);
 
 	// Set the query and execute the delete.
@@ -113,7 +113,7 @@ public function save(\$data)
 			\$query->clear();
 
 			// Create the base insert statement.
-			\$query->insert(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'));
+			\$query->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'));
 			\$query->columns(array(\$db->quoteName('${3/(.+)/\L\1/g}'), \$db->quoteName('${5:${4/(.+)/\L\1/g}_id}')));
 			\$query->values(\$db->quote(\$value->id) . ', ' . \$db->quote(\$${4/(.+)/\L\1/g}));
 

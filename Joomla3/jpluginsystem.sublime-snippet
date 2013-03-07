@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} ${TM_PLUGIN/(.+)/\u\1/g} plugin.
+ * ${TM_COMPONENT/(.+)/\u\1/g} ${TM_PLUGIN/(.+)/\u\1/g} plugin.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  ${TM_PLUGIN_GROUP/(.+)/\u\1/g}.${TM_PLUGIN/(.+)/\u\1/g}
  * @since       $TM_VERSION
  */

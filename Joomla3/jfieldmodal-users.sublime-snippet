@@ -2,8 +2,8 @@
 	<content><![CDATA[/**
  * Field to select a ${2:${1/(.+)(s\b)/\L\1/g}} id from a modal list.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
 class JFormFieldModal_${1:Plural} extends JFormField
@@ -30,7 +30,7 @@ class JFormFieldModal_${1:Plural} extends JFormField
 
 		\$groups = \$this->getGroups();
 		\$excluded = \$this->getExcluded();
-		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&amp;view=${1/(.+)/\L\1/g}&amp;layout=modal&amp;tmpl=component&amp;field=' . \$this->id
+		\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&amp;view=${1/(.+)/\L\1/g}&amp;layout=modal&amp;tmpl=component&amp;field=' . \$this->id
 			. (isset(\$groups) ? ('&amp;groups=' . base64_encode(json_encode(\$groups))) : '')
 			. (isset(\$excluded) ? ('&amp;excluded=' . base64_encode(json_encode(\$excluded))) : '');
 

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<media destination="${1:com_${TM_PROJECT/(.+)/\L\1/g}}" folder="media">
+	<content><![CDATA[<media destination="${1:com_${TM_COMPONENT/(.+)/\L\1/g}}" folder="media">
 	<folder>css</folder>
 	<folder>images</folder>
 	<folder>js</folder>

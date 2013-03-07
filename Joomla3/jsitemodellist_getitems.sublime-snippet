@@ -42,7 +42,7 @@ public function getItems()
 		// Technically guest could edit an ${1/(.+)/\L\1/g}, but lets not check that to improve performance a little.
 		if (!\$guest)
 		{
-			\$asset = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1:singular}.' . \$item->id;
+			\$asset = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}.' . \$item->id;
 
 			// Check general edit permission first.
 			if (\$user->authorise('core.edit', \$asset))

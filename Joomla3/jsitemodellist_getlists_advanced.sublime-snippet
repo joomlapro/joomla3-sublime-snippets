@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[// Built ${2/(.+)/\L\1/g} list.
 \$${1:list} = array();
-\$${1/(.+)/\L\1/g}[] = JHtml::_('select.option', 'all', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SELECT_${1/(.+)/\U\1/g}'));
+\$${1/(.+)/\L\1/g}[] = JHtml::_('select.option', 'all', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_${1/(.+)/\U\1/g}'));
 
-foreach (${TM_PROJECT/(.+)/\u\1/g}Helper::get${2/(.+)/\u\1/g}Options() as \$${2/(.+)/\L\1/g})
+foreach (${TM_COMPONENT/(.+)/\u\1/g}Helper::get${2/(.+)/\u\1/g}Options() as \$${2/(.+)/\L\1/g})
 {
 	\$${1/(.+)/\L\1/g}[] = JHtml::_('select.option', \$${2/(.+)/\L\1/g}->value, \$${2/(.+)/\L\1/g}->text);
 }

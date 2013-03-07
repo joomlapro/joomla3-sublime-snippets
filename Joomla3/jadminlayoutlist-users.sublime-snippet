@@ -15,7 +15,7 @@ JHtml::_('formbehavior.chosen', 'select');
 \$listDirn   = \$this->escape(\$this->state->get('list.direction'));
 \$loggeduser = JFactory::getUser();
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:plural}'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1:plural}'); ?>" method="post" name="adminForm" id="adminForm">
 	<?php if (!empty(\$this->sidebar)): ?>
 		<div id="j-sidebar-container" class="span2">
 			<?php echo \$this->sidebar; ?>
@@ -96,7 +96,7 @@ JHtml::_('formbehavior.chosen', 'select');
 					</td>
 					<td>
 						<?php if (\$canEdit): ?>
-							<a href="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:${1/(.+)(s\b)/\L\1/g}}.edit&id=' . (int) \$item->id); ?>" title="<?php echo JText::sprintf('COM_USERS_EDIT_USER', \$this->escape(\$item->name)); ?>"><?php echo \$this->escape(\$item->name); ?></a>
+							<a href="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:${1/(.+)(s\b)/\L\1/g}}.edit&id=' . (int) \$item->id); ?>" title="<?php echo JText::sprintf('COM_USERS_EDIT_USER', \$this->escape(\$item->name)); ?>"><?php echo \$this->escape(\$item->name); ?></a>
 						<?php else: ?>
 							<?php echo \$this->escape(\$item->name); ?>
 						<?php endif; ?>

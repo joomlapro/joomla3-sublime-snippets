@@ -15,16 +15,16 @@ public static function getActions(\$categoryId = 0)
 
 	if (empty(\$categoryId))
 	{
-		\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+		\$assetName = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
 		\$level = 'component';
 	}
 	else
 	{
-		\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$categoryId;
+		\$assetName = 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . (int) \$categoryId;
 		\$level = 'category';
 	}
 
-	\$actions = JAccess::getActions('com_${TM_PROJECT/(.+)/\L\1/g}', \$level);
+	\$actions = JAccess::getActions('com_${TM_COMPONENT/(.+)/\L\1/g}', \$level);
 
 	foreach (\$actions as \$action)
 	{

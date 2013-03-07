@@ -24,7 +24,7 @@ public static function get${1:Route}Route()
 	}
 
 	// Create the link.
-	\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}';
+	\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}';
 
 	if (\$itemid)
 	{

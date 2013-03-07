@@ -12,7 +12,7 @@ public function getParam($name)
 {
 	// Initialiase variables.
 	$db = JFactory::getDbo();
-	$db->setQuery('SELECT manifest_cache FROM #__extensions WHERE name = "com_${TM_PROJECT/(.+)/\L\1/g}"');
+	$db->setQuery('SELECT manifest_cache FROM #__extensions WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"');
 	$manifest = json_decode($db->loadResult(), true);
 
 	return $manifest[$name];

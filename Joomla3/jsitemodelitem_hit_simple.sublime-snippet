@@ -15,7 +15,7 @@ public function hit(\$id = null)
 		\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
 	}
 
-	\$${1/(.+)/\L\1/g} = \$this->getTable('${1:Hello}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+	\$${1/(.+)/\L\1/g} = \$this->getTable('${1:Hello}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
 
 	return \$${1/(.+)/\L\1/g}->hit(\$id);
 }

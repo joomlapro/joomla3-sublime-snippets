@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields">
+	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields">
 		<field name="id" type="text" default="0" readonly="true" class="readonly" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" />
-		<field name="${1:title}" type="text" class="inputbox" required="true" size="40" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
+		<field name="${1:title}" type="text" class="inputbox" required="true" size="40" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
 		<field name="state" type="list" class="inputbox span12 small" size="1" default="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC">
 			<option value="1">JPUBLISHED</option>
 			<option value="0">JUNPUBLISHED</option>

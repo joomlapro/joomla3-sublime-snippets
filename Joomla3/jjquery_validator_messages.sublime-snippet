@@ -3,7 +3,7 @@
  * Translated default messages for the jQuery validation plugin.
  */
 \$.extend(\$.validator.messages, {
-	required: "<?php echo JText::_('${1:COM}_${2:${TM_PROJECT/(.+)/\U\1/g}}_VALIDATOR_MESSAGE_REQUIRED'); ?>",
+	required: "<?php echo JText::_('${1:COM}_${2:${TM_COMPONENT/(.+)/\U\1/g}}_VALIDATOR_MESSAGE_REQUIRED'); ?>",
 	remote: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_REMOTE'); ?>",
 	email: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_EMAIL'); ?>",
 	url: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_URL'); ?>",

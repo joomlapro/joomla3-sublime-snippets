@@ -54,7 +54,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 				// Load the profile data from the database.
 				\$db = JFactory::getDbo();
 				\$db->setQuery(
-					'SELECT * FROM #__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s} WHERE user_id = ' . (int) \$userId
+					'SELECT * FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s} WHERE user_id = ' . (int) \$userId
 				);
 
 				try
@@ -245,7 +245,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 			{
 				\$db = JFactory::getDbo();
 				\$db->setQuery(
-					'DELETE FROM #__${TM_PROJECT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId
+					'DELETE FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId
 				);
 				\$db->execute();
 
@@ -256,7 +256,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 					\$values[] = '"' . \$v . '"';
 				}
 
-				\$db->setQuery('INSERT INTO #__${TM_PROJECT/(.+)/\L\1/g}${2/(.+)/\L\1/g} VALUES ("' . \$userId . '", ' . implode(', ', \$values) . ')');
+				\$db->setQuery('INSERT INTO #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} VALUES ("' . \$userId . '", ' . implode(', ', \$values) . ')');
 				\$db->execute();
 			}
 			catch (RuntimeException \$e)
@@ -297,7 +297,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 			{
 				\$db = JFactory::getDbo();
 				\$db->setQuery(
-					'DELETE FROM #__${TM_PROJECT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId
+					'DELETE FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId
 				);
 
 				\$db->execute();

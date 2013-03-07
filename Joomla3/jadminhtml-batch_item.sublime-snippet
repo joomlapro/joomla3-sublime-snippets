@@ -15,7 +15,7 @@ public static function item(\$extension)
 		JHtml::_('select.option', 'm', JText::_('JLIB_HTML_BATCH_MOVE')));
 
 	// Create the batch selector to move or copy.
-	\$lines = array('<label id="batch-choose-action-lbl" for="batch-choose-action">', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_BATCH_MENU_LABEL'), '</label>',
+	\$lines = array('<label id="batch-choose-action-lbl" for="batch-choose-action">', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_MENU_LABEL'), '</label>',
 		'<div id="batch-move-copy" class="control-group radio">',
 		JHtml::_('select.radiolist', \$options, 'batch[move_copy]', '', 'value', 'text', 'm'), '</div><hr />');
 

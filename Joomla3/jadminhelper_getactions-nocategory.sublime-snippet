@@ -10,7 +10,7 @@ public static function getActions()
 {
 	\$user   = JFactory::getUser();
 	\$result = new JObject;
-	\$assetName = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+	\$assetName = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
 
 	\$actions = JAccess::getActions(\$assetName, 'component');
 

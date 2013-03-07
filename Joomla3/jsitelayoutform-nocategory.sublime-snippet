@@ -21,7 +21,7 @@ JHtml::_('behavior.formvalidation');
 		}
 	}
 </script>
-<div class="${TM_PROJECT/(.+)/\L\1/g} edit item-page<?php echo \$this->pageclass_sfx; ?>">
+<div class="${TM_COMPONENT/(.+)/\L\1/g} edit item-page<?php echo \$this->pageclass_sfx; ?>">
 	<?php if (\$params->get('show_page_heading', 1)): ?>
 		<div class="page-header">
 			<h1>
@@ -29,7 +29,7 @@ JHtml::_('behavior.formvalidation');
 			</h1>
 		</div>
 	<?php endif; ?>
-	<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&${TM_PROJECT/(.)(.+)/\L\1/g}_id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
+	<form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
 		<div class="btn-toolbar">
 			<div class="btn-group">
 				<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('${1/(.+)/\L\1/g}.save')">
@@ -45,12 +45,12 @@ JHtml::_('behavior.formvalidation');
 		<fieldset>
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#editor" data-toggle="tab"><?php echo JText::_('JEDITOR'); ?></a></li>
-				<li><a href="#images" data-toggle="tab"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_IMAGES'); ?></a></li>
-				<li><a href="#publishing" data-toggle="tab"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_PUBLISHING'); ?></a></li>
+				<li><a href="#images" data-toggle="tab"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_IMAGES'); ?></a></li>
+				<li><a href="#publishing" data-toggle="tab"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_PUBLISHING'); ?></a></li>
 				<li><a href="#language" data-toggle="tab"><?php echo JText::_('JFIELD_LANGUAGE_LABEL'); ?></a></li>
 				<?php \$fieldSets = \$this->form->getFieldsets('metadata');
 				foreach (\$fieldSets as \$name => \$fieldSet): ?>
-					<li><a href="#metadata-<?php echo \$name; ?>" data-toggle="tab"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FIELDSET_METADATA'); ?></a></li>
+					<li><a href="#metadata-<?php echo \$name; ?>" data-toggle="tab"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_METADATA'); ?></a></li>
 				<?php endforeach; ?>
 			</ul>
 			<div class="tab-content">
@@ -116,7 +116,7 @@ JHtml::_('behavior.formvalidation');
 					<?php if (is_null(\$this->item->id)): ?>
 						<div class="control-group">
 							<div class="control-label"></div>
-							<div class="controls"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ORDERING'); ?></div>
+							<div class="controls"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ORDERING'); ?></div>
 						</div>
 					<?php endif; ?>
 				</div>

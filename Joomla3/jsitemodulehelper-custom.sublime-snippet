@@ -16,7 +16,7 @@ public static function get${1:List}(& \$params)
 
 	// Prepare query.
 	\$query->select('a.*');
-	\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a');
+	\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a');
 	\$query->where('a.state = 1');
 	\$query->order('a.ordering ASC');
 

@@ -8,7 +8,7 @@
 		};
 
 		xhr = \$.ajax({
-			url: 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:controller}.${2:method}&tmpl=component&format=json',
+			url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.${2:method}&tmpl=component&format=json',
 			type: 'GET',
 			data: {
 				name: query

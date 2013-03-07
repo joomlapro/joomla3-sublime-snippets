@@ -6,7 +6,7 @@
 
 // Create the base select statement.
 \$query->select('a.*');
-\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1:table}') . ' AS a');
+\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1:table}') . ' AS a');
 \$query->where(\$db->quoteName('a.state') . ' = ' . \$db->quote('1'));
 \$query->order(\$db->quoteName('a.ordering') . ' ASC');
 

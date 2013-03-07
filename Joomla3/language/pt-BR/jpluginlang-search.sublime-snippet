@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[PLG_SEARCH_${1:${TM_PROJECT/(.+)/\U\1/g}}="Busca - ${2:Component}"
+	<content><![CDATA[PLG_SEARCH_${1:${TM_COMPONENT/(.+)/\U\1/g}}="Busca - ${2:Component}"
 PLG_SEARCH_${1/(.+)/\U\1/g}_FIELD_SEARCHLIMIT_DESC="Número de itens a retornar"
 PLG_SEARCH_${1/(.+)/\U\1/g}_FIELD_SEARCHLIMIT_LABEL="Limite da Busca"
 PLG_SEARCH_${1/(.+)/\U\1/g}_${1/(.+)/\U\1/g}="${2/(.+)/\u\1/g}"

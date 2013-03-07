@@ -2,11 +2,11 @@
 	<content><![CDATA[/**
  * Methods supporting a list of ${2:${1/(.+)(s\b)/\L\1/g}} records.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 {
 	/**
 	 * Constructor.
@@ -80,7 +80,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 		\$this->setState('filter.language', \$language);
 
 		// Load the parameters.
-		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$this->setState('params', \$params);
 
 		// List state information.
@@ -134,7 +134,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 				', a.state, a.access, a.ordering, a.language, a.publish_up, a.publish_down'
 			)
 		);
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
 
 		// Join over the language.
 		\$query->select('l.title AS language_title');

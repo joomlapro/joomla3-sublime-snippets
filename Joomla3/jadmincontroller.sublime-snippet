@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component Controller.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component Controller.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}Controller extends JControllerLegacy
 {
 	/**
 	 * @var     string  The default view.
@@ -27,19 +27,19 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller extends JControllerLegacy
 	public function display(\$cachable = false, \$urlparams = false)
 	{
 		// Include dependancies.
-		require_once JPATH_COMPONENT . '/helpers/${TM_PROJECT/(.+)/\L\1/g}.php';
+		require_once JPATH_COMPONENT . '/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php';
 
 		\$view   = \$this->input->get('view', '${1/(.+)/\L\1/g}');
 		\$layout = \$this->input->get('layout', 'default');
 		\$id     = \$this->input->getInt('id');
 
 		// Check for edit form.
-		if (\$view == '${2/(.+)/\L\1/g}' && \$layout == 'edit' && !\$this->checkEditId('com_${TM_PROJECT/(.+)/\L\1/g}.edit.${2:${TM_PROJECT/(.+)(s\b)/\L\1/g}}', \$id))
+		if (\$view == '${2/(.+)/\L\1/g}' && \$layout == 'edit' && !\$this->checkEditId('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${2:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}', \$id))
 		{
 			// Somehow the person just went to the form - we don't allow that.
 			\$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', \$id));
 			\$this->setMessage(\$this->getError(), 'error');
-			\$this->setRedirect(JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}', false));
+			\$this->setRedirect(JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}', false));
 
 			return false;
 		}

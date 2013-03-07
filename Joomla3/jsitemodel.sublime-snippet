@@ -4,11 +4,11 @@
 /**
  * ${1/(.+)/\u\1/g} model.
  *
- * @package     $TM_PROJECT
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     $TM_COMPONENT
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
 {
 	/**
 	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
@@ -24,7 +24,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
 	{
 		// Initialise variables.
 		\$app    = JFactory::getApplication();
-		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$itemid = JRequest::getInt('Itemid', 0);
 
 		// Load the parameters.
@@ -46,7 +46,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
 
 		// Prepare query.
 		\$query->select('');
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}'));
+		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}'));
 		\$query->where('');
 
 		return \$query;

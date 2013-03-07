@@ -6,11 +6,11 @@ require_once JPATH_ADMINISTRATOR . '/components/com_users/models/groups.php';
 /**
  * Item Model for an ${1/(.+)/\u\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends UsersModelUser
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Singular} extends UsersModelUser
 {
 	/**
 	 * Constructor.

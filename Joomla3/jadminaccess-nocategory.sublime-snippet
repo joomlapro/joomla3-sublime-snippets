@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
-<access component="com_${TM_PROJECT/(.+)/\L\1/g}">
+<access component="com_${TM_COMPONENT/(.+)/\L\1/g}">
 	<section name="component">
 		<action name="core.admin" title="JACTION_ADMIN" description="JACTION_ADMIN_COMPONENT_DESC" />
 		<action name="core.manage" title="JACTION_MANAGE" description="JACTION_MANAGE_COMPONENT_DESC" />

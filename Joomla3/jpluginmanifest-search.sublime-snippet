@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
-<extension version="$TM_VERSION" type="plugin" group="search">
+<extension version="$TM_VERSION" type="plugin" group="search" method="upgrade">
 	<name>plg_search_${2:${TM_PLUGIN/(.+)/\L\1/g}}</name>
 	<author>$TM_FULLNAME</author>
 	<creationDate>${3:$TM_MONTH} $TM_YEAR</creationDate>

@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component Route Helper.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component Route Helper.
  *
  * @static
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
+abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute
 {
 	protected static \$lookup;
 
@@ -20,7 +20,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function get${1:${TM_PROJECT/(.+)(s\b)/\u\1/g}}Route(\$id)
+	public static function get${1:${TM_COMPONENT/(.+)(s\b)/\u\1/g}}Route(\$id)
 	{
 		// Initialiase variables.
 		\$needles = array(
@@ -28,7 +28,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 		);
 
 		// Create the link.
-		\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$id;
+		\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$id;
 
 		if (\$item = self::_findItem(\$needles))
 		{
@@ -57,11 +57,11 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 		// Create the link.
 		if (\$id)
 		{
-			\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&${TM_PROJECT/(.)(.+)/\L\1/g}_id=' . \$id;
+			\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=' . \$id;
 		}
 		else
 		{
-			\$link = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.add&${TM_PROJECT/(.)(.+)/\L\1/g}_id=0';
+			\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.add&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=0';
 		}
 
 		if (\$return)
@@ -92,7 +92,7 @@ abstract class ${TM_PROJECT/(.+)/\u\1/g}HelperRoute
 		{
 			self::\$lookup = array();
 
-			\$component = JComponentHelper::getComponent('com_${TM_PROJECT/(.+)/\L\1/g}');
+			\$component = JComponentHelper::getComponent('com_${TM_COMPONENT/(.+)/\L\1/g}');
 			\$items     = \$menus->getItems('component_id', \$component->id);
 
 			if (\$items)

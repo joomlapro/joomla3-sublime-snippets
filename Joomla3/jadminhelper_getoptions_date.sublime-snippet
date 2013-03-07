@@ -11,13 +11,13 @@ public static function getDateOptions()
 	// Build the filter options.
 	\$options = array();
 
-	\$options[] = JHtml::_('select.option', 'today', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_DATE_TODAY'));
-	\$options[] = JHtml::_('select.option', 'past_week', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_DATE_PAST_WEEK'));
-	\$options[] = JHtml::_('select.option', 'past_1month', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_DATE_PAST_1MONTH'));
-	\$options[] = JHtml::_('select.option', 'past_3month', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_DATE_PAST_3MONTH'));
-	\$options[] = JHtml::_('select.option', 'past_6month', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_DATE_PAST_6MONTH'));
-	\$options[] = JHtml::_('select.option', 'past_year', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_DATE_PAST_YEAR'));
-	\$options[] = JHtml::_('select.option', 'post_year', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_OPTION_DATE_POST_YEAR'));
+	\$options[] = JHtml::_('select.option', 'today', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_TODAY'));
+	\$options[] = JHtml::_('select.option', 'past_week', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_WEEK'));
+	\$options[] = JHtml::_('select.option', 'past_1month', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_1MONTH'));
+	\$options[] = JHtml::_('select.option', 'past_3month', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_3MONTH'));
+	\$options[] = JHtml::_('select.option', 'past_6month', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_6MONTH'));
+	\$options[] = JHtml::_('select.option', 'past_year', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_YEAR'));
+	\$options[] = JHtml::_('select.option', 'post_year', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_POST_YEAR'));
 
 	return \$options;
 }]]></content>

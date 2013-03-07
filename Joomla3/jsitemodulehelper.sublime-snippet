@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * ${1/(.+)/\u\1/g} module helper.
  *
- * @package     $TM_PROJECT
+ * @package     $TM_COMPONENT
  * @subpackage  mod_${1/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
@@ -25,7 +25,7 @@ abstract class Mod${1:$TM_MODULE}Helper
 
 		// Prepare query.
 		\$query->select('a.*');
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}') . ' AS a');
 		\$query->where('a.state = 1');
 		\$query->order('a.ordering ASC');
 

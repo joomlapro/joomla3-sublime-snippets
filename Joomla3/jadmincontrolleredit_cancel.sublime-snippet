@@ -14,7 +14,7 @@ public function cancel($key = null)
 	\$app = JFactory::getApplication();
 
 	// Clean the session data.
-	\$app->setUserState('com_${TM_PROJECT/(.+)/\L\1/g}.${1:singular}.global.data', null);
+	\$app->setUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}.global.data', null);
 
 	\$return   = \$this->input->post->get('return', null, 'base64');
 	\$redirect = 'index.php';

@@ -10,7 +10,7 @@
 \$subject = \$app->input->get('subject');
 
 // Build the message to send.
-\$msg     = JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEND_EMAIL_MSG');
+\$msg     = JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEND_EMAIL_MSG');
 \$body    = sprintf(\$msg, \$site, \$sender, \$from);
 
 // Clean the email data.
@@ -24,7 +24,7 @@
 // Check for an error.
 if (\$return !== true)
 {
-	return new JException(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEND_MAIL_FAILED'), 500);
+	return new JException(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEND_MAIL_FAILED'), 500);
 }]]></content>
 	<tabTrigger>jsendmail</tabTrigger>
 	<scope>source.php</scope>

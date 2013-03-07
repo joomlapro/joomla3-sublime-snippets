@@ -2,11 +2,11 @@
 	<content><![CDATA[/**
  * Item Model for an ${1/(.+)/\u\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -14,7 +14,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 	 * @var     string
 	 * @since   $TM_VERSION
 	 */
-	protected \$text_prefix = 'COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
 
 	/**
 	 * Method to test whether a record can be deleted.
@@ -39,7 +39,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 
 			if (\$record->catid)
 			{
-				return \$user->authorise('core.delete', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$record->catid);
+				return \$user->authorise('core.delete', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . (int) \$record->catid);
 			}
 			else
 			{
@@ -65,7 +65,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 		// Check for existing ${1/(.+)/\L\1/g}.
 		if (!empty(\$record->catid))
 		{
-			return \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$record->catid);
+			return \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . (int) \$record->catid);
 		}
 		// Default to component settings if ${1/(.+)/\L\1/g} not known.
 		else
@@ -85,9 +85,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_PROJECT/(.+)/\u\1/g}Table', \$config = array())
+	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
 	{
-		return JTable::getInstance(\$type, \$prefix, \$config);
+		\$table = JTable::getInstance(\$type, \$prefix, \$config);
+
+		return \$table;
 	}
 
 	/**
@@ -103,7 +105,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 	public function getForm(\$data = array(), \$loadData = true)
 	{
 		// Get the form.
-		\$form = \$this->loadForm('com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+		\$form = \$this->loadForm('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
 
 		if (empty(\$form))
 		{
@@ -153,7 +155,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 	{
 		// Check the session for previously entered form data.
 		\$app  = JFactory::getApplication();
-		\$data = \$app->getUserState('com_${TM_PROJECT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
+		\$data = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
 
 		if (empty(\$data))
 		{
@@ -162,7 +164,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 			// Prime some default values.
 			if (\$this->getState('${1/(.+)/\L\1/g}.id') == 0)
 			{
-				\$data->set('catid', \$app->input->get('catid', \$app->getUserState('com_${TM_PROJECT/(.+)/\L\1/g}.${2:${1/(.+)/\L\1/g}s}.filter.category_id'), 'int'));
+				\$data->set('catid', \$app->input->get('catid', \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.${2:${1/(.+)/\L\1/g}s}.filter.category_id'), 'int'));
 			}
 		}
 
@@ -227,7 +229,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelAdmin
 			if (empty(\$table->ordering))
 			{
 				\$db = JFactory::getDbo();
-				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_PROJECT/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}}');
+				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}}');
 				\$max = \$db->loadResult();
 
 				\$table->ordering = \$max + 1;

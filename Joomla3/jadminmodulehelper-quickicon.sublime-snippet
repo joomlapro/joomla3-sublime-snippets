@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * Helper for mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon.
+ * Helper for mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}_Quickicon
- * @subpackage  mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}_Quickicon
+ * @subpackage  mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon
  * @since       $TM_VERSION
  */
-abstract class Mod${TM_PROJECT/(.+)/\u\1/g}QuickIconHelper
+abstract class Mod${TM_COMPONENT/(.+)/\u\1/g}QuickIconHelper
 {
 	/**
 	 * Stack to hold buttons.
@@ -34,25 +34,25 @@ abstract class Mod${TM_PROJECT/(.+)/\u\1/g}QuickIconHelper
 
 		if (!isset(self::\$buttons[\$key]))
 		{
-			\$context = \$params->get('context', 'mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon');
+			\$context = \$params->get('context', 'mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon');
 
-			if (\$context == 'mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon')
+			if (\$context == 'mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon')
 			{
-				// Load mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon language file in case this method is called before rendering the module.
-				JFactory::getLanguage()->load('mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon');
+				// Load mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon language file in case this method is called before rendering the module.
+				JFactory::getLanguage()->load('mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon');
 
 				self::\$buttons[\$key] = array(
 					array(
-						'link' => JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1:${TM_PROJECT/(.+)(s\b)/\L\1/g}}.add'),
+						'link' => JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}.add'),
 						'image' => 'file-add',
-						'text' => JText::_('MOD_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_ADD_NEW_${1/(.+)/\U\1/g}'),
-						'access' => array('core.manage', 'com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create', 'com_${TM_PROJECT/(.+)/\L\1/g}', )
+						'text' => JText::_('MOD_${TM_COMPONENT/(.+)/\U\1/g}_QUICKICON_ADD_NEW_${1/(.+)/\U\1/g}'),
+						'access' => array('core.manage', 'com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create', 'com_${TM_COMPONENT/(.+)/\L\1/g}', )
 					),
 					array(
-						'link' => JRoute::_('index.php?option=com_categories&view=category&layout=edit&extension=com_${TM_PROJECT/(.+)/\L\1/g}'),
+						'link' => JRoute::_('index.php?option=com_categories&view=category&layout=edit&extension=com_${TM_COMPONENT/(.+)/\L\1/g}'),
 						'image' => 'folder',
-						'text' => JText::_('MOD_${TM_PROJECT/(.+)/\U\1/g}_QUICKICON_ADD_NEW_CATEGORY'),
-						'access' => array('core.manage', 'com_${TM_PROJECT/(.+)/\L\1/g}')
+						'text' => JText::_('MOD_${TM_COMPONENT/(.+)/\U\1/g}_QUICKICON_ADD_NEW_CATEGORY'),
+						'access' => array('core.manage', 'com_${TM_COMPONENT/(.+)/\L\1/g}')
 					),
 				);
 			}
@@ -76,7 +76,7 @@ abstract class Mod${TM_PROJECT/(.+)/\u\1/g}QuickIconHelper
 	public static function getTitle(\$params, \$module)
 	{
 		// Initialiase variables.
-		\$key = \$params->get('context', 'mod_${TM_PROJECT/(.+)/\L\1/g}_quickicon') . '_title';
+		\$key = \$params->get('context', 'mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon') . '_title';
 
 		if (JFactory::getLanguage()->hasKey(\$key))
 		{

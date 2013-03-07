@@ -1,14 +1,14 @@
 <snippet>
 	<content><![CDATA[// Load dependent classes.
-require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
+require_once JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/route.php';
 
 // Include the component models.
-JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models', '${TM_PROJECT/(.+)/\u\1/g}Model');
+JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models', '${TM_COMPONENT/(.+)/\u\1/g}Model');
 
 /**
  * Helper for mod_${1/(.+)/\L\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  mod_${1/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
@@ -29,7 +29,7 @@ abstract class Mod${1:$TM_MODULE}Helper
 		\$db = JFactory::getDbo();
 
 		// Get an instance of the generic ${2:${1/(.+)/\L\1/g}} model.
-		\$model = JModelLegacy::getInstance('${2/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+		\$model = JModelLegacy::getInstance('${2/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
 
 		// Set application parameters in model.
 		\$app = JFactory::getApplication();
@@ -42,7 +42,7 @@ abstract class Mod${1:$TM_MODULE}Helper
 		\$model->setState('filter.state', 1);
 
 		// Access filter.
-		\$access = !JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}')->get('show_noauth');
+		\$access = !JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}')->get('show_noauth');
 		\$authorised = JAccess::getAuthorisedViewLevels(JFactory::getUser()->get('id'));
 		\$model->setState('filter.access', \$access);
 
@@ -89,7 +89,7 @@ abstract class Mod${1:$TM_MODULE}Helper
 			if (\$access || in_array(\$item->access, \$authorised))
 			{
 				// We know that user has the privilege to view the ${3:view}.
-				\$item->link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${3/(.+)/\u\1/g}Route(\$item->slug));
+				\$item->link = JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${3/(.+)/\u\1/g}Route(\$item->slug));
 			}
 			else
 			{

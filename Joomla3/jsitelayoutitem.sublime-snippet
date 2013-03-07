@@ -11,7 +11,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 // Load the tooltip behavior script.
 JHtml::_('behavior.caption');
 ?>
-<div class="${TM_PROJECT/(.+)/\L\1/g} ${1:singular}-item<?php echo \$this->pageclass_sfx; ?>">
+<div class="${TM_COMPONENT/(.+)/\L\1/g} ${1:singular}-item<?php echo \$this->pageclass_sfx; ?>">
 	<?php if (\$this->params->get('show_page_heading', 1)): ?>
 		<div class="page-header">
 			<h1>

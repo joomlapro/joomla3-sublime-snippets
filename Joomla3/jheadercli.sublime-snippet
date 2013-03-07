@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?php
 /**
- * @package    Joomla.$TM_PROJECT
+ * @package    Joomla.$TM_COMPONENT
  *
  * @copyright  Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt

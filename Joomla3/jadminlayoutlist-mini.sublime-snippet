@@ -12,12 +12,12 @@ JHtml::_('formbehavior.chosen', 'select');
 \$userId    = \$user->get('id');
 \$listOrder = \$this->escape(\$this->state->get('list.ordering'));
 \$listDirn  = \$this->escape(\$this->state->get('list.direction'));
-\$canOrder  = \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}');
+\$canOrder  = \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
 \$saveOrder = \$listOrder == 'a.ordering';
 
 if (\$saveOrder)
 {
-	\$saveOrderingUrl = 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.saveOrderAjax&tmpl=component';
+	\$saveOrderingUrl = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.saveOrderAjax&tmpl=component';
 	JHtml::_('sortablelist.sortable', '${2/(.+)/\L\1/g}List', 'adminForm', strtolower(\$listDirn), \$saveOrderingUrl);
 }
 
@@ -36,7 +36,7 @@ if (\$saveOrder)
 		Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:plural}'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1:plural}'); ?>" method="post" name="adminForm" id="adminForm">
 	<?php if (!empty(\$this->sidebar)): ?>
 		<div id="j-sidebar-container" class="span2">
 			<?php echo \$this->sidebar; ?>
@@ -47,8 +47,8 @@ if (\$saveOrder)
 	<?php endif; ?>
 		<div id="filter-bar" class="btn-toolbar">
 			<div class="filter-search btn-group pull-left">
-				<label for="filter_search" class="element-invisible"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?></label>
-				<input type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" value="<?php echo \$this->escape(\$this->state->get('filter.search')); ?>" title="<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" />
+				<label for="filter_search" class="element-invisible"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?></label>
+				<input type="text" name="filter_search" id="filter_search" placeholder="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" value="<?php echo \$this->escape(\$this->state->get('filter.search')); ?>" title="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" />
 			</div>
 			<div class="btn-group pull-left">
 				<button class="btn hasTooltip" type="submit" title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
@@ -88,7 +88,7 @@ if (\$saveOrder)
 						<?php echo JHtml::_('grid.sort', 'JSTATUS', 'a.state', \$listDirn, \$listOrder); ?>
 					</th>
 					<th class="title">
-						<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}', 'a.${3:title}', \$listDirn, \$listOrder); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}', 'a.${3:title}', \$listDirn, \$listOrder); ?>
 					</th>
 					<th width="1%" class="nowrap center hidden-phone">
 						<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'a.id', \$listDirn, \$listOrder); ?>
@@ -105,9 +105,9 @@ if (\$saveOrder)
 			<tbody>
 				<?php foreach (\$this->items as \$i => \$item):
 					\$ordering   = (\$listOrder == 'a.ordering');
-					\$canCreate  = \$user->authorise('core.create',     'com_${TM_PROJECT/(.+)/\L\1/g}');
-					\$canEdit    = \$user->authorise('core.edit',       'com_${TM_PROJECT/(.+)/\L\1/g}');
-					\$canChange  = \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}');
+					\$canCreate  = \$user->authorise('core.create',     'com_${TM_COMPONENT/(.+)/\L\1/g}');
+					\$canEdit    = \$user->authorise('core.edit',       'com_${TM_COMPONENT/(.+)/\L\1/g}');
+					\$canChange  = \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
 					?>
 					<tr class="row<?php echo \$i % 2; ?>">
 						<td class="order nowrap center hidden-phone">
@@ -137,7 +137,7 @@ if (\$saveOrder)
 						</td>
 						<td class="nowrap">
 							<?php if (\$canEdit): ?>
-								<a href="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:${1/(.+)(s\b)/\L\1/g}}.edit&id=' . (int) \$item->id); ?>"><?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?></a>
+								<a href="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:${1/(.+)(s\b)/\L\1/g}}.edit&id=' . (int) \$item->id); ?>"><?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?></a>
 							<?php else: ?>
 								<?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?>
 							<?php endif; ?>

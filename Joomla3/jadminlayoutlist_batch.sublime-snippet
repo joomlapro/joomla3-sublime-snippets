@@ -5,10 +5,10 @@
 <div class="modal hide fade" id="collapseModal">
 	<div class="modal-header">
 		<button type="button" role="presentation" class="close" data-dismiss="modal">x</button>
-		<h3><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_BATCH_OPTIONS'); ?></h3>
+		<h3><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_OPTIONS'); ?></h3>
 	</div>
 	<div class="modal-body">
-		<p><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_BATCH_TIP'); ?></p>
+		<p><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_TIP'); ?></p>
 		<div class="control-group">
 			<div class="controls">
 				<?php echo JHtml::_('batch.access'); ?>
@@ -22,7 +22,7 @@
 		<?php if (\$published >= 0): ?>
 		<div class="control-group">
 			<div class="controls">
-				<?php echo JHtml::_('batch.item', 'com_${TM_PROJECT/(.+)/\L\1/g}'); ?>
+				<?php echo JHtml::_('batch.item', 'com_${TM_COMPONENT/(.+)/\L\1/g}'); ?>
 			</div>
 		</div>
 		<?php endif; ?>

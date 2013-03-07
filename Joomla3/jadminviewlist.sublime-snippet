@@ -2,11 +2,11 @@
 	<content><![CDATA[/**
  * View class for a list of ${1/(.+)/\L\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 {
 	protected \$items;
 
@@ -38,7 +38,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		}
 
 		// Load the submenu.
-		${TM_PROJECT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+		${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
 
 		\$this->addToolbar();
 		\$this->sidebar = JHtmlSidebar::render();
@@ -56,19 +56,19 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 	protected function addToolbar()
 	{
 		// Include dependancies.
-		require_once JPATH_COMPONENT . '/helpers/${TM_PROJECT/(.+)/\L\1/g}.php';
+		require_once JPATH_COMPONENT . '/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php';
 
 		// Initialise variables.
 		\$state = \$this->get('State');
-		\$canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions(\$state->get('filter.category_id'));
+		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$state->get('filter.category_id'));
 		\$user  = JFactory::getUser();
 
 		// Get the toolbar object instance.
 		\$bar = JToolBar::getInstance('toolbar');
 
-		JToolbarHelper::title(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}'), '${1/(.+)/\L\1/g}');
+		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}'), '${1/(.+)/\L\1/g}');
 
-		if (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create')) > 0)
+		if (count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create')) > 0)
 		{
 			JToolbarHelper::addNew('${2:${1/(.+)(s\b)/\L\1/g}}.add');
 		}
@@ -109,12 +109,12 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 
 		if (\$canDo->get('core.admin'))
 		{
-			JToolbarHelper::preferences('com_${TM_PROJECT/(.+)/\L\1/g}');
+			JToolbarHelper::preferences('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		}
 
 		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
 
-		JHtmlSidebar::setAction('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+		JHtmlSidebar::setAction('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
 
 		JHtmlSidebar::addFilter(
 			JText::_('JOPTION_SELECT_PUBLISHED'),
@@ -125,7 +125,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		JHtmlSidebar::addFilter(
 			JText::_('JOPTION_SELECT_CATEGORY'),
 			'filter_category_id',
-			JHtml::_('select.options', JHtml::_('category.options', 'com_${TM_PROJECT/(.+)/\L\1/g}'), 'value', 'text', \$this->state->get('filter.category_id'))
+			JHtml::_('select.options', JHtml::_('category.options', 'com_${TM_COMPONENT/(.+)/\L\1/g}'), 'value', 'text', \$this->state->get('filter.category_id'))
 		);
 
 		JHtmlSidebar::addFilter(
@@ -153,7 +153,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		return array(
 			'a.ordering' => JText::_('JGRID_HEADING_ORDERING'),
 			'a.state' => JText::_('JSTATUS'),
-			'a.${3:title}' => JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}'),
+			'a.${3:title}' => JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}'),
 			'a.access' => JText::_('JGRID_HEADING_ACCESS'),
 			'a.hits' => JText::_('JGLOBAL_HITS'),
 			'a.language' => JText::_('JGRID_HEADING_LANGUAGE'),

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
+	<content><![CDATA[require_once JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/route.php';
 
 /**
  * ${1/(.+)/\u\1/g} Search plugin.
@@ -8,7 +8,7 @@
  * @subpackage  Search.${1/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
+class PlgSearch${1:${TM_COMPONENT/(.+)/\u\1/g}} extends JPlugin
 {
 	/**
 	 * Constructor
@@ -164,7 +164,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			\$query->select('a.${3/(.+)/\L\1/g} AS title, a.description AS text, a.created AS created, '
 				. \$case_when . ', '
 				. \$db->quote(\$section) . ' AS section, \'2\' AS browsernav');
-			\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
+			\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
 			\$query->where('(' . \$where . ')' . ' AND a.state in (' . implode(', ', \$state) . ')');
 			\$query->order(\$order);
 
@@ -185,7 +185,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			{
 				foreach (\$rows as \$key => \$row)
 				{
-					\$rows[\$key]->href = ${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${5:${2/(.+)(s\b)/\u\1/g}}Route(\$row->slug);
+					\$rows[\$key]->href = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${5:${2/(.+)(s\b)/\u\1/g}}Route(\$row->slug);
 				}
 
 				foreach (\$rows as \$key => \$${5/(.+)/\L\1/g})

@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Get an instance of the generic ${1/(.+)/\L\1/g} model.
-\$model = JModelLegacy::getInstance('${1:Sigular}', '${TM_PROJECT/(.+)/\u\1/g}Model'${2:, array('ignore_request' => true)});
+\$model = JModelLegacy::getInstance('${1:Sigular}', '${TM_COMPONENT/(.+)/\u\1/g}Model'${2:, array('ignore_request' => true)});
 
 // Attempt to save the ${1/(.+)/\L\1/g}.
 \$data = array(

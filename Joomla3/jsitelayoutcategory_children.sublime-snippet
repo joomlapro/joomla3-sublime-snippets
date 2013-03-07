@@ -15,21 +15,21 @@ if (count(\$this->children[\$this->category->id]) > 0 && \$this->maxLevel != 0):
 		<li<?php echo \$class; ?>>
 			<?php \$class = ''; ?>
 			<span class="item-title">
-				<a href="<?php echo JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$child->id)); ?>">
+				<a href="<?php echo JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$child->id)); ?>">
 				<?php echo \$this->escape(\$child->title); ?></a>
 			</span>
 
 			<?php if (\$this->params->get('show_subcat_desc') == 1): ?>
 				<?php if (\$child->description): ?>
 					<div class="category-desc">
-						<?php echo JHtml::_('content.prepare', \$child->description, '', 'com_${TM_PROJECT/(.+)/\L\1/g}.category'); ?>
+						<?php echo JHtml::_('content.prepare', \$child->description, '', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category'); ?>
 					</div>
 				<?php endif; ?>
 			<?php endif; ?>
 
 			<?php if (\$this->params->get('show_cat_num_links') == 1): ?>
-			<dl class="${TM_PROJECT/(.+)(s\b)/\L\1/g}-count">
-				<dt><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NUM'); ?></dt>
+			<dl class="${TM_COMPONENT/(.+)(s\b)/\L\1/g}-count">
+				<dt><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NUM'); ?></dt>
 				<dd><?php echo \$child->numitems; ?></dd>
 			</dl>
 			<?php endif; ?>

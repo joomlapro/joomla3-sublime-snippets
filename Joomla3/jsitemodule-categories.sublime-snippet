@@ -1,9 +1,9 @@
 <snippet>
-	<content><![CDATA[// Include the ${TM_PROJECT/(.+)/\L\1/g} categories functions only once.
+	<content><![CDATA[// Include the ${TM_COMPONENT/(.+)/\L\1/g} categories functions only once.
 require_once __DIR__ . '/helper.php';
 
 // Get module data.
-\$list = Mod${TM_PROJECT/(.+)/\u\1/g}CategoriesHelper::getList(\$params);
+\$list = Mod${TM_COMPONENT/(.+)/\u\1/g}CategoriesHelper::getList(\$params);
 
 if (!empty(\$list))
 {
@@ -12,7 +12,7 @@ if (!empty(\$list))
 	\$startLevel = reset(\$list)->getParent()->level;
 
 	// Render the module.
-	require JModuleHelper::getLayoutPath('mod_${TM_PROJECT/(.+)/\L\1/g}_categories', \$params->get('layout', 'default'));
+	require JModuleHelper::getLayoutPath('mod_${TM_COMPONENT/(.+)/\L\1/g}_categories', \$params->get('layout', 'default'));
 }
 
 ]]></content>

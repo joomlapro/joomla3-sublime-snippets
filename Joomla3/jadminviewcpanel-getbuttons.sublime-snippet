@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Display button list.
-\$this->buttons = ${TM_PROJECT/(.+)/\u\1/g}Helper::getButtons();]]></content>
+\$this->buttons = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getButtons();]]></content>
 	<tabTrigger>jadminviewcpanel-getbuttons</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

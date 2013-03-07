@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML ${1/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\u\1/g} component.
+ * HTML ${1/(.+)/\u\1/g} View class for the ${TM_COMPONENT/(.+)/\u\1/g} component.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 {
 	/**
 	 * Method to display the view.
@@ -30,7 +30,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		\$app->input->set('limit', \$app->getCfg('feed_limit'));
 		\$rows = \$this->get('Items');
 
-		\$doc->link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+		\$doc->link = JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
 
 		foreach (\$rows as \$row)
 		{
@@ -42,11 +42,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 			\$row->slug = \$row->alias ? (\$row->id . ':' . \$row->alias) : \$row->id;
 
 			// Url link to ${2/(.+)/\L\1/g}.
-			\$link = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${2:${TM_PROJECT/(.+)(s\b)/\u\1/g}}Route(\$row->slug));
+			\$link = JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${2:${TM_COMPONENT/(.+)(s\b)/\u\1/g}}Route(\$row->slug));
 
 			// Get row ${4/(.+)/\L\1/g}.
 			\$db = JFactory::getDBO();
-			\$query = 'SELECT ' . \$db->quoteName('${4:description}') . ' FROM #__${TM_PROJECT/(.+)/\L\1/g}_${5:${1/(.+)/\L\1/g}} WHERE id =' . \$row->id;
+			\$query = 'SELECT ' . \$db->quoteName('${4:description}') . ' FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${5:${1/(.+)/\L\1/g}} WHERE id =' . \$row->id;
 			\$db->setQuery(\$query);
 			\$row->${4/(.+)/\L\1/g} = \$db->loadResult();
 
@@ -74,7 +74,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 			// Add readmore link to description if ${5/(.+)/\L\1/g} is shown, show_readmore is true and ${4/(.+)/\L\1/g} exists
 			if (!\$params->get('feed_summary', 1) && \$params->get('feed_show_readmore', 1) && \$row->${4/(.+)/\L\1/g})
 			{
-				\$description .= '<p class="feed-readmore"><a target="_blank" href ="' . rtrim(JURI::base(), "/") . str_replace(' ', '%20', \$item->link) . '">' . JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FEED_READMORE') . '</a></p>';
+				\$description .= '<p class="feed-readmore"><a target="_blank" href ="' . rtrim(JURI::base(), "/") . str_replace(' ', '%20', \$item->link) . '">' . JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FEED_READMORE') . '</a></p>';
 			}
 
 			// Load item description and add div

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${2:TITLE}', 'a.${3:title}', \$listDirn, \$listOrder); ?>]]></content>
+	<content><![CDATA[<?php echo JHtml::_('grid.sort', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${2:TITLE}', 'a.${3:title}', \$listDirn, \$listOrder); ?>]]></content>
 	<tabTrigger>jgridsort</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

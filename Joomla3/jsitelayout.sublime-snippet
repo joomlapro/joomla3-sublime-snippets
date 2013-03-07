@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[?>
-<div class="${TM_PROJECT/(.+)(s\b)/\L\1/g}<?php echo \$this->pageclass_sfx; ?>">
+<div class="${TM_COMPONENT/(.+)(s\b)/\L\1/g}<?php echo \$this->pageclass_sfx; ?>">
 	<?php if (\$this->params->get('show_page_heading', 1)): ?>
 		<div class="page-header">
 			<h1>

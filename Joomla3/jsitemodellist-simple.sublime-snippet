@@ -2,11 +2,11 @@
 	<content><![CDATA[/**
  * This models supports retrieving lists of ${1/(.+)/\L\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 {
 	/**
 	 * Constructor.
@@ -53,7 +53,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 		// Get the configuration options.
 		\$app    = JFactory::getApplication();
 		\$input  = \$app->input;
-		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$user   = JFactory::getUser();
 
 		// Optional filter text.
@@ -68,7 +68,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 		\$this->setState('list.start', \$limitstart);
 
 		// Load the ordering.
-		\$orderCol = \$app->getUserStateFromRequest('com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . $itemid . '.filter_order', 'filter_order', '', 'string');
+		\$orderCol = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . $itemid . '.filter_order', 'filter_order', '', 'string');
 
 		if (!in_array(\$orderCol, \$this->filter_fields))
 		{
@@ -78,7 +78,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 		\$this->setState('list.ordering', \$orderCol);
 
 		// Load the direction.
-		\$listOrder = \$app->getUserStateFromRequest('com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . $itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
+		\$listOrder = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . $itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
 
 		if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
 		{
@@ -90,7 +90,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 		// Load the parameters.
 		\$this->setState('params', \$params);
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
 			\$this->setState('filter.state', 1);
@@ -151,7 +151,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 				. ', a.created, a.created_by_alias'
 			)
 		);
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}}') . ' AS a');
 
 		// Join over the users for the author and modified_by names.
 		\$query->select("CASE WHEN a.created_by_alias > ' ' THEN a.created_by_alias ELSE ua.name END AS author");
@@ -173,7 +173,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 
 		if (!empty(\$search))
 		{
-			\$search = \$db->Quote('%' . \$db->escape(\$search, true) . '%');
+			\$search = \$db->quote('%' . \$db->escape(\$search, true) . '%');
 			\$query->where('(a.${2/(.+)/\L\1/g} LIKE ' . \$search . ')');
 		}
 

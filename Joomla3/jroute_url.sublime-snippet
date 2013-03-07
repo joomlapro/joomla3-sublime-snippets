@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}', false);]]></content>
+	<content><![CDATA[JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}', false);]]></content>
 	<tabTrigger>jroute_url</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

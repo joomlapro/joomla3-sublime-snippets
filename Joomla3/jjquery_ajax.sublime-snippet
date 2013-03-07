@@ -2,7 +2,7 @@
 	<content><![CDATA[\$('#${1:field1}').change(function () {
 	\$.ajax({
 		type: 'GET',
-		url: 'index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${2:controller}.${3:method}&format=json&tmpl=component',
+		url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:controller}.${3:method}&format=json&tmpl=component',
 		data: {
 			${1/(.+)/\L\1/g}: \$('#${1/(.+)/\L\1/g}').val()
 		},

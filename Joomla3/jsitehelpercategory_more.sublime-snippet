@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} ${1/(.+)/\u\1/g} Component Category Tree.
+ * ${TM_COMPONENT/(.+)/\u\1/g} ${1/(.+)/\u\1/g} Component Category Tree.
  *
  * @static
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}${1:Plural}Categories extends JCategories
+class ${TM_COMPONENT/(.+)/\u\1/g}${1:Plural}Categories extends JCategories
 {
 	/**
 	 * Class constructor.
@@ -18,8 +18,8 @@ class ${TM_PROJECT/(.+)/\u\1/g}${1:Plural}Categories extends JCategories
 	 */
 	public function __construct(\$options = array())
 	{
-		\$options['table']        = '#__${TM_PROJECT/(.+)/\L\1/g}';
-		\$options['extension']    = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
+		\$options['table']        = '#__${TM_COMPONENT/(.+)/\L\1/g}';
+		\$options['extension']    = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
 		\$options['statefield']   = 'state';
 		// \$options['countItems']   = 1;
 		// \$options['allLanguages'] = true;

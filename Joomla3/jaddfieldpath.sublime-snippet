@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[addfieldpath="/administrator/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/fields"]]></content>
+	<content><![CDATA[addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields"]]></content>
 	<tabTrigger>jaddfieldpath</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

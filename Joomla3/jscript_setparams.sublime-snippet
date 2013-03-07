@@ -14,7 +14,7 @@ public function setParams(\$param_array)
 	{
 		// Read the existing component value(s).
 		\$db = JFactory::getDbo();
-		\$db->setQuery('SELECT params FROM #__extensions WHERE name = "com_${TM_PROJECT/(.+)/\L\1/g}"');
+		\$db->setQuery('SELECT params FROM #__extensions WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"');
 		\$params = json_decode(\$db->loadResult(), true);
 
 		// Add the new variable(s) to the existing one(s).
@@ -26,7 +26,7 @@ public function setParams(\$param_array)
 		// Store the combined new and existing values back as a JSON string.
 		\$paramsString = json_encode(\$params);
 
-		\$db->setQuery('UPDATE #__extensions SET params = ' . \$db->quote(\$paramsString) . ' WHERE name = "com_${TM_PROJECT/(.+)/\L\1/g}"');
+		\$db->setQuery('UPDATE #__extensions SET params = ' . \$db->quote(\$paramsString) . ' WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"');
 		\$db->query();
 	}
 }

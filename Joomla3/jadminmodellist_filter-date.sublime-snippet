@@ -5,7 +5,7 @@
 
 if (!empty(\$begin))
 {
-	\$query->where('a.${1:created} >= ' . \$db->Quote(\$begin));
+	\$query->where('a.${1:created} >= ' . \$db->quote(\$begin));
 }
 
 // Filter by end date.
@@ -13,7 +13,7 @@ if (!empty(\$begin))
 
 if (!empty(\$end))
 {
-	\$query->where('a.${1/(.+)/\L\1/g} <= ' . \$db->Quote(\$end));
+	\$query->where('a.${1/(.+)/\L\1/g} <= ' . \$db->quote(\$end));
 }
 ]]></content>
 	<tabTrigger>jadminmodellist_filter-date</tabTrigger>

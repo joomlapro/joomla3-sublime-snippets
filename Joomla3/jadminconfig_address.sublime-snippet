@@ -1,7 +1,7 @@
 <snippet>
-	<content><![CDATA[<field name="latitude" type="text" class="inputbox" default="-15.779439" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC" />
-<field name="longitude" type="text" class="inputbox" default="-47.937096" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC" />
-<field name="zoom" type="zoom" default="10" label="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZOOM_LABEL" description="COM_${TM_PROJECT/(.+)/\U\1/g}_FIELD_ZOOM_DESC" />]]></content>
+	<content><![CDATA[<field name="latitude" type="text" class="inputbox" default="-15.779439" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC" />
+<field name="longitude" type="text" class="inputbox" default="-47.937096" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC" />
+<field name="zoom" type="zoom" default="10" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZOOM_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZOOM_DESC" />]]></content>
 	<tabTrigger>jadminconfig_address</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

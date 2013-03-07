@@ -1,9 +1,9 @@
 <snippet>
 	<content><![CDATA[/**
- * Supports an HTML select list of ${TM_PROJECT/(.+)/\L\1/g}.
+ * Supports an HTML select list of ${TM_COMPONENT/(.+)/\L\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
 class JFormFieldOrdering extends JFormField
@@ -37,11 +37,11 @@ class JFormFieldOrdering extends JFormField
 		\$attr .= \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
 
 		// Get some field values from the form.
-		\$${2:${TM_PROJECT/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
+		\$${2:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
 
 		// Build the query for the ordering list.
 		\$query = 'SELECT ordering AS value, ${1:title} AS text' .
-				' FROM #__${TM_PROJECT/(.+)/\L\1/g}' .
+				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}' .
 				' ORDER BY ordering';
 
 		// Create a read-only list (no name) with a hidden input to store the value.

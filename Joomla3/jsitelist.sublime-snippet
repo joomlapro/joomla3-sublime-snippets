@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
 <dt>
-	<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${1:VIEW}_${2/(.+)/\U\1/g}_LABEL'); ?>
+	<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${1:VIEW}_${2/(.+)/\U\1/g}_LABEL'); ?>
 </dt>
 <dd>
 	<?php echo htmlspecialchars(\$this->data->${2:hello}); ?>

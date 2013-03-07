@@ -20,7 +20,7 @@ public function hit(\$pk = 0)
 		\$db = \$this->getDbo();
 
 		\$db->setQuery(
-			'UPDATE #__${TM_PROJECT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}' .
+			'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}' .
 			' SET hits = hits + 1' .
 			' WHERE id = ' . (int) \$pk
 		);

@@ -21,7 +21,7 @@ public function featured()
 	// Access checks.
 	foreach (\$ids as \$i => \$id)
 	{
-		if (!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.${2:${1/(.+)(s\b)/\L\1/g}}.' . (int) \$id))
+		if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${2:${1/(.+)(s\b)/\L\1/g}}.' . (int) \$id))
 		{
 			// Prune items that you can't change.
 			unset(\$ids[\$i]);
@@ -45,7 +45,7 @@ public function featured()
 		}
 	}
 
-	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:plural}');
+	\$this->setRedirect('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1:plural}');
 }]]></content>
 	<tabTrigger>jadmincontrollerlist_featured_nocategory</tabTrigger>
 	<scope>source.php</scope>

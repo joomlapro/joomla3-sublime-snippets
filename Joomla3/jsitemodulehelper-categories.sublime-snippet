@@ -1,15 +1,15 @@
 <snippet>
 	<content><![CDATA[// Load dependent classes.
-require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
+require_once JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/route.php';
 
 /**
- * Helper for mod_${TM_PROJECT/(.+)/\L\1/g}_categories.
+ * Helper for mod_${TM_COMPONENT/(.+)/\L\1/g}_categories.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  mod_${TM_PROJECT/(.+)/\L\1/g}_categories
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  mod_${TM_COMPONENT/(.+)/\L\1/g}_categories
  * @since       $TM_VERSION
  */
-abstract class Mod${TM_PROJECT/(.+)/\u\1/g}CategoriesHelper
+abstract class Mod${TM_COMPONENT/(.+)/\u\1/g}CategoriesHelper
 {
 	/**
 	 * Get a list of the category items.
@@ -23,7 +23,7 @@ abstract class Mod${TM_PROJECT/(.+)/\u\1/g}CategoriesHelper
 	public static function getList(& \$params)
 	{
 		// Initialiase variables.
-		\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}');
+		\$categories = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
 		\$category = \$categories->get(\$params->get('parent', 'root'));
 
 		if (\$category != null)

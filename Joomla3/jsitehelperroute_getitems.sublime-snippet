@@ -18,7 +18,7 @@ public static function &getItems()
 
 		\$app   = JFactory::getApplication();
 		\$menu  = \$app->getMenu();
-		\$com   = JComponentHelper::getComponent('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$com   = JComponentHelper::getComponent('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$items = \$menu->getItems('component_id', \$com->id);
 
 		// If no items found, set to empty array.

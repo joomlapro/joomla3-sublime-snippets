@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[// Join over the ${1:hello}.
 \$query->select('${2:${1/(.)(.+)/\L\1/g}}.*');
-\$query->join('LEFT', \$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS ${2/(.+)/\L\1/g} ON ${2/(.+)/\L\1/g}.id = a.${3:id}');]]></content>
+\$query->join('LEFT', \$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS ${2/(.+)/\L\1/g} ON ${2/(.+)/\L\1/g}.id = a.${3:id}');]]></content>
 	<tabTrigger>jjoin</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

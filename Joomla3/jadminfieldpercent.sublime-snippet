@@ -2,10 +2,10 @@
 	<content><![CDATA[JFormHelper::loadFieldClass('list');
 
 /**
- * ${1/(.+)/\u\1/g} Field class for the ${TM_PROJECT/(.+)/\u\1/g}.
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_COMPONENT/(.+)/\u\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
 class JFormField${1:Sigular} extends JFormFieldList

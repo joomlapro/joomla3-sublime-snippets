@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 {
 	/**
 	 * Category items data
@@ -32,7 +32,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 	protected \$_category = null;
 
 	/**
-	 * The list of other ${TM_PROJECT/(.+)(s\b)/\L\1/g} categories.
+	 * The list of other ${TM_COMPONENT/(.+)(s\b)/\L\1/g} categories.
 	 *
 	 * @access  protected
 	 * @var     array
@@ -78,7 +78,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 	{
 		// Initialise variables.
 		\$app    = JFactory::getApplication();
-		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 
 		// List state information.
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
@@ -108,7 +108,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 		// Get the user object.
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
 			\$this->setState('filter.published', 1);
@@ -170,7 +170,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 
 		// Select required fields from the categories.
 		\$query->select(\$this->getState('list.select', 'a.*'));
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}') . ' AS a');
 		\$query->where('a.featured = 1');
 
 		// Join over the categories.
@@ -192,10 +192,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 		\$query->select('c.published as cat_published, CASE WHEN badcats.id is null THEN c.published ELSE 0 END AS parents_published');
 		\$subquery = 'SELECT cat.id as id FROM #__categories AS cat JOIN #__categories AS parent ';
 		\$subquery .= 'ON cat.lft BETWEEN parent.lft AND parent.rgt ';
-		\$subquery .= 'WHERE parent.extension = ' . \$db->quote('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$subquery .= 'WHERE parent.extension = ' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}');
 
 		// Find any up-path categories that are not published.
-		// If all categories are published, badcats.id will be null, and we just use the ${TM_PROJECT/(.+)(s\b)/\L\1/g} state.
+		// If all categories are published, badcats.id will be null, and we just use the ${TM_COMPONENT/(.+)(s\b)/\L\1/g} state.
 		\$subquery .= ' AND parent.published != 1 GROUP BY cat.id ';
 
 		// Select state to unpublished if up-path category is unpublished.
@@ -254,7 +254,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 
 			\$options = array();
 			\$options['countItems'] = \$params->get('show_cat_items', 1) || \$params->get('show_empty_categories', 0);
-			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
+			\$categories = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}', \$options);
 			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
 
 			if (is_object(\$this->_item))

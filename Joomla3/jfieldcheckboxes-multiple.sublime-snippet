@@ -2,10 +2,10 @@
 	<content><![CDATA[JFormHelper::loadFieldClass('checkboxes');
 
 /**
- * ${1/(.+)/\u\1/g} Field class for the ${TM_PROJECT/(.+)/\u\1/g}.
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_COMPONENT/(.+)/\u\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
 class JFormField${1:Plural} extends JFormFieldCheckboxes
@@ -99,7 +99,7 @@ class JFormField${1:Plural} extends JFormFieldCheckboxes
 	protected function getOptions()
 	{
 		// Initialiase variables.
-		\$options = ${TM_PROJECT/(.+)/\u\1/g}Helper::get${1/(.+)/\u\1/g}Options();
+		\$options = ${TM_COMPONENT/(.+)/\u\1/g}Helper::get${1/(.+)/\u\1/g}Options();
 
 		// Merge any additional options in the XML definition.
 		\$options = array_merge(parent::getOptions(), \$options);

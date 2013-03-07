@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${1:${TM_PROJECT/(.+)(s\b)/\u\1/g}} Model.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component ${1:${TM_COMPONENT/(.+)(s\b)/\u\1/g}} Model.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
+class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 {
 	/**
 	 * Category items data
@@ -105,7 +105,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 
 		// Select required fields from the categories.
 		\$query->select(\$this->getState('list.select', 'a.*'));
-		\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}') . ' AS a');
 		\$query->where('a.access IN (' . \$groups . ')');
 
 		// Join over the categories.
@@ -184,7 +184,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 	{
 		// Initialiase variables.
 		\$app    = JFactory::getApplication();
-		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 
 		// List state information.
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
@@ -217,7 +217,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 		// Get the current user object.
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
 			// Limit to published for people who can't edit or edit.state.
 			\$this->setState('filter.state', 1);
@@ -256,7 +256,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategory extends JModelList
 
 			\$options = array();
 			\$options['countItems'] = \$params->get('show_cat_num_links_cat', 1) || \$params->get('show_empty_categories', 0);
-			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
+			\$categories = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}', \$options);
 			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
 
 			if (is_object(\$this->_item))

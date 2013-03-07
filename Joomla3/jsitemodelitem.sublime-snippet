@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component Model for a ${1/(.+)/\u\1/g} record.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component Model for a ${1/(.+)/\u\1/g} record.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 {
 	/**
 	 * Model context string.
@@ -14,7 +14,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 	 * @access  protected
 	 * @var     string
 	 */
-	protected \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
+	protected \$_context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
 
 	/**
 	 * Method to auto-populate the model state.
@@ -41,7 +41,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 		// Get the current user object.
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
 			\$this->setState('filter.published', 1);
 			\$this->setState('filter.archived', 2);
@@ -74,7 +74,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 				\$query = \$db->getQuery(true);
 
 				\$query->select(\$this->getState('item.select', 'a.*'));
-				\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}') . ' AS a');
+				\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}') . ' AS a');
 
 				// Join on category table.
 				\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
@@ -112,13 +112,13 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 
 				if (empty(\$data))
 				{
-					throw new Exception(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
+					throw new Exception(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
 				}
 
 				// Check for published state if filter set.
 				if (((is_numeric(\$published)) || (is_numeric(\$archived))) && ((\$data->state != \$published) && (\$data->state != \$archived)))
 				{
-					JError::raiseError(404, JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
+					JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
 				}
 
 				// Convert parameter fields to objects.
@@ -138,7 +138,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 				if (!\$user->get('guest'))
 				{
 					\$userId = \$user->get('id');
-					\$asset  = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
+					\$asset  = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
 
 					// Check general edit permission first.
 					if (\$user->authorise('core.edit', \$asset))
@@ -206,7 +206,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 			\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
 		}
 
-		\$${1/(.+)/\L\1/g} = \$this->getTable('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+		\$${1/(.+)/\L\1/g} = \$this->getTable('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
 
 		return \$${1/(.+)/\L\1/g}->hit(\$id);
 	}

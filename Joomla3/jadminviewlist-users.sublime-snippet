@@ -2,11 +2,11 @@
 	<content><![CDATA[/**
  * View class for a list of ${1/(.+)/\L\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 {
 	protected \$items;
 
@@ -43,7 +43,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		\$lang->load('com_users', JPATH_ADMINISTRATOR . '/components/com_users');
 
 		// Load the submenu.
-		${TM_PROJECT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+		${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
 
 		\$this->addToolbar();
 		\$this->sidebar = JHtmlSidebar::render();
@@ -103,7 +103,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 
 		JToolbarHelper::help('JHELP_USERS_USER_MANAGER');
 
-		JHtmlSidebar::setAction('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+		JHtmlSidebar::setAction('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
 
 		JHtmlSidebar::addFilter(
 			JText::_('COM_USERS_FILTER_STATE'),

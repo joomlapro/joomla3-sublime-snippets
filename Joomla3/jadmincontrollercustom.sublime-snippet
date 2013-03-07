@@ -28,7 +28,7 @@ public function ${1:action}()
 
 		if (isset(\$item->catid))
 		{
-			if (!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
+			if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
 			{
 				// Prune items that you can't change.
 				unset(\$ids[\$i]);
@@ -51,7 +51,7 @@ public function ${1:action}()
 		}
 	}
 
-	\$this->setRedirect('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${2:plural}');
+	\$this->setRedirect('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${2:plural}');
 }]]></content>
 	<tabTrigger>jadmincontrollercustom</tabTrigger>
 	<scope>source.php</scope>

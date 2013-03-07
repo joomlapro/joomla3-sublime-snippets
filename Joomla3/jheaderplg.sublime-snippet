@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?php
 /**
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  ${1:${TM_PLUGIN_GROUP/(.+)/\u\1/g}}.${2:${TM_PLUGIN/(.+)/\u\1/g}}
  * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt

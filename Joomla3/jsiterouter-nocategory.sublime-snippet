@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Build the route for the com_${TM_PROJECT/(.+)/\L\1/g} component
+ * Build the route for the com_${TM_COMPONENT/(.+)/\L\1/g} component
  *
  * @param   array  &\$query  An array of URL arguments
  *
@@ -8,14 +8,14 @@
  *
  * @since   $TM_VERSION
  */
-function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(& \$query)
+function ${TM_COMPONENT/(.+)/\L\1/g}BuildRoute(& \$query)
 {
 	\$segments = array();
 
 	// Get a menu item based on Itemid or currently active
 	\$app      = JFactory::getApplication();
 	\$menu     = \$app->getMenu();
-	\$params   = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+	\$params   = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 	\$advanced = \$params->get('sef_advanced_link', 0);
 
 	// We need a menu item. Either the one specified in the query, or the current active one if none specified
@@ -47,7 +47,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(& \$query)
 		}
 	}
 
-	// Are we dealing with an ${1:${TM_PROJECT/(.+)(s\b)/\L\1/g}} that is attached to a menu item?
+	// Are we dealing with an ${1:${TM_COMPONENT/(.+)(s\b)/\L\1/g}} that is attached to a menu item?
 	if (isset(\$query['view']) && (\$mView == \$query['view']) and (isset(\$query['id'])) and (\$mId == (int) \$query['id']))
 	{
 		unset(\$query['view']);
@@ -108,7 +108,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}BuildRoute(& \$query)
  *
  * @since   $TM_VERSION
  */
-function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
+function ${TM_COMPONENT/(.+)/\L\1/g}ParseRoute(\$segments)
 {
 	\$vars = array();
 
@@ -116,13 +116,13 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 	\$app      = JFactory::getApplication();
 	\$menu     = \$app->getMenu();
 	\$item     = \$menu->getActive();
-	\$params   = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+	\$params   = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 	\$advanced = \$params->get('sef_advanced_link', 0);
 
 	// Count route segments.
 	\$count = count(\$segments);
 
-	// Standard routing for ${TM_PROJECT/(.+)/\L\1/g}.
+	// Standard routing for ${TM_COMPONENT/(.+)/\L\1/g}.
 	if (!isset(\$item))
 	{
 		\$vars['view'] = \$segments[0];
@@ -142,7 +142,7 @@ function ${TM_PROJECT/(.+)/\L\1/g}ParseRoute(\$segments)
 			if (\$advanced)
 			{
 				\$db = JFactory::getDBO();
-				\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g} WHERE alias = ' . \$db->quote(\$segment);
+				\$query = 'SELECT id FROM #__${TM_COMPONENT/(.+)/\L\1/g} WHERE alias = ' . \$db->quote(\$segment);
 				\$db->setQuery(\$query);
 				\$nid = \$db->loadResult();
 			}

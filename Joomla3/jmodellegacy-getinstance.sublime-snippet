@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Get an instance of the generic ${1/(.+)/\L\1/g} model.
-\$model = JModelLegacy::getInstance('${1:List}', '${TM_PROJECT/(.+)/\u\1/g}Model'${2:, array('ignore_request' => true)});]]></content>
+\$model = JModelLegacy::getInstance('${1:List}', '${TM_COMPONENT/(.+)/\u\1/g}Model'${2:, array('ignore_request' => true)});]]></content>
 	<tabTrigger>jmodellegacy-getinstance</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

@@ -15,7 +15,7 @@ protected function allowEdit(\$data = array(), \$key = 'id')
 	\$recordId = (int) isset(\$data[\$key]) ? \$data[\$key] : 0;
 	\$user     = JFactory::getUser();
 	\$userId   = \$user->get('id');
-	\$asset    = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1:singular}.' . \$recordId;
+	\$asset    = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}.' . \$recordId;
 
 	// Check general edit permission first.
 	if (\$user->authorise('core.edit', \$asset))

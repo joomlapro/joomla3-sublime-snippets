@@ -1,15 +1,15 @@
 <snippet>
 	<content><![CDATA[// Base this model on the backend version.
-require_once JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models/${2:singular}.php';
+require_once JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/${2:singular}.php';
 
 /**
- * ${TM_PROJECT/(.+)/\u\1/g} Component ${2/(.+)/\u\1/g} Model.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component ${2/(.+)/\u\1/g} Model.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Form} extends ${TM_COMPONENT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
 {
 	/**
 	 * Method to auto-populate the model state.
@@ -26,7 +26,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		\$app = JFactory::getApplication();
 
 		// Load state from the request.
-		\$pk = \$app->input->getInt('${TM_PROJECT/(.)(.+)/\L\1/g}_id');
+		\$pk = \$app->input->getInt('${TM_COMPONENT/(.)(.+)/\L\1/g}_id');
 		\$this->setState('${2/(.+)/\L\1/g}.id', \$pk);
 
 		\$return = \$app->input->get('return', null, 'base64');
@@ -44,7 +44,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 	 *
 	 * @param   integer  \$itemId  The id of the ${2/(.+)/\L\1/g}.
 	 *
-	 * @return  mixed  ${TM_PROJECT/(.+)/\u\1/g} item data object on success, false on failure.
+	 * @return  mixed  ${TM_COMPONENT/(.+)/\u\1/g} item data object on success, false on failure.
 	 */
 	public function getItem(\$itemId = null)
 	{
@@ -74,7 +74,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		// Compute selected asset permissions.
 		\$user   = JFactory::getUser();
 		\$userId = \$user->get('id');
-		\$asset  = 'com_${TM_PROJECT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . \$value->id;
+		\$asset  = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . \$value->id;
 
 		// Check general edit permission first.
 		if (\$user->authorise('core.edit', \$asset))
@@ -99,7 +99,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Form} extends ${TM_PROJECT/(.+)/\u\1/g}M
 		}
 		else
 		{
-			\$value->params->set('access-change', \$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}'));
+			\$value->params->set('access-change', \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}'));
 		}
 
 		return \$value;

@@ -2,11 +2,11 @@
 	<content><![CDATA[/**
  * ${1/(.+)/\u\1/g} Table class.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
+class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 {
 	/**
 	 * Constructor
@@ -17,7 +17,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	 */
 	public function __construct(& \$db)
 	{
-		parent::__construct('#__${TM_PROJECT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'id', \$db);
+		parent::__construct('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'id', \$db);
 	}
 
 	/**
@@ -32,7 +32,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 	protected function _getAssetName()
 	{
 		\$k = \$this->_tbl_key;
-		return 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$this->\$k;
+		return 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$this->\$k;
 	}
 
 	/**
@@ -65,7 +65,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 		\$query = \$this->_db->getQuery(true);
 		\$query->select(\$this->_db->quoteName('id'));
 		\$query->from(\$this->_db->quoteName('#__assets'));
-		\$query->where(\$this->_db->quoteName('name') . ' = ' . \$this->_db->quote('com_${TM_PROJECT/(.+)/\L\1/g}'));
+		\$query->where(\$this->_db->quoteName('name') . ' = ' . \$this->_db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}'));
 
 		// Get the asset id from the database.
 		\$this->_db->setQuery(\$query);
@@ -144,19 +144,19 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 		// Check for valid ${4/(.+)/\L\1/g}.
 		if (trim(\$this->${4:title}) == '')
 		{
-			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}'));
+			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}'));
 			return false;
 		}
 
 		// Check for existing ${4/(.+)/\L\1/g}.
-		\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE ${4/(.+)/\L\1/g} = ' . \$this->_db->Quote(\$this->${4/(.+)/\L\1/g});
+		\$query = 'SELECT id FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE ${4/(.+)/\L\1/g} = ' . \$this->_db->quote(\$this->${4/(.+)/\L\1/g});
 		\$this->_db->setQuery(\$query);
 
 		\$xid = (int) \$this->_db->loadResult();
 
 		if (\$xid && \$xid != (int) \$this->id)
 		{
-			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}_EXISTS'));
+			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}_EXISTS'));
 			return false;
 		}
 
@@ -260,11 +260,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
 		}
 
 		// Verify that the alias is unique.
-		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
 
 		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
 		{
-			\$this->setError(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_UNIQUE_ALIAS'));
+			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_UNIQUE_ALIAS'));
 			return false;
 		}
 

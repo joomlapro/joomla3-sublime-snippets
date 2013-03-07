@@ -16,13 +16,13 @@ JHtml::_('formbehavior.chosen', 'select');
 		}
 	}
 </script>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1/(.+)/\L\1/g}-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1/(.+)/\L\1/g}-form" class="form-validate">
 	<div class="row-fluid">
 		<!-- Begin ${2:${1/(.+)/\u\1/g}s} -->
 		<div class="span10 form-horizontal">
 			<fieldset>
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#details" data-toggle="tab"><?php echo empty(\$this->item->id) ? JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NEW_${1/(.+)/\U\1/g}') : JText::sprintf('COM_${TM_PROJECT/(.+)/\U\1/g}_EDIT_${1/(.+)/\U\1/g}', \$this->item->id); ?></a></li>
+					<li class="active"><a href="#details" data-toggle="tab"><?php echo empty(\$this->item->id) ? JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NEW_${1/(.+)/\U\1/g}') : JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_EDIT_${1/(.+)/\U\1/g}', \$this->item->id); ?></a></li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="details">

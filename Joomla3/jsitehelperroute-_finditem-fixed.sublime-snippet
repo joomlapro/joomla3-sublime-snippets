@@ -19,7 +19,7 @@ protected static function _findItem(\$needles = null)
 	{
 		self::\$lookup = array();
 
-		\$component = JComponentHelper::getComponent('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$component = JComponentHelper::getComponent('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$items     = \$menus->getItems('component_id', \$component->id);
 
 		if (\$items)
@@ -68,7 +68,7 @@ protected static function _findItem(\$needles = null)
 	{
 		\$active = \$menus->getActive();
 
-		if (\$active && \$active->component == 'com_${TM_PROJECT/(.+)/\L\1/g}')
+		if (\$active && \$active->component == 'com_${TM_COMPONENT/(.+)/\L\1/g}')
 		{
 			return \$active->id;
 		}

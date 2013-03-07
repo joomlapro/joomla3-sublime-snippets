@@ -28,7 +28,7 @@ public function ${1:action}(\$pks, \$value = 0)
 		\$db = \$this->getDbo();
 
 		\$db->setQuery(
-			'UPDATE #__${TM_PROJECT/(.+)/\L\1/g}_${2:edit}' .
+			'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_${2:edit}' .
 			' SET ${1/(.+)/\L\1/g} = ' . (int) \$value .
 			' WHERE id IN (' . implode(', ', \$pks) . ')'
 		);

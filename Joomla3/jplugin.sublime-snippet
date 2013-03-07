@@ -2,11 +2,11 @@
 	<content><![CDATA[/**
  * ${2/(.+)/\u\1/g} ${1/(.+)/\u\1/g} plugin.
  *
- * @package     $TM_PROJECT
+ * @package     $TM_COMPONENT
  * @subpackage  ${1/(.+)/\u\1/g}.${2/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class Plg${1:Group}${2:Plugin} extends JPlugin
+class Plg${1:${TM_PLUGIN_GROUP/(.+)/\u\1/g}}${2:${TM_PLUGIN/(.+)/\u\1/g}} extends JPlugin
 {
 	/**
 	 * Constructor.

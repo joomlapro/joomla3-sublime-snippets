@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_PROJECT/(.+)/\u\1/g} Component Model for a ${1/(.+)/\u\1/g} record.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component Model for a ${1/(.+)/\u\1/g} record.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 {
 	/**
 	 * Model context string.
@@ -14,7 +14,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 	 * @access  protected
 	 * @var     string
 	 */
-	protected \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
+	protected \$_context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
 
 	/**
 	 * Method to auto-populate the model state.
@@ -41,7 +41,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 		// Get the current user object.
 		\$user = JFactory::getUser();
 
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_PROJECT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}')))
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
 			\$this->setState('filter.published', 1);
 			\$this->setState('filter.archived', 2);
@@ -67,7 +67,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 			}
 
 			// Get a level row instance.
-			\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_PROJECT/(.+)/\u\1/g}Table');
+			\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
 
 			// Attempt to load the row.
 			if (\$table->load(\$id))

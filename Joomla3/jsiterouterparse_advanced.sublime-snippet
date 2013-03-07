@@ -4,7 +4,7 @@ case '${1:plural}':
 	if (\$advanced)
 	{
 		\$db = JFactory::getDBO();
-		\$query = 'SELECT id FROM #__${TM_PROJECT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}} WHERE alias = ' . \$db->quote(\$segment);
+		\$query = 'SELECT id FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}} WHERE alias = ' . \$db->quote(\$segment);
 		\$db->setQuery(\$query);
 		\$nid = \$db->loadResult();
 	}

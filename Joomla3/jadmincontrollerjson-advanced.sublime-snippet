@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * ${1/(.+)/\u\1/g} JSON controller for ${TM_PROJECT/(.+)/\u\1/g} Component.
+ * ${1/(.+)/\u\1/g} JSON controller for ${TM_COMPONENT/(.+)/\u\1/g} Component.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller} extends JControllerLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Controller} extends JControllerLegacy
 {
 	/**
 	 * Method to find search query suggestions.
@@ -26,10 +26,10 @@ class ${TM_PROJECT/(.+)/\u\1/g}Controller${1:Controller} extends JControllerLega
 		\$return = array();
 
 		// Load the parameters.
-		\$params = JComponentHelper::getParams('com_${TM_PROJECT/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 
 		// Get the suggestions.
-		\$model  = \$this->getModel('${2:${1/(.+)/\u\1/g}}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+		\$model  = \$this->getModel('${2:${1/(.+)/\u\1/g}}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
 		\$model->setState('list.select', 'a.*');
 		\$model->setState('list.limit', 5);
 		\$model->setState('list.ordering', 'a.id');

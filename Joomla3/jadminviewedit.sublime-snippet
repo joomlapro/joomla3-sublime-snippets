@@ -2,11 +2,11 @@
 	<content><![CDATA[/**
  * View to edit a ${1/(.+)/\L\1/g}.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 {
 	protected \$form;
 
@@ -29,7 +29,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		\$this->form  = \$this->get('Form');
 		\$this->item  = \$this->get('Item');
 		\$this->state = \$this->get('State');
-		\$this->canDo = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions(\$this->state->get('filter.category_id'));
+		\$this->canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$this->state->get('filter.category_id'));
 
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))
@@ -61,24 +61,24 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		\$checkedOut = !(\$this->item->checked_out == 0 || \$this->item->checked_out == \$userId);
 
 		// Since we don't track these assets at the item level, use the category id.
-		\$canDo      = ${TM_PROJECT/(.+)/\u\1/g}Helper::getActions(\$this->item->catid, \$this->item->id);
+		\$canDo      = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$this->item->catid, \$this->item->id);
 
-		JToolbarHelper::title(\$isNew ? JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_NEW') : JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_EDIT'), '${1/(.+)/\L\1/g}');
+		JToolbarHelper::title(\$isNew ? JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_NEW') : JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_EDIT'), '${1/(.+)/\L\1/g}');
 
 		// If not checked out, can save the item.
-		if (!\$checkedOut && (\$canDo->get('core.edit') || (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create')))))
+		if (!\$checkedOut && (\$canDo->get('core.edit') || (count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create')))))
 		{
 			JToolbarHelper::apply('${1/(.+)/\L\1/g}.apply');
 			JToolbarHelper::save('${1/(.+)/\L\1/g}.save');
 		}
 
-		if (!\$checkedOut && (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create'))))
+		if (!\$checkedOut && (count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create'))))
 		{
 			JToolbarHelper::save2new('${1/(.+)/\L\1/g}.save2new');
 		}
 
 		// If an existing item, can save to a copy.
-		if (!\$isNew && (count(\$user->getAuthorisedCategories('com_${TM_PROJECT/(.+)/\L\1/g}', 'core.create')) > 0))
+		if (!\$isNew && (count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create')) > 0))
 		{
 			JToolbarHelper::save2copy('${1/(.+)/\L\1/g}.save2copy');
 		}

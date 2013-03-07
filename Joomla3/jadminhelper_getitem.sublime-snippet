@@ -16,7 +16,7 @@ public static function get${1:Item}(\$${3:id})
 
 	// Create the base select statement.
 	\$query->select('a.*');
-	\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${4:${1/(.+)/\L\1/g}}') . ' AS a');
+	\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${4:${1/(.+)/\L\1/g}}') . ' AS a');
 	\$query->where('a.${5:state} = 1');
 
 	// Set the query and load the result.

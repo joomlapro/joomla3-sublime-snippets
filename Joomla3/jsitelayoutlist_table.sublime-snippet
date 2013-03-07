@@ -27,7 +27,7 @@ if (!empty(\$this->items))
 	}
 }
 ?>
-<div class="${TM_PROJECT/(.+)/\L\1/g} ${1:singular}-list<?php echo \$this->pageclass_sfx; ?>">
+<div class="${TM_COMPONENT/(.+)/\L\1/g} ${1:singular}-list<?php echo \$this->pageclass_sfx; ?>">
 	<?php if (\$this->params->get('show_page_heading')): ?>
 		<div class="page-header">
 			<h1>
@@ -39,8 +39,8 @@ if (!empty(\$this->items))
 		<?php if (\$this->params->get('show_pagination_limit', 1)): ?>
 			<fieldset class="filters btn-toolbar">
 				<div class="filter-search btn-group pull-left">
-					<label for="filter-search" class="filter-search-lbl element-invisible"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?></label>
-					<input type="text" name="filter-search" id="filter-search" placeholder="<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" value="<?php echo \$this->escape(\$this->state->get('list.filter')); ?>" title="<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" />
+					<label for="filter-search" class="filter-search-lbl element-invisible"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?></label>
+					<input type="text" name="filter-search" id="filter-search" placeholder="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" value="<?php echo \$this->escape(\$this->state->get('list.filter')); ?>" title="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEARCH_IN_${3/(.+)/\U\1/g}'); ?>" />
 				</div>
 				<div class="btn-group pull-left">
 					<button class="btn hasTooltip" type="submit" title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
@@ -56,10 +56,10 @@ if (!empty(\$this->items))
 			<thead>
 				<tr>
 					<th class="title">
-						<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}', 'a.${3:title}', \$listDirn, \$listOrder); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}', 'a.${3:title}', \$listDirn, \$listOrder); ?>
 					</th>
 					<th width="5%" class="nowrap hidden-phone">
-						<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_CREATED', 'a.created', \$listDirn, \$listOrder); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_CREATED', 'a.created', \$listDirn, \$listOrder); ?>
 					</th>
 					<th width="20%" class="nowrap hidden-phone">
 						<?php echo JHtml::_('grid.sort', 'JAUTHOR', 'author', \$listDirn, \$listOrder); ?>
@@ -69,7 +69,7 @@ if (!empty(\$this->items))
 					</th>
 					<?php if (\$isEditable): ?>
 						<th width="5%" class="nowrap center">
-							<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_EDIT_ITEM'); ?>
+							<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_EDIT_ITEM'); ?>
 						</th>
 					<?php endif; ?>
 				</tr>
@@ -84,7 +84,7 @@ if (!empty(\$this->items))
 					<?php if (\$this->params->get('show_no_${2:${1/(.+)/\L\1/g}s}', 1)): ?>
 						<tr>
 							<td colspan="5">
-								<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_NO_${2/(.+)/\U\1/g}'); ?>
+								<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_${2/(.+)/\U\1/g}'); ?>
 							</td>
 						</tr>
 					<?php endif; ?>
@@ -97,7 +97,7 @@ if (!empty(\$this->items))
 						<?php endif; ?>
 							<td class="nowrap">
 								<?php if (in_array(\$item->access, \$this->user->getAuthorisedViewLevels())): ?>
-									<a href="<?php echo JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug, \$item->catid)); ?>"><?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?></a>
+									<a href="<?php echo JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug, \$item->catid)); ?>"><?php echo \$this->escape(\$item->${3/(.+)/\L\1/g}); ?></a>
 								<?php else: ?>
 									<?php
 									echo \$this->escape(\$item->${3/(.+)/\L\1/g}) . ' : ';
@@ -106,11 +106,11 @@ if (!empty(\$this->items))
 									\$active    = \$menu->getActive();
 									\$itemId    = \$active->id;
 									\$link      = JRoute::_('index.php?option=com_users&view=login&Itemid=' . \$itemId);
-									\$returnURL = JRoute::_(${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug));
+									\$returnURL = JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug));
 									\$fullURL   = new JURI(\$link);
 									\$fullURL->setVar('return', base64_encode(\$returnURL));
 									?>
-									<a href="<?php echo \$fullURL; ?>" class="register"><?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_REGISTER_TO_READ_MORE'); ?></a>
+									<a href="<?php echo \$fullURL; ?>" class="register"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_REGISTER_TO_READ_MORE'); ?></a>
 								<?php endif; ?>
 								<?php if (\$item->state == 0): ?>
 									<span class="label label-warning">
@@ -129,7 +129,7 @@ if (!empty(\$this->items))
 									<?php if (!empty(\$item->contactid) && \$this->params->get('link_author') == true):?>
 										<?php echo JHtml::_('link', JRoute::_('index.php?option=com_contact&view=contact&id=' . \$item->contactid), \$author); ?>
 									<?php else: ?>
-										<?php echo JText::sprintf('COM_${TM_PROJECT/(.+)/\U\1/g}_WRITTEN_BY', \$author); ?>
+										<?php echo JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_WRITTEN_BY', \$author); ?>
 									<?php endif; ?>
 								<?php endif; ?>
 							</td>

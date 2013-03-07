@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
-<metafile version="3.0" client="${1:site}">
-	<name>${2:${TM_PROJECT/(.+)/\u\1/g}}</name>
+<metafile version="3.0" client="${1:site}" method="upgrade">
+	<name>${2:${TM_COMPONENT/(.+)/\u\1/g}}</name>
 	<tag>${3:$TM_LANGUAGE}</tag>
 	<version>$TM_MANIFEST_VERSION</version>
 	<creationDate>${4:$TM_MONTH} $TM_YEAR</creationDate>

@@ -8,7 +8,7 @@ if (\$app->isSite())
 }
 
 // Load dependent classes.
-require_once JPATH_ROOT . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
+require_once JPATH_ROOT . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/route.php';
 
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
@@ -21,20 +21,20 @@ JHtml::_('formbehavior.chosen', 'select');
 \$listOrder = \$this->escape(\$this->state->get('list.ordering'));
 \$listDirn  = \$this->escape(\$this->state->get('list.direction'));
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&view=${1:plural}&layout=modal&tmpl=component&function=' . \$function . '&' . JSession::getFormToken() . '=1'); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
+<form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1:plural}&layout=modal&tmpl=component&function=' . \$function . '&' . JSession::getFormToken() . '=1'); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
 	<fieldset class="filter clearfix">
 		<div class="btn-toolbar">
 			<div class="btn-group pull-left">
 				<label for="filter_search">
 					<?php echo JText::_('JSEARCH_FILTER_LABEL'); ?>
 				</label>
-				<input type="text" name="filter_search" id="filter_search" value="<?php echo \$this->escape(\$this->state->get('filter.search')); ?>" size="30" title="<?php echo JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_FILTER_SEARCH_DESC'); ?>" />
+				<input type="text" name="filter_search" id="filter_search" value="<?php echo \$this->escape(\$this->state->get('filter.search')); ?>" size="30" title="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FILTER_SEARCH_DESC'); ?>" />
 			</div>
 			<div class="btn-group pull-left">
 				<button type="submit" class="btn hasTooltip" data-placement="bottom" title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
 				<button type="button" class="btn hasTooltip" data-placement="bottom" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
 			</div>
-			<input onclick="if (window.parent) window.parent.<?php echo \$this->escape(\$function); ?>('0', '<?php echo \$this->escape(addslashes(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SELECT_AN_${2/(.+)/\U\1/g}'))); ?>');" class="btn" type="button" value="<?php echo JText::_('JNONE'); ?>" />
+			<input onclick="if (window.parent) window.parent.<?php echo \$this->escape(\$function); ?>('0', '<?php echo \$this->escape(addslashes(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_AN_${2/(.+)/\U\1/g}'))); ?>');" class="btn" type="button" value="<?php echo JText::_('JNONE'); ?>" />
 			<div class="clearfix"></div>
 		</div>
 		<hr class="hr-condensed" />
@@ -50,7 +50,7 @@ JHtml::_('formbehavior.chosen', 'select');
 		<thead>
 			<tr>
 				<th class="title">
-					<?php echo JHtml::_('grid.sort', 'COM_${TM_PROJECT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}', 'a.${3:title}', \$listDirn, \$listOrder); ?>
+					<?php echo JHtml::_('grid.sort', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}', 'a.${3:title}', \$listDirn, \$listOrder); ?>
 				</th>
 				<th width="5%" class="center nowrap">
 					<?php echo JHtml::_('grid.sort', 'JDATE', 'a.created', \$listDirn, \$listOrder); ?>

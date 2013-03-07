@@ -23,7 +23,7 @@ JHtml::_('formbehavior.chosen', 'select');
 		}
 	}
 </script>
-<form action="<?php echo JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1/(.+)/\L\1/g}-form" class="form-validate form-horizontal" enctype="multipart/form-data">
+<form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1/(.+)/\L\1/g}-form" class="form-validate form-horizontal" enctype="multipart/form-data">
 	<fieldset>
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#details" data-toggle="tab"><?php echo JText::_('COM_USERS_USER_ACCOUNT_DETAILS'); ?></a></li>

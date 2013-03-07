@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Include dependancies.
-JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/models', '${TM_PROJECT/(.+)/\u\1/g}Model');
+JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models', '${TM_COMPONENT/(.+)/\u\1/g}Model');
 
 /**
  * Helper for mod_${TM_MODULE/(.+)/\L\1/g}.
@@ -26,7 +26,7 @@ abstract class Mod${1:${TM_MODULE/(\_+)//g}}Helper
 		\$user = JFactory::getUser();
 
 		// Get an instance of the generic ${2/(.+)/\L\1/g} model.
-		\$model = JModelLegacy::getInstance('${2:Plural}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+		\$model = JModelLegacy::getInstance('${2:Plural}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
 
 		// Set List SELECT.
 		\$model->setState('list.select', 'a.id, a.${3:title}, a.checked_out, a.checked_out_time' .
@@ -85,9 +85,9 @@ abstract class Mod${1:${TM_MODULE/(\_+)//g}}Helper
 		// Set the links.
 		foreach (\$items as &\$item)
 		{
-			if (\$user->authorise('core.edit', 'com_${TM_PROJECT/(.+)/\L\1/g}.${4:${2/(.+)(s\b)/\L\1/g}}.' . \$item->id))
+			if (\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${4:${2/(.+)(s\b)/\L\1/g}}.' . \$item->id))
 			{
-				\$item->link = JRoute::_('index.php?option=com_${TM_PROJECT/(.+)/\L\1/g}&task=${4/(.+)/\L\1/g}.edit&id=' . \$item->id);
+				\$item->link = JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${4/(.+)/\L\1/g}.edit&id=' . \$item->id);
 			}
 			else
 			{
@@ -116,7 +116,7 @@ abstract class Mod${1:${TM_MODULE/(\_+)//g}}Helper
 
 		if (\$catid)
 		{
-			\$category = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}')->get(\$catid);
+			\$category = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}')->get(\$catid);
 
 			if (\$category)
 			{

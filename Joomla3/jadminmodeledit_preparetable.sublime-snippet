@@ -30,7 +30,7 @@ protected function prepareTable(\$table)
 		if (empty(\$table->ordering))
 		{
 			\$db = JFactory::getDbo();
-			\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_PROJECT/(.+)/\L\1/g}${2:_list}');
+			\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:_list}');
 			\$max = \$db->loadResult();
 
 			\$table->ordering = \$max + 1;

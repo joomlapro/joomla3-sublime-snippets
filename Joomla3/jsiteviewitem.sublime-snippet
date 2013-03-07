@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML ${1/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\u\1/g} component.
+ * HTML ${1/(.+)/\u\1/g} View class for the ${TM_COMPONENT/(.+)/\u\1/g} component.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 {
 	protected \$item;
 
@@ -157,7 +157,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		}
 		else
 		{
-			\$this->params->def('page_heading', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
+			\$this->params->def('page_heading', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
 		}
 
 		\$title = \$this->params->get('page_title', '');
@@ -165,7 +165,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		\$id = (int) @\$menu->query['id'];
 
 		// If the menu item does not concern this ${1/(.+)/\L\1/g}.
-		if (\$menu && (\$menu->query['option'] != 'com_${TM_PROJECT/(.+)/\L\1/g}' || \$menu->query['view'] != '${1/(.+)/\L\1/g}' || \$id != \$this->item->id))
+		if (\$menu && (\$menu->query['option'] != 'com_${TM_COMPONENT/(.+)/\L\1/g}' || \$menu->query['view'] != '${1/(.+)/\L\1/g}' || \$id != \$this->item->id))
 		{
 			// If this is not a single ${1/(.+)/\L\1/g} menu item, set the page title to the ${1/(.+)/\L\1/g} title.
 			if (\$this->item->${2:title})
@@ -174,11 +174,11 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 			}
 
 			\$path = array(array('title' => \$this->item->${2/(.+)/\L\1/g}, 'link' => ''));
-			\$category = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}')->get(\$this->item->catid);
+			\$category = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}')->get(\$this->item->catid);
 
-			while (\$category && (\$menu->query['option'] != 'com_${TM_PROJECT/(.+)/\L\1/g}' || \$menu->query['view'] == '${1/(.+)/\L\1/g}' || \$id != \$category->id) && \$category->id > 1)
+			while (\$category && (\$menu->query['option'] != 'com_${TM_COMPONENT/(.+)/\L\1/g}' || \$menu->query['view'] == '${1/(.+)/\L\1/g}' || \$id != \$category->id) && \$category->id > 1)
 			{
-				\$path[] = array('title' => \$category->title, 'link' => ${TM_PROJECT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$category->id));
+				\$path[] = array('title' => \$category->title, 'link' => ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$category->id));
 				\$category = \$category->getParent();
 			}
 

@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * HTML ${1/(.+)/\u\1/g} View class for the ${TM_PROJECT/(.+)/\u\1/g} component.
+ * HTML ${1/(.+)/\u\1/g} View class for the ${TM_COMPONENT/(.+)/\u\1/g} component.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 {
 	protected \$item;
 
@@ -155,7 +155,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		}
 		else
 		{
-			\$this->params->def('page_heading', JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
+			\$this->params->def('page_heading', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
 		}
 
 		\$title = \$this->params->get('page_title', '');

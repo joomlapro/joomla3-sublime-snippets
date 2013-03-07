@@ -3,7 +3,7 @@
 require_once JPATH_COMPONENT . '/helpers/route.php';
 
 // Execute the task.
-\$controller = JControllerLegacy::getInstance('${TM_PROJECT/(.+)/\u\1/g}');
+\$controller = JControllerLegacy::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
 \$controller->execute(JFactory::getApplication()->input->get('task'));
 \$controller->redirect();
 

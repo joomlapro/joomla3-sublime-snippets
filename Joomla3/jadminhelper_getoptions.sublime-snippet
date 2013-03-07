@@ -15,7 +15,7 @@ public static function get${1:Field}Options()
 	\$query = \$db->getQuery(true);
 
 	\$query->select('a.id AS value, a.${2:title} AS text');
-	\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}s}') . ' AS a');
+	\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}s}') . ' AS a');
 	\$query->order('a.${4:ordering}');
 
 	// Get the options.

@@ -3,7 +3,7 @@
 if (\$canDo->get('core.edit'))
 {
 	JHtml::_('bootstrap.modal', 'collapseModal');
-	\$title = JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_TOOLBAR_${2:BUTTON}');
+	\$title = JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_TOOLBAR_${2:BUTTON}');
 	\$dhtml = "<button data-toggle=\"modal\" data-target=\"#collapseModal\" class=\"btn btn-small\">
 				<i class=\"icon-${3:user}\" title=\"\$title\"></i>
 				\$title</button>";

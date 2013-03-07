@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
-<extension version="$TM_VERSION" type="template" client="site">
+<extension version="$TM_VERSION" type="template" client="site" method="upgrade">
 	<name>${1:${TM_TEMPLATE/(.+)/\L\1/g}}</name>
 	<version>$TM_VERSION</version>
 	<creationDate>${2:${TM_MONTH/(.+)/\u\1/g}} $TM_YEAR</creationDate>

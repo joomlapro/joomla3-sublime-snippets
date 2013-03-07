@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[; VALIDATOR
 
-${1:COM}_${2:${TM_PROJECT/(.+)/\U\1/g}}_VALIDATOR_MESSAGE_REQUIRED="Este campo é requerido."
+${1:COM}_${2:${TM_COMPONENT/(.+)/\U\1/g}}_VALIDATOR_MESSAGE_REQUIRED="Este campo é requerido."
 ${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_REMOTE="Por favor, corrija este campo."
 ${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_EMAIL="Por favor, forneça um endereço de e-mail válido."
 ${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_URL="Por favor, forneça uma URL válida."

@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Get an instance of the generic ${1/(.+)/\L\1/g} model.
-\$model = JModelLegacy::getInstance('${1:Plural}', '${TM_PROJECT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+\$model = JModelLegacy::getInstance('${1:Plural}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
 \$model->setState('list.select', 'a.*');
 \$model->setState('list.limit', 5);
 \$model->setState('list.ordering', 'a.id');

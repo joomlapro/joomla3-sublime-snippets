@@ -1,26 +1,26 @@
 <snippet>
 	<content><![CDATA[/**
- * This models supports retrieving lists of ${1:${TM_PROJECT/(.+)(s\b)/\L\1/g}} categories.
+ * This models supports retrieving lists of ${1:${TM_COMPONENT/(.+)(s\b)/\L\1/g}} categories.
  *
- * @package     ${TM_PROJECT/(.+)/\u\1/g}
- * @subpackage  com_${TM_PROJECT/(.+)/\L\1/g}
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_PROJECT/(.+)/\u\1/g}ModelCategories extends JModelLegacy
+class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategories extends JModelLegacy
 {
 	/**
 	 * Model context string.
 	 *
 	 * @var     string
 	 */
-	public \$_context = 'com_${TM_PROJECT/(.+)/\L\1/g}.categories';
+	public \$_context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.categories';
 
 	/**
 	 * The category context (allows other extensions to derived from this model).
 	 *
 	 * @var     string
 	 */
-	protected \$_extension = 'com_${TM_PROJECT/(.+)/\L\1/g}';
+	protected \$_extension = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
 
 	private \$_parent = null;
 
@@ -100,7 +100,7 @@ class ${TM_PROJECT/(.+)/\u\1/g}ModelCategories extends JModelLegacy
 
 			\$options = array();
 			\$options['countItems'] = \$params->get('show_cat_num_links', 1) || !\$params->get('show_empty_categories_cat', 0);
-			\$categories = JCategories::getInstance('${TM_PROJECT/(.+)/\u\1/g}', \$options);
+			\$categories = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}', \$options);
 			\$this->_parent = \$categories->get(\$this->getState('filter.parentId', 'root'));
 
 			if (is_object(\$this->_parent))

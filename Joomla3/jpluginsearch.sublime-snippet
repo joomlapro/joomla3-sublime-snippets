@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[require_once JPATH_SITE . '/components/com_${TM_PROJECT/(.+)/\L\1/g}/helpers/route.php';
+	<content><![CDATA[require_once JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/route.php';
 
 /**
  * ${1/(.+)/\u\1/g} Search plugin.
@@ -8,7 +8,7 @@
  * @subpackage  Search.${1/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
+class PlgSearch${1:${TM_COMPONENT/(.+)/\u\1/g}} extends JPlugin
 {
 	/**
 	 * Constructor
@@ -35,7 +35,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 	public function onContentSearchAreas()
 	{
 		static \$areas = array(
-			'${1/(.+)/\L\1/g}' => 'PLG_SEARCH_${TM_PROJECT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}'
+			'${1/(.+)/\L\1/g}' => 'PLG_SEARCH_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}'
 		);
 
 		return \$areas;
@@ -95,7 +95,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			return array();
 		}
 
-		\$section = JText::_('PLG_SEARCH_${TM_PROJECT/(.+)/\U\1/g}');
+		\$section = JText::_('PLG_SEARCH_${TM_COMPONENT/(.+)/\U\1/g}');
 		\$wheres	= array();
 
 		switch (\$phrase)
@@ -176,7 +176,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			\$query->select('a.${3/(.+)/\L\1/g} AS title, a.description AS text, a.created AS created, '
 				. \$case_when . ', ' . \$case_when1 . ', '
 				. \$query->concatenate(array(\$db->quote(\$section), "c.title"), " / ") . ' AS section, \'2\' AS browsernav');
-			\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
+			\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
 			\$query->innerJoin('#__categories AS c ON c.id = a.catid');
 			\$query->where('(' . \$where . ')' . ' AND a.state in (' . implode(', ', \$state) . ') AND c.published=1 AND c.access IN (' . \$groups . ')');
 			\$query->order(\$order);
@@ -199,7 +199,7 @@ class PlgSearch${1:${TM_PROJECT/(.+)/\u\1/g}} extends JPlugin
 			{
 				foreach (\$rows as \$key => \$row)
 				{
-					\$rows[\$key]->href = ${TM_PROJECT/(.+)/\u\1/g}HelperRoute::get${5:${2/(.+)(s\b)/\u\1/g}}Route(\$row->slug, \$row->catslug);
+					\$rows[\$key]->href = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${5:${2/(.+)(s\b)/\u\1/g}}Route(\$row->slug, \$row->catslug);
 				}
 
 				foreach (\$rows as \$key => \$${5/(.+)/\L\1/g})

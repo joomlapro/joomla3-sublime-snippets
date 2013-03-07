@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[JHtmlSidebar::addEntry(
-	JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_SUBMENU_CATEGORIES${1/(\.+)/_/g}'),
-	'index.php?option=com_categories&extension=com_${TM_PROJECT/(.+)/\L\1/g}$1',
+	JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_CATEGORIES${1/(\.+)/_/g}'),
+	'index.php?option=com_categories&extension=com_${TM_COMPONENT/(.+)/\L\1/g}$1',
 	\$vName == 'categories${1/(.+)/\L\1/g}'
 );]]></content>
 	<tabTrigger>jhtmlsidebar-addentry-categories</tabTrigger>

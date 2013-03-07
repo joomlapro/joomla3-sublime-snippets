@@ -25,7 +25,7 @@ public function &getItem(\$pk = null)
 			\$query = \$db->getQuery(true);
 
 			\$query->select(\$this->getState('item.select', 'a.*'));
-			\$query->from(\$db->quoteName('#__${TM_PROJECT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}') . ' AS a');
+			\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}') . ' AS a');
 
 			// Join on category table.
 			\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
@@ -63,13 +63,13 @@ public function &getItem(\$pk = null)
 
 			if (empty(\$data))
 			{
-				throw new Exception(JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
+				throw new Exception(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
 			}
 
 			// Check for published state if filter set.
 			if (((is_numeric(\$published)) || (is_numeric(\$archived))) && ((\$data->state != \$published) && (\$data->state != \$archived)))
 			{
-				JError::raiseError(404, JText::_('COM_${TM_PROJECT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
+				JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
 			}
 
 			// Convert parameter fields to objects.
@@ -89,7 +89,7 @@ public function &getItem(\$pk = null)
 			if (!\$user->get('guest'))
 			{
 				\$userId = \$user->get('id');
-				\$asset  = 'com_${TM_PROJECT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
+				\$asset  = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
 
 				// Check general edit permission first.
 				if (\$user->authorise('core.edit', \$asset))

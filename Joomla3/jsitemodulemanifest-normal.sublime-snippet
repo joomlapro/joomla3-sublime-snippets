@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<field name="catid" type="category" extension="com_${TM_PROJECT/(.+)/\L\1/g}" multiple="true" default="" size="10" label="JCATEGORY" description="MOD_${1:${TM_MODULE/(.+)/\U\1/g}}_FIELD_CATEGORY_DESC">
+	<content><![CDATA[<field name="catid" type="category" extension="com_${TM_COMPONENT/(.+)/\L\1/g}" multiple="true" default="" size="10" label="JCATEGORY" description="MOD_${1:${TM_MODULE/(.+)/\U\1/g}}_FIELD_CATEGORY_DESC">
 	<option value="">JOPTION_ALL_CATEGORIES</option>
 </field>
 <field name="image" type="radio" class="btn-group" default="0" label="MOD_${1/(.+)/\U\1/g}_FIELD_IMAGES_LABEL" description="MOD_${1/(.+)/\U\1/g}_FIELD_IMAGES_DESC">

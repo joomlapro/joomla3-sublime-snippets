@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[ALTER TABLE ${1:$TM_PREFIX}_${TM_PROJECT/(.+)/\L\1/g}$2
+	<content><![CDATA[ALTER TABLE ${1:$TM_PREFIX}_${TM_COMPONENT/(.+)/\L\1/g}$2
 ADD `address_zipcode` char(8) NOT NULL DEFAULT '',
 ADD `address_street` varchar(255) NOT NULL DEFAULT '',
 ADD `address_district` varchar(40) NOT NULL DEFAULT '',
