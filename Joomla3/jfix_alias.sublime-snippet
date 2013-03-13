@@ -1,0 +1,47 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$db = JFactory::getDbo();
+\$query = \$db->getQuery(true);
+
+// Create the base select statement.
+\$query->select('a.id, a.${1:title}');
+\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2:table}') . ' AS a');
+
+// Set the query and load the result.
+\$db->setQuery(\$query);
+\$items = \$db->loadObjectList();
+
+// Check for a database error.
+if (\$db->getErrorNum())
+{
+	JError::raiseWarning(500, \$db->getErrorMsg());
+	return null;
+}
+
+foreach (\$items as \$item)
+{
+	\$query->clear();
+
+	// Create the base update statement.
+	\$query->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}'));
+	\$query->set(\$db->quoteName('alias') . ' = ' . \$db->quote(JFilterOutput::stringURLSafe(\$item->${1/(.+)/\L\1/g})));
+	\$query->where(\$db->quoteName('id'). ' = ' . \$db->quote(\$item->id));
+
+	// Set the query and execute the update.
+	\$db->setQuery(\$query);
+
+	try
+	{
+		\$db->execute();
+	}
+	catch (RuntimeException \$e)
+	{
+		JError::raiseWarning(500, \$e->getMessage());
+		return false;
+	}
+}
+
+]]></content>
+	<tabTrigger>jfix_alias</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

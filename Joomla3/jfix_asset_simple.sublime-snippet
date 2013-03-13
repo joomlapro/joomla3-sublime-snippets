@@ -1,0 +1,43 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$db = JFactory::getDbo();
+\$query = \$db->getQuery(true);
+
+// Create the base select statement.
+\$query->select('a.id, a.${5/(.+)/\L\1/g}');
+\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1:table}') . ' AS a');
+\$query->where(\$db->quoteName('a.${2:state}') . ' = ' . \$db->quote('${3:1}'));
+
+// Set the query and load the result.
+\$db->setQuery(\$query);
+\$items = \$db->loadObjectList();
+
+// Check for a database error.
+if (\$db->getErrorNum())
+{
+	JError::raiseWarning(500, \$db->getErrorMsg());
+	return null;
+}
+
+foreach (\$items as \$item)
+{
+	// Get an instance of the asset table.
+	\$table = JTable::getInstance('Asset');
+	\$table->title = \$item->${5:title};
+	\$table->name = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${4:singular}.' . \$item->id;
+
+	// Add the rules.
+	\$table->rules = '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}';
+
+	// Store the row.
+	if (!\$table->store())
+	{
+		\$this->setError(\$table->getError());
+		return false;
+	}
+}
+
+]]></content>
+	<tabTrigger>jfix_asset_simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
