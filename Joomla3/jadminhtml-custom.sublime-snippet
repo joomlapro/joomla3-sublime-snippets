@@ -6,12 +6,13 @@
  * @param   int   \$i          The row index.
  * @param   bool  \$canChange  Whether the value can be changed or not.
  *
- * @return  string  The anchor tag to toggle ${3/(.+)/\L\1/g}/${4/(.+)/\L\1/g} \${TM_COMPONENT/(.+)/\L\1/g}.
+ * @return  string  The anchor tag to toggle ${3/(.+)/\L\1/g}/${4/(.+)/\L\1/g} ${TM_COMPONENT/(.+)/\L\1/g}.
  *
  * @since   $TM_VERSION
  */
 public static function ${1:action}(\$value = 0, \$i, \$canChange = true)
 {
+	// Load the tooltip bootstrap script.
 	JHtml::_('bootstrap.tooltip');
 
 	// Array of image, task, title, action.

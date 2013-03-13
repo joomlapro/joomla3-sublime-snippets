@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <extension type="module" version="$TM_VERSION" client="site" method="upgrade">
 	<name>mod_${1:${TM_MODULE/(.+)/\L\1/g}}</name>
 	<author>$TM_FULLNAME</author>

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <extension version="$TM_VERSION" type="plugin" group="system" method="upgrade">
 	<name>plg_system_${1:${TM_PLUGIN/(.+)/\L\1/g}}</name>
 	<author>$TM_FULLNAME</author>

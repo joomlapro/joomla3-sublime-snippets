@@ -1,10 +1,13 @@
 <snippet>
-	<content><![CDATA[// Include dependancies.
+	<content><![CDATA[// Get the input.
+\$input = JFactory::getApplication()->input;
+
+// Include dependancies.
 require_once JPATH_COMPONENT . '/helpers/route.php';
 
 // Execute the task.
 \$controller = JControllerLegacy::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
-\$controller->execute(JFactory::getApplication()->input->get('task'));
+\$controller->execute(\$input->get('task'));
 \$controller->redirect();
 
 ]]></content>

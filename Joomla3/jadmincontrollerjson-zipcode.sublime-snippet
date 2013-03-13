@@ -13,7 +13,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Controller} extends JControllerLe
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
-	 * @see     JController
+	 * @see     JControllerLegacy
 	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())

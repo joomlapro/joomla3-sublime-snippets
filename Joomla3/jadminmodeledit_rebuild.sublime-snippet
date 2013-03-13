@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method rebuild the entire nested set tree.
+ *
+ * @return  boolean  False on failure or error, true otherwise.
+ *
+ * @since   $TM_VERSION
+ */
+public function rebuild()
+{
+	// Get an instance of the table object.
+	\$table = \$this->getTable();
+
+	if (!\$table->rebuild())
+	{
+		\$this->setError(\$table->getError());
+		return false;
+	}
+
+	// Clear the cache.
+	\$this->cleanCache();
+
+	return true;
+}]]></content>
+	<tabTrigger>jadminmodeledit_rebuild</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

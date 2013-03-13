@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8" ?>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <metafile version="3.0" client="${1:site}" method="upgrade">
 	<name>${2:${TM_COMPONENT/(.+)/\u\1/g}}</name>
 	<tag>${3:$TM_LANGUAGE}</tag>
