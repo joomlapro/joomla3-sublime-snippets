@@ -4,9 +4,9 @@
 \$query = \$db->getQuery(true);
 
 // Create the base select statement.
-\$query->select('a.id, a.${5/(.+)/\L\1/g}');
-\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1:table}') . ' AS a');
-\$query->where(\$db->quoteName('a.${2:state}') . ' = ' . \$db->quote('${3:1}'));
+\$query->select('a.id, a.${1:title}');
+\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2:table}') . ' AS a');
+\$query->where(\$db->quoteName('a.${3:column}') . ' = ' . \$db->quote('${4:value}'));
 
 // Set the query and load the result.
 \$db->setQuery(\$query);
@@ -23,8 +23,8 @@ foreach (\$items as \$item)
 {
 	// Get an instance of the asset table.
 	\$table = JTable::getInstance('Asset');
-	\$table->title = \$item->${5:title};
-	\$table->name = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${4:singular}.' . \$item->id;
+	\$table->title = \$item->${1/(.+)/\L\1/g};
+	\$table->name = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${5:singular}.' . \$item->id;
 
 	// Add the rules.
 	\$table->rules = '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}';
@@ -33,6 +33,26 @@ foreach (\$items as \$item)
 	if (!\$table->store())
 	{
 		\$this->setError(\$table->getError());
+		return false;
+	}
+
+	\$query->clear();
+
+	// Create the base update statement.
+	\$query->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}'));
+	\$query->set(\$db->quoteName('asset_id') . ' = ' . \$db->quote((int) \$table->id));
+	\$query->where(\$db->quoteName('id') . ' = ' . \$db->quote((int) \$item->id));
+
+	// Set the query and execute the update.
+	\$db->setQuery(\$query);
+
+	try
+	{
+		\$db->execute();
+	}
+	catch (RuntimeException \$e)
+	{
+		JError::raiseWarning(500, \$e->getMessage());
 		return false;
 	}
 }
