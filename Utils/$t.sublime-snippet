@@ -1,5 +1,5 @@
 <snippet>
 	<content><![CDATA[\${TM_TEMPLATE/(.+)/\\${2:l|L|u|U}\1/g}]]></content>
 	<tabTrigger>$t</tabTrigger>
-	<!-- <scope>text.plain,text.xml</scope> -->
+	<!-- <scope>source.python</scope> -->
 </snippet>

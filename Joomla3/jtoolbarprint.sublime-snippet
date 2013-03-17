@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[// Add a print button.
+\$title = JText::_('COM_CONDOS_TOOLBAR_PRINT');
+\$link  = "index.php?option=com_condos&view=report&layout=print&tmpl=component&id=" . (int) \$this->item->id;
+\$dhtml = "<a rel=\"nofollow\" onclick=\"window.open(this.href,'win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;\" title=\"\$title\" href=\"\$link\" class=\"btn btn-small\">
+			<i class=\"icon-print\"></i> \$title</a>";
+\$toolbar->appendButton('Custom', \$dhtml, 'batch');]]></content>
+	<tabTrigger>jtoolbarprint</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

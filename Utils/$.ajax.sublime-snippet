@@ -13,4 +13,5 @@
 	}
 });]]></content>
 	<tabTrigger>$.ajax</tabTrigger>
+	<!-- <scope>source.python</scope> -->
 </snippet>

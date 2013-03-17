@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[\$query->concatenate(array('$1', '$2'), '$3') . ' AS $4')]]></content>
+	<content><![CDATA[\$query->concatenate(array('$1', '$2'), '$3') . ' AS $4']]></content>
 	<tabTrigger>jquery_concatenate</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

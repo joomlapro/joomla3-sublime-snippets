@@ -1,14 +1,25 @@
 <snippet>
-	<content><![CDATA[// Build the query for the ${1:plural} list.
-\$db = JFactory::getDBO();
-\$db->setQuery(
-	'SELECT ${1:title}' .
-	' FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${1:table}' .
-	' WHERE ${1:id} = ' . (int) \$this->id
-);
+	<content><![CDATA[// Initialiase variables.
+\$db = JFactory::getDbo();
+// \$db = \$this->getDbo();
+\$query = \$db->getQuery(true);
 
-\$result = \$db->loadResult();
-]]></content>
+// Create the base select statement.
+\$query->select('*');
+\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1:table}'));
+\$query->where(\$db->quoteName('state') . ' = ' . \$db->quote('1'));
+\$query->order(\$db->quoteName('ordering') . ' ASC');
+
+// Set the query and load the result.
+\$db->setQuery(\$query);
+\$result = \$db->loadObjectList();
+
+// Check for a database error.
+if (\$db->getErrorNum())
+{
+	JError::raiseWarning(500, \$db->getErrorMsg());
+	return null;
+}]]></content>
 	<tabTrigger>jdbo-simple</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
