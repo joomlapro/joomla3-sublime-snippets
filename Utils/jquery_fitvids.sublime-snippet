@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[// fitVids.
-if (\$.fn.fitVids) {
-	\$('${1:.class}').fitVids();
-}]]></content>
-	<tabTrigger>jquery_fitvids</tabTrigger>
-	<scope>source.js</scope>
-</snippet>

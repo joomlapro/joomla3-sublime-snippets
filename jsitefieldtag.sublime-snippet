@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:tags}" type="tag" class="inputbox span12 small" multiple="true" label="JTAG" description="JTAG_DESC" />]]></content>
+	<tabTrigger>jsitefieldtag</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

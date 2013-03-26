@@ -1,0 +1,715 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} model.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:User} extends JModelAdmin
+{
+	/**
+	 * Returns a reference to the a Table object, always creating it.
+	 *
+	 * @param   string  \$type    The table type to instantiate.
+	 * @param   string  \$prefix  A prefix for the table class name. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+	 *
+	 * @return  JTable  A database object.
+	 *
+	 * @since   $TM_VERSION
+	*/
+	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
+	{
+		\$table = JTable::getInstance(\$type, \$prefix, \$config);
+
+		return \$table;
+	}
+
+	/**
+	 * Method to get a single record.
+	 *
+	 * @param   integer  \$pk  The id of the primary key.
+	 *
+	 * @return  mixed  Object on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getItem(\$pk = null)
+	{
+		// Initialiase variables.
+		\$result = parent::getItem(\$pk);
+
+		\$result->tags = new JTags;
+		\$result->tags->getTagIds(\$result->id, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}');
+
+		// Get the dispatcher and load the ${2:${1/(.+)/\L\1/g}s} plugins.
+		\$dispatcher = JEventDispatcher::getInstance();
+		JPluginHelper::importPlugin('user');
+
+		// Trigger the data preparation event.
+		\$results = \$dispatcher->trigger('onContentPrepareData', array('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$result));
+
+		return \$result;
+	}
+
+	/**
+	 * Method to get the record form.
+	 *
+	 * @param   array    \$data      An optional array of data for the form to interogate.
+	 * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not.
+	 *
+	 * @return  mixed  A JForm object on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getForm(\$data = array(), \$loadData = true)
+	{
+		// Initialiase variables.
+		\$app          = JFactory::getApplication();
+		\$plugin       = JPluginHelper::getPlugin('user', 'joomla');
+		\$pluginParams = new JRegistry(\$plugin->params);
+
+		// Get the form.
+		\$form = \$this->loadForm('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+
+		if (empty(\$form))
+		{
+			return false;
+		}
+
+		// Passwords fields are required when mail to ${1/(.+)/\L\1/g} is set to No in joomla user plugin.
+		\$${1/(.+)/\L\1/g}Id = \$form->getValue('id');
+
+		if (\$${1/(.+)/\L\1/g}Id === 0 && \$pluginParams->get('mail_to_${1/(.+)/\L\1/g}') === "0")
+		{
+			\$form->setFieldAttribute('password', 'required', 'true');
+			\$form->setFieldAttribute('password2', 'required', 'true');
+		}
+
+		return \$form;
+	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return  mixed  The data for the form.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		\$data = JFactory::getApplication()->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
+
+		if (empty(\$data))
+		{
+			\$data = \$this->getItem();
+		}
+
+		JPluginHelper::importPlugin('user');
+
+		\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.profile', \$data);
+
+		return \$data;
+	}
+
+	/**
+	 * Override JModelAdmin::preprocessForm to ensure the correct plugin group is loaded.
+	 *
+	 * @param   JForm   \$form   A JForm object.
+	 * @param   mixed   \$data   The data expected for the form.
+	 * @param   string  \$group  The name of the plugin group to import (defaults to "content").
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 * @throws  Exception if there is an error in the form event.
+	 */
+	protected function preprocessForm(JForm \$form, \$data, \$group = 'user')
+	{
+		parent::preprocessForm(\$form, \$data, \$group);
+	}
+
+	/**
+	 * Method to save the form data.
+	 *
+	 * @param   array  \$data  The form data.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function save(\$data)
+	{
+		// Initialiase variables.
+		\$pk   = (!empty(\$data['id'])) ? \$data['id'] : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
+		\$user = JUser::getInstance(\$pk);
+
+		\$my = JFactory::getUser();
+
+		if (\$data['block'] && \$pk == \$my->id && !\$my->block)
+		{
+			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ERROR_CANNOT_BLOCK_SELF'));
+			return false;
+		}
+
+		// Make sure that we are not removing ourself from Super Admin group.
+		\$iAmSuperAdmin = \$my->authorise('core.admin');
+		if (\$iAmSuperAdmin && \$my->get('id') == \$pk)
+		{
+			// Check that at least one of our new groups is Super Admin.
+			\$stillSuperAdmin = false;
+			\$myNewGroups = \$data['groups'];
+
+			foreach (\$myNewGroups as \$group)
+			{
+				\$stillSuperAdmin = (\$stillSuperAdmin) ? (\$stillSuperAdmin) : JAccess::checkGroup(\$group, 'core.admin');
+			}
+
+			if (!\$stillSuperAdmin)
+			{
+				\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ERROR_CANNOT_DEMOTE_SELF'));
+				return false;
+			}
+		}
+
+		// Bind the data.
+		if (!\$user->bind(\$data))
+		{
+			\$this->setError(\$user->getError());
+			return false;
+		}
+
+		// Store the data.
+		if (!\$user->save())
+		{
+			\$this->setError(\$user->getError());
+			return false;
+		}
+
+		\$this->setState('${1/(.+)/\L\1/g}.id', \$user->id);
+
+		return true;
+	}
+
+	/**
+	 * Method to delete rows.
+	 *
+	 * @param   array  &\$pks  An array of item ids.
+	 *
+	 * @return  boolean  Returns true on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function delete(&\$pks)
+	{
+		// Initialiase variables.
+		\$user  = JFactory::getUser();
+		\$table = \$this->getTable();
+		\$pks   = (array) \$pks;
+
+		// Check if I am a Super Admin.
+		\$iAmSuperAdmin = \$user->authorise('core.admin');
+
+		// Trigger the onUserBeforeSave event.
+		JPluginHelper::importPlugin('user');
+		\$dispatcher = JEventDispatcher::getInstance();
+
+		if (in_array(\$user->id, \$pks))
+		{
+			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ERROR_CANNOT_DELETE_SELF'));
+			return false;
+		}
+
+		// Iterate the items to delete each one.
+		foreach (\$pks as \$i => \$pk)
+		{
+			if (\$table->load(\$pk))
+			{
+				// Access checks.
+				\$allow = \$user->authorise('core.delete', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+
+				// Don't allow non-super-admin to delete a super admin
+				\$allow = (!\$iAmSuperAdmin && JAccess::check(\$pk, 'core.admin')) ? false : \$allow;
+
+				if (\$allow)
+				{
+					// Get ${2/(.+)/\L\1/g} data for the ${2/(.+)/\L\1/g} to delete.
+					\$user_to_delete = JFactory::getUser(\$pk);
+
+					// Fire the onUserBeforeDelete event.
+					\$dispatcher->trigger('onUserBeforeDelete', array(\$table->getProperties()));
+
+					if (!\$table->delete(\$pk))
+					{
+						\$this->setError(\$table->getError());
+						return false;
+					}
+					else
+					{
+						// Trigger the onUserAfterDelete event.
+						\$dispatcher->trigger('onUserAfterDelete', array(\$user_to_delete->getProperties(), true, \$this->getError()));
+					}
+				}
+				else
+				{
+					// Prune items that you can't change.
+					unset(\$pks[\$i]);
+					JError::raiseWarning(403, JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
+				}
+			}
+			else
+			{
+				\$this->setError(\$table->getError());
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Method to block ${1/(.+)/\L\1/g} records.
+	 *
+	 * @param   array    &\$pks   The ids of the items to publish.
+	 * @param   integer  \$value  The value of the published state.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function block(&\$pks, \$value = 1)
+	{
+		// Initialiase variables.
+		\$app        = JFactory::getApplication();
+		\$dispatcher = JEventDispatcher::getInstance();
+		\$user       = JFactory::getUser();
+
+		// Check if I am a Super Admin.
+		\$iAmSuperAdmin = \$user->authorise('core.admin');
+		\$table         = \$this->getTable();
+		\$pks           = (array) \$pks;
+
+		JPluginHelper::importPlugin('user');
+
+		// Access checks.
+		foreach (\$pks as \$i => \$pk)
+		{
+			if (\$value == 1 && \$pk == \$user->get('id'))
+			{
+				// Cannot block yourself.
+				unset(\$pks[\$i]);
+				JError::raiseWarning(403, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ERROR_CANNOT_BLOCK_SELF'));
+
+			}
+			elseif (\$table->load(\$pk))
+			{
+				\$old   = \$table->getProperties();
+				\$allow = \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+
+				// Don't allow non-super-admin to delete a super admin.
+				\$allow = (!\$iAmSuperAdmin && JAccess::check(\$pk, 'core.admin')) ? false : \$allow;
+
+				// Prepare the logout options.
+				\$options = array(
+					'clientid' => 0
+				);
+
+				if (\$allow)
+				{
+					// Skip changing of same state.
+					if (\$table->block == \$value)
+					{
+						unset(\$pks[\$i]);
+						continue;
+					}
+
+					\$table->block = (int) \$value;
+
+					// If unblocking, also change password reset count to zero to unblock reset.
+					if (\$table->block === 0)
+					{
+						\$table->resetCount = 0;
+					}
+
+					// Allow an exception to be thrown.
+					try
+					{
+						if (!\$table->check())
+						{
+							\$this->setError(\$table->getError());
+							return false;
+						}
+
+						// Trigger the onUserBeforeSave event.
+						\$result = \$dispatcher->trigger('onUserBeforeSave', array(\$old, false, \$table->getProperties()));
+
+						if (in_array(false, \$result, true))
+						{
+							// Plugin will have to raise it's own error or throw an exception.
+							return false;
+						}
+
+						// Store the table.
+						if (!\$table->store())
+						{
+							\$this->setError(\$table->getError());
+							return false;
+						}
+
+						// Trigger the onAftereStoreUser event.
+						\$dispatcher->trigger('onUserAfterSave', array(\$table->getProperties(), false, true, null));
+					}
+					catch (Exception \$e)
+					{
+						\$this->setError(\$e->getMessage());
+
+						return false;
+					}
+
+					// Log the ${1/(.+)/\L\1/g} out.
+					if (\$value)
+					{
+						\$app->logout(\$table->id, \$options);
+					}
+				}
+				else
+				{
+					// Prune items that you can't change.
+					unset(\$pks[\$i]);
+					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Method to activate ${1/(.+)/\L\1/g} records.
+	 *
+	 * @param   array  &\$pks  The ids of the items to activate.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function activate(&\$pks)
+	{
+		// Initialiase variables.
+		\$dispatcher = JEventDispatcher::getInstance();
+		\$user       = JFactory::getUser();
+
+		// Check if I am a Super Admin.
+		\$iAmSuperAdmin = \$user->authorise('core.admin');
+		\$table         = \$this->getTable();
+		\$pks           = (array) \$pks;
+
+		JPluginHelper::importPlugin('user');
+
+		// Access checks.
+		foreach (\$pks as \$i => \$pk)
+		{
+			if (\$table->load(\$pk))
+			{
+				\$old   = \$table->getProperties();
+				\$allow = \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+
+				// Don't allow non-super-admin to delete a super admin.
+				\$allow = (!\$iAmSuperAdmin && JAccess::check(\$pk, 'core.admin')) ? false : \$allow;
+
+				if (empty(\$table->activation))
+				{
+					// Ignore activated accounts.
+					unset(\$pks[\$i]);
+				}
+				elseif (\$allow)
+				{
+					\$table->block      = 0;
+					\$table->activation = '';
+
+					// Allow an exception to be thrown.
+					try
+					{
+						if (!\$table->check())
+						{
+							\$this->setError(\$table->getError());
+							return false;
+						}
+
+						// Trigger the onUserBeforeSave event.
+						\$result = \$dispatcher->trigger('onUserBeforeSave', array(\$old, false, \$table->getProperties()));
+						if (in_array(false, \$result, true))
+						{
+							// Plugin will have to raise it's own error or throw an exception.
+							return false;
+						}
+
+						// Store the table.
+						if (!\$table->store())
+						{
+							\$this->setError(\$table->getError());
+							return false;
+						}
+
+						// Fire the onAftereStoreUser event.
+						\$dispatcher->trigger('onUserAfterSave', array(\$table->getProperties(), false, true, null));
+					}
+					catch (Exception \$e)
+					{
+						\$this->setError(\$e->getMessage());
+
+						return false;
+					}
+				}
+				else
+				{
+					// Prune items that you can't change.
+					unset(\$pks[\$i]);
+					JError::raiseWarning(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Method to perform batch operations on an item or a set of items.
+	 *
+	 * @param   array  \$commands  An array of commands to perform.
+	 * @param   array  \$pks       An array of item ids.
+	 * @param   array  \$contexts  An array of item contexts.
+	 *
+	 * @return  boolean  Returns true on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function batch(\$commands, \$pks, \$contexts)
+	{
+		// Sanitize ${1/(.+)/\L\1/g} ids.
+		\$pks = array_unique(\$pks);
+		JArrayHelper::toInteger(\$pks);
+
+		// Remove any values of zero.
+		if (array_search(0, \$pks, true))
+		{
+			unset(\$pks[array_search(0, \$pks, true)]);
+		}
+
+		if (empty(\$pks))
+		{
+			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+			return false;
+		}
+
+		\$done = false;
+
+		if (!empty(\$commands['group_id']))
+		{
+			\$cmd = JArrayHelper::getValue(\$commands, 'group_action', 'add');
+
+			if (!\$this->batch${1/(.+)/\u\1/g}((int) \$commands['group_id'], \$pks, \$cmd))
+			{
+				return false;
+			}
+			\$done = true;
+		}
+
+		if (!\$done)
+		{
+			\$this->setError(JText::_('JLIB_APPLICATION_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
+			return false;
+		}
+
+		// Clear the cache.
+		\$this->cleanCache();
+
+		return true;
+	}
+
+	/**
+	 * Perform batch operations.
+	 *
+	 * @param   integer  \$group_id  The group ID which assignments are being edited.
+	 * @param   array    \$${1/(.+)/\L\1/g}_ids  An array of ${1/(.+)/\L\1/g} IDs on which to operate.
+	 * @param   string   \$action    The action to perform.
+	 *
+	 * @return  boolean  True on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function batch${1/(.+)/\u\1/g}(\$group_id, \$${1/(.+)/\L\1/g}_ids, \$action)
+	{
+		// Get the DB object.
+		\$db = \$this->getDbo();
+
+		JArrayHelper::toInteger(\$${1/(.+)/\L\1/g}_ids);
+
+		// Non-super admin cannot work with super-admin group.
+		if ((!JFactory::getUser()->get('isRoot') && JAccess::checkGroup(\$group_id, 'core.admin')) || \$group_id < 1)
+		{
+			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_INVALID_GROUP'));
+			return false;
+		}
+
+		switch (\$action)
+		{
+			// Sets ${2/(.+)/\L\1/g} to a selected group.
+			case 'set':
+				\$doDelete = 'all';
+				\$doAssign = true;
+				break;
+
+			// Remove ${2/(.+)/\L\1/g} from a selected group.
+			case 'del':
+				\$doDelete = 'group';
+				break;
+
+			// Add ${2/(.+)/\L\1/g} to a selected group.
+			case 'add':
+			default:
+				\$doAssign = true;
+				break;
+		}
+
+		// Remove the ${2/(.+)/\L\1/g} from the group if requested.
+		if (isset(\$doDelete))
+		{
+			\$query = \$db->getQuery(true);
+
+			// Remove ${2/(.+)/\L\1/g} from the group.
+			\$query->delete(\$db->quoteName('#__user_usergroup_map'));
+			\$query->where(\$db->quoteName('user_id') . ' IN (' . implode(',', \$${1/(.+)/\L\1/g}_ids) . ')');
+
+			// Only remove ${2/(.+)/\L\1/g} from selected group.
+			if (\$doDelete == 'group')
+			{
+				\$query->where(\$db->quoteName('group_id') . ' = ' . (int) \$group_id);
+			}
+
+			\$db->setQuery(\$query);
+
+			try
+			{
+				\$db->execute();
+			}
+			catch (RuntimeException \$e)
+			{
+				\$this->setError(\$e->getMessage());
+				return false;
+			}
+		}
+
+		// Assign the ${2/(.+)/\L\1/g} to the group if requested.
+		if (isset(\$doAssign))
+		{
+			\$query = \$db->getQuery(true);
+
+			// First, we need to check if the ${1/(.+)/\L\1/g} is already assigned to a group.
+			\$query->select(\$db->quoteName('user_id'));
+			\$query->from(\$db->quoteName('#__user_usergroup_map'));
+			\$query->where(\$db->quoteName('group_id') . ' = ' . (int) \$group_id);
+			\$db->setQuery(\$query);
+			\$${2/(.+)/\L\1/g} = \$db->loadColumn();
+
+			// Build the values clause for the assignment query.
+			\$query->clear();
+			\$groups = false;
+
+			foreach (\$${1/(.+)/\L\1/g}_ids as \$id)
+			{
+				if (!in_array(\$id, \$${2/(.+)/\L\1/g}))
+				{
+					\$query->values(\$id . ',' . \$group_id);
+					\$groups = true;
+				}
+			}
+
+			// If we have no ${2/(.+)/\L\1/g} to process, throw an error to notify the ${1/(.+)/\L\1/g}.
+			if (!\$groups)
+			{
+				\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_NO_ADDITIONS'));
+				return false;
+			}
+
+			\$query->insert(\$db->quoteName('#__user_usergroup_map'));
+			\$query->columns(array(\$db->quoteName('user_id'), \$db->quoteName('group_id')));
+			\$db->setQuery(\$query);
+
+			try
+			{
+				\$db->execute();
+			}
+			catch (RuntimeException \$e)
+			{
+				\$this->setError(\$e->getMessage());
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Gets the available groups.
+	 *
+	 * @return  array  An array of groups.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getGroups()
+	{
+		// Get the current user object.
+		\$user = JFactory::getUser();
+
+		if (\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}') && \$user->authorise('core.manage', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+		{
+			\$model = JModelLegacy::getInstance('Groups', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+
+			return \$model->getItems();
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	/**
+	 * Gets the groups this object is assigned to.
+	 *
+	 * @param   integer  \$${1/(.+)/\L\1/g}Id  The ${1/(.+)/\L\1/g} ID to retrieve the groups for.
+	 *
+	 * @return  array  An array of assigned groups.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getAssignedGroups(\$${1/(.+)/\L\1/g}Id = null)
+	{
+		// Get the ${1/(.+)/\L\1/g} id.
+		\$${1/(.+)/\L\1/g}Id = (!empty(\$${1/(.+)/\L\1/g}Id)) ? \$${1/(.+)/\L\1/g}Id : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
+
+		if (empty(\$${1/(.+)/\L\1/g}Id))
+		{
+			\$result = array();
+			\$config = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
+
+			if (\$groupId = \$config->get('new_${1/(.+)/\L\1/g}type'))
+			{
+				\$result[] = \$groupId;
+			}
+		}
+		else
+		{
+			\$result = JUserHelper::getUserGroups(\$${1/(.+)/\L\1/g}Id);
+		}
+
+		return \$result;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodeledit-user</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

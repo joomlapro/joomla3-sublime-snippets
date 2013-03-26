@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[\$TM_VERSION]]></content>
-	<tabTrigger>$v</tabTrigger>
-	<!-- <scope>source.python</scope> -->
-</snippet>

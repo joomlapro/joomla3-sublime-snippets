@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC="$3"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1:FIELD_NAME}_LABEL="$2"]]></content>
+	<tabTrigger>jlangfield</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

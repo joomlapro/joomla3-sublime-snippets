@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[// Add register.
+\$('#add-${4/(.+)/\L\1/g}').on('click', function (e) {
+	e.preventDefault();
+
+	var search = \$('#search-${3/(.+)/\L\1/g}').val();
+
+	if (search) {
+		\$.ajax({
+			url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.${2:method}&tmpl=component&format=json',
+			type: 'GET',
+			data: {
+				${5:user_}id: '<?php echo \$this->item->id; ?>',
+				${4/(.+)/\L\1/g}_id: $('#${4/(.+)/\L\1/g}-id').val()
+			},
+			dataType: 'JSON',
+			success: function (data) {
+				\$("#${4:${3/(.+)(s\b)/\L\1/g}}").tmpl(data).prependTo("#body-${3:group}");
+			}
+		});
+
+		\$('#search-${3/(.+)/\L\1/g}').val('');
+	}
+});]]></content>
+	<tabTrigger>jjquery_ajax_add</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

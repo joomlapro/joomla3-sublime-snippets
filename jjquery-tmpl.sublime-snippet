@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[<script id="area" type="text/x-jquery-tmpl">
+	<tr class="area">
+		<td class="hidden-phone">
+			\${id}
+		</td>
+		<td class="nowrap">
+			\${${1:title}}
+		</td>
+		<td class="center">
+			<input type="hidden" name="id" value="\${id}" />
+		</td>
+	</tr>
+</script>]]></content>
+	<tabTrigger>jjquery-tmpl</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

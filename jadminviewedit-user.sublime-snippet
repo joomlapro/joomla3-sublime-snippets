@@ -1,0 +1,102 @@
+<snippet>
+	<content><![CDATA[/**
+ * View to edit a ${1/(.+)/\L\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:User} extends JViewLegacy
+{
+	protected \$form;
+
+	protected \$item;
+
+	protected \$grouplist;
+
+	protected \$groups;
+
+	protected \$state;
+
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  A string if successful, otherwise a JError object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function display(\$tpl = null)
+	{
+		// Initialise view variables.
+		\$this->form      = \$this->get('Form');
+		\$this->item      = \$this->get('Item');
+		\$this->grouplist = \$this->get('Groups');
+		\$this->groups    = \$this->get('AssignedGroups');
+		\$this->state     = \$this->get('State');
+
+		// Check for errors.
+		if (count(\$errors = \$this->get('Errors')))
+		{
+			JError::raiseError(500, implode("\n", \$errors));
+			return false;
+		}
+
+		\$this->form->setValue('password', null);
+		\$this->form->setValue('password2', null);
+
+		parent::display(\$tpl);
+		\$this->addToolbar();
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	 */
+	protected function addToolbar()
+	{
+		JFactory::getApplication()->input->set('hidemainmenu', true);
+
+		// Initialise view variables.
+		\$user  = JFactory::getUser();
+		\$isNew = (\$this->item->id == 0);
+		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions();
+
+		\$isNew = (\$this->item->id == 0);
+		\$isProfile = \$this->item->id == \$user->id;
+
+		JToolbarHelper::title(JText::_(\$isNew ? 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_NEW_${1/(.+)/\U\1/g}_TITLE' : (\$isProfile ? 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_EDIT_PROFILE_TITLE' : 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_EDIT_${1/(.+)/\U\1/g}_TITLE')), \$isNew ? '${1/(.+)/\L\1/g}-add' : (\$isProfile ? '${1/(.+)/\L\1/g}-profile' : '${1/(.+)/\L\1/g}-edit'));
+
+		if (\$canDo->get('core.edit')||\$canDo->get('core.create'))
+		{
+			JToolbarHelper::apply('${1/(.+)/\L\1/g}.apply');
+			JToolbarHelper::save('${1/(.+)/\L\1/g}.save');
+		}
+
+		if (\$canDo->get('core.create')&&\$canDo->get('core.manage'))
+		{
+			JToolbarHelper::save2new('${1/(.+)/\L\1/g}.save2new');
+		}
+
+		if (empty(\$this->item->id))
+		{
+			JToolbarHelper::cancel('${1/(.+)/\L\1/g}.cancel');
+		}
+		else
+		{
+			JToolbarHelper::cancel('${1/(.+)/\L\1/g}.cancel', 'JTOOLBAR_CLOSE');
+		}
+
+		JToolbarHelper::divider();
+		JToolbarHelper::help('JHELP_USERS_USER_MANAGER_EDIT');
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminviewedit-user</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

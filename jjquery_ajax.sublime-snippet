@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[\$('#${1:field1}').change(function () {
+	\$.ajax({
+		dataType: 'json',
+		url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:controller}.${3:method}&format=json&tmpl=component',
+		type: 'GET',
+		data: {
+			${1/(.+)/\L\1/g}: \$('#${1/(.+)/\L\1/g}').val()
+		},
+		success: function (json) {
+			var options = '';
+			\$.each(json, function (key, value) {
+				options += '<option value="' + value.id + '">' + value.${4:title} + '</option>';
+			});
+			\$('#${5:field2}').html(options);
+		}
+	});
+});]]></content>
+	<tabTrigger>jjquery_ajax</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

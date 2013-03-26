@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[\${$1/(.)(.+)/\\${2:l|L|u|U}\1/g}]]></content>
-	<tabTrigger>$f</tabTrigger>
-	<!-- <scope>source.python</scope> -->
-</snippet>

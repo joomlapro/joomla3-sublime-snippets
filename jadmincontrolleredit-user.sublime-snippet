@@ -1,0 +1,139 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} controller class.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:User} extends JControllerForm
+{
+	/**
+	 * The prefix to use with controller messages.
+	 *
+	 * @var    string
+	 * @since  $TM_VERSION
+	 */
+	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+
+	/**
+	 * Overrides JControllerForm::allowEdit.
+	 *
+	 * Checks that non-Super Admins are not editing Super Admins.
+	 *
+	 * @param   array   \$data  An array of input data.
+	 * @param   string  \$key   The name of the key for the primary key.
+	 *
+	 * @return  boolean  True if allowed, false otherwise.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function allowEdit(\$data = array(), \$key = 'id')
+	{
+		// Check if this person is a Super Admin.
+		if (JAccess::check(\$data[\$key], 'core.admin'))
+		{
+			// If I'm not a Super Admin, then disallow the edit.
+			if (!JFactory::getUser()->authorise('core.admin'))
+			{
+				return false;
+			}
+		}
+
+		return parent::allowEdit(\$data, \$key);
+	}
+
+	/**
+	 * Method to run batch operations.
+	 *
+	 * @param   object  \$model  The model.
+	 *
+	 * @return  boolean  True on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function  batch(\$model = null)
+	{
+		// Check for request forgeries.
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		// Set the model.
+		\$model = \$this->getModel('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array());
+
+		// Preset the redirect.
+		\$this->setRedirect(JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${2:${1/(.+)/\L\1/g}s}' . \$this->getRedirectToListAppend(), false));
+
+		return parent::batch(\$model);
+	}
+
+	/**
+	 * Overrides parent save method to check the submitted passwords match.
+	 *
+	 * @param   string  \$key     The name of the primary key of the URL variable.
+	 * @param   string  \$urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
+	 *
+	 * @return  boolean  True if successful, false otherwise.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function save(\$key = null, \$urlVar = null)
+	{
+		// Get the data from POST.
+		\$data = \$this->input->post->get('jform', array(), 'array');
+
+		// TODO: JForm should really have a validation handler for this.
+		if (isset(\$data['password']) && isset(\$data['password2']))
+		{
+			// Check the passwords match.
+			if (\$data['password'] != \$data['password2'])
+			{
+				\$this->setMessage(JText::_('JLIB_USER_ERROR_PASSWORD_NOT_MATCH'), 'warning');
+				\$this->setRedirect(JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&layout=edit', false));
+			}
+
+			unset(\$data['password2']);
+		}
+
+		return parent::save();
+	}
+
+	/**
+	 * Function that allows child controller access to model data after the data has been saved.
+	 *
+	 * @param   JModelLegacy  \$model      The data model object.
+	 * @param   array         \$validData  The validated data.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function postSaveHook(JModelLegacy \$model, \$validData = array())
+	{
+		// Initialiase variables.
+		\$task = \$this->getTask();
+		\$item = \$model->getItem();
+		\$id   = \$item->get('id');
+
+		if (empty(\$validData['tags']) && !empty(\$item->tags))
+		{
+			\$oldTags = new JTags;
+			\$oldTags->unTagItem(\$id, 'com_newsfeeds.newsfeed');
+			return;
+		}
+
+		\$tags = \$validData['tags'];
+
+		if (\$tags[0] != '')
+		{
+			\$tagsHelper = new JTags;
+			\$tagsHelper->tagItem(\$id, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$isNew, \$item, \$tags, null);
+		}
+
+		return;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadmincontrolleredit-user</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

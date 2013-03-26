@@ -1,0 +1,60 @@
+<snippet>
+	<content><![CDATA[; FIELD
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1:USER}_FIELD_NAME_DESC="Insira nome do ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_NAME_LABEL="Nome"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_USERNAME_DESC="Insira o nome de ${2/(.+)/\L\1/g} para este ${2/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_USERNAME_LABEL="Nome de ${2:Usuário}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_PASSWORD2_DESC="Confirme a senha do ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_PASSWORD2_LABEL="Confirme a senha"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_PASSWORD_DESC="Insira a senha do ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_REGISTERDATE_DESC="Data de Registro"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_REGISTERDATE_LABEL="Data de Registro"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_LASTVISIT_DESC="Data da última visita"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_LASTVISIT_LABEL="Data da última visita"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_LASTRESET_DESC="Data e hora da última redefinição de senha"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_LASTRESET_LABEL="Data da Última Redefinição"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_RESETCOUNT_DESC="Número de redefinições de senha desde a data da última redefinição"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_RESETCOUNT_LABEL="Contador de Redefinição de Senha"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_SENDEMAIL_DESC="Se sim, o ${2/(.+)/\u\1/g} irá receber E-mails do sistema."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_SENDEMAIL_LABEL="Receber E-Mails do Sistema"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_BLOCK_DESC="Bloquear este ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_BLOCK_LABEL="Bloquear este ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_BACKEND_TEMPLATE_DESC="Selecione o estilo de tema para a interface de administração. Isso irá afetar apenas este ${2/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_BACKEND_TEMPLATE_LABEL="Estilo da Administração"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_BACKEND_LANGUAGE_DESC="Selecione o idioma padrão para a interface da administração. Isso irá afetar apenas este ${2/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_BACKEND_LANGUAGE_LABEL="Idioma da Administração"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_FRONTEND_LANGUAGE_DESC="Selecione o Idioma padrão para a interface do Site. Isso irá afetar apenas este ${2/(.+)/\u\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_FRONTEND_LANGUAGE_LABEL="Idioma do Site"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_EDITOR_DESC="Editor a ser utilizado pelo ${2/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_EDITOR_LABEL="Editor"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_HELPSITE_DESC="Site de ajuda para este ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_HELPSITE_LABEL="Site de Ajuda"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_TIMEZONE_DESC="Fuso horário para este ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_FIELD_TIMEZONE_LABEL="Fuso Horário"
+
+; FIELDSET
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_ACCOUNT_DETAILS="Detalhes da Conta"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ASSIGNED_GROUPS="Grupos de ${3:${2/(.+)/\u\1/g}s} Atribuídos"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_SETTINGS_FIELDSET_LABEL="Configurações Básicas"
+
+; USER
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_NEW_${1/(.+)/\U\1/g}_TITLE="Gerenciador de ${4:Usuários}: Adicionar novo ${2/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_EDIT_PROFILE_TITLE="Gerenciador de ${4/(.+)/\u\1/g}: Editar Perfil"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_EDIT_${1/(.+)/\U\1/g}_TITLE="Gerenciador de ${4/(.+)/\u\1/g}: Editar ${2/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5:${1/(.+)/\U\1/g}S}_ACTIVATED="%s ${3/(.+)/\u\1/g} ativados com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5/(.+)/\U\1/g}_ACTIVATED_0="Nenhum ${2/(.+)/\L\1/g} ativado"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5/(.+)/\U\1/g}_ACTIVATED_1="${2/(.+)/\u\1/g} ativado com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5/(.+)/\U\1/g}_BLOCKED="%s ${3/(.+)/\u\1/g} bloqueados com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5/(.+)/\U\1/g}_BLOCKED_0="Nenhum ${2/(.+)/\L\1/g} bloqueado"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5/(.+)/\U\1/g}_BLOCKED_1="${2/(.+)/\u\1/g} bloqueado com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5/(.+)/\U\1/g}_UNBLOCKED="%s ${3/(.+)/\u\1/g} desbloqueados com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5/(.+)/\U\1/g}_UNBLOCKED_0="Nenhum ${2/(.+)/\L\1/g} desbloqueado"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${5/(.+)/\U\1/g}_UNBLOCKED_1="${2/(.+)/\u\1/g} desbloqueado com sucesso."
+
+]]></content>
+	<tabTrigger>jadminlang-user</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

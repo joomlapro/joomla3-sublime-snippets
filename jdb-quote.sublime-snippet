@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$db->quote($1)]]></content>
+	<tabTrigger>jdb-quote</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
