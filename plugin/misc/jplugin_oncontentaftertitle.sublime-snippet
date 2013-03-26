@@ -20,6 +20,6 @@ public function onContentAfterTitle(\$context, &\$article, &\$params, \$limitsta
 }
 
 ]]></content>
-	<tabTrigger>jsitecontentaftertitle</tabTrigger>
+	<tabTrigger>jplugin_oncontentaftertitle</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
