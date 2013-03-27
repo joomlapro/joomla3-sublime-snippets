@@ -1,5 +1,5 @@
-Sublime Text Bundle for Joomla! 3.x
-===================================
+Sublime Text Snippets for Joomla! 3.x
+=====================================
 
 This is a [Sublime Text][sublime] package which includes a bunch of handy snippets for doing CMS Joomla! 3.x development.
 
@@ -30,7 +30,7 @@ Licensed under the terms of the MIT license.
 
 ## Bugs/Requests ##
 
-* You can [report a bug or request a feature here](http://github.com/joomlapro/joomla3-bundle/issues)
+* You can [report a bug or request a feature here](http://github.com/joomlapro/joomla3-sublime-snippets/issues)
 
 [sublime]: http://www.sublimetext.com/
 [package_control]: http://wbond.net/sublime_packages/package_control
