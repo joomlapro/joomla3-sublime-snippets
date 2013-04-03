@@ -580,8 +580,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:User} extends JModelAdmin
 			\$query = \$db->getQuery(true);
 
 			// Remove ${2/(.+)/\L\1/g} from the group.
-			\$query->delete(\$db->quoteName('#__user_usergroup_map'));
-			\$query->where(\$db->quoteName('user_id') . ' IN (' . implode(',', \$${1/(.+)/\L\1/g}_ids) . ')');
+			\$query->delete(\$db->quoteName('#__user_usergroup_map'))
+				->where(\$db->quoteName('user_id') . ' IN (' . implode(',', \$${1/(.+)/\L\1/g}_ids) . ')');
 
 			// Only remove ${2/(.+)/\L\1/g} from selected group.
 			if (\$doDelete == 'group')
@@ -608,9 +608,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:User} extends JModelAdmin
 			\$query = \$db->getQuery(true);
 
 			// First, we need to check if the ${1/(.+)/\L\1/g} is already assigned to a group.
-			\$query->select(\$db->quoteName('user_id'));
-			\$query->from(\$db->quoteName('#__user_usergroup_map'));
-			\$query->where(\$db->quoteName('group_id') . ' = ' . (int) \$group_id);
+			\$query->select(\$db->quoteName('user_id'))
+				->from(\$db->quoteName('#__user_usergroup_map'))
+				->where(\$db->quoteName('group_id') . ' = ' . (int) \$group_id);
+
 			\$db->setQuery(\$query);
 			\$${2/(.+)/\L\1/g} = \$db->loadColumn();
 
@@ -634,8 +635,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:User} extends JModelAdmin
 				return false;
 			}
 
-			\$query->insert(\$db->quoteName('#__user_usergroup_map'));
-			\$query->columns(array(\$db->quoteName('user_id'), \$db->quoteName('group_id')));
+			\$query->insert(\$db->quoteName('#__user_usergroup_map'))
+				->columns(array(\$db->quoteName('user_id'), \$db->quoteName('group_id')));
+
 			\$db->setQuery(\$query);
 
 			try

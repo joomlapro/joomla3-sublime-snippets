@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_${1:LIST}_N_ITEMS_${2:ACTION}="%d ${3:Plural} ${4:action_plural} com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_${2/(.+)/\U\1/g}_0="Nenhum ${5:${3/(.+)(s\b)/\u\1/g}} ${6:${4/(.+)(s\b)/\L\1/g}}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_${2/(.+)/\U\1/g}_1="%d ${5/(.+)/\u\1/g} ${6/(.+)/\L\1/g} com sucesso."]]></content>
+	<tabTrigger>jadminlang_list_custom</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

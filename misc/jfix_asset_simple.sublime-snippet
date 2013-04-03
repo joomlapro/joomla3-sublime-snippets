@@ -36,12 +36,11 @@ foreach (\$items as \$item)
 		return false;
 	}
 
-	\$query->clear();
-
 	// Create the base update statement.
-	\$query->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}'));
-	\$query->set(\$db->quoteName('asset_id') . ' = ' . \$db->quote((int) \$table->id));
-	\$query->where(\$db->quoteName('id') . ' = ' . \$db->quote((int) \$item->id));
+	\$query->clear()
+		->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}'))
+		->set(\$db->quoteName('asset_id') . ' = ' . \$db->quote((int) \$table->id))
+		->where(\$db->quoteName('id') . ' = ' . \$db->quote((int) \$item->id));
 
 	// Set the query and execute the update.
 	\$db->setQuery(\$query);

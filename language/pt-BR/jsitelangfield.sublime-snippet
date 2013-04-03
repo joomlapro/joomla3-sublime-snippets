@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[; FIELD
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_LABEL="Referência Externa"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_DESC="Uma referência opcional usada para ver fontes de dados externas."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ROBOTS_LABEL="Robôs"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ROBOTS_DESC="Instruções para Robôs de Busca"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_AUTHOR_DESC="O autor deste conteúdo"
+
+; OPTION
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_INDEX_FOLLOW="Indexar, Seguir"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_NOINDEX_FOLLOW="Não indexar, seguir"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_INDEX_NOFOLLOW="Indexar, Não seguir"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_NOINDEX_NOFOLLOW="Não indexar, não seguir"
+
+; MISC
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ORDERING="Ordenando:<br/>Novos ${1:list} por padrão na primeira posição na Categoria. A ordenação pode ser alterada na administração."
+
+]]></content>
+	<tabTrigger>jsitelangfield</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

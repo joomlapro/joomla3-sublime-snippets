@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[MOD_${TM_COMPONENT/(.+)/\U\1/g}_QUICKICON="${1:Component} - Ícones Rápidos"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_QUICKICON_XML_DESCRIPTION="Este módulo exibe os Ícones Rápidos que são visíveis no Painel de Controle do Gerenciador de ${1/(.+)/\u\1/g}."
+
+; QUICKICONS
+
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_QUICKICON_ADD_NEW_${2:${TM_COMPONENT/(.+)(s\b)/\U\1/g}}="Novo ${3:Singular}"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_QUICKICON_ADD_NEW_CATEGORY="Nova Categoria"
+
+; FIELDS
+
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_QUICKICON_FIELD_GROUP_LABEL="Grupo"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_QUICKICON_FIELD_GROUP_DESC="O grupo deste módulo (este valor é comparado como o valor do grupo usado no plugin de <b>Ícones Rápidos</b> para injetar ícones). O grupo 'mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon' sempre exibe os ícones do Gerenciador de ${1/(.+)/\u\1/g}."
+
+]]></content>
+	<tabTrigger>jadminmodulelang-quickicon</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

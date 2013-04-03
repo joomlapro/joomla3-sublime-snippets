@@ -218,21 +218,21 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}}') . ' AS a');
 
 		// Join over the users for the author and modified_by names.
-		\$query->select("CASE WHEN a.created_by_alias > ' ' THEN a.created_by_alias ELSE ua.name END AS author");
-		\$query->select("ua.email AS author_email");
+		\$query->select("CASE WHEN a.created_by_alias > ' ' THEN a.created_by_alias ELSE ua.name END AS author")
+			->select("ua.email AS author_email");
 
-		\$query->join('LEFT', '#__users AS ua ON ua.id = a.created_by');
-		\$query->join('LEFT', '#__users AS uam ON uam.id = a.modified_by');
+		\$query->join('LEFT', '#__users AS ua ON ua.id = a.created_by')
+			->join('LEFT', '#__users AS uam ON uam.id = a.modified_by');
 
 		// Join over the categories.
-		\$query->select('c.title AS category_title, c.path AS category_route, c.access AS category_access, c.alias AS category_alias');
-		\$query->join('LEFT', '#__categories AS c ON c.id = a.catid');
+		\$query->select('c.title AS category_title, c.path AS category_route, c.access AS category_access, c.alias AS category_alias')
+			->join('LEFT', '#__categories AS c ON c.id = a.catid');
 
 		// Filter by access level.
 		if (\$access = \$this->getState('filter.access'))
 		{
-			\$query->where('a.access IN (' . \$groups . ')');
-			\$query->where('c.access IN (' . \$groups . ')');
+			\$query->where('a.access IN (' . \$groups . ')')
+				->where('c.access IN (' . \$groups . ')');
 		}
 
 		// Filter by category.
@@ -266,9 +266,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Plural} extends JModelList
 			\$nullDate = \$db->quote(\$db->getNullDate());
 			\$date = JFactory::getDate();
 			\$nowDate = \$db->quote(\$date->toSql());
-			\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')');
-			\$query->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
-			\$query->where(\$publishedWhere . ' = ' . (int) \$state);
+			\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
+				->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')')
+				->where(\$publishedWhere . ' = ' . (int) \$state);
 		}
 
 		// Filter by search in ${2/(.+)/\L\1/g}.

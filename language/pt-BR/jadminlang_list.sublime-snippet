@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_${1:LIST}_N_ITEMS_ARCHIVED="%d ${2:plural} arquivad${4:o}s com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_0="Nenhum ${3:singular} arquivad${4/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_ARCHIVED_1="%d ${3/(.+)/\L\1/g} arquivad${4/(.+)/\L\1/g} com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_MORE="%d ${2/(.+)/\L\1/g} desbloquead${4/(.+)/\L\1/g}s com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_0="Nenhum ${3/(.+)/\L\1/g} desbloquead${4/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_CHECKED_IN_1="%d ${3/(.+)/\L\1/g} desbloquead${4/(.+)/\L\1/g} com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED="%d ${2/(.+)/\L\1/g} deletad${4/(.+)/\L\1/g}s com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED_0="Nenhum ${3/(.+)/\L\1/g} deletad${4/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_DELETED_1="%d ${3/(.+)/\L\1/g} deletad${4/(.+)/\L\1/g} com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED="%d ${2/(.+)/\L\1/g} publicad${4/(.+)/\L\1/g}s com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED_0="Nenhum ${3/(.+)/\L\1/g} publicad${4/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_PUBLISHED_1="%d ${3/(.+)/\L\1/g} publicad${4/(.+)/\L\1/g} com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED="%d ${2/(.+)/\L\1/g} lixeira com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED_0="Nenhum ${3/(.+)/\L\1/g} lixeira."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_TRASHED_1="%d ${3/(.+)/\L\1/g} lixeira com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED="%d ${2/(.+)/\L\1/g} despublicad${4/(.+)/\L\1/g}s com sucesso."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_0="Nenhum ${3/(.+)/\L\1/g} despublicad${4/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_N_ITEMS_UNPUBLISHED_1="%d ${3/(.+)/\L\1/g} despublicad${4/(.+)/\L\1/g} com sucesso."]]></content>
+	<tabTrigger>jadminlang_list</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

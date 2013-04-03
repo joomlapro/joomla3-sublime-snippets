@@ -46,7 +46,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewCategory extends JViewLegacy
 			\$link = JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1:${TM_COMPONENT/(.+)(s\b)/\u\1/g}}Route(\$row->slug, \$row->catid));
 
 			// Get row ${3/(.+)/\L\1/g}.
-			\$db = JFactory::getDBO();
+			\$db = JFactory::getDbo();
 			\$query = 'SELECT ' . \$db->quoteName('${3:description}') . ' FROM #__${TM_COMPONENT/(.+)/\L\1/g} WHERE id =' . \$row->id;
 			\$db->setQuery(\$query);
 			\$row->${3/(.+)/\L\1/g} = \$db->loadResult();

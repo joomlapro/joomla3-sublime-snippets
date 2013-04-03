@@ -1,0 +1,72 @@
+<snippet>
+	<content><![CDATA[
+MOD_${1:${TM_MODULE/(.+)/\U\1/g}}="${2:Component} - Últimos ${3:Plural}"
+MOD_${1/(.+)/\U\1/g}_XML_DESCRIPTION="Este módulo exibe uma lista dos últimos ${3/(.+)/\L\1/g} publicados e atuais. Alguns que são exibidos podem ter expirado e ainda assim podem ser os mais recentes."
+
+; MISC
+
+MOD_${1/(.+)/\U\1/g}_CREATED="Criado"
+MOD_${1/(.+)/\U\1/g}_CREATED_BY="Criador Por"
+MOD_${1/(.+)/\U\1/g}_LATEST_ITEMS="Últimos Itens"
+MOD_${1/(.+)/\U\1/g}_NO_MATCHING_RESULTS="Sem resultados"
+MOD_${1/(.+)/\U\1/g}_UNEXISTING="<i>Não existente</i>"
+
+; FIELD
+
+MOD_${1/(.+)/\U\1/g}_FIELD_AUTHORS_DESC="Um filtro para os autores"
+MOD_${1/(.+)/\U\1/g}_FIELD_AUTHORS_LABEL="Autores"
+MOD_${1/(.+)/\U\1/g}_FIELD_CATEGORY_DESC="Selecione ${3/(.+)/\u\1/g} de uma, ou mais categorias específicas."
+MOD_${1/(.+)/\U\1/g}_FIELD_COUNT_DESC="O número de itens a exibir (padrão é 5)"
+MOD_${1/(.+)/\U\1/g}_FIELD_COUNT_LABEL="Contagem"
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_DESC="Opções de Ordenação"
+MOD_${1/(.+)/\U\1/g}_FIELD_ORDERING_LABEL="Ordem"
+MOD_${1/(.+)/\U\1/g}_FIELD_VALUE_AUTHORS_ANYONE="Qualquer um"
+MOD_${1/(.+)/\U\1/g}_FIELD_VALUE_AUTHORS_BY_ME="Adicionado ou modificado por mim"
+MOD_${1/(.+)/\U\1/g}_FIELD_VALUE_AUTHORS_NOT_BY_ME="Não adicionado ou modificado por mim"
+MOD_${1/(.+)/\U\1/g}_FIELD_VALUE_ORDERING_ADDED="Primeiro os Recentemente Adicionados"
+MOD_${1/(.+)/\U\1/g}_FIELD_VALUE_ORDERING_MODIFIED="Primeiro os Recentemente Modificados"
+
+; TITLE
+
+MOD_${1/(.+)/\U\1/g}_TITLE="${3/(.+)/\u\1/g} Criados Recentemente"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED="Últimos ${3/(.+)/\u\1/g} Criados"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_1="Último ${4:${3/(.+)(s\b)/\u\1/g}} Criado"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Criados"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_NOT_ME="Últimos ${3/(.+)/\u\1/g} Adicionados por Outros"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_NOT_ME_1="Último ${4/(.+)/\u\1/g} Adicionado por Outro"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_NOT_ME_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Adicionados por Outros"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_BY_ME="Últimos ${3/(.+)/\u\1/g} Adicionados por Mim"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_BY_ME_1="Último ${4/(.+)/\u\1/g} Adicionado por Mim"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_BY_ME_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Adicionados por Mim"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY="Últimos ${3/(.+)/\u\1/g} Adicionados (<u>%2$s</u> categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY_1="Último ${4/(.+)/\u\1/g} Adicionado (<u>%2$s</u> categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY_MORE="Últimos %1$s rtigos Adicionados (<u>%2$s</u> categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY_BY_ME="Últimos ${3/(.+)/\u\1/g} Adicionados por Mim (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY_BY_ME_1="Último ${4/(.+)/\u\1/g} Adicionado por Mim (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY_BY_ME_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Adicionados por Mim (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY_NOT_ME="Últimos ${3/(.+)/\u\1/g} Adicionados por Outros(%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY_NOT_ME_1="Último ${4/(.+)/\u\1/g} Adicionado por Outro (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_CREATED_CATEGORY_NOT_ME_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Adicionados por Outros (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED="Últimos ${3/(.+)/\u\1/g} Modificados"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_1="Último ${4/(.+)/\u\1/g} Modificado"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Modificados"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_BY_ME="Últimos ${3/(.+)/\u\1/g} Modificados por Mim"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_BY_ME_1="Último ${4/(.+)/\u\1/g} Modificado por Mim"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_BY_ME_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Modificados por Mim"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_NOT_ME="Últimos ${3/(.+)/\u\1/g} Modificados por Outros"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_NOT_ME_1="Último ${4/(.+)/\u\1/g} Modificado por Outro"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_NOT_ME_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Modificados por Outros"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY="Últimos ${3/(.+)/\u\1/g} Modificados (<u>%2$s</u> categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_1="Último ${4/(.+)/\u\1/g} Modificado (<u>%2$s</u> categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Modificados (<u>%2$s</u> categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_BY_ME="Últimos ${3/(.+)/\u\1/g} Modificados por Mim (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_BY_ME_1="Último ${4/(.+)/\u\1/g} Modificados por Mim (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_BY_ME_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Modificados por Mim (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_NOT_ME="Últimos ${3/(.+)/\u\1/g} Modificados por Outros (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_NOT_ME_1="Último ${4/(.+)/\u\1/g} Modificado por Outro (%2$s categoria)"
+MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_NOT_ME_MORE="Últimos %1$s ${3/(.+)/\u\1/g} Modificados por Outros (%2$s categoria)"
+
+]]></content>
+	<tabTrigger>jadminmodulelang-advanced</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

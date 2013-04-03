@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[; ${1:LIST}
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}="Gerenciador de ${3:Component}: ${4:List}"
+
+; ${2:EDIT}
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}_NEW="Gerenciador de ${3/(.+)/\u\1/g}: Nov${6:o} ${5:Edit}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}_EDIT="Gerenciador de ${3/(.+)/\u\1/g}: Editar ${5/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_NEW_${2/(.+)/\U\1/g}="Nov${6/(.+)/\L\1/g} ${5/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_EDIT_${2/(.+)/\U\1/g}="Editar ${5/(.+)/\u\1/g}"]]></content>
+	<tabTrigger>jadminlang-views</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

@@ -180,11 +180,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Users} extends JModelList
 
 			// Join over the group mapping table.
 			\$query->select('map.user_id, COUNT(map.group_id) AS group_count')
-			->from('#__user_usergroup_map AS map')
-			->where('map.user_id IN (' . implode(',', \$${2/(.+)/\L\1/g}Ids) . ')')
-			->group('map.user_id')
-				// Join over the ${2/(.+)/\L\1/g} groups table.
-			->join('LEFT', '#__usergroups AS g2 ON g2.id = map.group_id');
+				->from('#__user_usergroup_map AS map')
+				->where('map.user_id IN (' . implode(',', \$${2/(.+)/\L\1/g}Ids) . ')')
+				->group('map.user_id')
+					// Join over the ${2/(.+)/\L\1/g} groups table.
+				->join('LEFT', '#__usergroups AS g2 ON g2.id = map.group_id');
 
 			\$db->setQuery(\$query);
 
@@ -200,11 +200,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Users} extends JModelList
 			}
 
 			\$query->clear()
-			->select('n.user_id, COUNT(n.id) As note_count')
-			->from('#__user_notes AS n')
-			->where('n.user_id IN (' . implode(',', \$${2/(.+)/\L\1/g}Ids) . ')')
-			->where('n.state >= 0')
-			->group('n.user_id');
+				->select('n.user_id, COUNT(n.id) As note_count')
+				->from('#__user_notes AS n')
+				->where('n.user_id IN (' . implode(',', \$${2/(.+)/\L\1/g}Ids) . ')')
+				->where('n.state >= 0')
+				->group('n.user_id');
 
 			\$db->setQuery((string) \$query);
 
@@ -295,8 +295,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Users} extends JModelList
 
 		if (\$groupId || isset(\$groups))
 		{
-			\$query->join('LEFT', '#__user_usergroup_map AS map2 ON map2.user_id = a.id');
-			\$query->group(\$db->quoteName(array('a.id', 'a.name', 'a.username', 'a.password', 'a.block', 'a.sendEmail', 'a.registerDate', 'a.lastvisitDate', 'a.activation', 'a.params', 'a.email')));
+			\$query->join('LEFT', '#__user_usergroup_map AS map2 ON map2.user_id = a.id')
+				->group(\$db->quoteName(array('a.id', 'a.name', 'a.username', 'a.password', 'a.block', 'a.sendEmail', 'a.registerDate', 'a.lastvisitDate', 'a.activation', 'a.params', 'a.email')));
 
 			if (\$groupId)
 			{
@@ -313,7 +313,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Users} extends JModelList
 		if (\$this->getState('filter.search') !== '')
 		{
 			// Escape the search token.
-			\$token = \$db->Quote('%' . \$db->escape(\$this->getState('filter.search')) . '%');
+			\$token = \$db->quote('%' . \$db->escape(\$this->getState('filter.search')) . '%');
 
 			// Compile the different search clauses.
 			\$searches   = array();

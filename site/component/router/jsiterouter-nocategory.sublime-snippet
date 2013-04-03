@@ -141,7 +141,7 @@ function ${TM_COMPONENT/(.+)/\L\1/g}ParseRoute(\$segments)
 		{
 			if (\$advanced)
 			{
-				\$db = JFactory::getDBO();
+				\$db = JFactory::getDbo();
 				\$query = 'SELECT id FROM #__${TM_COMPONENT/(.+)/\L\1/g} WHERE alias = ' . \$db->quote(\$segment);
 				\$db->setQuery(\$query);
 				\$nid = \$db->loadResult();

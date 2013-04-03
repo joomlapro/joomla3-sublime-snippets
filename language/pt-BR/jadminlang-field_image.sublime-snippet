@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FIRST_LABEL="Primeira Imagem"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FLOAT_LABEL="Imagem Flutuante"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_LABEL="Texto alternativo"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_LABEL="Legenda"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SECOND_LABEL="Segunda imagem"]]></content>
+	<tabTrigger>jadminlang-field_image</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

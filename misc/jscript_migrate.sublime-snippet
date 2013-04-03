@@ -9,7 +9,7 @@
 public function _migrate()
 {
 	// Initialiase variables.
-	\$db      = JFactory::getDBO();
+	\$db      = JFactory::getDbo();
 	\$fields  = \$db->getTableFields('#__${TM_COMPONENT/(.+)/\L\1/g}');
 	\$${3:${TM_COMPONENT/(.+)/\L\1/g}} = \$fields['#__${TM_COMPONENT/(.+)/\L\1/g}'];
 

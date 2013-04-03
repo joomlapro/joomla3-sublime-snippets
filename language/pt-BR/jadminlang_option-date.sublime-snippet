@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_1MONTH="No último mês"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_3MONTH="Nos últimos 3 meses"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_6MONTH="Nos últimos 6 meses"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_WEEK="Na última semana"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_YEAR="No último ano"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_POST_YEAR="Mais de um ano atrás"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_TODAY="Hoje"]]></content>
+	<tabTrigger>jadminlang_option-date</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

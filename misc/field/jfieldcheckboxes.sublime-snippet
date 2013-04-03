@@ -29,13 +29,13 @@ class JFormField${1:Field} extends JFormFieldCheckboxes
 	{
 		// Initialiase variables.
 		\$options = array();
+		\$db      = JFactory::getDbo();
+		\$query   = \$db->getQuery(true);
 
-		\$db    = JFactory::getDbo();
-		\$query = \$db->getQuery(true);
-
-		\$query->select('id AS value, ${2:title} AS text');
-		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}') . ' AS a');
-		\$query->order('a.ordering');
+		// Create the base select statement.
+		\$query->select('id AS value, ${2:title} AS text')
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}') . ' AS a')
+			->order('a.ordering');
 
 		// Get the options.
 		\$db->setQuery(\$query);

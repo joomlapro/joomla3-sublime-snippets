@@ -24,14 +24,13 @@ public function &getItem(\$pk = null)
 			\$db = \$this->getDbo();
 			\$query = \$db->getQuery(true);
 
-			\$query->select(\$this->getState('item.select', 'a.*'));
-			\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}') . ' AS a');
+			\$query->select(\$this->getState('item.select', 'a.*'))
+				->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}') . ' AS a');
 
 			// Join on user table.
-			\$query->select('u.name AS author');
-			\$query->join('LEFT', '#__users AS u on u.id = a.created_by');
-
-			\$query->where('a.id = ' . (int) \$pk);
+			\$query->select('u.name AS author')
+				->join('LEFT', '#__users AS u on u.id = a.created_by')
+				->where('a.id = ' . (int) \$pk);
 
 			// Filter by start and end dates.
 			\$nullDate = \$db->quote(\$db->getNullDate());

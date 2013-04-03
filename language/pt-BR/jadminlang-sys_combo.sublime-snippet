@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[; SYS
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1:${TM_COMPONENT/(.+)/\U\1/g}}_VIEW_DEFAULT_TITLE="${4:List}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_VIEW_DEFAULT_DESC="Exibir uma lista de ${5/(.+)/\L\1/g} de uma categoria."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION=""
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${2:SINGULAR}_VIEW_DEFAULT_TITLE="${5:Edit}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_DESC="Exibir um ${5/(.+)/\L\1/g} simples."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION=""
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${3:${2/(.+)/\U\1/g}FORM}_VIEW_DEFAULT_TITLE="Enviar ou Editar um ${5/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${3/(.+)/\U\1/g}_VIEW_DEFAULT_DESC="Exibe um formulário para enviar um ${5/(.+)/\L\1/g} a partir do site."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${3/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION=""
+
+]]></content>
+	<tabTrigger>jadminlang-sys_combo</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

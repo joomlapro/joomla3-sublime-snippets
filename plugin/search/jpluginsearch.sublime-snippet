@@ -175,18 +175,18 @@ class PlgSearch${1:${TM_COMPONENT/(.+)/\u\1/g}} extends JPlugin
 
 			\$query->select('a.${3/(.+)/\L\1/g} AS title, a.description AS text, a.created AS created, '
 				. \$case_when . ', ' . \$case_when1 . ', '
-				. \$query->concatenate(array(\$db->quote(\$section), "c.title"), " / ") . ' AS section, \'2\' AS browsernav');
-			\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
-			\$query->innerJoin('#__categories AS c ON c.id = a.catid');
-			\$query->where('(' . \$where . ')' . ' AND a.state in (' . implode(', ', \$state) . ') AND c.published=1 AND c.access IN (' . \$groups . ')');
-			\$query->order(\$order);
+				. \$query->concatenate(array(\$db->quote(\$section), "c.title"), " / ") . ' AS section, \'2\' AS browsernav')
+				->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a')
+				->innerJoin('#__categories AS c ON c.id = a.catid')
+				->where('(' . \$where . ')' . ' AND a.state in (' . implode(', ', \$state) . ') AND c.published=1 AND c.access IN (' . \$groups . ')')
+				->order(\$order);
 
 			// Filter by language.
 			if (\$app->isSite() && \$app->getLanguageFilter())
 			{
 				\$tag = JFactory::getLanguage()->getTag();
-				\$query->where('a.language in (' . \$db->quote(\$tag) . ', ' . \$db->quote('*') . ')');
-				\$query->where('c.language in (' . \$db->quote(\$tag) . ', ' . \$db->quote('*') . ')');
+				\$query->where('a.language in (' . \$db->quote(\$tag) . ', ' . \$db->quote('*') . ')')
+					->where('c.language in (' . \$db->quote(\$tag) . ', ' . \$db->quote('*') . ')');
 			}
 
 			// Set the query and load the result.

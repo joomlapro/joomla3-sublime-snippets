@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${1:Hello} em destaque"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_UNFEATURED="${1/(.+)/\u\1/g} não Destacado"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_TOGGLE_TO_FEATURE="Clique para mudar o estado do ${1/(.+)/\u\1/g} para "_QQ_"em Destaque"_QQ_""
+COM_${TM_COMPONENT/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE="Clique para mudar o estado do ${1/(.+)/\u\1/g} para "_QQ_"Não Destacado"_QQ_""
+]]></content>
+	<tabTrigger>jadminlang_featured</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

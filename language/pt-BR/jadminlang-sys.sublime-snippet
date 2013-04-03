@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[; SYS
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_VIEW_DEFAULT_TITLE="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_VIEW_DEFAULT_DESC="Exibir uma lista de todas as categorias de ${2:list} dentro de uma categoria."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORY_VIEW_DEFAULT_TITLE="Categoria"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORY_VIEW_DEFAULT_DESC="Exibir uma lista de ${2/(.+)/\L\1/g} de uma categoria."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED_VIEW_DEFAULT_TITLE="Destaques"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED_VIEW_DEFAULT_DESC="Exibir todos os ${2/(.+)/\L\1/g} em destaque de uma, ou mais categorias."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1:EDIT}_VIEW_DEFAULT_TITLE="${3/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_VIEW_DEFAULT_DESC="Exibir um ${3:edit} simples."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${4:FORM}_VIEW_DEFAULT_TITLE="Enviar ou Editar um ${3/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${4/(.+)/\U\1/g}_VIEW_DEFAULT_DESC="Exibe um formulário para enviar um ${3/(.+)/\L\1/g} a partir do site."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${4/(.+)/\U\1/g}_VIEW_DEFAULT_OPTION="Padrão"
+
+]]></content>
+	<tabTrigger>jadminlang-sys</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

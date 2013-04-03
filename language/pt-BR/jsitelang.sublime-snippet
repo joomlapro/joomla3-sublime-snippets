@@ -1,0 +1,52 @@
+<snippet>
+	<content><![CDATA[JSELECT="Selecione"
+
+; CHANGE
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${1:${TM_COMPONENT/(.+)(s\b)/\U\1/g}}="Alterar ${4/(.+)/\u\1/g}"
+
+; FIELD
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${2:TITLE}_LABEL="${3:Título}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_DESC="Digite o ${3/(.+)/\L\1/g} da ${4:Singular}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_LABEL="Referência Externa"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_DESC="Uma referência opcional usada para ver fontes de dados externas."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ROBOTS_LABEL="Robôs"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ROBOTS_DESC="Instruções para Robôs de Busca"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_AUTHOR_DESC="O autor deste conteúdo"
+
+; FIELDSET
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_PUBLISHING="Opções de Publicação"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_METADATA="Opções de Meta-Dados"
+
+; HEADING
+
+; MISC
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_EDIT_ITEM="Editar ${4/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_WRITTEN_BY="Escrito por %s"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ORDERING="Ordenando:<br/>Novas ${2:plural} por padrão na primeira posição na Categoria. A ordenação pode ser alterada na administração."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FEED_READMORE="Leia mais..."
+
+; OPTION
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_INDEX_FOLLOW="Indexar, Seguir"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_NOINDEX_FOLLOW="Não indexar, seguir"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_INDEX_NOFOLLOW="Indexar, Não seguir"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_NOINDEX_NOFOLLOW="Não indexar, não seguir"
+JOPTION_ORDER_FIRST="Ordem Primeiro"
+JOPTION_ORDER_LAST="Ordem Último"
+
+; SEARCH
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_SEARCH_IN_${2/(.+)/\U\1/g}="Buscar no ${3/(.+)/\u\1/g}"
+
+; SELECT
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_AN_${1/(.+)/\U\1/g}="Selecione um ${4/(.+)/\u\1/g}"
+
+]]></content>
+	<tabTrigger>jsitelang</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

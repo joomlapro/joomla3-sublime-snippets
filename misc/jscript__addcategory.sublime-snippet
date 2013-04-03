@@ -36,13 +36,14 @@ public function _addCategory()
 
 	// Initialiase variables.
 	\$id    = \$model->getItem()->id;
-	\$db    = JFactory::getDBO();
+	\$db    = JFactory::getDbo();
 
 	// Updating all ${TM_COMPONENT/(.+)/\L\1/g} without category to have this new one.
-	\$query = \$db->getQuery(true);
-	\$query->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}'));
-	\$query->set(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$id));
-	\$query->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
+	\$query = \$db->getQuery(true)
+		->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}'))
+		->set(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$id))
+		->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
+
 	\$db->setQuery(\$query);
 	\$db->query();
 

@@ -45,9 +45,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Hello} extends JModelList
 		\$query = \$db->getQuery(true);
 
 		// Prepare query.
-		\$query->select('');
-		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}'));
-		\$query->where('');
+		\$query->select('')
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}'))
+			->where('');
 
 		return \$query;
 	}

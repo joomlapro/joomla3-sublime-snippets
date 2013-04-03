@@ -29,13 +29,13 @@ class JFormField${1:Field_list} extends JFormFieldList
 	{
 		// Initialiase variables.
 		\$options = array();
+		\$db      = JFactory::getDbo();
+		\$query   = \$db->getQuery(true);
 
-		\$db    = JFactory::getDbo();
-		\$query = \$db->getQuery(true);
-
-		\$query->select('id AS value, name AS text');
-		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_table}') . ' AS a');
-		\$query->order('a.name');
+		// Create the base select statement.
+		\$query->select('id AS value, name AS text')
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_table}') . ' AS a')
+			->order('a.name');
 
 		// Get the options.
 		\$db->setQuery(\$query);

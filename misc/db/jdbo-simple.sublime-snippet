@@ -5,10 +5,10 @@
 \$query = \$db->getQuery(true);
 
 // Create the base select statement.
-\$query->select('*');
-\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1:table}'));
-\$query->where(\$db->quoteName('state') . ' = ' . \$db->quote('1'));
-\$query->order(\$db->quoteName('ordering') . ' ASC');
+\$query->select('*')
+	->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1:table}'))
+	->where(\$db->quoteName('state') . ' = ' . \$db->quote('1'))
+	->order(\$db->quoteName('ordering') . ' ASC');
 
 // Set the query and load the result.
 \$db->setQuery(\$query);

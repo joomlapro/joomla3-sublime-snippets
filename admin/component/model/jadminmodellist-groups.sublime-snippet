@@ -174,9 +174,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Groups} extends JModelList
 		\$query->from(\$db->quoteName('#__usergroups') . ' AS a');
 
 		// Add the level in the tree.
-		\$query->select('COUNT(DISTINCT c2.id) AS level');
-		\$query->join('LEFT OUTER', \$db->quoteName('#__usergroups') . ' AS c2 ON a.lft > c2.lft AND a.rgt < c2.rgt');
-		\$query->group('a.id, a.lft, a.rgt, a.parent_id, a.title');
+		\$query->select('COUNT(DISTINCT c2.id) AS level')
+			->join('LEFT OUTER', \$db->quoteName('#__usergroups') . ' AS c2 ON a.lft > c2.lft AND a.rgt < c2.rgt')
+			->group('a.id, a.lft, a.rgt, a.parent_id, a.title');
 
 		// Filter the comments over the search string if set.
 		\$search = \$this->getState('filter.search');
@@ -189,7 +189,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Groups} extends JModelList
 			}
 			else
 			{
-				\$search = \$db->Quote('%' . \$db->escape(\$search, true) . '%');
+				\$search = \$db->quote('%' . \$db->escape(\$search, true) . '%');
 				\$query->where('a.title LIKE ' . \$search);
 			}
 		}

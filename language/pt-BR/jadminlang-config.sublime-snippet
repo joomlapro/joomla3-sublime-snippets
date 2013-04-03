@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[; CONFIG
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de ${1:Component}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_COMPONENT_LABEL="${1/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_COMPONENT_DESC="Estas configurações se aplicam aos ${2:List}, a não ser que eles tenham sido alterados por um menu específico, ou ${3:Edit}."]]></content>
+	<tabTrigger>jadminlang-config</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

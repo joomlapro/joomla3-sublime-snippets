@@ -45,7 +45,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 			\$link = JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${2:${TM_COMPONENT/(.+)(s\b)/\u\1/g}}Route(\$row->slug));
 
 			// Get row ${4/(.+)/\L\1/g}.
-			\$db = JFactory::getDBO();
+			\$db = JFactory::getDbo();
 			\$query = 'SELECT ' . \$db->quoteName('${4:description}') . ' FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${5:${1/(.+)/\L\1/g}} WHERE id =' . \$row->id;
 			\$db->setQuery(\$query);
 			\$row->${4/(.+)/\L\1/g} = \$db->loadResult();

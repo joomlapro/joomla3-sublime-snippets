@@ -24,10 +24,10 @@ abstract class Mod${1:$TM_MODULE}Helper
 		\$query = \$db->getQuery(true);
 
 		// Prepare query.
-		\$query->select('a.*');
-		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}') . ' AS a');
-		\$query->where('a.state = 1');
-		\$query->order('a.ordering ASC');
+		\$query->select('a.*')
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}') . ' AS a')
+			->where('a.state = 1')
+			->order('a.ordering ASC');
 
 		// Inject the query and load the items.
 		\$db->setQuery(\$query);

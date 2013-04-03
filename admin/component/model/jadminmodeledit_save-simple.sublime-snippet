@@ -99,9 +99,9 @@ public function save(\$data)
 	\$query = \$db->getQuery(true);
 
 	// Delete all ${1/(.+)/\L\1/g}.
-	\$query->delete();
-	\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'));
-	\$query->where('${3:${2:column}_id} = ' . (int) \$value->id);
+	\$query->delete()
+		->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'))
+		->where('${3:${2:column}_id} = ' . (int) \$value->id);
 
 	// Set the query and execute the delete.
 	\$db->setQuery(\$query);
@@ -110,12 +110,11 @@ public function save(\$data)
 	{
 		foreach (\$${1/(.+)/\L\1/g} as \$${4:${1/(.+)(s\b)/\L\1/g}})
 		{
-			\$query->clear();
-
 			// Create the base insert statement.
-			\$query->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'));
-			\$query->columns(array(\$db->quoteName('${3/(.+)/\L\1/g}'), \$db->quoteName('${5:${4/(.+)/\L\1/g}_id}')));
-			\$query->values(\$db->quote(\$value->id) . ', ' . \$db->quote(\$${4/(.+)/\L\1/g}));
+			\$query->clear()
+				->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'))
+				->columns(array(\$db->quoteName('${3/(.+)/\L\1/g}'), \$db->quoteName('${5:${4/(.+)/\L\1/g}_id}')))
+				->values(\$db->quote(\$value->id) . ', ' . \$db->quote(\$${4/(.+)/\L\1/g}));
 
 			// Set the query and execute the insert.
 			\$db->setQuery(\$query);

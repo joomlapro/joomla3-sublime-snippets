@@ -169,17 +169,17 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 		\$query  = \$db->getQuery(true);
 
 		// Select required fields from the categories.
-		\$query->select(\$this->getState('list.select', 'a.*'));
-		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}') . ' AS a');
-		\$query->where('a.featured = 1');
+		\$query->select(\$this->getState('list.select', 'a.*'))
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}') . ' AS a')
+			->where('a.featured = 1');
 
 		// Join over the categories.
-		\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access');
-		\$query->join('INNER', '#__categories AS c ON c.id = a.catid');
+		\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access')
+			->join('INNER', '#__categories AS c ON c.id = a.catid');
 
 		// Filter by access level.
-		\$query->where('a.access IN (' . \$groups . ')');
-		\$query->where('c.access IN (' . \$groups . ')');
+		\$query->where('a.access IN (' . \$groups . ')')
+			->where('c.access IN (' . \$groups . ')');
 
 		// Filter by category.
 		if (\$categoryId = \$this->getState('category.id'))
@@ -213,9 +213,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends JModelList
 			\$nullDate = \$db->quote(\$db->getNullDate());
 			\$date = JFactory::getDate();
 			\$nowDate = \$db->quote(\$date->toSql());
-			\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')');
-			\$query->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
-			\$query->where(\$publishedWhere . ' = ' . (int) \$published);
+			\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
+				->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')')
+				->where(\$publishedWhere . ' = ' . (int) \$published);
 		}
 
 		// Filter by language.

@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[; ERROR
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_UNIQUE_ALIAS="Outr${2:o} ${1:edit} desta categoria tem o mesmo apelido"
+
+]]></content>
+	<tabTrigger>jadminlang-error</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

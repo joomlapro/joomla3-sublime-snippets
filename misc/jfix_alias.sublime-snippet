@@ -20,12 +20,11 @@ if (\$db->getErrorNum())
 
 foreach (\$items as \$item)
 {
-	\$query->clear();
-
 	// Create the base update statement.
-	\$query->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}'));
-	\$query->set(\$db->quoteName('alias') . ' = ' . \$db->quote(JFilterOutput::stringURLSafe(\$item->${1/(.+)/\L\1/g})));
-	\$query->where(\$db->quoteName('id'). ' = ' . \$db->quote(\$item->id));
+	\$query->clear()
+		->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}'))
+		->set(\$db->quoteName('alias') . ' = ' . \$db->quote(JFilterOutput::stringURLSafe(\$item->${1/(.+)/\L\1/g})))
+		->where(\$db->quoteName('id'). ' = ' . \$db->quote(\$item->id));
 
 	// Set the query and execute the update.
 	\$db->setQuery(\$query);

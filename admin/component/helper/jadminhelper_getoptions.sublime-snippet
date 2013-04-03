@@ -10,13 +10,13 @@ public static function get${1:Field}Options()
 {
 	// Initialize variables.
 	\$options = array();
+	\$db      = JFactory::getDbo();
+	\$query   = \$db->getQuery(true);
 
-	\$db    = JFactory::getDbo();
-	\$query = \$db->getQuery(true);
-
-	\$query->select('a.id AS value, a.${2:title} AS text');
-	\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}s}') . ' AS a');
-	\$query->order('a.${4:ordering}');
+	// Create the base select statement.
+	\$query->select('a.id AS value, a.${2:title} AS text')
+		>from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}s}') . ' AS a')
+		->order('a.${4:ordering}');
 
 	// Get the options.
 	\$db->setQuery(\$query);

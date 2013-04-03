@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES="${1:Component} - Categorias de ${2:Plural}"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_XML_DESCRIPTION="Este módulo exibe uma lista de categorias subordinadas a uma categoria superior."
+
+; FIELD
+
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_COUNT_DESC="Digite aqui o número de categorias subordinadas a exibir. O valor padrão é "_QQ_"0"_QQ_" e exibirá todas."
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_COUNT_LABEL="Níveis de Categoria Subordinadas"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_MAXLEVEL_DESC="Informe aqui a quantidade máxima de níveis para cada categoria subordinada. O padrão é '0' e exibirá todas."
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_MAXLEVEL_LABEL="Quantidade Máxima de Níveis"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_PARENT_DESC="Escolha uma categoria superior"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_PARENT_LABEL="Categoria Superior"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_SHOW_CHILDREN_DESC="Exibir ou não as categorias subordinadas"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_SHOW_CHILDREN_LABEL="Categorias Subordinadas"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_SHOW_DESCRIPTION_DESC="Exibir ou não as descrições das categorias"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_SHOW_DESCRIPTION_LABEL="Descrição das Categorias"
+
+; TITLE
+
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_TITLE_HEADING_LABEL="Estilo do Cabeçalho"
+MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_TITLE_HEADING_DESC="Configurar o estilo do cabeçalho usado"
+
+]]></content>
+	<tabTrigger>jsitelangmodule-categories</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

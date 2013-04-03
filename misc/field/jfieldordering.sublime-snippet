@@ -37,25 +37,25 @@ class JFormFieldOrdering extends JFormField
 		\$attr .= \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
 
 		// Get some field values from the form.
-		\$${2:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
+		\$${3:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
 		\$categoryId = (int) \$this->form->getValue('catid');
 
 		// Build the query for the ordering list.
 		\$query = 'SELECT ordering AS value, ${1:title} AS text' .
-				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}' .
+				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}$2' .
 				' WHERE catid = ' . (int) \$categoryId .
 				' ORDER BY ordering';
 
 		// Create a read-only list (no name) with a hidden input to store the value.
 		if ((string) \$this->element['readonly'] == 'true')
 		{
-			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$${2/(.+)/\L\1/g}Id ? 0 : 1);
+			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$${3/(.+)/\L\1/g}Id ? 0 : 1);
 			\$html[] = '<input type="hidden" name="' . \$this->name . '" value="' . \$this->value . '"/>';
 		}
 		// Create a regular list.
 		else
 		{
-			\$html[] = JHtml::_('list.ordering', \$this->name, \$query, trim(\$attr), \$this->value, \$${2/(.+)/\L\1/g}Id ? 0 : 1);
+			\$html[] = JHtml::_('list.ordering', \$this->name, \$query, trim(\$attr), \$this->value, \$${3/(.+)/\L\1/g}Id ? 0 : 1);
 		}
 
 		return implode(\$html);

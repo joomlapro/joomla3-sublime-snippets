@@ -9,10 +9,12 @@
 \$id    = \$model->getItem()->id;
 
 // Updating all albums without category to have this new one.
-\$query->clear();
-\$query->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'));
-\$query->set(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$id));
-\$query->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
+\$query->clear()
+	->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'))
+	->set(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$id))
+	->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
+
+// Set the query and execute the update.
 \$db->setQuery(\$query);
 \$db->query();]]></content>
 	<tabTrigger>jscript__addcategory_more</tabTrigger>

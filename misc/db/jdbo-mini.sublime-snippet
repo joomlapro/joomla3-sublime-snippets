@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Build the query for the ${2/(.+)/\L\1/g} list.
-\$db = JFactory::getDBO();
+\$db = JFactory::getDbo();
 \$db->setQuery(
 	'SELECT ${1:title}' .
 	' FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${2:table}' .

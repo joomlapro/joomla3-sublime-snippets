@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[; BATCH
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_OPTIONS="Processar em lote os ${1:list} selecionados"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_TIP="Se escolher copiar um ${2:edit}, qualquer outra ação selecionada será aplicada para o ${2/(.+)/\L\1/g} copiado. Caso contrário, todas as ações são aplicadas ao ${2/(.+)/\L\1/g} selecionado."]]></content>
+	<tabTrigger>jadminlang-batch</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

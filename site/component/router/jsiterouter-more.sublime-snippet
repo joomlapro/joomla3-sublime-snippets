@@ -141,7 +141,7 @@ function ${TM_COMPONENT/(.+)/\L\1/g}ParseRoute(\$segments)
 		{
 			if (\$advanced)
 			{
-				\$db = JFactory::getDBO();
+				\$db = JFactory::getDbo();
 
 				if (\$item->query['view'] == '${TM_COMPONENT/(.+)/\L\1/g}')
 				{
