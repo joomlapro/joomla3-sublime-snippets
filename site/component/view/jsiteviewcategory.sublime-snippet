@@ -68,7 +68,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewCategory extends JViewLegacy
 		}
 
 		// Prepare the data.
-		// Compute the newsfeed slug.
+		// Compute the ${1:singular} slug.
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
 			\$item          = &\$items[\$i];
@@ -154,12 +154,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewCategory extends JViewLegacy
 
 		\$id = (int) @\$menu->query['id'];
 
-		if (\$menu && (\$menu->query['option'] != 'com_${TM_COMPONENT/(.+)/\L\1/g}' || \$menu->query['view'] == 'newsfeed' || \$id != \$this->category->id))
+		if (\$menu && (\$menu->query['option'] != 'com_${TM_COMPONENT/(.+)/\L\1/g}' || \$menu->query['view'] == '${1/(.+)/\L\1/g}' || \$id != \$this->category->id))
 		{
 			\$path = array(array('title' => \$this->category->title, 'link' => ''));
 			\$category = \$this->category->getParent();
 
-			while ((\$menu->query['option'] != 'com_${TM_COMPONENT/(.+)/\L\1/g}' || \$menu->query['view'] == 'newsfeed' || \$id != \$category->id) && \$category->id > 1)
+			while ((\$menu->query['option'] != 'com_${TM_COMPONENT/(.+)/\L\1/g}' || \$menu->query['view'] == '${1/(.+)/\L\1/g}' || \$id != \$category->id) && \$category->id > 1)
 			{
 				\$path[] = array('title' => \$category->title, 'link' => ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$category->id));
 				\$category = \$category->getParent();

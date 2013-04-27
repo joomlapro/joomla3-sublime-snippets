@@ -10,7 +10,7 @@
  *
  * @since   $TM_VERSION
  */
-public static function ${1:action}(\$value = 0, \$i, \$canChange = true)
+public static function ${1:action}(\$value = 0, \$i = null, \$canChange = true)
 {
 	// Load the tooltip bootstrap script.
 	JHtml::_('bootstrap.tooltip');

@@ -2,6 +2,7 @@
 	<content><![CDATA[// Get the current user object.
 \$user = JFactory::getUser();
 
+// If the user is a guest, redirect to the login page.
 if (\$user->get('guest') == 1)
 {
 	// Redirect to login page.

@@ -1,6 +1,17 @@
 <snippet>
-	<content><![CDATA[<field name="${1:field}" type="categoryedit" extension="com_${TM_COMPONENT/(.+)/\L\1/g}" class="inputbox" required="true" addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields" label="JCATEGORY" description="JFIELD_CATEGORY_DESC">
-	<option value="">JSELECT</option>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="categoryedit"
+	label="JCATEGORY"
+	description="JFIELD_CATEGORY_DESC"
+	class="inputbox"
+	extension="com_${TM_COMPONENT/(.+)/\L\1/g}"
+	required="true"
+	addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields"
+	>
+	<option
+		value=""
+		>JSELECT</option>
 </field>]]></content>
 	<tabTrigger>jadminfieldcategoryedit</tabTrigger>
 	<scope>text.xml</scope>

@@ -10,7 +10,6 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-
 ]]></content>
 	<tabTrigger>jheader</tabTrigger>
 	<!-- <scope>source.php</scope> -->

@@ -86,7 +86,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Singular} extends JModelItem
 
 				// Join over the categories to get parent category titles.
 				\$query->select('parent.title as parent_title, parent.id as parent_id, parent.path as parent_route, parent.alias as parent_alias')
-					->join('LEFT', '#__categories as parent ON parent.id = c.parent_id');
+					->join('LEFT', '#__categories as parent ON parent.id = c.parent_id')
 					->where('a.id = ' . (int) \$pk);
 
 				// Filter by start and end dates.

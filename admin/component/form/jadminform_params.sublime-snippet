@@ -1,6 +1,11 @@
 <snippet>
-	<content><![CDATA[<fields name="params">
-	<fieldset name="jbasic" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+	<content><![CDATA[<fields
+	name="params"
+	>
+	<fieldset
+		name="jbasic"
+		label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS"
+		>
 
 	</fieldset>
 </fields>]]></content>

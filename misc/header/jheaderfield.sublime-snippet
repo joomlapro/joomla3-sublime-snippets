@@ -10,7 +10,6 @@
 // No direct access.
 defined('JPATH_BASE') or die;
 
-
 ]]></content>
 	<tabTrigger>jheaderfield</tabTrigger>
 	<!-- <scope>source.php</scope> -->

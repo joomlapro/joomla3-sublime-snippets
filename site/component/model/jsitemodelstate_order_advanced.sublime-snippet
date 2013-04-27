@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[// Load the ordering.
+\$orderCol = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:view}.list.' . \$itemid . '.filter_order', 'filter_order', '', 'string');
+\$orderCol = !\$orderCol ? \$this->state->params->get('${1/(.+)/\L\1/g}_list_orderby', 'a.${2:title}') : \$orderCol;
+
+if (!in_array(\$orderCol, \$this->filter_fields))
+{
+	\$orderCol = 'a.ordering';
+}
+
+\$this->setState('list.ordering', \$orderCol);
+
+// Load the direction.
+\$listOrder = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . \$itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'string');
+\$listOrder = !\$listOrder ? \$this->state->params->get('${1/(.+)/\L\1/g}_list_orderby_direction', 'ASC') : \$listOrder;
+
+if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
+{
+	\$listOrder = 'ASC';
+}
+
+\$this->setState('list.direction', \$listOrder);]]></content>
+	<tabTrigger>jsitemodelstate_order_advanced</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

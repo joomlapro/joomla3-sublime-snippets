@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to toggle the ${1/(.+)/\L\1/g} setting of ${3:${2/(.+)/\L\1/g}s}.
+ * Method to toggle the ${1/(.+)/\L\1/g} setting of ${3:${2/(.+)/\L\1/g}}.
  *
  * @param   array  \$pks    The ids of the items to toggle.
  * @param   int    \$value  The value to toggle to.
@@ -28,7 +28,7 @@ public function ${1:action}(\$pks, \$value = 0)
 		\$db = \$this->getDbo();
 
 		\$db->setQuery(
-			'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_${2:edit}' .
+			'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_${2:table}' .
 			' SET ${1/(.+)/\L\1/g} = ' . (int) \$value .
 			' WHERE id IN (' . implode(', ', \$pks) . ')'
 		);

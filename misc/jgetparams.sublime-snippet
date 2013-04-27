@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Load the parameters.
+\$params = \$app->getParams();
+\$this->setState('params', \$params);]]></content>
+	<tabTrigger>jgetparams</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

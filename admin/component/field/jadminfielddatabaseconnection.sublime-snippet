@@ -1,19 +1,12 @@
 <snippet>
 	<content><![CDATA[<field
 	name="${1:field}"
-	type="radio"
-	default="0"
+	type="databaseconnection"
 	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
 	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC"
-	filter="integer"
-	>
-	<option
-		value="1"
-		>JYES</option>
-	<option
-		value="0"
-		>JNO</option>
-</field>]]></content>
-	<tabTrigger>jadminfieldradio</tabTrigger>
+	supported="mysql,mysqli,postgresql,sqlsrv,sqlazure"
+	filter="string"
+	/>]]></content>
+	<tabTrigger>jadminfielddatabaseconnection</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

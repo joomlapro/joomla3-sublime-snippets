@@ -117,7 +117,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:User} extends JControllerForm
 		if (empty(\$validData['tags']) && !empty(\$item->tags))
 		{
 			\$oldTags = new JTags;
-			\$oldTags->unTagItem(\$id, 'com_newsfeeds.newsfeed');
+			\$oldTags->unTagItem(\$id, 'com_${TM_TEMPLATE/(.+)/\L\1/g}.${1/(.+)/\L\1/g}');
 			return;
 		}
 

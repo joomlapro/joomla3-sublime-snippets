@@ -2,20 +2,20 @@
 	<content><![CDATA[/**
  * Get a variable from the manifest file (actually, from the manifest cache).
  *
- * @param   $name
+ * @param   \$name
  *
  * @return  array
  *
  * @since   $TM_VERSION
  */
-public function getParam($name)
+public function getParam(\$name)
 {
 	// Initialiase variables.
-	$db = JFactory::getDbo();
-	$db->setQuery('SELECT manifest_cache FROM #__extensions WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"');
-	$manifest = json_decode($db->loadResult(), true);
+	\$db = JFactory::getDbo();
+	\$db->setQuery('SELECT manifest_cache FROM #__extensions WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"');
+	\$manifest = json_decode(\$db->loadResult(), true);
 
-	return $manifest[$name];
+	return \$manifest[\$name];
 }
 ]]></content>
 	<tabTrigger>jscript_getparam</tabTrigger>

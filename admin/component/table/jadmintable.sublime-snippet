@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:Table_edit} extends JTable
+class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:Singular} extends JTable
 {
 	/**
 	 * Constructor
