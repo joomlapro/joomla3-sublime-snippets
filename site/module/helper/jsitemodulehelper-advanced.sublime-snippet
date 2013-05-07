@@ -28,7 +28,7 @@ abstract class Mod${1:$TM_MODULE}Helper
 		// Get the dbo.
 		\$db = JFactory::getDbo();
 
-		// Get an instance of the generic ${2:${1/(.+)/\L\1/g}} model.
+		// Get an instance of the generic ${2:${1/(_+)/ /g}} model.
 		\$model = JModelLegacy::getInstance('${2/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
 
 		// Set application parameters in model.

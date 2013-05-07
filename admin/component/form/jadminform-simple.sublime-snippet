@@ -1,153 +1,31 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<fieldset
-		name="details"
-		addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields"
-		>
-		<field
-			name="id"
-			type="text"
-			default="0"
-			label="JGLOBAL_FIELD_ID_LABEL"
-			description="JGLOBAL_FIELD_ID_DESC"
-			class="readonly"
-			readonly="true"
-			/>
-		<field
-			name="${1:title}"
-			type="text"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC"
-			class="inputbox"
-			required="true"
-			size="40"
-			/>
-		<field
-			name="alias"
-			type="text"
-			label="JFIELD_ALIAS_LABEL"
-			description="JFIELD_ALIAS_DESC"
-			class="inputbox"
-			size="40"
-			/>
-		<field
-			name="description"
-			type="editor"
-			label="JGLOBAL_DESCRIPTION"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC"
-			class="inputbox"
-			buttons="true"
-			hide="pagebreak,readmore"
-			filter="JComponentHelper::filterText"
-			/>
-		<field
-			name="state"
-			type="list"
-			default="1"
-			label="JSTATUS"
-			description="JFIELD_PUBLISHED_DESC"
-			class="inputbox span12 small"
-			size="1"
-			>
-			<option
-				value="1"
-				>JPUBLISHED</option>
-			<option
-				value="0"
-				>JUNPUBLISHED</option>
-			<option
-				value="2"
-				>JARCHIVED</option>
-			<option
-				value="-2"
-				>JTRASHED</option>
+	<fieldset name="details" addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields">
+		<field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL" description="JGLOBAL_FIELD_ID_DESC" class="readonly" readonly="true" />
+		<field name="${1:title}" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" class="inputbox" required="true" size="40" />
+		<field name="alias" type="text" label="JFIELD_ALIAS_LABEL" description="JFIELD_ALIAS_DESC" class="inputbox" size="40" />
+		<field name="description" type="editor" label="JGLOBAL_DESCRIPTION" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC" class="inputbox" buttons="true" hide="pagebreak,readmore" filter="JComponentHelper::filterText" />
+		<field name="state" type="list" default="1" label="JSTATUS" description="JFIELD_PUBLISHED_DESC" class="inputbox span12 small" size="1">
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
 		</field>
-		<field
-			name="ordering"
-			type="ordering"
-			default="0"
-			label="JFIELD_ORDERING_LABEL"
-			description="JFIELD_ORDERING_DESC"
-			class="inputbox"
-			/>
-		<field
-			name="access"
-			type="accesslevel"
-			label="JFIELD_ACCESS_LABEL"
-			description="JFIELD_ACCESS_DESC"
-			class="inputbox span12 small"
-			size="1"
-			/>
+		<field name="ordering" type="ordering" default="0" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" class="inputbox" />
+		<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" class="inputbox span12 small" size="1" />
 	</fieldset>
-	<fieldset
-		name="publish"
-		label="JGLOBAL_FIELDSET_PUBLISHING"
-		>
-		<field
-			name="created"
-			type="calendar"
-			label="JGLOBAL_FIELD_CREATED_LABEL"
-			description="JGLOBAL_FIELD_CREATED_DESC"
-			class="inputbox"
-			size="22"
-			format="%Y-%m-%d %H:%M:%S"
-			filter="user_utc"
-			/>
-		<field
-			name="created_by"
-			type="user"
-			label="JGLOBAL_FIELD_CREATED_BY_LABEL"
-			description="JGLOBAL_FIELD_CREATED_BY_Desc"
-			/>
-		<field
-			name="created_by_alias"
-			type="text"
-			label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL"
-			description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC"
-			class="inputbox"
-			size="20"
-			/>
-		<field
-			name="modified"
-			type="calendar"
-			label="JGLOBAL_FIELD_MODIFIED_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MODIFIED_DESC"
-			class="readonly"
-			size="22"
-			readonly="true"
-			format="%Y-%m-%d %H:%M:%S"
-			filter="user_utc"
-			/>
-		<field
-			name="modified_by"
-			type="user"
-			label="JGLOBAL_FIELD_MODIFIED_BY_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MODIFIED_BY_DESC"
-			class="readonly"
-			readonly="true"
-			filter="unset"
-			/>
-		<field
-			name="checked_out"
-			type="hidden"
-			filter="unset"
-			/>
-		<field
-			name="checked_out_time"
-			type="hidden"
-			filter="unset"
-			/>
+	<fieldset name="publish" label="JGLOBAL_FIELDSET_PUBLISHING">
+		<field name="created" type="calendar" label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+		<field name="created_by" type="user" label="JGLOBAL_FIELD_CREATED_BY_LABEL" description="JGLOBAL_FIELD_CREATED_BY_Desc" />
+		<field name="created_by_alias" type="text" label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL" description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC" class="inputbox" size="20" />
+		<field name="modified" type="calendar" label="JGLOBAL_FIELD_MODIFIED_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MODIFIED_DESC" class="readonly" size="22" readonly="true" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
+		<field name="modified_by" type="user" label="JGLOBAL_FIELD_MODIFIED_BY_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MODIFIED_BY_DESC" class="readonly" readonly="true" filter="unset" />
+		<field name="checked_out" type="hidden" filter="unset" />
+		<field name="checked_out_time" type="hidden" filter="unset" />
 	</fieldset>
-	<fields
-		name="params"
-		>
-		<fieldset
-			name="jbasic"
-			label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS"
-			>
-
-		</fieldset>
+	<fields name="params">
+		<fieldset name="jbasic" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS" />
 	</fields>
 </form>
 

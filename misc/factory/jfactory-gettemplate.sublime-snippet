@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[$app->getTemplate(true)->params;]]></content>
+	<tabTrigger>jfactory-gettemplate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

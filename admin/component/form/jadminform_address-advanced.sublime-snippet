@@ -1,69 +1,14 @@
 <snippet>
-	<content><![CDATA[<fields
-	name="address"
-	>
-	<fieldset
-		name="jaddress"
-		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_ADDRESS"
-		>
-		<field
-			name="zipcode"
-			type="zipcode"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZIPCODE_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZIPCODE_DESC"
-			class="inputbox zip"
-			/>
-		<field
-			name="street"
-			type="textarea"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STREET_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STREET_DESC"
-			class="inputbox"
-			rows="1"
-			cols="40"
-			/>
-		<field
-			name="district"
-			type="text"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DISTRICT_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DISTRICT_DESC"
-			class="inputbox"
-			/>
-		<field
-			name="city"
-			type="text"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CITY_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CITY_DESC"
-			class="inputbox"
-			/>
-		<field
-			name="state"
-			type="state"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STATE_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STATE_DESC"
-			class="inputbox"
-			/>
-		<field
-			name="latitude"
-			type="text"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC"
-			class="inputbox"
-			/>
-		<field
-			name="longitude"
-			type="text"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC"
-			class="inputbox"
-			/>
-		<field
-			name="zoom"
-			type="zoom"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZOOM_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZOOM_DESC"
-			default="12"
-			/>
+	<content><![CDATA[<fields name="address">
+	<fieldset name="jaddress" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_ADDRESS">
+		<field name="zipcode" type="zipcode" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZIPCODE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZIPCODE_DESC" class="inputbox zip" />
+		<field name="street" type="textarea" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STREET_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STREET_DESC" class="inputbox" rows="1" cols="40" />
+		<field name="district" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DISTRICT_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DISTRICT_DESC" class="inputbox" />
+		<field name="city" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CITY_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CITY_DESC" class="inputbox" />
+		<field name="state" type="state" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STATE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STATE_DESC" class="inputbox" />
+		<field name="latitude" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC" class="inputbox" />
+		<field name="longitude" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC" class="inputbox" />
+		<field name="zoom" type="zoom" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZOOM_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZOOM_DESC" default="12" />
 	</fieldset>
 </fields>]]></content>
 	<tabTrigger>jadminform_address-advanced</tabTrigger>

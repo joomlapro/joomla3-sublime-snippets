@@ -9,6 +9,6 @@ TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-SLIDESHOW="Sl
 TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-SIDEBAR="Barra Lateral"
 TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-FOOTER="Rodapé"
 TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-FOOTERMENU="Menu Rodapé"]]></content>
-	<tabTrigger>jlangtemplate-position</tabTrigger>
+	<tabTrigger>jsitelangtemplate-position</tabTrigger>
 	<scope>text.plain</scope>
 </snippet>

@@ -1,10 +1,5 @@
 <snippet>
-	<content><![CDATA[<field
-	name="${1:field}"
-	type="modal_${2:${1/_id|id_//g}s}"
-	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
-	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC"
-	/>]]></content>
+	<content><![CDATA[<field name="${1:field}" type="modal_${2:${1/_id|id_//g}s}" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
 	<tabTrigger>jadminfieldmodal</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

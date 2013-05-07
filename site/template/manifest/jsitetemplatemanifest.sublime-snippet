@@ -3,7 +3,7 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="$TM_VERSION" type="template" client="site" method="upgrade">
 	<name>${1:${TM_TEMPLATE/(.+)/\L\1/g}}</name>
-	<version>$TM_VERSION</version>
+	<version>$TM_PROJECT_VERSION</version>
 	<creationDate>${2:${TM_MONTH/(.+)/\u\1/g}} $TM_YEAR</creationDate>
 	<author>$TM_FULLNAME</author>
 	<authorEmail>$TM_EMAIL</authorEmail>
@@ -36,6 +36,8 @@
 		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footermenu</position>
 	</positions>
 	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_${1/(.+)/\L\1/g}.ini</language>
+		<language tag="en-GB">en-GB/en-GB.tpl_${1/(.+)/\L\1/g}.sys.ini</language>
 		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.ini</language>
 		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.sys.ini</language>
 	</languages>

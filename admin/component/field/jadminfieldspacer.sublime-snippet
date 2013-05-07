@@ -1,11 +1,5 @@
 <snippet>
-	<content><![CDATA[<field
-	name="${1:field}"
-	type="spacer"
-	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
-	class="text"
-	hr="false"
-	/>]]></content>
+	<content><![CDATA[<field name="${1:field}" type="spacer" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" class="text" hr="false" />]]></content>
 	<tabTrigger>jadminfieldspacer</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

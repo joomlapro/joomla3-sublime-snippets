@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[/*
+ * ${1/(.+)/\u\1/g} (divs and font header tags)
+ *
+ * @param   object  \$module    The module data.
+ * @param   object  &\$params   The module params.
+ * @param   array   &\$attribs  The module attribs.
+ *
+ * @return  string
+ */
+function modChrome_${1:style}(\$module, &\$params, &\$attribs)
+{
+	\$content = trim(\$module->content);
+
+	if (!empty (\$content)): ?>
+		<div class="module<?php echo htmlspecialchars(\$params->get('moduleclass_sfx')); ?>">
+		<?php if (\$module->showtitle != 0) : ?>
+			<h3><?php echo \$module->title; ?></h3>
+		<?php endif; ?>
+			<?php echo \$content; ?>
+		</div>
+	<?php endif;
+}
+
+]]></content>
+	<tabTrigger>jsitetemplate-modules_xhtml</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,36 +1,8 @@
 <snippet>
-	<content><![CDATA[<field
-	name="website"
-	type="text"
-	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_WEBSITE_LABEL"
-	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_WEBSITE_DESC"
-	class="inputbox"
-	size="40"
-	/>
-<field
-	name="email"
-	type="text"
-	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_EMAIL_LABEL"
-	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_EMAIL_DESC"
-	class="inputbox"
-	size="40"
-	/>
-<field
-	name="phone"
-	type="text"
-	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PHONE_LABEL"
-	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PHONE_DESC"
-	class="inputbox"
-	size="14"
-	/>
-<field
-	name="mobile"
-	type="text"
-	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MOBILE_LABEL"
-	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MOBILE_DESC"
-	class="inputbox"
-	size="14"
-	/>]]></content>
+	<content><![CDATA[<field name="website" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_WEBSITE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_WEBSITE_DESC" class="inputbox" size="40" />
+<field name="email" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_EMAIL_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_EMAIL_DESC" class="inputbox" size="40" />
+<field name="phone" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PHONE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PHONE_DESC" class="inputbox" size="14" />
+<field name="mobile" type="text" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MOBILE_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MOBILE_DESC" class="inputbox" size="14" />]]></content>
 	<tabTrigger>jadminform_contact</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

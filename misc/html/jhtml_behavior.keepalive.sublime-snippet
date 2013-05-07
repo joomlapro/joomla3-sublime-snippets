@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the keepalive behavior script.
+JHtml::_('behavior.keepalive');]]></content>
+	<tabTrigger>jhtml_behavior.keepalive</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
