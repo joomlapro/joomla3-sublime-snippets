@@ -1,6 +1,6 @@
 <snippet>
-	<content><![CDATA[/*
- * ${1/(.+)/\u\1/g} (divs and font header tags)
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g}
  *
  * @param   object  \$module    The module data.
  * @param   object  &\$params   The module params.
@@ -10,19 +10,25 @@
  */
 function modChrome_${1:style}(\$module, &\$params, &\$attribs)
 {
-	\$content = trim(\$module->content);
+	// Initialiase variables.
+	\$content        = trim(\$module->content);
+	\$moduleClassSfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
 
-	if (!empty (\$content)): ?>
-		<div class="module<?php echo htmlspecialchars(\$params->get('moduleclass_sfx')); ?>">
-		<?php if (\$module->showtitle != 0) : ?>
-			<h3><?php echo \$module->title; ?></h3>
-		<?php endif; ?>
-			<?php echo \$content; ?>
-		</div>
-	<?php endif;
-}
+	if (!empty (\$content))
+	{
+		\$html  = "<div class=\"module{\$moduleClassSfx}\">";
 
-]]></content>
+		if ((bool) \$module->showtitle)
+		{
+			\$html .= "<h3>{\$module->title}</h3>";
+		}
+
+		\$html .= \$content;
+		\$html .= "</div>";
+
+		echo \$html;
+	}
+}]]></content>
 	<tabTrigger>jsitetemplate-modules_xhtml</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
