@@ -2,5 +2,5 @@
 	<content><![CDATA[PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_PLUGIN/(.+)/\U\1/g}="$1"
 PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_PLUGIN/(.+)/\U\1/g}_XML_DESCRIPTION="$2"]]></content>
 	<tabTrigger>jpluginlang</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

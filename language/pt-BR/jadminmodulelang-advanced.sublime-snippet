@@ -68,5 +68,5 @@ MOD_${1/(.+)/\U\1/g}_TITLE_MODIFIED_CATEGORY_NOT_ME_MORE="Últimos %1$s ${3/(.+)
 
 ]]></content>
 	<tabTrigger>jadminmodulelang-advanced</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

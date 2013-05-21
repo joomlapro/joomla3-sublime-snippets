@@ -17,5 +17,5 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_DESC="Texto alternativo usado pa
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_LABEL="Legenda"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_DESC="Legenda colocada na imagem"]]></content>
 	<tabTrigger>jadminlang-images</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

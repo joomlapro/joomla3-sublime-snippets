@@ -14,5 +14,5 @@
 	</Directory>
 </VirtualHost>]]></content>
 	<tabTrigger>jvhost</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

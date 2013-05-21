@@ -7,5 +7,5 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_PAST_YEAR="No último ano"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_POST_YEAR="Mais de um ano atrás"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_DATE_TODAY="Hoje"]]></content>
 	<tabTrigger>jadminlang_option-date</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

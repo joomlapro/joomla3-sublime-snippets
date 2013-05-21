@@ -100,5 +100,5 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE="Clique para mudar o estado 
 
 ]]></content>
 	<tabTrigger>jadminlang-nocategory</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

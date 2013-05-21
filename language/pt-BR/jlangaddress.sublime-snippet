@@ -18,5 +18,5 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC=""
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZOOM_LABEL="Zoom"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZOOM_DESC=""]]></content>
 	<tabTrigger>jlangaddress</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

@@ -22,5 +22,5 @@ MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_TITLE_HEADING_DESC="Configurar o esti
 
 ]]></content>
 	<tabTrigger>jsitelangmodule-categories</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

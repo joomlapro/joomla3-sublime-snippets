@@ -6,5 +6,5 @@
 
 ]]></content>
 	<tabTrigger>jheaderini</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

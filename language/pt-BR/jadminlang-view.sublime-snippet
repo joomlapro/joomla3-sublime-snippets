@@ -5,5 +5,5 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}="Gerenciador de ${3:Com
 
 ]]></content>
 	<tabTrigger>jadminlang-view</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

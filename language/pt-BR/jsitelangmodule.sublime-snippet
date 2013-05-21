@@ -4,5 +4,5 @@ MOD_${TM_MODULE/(.+)/\U\1/g}_XML_DESCRIPTION="$2"
 
 ]]></content>
 	<tabTrigger>jsitelangmodule</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

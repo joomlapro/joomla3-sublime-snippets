@@ -5,5 +5,5 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_UNIQUE_ALIAS="Outr${2:o} ${1:edit} desta c
 
 ]]></content>
 	<tabTrigger>jadminlang-error</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

@@ -33,5 +33,5 @@ MOD_${1/(.+)/\U\1/g}_TITLE_HEADING_DESCRIPTION="Selecione o nível desejado de c
 
 ]]></content>
 	<tabTrigger>jsitelangmodule-normal</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>

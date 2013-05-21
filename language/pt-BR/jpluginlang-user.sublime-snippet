@@ -46,5 +46,5 @@ COM_CONTENT_SELECT_AN_ARTICLE="Selecionar um Artigo"
 
 ]]></content>
 	<tabTrigger>jpluginlang-user</tabTrigger>
-	<scope>text.plain</scope>
+	<scope>source.ini, text.plain</scope>
 </snippet>
