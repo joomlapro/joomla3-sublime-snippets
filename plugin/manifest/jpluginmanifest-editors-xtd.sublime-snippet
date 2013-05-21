@@ -8,15 +8,16 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
-	<version>$TM_MANIFEST_VERSION</version>
+	<version>$TM_PROJECT_VERSION</version>
 	<description>PLG_EDITORS-XTD_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile />
 	<files>
 		<filename plugin="${1/(.+)/\L\1/g}">${1/(.+)/\L\1/g}.php</filename>
 		<filename>index.html</filename>
 	</files>
-	<languages>
-		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.plg_editors-xtd_${1/(.+)/\L\1/g}.ini</language>
-		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.plg_editors-xtd_${1/(.+)/\L\1/g}.sys.ini</language>
+	<languages folder="language">
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.plg_editors-xtd_${1/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.plg_editors-xtd_${1/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 </extension>
 

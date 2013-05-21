@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JPluginHelper::isEnabled('${1:group}', '${2:plugin}');]]></content>
+	<tabTrigger>jpluginhelper-isenabled</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

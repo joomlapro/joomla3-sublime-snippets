@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[/**
+ * Joomla ${1/(.+)/\u\1/g} plugin.
+ *
+ * @package     Joomla.Plugin
+ * @subpackage  ${2:${TM_PLUGIN_GROUP/(.+)/\u\1/g}}.${1/(.+)/\u\1/g}
+ * @since       $TM_VERSION
+ */
+class PlgExtension${1:${TM_PLUGIN/(.+)/\u\1/g}} extends JPlugin
+{
+
+}
+
+]]></content>
+	<tabTrigger>jpluginextension</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

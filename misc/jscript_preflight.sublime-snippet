@@ -11,21 +11,7 @@
  */
 public function preflight(\$route, JAdapterInstance \$adapter)
 {
-	\$min_version = (string) \$adapter->get('manifest')->attributes()->version;
 
-	\$jversion = new JVersion;
-
-	if (!\$jversion->isCompatible(\$min_version))
-	{
-		JError::raiseWarning(1, JText::sprintf('COM_SERMONSPEAKER_VERSION_UNSUPPORTED', \$min_version));
-		return false;
-	}
-
-	// Storing old release number ot process in postflight.
-	if (\$route == 'update')
-	{
-		\$this->oldRelease = \$this->getParam('version');
-	}
 }]]></content>
 	<tabTrigger>jscript_preflight</tabTrigger>
 	<scope>source.php</scope>

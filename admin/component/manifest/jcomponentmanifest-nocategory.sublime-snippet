@@ -11,18 +11,23 @@
 	<version>$TM_MANIFEST_VERSION</version>
 	<description>COM_${TM_COMPONENT/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<scriptfile />
-	<!-- Runs on install -->
+	<!-- Runs on install. -->
 	<install>
 		<sql>
 			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
 		</sql>
 	</install>
-	<!-- Runs on uninstall -->
+	<!-- Runs on uninstall. -->
 	<uninstall>
 		<sql>
 			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
 		</sql>
 	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
 	<files folder="site">
 		<filename>controller.php</filename>
 		<filename>index.html</filename>
@@ -42,7 +47,7 @@
 		<submenu>
 			<!--
 				Note that all & must be escaped to &amp; for the file to be valid
-				XML and be parsed by the installer
+				XML and be parsed by the installer.
 			-->
 			<menu link="option=com_${TM_COMPONENT/(.+)/\L\1/g}" view="${TM_COMPONENT/(.+)/\L\1/g}" img="class:${TM_COMPONENT/(.+)/\L\1/g}" alt="${TM_COMPONENT/(.+)/\u\1/g}/${TM_COMPONENT/(.+)/\u\1/g}">com_${TM_COMPONENT/(.+)/\L\1/g}_${TM_COMPONENT/(.+)/\L\1/g}</menu>
 		</submenu>
@@ -65,6 +70,13 @@
 			<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${TM_COMPONENT/(.+)/\L\1/g}.sys.ini</language>
 		</languages>
 	</administration>
+	<!--
+		These are used for backups to determine which tables to backup;
+		ones marked optional are only backed up if they exist.
+	-->
+	<tables>
+		<table>#__${TM_COMPONENT/(.+)/\L\1/g}</table>
+	</tables>
 </extension>
 
 ]]></content>

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[JText::plural('COM_${TM_COMPONENT/(.+)/\U\1/g}_$1', \$${2:number})]]></content>
+	<content><![CDATA[JText::plural('$1', \$${2:number})]]></content>
 	<tabTrigger>jtext-plural</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

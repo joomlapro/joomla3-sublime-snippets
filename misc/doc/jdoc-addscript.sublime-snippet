@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->addScript(${1:\$url}${2:, \$type = "text/javascript", \$defer = false, \$async = false});]]></content>
+	<tabTrigger>jdoc-addscript</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

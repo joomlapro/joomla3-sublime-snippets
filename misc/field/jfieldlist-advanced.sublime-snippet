@@ -8,7 +8,7 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class JFormField${1:Field_list} extends JFormFieldList
+class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormFieldList
 {
 	/**
 	 * The form field type.

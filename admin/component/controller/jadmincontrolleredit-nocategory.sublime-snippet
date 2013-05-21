@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControllerForm
+class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerForm
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -35,6 +35,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Controller_edit} extends JControl
 
 		// Preset the redirect.
 		\$this->setRedirect(JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${2:${1/(.+)/\L\1/g}s}' . \$this->getRedirectToListAppend(), false));
+
 		return parent::batch(\$model);
 	}
 }

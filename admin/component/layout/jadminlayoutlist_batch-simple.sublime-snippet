@@ -12,11 +12,11 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 	<div class="modal-body">
 		<p><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_TIP'); ?></p>
 		<?php if (\$published >= 0): ?>
-		<div class="control-group">
-			<div class="controls">
-				<?php echo JHtml::_('${TM_COMPONENT/(.+)/\L\1/g}.item', 'com_${TM_COMPONENT/(.+)/\L\1/g}'); ?>
+			<div class="control-group">
+				<div class="controls">
+					<?php echo JHtml::_('${1:plural}.item', 'com_${TM_COMPONENT/(.+)/\L\1/g}'); ?>
+				</div>
 			</div>
-		</div>
 		<?php endif; ?>
 	</div>
 	<div class="modal-footer">

@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * ${1/(.+)/\u\1/g} Authentication plugin.
  *
- * @package     $TM_COMPONENT
+ * @package     Joomla.Plugin
  * @subpackage  plg_authentication_${1/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */

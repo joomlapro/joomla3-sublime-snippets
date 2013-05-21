@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:field}" type="user" class="inputbox" size="40" :singularlabel="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<content><![CDATA[<field id="${1/(.+)/\L\1/g}" name="${1:field}" type="user" class="inputbox" size="40" label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
 	<tabTrigger>jtemplatefielduser</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

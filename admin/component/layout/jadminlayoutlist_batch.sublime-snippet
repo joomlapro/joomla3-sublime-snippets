@@ -20,11 +20,11 @@
 			</div>
 		</div>
 		<?php if (\$published >= 0): ?>
-		<div class="control-group">
-			<div class="controls">
-				<?php echo JHtml::_('batch.item', 'com_${TM_COMPONENT/(.+)/\L\1/g}'); ?>
+			<div class="control-group">
+				<div class="controls">
+					<?php echo JHtml::_('batch.item', 'com_${TM_COMPONENT/(.+)/\L\1/g}'); ?>
+				</div>
 			</div>
-		</div>
 		<?php endif; ?>
 	</div>
 	<div class="modal-footer">

@@ -9,23 +9,6 @@
 class PlgUser${1:$TM_PLUGIN} extends JPlugin
 {
 	/**
-	 * Constructor.
-	 *
-	 * @param   object  &\$subject  The object to observe.
-	 * @param   array   \$config    An array that holds the plugin configuration.
-	 *
-	 * @access  protected
-	 * @since   $TM_VERSION
-	 */
-	public function __construct(& \$subject, \$config)
-	{
-		parent::__construct(\$subject, \$config);
-
-		\$this->loadLanguage();
-		JFormHelper::addFieldPath(__DIR__ . '/fields');
-	}
-
-	/**
 	 * Called after the data for a JForm has been retrieved.
 	 *
 	 * It can be used to modify the data for a JForm object in memory before rendering.

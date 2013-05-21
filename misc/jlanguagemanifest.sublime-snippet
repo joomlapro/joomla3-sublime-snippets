@@ -11,6 +11,7 @@
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<description></description>
+	<scriptfile />
 	<metadata>
 		<name>${2/(.+)/\u\1/g}</name>
 		<tag>$3</tag>

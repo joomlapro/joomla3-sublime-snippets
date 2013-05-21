@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[MOD_${TM_MODULE/(.+)/\U\1/g}="$1"
+MOD_${TM_MODULE/(.+)/\U\1/g}_XML_DESCRIPTION="$2"
+
+]]></content>
+	<tabTrigger>jsitelangmodule</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

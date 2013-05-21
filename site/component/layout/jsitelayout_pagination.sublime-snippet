@@ -13,5 +13,5 @@
 	<?php endif; ?>
 <?php endif; ?>]]></content>
 	<tabTrigger>jsitelayout_pagination</tabTrigger>
-	<scope>source.php</scope>
+	<scope>text.html</scope>
 </snippet>

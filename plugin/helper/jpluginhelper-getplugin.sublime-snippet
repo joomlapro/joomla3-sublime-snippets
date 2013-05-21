@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JPluginHelper::getPlugin('${1:group}', '${2:plugin}');]]></content>
+	<tabTrigger>jpluginhelper-getplugin</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

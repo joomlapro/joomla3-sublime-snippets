@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->getLanguage();]]></content>
+	<tabTrigger>jdoc-getlanguage</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -9,6 +9,7 @@
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<description>TPL_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile />
 	<files>
 		<filename>component.php</filename>
 		<filename>error.php</filename>
@@ -19,6 +20,7 @@
 		<filename>template_thumbnail.png</filename>
 		<filename>templateDetails.xml</filename>
 		<folder>css</folder>
+		<folder>font</folder>
 		<folder>html</folder>
 		<folder>images</folder>
 		<folder>img</folder>
@@ -26,18 +28,17 @@
 		<folder>less</folder>
 	</files>
 	<positions>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-debug</position>
+		<position>debug</position>
 		<position>${TM_TEMPLATE/(.+)/\L\1/g}-topmenu</position>
 		<position>${TM_TEMPLATE/(.+)/\L\1/g}-mainmenu</position>
 		<position>${TM_TEMPLATE/(.+)/\L\1/g}-search</position>
+		<position>${TM_TEMPLATE/(.+)/\L\1/g}-breadcrumbs</position>
 		<position>${TM_TEMPLATE/(.+)/\L\1/g}-slideshow</position>
 		<position>${TM_TEMPLATE/(.+)/\L\1/g}-sidebar</position>
 		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footer</position>
 		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footermenu</position>
 	</positions>
 	<languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.tpl_${1/(.+)/\L\1/g}.ini</language>
-		<language tag="en-GB">en-GB/en-GB.tpl_${1/(.+)/\L\1/g}.sys.ini</language>
 		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.ini</language>
 		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.sys.ini</language>
 	</languages>

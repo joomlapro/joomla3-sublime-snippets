@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->addStyleDeclaration(${1:\$content});]]></content>
+	<tabTrigger>jdoc-addstyledeclaration</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

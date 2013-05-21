@@ -12,5 +12,5 @@
 
 ]]></content>
 	<tabTrigger>jsitepagination</tabTrigger>
-	<scope>source.php</scope>
+	<scope>text.html</scope>
 </snippet>

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Register a function.
+JHtml::register('${1:class}.${2:method}', array('${3:JHtml}${1/(.+)/\u\1/g}', '${2/(.+)/\L\1/g}'));]]></content>
+	<tabTrigger>jhtml-register</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

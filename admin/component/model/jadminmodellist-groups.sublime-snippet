@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Groups} extends JModelList
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelList
 {
 	/**
 	 * Constructor.

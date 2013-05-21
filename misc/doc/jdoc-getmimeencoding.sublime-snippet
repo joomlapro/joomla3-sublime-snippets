@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->getMimeEncoding();]]></content>
+	<tabTrigger>jdoc-getmimeencoding</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

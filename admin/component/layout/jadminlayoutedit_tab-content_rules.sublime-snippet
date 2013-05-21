@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<?php if (\$this->canDo->get('core.admin')): ?>
+	<div class="tab-pane" id="permissions">
+		<fieldset>
+			<?php echo \$this->form->getInput('rules'); ?>
+		</fieldset>
+	</div>
+<?php endif; ?>]]></content>
+	<tabTrigger>jadminlayoutedit_tab-content_rules</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

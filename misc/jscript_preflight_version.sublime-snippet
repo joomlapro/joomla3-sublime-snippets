@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$min_version = (string) \$adapter->get('manifest')->attributes()->version;
+\$jversion    = new JVersion;
+
+if (!\$jversion->isCompatible(\$min_version))
+{
+	JError::raiseWarning(1, JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_VERSION_UNSUPPORTED', \$min_version));
+	return false;
+}
+
+if (get_magic_quotes_gpc())
+{
+	JError::raiseWarning(1, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MAGIC_QUOTES'));
+	return false;
+}
+
+// Storing old release number ot process in postflight.
+if (\$route == 'update')
+{
+	\$this->oldRelease = \$this->getParam('version');
+
+	// Check if update is allowed (only update from ${1/(.+)/\L\1/g} and higher).
+	if (version_compare(\$this->oldRelease, '${1:1.0}', '<'))
+	{
+		JError::raiseWarning(1, JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_UPDATE_UNSUPPORTED', \$this->oldRelease));
+		return false;
+	}
+}
+]]></content>
+	<tabTrigger>jscript_preflight_version</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

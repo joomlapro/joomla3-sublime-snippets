@@ -1,0 +1,84 @@
+<snippet>
+	<content><![CDATA[/**
+ * Utility class for ${1/(.+)/\u\1/g} elements.
+ *
+ * @package     Joomla.Libraries
+ * @subpackage  HTML
+ * @since       $TM_VERSION
+ */
+abstract class JHtml${1:Name}
+{
+	/**
+	 * Array containing information for loaded files.
+	 *
+	 * @var    array
+	 * @since  $TM_VERSION
+	 */
+	protected static \$loaded = array();
+
+	/**
+	 * Method to load the ${1/(.+)/\u\1/g} JavaScript framework into the document head.
+	 *
+	 * If debugging mode is on an uncompressed version of ${1/(.+)/\u\1/g} is included for easier debugging.
+	 *
+	 * @param   mixed  \$debug  Is debugging mode on? [optional]
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function framework(\$debug = null)
+	{
+		// Only load once.
+		if (!empty(self::\$loaded[__METHOD__]))
+		{
+			return;
+		}
+
+		// Load jQuery.
+		JHtml::_('jquery.framework');
+
+		// If no debugging value is set, use the configuration setting.
+		if (\$debug === null)
+		{
+			\$config = JFactory::getConfig();
+			\$debug = (boolean) \$config->get('debug');
+		}
+
+		JHtml::_('script', 'plg_system_prettyphoto/jquery.prettyPhoto.min.js', false, true, false, false, \$debug);
+		self::\$loaded[__METHOD__] = true;
+
+		return;
+	}
+
+	/**
+	 * Loads CSS files needed by ${1/(.+)/\u\1/g}.
+	 *
+	 * @param   boolean  \$includeMainCss  If true, main prettyPhoto.css files are loaded.
+	 * @param   string   \$direction       rtl or ltr direction. If empty, ltr is assumed.
+	 * @param   array    \$attribs         Optional array of attributes to be passed to JHtml::_('stylesheet').
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function loadCss(\$includeMainCss = true, \$direction = 'ltr', \$attribs = array())
+	{
+		// Load ${1/(.+)/\u\1/g} main CSS.
+		if (\$includeMainCss)
+		{
+			JHtml::_('stylesheet', 'plg_system_prettyphoto/prettyPhoto.css', \$attribs, true);
+		}
+
+		// Load ${1/(.+)/\u\1/g} RTL CSS.
+		if (\$direction === 'rtl')
+		{
+			JHtml::_('stylesheet', 'plg_system_prettyphoto/prettyPhoto-rtl.css', \$attribs, true);
+		}
+	}
+}
+
+]]></content>
+	<tabTrigger>jhtml_framework</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

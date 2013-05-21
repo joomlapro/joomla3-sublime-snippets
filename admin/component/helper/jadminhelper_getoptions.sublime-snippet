@@ -15,7 +15,7 @@ public static function get${1:Field}Options()
 
 	// Create the base select statement.
 	\$query->select('a.id AS value, a.${2:title} AS text')
-		>from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}s}') . ' AS a')
+		->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}s}') . ' AS a')
 		->order('a.${4:ordering}');
 
 	// Get the options.

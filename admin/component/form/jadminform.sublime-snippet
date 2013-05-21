@@ -28,7 +28,7 @@
 			<option value="1">JYES</option>
 		</field>
 		<field name="xreference" type="text" label="JFIELD_XREFERENCE_LABEL" description="JFIELD_XREFERENCE_DESC" class="inputbox" size="20" labelclass="control-label" />
-		<field name="rules" type="rules" class="inputbox" translate_label="false" filter="rules" component="com_${TM_COMPONENT/(.+)/\L\1/g}" section="${TM_COMPONENT/(.+)(s\b)/\L\1/g}" validate="rules" label="JFIELD_RULES_LABEL" />
+		<field name="rules" type="rules" class="inputbox" translate_label="false" filter="rules" component="com_${TM_COMPONENT/(.+)/\L\1/g}" section="${2:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}" validate="rules" label="JFIELD_RULES_LABEL" />
 	</fieldset>
 	<fieldset name="publish" label="JGLOBAL_FIELDSET_PUBLISHING">
 		<field name="created" type="calendar" label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />

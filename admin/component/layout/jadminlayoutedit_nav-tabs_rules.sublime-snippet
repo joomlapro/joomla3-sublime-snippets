@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<?php if (\$this->canDo->get('core.admin')): ?>
+	<li><a href="#permissions" data-toggle="tab"><?php echo JText::_('COM_BOLSAS_FIELDSET_RULES');?></a></li>
+<?php endif; ?>]]></content>
+	<tabTrigger>jadminlayoutedit_nav-tabs_rules</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

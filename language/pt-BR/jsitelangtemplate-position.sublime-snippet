@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[; POSITION
 
-TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-DEBUG="Debug"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_DEBUG="Debug"
 TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-TOPMENU="Menu Topo"
 TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-MAINMENU="Menu Principal"
 TPL_${TM_TEMPLATE/(.+)/\U\1/g}_POSITION_${TM_TEMPLATE/(.+)/\U\1/g}-SEARCH="Busca"

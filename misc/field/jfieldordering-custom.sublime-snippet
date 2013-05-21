@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class JFormField${1:Field}Ordering extends JFormField
+class JFormField${1:Singular}Ordering extends JFormField
 {
 	/**
 	 * The form field type.

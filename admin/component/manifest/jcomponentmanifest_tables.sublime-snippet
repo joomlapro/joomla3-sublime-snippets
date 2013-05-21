@@ -1,5 +1,8 @@
 <snippet>
-	<content><![CDATA[<!-- These are used for backups to determine which tables to backup; ones marked optional are only backed up if they exist -->
+	<content><![CDATA[<!--
+	These are used for backups to determine which tables to backup;
+	ones marked optional are only backed up if they exist.
+-->
 <tables>
 	<table>#__alpha_install</table>
 	<table type="optional">#__alpha_update</table>

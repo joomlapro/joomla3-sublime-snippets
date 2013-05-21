@@ -14,6 +14,7 @@
 	<packager>$TM_FULLNAME</packager>
 	<packagerurl>$TM_WEBSITE</packagerurl>
 	<description>${1/(.+)/\u\1/g} package to combine multiple extensions.</description>
+	<scriptfile />
 	<update>$TM_WEBSITE/update</update>
 	<files folder="packages">
 		<file type="library" id="lib_${3/(.+)/\L\1/g}">lib_${3/(.+)/\L\1/g}.zip</file>

@@ -53,17 +53,14 @@ JHtml::_('behavior.formvalidation');
 						<div class="control-label"><?php echo \$this->form->getLabel('${2:title}'); ?></div>
 						<div class="controls"><?php echo \$this->form->getInput('${2/(.+)/\L\1/g}'); ?></div>
 					</div>
-
 					<div class="control-group">
 						<div class="control-label"><?php echo \$this->form->getLabel('alias'); ?></div>
 						<div class="controls"><?php echo \$this->form->getInput('alias'); ?></div>
 					</div>
-
 					<div class="control-group">
 						<div class="control-label"><?php echo \$this->form->getLabel('ordering'); ?></div>
 						<div class="controls"><?php echo \$this->form->getInput('ordering'); ?></div>
 					</div>
-
 					<?php echo \$this->form->getInput('description'); ?>
 				</div>
 				<div class="tab-pane" id="publishing">

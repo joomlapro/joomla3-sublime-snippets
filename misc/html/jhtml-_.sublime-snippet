@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the ${2/(.+)/\L\1/g} ${1/(.+)/\L\1/g} script.
+JHtml::_('${1:library}.${2:method}');]]></content>
+	<tabTrigger>jhtml-_</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

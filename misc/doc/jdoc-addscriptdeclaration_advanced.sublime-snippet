@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[// Build the script.
+\$script = array();
+\$script[] = '$1';
+
+// Add the script to the document head.
+\$doc->addScriptDeclaration(implode("\n", \$script));]]></content>
+	<tabTrigger>jdoc-addscriptdeclaration_advanced</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

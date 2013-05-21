@@ -2,18 +2,19 @@
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <extension type="library" version="$TM_VERSION" method="upgrade">
 	<name>${1:Name}</name>
-	<libraryname>${2:${1/(.+)/\L\1/g}}</libraryname>
-	<version>${3:version}</version>
-	<description>LIB_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<author>$TM_FULLNAME</author>
 	<creationDate>${4:$TM_MONTH} $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-	<author>$TM_FULLNAME</author>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>${3:version}</version>
+	<description>LIB_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<libraryname>${2:${1/(.+)/\L\1/g}}</libraryname>
 	<packager>${2/(.+)/\L\1/g}</packager>
 	<packagerurl>$TM_WEBSITE</packagerurl>
 	<updateservers>$TM_WEBSITE/update</updateservers>
+	<scriptfile />
 	<files folder="libraries">
 		<folder>${2/(.+)/\L\1/g}</folder>
 	</files>

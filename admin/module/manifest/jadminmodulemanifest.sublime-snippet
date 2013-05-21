@@ -10,6 +10,7 @@
 	<authorUrl>$TM_WEBSITE</authorUrl>
 	<version>$TM_MANIFEST_VERSION</version>
 	<description>MOD_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile />
 	<files>
 		<filename module="mod_${1/(.+)/\L\1/g}">mod_${1/(.+)/\L\1/g}.php</filename>
 		<filename>helper.php</filename>

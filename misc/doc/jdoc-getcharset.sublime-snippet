@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->getCharset();]]></content>
+	<tabTrigger>jdoc-getcharset</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -5,7 +5,7 @@
  * @var     string
  * @since   $TM_VERSION
  */
-protected \$context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:model}';]]></content>
+protected \$context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}';]]></content>
 	<tabTrigger>jsitemodel_context</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

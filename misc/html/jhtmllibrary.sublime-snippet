@@ -1,0 +1,55 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} Utility class for jQuery JavaScript behaviors.
+ *
+ * @package     Joomla.Libraries
+ * @subpackage  HTML
+ * @since       $TM_VERSION
+ */
+abstract class JHtml${1:${TM_PLUGIN/(.+)/\u\1/g}} extends JHtmlJquery
+{
+	/**
+	 * Method to load the jQuery ${1/(.+)/\u\1/g} into the document head.
+	 *
+	 * @param   mixed  \$debug  Is debugging mode on? [optional]
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function ${1/(.+)/\u\1/g}(\$debug = null)
+	{
+		// Include jQuery.
+		self::framework();
+
+		// If no debugging value is set, use the configuration setting.
+		if (\$debug === null)
+		{
+			\$config = JFactory::getConfig();
+			\$debug  = (boolean) \$config->get('debug');
+		}
+
+		// Add Stylesheet.
+		JHtml::stylesheet('plg_${TM_PLUGIN_GROUP/(.+)/\L\1/g}_${TM_PLUGIN/(.+)/\L\1/g}/${2:${TM_PLUGIN/(.+)/\L\1/g}.css}', false, true, false);
+
+		// Add JavaScript.
+		JHtml::script('plg_${TM_PLUGIN_GROUP/(.+)/\L\1/g}_${TM_PLUGIN/(.+)/\L\1/g}/${3:jquery.${TM_PLUGIN/(.+)/\L\1/g}.min.js}', false, true);
+
+		// Get the document object.
+		\$doc = JFactory::getDocument();
+
+		// Build the script.
+		\$script = array();
+		\$script[] = '';
+
+		// Add the script to the document head.
+		\$doc->addScriptDeclaration(implode("\n", \$script));
+
+		return;
+	}
+}
+
+]]></content>
+	<tabTrigger>jhtmllibrary</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

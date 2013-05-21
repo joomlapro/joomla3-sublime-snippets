@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<table>#__${TM_COMPONENT/(.+)/\L\1/g}$1</table>]]></content>
+	<tabTrigger>jaddtable</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

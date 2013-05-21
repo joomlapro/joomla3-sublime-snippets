@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:User} extends JControllerForm
+class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerForm
 {
 	/**
 	 * The prefix to use with controller messages.

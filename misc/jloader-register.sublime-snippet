@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Register dependent classes.
-JLoader::register('${TM_COMPONENT/(.+)/\u\1/g}Helper', JPATH_${1:ADMINISTRATOR} . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/${2:${TM_COMPONENT/(.+)/\L\1/g}}.php');]]></content>
+JLoader::register('${1:${TM_COMPONENT/(.+)/\u\1/g}Helper}', JPATH_${2:ADMINISTRATOR} . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/${3:${TM_COMPONENT/(.+)/\L\1/g}}.php');]]></content>
 	<tabTrigger>jloader-register</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

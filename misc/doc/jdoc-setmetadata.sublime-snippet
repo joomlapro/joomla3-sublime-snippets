@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->setMetaData(${1:\$name}, ${2:\$content}, false);]]></content>
+	<tabTrigger>jdoc-setmetadata</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
