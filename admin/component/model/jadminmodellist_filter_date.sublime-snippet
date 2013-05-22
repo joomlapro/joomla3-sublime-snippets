@@ -16,6 +16,6 @@ if (!empty(\$end))
 	\$query->where('a.${1/(.+)/\L\1/g} <= ' . \$db->quote(\$end));
 }
 ]]></content>
-	<tabTrigger>jadminmodellist_filter-date</tabTrigger>
+	<tabTrigger>jadminmodellist_filter_date</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

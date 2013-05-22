@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[// Filter by a single tag.
+\$tagId = \$this->getState('filter.tag');
+
+if (is_numeric(\$tagId))
+{
+	\$query->where(\$db->quoteName('tagmap.tag_id') . ' = ' . (int) \$tagId)
+		->join(
+			'LEFT', \$db->quoteName('#__contentitem_tag_map', 'tagmap')
+			. ' ON ' . \$db->quoteName('tagmap.content_item_id') . ' = ' . \$db->quoteName('a.id')
+			. ' AND ' . \$db->quoteName('tagmap.type_alias') . ' = ' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}')
+		);
+}]]></content>
+	<tabTrigger>jadminmodellist_filter_tag</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

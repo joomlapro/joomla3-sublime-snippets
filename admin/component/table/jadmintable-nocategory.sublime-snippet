@@ -9,6 +9,14 @@
 class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JTable
 {
 	/**
+	 * Helper object for storing and deleting tag information.
+	 *
+	 * @var     JHelperTags
+	 * @since   $TM_VERSION
+	 */
+	protected \$tagsHelper = null;
+
+	/**
 	 * Constructor
 	 *
 	 * @param   JDatabase  &\$db  Driver A database connector object.
@@ -18,6 +26,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	public function __construct(& \$db)
 	{
 		parent::__construct('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'id', \$db);
+
+		\$this->tagsHelper = new JHelperTags;
+		\$this->tagsHelper->typeAlias = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
 	}
 
 	/**
@@ -212,6 +223,23 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	}
 
 	/**
+	 * Override parent delete method to delete tags information.
+	 *
+	 * @param   integer  \$pk  Primary key to delete.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 * @throws  UnexpectedValueException
+	 */
+	public function delete(\$pk = null)
+	{
+		\$result = parent::delete(\$pk);
+
+		return \$result && \$this->tagsHelper->deleteTagData(\$this, \$pk);
+	}
+
+	/**
 	 * Overload the store method for the ${3:${1/(.+)/\u\1/g}s} table.
 	 *
 	 * @param   boolean  \$updateNulls  Toggle whether null values should be updated.
@@ -268,8 +296,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			return false;
 		}
 
+		\$this->tagsHelper->preStoreProcess(\$this);
+
 		// Attempt to store the user data.
-		return parent::store(\$updateNulls);
+		\$result = parent::store(\$updateNulls);
+
+		return \$result && \$this->tagsHelper->postStoreProcess(\$this);
 	}
 
 	/**

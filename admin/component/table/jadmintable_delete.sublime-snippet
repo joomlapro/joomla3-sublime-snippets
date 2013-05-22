@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[/**
+ * Override parent delete method to delete tags information.
+ *
+ * @param   integer  \$pk  Primary key to delete.
+ *
+ * @return  boolean  True on success.
+ *
+ * @since   $TM_VERSION
+ * @throws  UnexpectedValueException
+ */
+public function delete(\$pk = null)
+{
+	\$result = parent::delete(\$pk);
+
+	return \$result && \$this->tagsHelper->deleteTagData(\$this, \$pk);
+}]]></content>
+	<tabTrigger>jadmintable_delete</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

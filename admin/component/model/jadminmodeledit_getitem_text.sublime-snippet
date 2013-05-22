@@ -1,5 +1,5 @@
 <snippet>
 	<content><![CDATA[\$item->${2:${1:article}text} = trim(\$item->fulltext) != '' ? \$item->introtext . "<hr id=\"system-readmore\" />" . \$item->fulltext : \$item->introtext;]]></content>
-	<tabTrigger>jadminmodeledit_getitem-text</tabTrigger>
+	<tabTrigger>jadminmodeledit_getitem_text</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

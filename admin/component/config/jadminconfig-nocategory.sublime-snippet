@@ -15,22 +15,6 @@
 			<option value="0">JHIDE</option>
 			<option value="1">JSHOW</option>
 		</field>
-		<field name="show_category" type="radio" class="btn-group" label="JGLOBAL_SHOW_CATEGORY_LABEL" description="JGLOBAL_SHOW_CATEGORY_DESC" default="1">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="link_category" type="radio" class="btn-group" label="JGLOBAL_LINK_CATEGORY_LABEL" description="JGLOBAL_LINK_CATEGORY_DESC" default="1">
-			<option value="0">JNO</option>
-			<option value="1">JYES</option>
-		</field>
-		<field name="show_parent_category" type="radio" class="btn-group" label="JGLOBAL_SHOW_PARENT_CATEGORY_LABEL" description="JGLOBAL_SHOW_PARENT_CATEGORY_DESC" default="1">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="link_parent_category" type="radio" class="btn-group" label="JGLOBAL_LINK_PARENT_CATEGORY_LABEL" description="JGLOBAL_LINK_PARENT_CATEGORY_DESC" default="1">
-			<option value="0">JNo</option>
-			<option value="1">JYes</option>
-		</field>
 		<field name="spacer1" type="spacer" hr="true" />
 		<field name="show_author" type="radio" class="btn-group" label="JGLOBAL_SHOW_AUTHOR_LABEL" description="JGLOBAL_SHOW_AUTHOR_DESC" default="1">
 			<option value="0">JHIDE</option>
@@ -99,64 +83,6 @@
 			<option value="0">JNO</option>
 		</field>
 	</fieldset>
-	<fieldset name="category" label="JCATEGORY" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_CATEGORY_SETTINGS_DESC">
-		<field name="category_layout" type="componentlayout" label="JGLOBAL_FIELD_LAYOUT_LABEL" description="JGLOBAL_FIELD_LAYOUT_DESC" menuitems="true" extension="com_${TM_COMPONENT/(.+)/\L\1/g}" view="category" />
-		<field name="show_category_title" type="radio" class="btn-group" label="JGLOBAL_SHOW_CATEGORY_TITLE" description="JGLOBAL_SHOW_CATEGORY_TITLE_DESC" default="1">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="show_description" type="radio" class="btn-group" default="1" label="JGLOBAL_SHOW_CATEGORY_DESCRIPTION_LABEL" description="JGLOBAL_SHOW_CATEGORY_DESCRIPTION_DESC">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="show_description_image" type="radio" class="btn-group" default="1" label="JGLOBAL_SHOW_CATEGORY_IMAGE_LABEL" description="JGLOBAL_SHOW_CATEGORY_IMAGE_DESC">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="maxLevel" type="list" default="-1" label="JGLOBAL_MAXIMUM_CATEGORY_LEVELS_LABEL" description="JGLOBAL_MAXIMUM_CATEGORY_LEVELS_DESC">
-			<option value="0">JNONE</option>
-			<option value="-1">JALL</option>
-			<option value="1">J1</option>
-			<option value="2">J2</option>
-			<option value="3">J3</option>
-			<option value="4">J4</option>
-			<option value="5">J5</option>
-		</field>
-		<field name="show_empty_categories" type="radio" class="btn-group" label="JGLOBAL_SHOW_EMPTY_CATEGORIES_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_SHOW_EMPTY_CATEGORIES_DESC" default="0">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="show_subcat_desc" type="radio" class="btn-group" default="1" label="JGLOBAL_SHOW_SUBCATEGORIES_DESCRIPTION_LABEL" description="JGLOBAL_SHOW_SUBCATEGORIES_DESCRIPTION_DESC">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="show_cat_tags" type="radio" class="btn-group" default="1" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_CAT_TAGS_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_CAT_TAGS_DESC">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-	</fieldset>
-	<fieldset name="categories" label="JCATEGORIES" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_CATEGORIES_SETTINGS_DESC">
-		<field name="show_base_description" type="radio" class="btn-group" default="1" label="JGLOBAL_FIELD_SHOW_BASE_DESCRIPTION_LABEL" description="JGLOBAL_FIELD_SHOW_BASE_DESCRIPTION_DESC">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="maxLevelcat" type="list" default="-1" label="JGLOBAL_MAXIMUM_CATEGORY_LEVELS_LABEL" description="JGLOBAL_MAXIMUM_CATEGORY_LEVELS_DESC">
-			<option value="-1">JALL</option>
-			<option value="1">J1</option>
-			<option value="2">J2</option>
-			<option value="3">J3</option>
-			<option value="4">J4</option>
-			<option value="5">J5</option>
-		</field>
-		<field name="show_empty_categories_cat" type="radio" class="btn-group" default="0" label="JGLOBAL_SHOW_EMPTY_CATEGORIES_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_SHOW_EMPTY_CATEGORIES_DESC">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-		<field name="show_subcat_desc_cat" type="radio" class="btn-group" default="1" label="JGLOBAL_SHOW_SUBCATEGORIES_DESCRIPTION_LABEL" description="JGLOBAL_SHOW_SUBCATEGORIES_DESCRIPTION_DESC">
-			<option value="0">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
-	</fieldset>
 	<fieldset name="list_layout" label="JGLOBAL_LIST_LAYOUT_OPTIONS" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_LIST_LAYOUT_SETTINGS_DESC">
 		<field name="filter_field" type="list" default="1" label="JGLOBAL_FILTER_FIELD_LABEL" description="JGLOBAL_FILTER_FIELD_DESC">
 			<option value="hide">JHIDE</option>
@@ -204,6 +130,6 @@
 </config>
 
 ]]></content>
-	<tabTrigger>jadminconfig</tabTrigger>
+	<tabTrigger>jadminconfig-nocategory</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

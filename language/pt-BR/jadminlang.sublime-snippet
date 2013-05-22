@@ -20,8 +20,12 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${3:SINGULAR}="Alterar ${4:${2/(.+)/\u\1/
 ; CONFIG
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de ${5/(.+)/\u\1/g}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_COMPONENT_LABEL="${5:${1/(.+)/\u\1/g}}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_COMPONENT_DESC="Estas configurações se aplicam às ${5/(.+)/\u\1/g}, a não ser que eles tenham sido alteradas por um menu específico, ou ${4/(.+)/\u\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_COMPONENT_SETTINGS_LABEL="${5:${1/(.+)/\u\1/g}}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_COMPONENT_SETTINGS_DESC="Estas configurações se aplicam às ${5/(.+)/\u\1/g}, a não ser que eles tenham sido alteradas por um menu específico, ou ${4/(.+)/\u\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_CATEGORY_SETTINGS_DESC="Estas configurações se aplicam às opções de uma categoria de ${5/(.+)/\u\1/g}, a não ser que tenham sido alterados por um menu específico."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_CATEGORIES_SETTINGS_DESC="Estas configurações se aplicam às opções de categorias de ${5/(.+)/\u\1/g}, a não ser que tenham sido alterados por um menu específico."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_LIST_LAYOUT_SETTINGS_DESC="Estas configurações se aplicam ao layout da Lista de ${5/(.+)/\u\1/g}, a não ser que tenha sido alteradas por um item específico de menu."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_INTEGRATION_SETTINGS_DESC="Estas configurações determinam como o componente de ${5/(.+)/\u\1/g} se integra às outras extensões."
 
 ; ERROR
 
@@ -43,6 +47,10 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_VERSION_DESC="A quantidade de vezes que es
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_VERSION_LABEL="Revisão"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_DESC="Remove ItemID da URL"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_LABEL="SEF Modo Avançado"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_TAGS_DESC="Mostrar as tags de um ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_TAGS_LABEL="Mostrar Tags"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_CAT_TAGS_DESC="Mostrar as tags de uma categoria"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_CAT_TAGS_LABEL="Mostrar Tags"
 
 ; FIELDSET
 

@@ -83,6 +83,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$language = \$this->getUserStateFromRequest(\$this->context . '.filter.language', 'filter_language', '');
 		\$this->setState('filter.language', \$language);
 
+		\$tag = \$this->getUserStateFromRequest(\$this->context . '.filter.tag', 'filter_tag', '');
+		\$this->setState('filter.tag', \$tag);
+
 		// Load the parameters.
 		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$this->setState('params', \$params);
@@ -112,6 +115,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$id .= ':' . \$this->getState('filter.state');
 		\$id .= ':' . \$this->getState('filter.category_id');
 		\$id .= ':' . \$this->getState('filter.language');
+		\$id .= ':' . \$this->getState('filter.tag');
 
 		return parent::getStoreId(\$id);
 	}
@@ -214,6 +218,19 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (\$language = \$this->getState('filter.language'))
 		{
 			\$query->where('a.language = ' . \$db->quote(\$language));
+		}
+
+		// Filter by a single tag.
+		\$tagId = \$this->getState('filter.tag');
+
+		if (is_numeric(\$tagId))
+		{
+			\$query->where(\$db->quoteName('tagmap.tag_id') . ' = ' . (int) \$tagId)
+				->join(
+					'LEFT', \$db->quoteName('#__contentitem_tag_map', 'tagmap')
+					. ' ON ' . \$db->quoteName('tagmap.content_item_id') . ' = ' . \$db->quoteName('a.id')
+					. ' AND ' . \$db->quoteName('tagmap.type_alias') . ' = ' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}.${5:${2/(.+)/\L\1/g}}')
+				);
 		}
 
 		// Add the list ordering clause.

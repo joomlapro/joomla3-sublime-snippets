@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[\$tag = \$this->getUserStateFromRequest(\$this->context . '.filter.tag', 'filter_tag', '');
+\$this->setState('filter.tag', \$tag);]]></content>
+	<tabTrigger>jadminmodellist_state_tag</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

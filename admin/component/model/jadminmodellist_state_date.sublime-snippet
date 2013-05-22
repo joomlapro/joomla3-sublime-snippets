@@ -4,6 +4,6 @@
 
 \$end = \$this->getUserStateFromRequest(\$this->context.'.filter.end', 'filter_end', '', 'string');
 \$this->setState('filter.end', \$end);]]></content>
-	<tabTrigger>jadminmodellist_state-date</tabTrigger>
+	<tabTrigger>jadminmodellist_state_date</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
