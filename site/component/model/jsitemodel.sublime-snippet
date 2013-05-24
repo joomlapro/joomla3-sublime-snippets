@@ -13,8 +13,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	/**
 	 * Method to auto-populate the model state.  Calling getState in this method will result in recursion.
 	 *
-	 * @param   int     \$ordering   The order to show.
-	 * @param   string  \$direction  The direction desc|asc.
+	 * @param   integer  \$ordering   The order to show.
+	 * @param   string   \$direction  The direction desc|asc.
 	 *
 	 * @return  void
 	 *

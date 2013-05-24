@@ -80,6 +80,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$data = \$this->getItem();
 		}
 
+		\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
+
 		return \$data;
 	}
 

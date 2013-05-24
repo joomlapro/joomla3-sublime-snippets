@@ -15,6 +15,10 @@
   `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `metadesc` text NOT NULL,
+  `metakey` text NOT NULL,
+  `metadata` text NOT NULL,
+  `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;]]></content>
 	<tabTrigger>jdb-simple</tabTrigger>

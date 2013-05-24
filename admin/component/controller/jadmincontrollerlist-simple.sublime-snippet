@@ -35,37 +35,18 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	}
 
 	/**
-	 * Method to save the submitted ordering values for records via AJAX.
+	 * Method to provide child classes the opportunity to process after the delete task.
+	 *
+	 * @param   JModelLegacy  \$model  The model for the component
+	 * @param   mixed         \$ids    Array of ids deleted.
 	 *
 	 * @return  void
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function saveOrderAjax()
+	protected function postDeleteHook(JModelLegacy \$model, \$ids = null)
 	{
-		// Get the input.
-		\$app   = JFactory::getApplication();
-		\$input = \$app->input;
-		\$pks   = \$input->post->get('cid', array(), 'array');
-		\$order = \$input->post->get('order', array(), 'array');
 
-		// Sanitize the input.
-		JArrayHelper::toInteger(\$pks);
-		JArrayHelper::toInteger(\$order);
-
-		// Get the model.
-		\$model = \$this->getModel();
-
-		// Save the ordering.
-		\$return = \$model->saveorder(\$pks, \$order);
-
-		if (\$return)
-		{
-			echo "1";
-		}
-
-		// Close the application.
-		\$app->close();
 	}
 }
 

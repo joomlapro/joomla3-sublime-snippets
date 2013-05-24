@@ -161,7 +161,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	{
 		// Initialiase variables.
 		\$user   = JFactory::getUser();
-		\$groups = implode(', ', \$user->getAuthorisedViewLevels());
+		\$groups = implode(',', \$user->getAuthorisedViewLevels());
 
 		// Create a new query object.
 		\$db     = \$this->getDbo();

@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * @param   int  \$eid  extension id
+ * @param   integer  \$eid  extension id
  *
  * @return  string
  *

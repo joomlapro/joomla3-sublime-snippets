@@ -1,27 +1,31 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to change the title & alias.
+ * Method to change the ${1/(.+)/\L\1/g} & alias.
  *
- * @param   integer  \$parent_id  The id of the parent.
- * @param   string   \$alias      The alias.
- * @param   string   \$title      The title.
+ * @param   integer  \$category_id  The id of the parent.
+ * @param   string   \$alias        The alias.
+ * @param   string   \$name         The ${1/(.+)/\L\1/g}.
  *
- * @return  array  Contains the modified title and alias.
+ * @return  array  Contains the modified ${1/(.+)/\L\1/g} and alias.
  *
  * @since   $TM_VERSION
  */
-protected function generateNewTitle(\$parent_id, \$alias, \$title)
+protected function generateNewTitle(\$category_id, \$alias, \$name)
 {
-	// Alter the title & alias.
+	// Alter the ${1/(.+)/\L\1/g} & alias.
 	\$table = \$this->getTable();
 
-	while (\$table->load(array('alias' => \$alias, 'parent_id' => \$parent_id)))
+	while (\$table->load(array('alias' => \$alias, 'catid' => \$category_id)))
 	{
-		\$title = JString::increment(\$title);
+		if (\$name == \$table->${1:title})
+		{
+			\$name = JString::increment(\$name);
+		}
+
 		\$alias = JString::increment(\$alias, 'dash');
 	}
 
-	return array(\$title, \$alias);
+	return array(\$name, \$alias);
 }]]></content>
 	<tabTrigger>jadminmodeledit_generatenewtitle</tabTrigger>
 	<scope>source.php</scope>

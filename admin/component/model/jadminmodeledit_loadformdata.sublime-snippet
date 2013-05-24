@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get the data that should be injected in the form.
+ *
+ * @return  mixed  The data for the form.
+ *
+ * @since   $TM_VERSION
+ */
+protected function loadFormData()
+{
+	// Check the session for previously entered form data.
+	\$app  = JFactory::getApplication();
+	\$data = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}.data', array());
+
+	if (empty(\$data))
+	{
+		\$data = \$this->getItem();
+
+		// Prime some default values.
+		if (\$this->getState('${1/(.+)/\L\1/g}.id') == 0)
+		{
+			\$data->set('catid', \$app->input->get('catid', \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.${2:${1/(.+)/\L\1/g}s}.filter.category_id'), 'int'));
+		}
+	}
+
+	\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
+
+	return \$data;
+}]]></content>
+	<tabTrigger>jadminmodeledit_loadformdata</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

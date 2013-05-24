@@ -2,8 +2,8 @@
 	<content><![CDATA[/**
  * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
  *
- * @param   int     \$id      The id of the ${1/(.+)/\L\1/g}.
- * @param   string  \$return  The return page variable.
+ * @param   integer  \$id      The id of the ${1/(.+)/\L\1/g}.
+ * @param   string   \$return  The return page variable.
  *
  * @return  string
  *

@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * Method to set a template ${2/(.+)/\L\1/g} as ${1/(.+)/\L\1/g}.
  *
- * @param   int  \$id  The primary key ID for the ${2/(.+)/\L\1/g}.
+ * @param   integer  \$id  The primary key ID for the ${2/(.+)/\L\1/g}.
  *
  * @return  boolean  True if successful.
  *

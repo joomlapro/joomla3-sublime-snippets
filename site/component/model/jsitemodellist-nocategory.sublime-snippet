@@ -185,7 +185,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		// Initialiase variables.
 		\$user   = JFactory::getUser();
-		\$groups = implode(', ', \$user->getAuthorisedViewLevels());
+		\$groups = implode(',', \$user->getAuthorisedViewLevels());
 
 		// Create a new query object.
 		\$db     = \$this->getDbo();

@@ -3,7 +3,7 @@
  * After update of an extension
  *
  * @param   JInstaller  \$installer  Installer object.
- * @param   int         \$eid        Extension identifier.
+ * @param   integer     \$eid        Extension identifier.
  *
  * @return  string
  *

@@ -14,6 +14,9 @@
 		</field>
 		<field name="ordering" type="ordering" default="0" label="JFIELD_ORDERING_LABEL" description="JFIELD_ORDERING_DESC" class="inputbox" />
 		<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" class="inputbox span12 small" size="1" />
+		<field name="metadesc" type="textarea" label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC" class="inputbox" rows="3" cols="30" />
+		<field name="metakey" type="textarea" label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC" class="inputbox" rows="3" cols="30" />
+		<field name="xreference" type="text" label="JFIELD_XREFERENCE_LABEL" description="JFIELD_XREFERENCE_DESC" class="inputbox" size="20" labelclass="control-label" />
 	</fieldset>
 	<fieldset name="publish" label="JGLOBAL_FIELDSET_PUBLISHING">
 		<field name="created" type="calendar" label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC" class="inputbox" size="22" format="%Y-%m-%d %H:%M:%S" filter="user_utc" />
@@ -24,6 +27,19 @@
 		<field name="checked_out" type="hidden" filter="unset" />
 		<field name="checked_out_time" type="hidden" filter="unset" />
 	</fieldset>
+	<fields name="metadata">
+		<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+			<field name="robots" type="list" label="JFIELD_METADATA_ROBOTS_LABEL" description="JFIELD_METADATA_ROBOTS_DESC" labelclass="control-label">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="index, follow">JGLOBAL_INDEX_FOLLOW</option>
+				<option value="noindex, follow">JGLOBAL_NOINDEX_FOLLOW</option>
+				<option value="index, nofollow">JGLOBAL_INDEX_NOFOLLOW</option>
+				<option value="noindex, nofollow">JGLOBAL_NOINDEX_NOFOLLOW</option>
+			</field>
+			<field name="author" type="text" label="JAUTHOR" description="JFIELD_METADATA_AUTHOR_DESC" size="20" labelclass="control-label" />
+			<field name="rights" type="textarea" label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC" required="false" filter="string" cols="30" rows="2" labelclass="control-label" />
+		</fieldset>
+	</fields>
 	<fields name="params">
 		<fieldset name="jbasic" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS" />
 	</fields>

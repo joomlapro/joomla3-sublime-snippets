@@ -13,8 +13,8 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 	 *
 	 * It can be used to modify the data for a JForm object in memory before rendering.
 	 *
-	 * @param   string  \$context  The context for the data.
-	 * @param   int     \$data     The user id.
+	 * @param   string   \$context  The context for the data.
+	 * @param   integer  \$data     The user id.
 	 *
 	 * @return  boolean
 	 *
@@ -73,7 +73,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 	/**
 	 * URL Field.
 	 *
-	 * @param   int  \$value  The value.
+	 * @param   integer  \$value  The value.
 	 *
 	 * @return  string
 	 *
@@ -103,7 +103,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 	/**
 	 * Calendar Field.
 	 *
-	 * @param   int  \$value  The value.
+	 * @param   integer  \$value  The value.
 	 *
 	 * @return  string
 	 *
@@ -124,7 +124,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 	/**
 	 * TOS Field
 	 *
-	 * @param   int  \$value  The value.
+	 * @param   integer  \$value  The value.
 	 *
 	 * @return  string
 	 *

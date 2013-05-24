@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to provide child classes the opportunity to process after the delete task.
+ *
+ * @param   JModelLegacy  \$model  The model for the component
+ * @param   mixed         \$ids    Array of ids deleted.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+protected function postDeleteHook(JModelLegacy \$model, \$ids = null)
+{
+
+}]]></content>
+	<tabTrigger>jadmincontrollerlist_postdeletehook</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

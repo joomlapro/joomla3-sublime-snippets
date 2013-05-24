@@ -168,6 +168,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			}
 		}
 
+		\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
+
 		return \$data;
 	}
 
@@ -275,6 +277,64 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$condition[] = 'catid = ' . (int) \$table->catid;
 
 		return \$condition;
+	}
+
+	/**
+	 * Method to save the form data.
+	 *
+	 * @param   array  \$data  The form data.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function save(\$data)
+	{
+		// Get the application.
+		\$app = JFactory::getApplication();
+
+		// Alter the ${4/(.+)/\L\1/g} for save as copy.
+		if (\$app->input->get('task') == 'save2copy')
+		{
+			list(\$name, \$alias) = \$this->generateNewTitle(\$data['catid'], \$data['alias'], \$data['${4/(.+)/\L\1/g}']);
+
+			\$data['${4/(.+)/\L\1/g}'] = \$name;
+			\$data['alias'] = \$alias;
+			\$data['state'] = 0;
+		}
+
+		\$return = parent::save(\$data);
+
+		return \$return;
+	}
+
+	/**
+	 * Method to change the ${4/(.+)/\L\1/g} & alias.
+	 *
+	 * @param   integer  \$category_id  The id of the parent.
+	 * @param   string   \$alias        The alias.
+	 * @param   string   \$name         The ${4/(.+)/\L\1/g}.
+	 *
+	 * @return  array  Contains the modified ${4/(.+)/\L\1/g} and alias.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function generateNewTitle(\$category_id, \$alias, \$name)
+	{
+		// Alter the ${4/(.+)/\L\1/g} & alias.
+		\$table = \$this->getTable();
+
+		while (\$table->load(array('alias' => \$alias, 'catid' => \$category_id)))
+		{
+			if (\$name == \$table->${4/(.+)/\L\1/g})
+			{
+				\$name = JString::increment(\$name);
+			}
+
+			\$alias = JString::increment(\$alias, 'dash');
+		}
+
+		return array(\$name, \$alias);
 	}
 }
 

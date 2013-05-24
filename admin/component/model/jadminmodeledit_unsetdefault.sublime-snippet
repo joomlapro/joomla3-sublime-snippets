@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * Method to unset a template ${2/(.+)/\L\1/g} as default for a language.
  *
- * @param   int  \$id  The primary key ID for the ${2/(.+)/\L\1/g}.
+ * @param   integer  \$id  The primary key ID for the ${2/(.+)/\L\1/g}.
  *
  * @return  boolean  True if successful.
  *

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JRoute::_('index.php?Itemid=' . ${1:\$item->id}${2: . '&lang=' . \$language->sef});]]></content>
+	<tabTrigger>jroute_itemid</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

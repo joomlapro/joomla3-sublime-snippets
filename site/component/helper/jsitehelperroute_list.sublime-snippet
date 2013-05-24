@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
  *
- * @param   int  \$catid  The id of the category.
+ * @param   integer  \$catid  The id of the category.
  *
  * @return  string
  *

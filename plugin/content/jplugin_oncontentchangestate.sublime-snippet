@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[/**
- * @param   string  \$context  The context for the content passed to the plugin.
- * @param   array   \$pks      A list of primary key ids of the content that has changed state.
- * @param   int     \$value    The value of the state that the content has been changed to.
+ * @param   string   \$context  The context for the content passed to the plugin.
+ * @param   array    \$pks      A list of primary key ids of the content that has changed state.
+ * @param   integer  \$value    The value of the state that the content has been changed to.
  *
  * @return  boolean
  *

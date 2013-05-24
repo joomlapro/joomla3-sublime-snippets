@@ -8,11 +8,12 @@
  */
 public static function getActions()
 {
-	\$user   = JFactory::getUser();
-	\$result = new JObject;
+	// Initialiase variables.
+	\$user      = JFactory::getUser();
+	\$result    = new JObject;
 	\$assetName = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
 
-	\$actions = JAccess::getActions(\$assetName, 'component');
+	\$actions   = JAccess::getActions(\$assetName, 'component');
 
 	foreach (\$actions as \$action)
 	{

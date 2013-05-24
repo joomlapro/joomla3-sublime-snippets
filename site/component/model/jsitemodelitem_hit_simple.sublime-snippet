@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * Method to increment the hit counter for the ${1/(.+)/\L\1/g}
  *
- * @param   int  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
+ * @param   integer  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
  *
  * @return  boolean  True on success
  *

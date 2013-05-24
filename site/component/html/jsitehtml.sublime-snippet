@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-abstract class JHtml${1:${TM_COMPONENT/(.+)/\u\1/g}}
+abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 {
 
 }

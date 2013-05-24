@@ -7,14 +7,14 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class JHtmlIcon
+class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 {
 	/**
-	 * Display an create icon for the ${1/(.+)/\L\1/g}.
+	 * Display an create icon for the ${2/(.+)/\L\1/g}.
 	 *
-	 * @param   object  \$params  The ${1/(.+)/\L\1/g} parameters.
+	 * @param   object  \$params  The ${2/(.+)/\L\1/g} parameters.
 	 *
-	 * @return  string  The HTML for the ${1/(.+)/\L\1/g} edit icon.
+	 * @return  string  The HTML for the ${2/(.+)/\L\1/g} edit icon.
 	 *
 	 * @since   $TM_VERSION
 	 */
@@ -23,7 +23,7 @@ class JHtmlIcon
 		// Initialiase variables.
 		\$uri = JURI::getInstance();
 
-		\$url = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:singular}.add&return=' . base64_encode(\$uri) . '&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=0';
+		\$url = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:singular}.add&return=' . base64_encode(\$uri) . '&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=0';
 
 		if (\$params->get('show_icons', 1))
 		{
@@ -36,23 +36,23 @@ class JHtmlIcon
 
 		\$button = JHtml::_('link', JRoute::_(\$url), \$text, 'class="btn btn-primary"');
 
-		\$output = '<span class="hasTip" title="' . JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_CREATE_${1/(.+)/\U\1/g}') . '">' . \$button . '</span>';
+		\$output = '<span class="hasTip" title="' . JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_CREATE_${2/(.+)/\U\1/g}') . '">' . \$button . '</span>';
 
 		return \$output;
 	}
 
 	/**
-	 * Display an email icon for the ${1/(.+)/\L\1/g}.
+	 * Display an email icon for the ${2/(.+)/\L\1/g}.
 	 *
-	 * @param   object  \$${1/(.+)/\L\1/g}  The ${1/(.+)/\L\1/g} in question.
-	 * @param   object  \$params   The ${1/(.+)/\L\1/g} parameters.
+	 * @param   object  \$${2/(.+)/\L\1/g}  The ${2/(.+)/\L\1/g} in question.
+	 * @param   object  \$params   The ${2/(.+)/\L\1/g} parameters.
 	 * @param   array   \$attribs  Not used??
 	 *
-	 * @return  string  The HTML for the ${1/(.+)/\L\1/g} edit icon.
+	 * @return  string  The HTML for the ${2/(.+)/\L\1/g} edit icon.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function email(\$${1/(.+)/\L\1/g}, \$params, \$attribs = array())
+	public static function email(\$${2/(.+)/\L\1/g}, \$params, \$attribs = array())
 	{
 		require_once JPATH_SITE . '/components/com_mailto/helpers/mailto.php';
 
@@ -60,7 +60,7 @@ class JHtmlIcon
 		\$uri  = JURI::getInstance();
 		\$base = \$uri->toString(array('scheme', 'host', 'port'));
 		\$template = JFactory::getApplication()->getTemplate();
-		\$link = \$base . JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${2:${1/(.+)/\u\1/g}}Route(\$${1/(.+)/\L\1/g}->${3:slug}), false);
+		\$link = \$base . JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${3:${2/(.+)/\u\1/g}}Route(\$${2/(.+)/\L\1/g}->${4:slug}), false);
 		\$url  = 'index.php?option=com_mailto&tmpl=component&template=' . \$template . '&link=' . MailToHelper::addLink(\$link);
 
 		\$status = 'width=400,height=350,menubar=yes,resizable=yes';
@@ -82,20 +82,20 @@ class JHtmlIcon
 	}
 
 	/**
-	 * Display an edit icon for the ${1/(.+)/\L\1/g}.
+	 * Display an edit icon for the ${2/(.+)/\L\1/g}.
 	 *
-	 * This icon will not display in a popup window, nor if the ${1/(.+)/\L\1/g} is trashed.
+	 * This icon will not display in a popup window, nor if the ${2/(.+)/\L\1/g} is trashed.
 	 * Edit access checks must be performed in the calling code.
 	 *
-	 * @param   object  \$${1/(.+)/\L\1/g}  The ${1/(.+)/\L\1/g} in question.
-	 * @param   object  \$params   The ${1/(.+)/\L\1/g} parameters.
+	 * @param   object  \$${2/(.+)/\L\1/g}  The ${2/(.+)/\L\1/g} in question.
+	 * @param   object  \$params   The ${2/(.+)/\L\1/g} parameters.
 	 * @param   array   \$attribs  Not used??
 	 *
-	 * @return  string  The HTML for the ${1/(.+)/\L\1/g} edit icon.
+	 * @return  string  The HTML for the ${2/(.+)/\L\1/g} edit icon.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function edit(\$${1/(.+)/\L\1/g}, \$params, \$attribs = array())
+	public static function edit(\$${2/(.+)/\L\1/g}, \$params, \$attribs = array())
 	{
 		// Initialiase variables.
 		\$user   = JFactory::getUser();
@@ -109,27 +109,27 @@ class JHtmlIcon
 		}
 
 		// Ignore if the state is negative (trashed).
-		if (\$${1/(.+)/\L\1/g}->state < 0)
+		if (\$${2/(.+)/\L\1/g}->state < 0)
 		{
 			return;
 		}
 
 		JHtml::_('behavior.tooltip');
 
-		// Show checked_out icon if the ${1/(.+)/\L\1/g} is checked out by a different user.
-		if (property_exists(\$${1/(.+)/\L\1/g}, 'checked_out') && property_exists(\$${1/(.+)/\L\1/g}, 'checked_out_time') && \$${1/(.+)/\L\1/g}->checked_out > 0 && \$${1/(.+)/\L\1/g}->checked_out != \$user->get('id'))
+		// Show checked_out icon if the ${2/(.+)/\L\1/g} is checked out by a different user.
+		if (property_exists(\$${2/(.+)/\L\1/g}, 'checked_out') && property_exists(\$${2/(.+)/\L\1/g}, 'checked_out_time') && \$${2/(.+)/\L\1/g}->checked_out > 0 && \$${2/(.+)/\L\1/g}->checked_out != \$user->get('id'))
 		{
-			\$checkoutUser = JFactory::getUser(\$${1/(.+)/\L\1/g}->checked_out);
+			\$checkoutUser = JFactory::getUser(\$${2/(.+)/\L\1/g}->checked_out);
 			\$button = JHtml::_('image', 'system/checked_out.png', null, null, true);
-			\$date = JHtml::_('date', \$${1/(.+)/\L\1/g}->checked_out_time);
+			\$date = JHtml::_('date', \$${2/(.+)/\L\1/g}->checked_out_time);
 			\$tooltip = JText::_('JLIB_HTML_CHECKED_OUT') . ' :: ' . JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_CHECKED_OUT_BY', \$checkoutUser->name) . ' <br /> ' . \$date;
 
 			return '<span class="hasTip" title="' . htmlspecialchars(\$tooltip, ENT_COMPAT, 'UTF-8') . '">' . \$button . '</span>';
 		}
 
-		\$url = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=' . \$${1/(.+)/\L\1/g}->id . '&return=' . base64_encode(\$uri);
+		\$url = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2/(.+)/\L\1/g}.edit&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=' . \$${2/(.+)/\L\1/g}->id . '&return=' . base64_encode(\$uri);
 
-		if (\$${1/(.+)/\L\1/g}->state == 0)
+		if (\$${2/(.+)/\L\1/g}->state == 0)
 		{
 			\$overlib = JText::_('JUNPUBLISHED');
 		}
@@ -138,15 +138,15 @@ class JHtmlIcon
 			\$overlib = JText::_('JPUBLISHED');
 		}
 
-		\$date = JHtml::_('date', \$${1/(.+)/\L\1/g}->created);
-		\$author = \$${1/(.+)/\L\1/g}->created_by_alias ? \$${1/(.+)/\L\1/g}->created_by_alias : \$${1/(.+)/\L\1/g}->author;
+		\$date = JHtml::_('date', \$${2/(.+)/\L\1/g}->created);
+		\$author = \$${2/(.+)/\L\1/g}->created_by_alias ? \$${2/(.+)/\L\1/g}->created_by_alias : \$${2/(.+)/\L\1/g}->author;
 
 		\$overlib .= '&lt;br /&gt;';
 		\$overlib .= \$date;
 		\$overlib .= '&lt;br /&gt;';
 		\$overlib .= JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_WRITTEN_BY', htmlspecialchars(\$author, ENT_COMPAT, 'UTF-8'));
 
-		\$icon = \$${1/(.+)/\L\1/g}->state ? 'edit' : 'eye-close';
+		\$icon = \$${2/(.+)/\L\1/g}->state ? 'edit' : 'eye-close';
 		\$text = '<i class="hasTip icon-' . \$icon . ' tip" title="' . JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_EDIT_ITEM') . ' :: ' . \$overlib . '"></i> ' . JText::_('JGLOBAL_EDIT');
 
 		\$output = JHtml::_('link', JRoute::_(\$url), \$text);
@@ -155,20 +155,20 @@ class JHtmlIcon
 	}
 
 	/**
-	 * Display an print popup icon for the ${1/(.+)/\L\1/g}.
+	 * Display an print popup icon for the ${2/(.+)/\L\1/g}.
 	 *
-	 * @param   object  \$${1/(.+)/\L\1/g}  The ${1/(.+)/\L\1/g} in question.
-	 * @param   object  \$params   The ${1/(.+)/\L\1/g} parameters.
+	 * @param   object  \$${2/(.+)/\L\1/g}  The ${2/(.+)/\L\1/g} in question.
+	 * @param   object  \$params   The ${2/(.+)/\L\1/g} parameters.
 	 * @param   array   \$attribs  Not used??
 	 *
-	 * @return  string  The HTML for the ${1/(.+)/\L\1/g} edit icon.
+	 * @return  string  The HTML for the ${2/(.+)/\L\1/g} edit icon.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function print_popup(\$${1/(.+)/\L\1/g}, \$params, \$attribs = array())
+	public static function print_popup(\$${2/(.+)/\L\1/g}, \$params, \$attribs = array())
 	{
 		// Initialiase variables.
-		\$url  = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${2/(.+)/\u\1/g}Route(\$${1/(.+)/\L\1/g}->${3/(.+)/\L\1/g});
+		\$url  = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${3/(.+)/\u\1/g}Route(\$${2/(.+)/\L\1/g}->${4/(.+)/\L\1/g});
 		\$url .= '&tmpl=component&print=1&layout=default&page=' . @ \$request->limitstart;
 
 		\$status = 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no';
@@ -191,17 +191,17 @@ class JHtmlIcon
 	}
 
 	/**
-	 * Display an print screen icon for the ${1/(.+)/\L\1/g}.
+	 * Display an print screen icon for the ${2/(.+)/\L\1/g}.
 	 *
-	 * @param   object  \$${1/(.+)/\L\1/g}  The ${1/(.+)/\L\1/g} in question.
-	 * @param   object  \$params   The ${1/(.+)/\L\1/g} parameters.
+	 * @param   object  \$${2/(.+)/\L\1/g}  The ${2/(.+)/\L\1/g} in question.
+	 * @param   object  \$params   The ${2/(.+)/\L\1/g} parameters.
 	 * @param   array   \$attribs  Not used??
 	 *
-	 * @return  string  The HTML for the ${1/(.+)/\L\1/g} edit icon.
+	 * @return  string  The HTML for the ${2/(.+)/\L\1/g} edit icon.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function print_screen(\$${1/(.+)/\L\1/g}, \$params, \$attribs = array())
+	public static function print_screen(\$${2/(.+)/\L\1/g}, \$params, \$attribs = array())
 	{
 		// Checks template image directory for image, if non found default are loaded.
 		if (\$params->get('show_icons', 1))

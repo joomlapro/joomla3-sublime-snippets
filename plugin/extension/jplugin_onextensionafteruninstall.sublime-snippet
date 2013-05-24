@@ -3,8 +3,8 @@
  * Handle extension uninstall
  *
  * @param   JInstaller  \$installer  Installer instance.
- * @param   int         \$eid        Extension id.
- * @param   int         \$result     Installation result.
+ * @param   integer     \$eid        Extension id.
+ * @param   integer     \$result     Installation result.
  *
  * @return  string
  *

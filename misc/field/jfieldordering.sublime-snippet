@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Supports an HTML select list of ${TM_COMPONENT/(.+)/\L\1/g}.
+ * Supports an HTML select list of ${1:plural}.
  *
  * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
@@ -41,7 +41,7 @@ class JFormFieldOrdering extends JFormField
 		\$categoryId = (int) \$this->form->getValue('catid');
 
 		// Build the query for the ordering list.
-		\$query = 'SELECT ordering AS value, ${1:title} AS text' .
+		\$query = 'SELECT ordering AS value, ${2:title} AS text' .
 				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}$2' .
 				' WHERE catid = ' . (int) \$categoryId .
 				' ORDER BY ordering';

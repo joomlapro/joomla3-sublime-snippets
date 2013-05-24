@@ -3,7 +3,7 @@
  * Handle post extension install update sites
  *
  * @param   JInstaller  \$installer  Installer object
- * @param   int         \$eid        Extension Identifier
+ * @param   integer     \$eid        Extension Identifier
  *
  * @return  string
  *

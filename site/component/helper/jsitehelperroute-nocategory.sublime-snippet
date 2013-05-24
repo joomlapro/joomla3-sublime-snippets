@@ -14,7 +14,7 @@ abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute
 	/**
 	 * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
 	 *
-	 * @param   int  \$id  The route of the ${1/(.+)/\L\1/g}.
+	 * @param   integer  \$id  The route of the ${1/(.+)/\L\1/g}.
 	 *
 	 * @return  string
 	 *
@@ -45,8 +45,8 @@ abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute
 	/**
 	 * Method to get a route configuration for the form view.
 	 *
-	 * @param   int     \$id      The id of the ${1/(.+)/\L\1/g}.
-	 * @param   string  \$return  The return page variable.
+	 * @param   integer  \$id      The id of the ${1/(.+)/\L\1/g}.
+	 * @param   string   \$return  The return page variable.
 	 *
 	 * @return  string
 	 *

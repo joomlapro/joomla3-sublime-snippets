@@ -47,7 +47,7 @@ class PlgSearch${1:${TM_COMPONENT/(.+)/\u\1/g}} extends JPlugin
 		\$db     = JFactory::getDbo();
 		\$app    = JFactory::getApplication();
 		\$user   = JFactory::getUser();
-		\$groups = implode(', ', \$user->getAuthorisedViewLevels());
+		\$groups = implode(',', \$user->getAuthorisedViewLevels());
 
 		\$searchText = \$text;
 

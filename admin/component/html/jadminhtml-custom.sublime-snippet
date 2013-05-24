@@ -2,9 +2,9 @@
 	<content><![CDATA[/**
  * Method to create a clickable icon to change the ${1/(.+)/\L\1/g} of an item.
  *
- * @param   int   \$value      The state value.
- * @param   int   \$i          The row index.
- * @param   bool  \$canChange  Whether the value can be changed or not.
+ * @param   integer  \$value      The state value.
+ * @param   integer  \$i          The row index.
+ * @param   boolean  \$canChange  Whether the value can be changed or not.
  *
  * @return  string  The anchor tag to toggle ${3/(.+)/\L\1/g}/${4/(.+)/\L\1/g} ${TM_COMPONENT/(.+)/\L\1/g}.
  *

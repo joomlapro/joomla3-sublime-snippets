@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * Increment the hit counter for the ${1:singular}.
  *
- * @param   int  \$pk  Optional primary key of the item to increment.
+ * @param   integer  \$pk  Optional primary key of the item to increment.
  *
  * @return  boolean  True if successful; false otherwise and internal error set.
  *
