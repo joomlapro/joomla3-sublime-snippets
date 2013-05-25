@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <extension version="$TM_VERSION" type="plugin" group="user" method="upgrade">
-	<name>plg_user_${1:${TM_PLUGIN/(.+)/\L\1/g}}</name>
+	<name>plg_user_${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}</name>
 	<author>$TM_FULLNAME</author>
 	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>

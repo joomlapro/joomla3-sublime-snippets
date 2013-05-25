@@ -9,22 +9,22 @@
  */
 abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute
 {
-	protected static \$lookup;
+	protected static \$lookup = array();
 
 	/**
-	 * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
+	 * Method to get a route configuration for the realestate view.
 	 *
-	 * @param   integer  \$id  The route of the ${1/(.+)/\L\1/g}.
+	 * @param   integer  \$id  The route of the realestate item.
 	 *
 	 * @return  string
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function get${1:${TM_COMPONENT/(.+)(s\b)/\u\1/g}}Route(\$id)
+	public static function get${1:Singular}Route(\$id)
 	{
 		// Initialiase variables.
 		\$needles = array(
-			'${1/(.+)/\L\1/g}' => array((int) \$id)
+			'${1/(.+)/\L\1/g}'  => array((int) \$id)
 		);
 
 		// Create the link.
@@ -54,33 +54,48 @@ abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute
 	protected static function _findItem(\$needles = null)
 	{
 		// Initialiase variables.
-		\$app   = JFactory::getApplication();
-		\$menus = \$app->getMenu('site');
+		\$app      = JFactory::getApplication();
+		\$menus    = \$app->getMenu('site');
+		\$language = isset(\$needles['language']) ? \$needles['language'] : '*';
 
 		// Prepare the reverse lookup array.
-		if (self::\$lookup === null)
+		if (!isset(self::\$lookup[\$language]))
 		{
-			self::\$lookup = array();
+			self::\$lookup[\$language] = array();
 
-			\$component = JComponentHelper::getComponent('com_${TM_COMPONENT/(.+)/\L\1/g}');
-			\$items     = \$menus->getItems('component_id', \$component->id);
+			\$component  = JComponentHelper::getComponent('com_${TM_COMPONENT/(.+)/\L\1/g}');
+			\$attributes = array('component_id');
+			\$values     = array(\$component->id);
 
-			if (\$items)
+			if (\$language != '*')
 			{
-				foreach (\$items as \$item)
+				\$attributes[] = 'language';
+				\$values[] = array(\$needles['language'], '*');
+			}
+
+			\$items = \$menus->getItems(\$attributes, \$values);
+
+			foreach (\$items as \$item)
+			{
+				if (isset(\$item->query) && isset(\$item->query['view']))
 				{
-					if (isset(\$item->query) && isset(\$item->query['view']))
+					\$view = \$item->query['view'];
+
+					if (!isset(self::\$lookup[\$language][\$view]))
 					{
-						\$view = \$item->query['view'];
+						self::\$lookup[\$language][\$view] = array();
+					}
 
-						if (!isset(self::\$lookup[\$view]))
+					if (isset(\$item->query['id']))
+					{
+						/*
+						Here it will become a bit tricky.
+						language != * can override existing entries.
+						language == * cannot override existing entries.
+						 */
+						if (!isset(self::\$lookup[\$language][\$view][\$item->query['id']]) || \$item->language != '*')
 						{
-							self::\$lookup[\$view] = array();
-						}
-
-						if (isset(\$item->query['id']))
-						{
-							self::\$lookup[\$view][\$item->query['id']] = \$item->id;
+							self::\$lookup[\$language][\$view][\$item->query['id']] = \$item->id;
 						}
 					}
 				}
@@ -91,29 +106,30 @@ abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute
 		{
 			foreach (\$needles as \$view => \$ids)
 			{
-				if (isset(self::\$lookup[\$view]))
+				if (isset(self::\$lookup[\$language][\$view]))
 				{
 					foreach (\$ids as \$id)
 					{
-						if (isset(self::\$lookup[\$view][(int) \$id]))
+						if (isset(self::\$lookup[\$language][\$view][(int) \$id]))
 						{
-							return self::\$lookup[\$view][(int) \$id];
+							return self::\$lookup[\$language][\$view][(int) \$id];
 						}
 					}
 				}
 			}
 		}
-		else
-		{
-			\$active = \$menus->getActive();
 
-			if (\$active)
-			{
-				return \$active->id;
-			}
+		\$active = \$menus->getActive();
+
+		if (\$active && \$active->component == 'com_${TM_COMPONENT/(.+)/\L\1/g}' && (\$active->language == '*' || !JLanguageMultilang::isEnabled()))
+		{
+			return \$active->id;
 		}
 
-		return null;
+		// If not found, return language specific home link.
+		\$default = \$menus->getDefault(\$language);
+
+		return !empty(\$default->id) ? \$default->id : null;
 	}
 }
 

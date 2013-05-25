@@ -3,7 +3,7 @@
  * Method override to check if you can edit an existing record.
  *
  * @param   array   \$data  An array of input data.
- * @param   string  \$key   The name of the key for the primary key.
+ * @param   string  \$key   The name of the key for the primary key; default is id.
  *
  * @return  boolean
  *
@@ -52,7 +52,9 @@ protected function allowEdit(\$data = array(), \$key = 'id')
 
 	// Since there is no asset tracking, revert to the component permissions.
 	return parent::allowEdit(\$data, \$key);
-}]]></content>
+}
+
+]]></content>
 	<tabTrigger>jsitecontrollerform_allowedit</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

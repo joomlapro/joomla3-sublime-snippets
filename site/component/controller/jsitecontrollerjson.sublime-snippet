@@ -20,6 +20,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 */
 	public function display(\$cachable = false, \$urlparams = false)
 	{
+		// Initialiase variables.
 		\$return = array();
 
 		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');

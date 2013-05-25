@@ -102,9 +102,26 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 *
 	 * @since   $TM_VERSION
 	 */
-	protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = null)
+	protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = '${TM_COMPONENT/(.)(.+)/\L\1/g}_id')
 	{
-		\$append = parent::getRedirectToItemAppend(\$recordId, \$urlVar);
+		// Need to override the parent method completely.
+		\$tmpl   = \$this->input->get('tmpl');
+		\$layout = \$this->input->get('layout', 'edit');
+		\$append = '';
+
+		// Setup redirect info.
+		if (\$tmpl)
+		{
+			\$append .= '&tmpl=' . \$tmpl;
+		}
+
+		\$append .= '&layout=edit';
+
+		if (\$recordId)
+		{
+			\$append .= '&' . \$urlVar . '=' . \$recordId;
+		}
+
 		\$itemId = \$this->input->getInt('Itemid');
 		\$return = \$this->getReturnPage();
 
@@ -156,12 +173,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 */
 	protected function postSaveHook(JModelLegacy \$model, \$validData = array())
 	{
-		\$task = \$this->getTask();
-
-		if (\$task == 'save')
-		{
-			\$this->setRedirect(JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$validData['id'] . ':' . \$validData['alias'], false));
-		}
+		return;
 	}
 
 	/**

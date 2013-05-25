@@ -3,14 +3,13 @@
  * Method to get a route configuration for the realestate view.
  *
  * @param   integer  \$id        The route of the realestate item.
- * @param   integer  \$catid     The id of the category.
  * @param   string   \$language  The language code, default value of * means all.
  *
  * @return  string
  *
  * @since   $TM_VERSION
  */
-public static function get${1:Singular}Route(\$id, \$catid = 0, \$language = 0)
+public static function get${1:Singular}Route(\$id, \$language = 0)
 {
 	// Initialiase variables.
 	\$needles = array(
@@ -19,20 +18,6 @@ public static function get${1:Singular}Route(\$id, \$catid = 0, \$language = 0)
 
 	// Create the link.
 	\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$id;
-
-	if ((int) \$catid > 1)
-	{
-		\$categories = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
-		\$category = \$categories->get((int) \$catid);
-
-		if (\$category)
-		{
-			\$needles['category']   = array_reverse(\$category->getPath());
-			\$needles['categories'] = \$needles['category'];
-
-			\$link .= '&catid=' . \$catid;
-		}
-	}
 
 	if (\$language && \$language != "*" && JLanguageMultilang::isEnabled())
 	{
@@ -68,6 +53,6 @@ public static function get${1:Singular}Route(\$id, \$catid = 0, \$language = 0)
 
 	return \$link;
 }]]></content>
-	<tabTrigger>jsitehelperroute_item</tabTrigger>
+	<tabTrigger>jsitehelperroute_item-nocategory</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

@@ -27,7 +27,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller extends JControllerLegacy
 		// Set the default view name and format from the Request.
 		// Note we are using ${TM_COMPONENT/(.)(.+)/\L\1/g}_id to avoid collisions with the router and the return page.
 		\$id       = \$this->input->getInt('${TM_COMPONENT/(.)(.+)/\L\1/g}_id');
-		\$vName    = \$this->input->get('view', '${1:categories}');
+		\$vName    = \$this->input->get('view', '${1:plural}');
 		\$this->input->set('view', \$vName);
 
 		if (\$user->get('id') || (\$this->input->getMethod() == 'POST' && \$vName = '${1/(.+)/\L\1/g}'))
@@ -36,7 +36,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller extends JControllerLegacy
 		}
 
 		\$safeurlparams = array(
-			'catid'            => 'INT',
 			'id'               => 'INT',
 			'cid'              => 'ARRAY',
 			'limit'            => 'UINT',
@@ -58,11 +57,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller extends JControllerLegacy
 			return JError::raiseError(403, JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', \$id));
 		}
 
-		return parent::display(\$cachable, \$safeurlparams);
+		parent::display(\$cachable, \$safeurlparams);
+
+		return \$this;
 	}
 }
 
 ]]></content>
-	<tabTrigger>jsitecontroller</tabTrigger>
+	<tabTrigger>jsitecontroller-nocategory</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

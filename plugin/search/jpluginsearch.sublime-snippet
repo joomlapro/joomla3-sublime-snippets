@@ -68,6 +68,7 @@ class PlgSearch${1:${TM_COMPONENT/(.+)/\u\1/g}} extends JPlugin
 		{
 			\$state[] = 1;
 		}
+
 		if (\$sArchived)
 		{
 			\$state[] = 2;

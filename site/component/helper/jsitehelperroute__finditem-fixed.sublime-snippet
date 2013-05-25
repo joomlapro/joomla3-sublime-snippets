@@ -76,6 +76,6 @@ protected static function _findItem(\$needles = null)
 
 	return null;
 }]]></content>
-	<tabTrigger>jsitehelperroute-_finditem-fixed</tabTrigger>
+	<tabTrigger>jsitehelperroute__finditem-fixed</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

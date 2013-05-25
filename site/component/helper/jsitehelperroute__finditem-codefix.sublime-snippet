@@ -15,6 +15,6 @@
 		}
 	}
 }]]></content>
-	<tabTrigger>jsitehelperroute-_findItem-codefix</tabTrigger>
+	<tabTrigger>jsitehelperroute__finditem-codefix</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
