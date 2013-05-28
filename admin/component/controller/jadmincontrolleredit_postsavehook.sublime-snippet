@@ -11,12 +11,7 @@
  */
 protected function postSaveHook(JModelLegacy \$model, \$validData = array())
 {
-	\$task = \$this->getTask();
-
-	if (\$task == 'save')
-	{
-		\$this->setRedirect(JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1:plural}', false));
-	}
+	return;
 }]]></content>
 	<tabTrigger>jadmincontrolleredit_postsavehook</tabTrigger>
 	<scope>source.php</scope>

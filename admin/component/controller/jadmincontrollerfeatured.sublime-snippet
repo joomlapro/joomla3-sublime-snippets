@@ -1,0 +1,94 @@
+<snippet>
+	<content><![CDATA[// Load dependent classes.
+require_once __DIR__ . '/${2:plural}.php';
+
+/**
+ * ${1/(.+)/\u\1/g} list controller class.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Featured} extends ${TM_COMPONENT/(.+)/\u\1/g}Controller${2/(.+)/\u\1/g}
+{
+	/**
+	 * Removes an item.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function delete()
+	{
+		// Check for request forgeries.
+		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+		// Initialiase variables.
+		\$user = JFactory::getUser();
+		\$ids  = \$this->input->get('cid', array(), 'array');
+
+		// Access checks.
+		foreach (\$ids as \$i => \$id)
+		{
+			if (!\$user->authorise('core.delete', \$this->option . '.${3:${2/(.+)(s\b)/\L\1/g}}.' . (int) \$id))
+			{
+				// Prune items that you can't delete.
+				unset(\$ids[\$i]);
+				JError::raiseNotice(403, JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
+			}
+		}
+
+		if (empty(\$ids))
+		{
+			JError::raiseWarning(500, JText::_('JERROR_NO_ITEMS_SELECTED'));
+		}
+		else
+		{
+			// Get the model.
+			\$model = \$this->getModel();
+
+			// Remove the items.
+			if (!\$model->${1/(.+)/\L\1/g}(\$ids, 0))
+			{
+				JError::raiseWarning(500, \$model->getError());
+			}
+		}
+
+		\$this->setRedirect('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+	}
+
+	/**
+	 * Method to publish a list of ${2/(.+)/\L\1/g}.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function publish()
+	{
+		parent::publish();
+
+		\$this->setRedirect('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+	}
+
+	/**
+	 * Method to get a model object, loading it if required.
+	 *
+	 * @param   string  \$name    The model name. Optional.
+	 * @param   string  \$prefix  The class prefix. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+	 *
+	 * @return  object  The model.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getModel(\$name = '${4:Feature}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
+	{
+		return parent::getModel(\$name, \$prefix, \$config);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadmincontrollerfeatured</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

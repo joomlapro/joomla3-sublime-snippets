@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[/**
+ * Show the feature/unfeature links.
+ *
+ * @param   int      \$value      The state value.
+ * @param   int      \$i          Row number.
+ * @param   boolean  \$canChange  Is user allowed to change?
+ *
+ * @return  string  HTML code.
+ */
+public static function featured(\$value = 0, \$i = 0, \$canChange = true)
+{
+	// Load the tooltip bootstrap script.
+	JHtml::_('bootstrap.tooltip');
+
+	// Array of image, task, title, action.
+	\$states = array(
+		0 => array('unfeatured', '${1:plural}.featured', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_UNFEATURED', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_TOGGLE_TO_FEATURE'),
+		1 => array('featured', '${1/(.+)/\L\1/g}.unfeatured', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE'),
+	);
+	\$state  = JArrayHelper::getValue(\$states, (int) \$value, \$states[1]);
+	\$icon   = \$state[0];
+
+	if (\$canChange)
+	{
+		\$html = '<a href="#" onclick="return listItemTask(\'cb' . \$i . '\',\'' . \$state[1] . '\')" class="btn btn-micro hasTooltip' . (\$value == 1 ? ' active' : '') . '" title="' . JText::_(\$state[3]) . '"><i class="icon-' . \$icon . '"></i></a>';
+	}
+	else
+	{
+		\$html = '<a class="btn btn-micro hasTooltip disabled' . (\$value == 1 ? ' active' : '') . '" title="' . JText::_(\$state[2]) . '"><i class="icon-' . \$icon . '"></i></a>';
+	}
+
+	return \$html;
+}]]></content>
+	<tabTrigger>jadminhtml_featured</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -61,34 +61,44 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		\$checkedOut = !(\$this->item->checked_out == 0 || \$this->item->checked_out == \$userId);
 
 		// Since we don't track these assets at the item level, use the category id.
-		\$canDo      = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$this->item->catid, \$this->item->id);
+		\$canDo      = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$this->state->get('filter.category_id'), \$this->item->id);
 
-		JToolbarHelper::title(\$isNew ? JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_NEW') : JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_EDIT'), '${1/(.+)/\L\1/g}');
+		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_PAGE_' . (\$checkedOut ? 'VIEW_${1/(.+)/\U\1/g}' : (\$isNew ? 'ADD_${1/(.+)/\U\1/g}' : 'EDIT_${1/(.+)/\U\1/g}'))), '${1/(.+)/\L\1/g}-add.png');
 
-		// If not checked out, can save the item.
-		if (!\$checkedOut && (\$canDo->get('core.edit') || (count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create')))))
+		// Built the actions for new and existing records.
+		// For new records, check the create permission.
+		if (\$isNew && (count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create')) > 0))
 		{
 			JToolbarHelper::apply('${1/(.+)/\L\1/g}.apply');
 			JToolbarHelper::save('${1/(.+)/\L\1/g}.save');
-		}
-
-		if (!\$checkedOut && (count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create'))))
-		{
 			JToolbarHelper::save2new('${1/(.+)/\L\1/g}.save2new');
-		}
-
-		// If an existing item, can save to a copy.
-		if (!\$isNew && (count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create')) > 0))
-		{
-			JToolbarHelper::save2copy('${1/(.+)/\L\1/g}.save2copy');
-		}
-
-		if (empty(\$this->item->id))
-		{
 			JToolbarHelper::cancel('${1/(.+)/\L\1/g}.cancel');
 		}
 		else
 		{
+			// Can't save the record if it's checked out.
+			if (!\$checkedOut)
+			{
+				// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
+				if (\$canDo->get('core.edit') || (\$canDo->get('core.edit.own') && \$this->item->created_by == \$userId))
+				{
+					JToolbarHelper::apply('${1/(.+)/\L\1/g}.apply');
+					JToolbarHelper::save('${1/(.+)/\L\1/g}.save');
+
+					// We can save this record, but check the create permission to see if we can return to make a new one.
+					if (\$canDo->get('core.create'))
+					{
+						JToolbarHelper::save2new('${1/(.+)/\L\1/g}.save2new');
+					}
+				}
+			}
+
+			// If checked out, we can still save.
+			if (\$canDo->get('core.create'))
+			{
+				JToolbarHelper::save2copy('${1/(.+)/\L\1/g}.save2copy');
+			}
+
 			JToolbarHelper::cancel('${1/(.+)/\L\1/g}.cancel', 'JTOOLBAR_CLOSE');
 		}
 

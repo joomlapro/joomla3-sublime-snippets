@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} Table class.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:Featured} extends JTable
+{
+	/**
+	 * Whether the ${4/(.+)/\L\1/g} is or is not checked out.
+	 *
+	 * @var     boolean
+	 * @since   $TM_VERSION
+	 */
+	public \$checked_out = 0;
+
+	/**
+	 * Constructor
+	 *
+	 * @param   JDatabase  &\$db  Driver A database connector object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(& \$db)
+	{
+		parent::__construct('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${3:plural}}_frontpage', '${4:single}_id', \$db);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadmintable-featured</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -31,6 +31,6 @@ public static function ${1:action}(\$value = 0, \$i = null, \$canChange = true)
 
 	return \$html;
 }]]></content>
-	<tabTrigger>jadminhtml-custom</tabTrigger>
+	<tabTrigger>jadminhtml_custom</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

@@ -29,9 +29,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 */
 	public function getModel(\$name = '${2:${1/(.+)(s\b)/\u\1/g}}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
 	{
-		\$model = parent::getModel(\$name, \$prefix, \$config);
-
-		return \$model;
+		return parent::getModel(\$name, \$prefix, \$config);
 	}
 
 	/**

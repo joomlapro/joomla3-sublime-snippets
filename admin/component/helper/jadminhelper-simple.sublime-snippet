@@ -9,6 +9,14 @@
 class ${TM_COMPONENT/(.+)/\u\1/g}Helper
 {
 	/**
+	 * The extension name.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	public static \$extension = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
+
+	/**
 	 * Configure the Linkbar.
 	 *
 	 * @param   string  \$vName  The name of the active view.

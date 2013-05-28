@@ -111,7 +111,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$this->getState(
 				'list.select',
 				'a.id, a.${3/(.+)/\L\1/g}' .
-				', a.state, a.ordering'
+					', a.state, a.ordering'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');

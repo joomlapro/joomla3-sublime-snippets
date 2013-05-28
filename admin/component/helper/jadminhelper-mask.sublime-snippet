@@ -142,9 +142,7 @@ abstract class MaskHelper
 			\$index++;
 		}
 
-		\$result = implode('', \$result);
-
-		return \$result;
+		return implode('', \$result);
 	}
 }
 

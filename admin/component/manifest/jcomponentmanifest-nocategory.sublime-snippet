@@ -50,6 +50,7 @@
 				XML and be parsed by the installer.
 			-->
 			<menu link="option=com_${TM_COMPONENT/(.+)/\L\1/g}" view="${TM_COMPONENT/(.+)/\L\1/g}" img="class:${TM_COMPONENT/(.+)/\L\1/g}" alt="${TM_COMPONENT/(.+)/\u\1/g}/${TM_COMPONENT/(.+)/\u\1/g}">com_${TM_COMPONENT/(.+)/\L\1/g}_${TM_COMPONENT/(.+)/\L\1/g}</menu>
+			<menu link="option=com_${TM_COMPONENT/(.+)/\U\1/g}&amp;view=featured" view="featured" img="class:${TM_COMPONENT/(.+)/\L\1/g}-featured" alt="${TM_COMPONENT/(.+)/\u\1/g}/Featured">com_${TM_COMPONENT/(.+)/\L\1/g}_featured</menu>
 		</submenu>
 		<files folder="admin">
 			<filename>access.xml</filename>

@@ -52,14 +52,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Cpanel} extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		// Include dependancies.
-		require_once JPATH_COMPONENT . '/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php';
-
 		// Initialise variables.
 		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions();
 
 		// Set toolbar items for the page.
-		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}'), '${1/(.+)/\L\1/g}');
+		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_TITLE'), '${1/(.+)/\L\1/g}.png');
 
 		if (\$canDo->get('core.admin'))
 		{

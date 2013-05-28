@@ -3,33 +3,38 @@
  * Gets a list of the actions that can be performed.
  *
  * @param   integer  \$categoryId  The category ID.
+ * @param   integer  \$${1/(.+)/\L\1/g}Id  The ${1/(.+)/\L\1/g} ID.
  *
  * @return  JObject  A JObject containing the allowed actions.
  *
  * @since   $TM_VERSION
  */
-public static function getActions(\$categoryId = 0)
+public static function getActions(\$categoryId = 0, \$${1/(.+)/\L\1/g}Id = 0)
 {
 	// Initialiase variables.
 	\$user    = JFactory::getUser();
 	\$result  = new JObject;
 
-	if (empty(\$categoryId))
+	if (empty(\$${1/(.+)/\L\1/g}Id) && empty(\$categoryId))
 	{
-		\$assetName = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
-		\$level     = 'component';
+		\$assetName = self::\$extension;
+	}
+	elseif (empty(\$${1/(.+)/\L\1/g}Id))
+	{
+		\$assetName = self::\$extension . '.category.' . (int) \$categoryId;
 	}
 	else
 	{
-		\$assetName = 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . (int) \$categoryId;
-		\$level     = 'category';
+		\$assetName = self::\$extension . '.${1:singular}.' . (int) \$${1/(.+)/\L\1/g}Id;
 	}
 
-	\$actions = JAccess::getActions('com_${TM_COMPONENT/(.+)/\L\1/g}', \$level);
+	\$actions = array(
+		'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.own', 'core.edit.state', 'core.delete'
+	);
 
 	foreach (\$actions as \$action)
 	{
-		\$result->set(\$action->name, \$user->authorise(\$action->name, \$assetName));
+		\$result->set(\$action, \$user->authorise(\$action, \$assetName));
 	}
 
 	return \$result;

@@ -9,6 +9,14 @@
 class ${TM_COMPONENT/(.+)/\u\1/g}Helper
 {
 	/**
+	 * The extension name.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	public static \$extension = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
+
+	/**
 	 * Configure the Linkbar.
 	 *
 	 * @param   string  \$vName  The name of the active view.
@@ -23,6 +31,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Helper
 			JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_${1/(.+)/\U\1/g}'),
 			'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}',
 			\$vName == '${1/(.+)/\L\1/g}'
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_FEATURED'),
+			'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=featured',
+			\$vName == 'featured'
 		);
 	}
 

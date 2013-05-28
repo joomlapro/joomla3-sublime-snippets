@@ -21,9 +21,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	*/
 	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
 	{
-		\$table = JTable::getInstance(\$type, \$prefix, \$config);
-
-		return \$table;
+		return JTable::getInstance(\$type, \$prefix, \$config);
 	}
 
 	/**

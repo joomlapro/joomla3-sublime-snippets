@@ -37,11 +37,15 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 			return false;
 		}
 
-		// Load the submenu.
-		${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+		// We don't need toolbar in the modal window.
+		if (\$this->getLayout() !== 'modal')
+		{
+			// Load the submenu.
+			${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
 
-		\$this->addToolbar();
-		\$this->sidebar = JHtmlSidebar::render();
+			\$this->addToolbar();
+			\$this->sidebar = JHtmlSidebar::render();
+		}
 
 		parent::display(\$tpl);
 	}
@@ -55,15 +59,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
-		// Include dependancies.
-		require_once JPATH_COMPONENT . '/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php';
-
 		// Initialise variables.
 		\$state = \$this->get('State');
 		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions();
 		\$user  = JFactory::getUser();
 
-		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}'), '${1/(.+)/\L\1/g}');
+		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_TITLE'), '${1/(.+)/\L\1/g}.png');
 
 		if (\$canDo->get('core.create'))
 		{
@@ -109,9 +110,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 	}
 
 	/**
-	 * Returns an array of fields the table can be sorted by
+	 * Returns an array of fields the table can be sorted by.
 	 *
-	 * @return  array  Array containing the field name to sort by as the key and display text as value
+	 * @return  array  Array containing the field name to sort by as the key and display text as value.
 	 *
 	 * @since   $TM_VERSION
 	 */

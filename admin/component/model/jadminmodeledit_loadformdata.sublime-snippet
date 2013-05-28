@@ -19,7 +19,7 @@ protected function loadFormData()
 		// Prime some default values.
 		if (\$this->getState('${1/(.+)/\L\1/g}.id') == 0)
 		{
-			\$data->set('catid', \$app->input->get('catid', \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.${2:${1/(.+)/\L\1/g}s}.filter.category_id'), 'int'));
+			\$data->set('catid', \$app->input->getInt('catid', \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.${2:${1/(.+)/\L\1/g}s}.filter.category_id'), 'int'));
 		}
 	}
 

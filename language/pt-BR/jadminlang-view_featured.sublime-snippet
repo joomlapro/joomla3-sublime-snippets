@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[; FEATURED
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_FEATURED_TITLE="Gerenciador de ${1:Component}: ${2:Plural} em Destaque"
+
+]]></content>
+	<tabTrigger>jadminlang-view_featured</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

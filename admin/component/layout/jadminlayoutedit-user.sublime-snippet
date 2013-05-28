@@ -7,6 +7,10 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 
+// Get the application.
+\$app = JFactory::getApplication();
+\$input = \$app->input;
+
 // Initialise variables.
 \$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions();
 
@@ -73,6 +77,7 @@ JHtml::_('formbehavior.chosen', 'select');
 	</fieldset>
 	<div>
 		<input type="hidden" name="task" value="" />
+		<input type="hidden" name="return" value="<?php echo \$input->getCmd('return'); ?>" />
 		<?php echo JHtml::_('form.token'); ?>
 	</div>
 </form>

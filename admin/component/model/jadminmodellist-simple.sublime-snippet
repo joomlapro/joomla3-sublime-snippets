@@ -30,6 +30,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				'access', 'a.access', 'access_level',
 				'created', 'a.created',
 				'created_by', 'a.created_by',
+				'created_by_alias', 'a.created_by_alias',
 				'ordering', 'a.ordering',
 			);
 		}
@@ -121,7 +122,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$this->getState(
 				'list.select',
 				'a.id, a.${3/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time' .
-				', a.state, a.access, a.ordering'
+					', a.state, a.ordering, a.access a.created, a.created_by, a.created_by_alias'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');

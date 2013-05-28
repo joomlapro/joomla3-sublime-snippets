@@ -69,9 +69,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 */
 	public function edit(\$key = null, \$urlVar = '${TM_COMPONENT/(.)(.+)/\L\1/g}_id')
 	{
-		\$result = parent::edit(\$key, \$urlVar);
-
-		return \$result;
+		return parent::edit(\$key, \$urlVar);
 	}
 
 	/**
@@ -87,9 +85,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 */
 	public function getModel(\$name = '${2/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
 	{
-		\$model = parent::getModel(\$name, \$prefix, \$config);
-
-		return \$model;
+		return parent::getModel(\$name, \$prefix, \$config);
 	}
 
 	/**

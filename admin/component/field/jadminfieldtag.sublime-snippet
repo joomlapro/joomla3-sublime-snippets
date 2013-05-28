@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<field name="${1:tags}" type="tag" class="inputbox" multiple="true" label="JTAG" description="JTAG_DESC" />]]></content>
+	<content><![CDATA[<field name="${1:tags}" type="tag" class="inputbox" multiple="true" label="JTAG" description="JTAG_DESC"></field>]]></content>
 	<tabTrigger>jadminfieldtag</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

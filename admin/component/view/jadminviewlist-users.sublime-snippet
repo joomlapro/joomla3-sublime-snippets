@@ -42,11 +42,15 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		\$lang->load('com_users', JPATH_ADMINISTRATOR);
 		\$lang->load('com_users', JPATH_ADMINISTRATOR . '/components/com_users');
 
-		// Load the submenu.
-		${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+		// We don't need toolbar in the modal window.
+		if (\$this->getLayout() !== 'modal')
+		{
+			// Load the submenu.
+			${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
 
-		\$this->addToolbar();
-		\$this->sidebar = JHtmlSidebar::render();
+			\$this->addToolbar();
+			\$this->sidebar = JHtmlSidebar::render();
+		}
 
 		parent::display(\$tpl);
 	}
@@ -68,7 +72,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		\$canDo = UsersHelper::getActions();
 		\$user  = JFactory::getUser();
 
-		JToolbarHelper::title(JText::_('COM_USERS_VIEW_USERS_TITLE'), '${1/(.+)/\L\1/g}');
+		JToolbarHelper::title(JText::_('COM_USERS_VIEW_USERS_TITLE'), '${1/(.+)/\L\1/g}.png');
 
 		if (\$canDo->get('core.create'))
 		{

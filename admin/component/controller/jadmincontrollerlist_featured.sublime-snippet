@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to toggle the featured setting of a list of ${1/(.+)/\L\1/g}.
+ * Method to toggle the featured setting of a list of ${2/(.+)/\L\1/g}.
  *
  * @return  void
  *
@@ -11,22 +11,17 @@ public function featured()
 	// Check for request forgeries.
 	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
-	// Get items to publish from the request.
+	// Initialiase variables.
 	\$user   = JFactory::getUser();
 	\$ids    = \$this->input->get('cid', array(), 'array');
 	\$values = array('featured' => 1, 'unfeatured' => 0);
 	\$task   = \$this->getTask();
 	\$value  = JArrayHelper::getValue(\$values, \$task, 0, 'int');
 
-	// Get the model.
-	\$model  = \$this->getModel();
-
 	// Access checks.
 	foreach (\$ids as \$i => \$id)
 	{
-		\$item = \$model->getItem(\$id);
-
-		if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
+		if (!\$user->authorise('core.edit.state', \$this->option . '.${1:singular}.' . (int) \$id))
 		{
 			// Prune items that you can't change.
 			unset(\$ids[\$i]);
@@ -40,6 +35,9 @@ public function featured()
 	}
 	else
 	{
+		// Get the model.
+		\$model = \$this->getModel();
+
 		// Publish the items.
 		if (!\$model->featured(\$ids, \$value))
 		{
@@ -47,7 +45,7 @@ public function featured()
 		}
 	}
 
-	\$this->setRedirect('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1:plural}');
+	\$this->setRedirect('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${2:${TM_FILENAME/(.*?)(\..+)/\L$1/}}');
 }]]></content>
 	<tabTrigger>jadmincontrollerlist_featured</tabTrigger>
 	<scope>source.php</scope>

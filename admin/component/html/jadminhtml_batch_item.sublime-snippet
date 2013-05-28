@@ -20,6 +20,6 @@ public static function item(\$extension)
 
 	return implode("\n", \$lines);
 }]]></content>
-	<tabTrigger>jadminhtml-batch_item</tabTrigger>
+	<tabTrigger>jadminhtml_batch_item</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

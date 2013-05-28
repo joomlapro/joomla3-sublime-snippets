@@ -6,6 +6,10 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
+
+// Get the application.
+\$app = JFactory::getApplication();
+\$input = \$app->input;
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task) {
@@ -83,12 +87,13 @@ JHtml::_('formbehavior.chosen', 'select');
 					<?php foreach (\$fieldSets as \$name => \$fieldSet): ?>
 						<?php \$metadatatabs = 'metadata-' . \$name; ?>
 						<?php echo JHtml::_('bootstrap.addTab', 'myTab', \$metadatatabs, JText::_(\$fieldSet->label, true)); ?>
-							<?php echo \$this->loadTemplate('metadata'); ?>
+						<?php echo JLayoutHelper::render('joomla.edit.metadata', \$this); ?>
 						<?php echo JHtml::_('bootstrap.endTab'); ?>
 					<?php endforeach; ?>
 
 					<div>
 						<input type="hidden" name="task" value="" />
+						<input type="hidden" name="return" value="<?php echo \$input->getCmd('return'); ?>" />
 						<?php echo JHtml::_('form.token'); ?>
 					</div>
 				<?php echo JHtml::_('bootstrap.endTabSet'); ?>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JComponentHelper::filterText(${1:\$text});]]></content>
+	<tabTrigger>jcomponenthelper-filtertext</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

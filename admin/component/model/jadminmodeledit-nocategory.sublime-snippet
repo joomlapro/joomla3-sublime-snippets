@@ -17,6 +17,98 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
 
 	/**
+	 * Batch copy items to a new ${1/(.+)/\L\1/g}.
+	 *
+	 * @param   integer  \$value     The new category.
+	 * @param   array    \$pks       An array of row IDs.
+	 * @param   array    \$contexts  An array of item contexts.
+	 *
+	 * @return  mixed  An array of new IDs on success, boolean false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function batchCopy(null, \$pks, \$contexts)
+	{
+		// Initialiase variables.
+		\$table = \$this->getTable();
+		\$i     = 0;
+
+		// Parent exists so we let's proceed.
+		while (!empty(\$pks))
+		{
+			// Pop the first ID off the stack.
+			\$pk = array_shift(\$pks);
+
+			\$table->reset();
+
+			// Check that the row actually exists.
+			if (!\$table->load(\$pk))
+			{
+				if (\$error = \$table->getError())
+				{
+					// Fatal error.
+					\$this->setError(\$error);
+					return false;
+				}
+				else
+				{
+					// Not fatal error.
+					\$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', \$pk));
+					continue;
+				}
+			}
+
+			// Alter the ${2/(.+)/\L\1/g} & alias.
+			\$data = \$this->generateNewTitle(null, \$table->alias, \$table->${2:title});
+			\$table->${2/(.+)/\L\1/g} = \$data['0'];
+			\$table->alias = \$data['1'];
+
+			// Reset the ID because we are making a copy.
+			\$table->id = 0;
+
+			// Get the featured state.
+			\$featured = \$table->featured;
+
+			// Check the row.
+			if (!\$table->check())
+			{
+				\$this->setError(\$table->getError());
+				return false;
+			}
+
+			// Store the row.
+			if (!\$table->store())
+			{
+				\$this->setError(\$table->getError());
+				return false;
+			}
+
+			// Get the new item ID.
+			\$newId = \$table->get('id');
+
+			// Add the new ID to the array.
+			\$newIds[\$i] = \$newId;
+			\$i++;
+
+			// Check if the ${1/(.+)/\L\1/g} was featured and update the #__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}_frontpage table.
+			if (\$featured == 1)
+			{
+				\$db = \$this->getDbo();
+				\$query = \$db->getQuery(true)
+					->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}_frontpage'))
+					->values(\$newId . ', 0');
+				\$db->setQuery(\$query);
+				\$db->execute();
+			}
+		}
+
+		// Clean the cache.
+		\$this->cleanCache();
+
+		return \$newIds;
+	}
+
+	/**
 	 * Method to test whether a record can be deleted.
 	 *
 	 * @param   object  \$record  A record object.
@@ -37,12 +129,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Get the current user object.
 			\$user = JFactory::getUser();
 
-			return \$user->authorise('core.delete', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+			return \$user->authorise('core.delete', \$this->option . '.${1/(.+)/\L\1/g}.' . (int) \$record->id);
 		}
 	}
 
 	/**
-	 * Method to test whether a record can have its state changed.
+	 * Method to test whether a record can have its state edited.
 	 *
 	 * @param   object  \$record  A record object.
 	 *
@@ -58,94 +150,57 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Check for existing ${1/(.+)/\L\1/g}.
 		if (!empty(\$record->id))
 		{
-			return \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+			return \$user->authorise('core.edit.state', \$this->option . '.${1/(.+)/\L\1/g}.' . (int) \$record->id);
 		}
 		// Default to component settings if ${1/(.+)/\L\1/g} not known.
 		else
 		{
-			return parent::canEditState(\$record);
+			return parent::canEditState(\$this->option);
 		}
 	}
 
 	/**
-	 * Returns a reference to the a Table object, always creating it.
+	 * Prepare and sanitise the table data prior to saving.
+	 *
+	 * @param   JTable  \$table  A JTable object.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function prepareTable(\$table)
+	{
+		// Set the publish date to now.
+		\$db = \$this->getDbo();
+
+		if (\$table->state == 1 && (int) \$table->publish_up == 0)
+		{
+			\$table->publish_up = JFactory::getDate()->toSql();
+		}
+
+		if (\$table->state == 1 && intval(\$table->publish_down) == 0)
+		{
+			\$table->publish_down = \$db->getNullDate();
+		}
+
+		// Increment the content version number.
+		\$table->version++;
+	}
+
+	/**
+	 * Returns a Table object, always creating it.
 	 *
 	 * @param   type    \$type    The table type to instantiate.
 	 * @param   string  \$prefix  A prefix for the table class name. Optional.
 	 * @param   array   \$config  Configuration array for model. Optional.
 	 *
-	 * @return  JTable  A database object.
+	 * @return  JTable    A database object.
 	 *
 	 * @since   $TM_VERSION
 	 */
 	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
 	{
-		\$table = JTable::getInstance(\$type, \$prefix, \$config);
-
-		return \$table;
-	}
-
-	/**
-	 * Method to get the record form.
-	 *
-	 * @param   array    \$data      An optional array of data for the form to interogate.
-	 * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not.
-	 *
-	 * @return  JForm  A JForm object on success, false on failure.
-	 *
-	 * @since   $TM_VERSION
-	 */
-	public function getForm(\$data = array(), \$loadData = true)
-	{
-		// Get the form.
-		\$form = \$this->loadForm('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
-
-		if (empty(\$form))
-		{
-			return false;
-		}
-
-		// Modify the form based on access controls.
-		if (!\$this->canEditState((object) \$data))
-		{
-			// Disable fields for display.
-			\$form->setFieldAttribute('ordering', 'disabled', 'true');
-			\$form->setFieldAttribute('state', 'disabled', 'true');
-			\$form->setFieldAttribute('publish_up', 'disabled', 'true');
-			\$form->setFieldAttribute('publish_down', 'disabled', 'true');
-
-			// Disable fields while saving.
-			// The controller has already verified this is a record you can edit.
-			\$form->setFieldAttribute('ordering', 'filter', 'unset');
-			\$form->setFieldAttribute('state', 'filter', 'unset');
-			\$form->setFieldAttribute('publish_up', 'filter', 'unset');
-			\$form->setFieldAttribute('publish_down', 'filter', 'unset');
-		}
-
-		return \$form;
-	}
-
-	/**
-	 * Method to get the data that should be injected in the form.
-	 *
-	 * @return  mixed  The data for the form.
-	 *
-	 * @since   $TM_VERSION
-	 */
-	protected function loadFormData()
-	{
-		// Check the session for previously entered form data.
-		\$app  = JFactory::getApplication();
-		\$data = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
-
-		if (empty(\$data))
-		{
-			\$data = \$this->getItem();
-		}
-
-		\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
-
-		return \$data;
+		return JTable::getInstance(\$type, \$prefix, \$config);
 	}
 
 	/**
@@ -171,11 +226,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$registry->loadString(\$item->images);
 			\$item->images = \$registry->toArray();
 
-			// Load item tags.
 			if (!empty(\$item->id))
 			{
 				\$item->tags = new JHelperTags;
-				\$item->tags->getTagIds(\$item->id, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}');
+				\$item->tags->getTagIds(\$item->id, \$this->option . '.${1/(.+)/\L\1/g}');
 				\$item->metadata['tags'] = \$item->tags;
 			}
 		}
@@ -184,51 +238,86 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	}
 
 	/**
-	 * Prepare and sanitise the table prior to saving.
+	 * Method to get the record form.
 	 *
-	 * @param   JTable  \$table  A JTable object.
+	 * @param   array    \$data      Data for the form.
+	 * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not.
 	 *
-	 * @return  void
+	 * @return  mixed  A JForm object on success, false on failure.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	protected function prepareTable(\$table)
+	public function getForm(\$data = array(), \$loadData = true)
 	{
-		// Initialise variables.
-		\$date = JFactory::getDate();
+		// Get the form.
+		\$form = \$this->loadForm(\$this->option . '.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+
+		if (empty(\$form))
+		{
+			return false;
+		}
+
+		\$jinput = JFactory::getApplication()->input;
+
+		// The front end calls this model and uses a_id to avoid id clashes so we need to check for that first.
+		if (\$jinput->get('a_id'))
+		{
+			\$id = \$jinput->get('a_id', 0);
+		}
+		// The back end uses id so we use that the rest of the time and set it to 0 by default.
+		else
+		{
+			\$id = \$jinput->get('id', 0);
+		}
+
+		// Get the current user object.
 		\$user = JFactory::getUser();
 
-		\$table->${3:title} = htmlspecialchars_decode(\$table->${3/(.+)/\L\1/g}, ENT_QUOTES);
-		\$table->alias = JApplication::stringURLSafe(\$table->alias);
-
-		if (empty(\$table->alias))
+		// Check for existing ${1/(.+)/\L\1/g}.
+		// Modify the form based on Edit State access controls.
+		if (\$id != 0 && (!\$user->authorise('core.edit.state', \$this->option . '.${1/(.+)/\L\1/g}.' . (int) \$id))
+			|| (\$id == 0 && !\$user->authorise('core.edit.state', \$this->option)))
 		{
-			\$table->alias = JApplication::stringURLSafe(\$table->${3/(.+)/\L\1/g});
+			// Disable fields for display.
+			\$form->setFieldAttribute('state', 'disabled', 'true');
+			\$form->setFieldAttribute('ordering', 'disabled', 'true');
+			\$form->setFieldAttribute('publish_up', 'disabled', 'true');
+			\$form->setFieldAttribute('publish_down', 'disabled', 'true');
+			\$form->setFieldAttribute('featured', 'disabled', 'true');
+
+			// Disable fields while saving.
+			// The controller has already verified this is an ${1/(.+)/\L\1/g} you can edit.
+			\$form->setFieldAttribute('state', 'filter', 'unset');
+			\$form->setFieldAttribute('ordering', 'filter', 'unset');
+			\$form->setFieldAttribute('publish_up', 'filter', 'unset');
+			\$form->setFieldAttribute('publish_down', 'filter', 'unset');
+			\$form->setFieldAttribute('featured', 'filter', 'unset');
 		}
 
-		if (empty(\$table->id))
+		return \$form;
+	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return  mixed  The data for the form.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		\$app  = JFactory::getApplication();
+		\$data = \$app->getUserState(\$this->option . '.edit.${1/(.+)/\L\1/g}.data', array());
+
+		if (empty(\$data))
 		{
-			// Set the values.
-
-			// Set ordering to the last item if not set.
-			if (empty(\$table->ordering))
-			{
-				\$db = JFactory::getDbo();
-				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}');
-				\$max = \$db->loadResult();
-
-				\$table->ordering = \$max + 1;
-			}
-			else
-			{
-				// Set the values.
-				\$table->modified    = \$date->toSql();
-				\$table->modified_by = \$user->get('id');
-			}
+			\$data = \$this->getItem();
 		}
 
-		// Increment the content version number.
-		\$table->version++;
+		\$this->preprocessData(\$this->option . '.${1/(.+)/\L\1/g}', \$data);
+
+		return \$data;
 	}
 
 	/**
@@ -245,48 +334,140 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Get the application.
 		\$app = JFactory::getApplication();
 
-		// Alter the ${3/(.+)/\L\1/g} for save as copy.
+		if (isset(\$data['images']) && is_array(\$data['images']))
+		{
+			\$registry = new JRegistry;
+			\$registry->loadArray(\$data['images']);
+			\$data['images'] = (string) \$registry;
+		}
+
+		// Alter the ${2/(.+)/\L\1/g} for save as copy.
 		if (\$app->input->get('task') == 'save2copy')
 		{
-			list(\$name, \$alias) = \$this->generateNewTitle(null, \$data['alias'], \$data['${3/(.+)/\L\1/g}']);
+			list(\$${2/(.+)/\L\1/g}, \$alias) = \$this->generateNewTitle(null, \$data['alias'], \$data['${2/(.+)/\L\1/g}']);
 
-			\$data['${3/(.+)/\L\1/g}'] = \$name;
+			\$data['${2/(.+)/\L\1/g}'] = \$${2/(.+)/\L\1/g};
 			\$data['alias'] = \$alias;
 			\$data['state'] = 0;
 		}
 
-		\$return = parent::save(\$data);
+		if (parent::save(\$data))
+		{
+			if (isset(\$data['featured']))
+			{
+				\$this->featured(\$this->getState(\$this->getName() . '.id'), \$data['featured']);
+			}
 
-		return \$return;
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
-	 * Method to change the ${3/(.+)/\L\1/g} & alias.
+	 * Method to toggle the featured setting of ${3/(.+)/\L\1/g}.
 	 *
-	 * @param   integer  \$category_id  The id of the parent.
-	 * @param   string   \$alias        The alias.
-	 * @param   string   \$name         The ${3/(.+)/\L\1/g}.
+	 * @param   array    \$pks    The ids of the items to toggle.
+	 * @param   integer  \$value  The value to toggle to.
 	 *
-	 * @return  array  Contains the modified ${3/(.+)/\L\1/g} and alias.
+	 * @return  boolean  True on success.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	protected function generateNewTitle(\$category_id, \$alias, \$name)
+	public function featured(\$pks, \$value = 0)
 	{
-		// Alter the ${3/(.+)/\L\1/g} & alias.
-		\$table = \$this->getTable();
+		// Sanitize the ids.
+		\$pks = (array) \$pks;
 
-		while (\$table->load(array('alias' => \$alias)))
+		JArrayHelper::toInteger(\$pks);
+
+		if (empty(\$pks))
 		{
-			if (\$name == \$table->${3/(.+)/\L\1/g})
-			{
-				\$name = JString::increment(\$name);
-			}
-
-			\$alias = JString::increment(\$alias, 'dash');
+			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+			return false;
 		}
 
-		return array(\$name, \$alias);
+		\$table = \$this->getTable('Featured', '${TM_COMPONENT/(.+)/\u\1/g}Table');
+
+		try
+		{
+			// Initialiase variables.
+			\$db = \$this->getDbo();
+
+			// Create the base update statement.
+			\$query = \$db->getQuery(true)
+				->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${3/(.+)/\L\1/g}}'))
+				->set('featured = ' . (int) \$value)
+				->where('id IN (' . implode(',', \$pks) . ')');
+
+			// Set the query and execute the update.
+			\$db->setQuery(\$query);
+			\$db->execute();
+
+			if ((int) \$value == 0)
+			{
+				// Adjust the mapping table.
+				// Clear the existing features settings.
+				\$query = \$db->getQuery(true)
+					->delete(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}_frontpage'))
+					->where('${1/(.+)/\L\1/g}_id IN (' . implode(',', \$pks) . ')');
+
+				// Set the query and execute the update.
+				\$db->setQuery(\$query);
+				\$db->execute();
+			}
+			else
+			{
+				// First, we find out which of our new featured ${3/(.+)/\L\1/g} are already featured.
+				\$query = \$db->getQuery(true)
+					->select('f.${1/(.+)/\L\1/g}_id')
+					->from('#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}_frontpage AS f')
+					->where('${1/(.+)/\L\1/g}_id IN (' . implode(',', \$pks) . ')');
+
+				// Set the query and execute the update.
+				\$db->setQuery(\$query);
+
+				\$old_featured = \$db->loadColumn();
+
+				// We diff the arrays to get a list of the ${3/(.+)/\L\1/g} that are newly featured.
+				\$new_featured = array_diff(\$pks, \$old_featured);
+
+				// Featuring.
+				\$tuples = array();
+
+				foreach (\$new_featured as \$pk)
+				{
+					\$tuples[] = \$pk . ', 0';
+				}
+
+				if (count(\$tuples))
+				{
+					// Initialiase variables.
+					\$db = \$this->getDbo();
+					\$columns = array('${1/(.+)/\L\1/g}_id', 'ordering');
+
+					// Create the base insert statement.
+					\$query = \$db->getQuery(true)
+						->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}_frontpage'))
+						->columns(\$db->quoteName(\$columns))
+						->values(\$tuples);
+
+					// Set the query and execute the insert.
+					\$db->setQuery(\$query);
+					\$db->execute();
+				}
+			}
+		}
+		catch (Exception \$e)
+		{
+			\$this->setError(\$e->getMessage());
+			return false;
+		}
+
+		\$table->reorder();
+		\$this->cleanCache();
+
+		return true;
 	}
 }
 

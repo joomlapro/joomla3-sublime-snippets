@@ -69,7 +69,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:User} extends JViewLegacy
 		\$isNew = (\$this->item->id == 0);
 		\$isProfile = \$this->item->id == \$user->id;
 
-		JToolbarHelper::title(JText::_(\$isNew ? 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_NEW_${1/(.+)/\U\1/g}_TITLE' : (\$isProfile ? 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_EDIT_PROFILE_TITLE' : 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_EDIT_${1/(.+)/\U\1/g}_TITLE')), \$isNew ? '${1/(.+)/\L\1/g}-add' : (\$isProfile ? '${1/(.+)/\L\1/g}-profile' : '${1/(.+)/\L\1/g}-edit'));
+		JToolbarHelper::title(JText::_(\$isNew ? 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_NEW_${1/(.+)/\U\1/g}_TITLE' : (\$isProfile ? 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_EDIT_PROFILE_TITLE' : 'COM_${TM_COMPONENT/(.+)/\U\1/g}_VIEW_EDIT_${1/(.+)/\U\1/g}_TITLE')), \$isNew ? '${1/(.+)/\L\1/g}-add.png' : (\$isProfile ? '${1/(.+)/\L\1/g}-profile.png' : '${1/(.+)/\L\1/g}-edit.png'));
 
 		if (\$canDo->get('core.edit')||\$canDo->get('core.create'))
 		{

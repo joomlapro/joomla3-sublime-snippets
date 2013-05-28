@@ -8,6 +8,9 @@ if (!JFactory::getUser()->authorise('core.manage', 'com_${TM_COMPONENT/(.+)/\L\1
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
+// Register dependent classes.
+JLoader::register('${TM_COMPONENT/(.+)/\u\1/g}Helper', __DIR__ . '/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php');
+
 // Execute the task.
 \$controller = JControllerLegacy::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
 \$controller->execute(\$input->get('task'));

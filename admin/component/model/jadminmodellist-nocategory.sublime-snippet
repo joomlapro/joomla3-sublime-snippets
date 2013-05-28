@@ -30,6 +30,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				'access', 'a.access', 'access_level',
 				'created', 'a.created',
 				'created_by', 'a.created_by',
+				'created_by_alias', 'a.created_by_alias',
 				'ordering', 'a.ordering',
 				'featured', 'a.featured',
 				'language', 'a.language',
@@ -73,11 +74,23 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$accessId = \$this->getUserStateFromRequest(\$this->context . '.filter.access', 'filter_access', null, 'int');
 		\$this->setState('filter.access', \$accessId);
 
+		\$authorId = \$app->getUserStateFromRequest(\$this->context . '.filter.author_id', 'filter_author_id');
+		\$this->setState('filter.author_id', \$authorId);
+
 		\$published = \$this->getUserStateFromRequest(\$this->context . '.filter.state', 'filter_state', '', 'string');
 		\$this->setState('filter.state', \$published);
 
 		\$language = \$this->getUserStateFromRequest(\$this->context . '.filter.language', 'filter_language', '');
 		\$this->setState('filter.language', \$language);
+
+		// Force a language.
+		\$forcedLanguage = \$app->input->get('forcedLanguage');
+
+		if (!empty(\$forcedLanguage))
+		{
+			\$this->setState('filter.language', \$forcedLanguage);
+			\$this->setState('filter.forcedLanguage', \$forcedLanguage);
+		}
 
 		\$tag = \$this->getUserStateFromRequest(\$this->context . '.filter.tag', 'filter_tag', '');
 		\$this->setState('filter.tag', \$tag);
@@ -108,6 +121,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Compile the store id.
 		\$id .= ':' . \$this->getState('filter.search');
 		\$id .= ':' . \$this->getState('filter.access');
+		\$id .= ':' . \$this->getState('filter.author_id');
 		\$id .= ':' . \$this->getState('filter.state');
 		\$id .= ':' . \$this->getState('filter.language');
 		\$id .= ':' . \$this->getState('filter.tag');
@@ -134,8 +148,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$this->getState(
 				'list.select',
 				'a.id, a.${3/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time' .
-				', a.hits' .
-				', a.state, a.access, a.ordering, a.language, a.publish_up, a.publish_down'
+					', a.state, a.ordering, a.access, a.language, a.created, a.created_by, a.created_by_alias, a.featured, a.hits' .
+					', a.publish_up, a.publish_down'
 			)
 		);
 		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
@@ -178,7 +192,16 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 		elseif (\$published === '')
 		{
-			\$query->where('(a.state IN (0, 1))');
+			\$query->where('(a.state = 0 OR a.state = 1)');
+		}
+
+		// Filter by author.
+		\$authorId = \$this->getState('filter.author_id');
+
+		if (is_numeric(\$authorId))
+		{
+			\$type = \$this->getState('filter.author_id.include', true) ? '= ' : '<>';
+			\$query->where('a.created_by ' . \$type . (int) \$authorId);
 		}
 
 		// Filter by search in ${3/(.+)/\L\1/g}.
@@ -189,6 +212,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			if (stripos(\$search, 'id:') === 0)
 			{
 				\$query->where('a.id = ' . (int) substr(\$search, 3));
+			}
+			elseif (stripos(\$search, 'author:') === 0)
+			{
+				\$search = \$db->quote('%' . \$db->escape(substr(\$search, 7), true) . '%');
+				\$query->where('(ua.name LIKE ' . \$search . ' OR ua.username LIKE ' . \$search . ')');
 			}
 			else
 			{
@@ -217,12 +245,83 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 
 		// Add the list ordering clause.
-		\$orderCol = \$this->getState('list.ordering', 'a.${3/(.+)/\L\1/g}');
-		\$query->order(\$db->escape(\$orderCol) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
+		\$orderCol  = \$this->state->get('list.ordering', 'a.${3/(.+)/\L\1/g}');
+		\$orderDirn = \$this->state->get('list.direction', 'asc');
+
+		if (\$orderCol == 'language')
+		{
+			\$orderCol = 'l.title';
+		}
+
+		if (\$orderCol == 'access_level')
+		{
+			\$orderCol = 'ag.title';
+		}
+
+		\$query->order(\$db->escape(\$orderCol . ' ' . \$orderDirn));
 
 		// echo nl2br(str_replace('#__', 'jos_', \$query));
 
 		return \$query;
+	}
+
+	/**
+	 * Build a list of authors.
+	 *
+	 * @return  JDatabaseQuery
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getAuthors()
+	{
+		// Create a new query object.
+		\$db = \$this->getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Construct the query.
+		\$query->select('u.id AS value, u.name AS text')
+			->from('#__users AS u')
+			->join('INNER', '#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g} AS c ON c.created_by = u.id')
+			->group('u.id, u.name')
+			->order('u.name');
+
+		// Setup the query.
+		\$db->setQuery(\$query);
+
+		// Return the result.
+		return \$db->loadObjectList();
+	}
+
+	/**
+	 * Method to get a list of ${TM_FILENAME/(.*?)(\..+)/\L$1/}.
+	 * Overridden to add a check for access levels.
+	 *
+	 * @return  mixed  An array of data items on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getItems()
+	{
+		// Initialiase variables.
+		\$items = parent::getItems();
+		\$app   = JFactory::getApplication();
+
+		if (\$app->isSite())
+		{
+			\$user   = JFactory::getUser();
+			\$groups = \$user->getAuthorisedViewLevels();
+
+			for (\$x = 0, \$count = count(\$items); \$x < \$count; \$x++)
+			{
+				// Check the access level. Remove ${TM_FILENAME/(.*?)(\..+)/\L$1/} the user shouldn't see.
+				if (!in_array(\$items[\$x]->access, \$groups))
+				{
+					unset(\$items[\$x]);
+				}
+			}
+		}
+
+		return \$items;
 	}
 }
 
