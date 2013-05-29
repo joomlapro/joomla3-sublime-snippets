@@ -20,6 +20,12 @@
 // Add Stylesheets.
 \$doc->addStyleSheet(\$path . '/css/template.css');
 
+// Load additional CSS styles for rtl sites.
+if (\$this->direction == 'rtl')
+{
+	\$doc->addStyleSheet(\$path . '/css/template_rtl.css');
+}
+
 // Set MetaData.
 \$doc->setMetaData('X-UA-Compatible', 'IE=edge,chrome=1', true);
 \$doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0', false);
