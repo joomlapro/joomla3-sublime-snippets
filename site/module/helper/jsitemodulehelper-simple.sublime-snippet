@@ -85,6 +85,7 @@ abstract class Mod${1:$TM_MODULE}Helper
 		{
 			// Compute the ${3/(.+)/\L\1/g} slug.
 			\$item->slug = \$item->id . ':' . \$item->alias;
+			\$item->link = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug);
 
 			if (\$access || in_array(\$item->access, \$authorised))
 			{

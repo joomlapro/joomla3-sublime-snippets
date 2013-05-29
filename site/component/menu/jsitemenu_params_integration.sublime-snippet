@@ -13,6 +13,6 @@
 		<option value="1">JGLOBAL_FULL_TEXT</option>
 	</field>
 </fieldset>]]></content>
-	<tabTrigger>jsitemenu_integration</tabTrigger>
+	<tabTrigger>jsitemenu_params_integration</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

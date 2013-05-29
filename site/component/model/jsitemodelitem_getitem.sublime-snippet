@@ -10,7 +10,7 @@
  */
 public function &getItem(\$pk = null)
 {
-	\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1:edit}.id');
+	\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}.id');
 
 	if (\$this->_item === null)
 	{

@@ -75,8 +75,10 @@ abstract class Mod${1:$TM_MODULE}Helper
 		foreach (\$items as &\$item)
 		{
 			// Compute the ${5/(.+)/\L\1/g} slug.
-			\$item->slug = \$item->id . ':' . \$item->alias;
-			\$item->catslug = \$item->catid . ':' . \$item->category_alias;
+			\$item->slug     = \$item->id . ':' . \$item->alias;
+			\$item->catslug  = \$item->catid . ':' . \$item->category_alias;
+			\$item->link     = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug, \$item->catslug);
+			\$item->cat_link = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$item->catslug);
 
 			if (\$access || in_array(\$item->access, \$authorised))
 			{

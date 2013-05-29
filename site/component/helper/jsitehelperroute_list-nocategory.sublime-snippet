@@ -18,6 +18,6 @@ public static function get${1:List}Route()
 
 	return \$link;
 }]]></content>
-	<tabTrigger>jsitehelperroute-list</tabTrigger>
+	<tabTrigger>jsitehelperroute_list-nocategory</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

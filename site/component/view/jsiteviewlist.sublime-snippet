@@ -65,9 +65,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		// Compute the ${2:${1/(.+)(s\b)/\L\1/g}} slug.
 		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
 		{
-			\$item          = &\$items[\$i];
-			\$item->slug    = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
-			\$item->catslug = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
+			\$item           = &\$items[\$i];
+			\$item->slug     = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+			\$item->catslug  = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
+			\$item->link     = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug, \$item->catslug);
+			\$item->cat_link = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$item->catslug);
 
 			\$temp          = new JRegistry;
 			\$temp->loadString(\$item->params);
@@ -85,7 +87,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		// Escape strings for HTML output.
 		\$this->pageclass_sfx = htmlspecialchars(\$params->get('pageclass_sfx'));
 
-		\$maxLevel = \$params->get('maxLevel', -1);
+		\$maxLevel         = \$params->get('maxLevel', -1);
 		\$this->maxLevel   = &\$maxLevel;
 		\$this->state      = &\$state;
 		\$this->items      = &\$items;

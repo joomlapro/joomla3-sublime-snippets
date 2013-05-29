@@ -85,7 +85,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$this->setState('list.start', \$limitstart);
 
 		// Load the ordering.
-		\$orderCol = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . $itemid . '.filter_order', 'filter_order', '', 'string');
+		\$orderCol = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . \$itemid . '.filter_order', 'filter_order', '', 'string');
 
 		if (!in_array(\$orderCol, \$this->filter_fields))
 		{
@@ -95,7 +95,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$this->setState('list.ordering', \$orderCol);
 
 		// Load the direction.
-		\$listOrder = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . $itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
+		\$listOrder = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.list.' . \$itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
 
 		if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
 		{

@@ -54,6 +54,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		\$item->slug        = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
 		\$item->catslug     = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
 		\$item->parent_slug = \$item->category_alias ? (\$item->parent_id . ':' . \$item->parent_alias) : \$item->parent_id;
+		\$item->link        = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug, \$item->catslug);
+		\$item->cat_link    = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$item->catslug);
 
 		// Merge ${1/(.+)/\L\1/g} params. If this is single-${1/(.+)/\L\1/g} view, menu params override ${1/(.+)/\L\1/g} params.
 		// Otherwise, ${1/(.+)/\L\1/g} params override menu item params.

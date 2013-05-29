@@ -52,6 +52,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 
 		// Add router helpers.
 		\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+		\$item->link = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug);
 
 		// Merge ${1/(.+)/\L\1/g} params. If this is single-${1/(.+)/\L\1/g} view, menu params override ${1/(.+)/\L\1/g} params.
 		// Otherwise, ${1/(.+)/\L\1/g} params override menu item params.

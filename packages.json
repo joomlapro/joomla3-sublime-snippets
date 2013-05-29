@@ -6,11 +6,11 @@
 			"description": "Sublime Text Snippets for CMS Joomla! 3.x",
 			"author": "Bruno Batista <bruno@joomlapro.com.br>",
 			"homepage": "https://github.com/joomlapro/joomla3-sublime-snippets",
-			"last_modified": "2013-05-29 09:34:00",
+			"last_modified": "2013-03-26 19:30:00",
 			"platforms": {
 				"*": [
 					{
-						"version": "2.1.1",
+						"version": "2.1.0",
 						"url": "https://nodeload.github.com/joomlapro/joomla3-sublime-snippets/zip/master"
 					}
 				]

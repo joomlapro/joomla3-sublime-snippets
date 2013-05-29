@@ -48,6 +48,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		{
 			\$item       = &\$items[\$i];
 			\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+			\$item->link = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug);
 
 			\$temp       = new JRegistry;
 			\$temp->loadString(\$item->params);
@@ -58,7 +59,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 		// Escape strings for HTML output.
 		\$this->pageclass_sfx = htmlspecialchars(\$params->get('pageclass_sfx'));
 
-		\$maxLevel = \$params->get('maxLevel', -1);
+		\$maxLevel         = \$params->get('maxLevel', -1);
 		\$this->maxLevel   = &\$maxLevel;
 		\$this->state      = &\$state;
 		\$this->items      = &\$items;
