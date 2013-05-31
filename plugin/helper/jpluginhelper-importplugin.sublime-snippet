@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the ${1/(.+)/\L\1/g} plugin group.
+JPluginHelper::importPlugin('${1:group}');]]></content>
+	<tabTrigger>jpluginhelper-importplugin</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -81,7 +81,7 @@ class PlgSearch${1:${TM_COMPONENT/(.+)/\u\1/g}} extends JPlugin
 		}
 
 		\$section = JText::_('PLG_SEARCH_${1/(.+)/\U\1/g}');
-		\$wheres	= array();
+		\$wheres  = array();
 
 		switch (\$phrase)
 		{

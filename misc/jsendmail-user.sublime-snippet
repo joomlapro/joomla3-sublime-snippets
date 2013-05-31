@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[\$config	= JFactory::getConfig();
+	<content><![CDATA[\$config = JFactory::getConfig();
 
 // Load user_joomla plugin language (not done automatically).
 \$lang = JFactory::getLanguage();

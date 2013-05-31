@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * @return  string
  *
- * @since	$TM_VERSION
+ * @since   $TM_VERSION
  */
 function onExtensionBeforeInstall(\$method, \$type, \$manifest, \$eid)
 {

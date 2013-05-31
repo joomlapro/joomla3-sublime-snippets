@@ -6,9 +6,9 @@
  * @param   boolean  \$succes  True if user was succesfully stored in the database.
  * @param   string   \$msg     Message.
  *
- * @return	void
+ * @return  void
  *
- * @since	$TM_VERSION
+ * @since   $TM_VERSION
  */
 public function onUserAfterDelete(\$user, \$succes, \$msg)
 {

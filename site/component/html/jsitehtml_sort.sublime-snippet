@@ -12,7 +12,7 @@
  *
  * @return  string
  *
- * @since   \$TM_VERSION
+ * @since   $TM_VERSION
  */
 public static function sort(\$title, \$order, \$direction = 'asc', \$selected = 0, \$task = null, \$new_direction = 'asc', \$tip = '')
 {
@@ -21,8 +21,8 @@ public static function sort(\$title, \$order, \$direction = 'asc', \$selected = 
 
 	// Initialiase variables.
 	\$direction = strtolower(\$direction);
-	\$icon = array('angle-up', 'angle-down');
-	\$index = (int) (\$direction == 'desc');
+	\$icon      = array('angle-up', 'angle-down');
+	\$index     = (int) (\$direction == 'desc');
 
 	if (\$order != \$selected)
 	{

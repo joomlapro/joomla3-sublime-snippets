@@ -114,7 +114,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			}
 
 			// Get the counts from the database only for the ${4:${3/(.+)/\L\1/g}s} in the list.
-			\$query	= \$db->getQuery(true);
+			\$query = \$db->getQuery(true);
 
 			// Count the objects in the ${3/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
 			\$query->select('map.group_id, COUNT(DISTINCT map.user_id) AS user_count')
@@ -162,7 +162,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		// Create a new query object.
 		\$db    = \$this->getDbo();
-		\$query	= \$db->getQuery(true);
+		\$query = \$db->getQuery(true);
 
 		// Select the required fields from the table.
 		\$query->select(

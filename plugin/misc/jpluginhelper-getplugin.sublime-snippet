@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[\$${1:plugin} = JPluginHelper::getPlugin('${2:${TM_PLUGIN_GROUP/(.+)/\L\1/g}}', '${3:${TM_PLUGIN/(.+)/\L\1/g}}');
-\$pluginParams = new JRegistry(\$plugin->params);]]></content>
-	<tabTrigger>jpluginhelper-getplugin</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

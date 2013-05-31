@@ -6,7 +6,7 @@
  * @subpackage  HTML
  * @since       $TM_VERSION
  */
-abstract class JHtml${1:${TM_PLUGIN/(.+)/\u\1/g}} extends JHtmlJquery
+abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JHtmlJquery
 {
 	/**
 	 * Method to load the jQuery ${1/(.+)/\u\1/g} into the document head.

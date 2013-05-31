@@ -7,10 +7,10 @@
  * @param   boolean  \$success  True if user was succesfully stored in the database.
  * @param   string   \$msg      Message.
  *
- * @return	void
+ * @return  void
  *
- * @since	$TM_VERSION
- * @throws	Exception on error.
+ * @since   $TM_VERSION
+ * @throws  Exception on error.
  */
 public function onUserAfterSave(\$user, \$isnew, \$success, \$msg)
 {

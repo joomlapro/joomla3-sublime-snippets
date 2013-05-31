@@ -6,10 +6,10 @@
  * @param   boolean  \$isnew  True if a new user is stored.
  * @param   array    \$new    Holds the new user data.
  *
- * @return	void
+ * @return  void
  *
- * @since	$TM_VERSION
- * @throws	Exception on error.
+ * @since   $TM_VERSION
+ * @throws  Exception on error.
  */
 public function onUserBeforeSave(\$user, \$isnew, \$new)
 {

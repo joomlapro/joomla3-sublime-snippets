@@ -1,25 +1,26 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <extension type="library" version="$TM_VERSION" method="upgrade">
-	<name>${1:Name}</name>
+	<name>${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}</name>
+	<libraryname>${2:${1/(.+)/\L\1/g}}</libraryname>
 	<author>$TM_FULLNAME</author>
 	<creationDate>${4:$TM_MONTH} $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
-	<version>${3:version}</version>
+	<version>$TM_PROJECT_VERSION</version>
 	<description>LIB_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
-	<libraryname>${2:${1/(.+)/\L\1/g}}</libraryname>
 	<packager>${2/(.+)/\L\1/g}</packager>
 	<packagerurl>$TM_WEBSITE</packagerurl>
 	<updateservers>$TM_WEBSITE/update</updateservers>
 	<scriptfile />
-	<files folder="libraries">
-		<folder>${2/(.+)/\L\1/g}</folder>
+	<files folder="${2/(.+)/\L\1/g}">
+		<filename>${2/(.+)/\L\1/g}.php</filename>
+		<filename>index.html</filename>
 	</files>
-	<languages>
-		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.lib_${2/(.+)/\L\1/g}.sys.ini</language>
+	<languages folder="language">
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.lib_${2/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 </extension>
 
