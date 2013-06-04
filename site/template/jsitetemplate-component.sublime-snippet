@@ -1,6 +1,7 @@
 <snippet>
 	<content><![CDATA[// Initialiase variables.
 \$app      = JFactory::getApplication();
+\$doc      = JFactory::getDocument();
 \$browser  = JBrowser::getInstance();
 
 // Detecting Active Variables.
@@ -15,17 +16,17 @@
 \$path     = \$this->baseurl . '/templates/' . \$this->template;
 
 // Add Stylesheets.
-\$this->addStyleSheet(\$path . '/css/template.css');
+\$doc->addStyleSheet(\$path . '/css/template.css');
 
 // Load additional CSS styles for rtl sites.
-if (\$this->direction == 'rtl')
+if (\$doc->direction == 'rtl')
 {
-	\$this->addStyleSheet(\$path . '/css/template_rtl.css');
+	\$doc->addStyleSheet(\$path . '/css/template_rtl.css');
 }
 
 // Set MetaData.
-\$this->setMetaData('X-UA-Compatible', 'IE=edge,chrome=1', true);
-\$this->setMetaData('viewport', 'width=device-width, initial-scale=1.0', false);
+\$doc->setMetaData('X-UA-Compatible', 'IE=edge,chrome=1', true);
+\$doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0', false);
 
 ]]></content>
 	<tabTrigger>jsitetemplate</tabTrigger>

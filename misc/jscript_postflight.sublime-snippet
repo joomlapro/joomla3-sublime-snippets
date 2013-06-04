@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Called after any type of action.
+ *
+ * @param   string            \$route    Which action is happening (install|uninstall|discover_install).
+ * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+ *
+ * @return  boolean  True on success.
+ *
+ * @since   $TM_VERSION
+ */
+public function postflight(\$route, JAdapterInstance \$adapter)
+{
+
+}]]></content>
+	<tabTrigger>jscript_postflight</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

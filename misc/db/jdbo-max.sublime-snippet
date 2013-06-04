@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[\$db = JFactory::getDbo();
+	<content><![CDATA[\$db  = JFactory::getDbo();
 \$db->setQuery('SELECT MAX(id) FROM #__${TM_COMPONENT/(.+)/\L\1/g}');
 \$max = \$db->loadResult();
 

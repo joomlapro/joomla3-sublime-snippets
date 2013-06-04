@@ -15,7 +15,7 @@ public function onAfterDispatch()
 	}
 
 	// Register dependent classes.
-	JLoader::register('JHtml${1/(.+)/\u\1/g}', __DIR__ . '/helpers/html/${1:${TM_PLUGIN/(.+)/\L\1/g}}.php');
+	JLoader::register('JHtml${1/(.+)/\u\1/g}', __DIR__ . '/helpers/html/${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}.php');
 
 	// Register a function.
 	JHtml::register('jquery.${1/(.+)/\L\1/g}', array('JHtml${1/(.+)/\u\1/g}', '${1/(.+)/\L\1/g}'));

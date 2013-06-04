@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[// Load the parameters. Merge Template and Menu Item params into new object.
+\$templateParams = new JRegistry;
+\$templateParams->loadString(\$this->params);
+
+\$mergedParams = clone \$templateParams;
+
+if (\$menu = \$menus->getActive())
+{
+	\$mergedParams->merge(\$menu->params);
+}]]></content>
+	<tabTrigger>jsitetemplate-merge_params</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

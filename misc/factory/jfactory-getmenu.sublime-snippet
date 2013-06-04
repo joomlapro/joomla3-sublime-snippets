@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$menus = \$app->getMenu();]]></content>
+	<tabTrigger>jfactory-getmenu</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

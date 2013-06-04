@@ -1,0 +1,100 @@
+<snippet>
+	<content><![CDATA[/**
+ * Script file of ${1/(.+)/\u\1/g} Plugin.
+ *
+ * @package     Joomla.Plugin
+ * @subpackage  ${2/(.+)/\u\1/g}.${1/(.+)/\u\1/g}
+ * @since       $TM_VERSION
+ */
+class Plg${2:${TM_PLUGIN_GROUP/(.+)/\u\1/g}}${1:${TM_PLUGIN/(.+)/\u\1/g}}InstallerScript
+{
+	/**
+	 * Constructor.
+	 *
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  void
+	 */
+	public function __constructor(JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called before any type of action.
+	 *
+	 * @param   string            \$route    Which action is happening (install|uninstall|discover_install).
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function preflight(\$route, JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called after any type of action.
+	 *
+	 * @param   string            \$route    Which action is happening (install|uninstall|discover_install).
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function postflight(\$route, JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called on installation.
+	 *
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function install(JAdapterInstance \$adapter)
+	{
+		// Set the redirect location.
+		\$adapter->getParent()->setRedirectURL('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}');
+	}
+
+	/**
+	 * Called on update.
+	 *
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function update(JAdapterInstance \$adapter)
+	{
+
+	}
+
+	/**
+	 * Called on uninstallation.
+	 *
+	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function uninstall(JAdapterInstance \$adapter)
+	{
+		echo '<p>' . JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_UNINSTALL_TEXT') . '</p>';
+	}
+}
+
+]]></content>
+	<tabTrigger>jscript-plugin</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

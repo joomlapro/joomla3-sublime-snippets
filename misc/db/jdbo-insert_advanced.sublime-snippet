@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[// Initialiase variables.
-\$db = JFactory::getDbo();
-// \$db = \$this->getDbo();
+\$db    = JFactory::getDbo();
+// \$db    = \$this->getDbo();
 \$query = \$db->getQuery(true);
 
 \$fields = array();

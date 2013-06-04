@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<field name="spacer${1:1}" type="spacer" class="text" label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_$2_LABEL" />]]></content>
+	<tabTrigger>jtemplatefieldspacer</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

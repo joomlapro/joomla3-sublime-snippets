@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Save the syntax for later use.
+\$app->setUserState('editor.source.syntax', ${1:JFile::getExt(\$fileName)});]]></content>
+	<tabTrigger>jfactory-setuserstate_syntax</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

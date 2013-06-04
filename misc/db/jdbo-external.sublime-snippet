@@ -10,7 +10,7 @@
 \$option['prefix']   = '${6:jos_}';
 
 // Initialiase variables.
-\$db = JDatabaseDriver::getInstance(\$option);
+\$db    = JDatabaseDriver::getInstance(\$option);
 \$query = \$db->getQuery(true);
 
 // Create the base select statement.
