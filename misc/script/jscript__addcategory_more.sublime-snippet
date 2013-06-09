@@ -15,8 +15,8 @@
 	->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
 
 // Set the query and execute the update.
-\$db->setQuery(\$query);
-\$db->query();]]></content>
+\$db->setQuery(\$query)
+	->query();]]></content>
 	<tabTrigger>jscript__addcategory_more</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

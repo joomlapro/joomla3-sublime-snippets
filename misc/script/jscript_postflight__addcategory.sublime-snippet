@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Adding Category "uncategorized" if installing or discovering.
+if (\$route != 'update')
+{
+	\$this->_addCategory();
+}]]></content>
+	<tabTrigger>jscript_postflight__addcategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

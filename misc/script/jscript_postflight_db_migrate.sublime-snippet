@@ -1,0 +1,50 @@
+<snippet>
+	<content><![CDATA[// Migrate tags on update if table exists.
+if (\$type == 'update')
+{
+	// Initialiase variables.
+	\$db     = JFactory::getDbo();
+	\$query  = \$db->getQuery(true);
+	\$tables = \$db->getTableList();
+	\$prefix = \$db->getPrefix();
+
+	if (in_array(\$prefix . '${1/(.+)/\L\1/g}_tags', \$tables))
+	{
+		require_once(JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/tables/${1:singular}.php');
+
+		\$table = new ${TM_COMPONENT/(.+)/\u\1/g}Table${1/(.+)/\u\1/g}(\$db);
+
+		// Create the base select statement.
+		\$query->select(\$db->quoteName('${1/(.+)/\L\1/g}_id'))
+			->select('GROUP_CONCAT(CONCAT(' . \$db->quote('#new#') . ',' . \$db->quoteName('t.title') . ') SEPARATOR \'","\') AS tagtitles')
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}_tags') . ' AS s')
+			->join('LEFT', \$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_tags') . ' AS t ON ' . \$db->quoteName('s.tag_id') . ' = ' . \$db->quoteName('t.id'))
+			->group(\$db->quoteName('${1/(.+)/\L\1/g}_id'));
+
+		// Set the query and load the result.
+		\$db->setQuery(\$query);
+		\$result = \$db->loadObjectList('${1/(.+)/\L\1/g}_id');
+
+		// Check for a database error.
+		if (\$db->getErrorNum())
+		{
+			JError::raiseWarning(500, \$db->getErrorMsg());
+			return null;
+		}
+
+		foreach (\$result as \$${1/(.+)/\L\1/g})
+		{
+			\$table->load(\$${1/(.+)/\L\1/g}->${1/(.+)/\L\1/g}_id)
+				->metadata = '{"tags":["' . \$${1/(.+)/\L\1/g}->tagtitles . '"]}'
+				->store();
+		}
+
+		\$db->dropTable('#__${TM_COMPONENT/(.+)/\L\1/g}_tags')
+			->dropTable('#__${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}_tags');
+
+		\$app->enqueueMessage(JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_TAGS_MIGRATED', count(\$result)), 'notice');
+	}
+}]]></content>
+	<tabTrigger>jscript_postflight_db_migrate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

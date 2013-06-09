@@ -44,8 +44,8 @@ public function _addCategory()
 		->set(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$id))
 		->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
 
-	\$db->setQuery(\$query);
-	\$db->query();
+	\$db->setQuery(\$query)
+		->query();
 
 	return;
 }]]></content>

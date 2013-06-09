@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to uninstall language file.
+ *
+ * @param   string  \$tag  The language tag.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function uninstallLanguage(\$tag)
+{
+	// Get an instance of the extension table.
+	\$extension = JTable::getInstance('extension');
+
+	\$id = \$extension->find(
+		array(
+			'type' => 'file',
+			'element' => 'com_${TM_COMPONENT/(.+)/\L\1/g}_' . (string) \$tag
+		)
+	);
+
+	if (!\$id)
+	{
+		return;
+	}
+
+	\$installer = new JInstaller;
+	\$installer->uninstall('file', \$id);
+}]]></content>
+	<tabTrigger>jscript_uninstalllanguage</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,22 +1,22 @@
 <snippet>
 	<content><![CDATA[// Call the typeahead.
-\$('#search-$1').typeahead({
+\$('#search-${3:${1/(.+)(s\b)/\L\1/g}}').typeahead({
 	ajax: {
-		url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:controller}.${3:method}&tmpl=component&format=json',
+		url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.get${2:${1/(.+)/\u\1/g}}Ajax&tmpl=component&format=json',
 		timeout: 300,
-		method: 'get',
+		method: 'GET',
 		triggerLength: 3,
-		displayField: '${5/(.+)/\L\1/g}',
+		displayField: '${4/(.+)/\L\1/g}',
 		preDispatch: function (query) {
 			return {
 				${4:title}: query
 			};
 		}
 	},
-	display: '${5:${4/(.+)/\L\1/g}}',
+	display: '${4/(.+)/\L\1/g}',
 	val: 'id',
 	itemSelected: function (item, val, text) {
-		\$('#$6-id').val(val);
+		\$('#${3/(.+)/\L\1/g}-id').val(val);
 	}
 });]]></content>
 	<tabTrigger>jjquery_typeahead</tabTrigger>

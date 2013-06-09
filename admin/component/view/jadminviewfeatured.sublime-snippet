@@ -74,14 +74,15 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 		// Initialise variables.
 		\$state = \$this->get('State');
 		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$this->state->get('filter.category_id'));
+		\$user  = JFactory::getUser();
 
 		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_TITLE'), '${1/(.+)/\L\1/g}.png');
 
-		if (\$canDo->get('core.create'))
+		if (\$canDo->get('core.create') && count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create')) > 0)
 		{
 			JToolbarHelper::addNew('${3:${2/(.+)(s\b)/\L\1/g}}.add');
 		}
-		if (\$canDo->get('core.edit'))
+		if ((\$canDo->get('core.edit')) || (\$canDo->get('core.edit.own')))
 		{
 			JToolbarHelper::editList('${3/(.+)/\L\1/g}.edit');
 		}

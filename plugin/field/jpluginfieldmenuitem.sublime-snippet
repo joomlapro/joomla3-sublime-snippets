@@ -1,5 +1,10 @@
 <snippet>
-	<content><![CDATA[<field name="${1:field}" type="menuitem" ${2:disable="separator"} label="PLG_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="PLG_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="menuitem"
+	${2:disable="separator"}
+	label="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_DESC">
 	<option value="">JDEFAULT</option>
 </field>]]></content>
 	<tabTrigger>jpluginfieldmenuitem</tabTrigger>

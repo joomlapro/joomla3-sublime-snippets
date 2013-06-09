@@ -1,5 +1,12 @@
 <snippet>
-	<content><![CDATA[<field name="${1:field}" type="accesslevel" class="inputbox" size="1" ${3:multiple="true" }label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" />]]></content>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="accesslevel"
+	class="inputbox"
+	size="1"
+	${3:multiple="true"}
+	label="JFIELD_ACCESS_LABEL"
+	description="JFIELD_ACCESS_DESC" />]]></content>
 	<tabTrigger>jmodulefieldaccesslevel</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

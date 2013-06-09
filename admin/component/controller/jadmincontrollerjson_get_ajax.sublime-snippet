@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to find ${1/(.+)/\L\1/g}.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function get${1:Singular}Ajax()
+{
+	// Initialiase variables.
+	\$app    = JFactory::getApplication();
+	\$input  = \$app->input;
+	\$return = array();
+
+	//
+
+	// Check the data.
+	if (empty(\$return))
+	{
+		\$return = array();
+	}
+
+	// Use the correct json mime-type.
+	header('Content-Type: application/json');
+
+	// Send the response.
+	echo json_encode(\$return);
+
+	// Close the application.
+	\$app->close();
+}]]></content>
+	<tabTrigger>jadmincontrollerjson_get_ajax</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

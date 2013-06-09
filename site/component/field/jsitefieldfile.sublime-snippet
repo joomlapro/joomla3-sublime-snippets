@@ -1,5 +1,13 @@
 <snippet>
-	<content><![CDATA[<field name="${1:field}" type="file" accept="audio/*,video/*,image/*" size="40" class="inputbox" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<content><![CDATA[<field
+	id="${1/(.+)/\L\1/g}"
+	name="${1:field}"
+	type="file"
+	accept="audio/*,video/*,image/*"
+	size="40"
+	class="inputbox"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
 	<tabTrigger>jsitefieldfile</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

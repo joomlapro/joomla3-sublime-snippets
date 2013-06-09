@@ -1,5 +1,10 @@
 <snippet>
-	<content><![CDATA[<field name="${1:field}" type="url" filter="url" label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="url"
+	filter="url"
+	label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
 	<tabTrigger>jtemplatefieldurl</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

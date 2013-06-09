@@ -1,5 +1,13 @@
 <snippet>
-	<content><![CDATA[<field name="${1:field}" type="editor" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" class="inputbox" buttons="true" hide="pagebreak,readmore" filter="JComponentHelper::filterText" />]]></content>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="editor"
+	class="inputbox"
+	buttons="true"
+	hide="pagebreak,readmore"
+	filter="JComponentHelper::filterText"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
 	<tabTrigger>jadminfieldeditor</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

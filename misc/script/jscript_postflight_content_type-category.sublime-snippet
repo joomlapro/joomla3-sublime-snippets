@@ -1,0 +1,66 @@
+<snippet>
+	<content><![CDATA[// Adding content_type for ${TM_COMPONENT/(.+)/\L\1/g} category.
+\$table = JTable::getInstance('Contenttype', 'JTable');
+
+if (!\$table->load(array('type_alias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.category')))
+{
+	\$common = new stdClass;
+	\$common->core_content_item_id = 'id';
+	\$common->core_title           = 'title';
+	\$common->core_state           = 'published';
+	\$common->core_alias           = 'alias';
+	\$common->core_created_time    = 'created_time';
+	\$common->core_modified_time   = 'modified_time';
+	\$common->core_body            = 'description';
+	\$common->core_hits            = 'hits';
+	\$common->core_publish_up      = null;
+	\$common->core_publish_down    = null;
+	\$common->core_access          = 'access';
+	\$common->core_params          = 'params';
+	\$common->core_featured        = null;
+	\$common->core_metadata        = 'metadata';
+	\$common->core_language        = 'language';
+	\$common->core_images          = null;
+	\$common->core_urls            = null;
+	\$common->core_version         = 'version';
+	\$common->core_ordering        = null;
+	\$common->core_metakey         = 'metakey';
+	\$common->core_metadesc        = 'metadesc';
+	\$common->core_catid           = 'parent_id';
+	\$common->core_xreference      = null;
+	\$common->asset_id             = 'asset_id';
+
+	\$field_mappings = new stdClass;
+	\$field_mappings->common[] = \$common;
+	\$field_mappings->special  = array();
+
+	\$special = new stdClass;
+	\$special->dbtable = '#__categories';
+	\$special->key     = 'id';
+	\$special->type    = 'Category';
+	\$special->prefix  = 'JTable';
+	\$special->config  = 'array()';
+
+	\$common = new stdClass;
+	\$common->dbtable  = '#__ucm_content';
+	\$common->key      = 'ucm_id';
+	\$common->type     = 'Corecontent';
+	\$common->prefix   = 'JTable';
+	\$common->config   = 'array()';
+
+	\$table_object = new stdClass;
+	\$table_object->special = \$special;
+	\$table_object->common  = \$common;
+
+	\$contenttype['type_title']     = '${1:${TM_COMPONENT/(.+)(s\b)/\u\1/g}} Category';
+	\$contenttype['type_alias']     = 'com_${TM_COMPONENT/(.+)/\L\1/g}.category';
+	\$contenttype['table']          = json_encode(\$table_object);
+	\$contenttype['rules']          = '';
+	\$contenttype['field_mappings'] = json_encode(\$field_mappings);
+	\$contenttype['router']         = '${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute';
+
+	\$table->save(\$contenttype);
+}]]></content>
+	<tabTrigger>jscript_postflight_content_type-category</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

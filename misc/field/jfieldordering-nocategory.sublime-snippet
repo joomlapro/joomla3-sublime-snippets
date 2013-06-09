@@ -41,7 +41,7 @@ class JFormFieldOrdering extends JFormField
 
 		// Build the query for the ordering list.
 		\$query = 'SELECT ordering AS value, ${2:title} AS text' .
-				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}$2' .
+				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}$4' .
 				' ORDER BY ordering';
 
 		// Create a read-only list (no name) with a hidden input to store the value.

@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<extension type="package" version="$TM_VERSION" method="upgrade">
+	<name>${1:Name} Language Pack</name>
+	<packagename>${3:${1/(.+)/\L\1/g}}_languages</packagename>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>Language pack for ${1/(.+)/\u\1/g} component.</description>
+	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<author>$TM_FULLNAME</author>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<packager>$TM_FULLNAME</packager>
+	<packagerurl>$TM_WEBSITE</packagerurl>
+	<update>$TM_WEBSITE/update</update>
+	<scriptfile>script.php</scriptfile>
+	<files folder="languages">
+	</files>
+</extension>
+
+]]></content>
+	<tabTrigger>jpackagemanifest-language</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

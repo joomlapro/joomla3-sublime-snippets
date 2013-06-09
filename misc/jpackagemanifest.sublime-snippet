@@ -1,21 +1,20 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
-<extension type="package" version="$TM_VERSION">
+<extension type="package" version="$TM_VERSION" method="upgrade">
 	<name>${1:Name} Package</name>
-	<author>$TM_FULLNAME</author>
+	<packagename>${3:${1/(.+)/\L\1/g}}</packagename>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>${1/(.+)/\u\1/g} package to combine multiple extensions.</description>
 	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<author>$TM_FULLNAME</author>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
-	<packagename>${3:${1/(.+)/\L\1/g}}</packagename>
-	<version>$TM_MANIFEST_VERSION</version>
-	<url>$TM_WEBSITE</url>
 	<packager>$TM_FULLNAME</packager>
 	<packagerurl>$TM_WEBSITE</packagerurl>
-	<description>${1/(.+)/\u\1/g} package to combine multiple extensions.</description>
-	<scriptfile />
 	<update>$TM_WEBSITE/update</update>
+	<scriptfile />
 	<files folder="packages">
 		<file type="library" id="lib_${3/(.+)/\L\1/g}">lib_${3/(.+)/\L\1/g}.zip</file>
 		<file type="component" id="com_${3/(.+)/\L\1/g}">com_${3/(.+)/\L\1/g}.zip</file>

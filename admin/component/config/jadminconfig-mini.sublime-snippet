@@ -1,8 +1,35 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <config>
-	<fieldset name="${1:component}" label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_LABEL" description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_DESC" addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields">
-
+	<fieldset
+		name="${1:component}"
+		addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_DESC">
+		<field
+			name="sef_advanced_link"
+			type="radio"
+			class="btn-group"
+			default="0"
+			filter="integer"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC">
+		<field
+			name="rules"
+			type="rules"
+			filter="rules"
+			validate="rules"
+			component="com_${TM_COMPONENT/(.+)/\L\1/g}"
+			section="component"
+			label="JCONFIG_PERMISSIONS_LABEL" />
 	</fieldset>
 </config>
 

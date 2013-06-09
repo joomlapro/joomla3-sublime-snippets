@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[/**
+ * Gets the URL arguments to append to a list redirect.
+ *
+ * @return  string  The arguments to append to the redirect URL.
+ *
+ * @since   $TM_VERSION
+ */
+protected function getRedirectToListAppend()
+{
+	\$append = parent::getRedirectToListAppend();
+
+	return \$append;
+}]]></content>
+	<tabTrigger>jadmincontrolleredit_getredirecttolistappend</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

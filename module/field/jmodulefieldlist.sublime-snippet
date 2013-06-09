@@ -1,5 +1,12 @@
 <snippet>
-	<content><![CDATA[<field name="${1:field}" type="list" default="" label="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" class="inputbox" size="1">
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="list"
+	default="$2"
+	class="inputbox"
+	size="1"
+	label="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
 	<option value="">JSELECT</option>
 </field>]]></content>
 	<tabTrigger>jmodulefieldlist</tabTrigger>

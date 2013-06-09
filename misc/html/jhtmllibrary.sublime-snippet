@@ -17,7 +17,7 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JHtmlJquery
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function ${1/(.+)/\u\1/g}(\$debug = null)
+	public static function ${1/(.+)/\L\1/g}(\$debug = null)
 	{
 		// Include jQuery.
 		self::framework();
@@ -40,7 +40,9 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JHtmlJquery
 
 		// Build the script.
 		\$script = array();
+		\$script[] = 'jQuery(document).ready(function() {';
 		\$script[] = '';
+		\$script[] = '});';
 
 		// Add the script to the document head.
 		\$doc->addScriptDeclaration(implode("\n", \$script));

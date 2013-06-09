@@ -3,6 +3,7 @@
 /**
  * @package     ${1:$TM_MODULE}
  * @subpackage  mod_${1/(.+)/\L\1/g}
+ *
  * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */

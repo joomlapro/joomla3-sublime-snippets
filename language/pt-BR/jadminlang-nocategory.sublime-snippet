@@ -66,12 +66,14 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADER_SUBMENU="Submenu"
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_DASHBOARD="Painel de Controle"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_${9:${TM_COMPONENT/(.+)/\U\1/g}}="${5/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_FEATURED="${5/(.+)/\u\1/g} em Destaque"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_CATEGORIES="Categorias"
 
 ; MENU
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CPANEL="Painel de Controle"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_${9/(.+)/\U\1/g}="${5/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${5/(.+)/\u\1/g} em Destaque"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES="Categorias"
 
 ; MISC
@@ -89,6 +91,7 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_AN_PROPERTY="Selecione uma ${4/(.+)/\u\1/
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_CPANEL="Painel de Controle"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_${9/(.+)/\U\1/g}="${5/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_FEATURED="${5/(.+)/\u\1/g} em Destaque"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_CATEGORIES="Categorias"
 
 ; TOGGLE

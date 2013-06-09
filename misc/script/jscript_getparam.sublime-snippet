@@ -2,7 +2,7 @@
 	<content><![CDATA[/**
  * Get a variable from the manifest file (actually, from the manifest cache).
  *
- * @param   \$name
+ * @param   string  \$name  The name of column to get.
  *
  * @return  array
  *
@@ -10,9 +10,14 @@
  */
 public function getParam(\$name)
 {
-	// Initialiase variables.
+	// Build the query for the table extensions.
 	\$db = JFactory::getDbo();
-	\$db->setQuery('SELECT manifest_cache FROM #__extensions WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"');
+	\$db->setQuery(
+		'SELECT manifest_cache' .
+		' FROM #__extensions' .
+		' WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"'
+	);
+
 	\$manifest = json_decode(\$db->loadResult(), true);
 
 	return \$manifest[\$name];

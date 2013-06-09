@@ -2,7 +2,7 @@
 	<content><![CDATA[CREATE TABLE `${1:$TM_PREFIX}_${2:${TM_COMPONENT/(.+)/\L\1/g}}$3_frontpage` (
   `${4:singular}_id` int(11) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`content_id`)
+  PRIMARY KEY (`${4/(.+)/\L\1/g}_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;]]></content>
 	<tabTrigger>jdb-frontend</tabTrigger>
 	<scope>text.plain,source.sql</scope>

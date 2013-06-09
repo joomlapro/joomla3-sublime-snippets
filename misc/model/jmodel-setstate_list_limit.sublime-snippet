@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$model->setState('list.limit', 5);]]></content>
+	<tabTrigger>jmodel-setstate_list_limit</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
