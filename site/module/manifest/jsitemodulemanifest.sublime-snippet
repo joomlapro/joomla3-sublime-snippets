@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <extension type="module" version="$TM_VERSION" client="site" method="upgrade">
-	<name>mod_${1:${TM_MODULE/(.+)/\L\1/g}}</name>
+	<name>${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}</name>
 	<author>$TM_FULLNAME</author>
 	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
@@ -9,31 +9,55 @@
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>
 	<version>$TM_PROJECT_VERSION</version>
-	<description>MOD_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<description>${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
 	<scriptfile />
 	<files>
-		<filename module="mod_${1/(.+)/\L\1/g}">mod_${1/(.+)/\L\1/g}.php</filename>
+		<filename module="${1/(.+)/\L\1/g}">${1/(.+)/\L\1/g}.php</filename>
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
-		<filename>mod_${1/(.+)/\L\1/g}.xml</filename>
+		<filename>${1/(.+)/\L\1/g}.xml</filename>
 		<folder>tmpl</folder>
 	</files>
 	<languages folder="language">
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${1/(.+)/\L\1/g}.ini</language>
-		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.mod_${1/(.+)/\L\1/g}.sys.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.${1/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.${1/(.+)/\L\1/g}.sys.ini</language>
 	</languages>
 	<config>
-		<fields name="params">
-			<fieldset name="basic" />
-			<fieldset name="advanced">
-				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
-				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
-				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+		<fields
+			name="params">
+			<fieldset
+				name="basic" />
+			<fieldset
+				name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
 					<option value="1">JGLOBAL_USE_GLOBAL</option>
 					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
 				</field>
-				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
-				<field name="cachemode" type="hidden" default="itemid">
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="itemid">
 					<option value="itemid" />
 				</field>
 			</fieldset>

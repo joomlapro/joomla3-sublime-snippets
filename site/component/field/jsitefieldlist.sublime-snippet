@@ -5,7 +5,7 @@
 	type="list"
 	class="inputbox"
 	size="1"
-	${4:multiple="true"}
+	filter="integer"
 	message="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_MESSAGE"
 	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
 	<option value="">JSELECT</option>

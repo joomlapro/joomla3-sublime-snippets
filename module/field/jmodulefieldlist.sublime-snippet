@@ -5,6 +5,7 @@
 	default="$2"
 	class="inputbox"
 	size="1"
+	filter="integer"
 	label="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
 	description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
 	<option value="">JSELECT</option>

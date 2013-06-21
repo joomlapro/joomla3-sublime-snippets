@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFolder::exists($1);]]></content>
+	<tabTrigger>jfolder-exists</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

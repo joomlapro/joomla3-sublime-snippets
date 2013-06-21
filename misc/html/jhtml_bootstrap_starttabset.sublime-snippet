@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => '${1:details}')); ?>
+
+<?php echo JHtml::_('bootstrap.endTabSet'); ?>]]></content>
+	<tabTrigger>jhtml_bootstrap_starttabset</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

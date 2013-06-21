@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:table}->getRules();]]></content>
+	<tabTrigger>jtable-getrules</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

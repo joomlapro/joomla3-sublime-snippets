@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[// Attempt to check the row out.
+if (!\$${1:table}->checkout(\$user->get('id'), \$pk))
+{
+	\$this->setError(\$${1/(.+)/\L\1/g}->getError());
+	return false;
+}]]></content>
+	<tabTrigger>jtable-checkout</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

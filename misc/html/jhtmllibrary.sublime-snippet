@@ -40,7 +40,7 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JHtmlJquery
 
 		// Build the script.
 		\$script = array();
-		\$script[] = 'jQuery(document).ready(function() {';
+		\$script[] = 'jQuery(document).ready(function($) {';
 		\$script[] = '';
 		\$script[] = '});';
 

@@ -99,7 +99,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 *
 	 * @param   integer  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
 	 *
-	 * @return  boolean  True on success
+	 * @return  boolean  True on success.
 	 *
 	 * @since   $TM_VERSION
 	 */

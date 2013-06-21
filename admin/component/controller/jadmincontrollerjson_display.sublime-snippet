@@ -20,7 +20,7 @@ public function display(\$cachable = false, \$urlparams = false)
 	\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 
 	// Get the suggestions.
-	\$model  = \$this->getModel('${2:${1/(.+)/\u\1/g}}', '${TM_COMPONENT/(.+)/\u\1/g}Model');
+	\$model  = \$this->getModel('${1:Plural}', '${TM_COMPONENT/(.+)/\u\1/g}Model');
 	\$return = \$model->getItems();
 
 	// Check the data.

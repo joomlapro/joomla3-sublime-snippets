@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:model}->setDbo($2);]]></content>
+	<tabTrigger>jmodel-setdbo</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

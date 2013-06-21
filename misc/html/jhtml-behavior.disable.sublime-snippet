@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JHtml::_('behavior.disable','${1:tooltips}');]]></content>
-	<tabTrigger>jhtml-behavior.disable</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

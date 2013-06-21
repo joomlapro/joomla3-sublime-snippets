@@ -216,6 +216,39 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function prepareTable(\$table)
 	{
+		// Initialise variables.
+		\$date = JFactory::getDate();
+		\$user = JFactory::getUser();
+
+		\$table->${2/(.+)/\L\1/g} = htmlspecialchars_decode(\$table->${2/(.+)/\L\1/g}, ENT_QUOTES);
+		\$table->alias = JApplication::stringURLSafe(\$table->alias);
+
+		if (empty(\$table->alias))
+		{
+			\$table->alias = JApplication::stringURLSafe(\$table->${2/(.+)/\L\1/g});
+		}
+
+		if (empty(\$table->id))
+		{
+			// Set the values.
+
+			// Set ordering to the last item if not set.
+			if (empty(\$table->ordering))
+			{
+				\$db = JFactory::getDbo();
+				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}');
+				\$max = \$db->loadResult();
+
+				\$table->ordering = \$max + 1;
+			}
+			else
+			{
+				// Set the values.
+				\$table->modified    = \$date->toSql();
+				\$table->modified_by = \$user->get('id');
+			}
+		}
+
 		// Set the publish date to now.
 		\$db = \$this->getDbo();
 

@@ -19,7 +19,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	/**
 	 * Batch copy items to a new ${1/(.+)/\L\1/g}.
 	 *
-	 * @param   integer  \$value     The new category.
+	 * @param   integer  \$category  The new category.
 	 * @param   array    \$pks       An array of row IDs.
 	 * @param   array    \$contexts  An array of item contexts.
 	 *
@@ -27,7 +27,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 *
 	 * @since   $TM_VERSION
 	 */
-	protected function batchCopy(null, \$pks, \$contexts)
+	protected function batchCopy(\$category, \$pks, \$contexts)
 	{
 		// Initialiase variables.
 		\$table = \$this->getTable();
@@ -170,6 +170,39 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function prepareTable(\$table)
 	{
+		// Initialise variables.
+		\$date = JFactory::getDate();
+		\$user = JFactory::getUser();
+
+		\$table->${2/(.+)/\L\1/g} = htmlspecialchars_decode(\$table->${2/(.+)/\L\1/g}, ENT_QUOTES);
+		\$table->alias = JApplication::stringURLSafe(\$table->alias);
+
+		if (empty(\$table->alias))
+		{
+			\$table->alias = JApplication::stringURLSafe(\$table->${2/(.+)/\L\1/g});
+		}
+
+		if (empty(\$table->id))
+		{
+			// Set the values.
+
+			// Set ordering to the last item if not set.
+			if (empty(\$table->ordering))
+			{
+				\$db = JFactory::getDbo();
+				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}');
+				\$max = \$db->loadResult();
+
+				\$table->ordering = \$max + 1;
+			}
+			else
+			{
+				// Set the values.
+				\$table->modified    = \$date->toSql();
+				\$table->modified_by = \$user->get('id');
+			}
+		}
+
 		// Set the publish date to now.
 		\$db = \$this->getDbo();
 
@@ -201,6 +234,31 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
 	{
 		return JTable::getInstance(\$type, \$prefix, \$config);
+	}
+
+	/**
+	 * Method to change the ${2/(.+)/\L\1/g} & alias.
+	 *
+	 * @param   integer  \$category_id  The id of the category.
+	 * @param   string   \$alias        The alias.
+	 * @param   string   \$${2/(.+)/\L\1/g}        The ${2/(.+)/\L\1/g}.
+	 *
+	 * @return  array  Contains the modified ${2/(.+)/\L\1/g} and alias.
+	 *
+	 * @since   \$TM_VERSION
+	 */
+	protected function generateNewTitle(\$category_id, \$alias, \$${2/(.+)/\L\1/g})
+	{
+		// Alter the ${2/(.+)/\L\1/g} & alias
+		\$table = \$this->getTable();
+
+		while (\$table->load(array('alias' => \$alias)))
+		{
+			\$${2/(.+)/\L\1/g} = JString::increment(\$${2/(.+)/\L\1/g});
+			\$alias = JString::increment(\$alias, 'dash');
+		}
+
+		return array(\$${2/(.+)/\L\1/g}, \$alias);
 	}
 
 	/**
@@ -365,7 +423,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	}
 
 	/**
-	 * Method to toggle the featured setting of ${3/(.+)/\L\1/g}.
+	 * Method to toggle the featured setting of ${3:${1/(.+)/\L\1/g}s}.
 	 *
 	 * @param   array    \$pks    The ids of the items to toggle.
 	 * @param   integer  \$value  The value to toggle to.

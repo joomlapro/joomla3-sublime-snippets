@@ -6,7 +6,7 @@
  * @subpackage  ${2:${TM_PLUGIN_GROUP/(.+)/\u\1/g}}.${1/(.+)/\u\1/g}
  * @since       $TM_VERSION
  */
-class PlgContent${1:${TM_PLUGIN/(.+)/\u\1/g}} extends JPlugin
+class PlgContent${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JPlugin
 {
 
 }

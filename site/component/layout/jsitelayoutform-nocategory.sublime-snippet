@@ -2,7 +2,7 @@
 	<content><![CDATA[// Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-// Load the tooltip behavior script.
+// Load the behavior script.
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.calendar');
@@ -56,71 +56,121 @@ JHtml::_('behavior.formvalidation');
 			<div class="tab-content">
 				<div class="tab-pane active" id="editor">
 					<div class="control-group">
-						<div class="control-label"><?php echo \$this->form->getLabel('${2:title}'); ?></div>
-						<div class="controls"><?php echo \$this->form->getInput('${2/(.+)/\L\1/g}'); ?></div>
+						<div class="control-label">
+							<?php echo \$this->form->getLabel('${2:title}'); ?>
+						</div>
+						<div class="controls">
+							<?php echo \$this->form->getInput('${2/(.+)/\L\1/g}'); ?>
+						</div>
 					</div>
 					<div class="control-group">
-						<div class="control-label"><?php echo \$this->form->getLabel('alias'); ?></div>
-						<div class="controls"><?php echo \$this->form->getInput('alias'); ?></div>
+						<div class="control-label">
+							<?php echo \$this->form->getLabel('alias'); ?>
+						</div>
+						<div class="controls">
+							<?php echo \$this->form->getInput('alias'); ?>
+						</div>
 					</div>
 					<div class="control-group">
-						<div class="control-label"><?php echo \$this->form->getLabel('ordering'); ?></div>
-						<div class="controls"><?php echo \$this->form->getInput('ordering'); ?></div>
+						<div class="control-label">
+							<?php echo \$this->form->getLabel('ordering'); ?>
+						</div>
+						<div class="controls">
+							<?php echo \$this->form->getInput('ordering'); ?>
+						</div>
 					</div>
 					<?php echo \$this->form->getInput('description'); ?>
 				</div>
 				<div class="tab-pane" id="images">
 					<div class="control-group">
-						<div class="control-label"><?php echo \$this->form->getLabel('images'); ?></div>
-						<div class="controls"><?php echo \$this->form->getInput('images'); ?></div>
+						<div class="control-label">
+							<?php echo \$this->form->getLabel('images'); ?>
+						</div>
+						<div class="controls">
+							<?php echo \$this->form->getInput('images'); ?>
+						</div>
 					</div>
 					<?php foreach (\$this->form->getGroup('images') as \$field): ?>
 						<div class="control-group">
 							<?php if (!\$field->hidden): ?>
-								<div class="control-label"><?php echo \$field->label; ?></div>
+								<div class="control-label">
+									<?php echo \$field->label; ?>
+								</div>
 							<?php endif; ?>
-							<div class="controls"><?php echo \$field->input; ?></div>
+							<div class="controls">
+								<?php echo \$field->input; ?>
+							</div>
 						</div>
 					<?php endforeach; ?>
 				</div>
 				<div class="tab-pane" id="publishing">
 					<div class="control-group">
-						<div class="control-label"><?php echo \$this->form->getLabel('created_by_alias'); ?></div>
-						<div class="controls"><?php echo \$this->form->getInput('created_by_alias'); ?></div>
+						<div class="control-label">
+							<?php echo \$this->form->getLabel('created_by_alias'); ?>
+						</div>
+						<div class="controls">
+							<?php echo \$this->form->getInput('created_by_alias'); ?>
+						</div>
 					</div>
 					<?php if (\$this->item->params->get('access-change')): ?>
 						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('state'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('state'); ?></div>
+							<div class="control-label">
+								<?php echo \$this->form->getLabel('state'); ?>
+							</div>
+							<div class="controls">
+								<?php echo \$this->form->getInput('state'); ?>
+							</div>
 						</div>
 						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('featured'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('featured'); ?></div>
+							<div class="control-label">
+								<?php echo \$this->form->getLabel('featured'); ?>
+							</div>
+							<div class="controls">
+								<?php echo \$this->form->getInput('featured'); ?>
+							</div>
 						</div>
 						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('publish_up'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('publish_up'); ?></div>
+							<div class="control-label">
+								<?php echo \$this->form->getLabel('publish_up'); ?>
+							</div>
+							<div class="controls">
+								<?php echo \$this->form->getInput('publish_up'); ?>
+							</div>
 						</div>
 						<div class="control-group">
-							<div class="control-label"><?php echo \$this->form->getLabel('publish_down'); ?></div>
-							<div class="controls"><?php echo \$this->form->getInput('publish_down'); ?></div>
+							<div class="control-label">
+								<?php echo \$this->form->getLabel('publish_down'); ?>
+							</div>
+							<div class="controls">
+								<?php echo \$this->form->getInput('publish_down'); ?>
+							</div>
 						</div>
 					<?php endif; ?>
 					<div class="control-group">
-						<div class="control-label"><?php echo \$this->form->getLabel('access'); ?></div>
-						<div class="controls"><?php echo \$this->form->getInput('access'); ?></div>
+						<div class="control-label">
+							<?php echo \$this->form->getLabel('access'); ?>
+						</div>
+						<div class="controls">
+							<?php echo \$this->form->getInput('access'); ?>
+						</div>
 					</div>
 					<?php if (is_null(\$this->item->id)): ?>
 						<div class="control-group">
 							<div class="control-label"></div>
-							<div class="controls"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ORDERING'); ?></div>
+							<div class="controls">
+								<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ORDERING'); ?>
+							</div>
 						</div>
 					<?php endif; ?>
 				</div>
 				<div class="tab-pane" id="language">
 					<div class="control-group">
-						<div class="control-label"><?php echo \$this->form->getLabel('language'); ?></div>
-						<div class="controls"><?php echo \$this->form->getInput('language'); ?></div>
+						<div class="control-label">
+							<?php echo \$this->form->getLabel('language'); ?>
+						</div>
+						<div class="controls">
+							<?php echo \$this->form->getInput('language'); ?>
+						</div>
 					</div>
 				</div>
 				<?php \$fieldSets = \$this->form->getFieldsets('metadata');
@@ -132,22 +182,38 @@ JHtml::_('behavior.formvalidation');
 						endif; ?>
 						<?php if (\$name == 'jmetadata'): // Include the real fields in this panel. ?>
 							<div class="control-group">
-								<div class="control-label"><?php echo \$this->form->getLabel('metadesc'); ?></div>
-								<div class="controls"><?php echo \$this->form->getInput('metadesc'); ?></div>
+								<div class="control-label">
+									<?php echo \$this->form->getLabel('metadesc'); ?>
+								</div>
+								<div class="controls">
+									<?php echo \$this->form->getInput('metadesc'); ?>
+								</div>
 							</div>
 							<div class="control-group">
-								<div class="control-label"><?php echo \$this->form->getLabel('metakey'); ?></div>
-								<div class="controls"><?php echo \$this->form->getInput('metakey'); ?></div>
+								<div class="control-label">
+									<?php echo \$this->form->getLabel('metakey'); ?>
+								</div>
+								<div class="controls">
+									<?php echo \$this->form->getInput('metakey'); ?>
+								</div>
 							</div>
 							<div class="control-group">
-								<div class="control-label"><?php echo \$this->form->getLabel('xreference'); ?></div>
-								<div class="controls"><?php echo \$this->form->getInput('xreference'); ?></div>
+								<div class="control-label">
+									<?php echo \$this->form->getLabel('xreference'); ?>
+								</div>
+								<div class="controls">
+									<?php echo \$this->form->getInput('xreference'); ?>
+								</div>
 							</div>
 						<?php endif; ?>
 						<?php foreach (\$this->form->getFieldset(\$name) as \$field): ?>
 							<div class="control-group">
-								<div class="control-label"><?php echo \$field->label; ?></div>
-								<div class="controls"><?php echo \$field->input; ?></div>
+								<div class="control-label">
+									<?php echo \$field->label; ?>
+								</div>
+								<div class="controls">
+									<?php echo \$field->input; ?>
+								</div>
 							</div>
 						<?php endforeach; ?>
 					</div>

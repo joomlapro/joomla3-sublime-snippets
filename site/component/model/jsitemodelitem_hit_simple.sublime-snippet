@@ -4,7 +4,7 @@
  *
  * @param   integer  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
  *
- * @return  boolean  True on success
+ * @return  boolean  True on success.
  *
  * @since   $TM_VERSION
  */

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JString::increment(\$$1, 'dash');]]></content>
+	<tabTrigger>jstring-increment</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

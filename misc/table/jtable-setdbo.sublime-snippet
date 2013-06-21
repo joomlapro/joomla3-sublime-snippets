@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:table}->setDBO(\$${2:db});]]></content>
+	<tabTrigger>jtable-setdbo</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

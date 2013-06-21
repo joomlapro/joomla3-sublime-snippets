@@ -6,7 +6,7 @@
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-// Load the tooltip behavior script.
+// Load the behavior script.
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.framework');
 

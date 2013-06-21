@@ -21,6 +21,10 @@ MOD_${1/(.+)/\U\1/g}_FIELD_SEPARATOR_DESC="Exibir separador após último ${3/(.
 MOD_${1/(.+)/\U\1/g}_FIELD_TITLE_LABEL="Exibir Títulos do ${3/(.+)/\u\1/g}"
 MOD_${1/(.+)/\U\1/g}_FIELD_TITLE_DESC="Exibir/Ocultar títulos de ${2/(.+)/\L\1/g}"
 
+; LAYOUT
+
+MOD_${1/(.+)/\U\1/g}_LAYOUT_DEFAULT="Padrão"
+
 ; MISC
 
 MOD_${1/(.+)/\U\1/g}_READMORE="Leia mais..."

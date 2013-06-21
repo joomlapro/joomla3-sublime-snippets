@@ -3,7 +3,7 @@
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_users/helpers/html');
 
-// Load the tooltip behavior script.
+// Load the behavior script.
 JHtml::_('behavior.tooltip');
 JHtml::_('formbehavior.chosen', 'select');
 

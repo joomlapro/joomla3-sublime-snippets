@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$fields = \$${1:table}->getFields();]]></content>
+	<tabTrigger>jtable-getfields</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

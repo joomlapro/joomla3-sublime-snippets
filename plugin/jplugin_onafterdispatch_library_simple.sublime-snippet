@@ -1,0 +1,56 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to catch the onAfterDispatch event.
+ *
+ * @return  boolean  True on success.
+ *
+ * @since   $TM_VERSION
+ */
+public function onAfterDispatch()
+{
+	// Check that we are in the site application.
+	if (JFactory::getApplication()->isAdmin())
+	{
+		return true;
+	}
+
+	// Get the document object.
+	\$doc = JFactory::getDocument();
+
+	// Add Stylesheet.
+	if (\$custom_css = trim(\$this->params->get('custom_css')))
+	{
+		\$doc->addStyleDeclaration(\$custom_css);
+	}
+	else
+	{
+		JHtml::stylesheet('plg_system_autosize/${1/(.+)/\L\1/g}.css', false, true, false);
+	}
+
+	// Add JavaScript Frameworks.
+	JHtml::_('jquery.framework');
+
+	// Load JavaScript.
+	if (\$this->params->get('minified', 1))
+	{
+		JHtml::script('plg_${2:${TM_PLUGIN_GROUP/(.+)/\L\1/g}}_${3:${1/(.+)/\L\1/g}}/jquery.${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}.min.js', false, true);
+	}
+	else
+	{
+		JHtml::script('plg_${2/(.+)/\L\1/g}_${3/(.+)/\L\1/g}/jquery.${1/(.+)/\L\1/g}.js', false, true);
+	}
+
+	// Build the script.
+	\$script = array();
+	\$script[] = 'jQuery(document).ready(function(\$) {';
+	\$script[] = '	';
+	\$script[] = '});';
+
+	// Add the script to the document head.
+	\$doc->addScriptDeclaration(implode("\n", \$script));
+
+	return true;
+}]]></content>
+	<tabTrigger>jplugin_onafterdispatch_library_simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

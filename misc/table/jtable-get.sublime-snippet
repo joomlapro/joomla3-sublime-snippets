@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Get the new item ${2/(.+)/\U\1/g}.
+\$new${2/(.+)/\u\1/g} = \$${1:table}->get('${2:id}');]]></content>
+	<tabTrigger>jtable-get</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:model}->getName();]]></content>
+	<tabTrigger>jmodel-getname</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[// Delete the row.
+if (!\$${1:table}->delete())
+{
+	\$this->setError(\$${1/(.+)/\L\1/g}->getError());
+	return false;
+}]]></content>
+	<tabTrigger>jtable-delete</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

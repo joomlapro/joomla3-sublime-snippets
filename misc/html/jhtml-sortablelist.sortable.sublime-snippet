@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JHtml::_('sortablelist.sortable', '${1:sigular}List', '${2:sigular}-form', 'asc', \$saveOrderingUrl);]]></content>
-	<tabTrigger>jhtml-sortablelist.sortable</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

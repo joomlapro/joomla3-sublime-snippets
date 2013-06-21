@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:model}->getState($2);]]></content>
+	<tabTrigger>jmodel-getstate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

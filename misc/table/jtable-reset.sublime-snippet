@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Reset the table.
+\$this->reset();]]></content>
+	<tabTrigger>jtable-reset</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

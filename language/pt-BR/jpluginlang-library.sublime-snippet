@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[PLG_${1:${TM_PLUGIN_GROUP/(.+)/\U\1/g}}_${2:PLUGIN}_FIELD_MINIFIED_DESC="Selecione se deseja ou não usar arquivos compactados para melhorar o desempenho."
+PLG_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_FIELD_MINIFIED_LABEL="Minificado"
+PLG_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_FIELD_SELECTOR_DESC="Digite o seletor para o ${3:${2/(.+)/\u\1/g}}. Por padrão será utilizado a tag HTML \"$4\"."
+PLG_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_FIELD_SELECTOR_LABEL="Seletor"
+PLG_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_FIELD_CUSTOM_CSS_DESC="Digite o código CSS para personalizar a apresentação."
+PLG_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_FIELD_CUSTOM_CSS_LABEL="CSS Personalizado"]]></content>
+	<tabTrigger>jpluginlang-library</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

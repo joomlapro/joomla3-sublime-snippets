@@ -25,12 +25,18 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Helper
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function addSubmenu(\$vName = '${1:${TM_COMPONENT/(.+)/\L\1/g}}')
+	public static function addSubmenu(\$vName = '${1:cpanel}')
 	{
 		JHtmlSidebar::addEntry(
 			JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_${1/(.+)/\U\1/g}'),
 			'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}',
 			\$vName == '${1/(.+)/\L\1/g}'
+		);
+
+		JHtmlSidebar::addEntry(
+			JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_${2/(.+)/\U\1/g}'),
+			'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${2:${TM_COMPONENT/(.+)/\L\1/g}}',
+			\$vName == '${2/(.+)/\L\1/g}'
 		);
 
 		JHtmlSidebar::addEntry(
@@ -43,22 +49,34 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Helper
 	/**
 	 * Gets a list of the actions that can be performed.
 	 *
+	 * @param   integer  \$${3/(.+)/\L\1/g}Id  The ${3/(.+)/\L\1/g} ID.
+	 *
 	 * @return  JObject  A JObject containing the allowed actions.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function getActions()
+	public static function getActions(\$${3/(.+)/\L\1/g}Id = 0)
 	{
 		// Initialiase variables.
-		\$user      = JFactory::getUser();
-		\$result    = new JObject;
-		\$assetName = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
+		\$user    = JFactory::getUser();
+		\$result  = new JObject;
 
-		\$actions   = JAccess::getActions(\$assetName, 'component');
+		if (empty(\$${3/(.+)/\L\1/g}Id))
+		{
+			\$assetName = self::\$extension;
+		}
+		else
+		{
+			\$assetName = self::\$extension . '.${3:${2/(.+)(s\b)/\L\1/g}}.' . (int) \$${3/(.+)/\L\1/g}Id;
+		}
+
+		\$actions = array(
+			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.own', 'core.edit.state', 'core.delete'
+		);
 
 		foreach (\$actions as \$action)
 		{
-			\$result->set(\$action->name, \$user->authorise(\$action->name, \$assetName));
+			\$result->set(\$action, \$user->authorise(\$action, \$assetName));
 		}
 
 		return \$result;

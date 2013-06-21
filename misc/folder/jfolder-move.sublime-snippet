@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFolder::move(\$src, \$dest);]]></content>
+	<tabTrigger>jfolder-move</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

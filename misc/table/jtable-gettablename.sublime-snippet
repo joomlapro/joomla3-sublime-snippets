@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:table}->getTableName();]]></content>
+	<tabTrigger>jtable-gettablename</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[jimport('$1');]]></content>
+	<tabTrigger>jimport</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

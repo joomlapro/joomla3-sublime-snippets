@@ -20,12 +20,12 @@ public function display(\$cachable = false, \$urlparams = false)
 	\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 
 	// Get the suggestions.
-	\$model  = \$this->getModel('${2:${1/(.+)/\u\1/g}}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+	\$model  = \$this->getModel('${1:Plural}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
 	\$model->setState('list.select', 'a.*');
 	\$model->setState('list.limit', 5);
 	\$model->setState('list.ordering', 'a.id');
 	\$model->setState('list.direction', 'asc');
-	// \$model->setState('filter.search', \$input->getString('${3:${2/(.+)(s\b)/\L\1/g}}'));
+	// \$model->setState('filter.search', \$input->getString('${2:${1/(.+)(s\b)/\L\1/g}}'));
 
 	\$return = \$model->getItems();
 

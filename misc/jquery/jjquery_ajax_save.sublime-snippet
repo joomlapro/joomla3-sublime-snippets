@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[// Add ${2/(.+)/\L\1/g}.
+\$('#save-${1/(.+)/\L\1/g}').on('click', function(event) {
+	event.preventDefault();
+
+	var search = \$('#search-${1/(.+)/\L\1/g}').val();
+
+	if (search) {
+		\$.ajax({
+			url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.save${2:${1/(.+)/\u\1/g}}Ajax&tmpl=component&format=json',
+			type: 'POST',
+			data: {
+				${3:user_}id: '<?php echo \$this->item->id; ?>',
+				${1/(.+)/\L\1/g}_id: \$('#${1/(.+)/\L\1/g}-id').val()
+			},
+			dataType: 'json',
+			success: function(data) {
+
+			}
+		});
+
+		\$('#search-${1/(.+)/\L\1/g}').val('');
+	}
+});]]></content>
+	<tabTrigger>jjquery_ajax_save</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

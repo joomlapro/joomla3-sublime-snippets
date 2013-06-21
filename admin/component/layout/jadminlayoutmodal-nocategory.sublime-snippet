@@ -13,7 +13,7 @@ require_once JPATH_ROOT . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/r
 // Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-// Load the tooltip behavior script.
+// Load the behavior script.
 JHtml::_('bootstrap.tooltip');
 JHtml::_('formbehavior.chosen', 'select');
 

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the chosen formbehavior script.
+JHtml::_('formbehavior.chosen', 'select');]]></content>
+	<tabTrigger>jhtml_formbehavior_chosen</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

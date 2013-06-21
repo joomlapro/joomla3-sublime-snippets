@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:table}->getDbo();]]></content>
+	<tabTrigger>jtable-getdbo</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

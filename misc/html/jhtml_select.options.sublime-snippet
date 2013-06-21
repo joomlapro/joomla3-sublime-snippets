@@ -1,5 +1,0 @@
-<snippet>
-	<content><![CDATA[JHtml::_('select.options', ${1:\$source}, 'value', 'text', ${2:\$default});]]></content>
-	<tabTrigger>jhtml_select.options</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('icons.buttons', ${1:\$buttons});]]></content>
+	<tabTrigger>jhtml_icons_buttons</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

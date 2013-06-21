@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<select id="jform_${1:field}" name="jform[${1/(.+)/\L\1/g}]" class="inputbox" size="1">
+	<option value=""><?php echo JText::_('JSELECT'); ?></option>
+	<?php echo JHtml::_('select.options', ${2:\$source}, 'value', 'text', ${3:\$default}); ?>
+</select>]]></content>
+	<tabTrigger>jhtml_select_options_complete</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

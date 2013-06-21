@@ -4,7 +4,7 @@
  *
  * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
  *
- * @return  boolean  True on success
+ * @return  boolean  True on success.
  *
  * @since   $TM_VERSION
  */

@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[// Load the popover bootstrap script.
-JHtml::_('bootstrap.popover');]]></content>
-	<tabTrigger>jhtml_bootstrap.popover</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

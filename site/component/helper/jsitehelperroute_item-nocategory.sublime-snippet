@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to get a route configuration for the realestate view.
+ * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
  *
- * @param   integer  \$id        The route of the realestate item.
+ * @param   integer  \$id        The route of the ${1/(.+)/\L\1/g} item.
  * @param   string   \$language  The language code, default value of * means all.
  *
  * @return  string

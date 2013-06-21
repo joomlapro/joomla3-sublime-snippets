@@ -39,7 +39,7 @@ class PlgButton${1:Field} extends JPlugin
 		\$doc = JFactory::getDocument();
 		\$doc->addScriptDeclaration(\$js);
 
-		// Load the tooltip behavior script.
+		// Load the modal behavior script.
 		JHtml::_('behavior.modal');
 
 		/*
