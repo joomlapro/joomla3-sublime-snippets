@@ -74,7 +74,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Feed} extends JViewLegacy
 			// Add readmore link to description if ${5/(.+)/\L\1/g} is shown, show_readmore is true and ${4/(.+)/\L\1/g} exists
 			if (!\$params->get('feed_summary', 1) && \$params->get('feed_show_readmore', 1) && \$row->${4/(.+)/\L\1/g})
 			{
-				\$description .= '<p class="feed-readmore"><a target="_blank" href ="' . rtrim(JURI::base(), "/") . str_replace(' ', '%20', \$item->link) . '">' . JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FEED_READMORE') . '</a></p>';
+				\$description .= '<p class="feed-readmore"><a target="_blank" href ="' . rtrim(JUri::base(), "/") . str_replace(' ', '%20', \$item->link) . '">' . JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FEED_READMORE') . '</a></p>';
 			}
 
 			// Load item description and add div

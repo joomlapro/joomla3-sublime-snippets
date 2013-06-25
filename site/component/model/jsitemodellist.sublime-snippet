@@ -71,7 +71,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$input  = \$app->input;
 		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$user   = JFactory::getUser();
-		\$itemid = \$app->input->get('id', 0, 'int') . ':' . \$app->input->get('Itemid', 0, 'int');
+		\$itemid = \$input->get('id', 0, 'int') . ':' . \$input->get('Itemid', 0, 'int');
 
 		// Optional filter text.
 		\$search = \$input->getString('filter-search');
@@ -105,7 +105,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$this->setState('list.direction', \$listOrder);
 
 		// Load the category.
-		\$id = \$app->input->get('id', 0, 'int');
+		\$id = \$input->get('id', 0, 'int');
 		\$this->setState('category.id', \$id);
 
 		// Load the parameters.

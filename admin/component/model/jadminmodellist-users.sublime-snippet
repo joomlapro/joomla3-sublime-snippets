@@ -50,10 +50,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
-		\$app = JFactory::getApplication('administrator');
+		// Initialiase variables.
+		\$app  = JFactory::getApplication('administrator');
+		$input = \$app->input;
 
 		// Adjust the context to support modal layouts.
-		if (\$layout = \$app->input->get('layout', 'default', 'cmd'))
+		if (\$layout = \$input->get('layout', 'default', 'cmd'))
 		{
 			\$this->context .= '.' . \$layout;
 		}
@@ -74,7 +76,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$range = \$this->getUserStateFromRequest(\$this->context . '.filter.range', 'filter_range');
 		\$this->setState('filter.range', \$range);
 
-		\$groups = json_decode(base64_decode(\$app->input->get('groups', '', 'BASE64')));
+		\$groups = json_decode(base64_decode(\$input->get('groups', '', 'BASE64')));
 
 		if (isset(\$groups))
 		{
@@ -83,7 +85,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		\$this->setState('filter.groups', \$groups);
 
-		\$excluded = json_decode(base64_decode(\$app->input->get('excluded', '', 'BASE64')));
+		\$excluded = json_decode(base64_decode(\$input->get('excluded', '', 'BASE64')));
 
 		if (isset(\$excluded))
 		{

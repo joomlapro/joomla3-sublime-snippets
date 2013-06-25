@@ -84,7 +84,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$this->setState('filter.language', \$language);
 
 		// Force a language.
-		\$forcedLanguage = \$app->input->get('forcedLanguage');
+		\$forcedLanguage = \$input->get('forcedLanguage');
 
 		if (!empty(\$forcedLanguage))
 		{

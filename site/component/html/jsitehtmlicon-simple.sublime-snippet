@@ -23,7 +23,7 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	public static function create(\$params, \$attribs = array(), \$legacy = false)
 	{
 		// Initialiase variables.
-		\$uri = JURI::getInstance();
+		\$uri = JUri::getInstance();
 		\$url = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:singular}.add&return=' . base64_encode(\$uri) . '&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=0';
 
 		if (\$params->get('show_icons'))
@@ -76,7 +76,7 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		require_once JPATH_SITE . '/components/com_mailto/helpers/mailto.php';
 
 		// Initialiase variables.
-		\$uri      = JURI::getInstance();
+		\$uri      = JUri::getInstance();
 		\$base     = \$uri->toString(array('scheme', 'host', 'port'));
 		\$template = JFactory::getApplication()->getTemplate();
 		\$link     = \$base . JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${2/(.+)/\u\1/g}Route(\$${2/(.+)/\L\1/g}->slug), false);
@@ -127,7 +127,7 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	{
 		// Initialiase variables.
 		\$user = JFactory::getUser();
-		\$uri  = JURI::getInstance();
+		\$uri  = JUri::getInstance();
 
 		// Ignore if in a popup window.
 		if (\$params && \$params->get('popup'))

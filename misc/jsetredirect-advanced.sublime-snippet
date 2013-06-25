@@ -3,7 +3,7 @@
 \$post['layout'] = \$this->input->get('layout', 'default');
 \$post['id']     = \$this->input->getInt('id');
 
-\$uri = JURI::getInstance();
+\$uri = JUri::getInstance();
 \$uri->setQuery(\$post);
 \$uri->setVar('option', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
 

@@ -61,7 +61,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$input  = \$app->input;
 		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$user   = JFactory::getUser();
-		\$itemid = \$app->input->get('Itemid', 0, 'int');
+		\$itemid = \$input->get('Itemid', 0, 'int');
 
 		// Optional filter text.
 		\$search = \$input->getString('filter-search');

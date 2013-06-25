@@ -4,8 +4,8 @@
 	type="text"
 	size="40"
 	class="inputbox"
-	label="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
-	description="MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	label="${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
 	<tabTrigger>jmodulefieldtext</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

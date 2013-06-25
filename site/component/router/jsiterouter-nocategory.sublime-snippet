@@ -39,12 +39,6 @@ function ${TM_COMPONENT/(.+)/\L\1/g}BuildRoute(& \$query)
 		{
 			\$segments[] = \$query['view'];
 		}
-
-		// We need to keep the view for forms since they never have their own menu item
-		if (\$view != 'form')
-		{
-			unset(\$query['view']);
-		}
 	}
 
 	// Are we dealing with an ${1:${TM_COMPONENT/(.+)(s\b)/\L\1/g}} that is attached to a menu item?

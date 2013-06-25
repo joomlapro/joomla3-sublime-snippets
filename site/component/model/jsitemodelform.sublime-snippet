@@ -23,22 +23,26 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	protected function populateState()
 	{
 		// Initialiase variables.
-		\$app = JFactory::getApplication();
+		\$app   = JFactory::getApplication();
+		\$input = \$app->input;
 
 		// Load state from the request.
-		\$pk = \$app->input->getInt('${TM_COMPONENT/(.)(.+)/\L\1/g}_id');
+		\$pk = \$input->getInt('${TM_COMPONENT/(.)(.+)/\L\1/g}_id');
 		\$this->setState('${2/(.+)/\L\1/g}.id', \$pk);
 
-		\$this->setState('${2/(.+)/\L\1/g}.catid', \$app->input->getInt('catid'));
+		// Add compatibility variable for default naming conventions.
+		\$this->setState('${1/(.+)/\L\1/g}.id', \$pk);
 
-		\$return = \$app->input->get('return', null, 'base64');
+		\$this->setState('${2/(.+)/\L\1/g}.catid', \$input->getInt('catid'));
+
+		\$return = \$input->get('return', null, 'base64');
 		\$this->setState('return_page', base64_decode(\$return));
 
 		// Load the parameters.
 		\$params = \$app->getParams();
 		\$this->setState('params', \$params);
 
-		\$this->setState('layout', \$app->input->get('layout'));
+		\$this->setState('layout', \$input->get('layout'));
 	}
 
 	/**

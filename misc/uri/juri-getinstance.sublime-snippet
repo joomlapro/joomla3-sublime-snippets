@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Get the full current URI.
-\$uri = JURI::getInstance();]]></content>
+\$uri = JUri::getInstance();]]></content>
 	<tabTrigger>juri-getinstance</tabTrigger>
 	<scope>source.php</scope>
 </snippet>
