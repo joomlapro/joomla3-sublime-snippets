@@ -18,6 +18,7 @@ public function ${1:action}(\$pks, \$value = 0)
 	if (empty(\$pks))
 	{
 		\$this->setError(JText::_('JGLOBAL_NO_ITEM_SELECTED'));
+
 		return false;
 	}
 
@@ -37,6 +38,7 @@ public function ${1:action}(\$pks, \$value = 0)
 	catch (Exception \$e)
 	{
 		\$this->setError(\$e->getMessage());
+
 		return false;
 	}
 

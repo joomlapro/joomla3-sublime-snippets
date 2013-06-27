@@ -15,7 +15,8 @@
 if (\$db->getErrorNum())
 {
 	JError::raiseWarning(500, \$db->getErrorMsg());
-	return null;
+
+	return false;
 }
 
 foreach (\$items as \$item)
@@ -36,6 +37,7 @@ foreach (\$items as \$item)
 	catch (RuntimeException \$e)
 	{
 		JError::raiseWarning(500, \$e->getMessage());
+
 		return false;
 	}
 }

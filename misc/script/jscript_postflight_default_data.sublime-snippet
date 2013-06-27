@@ -26,6 +26,7 @@ if (\$type == 'install')
 	catch (RuntimeException \$e)
 	{
 		JError::raiseWarning(500, \$e->getMessage());
+
 		return false;
 	}
 }]]></content>

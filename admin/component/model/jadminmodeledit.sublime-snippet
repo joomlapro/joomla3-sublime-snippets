@@ -50,6 +50,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				else
 				{
 					\$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_MOVE_CATEGORY_NOT_FOUND'));
+
 					return false;
 				}
 			}
@@ -58,6 +59,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (empty(\$categoryId))
 		{
 			\$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_MOVE_CATEGORY_NOT_FOUND'));
+
 			return false;
 		}
 
@@ -68,6 +70,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (!\$user->authorise('core.create', \$extension . '.category.' . \$categoryId))
 		{
 			\$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_CREATE'));
+
 			return false;
 		}
 
@@ -86,6 +89,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				{
 					// Fatal error.
 					\$this->setError(\$error);
+
 					return false;
 				}
 				else
@@ -114,6 +118,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			if (!\$table->check())
 			{
 				\$this->setError(\$table->getError());
+
 				return false;
 			}
 
@@ -121,6 +126,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			if (!\$table->store())
 			{
 				\$this->setError(\$table->getError());
+
 				return false;
 			}
 
@@ -492,6 +498,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (empty(\$pks))
 		{
 			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+
 			return false;
 		}
 
@@ -569,6 +576,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		catch (Exception \$e)
 		{
 			\$this->setError(\$e->getMessage());
+
 			return false;
 		}
 

@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Send the email.
-\$sent = \$this->_sendEmail(\$data, \$model);]]></content>
+\$sent = \$this->_sendEmail();]]></content>
 	<tabTrigger>jaddsendmail</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

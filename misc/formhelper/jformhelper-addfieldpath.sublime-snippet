@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFormHelper::addFieldPath(${1:JPATH_COMPONENT} . '/models/fields');]]></content>
+	<tabTrigger>jformhelper-addfieldpath</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

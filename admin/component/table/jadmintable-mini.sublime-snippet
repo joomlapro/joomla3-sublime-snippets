@@ -34,6 +34,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (trim(\$this->${4:title}) == '')
 		{
 			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}'));
+
 			return false;
 		}
 
@@ -46,6 +47,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (\$xid && \$xid != (int) \$this->id)
 		{
 			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}_EXISTS'));
+
 			return false;
 		}
 
@@ -86,6 +88,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			else
 			{
 				\$this->setError(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
+
 				return false;
 			}
 		}
@@ -109,6 +112,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		catch (RuntimeException \$e)
 		{
 			\$this->setError(\$e->getMessage());
+
 			return false;
 		}
 

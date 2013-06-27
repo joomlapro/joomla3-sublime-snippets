@@ -35,6 +35,7 @@ public function ${1:add}${2:user}(\$${3:pks} = null, \$${4:group} = null)
 		if (!\$table->store())
 		{
 			\$this->setError(\$table->getError());
+
 			return false;
 		}
 	}

@@ -20,6 +20,7 @@
 if (!\$extension_id)
 {
 	\$app->enqueueMessage(sprintf('${TM_COMPONENT/(.+)/\u\1/g} %s has not been installed, aborting!', '1.0'), 'notice');
+
 	return false;
 }
 
@@ -49,6 +50,7 @@ foreach (\$languages as \$language)
 if (empty(\$files))
 {
 	\$app->enqueueMessage(sprintf('Your site is English only. There\'s no need to install ${TM_COMPONENT/(.+)/\u\1/g} language pack.'), 'notice');
+
 	return false;
 }
 

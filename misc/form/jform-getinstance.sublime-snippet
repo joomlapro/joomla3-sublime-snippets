@@ -12,6 +12,7 @@ JForm::addFieldPath(JPATH_COMPONENT . '/models/fields');
 if (\$form == false)
 {
 	\$this->setError(\$form->getMessage());
+
 	return false;
 }
 

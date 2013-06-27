@@ -149,6 +149,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (\$data['block'] && \$pk == \$my->id && !\$my->block)
 		{
 			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ERROR_CANNOT_BLOCK_SELF'));
+
 			return false;
 		}
 
@@ -168,6 +169,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			if (!\$stillSuperAdmin)
 			{
 				\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ERROR_CANNOT_DEMOTE_SELF'));
+
 				return false;
 			}
 		}
@@ -176,6 +178,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (!\$user->bind(\$data))
 		{
 			\$this->setError(\$user->getError());
+
 			return false;
 		}
 
@@ -183,6 +186,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (!\$user->save())
 		{
 			\$this->setError(\$user->getError());
+
 			return false;
 		}
 
@@ -217,6 +221,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (in_array(\$user->id, \$pks))
 		{
 			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_ERROR_CANNOT_DELETE_SELF'));
+
 			return false;
 		}
 
@@ -242,6 +247,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 					if (!\$table->delete(\$pk))
 					{
 						\$this->setError(\$table->getError());
+
 						return false;
 					}
 					else
@@ -260,6 +266,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			else
 			{
 				\$this->setError(\$table->getError());
+
 				return false;
 			}
 		}
@@ -337,6 +344,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 						if (!\$table->check())
 						{
 							\$this->setError(\$table->getError());
+
 							return false;
 						}
 
@@ -346,6 +354,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 						if (in_array(false, \$result, true))
 						{
 							// Plugin will have to raise it's own error or throw an exception.
+
 							return false;
 						}
 
@@ -353,6 +362,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 						if (!\$table->store())
 						{
 							\$this->setError(\$table->getError());
+
 							return false;
 						}
 
@@ -433,6 +443,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 						if (!\$table->check())
 						{
 							\$this->setError(\$table->getError());
+
 							return false;
 						}
 
@@ -448,6 +459,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 						if (!\$table->store())
 						{
 							\$this->setError(\$table->getError());
+
 							return false;
 						}
 
@@ -499,6 +511,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (empty(\$pks))
 		{
 			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+
 			return false;
 		}
 
@@ -518,6 +531,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (!\$done)
 		{
 			\$this->setError(JText::_('JLIB_APPLICATION_ERROR_INSUFFICIENT_BATCH_INFORMATION'));
+
 			return false;
 		}
 
@@ -549,6 +563,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if ((!JFactory::getUser()->get('isRoot') && JAccess::checkGroup(\$group_id, 'core.admin')) || \$group_id < 1)
 		{
 			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_INVALID_GROUP'));
+
 			return false;
 		}
 
@@ -596,6 +611,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			catch (RuntimeException \$e)
 			{
 				\$this->setError(\$e->getMessage());
+
 				return false;
 			}
 		}
@@ -630,6 +646,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			if (!\$groups)
 			{
 				\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_NO_ADDITIONS'));
+
 				return false;
 			}
 
@@ -645,6 +662,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			catch (RuntimeException \$e)
 			{
 				\$this->setError(\$e->getMessage());
+
 				return false;
 			}
 		}

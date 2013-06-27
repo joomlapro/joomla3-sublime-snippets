@@ -65,6 +65,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		if (\$return === false && \$table->getError())
 		{
 			\$this->setError(\$table->getError());
+
 			return false;
 		}
 

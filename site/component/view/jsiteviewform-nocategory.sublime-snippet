@@ -49,6 +49,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 		if (\$authorised !== true)
 		{
 			JError::raiseError(403, JText::_('JERROR_ALERTNOAUTHOR'));
+
 			return false;
 		}
 
@@ -68,6 +69,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Form} extends JViewLegacy
 		if (count(\$errors = \$this->get('Errors')))
 		{
 			JError::raiseWarning(500, implode("\n", \$errors));
+
 			return false;
 		}
 

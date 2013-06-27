@@ -7,12 +7,14 @@
 if (!\$jversion->isCompatible(\$min_version))
 {
 	\$app->enqueueMessage(JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_VERSION_UNSUPPORTED', \$min_version), 'error');
+
 	return false;
 }
 
 if (get_magic_quotes_gpc())
 {
 	\$app->enqueueMessage(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MAGIC_QUOTES'), 'error');
+
 	return false;
 }
 
@@ -25,6 +27,7 @@ if (\$route == 'update')
 	if (version_compare(\$this->oldRelease, '${1:1.0}', '<'))
 	{
 		\$app->enqueueMessage(JText::sprintf('COM_VIDEOS_UPDATE_UNSUPPORTED', \$this->oldRelease), 'error');
+
 		return false;
 	}
 }]]></content>

@@ -34,6 +34,7 @@ public function save(\$data)
 		if (!\$table->bind(\$data))
 		{
 			\$this->setError(\$table->getError());
+
 			return false;
 		}
 
@@ -44,6 +45,7 @@ public function save(\$data)
 		if (!\$table->check())
 		{
 			\$this->setError(\$table->getError());
+
 			return false;
 		}
 
@@ -53,6 +55,7 @@ public function save(\$data)
 		if (in_array(false, \$result, true))
 		{
 			\$this->setError(\$table->getError());
+
 			return false;
 		}
 
@@ -60,6 +63,7 @@ public function save(\$data)
 		if (!\$table->store())
 		{
 			\$this->setError(\$table->getError());
+
 			return false;
 		}
 
@@ -72,6 +76,7 @@ public function save(\$data)
 	catch (Exception \$e)
 	{
 		\$this->setError(\$e->getMessage());
+
 		return false;
 	}
 

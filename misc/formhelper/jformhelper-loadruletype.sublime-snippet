@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadRuleType('${1:rule}', ${2:false});]]></content>
+	<tabTrigger>jformhelper-loadruletype</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

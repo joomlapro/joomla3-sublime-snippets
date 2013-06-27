@@ -1,0 +1,50 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to send email.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+private function _sendEmail()
+{
+	// Initialise variables.
+	\$app     = JFactory::getApplication();
+	\$config  = JFactory::getConfig();
+	\$data    = \$this->input->post->get('jform', array(), 'array');
+	\$model   = \$this->getModel();
+
+	// Get the current user object.
+	\$user    = JFactory::getUser();
+
+	\$site    = \$config->get('sitename');
+	\$from    = \$config->get('mailfrom');
+	\$sender  = \$config->get('fromname');
+	\$email   = \$config->get('mailfrom');
+	\$${2:${1/(.+)/\L\1/g}}   = \$data['${1:title}'];
+	\$subject = JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBJECT_${3/(.+)/\U\1/g}', \$user->name);
+
+	\$link    = JUri::root() . 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${3:singular}&id=' . (int) \$model->getState('${4:${3/(.+)/\x\1/g}form}.id');
+
+	// Build the message to send.
+	\$msg     = JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEND_EMAIL_${3/(.+)/\U\1/g}_MSG');
+	\$body    = sprintf(\$msg, \$${2/(.+)/\L\1/g}, \$link);
+
+	// Clean the email data.
+	\$sender  = JMailHelper::cleanAddress(\$sender);
+	\$subject = JMailHelper::cleanSubject(\$subject);
+	\$body    = JMailHelper::cleanBody(\$body);
+
+	// Send the email.
+	\$return  = JFactory::getMailer()->sendMail(\$from, \$sender, \$email, \$subject, \$body);
+
+	// Check for an error.
+	if (\$return !== true)
+	{
+		return new JException(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SEND_MAIL_FAILED'), 500);
+	}
+}
+]]></content>
+	<tabTrigger>jsitecontroller__sendEmail</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

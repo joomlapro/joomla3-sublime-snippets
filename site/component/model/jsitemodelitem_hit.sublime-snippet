@@ -32,6 +32,7 @@ public function hit(\$pk = 0)
 		catch (RuntimeException \$e)
 		{
 			\$this->setError(\$e->getMessage());
+
 			return false;
 		}
 	}

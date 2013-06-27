@@ -1,8 +1,6 @@
 <snippet>
 	<content><![CDATA[// Initialiase variables.
 \$db    = JFactory::getDbo();
-
-// \$db    = \$this->getDbo();
 \$query = \$db->getQuery(true);
 
 // Create the base select statement.
@@ -20,7 +18,7 @@ if (\$db->getErrorNum())
 {
 	JError::raiseWarning(500, \$db->getErrorMsg());
 
-	return null;
+	return false;
 }]]></content>
 	<tabTrigger>jdbo</tabTrigger>
 	<scope>source.php</scope>

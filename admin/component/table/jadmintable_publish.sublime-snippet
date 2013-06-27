@@ -33,6 +33,7 @@ public function publish(\$pks = null, \$state = 1, \$userId = 0)
 		else
 		{
 			\$this->setError(JText::_('JLIB_DATABASE_ERROR_NO_ROWS_SELECTED'));
+
 			return false;
 		}
 	}
@@ -65,6 +66,7 @@ public function publish(\$pks = null, \$state = 1, \$userId = 0)
 	catch (RuntimeException \$e)
 	{
 		\$this->setError(\$e->getMessage());
+
 		return false;
 	}
 

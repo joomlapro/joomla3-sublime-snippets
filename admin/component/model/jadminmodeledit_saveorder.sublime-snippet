@@ -39,6 +39,7 @@ public function saveorder(\$pks = null, \$order = null)
 			if (!\$table->store())
 			{
 				\$this->setError(\$table->getError());
+
 				return false;
 			}
 

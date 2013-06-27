@@ -79,6 +79,7 @@ abstract class Mod${1:${TM_MODULE/(\_+)//g}}Helper
 		if (\$error = \$model->getError())
 		{
 			JError::raiseError(500, \$error);
+
 			return false;
 		}
 

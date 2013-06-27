@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('tooltip', ${1:\$tooltip});]]></content>
+	<tabTrigger>jhtml_tooltip</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

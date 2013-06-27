@@ -32,7 +32,8 @@ public function get${1:Hellos}()
 		if (\$db->getErrorNum())
 		{
 			JError::raiseWarning(500, \$db->getErrorMsg());
-			return null;
+
+			return false;
 		}
 
 		return \$items;

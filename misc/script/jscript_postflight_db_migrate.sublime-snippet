@@ -29,7 +29,8 @@ if (\$type == 'update')
 		if (\$db->getErrorNum())
 		{
 			JError::raiseWarning(500, \$db->getErrorMsg());
-			return null;
+
+			return false;
 		}
 
 		foreach (\$result as \$${1/(.+)/\L\1/g})

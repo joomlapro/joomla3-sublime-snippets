@@ -18,6 +18,7 @@ try
 catch (RuntimeException \$e)
 {
 	JError::raiseWarning(500, \$e->getMessage());
+
 	return false;
 }]]></content>
 	<tabTrigger>jscript_postflight_enabled</tabTrigger>

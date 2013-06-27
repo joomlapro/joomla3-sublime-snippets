@@ -58,6 +58,7 @@ abstract class Mod${TM_COMPONENT/(.+)/\u\1/g}${1:Plural}Helper
 		if (\$error = \$model->getError())
 		{
 			JError::raiseError(500, \$error);
+
 			return false;
 		}
 

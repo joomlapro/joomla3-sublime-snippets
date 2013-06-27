@@ -37,7 +37,8 @@ abstract class Mod${1:$TM_MODULE}Helper
 		if (\$db->getErrorNum())
 		{
 			JError::raiseWarning(500, \$db->getErrorMsg());
-			return null;
+
+			return false;
 		}
 
 		return \$items;

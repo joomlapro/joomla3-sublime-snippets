@@ -3,6 +3,7 @@
 if (!\$${1:table}->store())
 {
 	\$this->setError(\$${1/(.+)/\L\1/g}->getError());
+
 	return false;
 }]]></content>
 	<tabTrigger>jtable-store</tabTrigger>

@@ -63,6 +63,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 				catch (RuntimeException \$e)
 				{
 					\$this->_subject->setError(\$e->getMessage());
+
 					return false;
 				}
 			}
@@ -149,6 +150,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 		if (!(\$form instanceof JForm))
 		{
 			\$this->_subject->setError('JERROR_NOT_A_FORM');
+
 			return false;
 		}
 
@@ -261,6 +263,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 			catch (RuntimeException \$e)
 			{
 				\$this->_subject->setError(\$e->getMessage());
+
 				return false;
 			}
 		}
@@ -304,6 +307,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 			catch (Exception \$e)
 			{
 				\$this->_subject->setError(\$e->getMessage());
+
 				return false;
 			}
 		}

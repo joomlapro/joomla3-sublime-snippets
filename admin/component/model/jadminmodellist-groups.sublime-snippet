@@ -132,6 +132,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			catch (RuntimeException \$e)
 			{
 				\$this->setError(\$e->getMessage);
+
 				return false;
 			}
 
