@@ -1,6 +1,7 @@
 <snippet>
 	<content><![CDATA[// Initialiase variables.
 \$db    = JFactory::getDbo();
+
 // \$db    = \$this->getDbo();
 \$query = \$db->getQuery(true);
 
@@ -19,6 +20,7 @@ try
 catch (RuntimeException \$e)
 {
 	\$this->setError(\$e->getMessage());
+
 	return false;
 }]]></content>
 	<tabTrigger>jdbo-delete</tabTrigger>
