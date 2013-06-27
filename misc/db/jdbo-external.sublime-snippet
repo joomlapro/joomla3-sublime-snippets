@@ -27,6 +27,7 @@
 if (\$db->getErrorNum())
 {
 	JError::raiseWarning(500, \$db->getErrorMsg());
+
 	return null;
 }]]></content>
 	<tabTrigger>jdbo-external</tabTrigger>

@@ -1,6 +1,7 @@
 <snippet>
 	<content><![CDATA[// Initialiase variables.
 \$db    = JFactory::getDbo();
+
 // \$db    = \$this->getDbo();
 \$query = \$db->getQuery(true);
 
@@ -18,6 +19,7 @@
 if (\$db->getErrorNum())
 {
 	JError::raiseWarning(500, \$db->getErrorMsg());
+
 	return null;
 }]]></content>
 	<tabTrigger>jdbo</tabTrigger>
