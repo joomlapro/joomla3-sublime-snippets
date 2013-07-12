@@ -13,9 +13,9 @@ public function getParam(\$name)
 	// Build the query for the table extensions.
 	\$db = JFactory::getDbo();
 	\$db->setQuery(
-		'SELECT manifest_cache' .
-		' FROM #__extensions' .
-		' WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"'
+		'SELECT manifest_cache'
+		. ' FROM #__extensions'
+		. ' WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"'
 	);
 
 	\$manifest = json_decode(\$db->loadResult(), true);

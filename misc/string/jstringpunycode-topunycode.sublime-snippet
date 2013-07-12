@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JStringPunycode::toPunycode(${1:string});]]></content>
+	<tabTrigger>jstringpunycode-topunycode</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

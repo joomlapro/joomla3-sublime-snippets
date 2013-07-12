@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JLORUMIPSUM]]></content>
+	<tabTrigger>jlorumipsum</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

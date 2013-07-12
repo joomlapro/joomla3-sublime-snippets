@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_COMPONENT/(.+)/\u\1/g} Component Model for a ${1/(.+)/\u\1/g} record.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @package     Joomla.Site
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
@@ -11,7 +11,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	/**
 	 * Model context string.
 	 *
-	 * @access  protected
 	 * @var     string
 	 */
 	protected \$_context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
@@ -28,14 +27,17 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	protected function populateState()
 	{
 		// Initialiase variables.
-		\$app    = JFactory::getApplication();
-		\$params = \$app->getParams();
+		\$app = JFactory::getApplication('site');
 
-		// Load the object state.
-		\$id = \$app->input->getInt('id');
-		\$this->setState('${1/(.+)/\L\1/g}.id', \$id);
+		// Load state from the request.
+		\$pk = \$app->input->getInt('id');
+		\$this->setState('${1/(.+)/\L\1/g}.id', \$pk);
+
+		\$offset = \$app->input->getUInt('limitstart');
+		\$this->setState('list.offset', \$offset);
 
 		// Load the parameters.
+		\$params = \$app->getParams();
 		\$this->setState('params', \$params);
 
 		// Get the current user object.
@@ -46,6 +48,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$this->setState('filter.published', 1);
 			\$this->setState('filter.archived', 2);
 		}
+
+		\$this->setState('filter.language', JLanguageMultilang::isEnabled());
 	}
 
 	/**
@@ -57,7 +61,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function &getItem(\$pk = null)
+	public function getItem(\$pk = null)
 	{
 		\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
 
@@ -70,11 +74,27 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		{
 			try
 			{
-				\$db = \$this->getDbo();
+				// Create a new query object.
+				\$db    = \$this->getDbo();
 				\$query = \$db->getQuery(true);
 
-				\$query->select(\$this->getState('item.select', 'a.*'))
-					->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}') . ' AS a');
+				// Select the required fields from the table.
+				\$query->select(
+					\$this->getState(
+						'item.select',
+						'a.id, a.asset_id, a.catid, a.${2:title}, a.alias' .
+							// If badcats is not null, this means that the ${1/(.+)/\L\1/g} is inside an unpublished category.
+							// In this case, the state is set to 0 to indicate Unpublished (even if the ${1/(.+)/\L\1/g} state is Published).
+							', CASE WHEN badcats.id is null THEN a.state ELSE 0 END AS state' .
+							', a.created, a.created_by, a.created_by_alias' .
+							// Use created if modified is 0.
+							', CASE WHEN a.modified = ' . \$db->quote(\$db->getNullDate()) . ' THEN a.created ELSE a.modified END as modified' .
+							', a.modified_by, a.checked_out, a.checked_out_time, a.publish_up, a.publish_down' .
+							', a.ordering, a.access, a.images, a.language, a.version, a.hits' .
+							', a.metakey, a.metadesc, a.metadata, a.featured, a.xreference'
+					)
+				);
+				\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}$3 AS a');
 
 				// Join on category table.
 				\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access')
@@ -84,14 +104,37 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				\$query->select('u.name AS author')
 					->join('LEFT', '#__users AS u on u.id = a.created_by');
 
+				// Filter by language.
+				if (\$this->getState('filter.language'))
+				{
+					\$query->where('a.language in (' . \$db->quote(JFactory::getLanguage()->getTag()) . ',' . \$db->quote('*') . ')');
+				}
+
 				// Join over the categories to get parent category titles.
 				\$query->select('parent.title as parent_title, parent.id as parent_id, parent.path as parent_route, parent.alias as parent_alias')
-					->join('LEFT', '#__categories as parent ON parent.id = c.parent_id')
+					->join('LEFT', '#__categories as parent ON parent.id = c.parent_id');
+
+				// Join on voting table.
+				\$query->select('ROUND(v.rating_sum / v.rating_count, 0) AS rating, v.rating_count as rating_count')
+					->join('LEFT', '#__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}_rating AS v ON a.id = v.${1/(.+)/\L\1/g}_id')
 					->where('a.id = ' . (int) \$pk);
 
 				// Filter by start and end dates.
 				\$nullDate = \$db->quote(\$db->getNullDate());
-				\$nowDate = \$db->quote(JFactory::getDate()->toSql());
+				\$date = JFactory::getDate();
+
+				\$nowDate = \$db->quote(\$date->toSql());
+
+				\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
+					->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
+
+				// Join to check for category published state in parent categories up the tree
+				// If all categories are published, badcats.id will be null, and we just use the ${1/(.+)/\L\1/g} state
+				\$subquery = '(SELECT cat.id as id FROM #__categories AS cat JOIN #__categories AS parent';
+				\$subquery .= ' ON cat.lft BETWEEN parent.lft AND parent.rgt';
+				\$subquery .= ' WHERE parent.extension = ' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}');
+				\$subquery .= ' AND parent.published <= 0 GROUP BY cat.id)';
+				\$query->join('LEFT OUTER', \$subquery . ' AS badcats ON badcats.id = c.id');
 
 				// Filter by published state.
 				\$published = \$this->getState('filter.published');
@@ -99,10 +142,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 				if (is_numeric(\$published))
 				{
-					\$query->where('(a.state = ' . (int) \$published . ' OR a.state =' . (int) \$archived . ')')
-						->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
-						->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')')
-						->where('(c.published = ' . (int) \$published . ' OR c.published =' . (int) \$archived . ')');
+					\$query->where('(a.state = ' . (int) \$published . ' OR a.state =' . (int) \$archived . ')');
 				}
 
 				\$db->setQuery(\$query);
@@ -111,18 +151,16 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 				if (empty(\$data))
 				{
-					throw new Exception(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
+					return JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
 				}
 
 				// Check for published state if filter set.
 				if (((is_numeric(\$published)) || (is_numeric(\$archived))) && ((\$data->state != \$published) && (\$data->state != \$archived)))
 				{
-					JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
+					return JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
 				}
 
 				// Convert parameter fields to objects.
-				\$registry = new JRegistry;
-				\$registry->loadString(\$data->params);
 				\$data->params = clone \$this->getState('params');
 				\$data->params->merge(\$registry);
 
@@ -137,7 +175,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				if (!\$user->get('guest'))
 				{
 					\$userId = \$user->get('id');
-					\$asset  = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
+					\$asset = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
 
 					// Check general edit permission first.
 					if (\$user->authorise('core.edit', \$asset))
@@ -164,9 +202,17 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				else
 				{
 					// If no access filter is set, the layout takes some responsibility for display of limited information.
-					\$user = JFactory::getUser();
+					\$user   = JFactory::getUser();
 					\$groups = \$user->getAuthorisedViewLevels();
-					\$data->params->set('access-view', in_array(\$data->access, \$groups) && in_array(\$data->category_access, \$groups));
+
+					if (\$data->catid == 0 || \$data->category_access === null)
+					{
+						\$data->params->set('access-view', in_array(\$data->access, \$groups));
+					}
+					else
+					{
+						\$data->params->set('access-view', in_array(\$data->access, \$groups) && in_array(\$data->category_access, \$groups));
+					}
 				}
 
 				\$this->_item[\$pk] = \$data;
@@ -192,13 +238,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	/**
 	 * Method to increment the hit counter for the ${1/(.+)/\L\1/g}.
 	 *
-	 * @param   integer  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
+	 * @param   integer  \$pk  Optional primary key of the ${1/(.+)/\L\1/g} to increment.
 	 *
-	 * @return  boolean  True on success.
+	 * @return  boolean  True if successful; false otherwise and internal error set.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function hit(\$id = null)
+	public function hit(\$pk = null)
 	{
 		if (empty(\$id))
 		{

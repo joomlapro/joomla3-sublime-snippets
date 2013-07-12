@@ -1,43 +1,23 @@
 <snippet>
 	<content><![CDATA[/**
- * Increment the hit counter for the ${1:singular}.
+ * Method to increment the hit counter for the ${1/(.+)/\L\1/g}.
  *
- * @param   integer  \$pk  Optional primary key of the item to increment.
+ * @param   integer  \$pk  Optional primary key of the article to increment.
  *
  * @return  boolean  True if successful; false otherwise and internal error set.
  *
  * @since   $TM_VERSION
  */
-public function hit(\$pk = 0)
+public function hit(\$pk = null)
 {
-	// Initialiase variables.
-	\$input    = JFactory::getApplication()->input;
-	\$hitcount = \$input->getInt('hitcount', 1);
-
-	if (\$hitcount)
+	if (empty(\$id))
 	{
-		\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
-		\$db = \$this->getDbo();
-
-		\$db->setQuery(
-			'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}' .
-			' SET hits = hits + 1' .
-			' WHERE id = ' . (int) \$pk
-		);
-
-		try
-		{
-			\$db->execute();
-		}
-		catch (RuntimeException \$e)
-		{
-			\$this->setError(\$e->getMessage());
-
-			return false;
-		}
+		\$id = \$this->getState('${1:singular}.id');
 	}
 
-	return true;
+	\$${1/(.+)/\L\1/g} = \$this->getTable('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
+
+	return \$${1/(.+)/\L\1/g}->hit(\$id);
 }]]></content>
 	<tabTrigger>jsitemodelitem_hit</tabTrigger>
 	<scope>source.php</scope>

@@ -13,7 +13,6 @@ protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = 'id')
 {
 	// Initialiase variables.
 	\$append = parent::getRedirectToItemAppend(\$recordId, \$urlVar);
-
 	\$itemId = \$this->input->getInt('Itemid');
 	\$return = \$this->getReturnPage();
 

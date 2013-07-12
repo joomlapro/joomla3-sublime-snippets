@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->has('${1:name}', '${2:namespace}');]]></content>
+	<tabTrigger>jsession_has</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

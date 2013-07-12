@@ -13,7 +13,6 @@ protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = '${TM_C
 {
 	// Need to override the parent method completely.
 	\$tmpl   = \$this->input->get('tmpl');
-	\$layout = \$this->input->get('layout', 'edit');
 	\$append = '';
 
 	// Setup redirect info.
@@ -30,8 +29,8 @@ protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = '${TM_C
 	}
 
 	\$itemId = \$this->input->getInt('Itemid');
-	\$return = \$this->getReturnPage();
 	\$catId  = \$this->input->getInt('catid', null, 'get');
+	\$return = \$this->getReturnPage();
 
 	if (\$itemId)
 	{

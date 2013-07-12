@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->fork();]]></content>
+	<tabTrigger>jsession_fork</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

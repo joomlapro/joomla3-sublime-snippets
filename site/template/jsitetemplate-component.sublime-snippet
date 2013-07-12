@@ -29,6 +29,6 @@ if (\$doc->direction == 'rtl')
 \$doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0', false);
 
 ]]></content>
-	<tabTrigger>jsitetemplate</tabTrigger>
+	<tabTrigger>jsitetemplate-component</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

@@ -29,9 +29,9 @@ public function featured(\$pks, \$value = 0)
 		\$db = \$this->getDbo();
 
 		\$db->setQuery(
-			'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_${1:plural}' .
-			' SET featured = ' . (int) \$value .
-			' WHERE id IN (' . implode(', ', \$pks) . ')'
+			'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_${1:plural}'
+			. ' SET featured = ' . (int) \$value
+			. ' WHERE id IN (' . implode(', ', \$pks) . ')'
 		);
 		\$db->execute();
 	}

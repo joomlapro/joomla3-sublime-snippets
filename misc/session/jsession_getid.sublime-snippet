@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->getId();]]></content>
+	<tabTrigger>jsession_getid</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -23,9 +23,9 @@ public function unset${1/(.+)/\u\1/g}(\$id = 0)
 
 	// Lookup the client_id.
 	\$db->setQuery(
-		'SELECT client_id, ${1/(.+)/\L\1/g}' .
-		' FROM #__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}' .
-		' WHERE id = ' . (int) \$id
+		'SELECT client_id, ${1/(.+)/\L\1/g}'
+		. ' FROM #__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}'
+		. ' WHERE id = ' . (int) \$id
 	);
 	\$${2/(.+)/\L\1/g} = \$db->loadObject();
 
@@ -40,9 +40,9 @@ public function unset${1/(.+)/\u\1/g}(\$id = 0)
 
 	// Set the new ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
 	\$db->setQuery(
-		'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}' .
-		' SET ${1/(.+)/\L\1/g} = \'0\'' .
-		' WHERE id = ' . (int) \$id
+		'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}'
+		. ' SET ${1/(.+)/\L\1/g} = \'0\''
+		. ' WHERE id = ' . (int) \$id
 	);
 	\$db->execute();
 

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->isActive();]]></content>
+	<tabTrigger>jsession_isactive</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

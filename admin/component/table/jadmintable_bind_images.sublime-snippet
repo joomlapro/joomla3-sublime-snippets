@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[if (isset(\$array['images']) && is_array(\$array['images']))
+{
+	\$registry = new JRegistry;
+	\$registry->loadArray(\$array['images']);
+	\$array['images'] = (string) \$registry;
+}]]></content>
+	<tabTrigger>jadmintable_bind_images</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

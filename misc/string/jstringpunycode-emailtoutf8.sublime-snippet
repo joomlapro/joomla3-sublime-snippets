@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JStringPunycode::emailToUTF8(${1:email});]]></content>
+	<tabTrigger>jstringpunycode-emailtoutf8</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

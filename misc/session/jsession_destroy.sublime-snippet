@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->destroy();]]></content>
+	<tabTrigger>jsession_destroy</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

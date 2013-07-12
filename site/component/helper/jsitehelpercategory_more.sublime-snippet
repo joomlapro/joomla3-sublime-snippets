@@ -18,11 +18,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}${1:Plural}Categories extends JCategories
 	 */
 	public function __construct(\$options = array())
 	{
-		\$options['table']        = '#__${TM_COMPONENT/(.+)/\L\1/g}';
-		\$options['extension']    = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
-		\$options['statefield']   = 'state';
-		// \$options['countItems']   = 1;
-		// \$options['allLanguages'] = true;
+		\$options['table']     = '#__${TM_COMPONENT/(.+)/\L\1/g}';
+		\$options['extension'] = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
 
 		parent::__construct(\$options);
 	}

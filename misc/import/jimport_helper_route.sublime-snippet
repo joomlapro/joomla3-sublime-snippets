@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load route helper.
+jimport('helper.route', JPATH_COMPONENT_SITE);]]></content>
+	<tabTrigger>jimport_helper_route</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

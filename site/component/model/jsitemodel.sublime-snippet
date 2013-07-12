@@ -24,8 +24,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		// Initialise variables.
 		\$app    = JFactory::getApplication();
+		\$input  = \$app->input;
 		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
-		\$itemid = JRequest::getInt('Itemid', 0);
+		\$itemid = \$input->get('Itemid', 0, 'int');
 
 		// Load the parameters.
 		\$this->setState('params', \$params);

@@ -25,7 +25,7 @@
   `metadesc` text NOT NULL,
   `metakey` text NOT NULL,
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if record is featured.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;]]></content>

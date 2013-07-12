@@ -52,9 +52,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 			{
 				// Load the profile data from the database.
 				\$db = JFactory::getDbo();
-				\$db->setQuery(
-					'SELECT * FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s} WHERE user_id = ' . (int) \$userId
-				);
+				\$db->setQuery('SELECT * FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s} WHERE user_id = ' . (int) \$userId);
 
 				try
 				{
@@ -175,9 +173,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 			try
 			{
 				\$db = JFactory::getDbo();
-				\$db->setQuery(
-					'DELETE FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId
-				);
+				\$db->setQuery('DELETE FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId);
 				\$db->execute();
 
 				\$values = array();
@@ -228,10 +224,7 @@ class PlgUser${1:$TM_PLUGIN} extends JPlugin
 			try
 			{
 				\$db = JFactory::getDbo();
-				\$db->setQuery(
-					'DELETE FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId
-				);
-
+				\$db->setQuery('DELETE FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId);
 				\$db->execute();
 			}
 			catch (Exception \$e)

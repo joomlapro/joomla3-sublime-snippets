@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->getExpire();]]></content>
+	<tabTrigger>jsession_getexpire</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

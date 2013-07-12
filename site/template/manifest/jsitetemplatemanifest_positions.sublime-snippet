@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[<positions>
+	<position>debug</position>
+	<position>${TM_TEMPLATE/(.+)/\L\1/g}-topmenu</position>
+	<position>${TM_TEMPLATE/(.+)/\L\1/g}-mainmenu</position>
+	<position>${TM_TEMPLATE/(.+)/\L\1/g}-search</position>
+	<position>${TM_TEMPLATE/(.+)/\L\1/g}-breadcrumbs</position>
+	<position>${TM_TEMPLATE/(.+)/\L\1/g}-slideshow</position>
+	<position>${TM_TEMPLATE/(.+)/\L\1/g}-sidebar</position>
+	<position>${TM_TEMPLATE/(.+)/\L\1/g}-footer</position>
+	<position>${TM_TEMPLATE/(.+)/\L\1/g}-footermenu</position>
+</positions>]]></content>
+	<tabTrigger>jsitetemplatemanifest_positions</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

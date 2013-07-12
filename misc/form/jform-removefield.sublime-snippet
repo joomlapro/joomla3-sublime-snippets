@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->form->removeField('${1:name}', '${2:group}');]]></content>
+	<tabTrigger>jform-removefield</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

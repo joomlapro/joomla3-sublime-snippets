@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[\$this->form->getInput('${1:field}'${2:${3:, null}${4:, \$${1/(.+)/\L\1/g}}});]]></content>
+	<content><![CDATA[\$this->form->getInput('${1:name}', '${2:group}', '${3:value}');]]></content>
 	<tabTrigger>jform-getinput</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

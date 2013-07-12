@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get the right sibling (adjacent) categories.
+ *
+ * @return  mixed  An array of categories or false if an error occurs.
+ *
+ * @since   $TM_VERSION
+ */
+function &getRightSibling()
+{
+	if (!is_object(\$this->_item))
+	{
+		\$this->getCategory();
+	}
+
+	return \$this->_rightsibling;
+}]]></content>
+	<tabTrigger>jsitemodelcategory_getrightsibling</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

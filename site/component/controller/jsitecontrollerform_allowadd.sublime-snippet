@@ -12,7 +12,7 @@ protected function allowAdd(\$data = array())
 {
 	// Initialiase variables.s
 	\$user       = JFactory::getUser();
-	\$categoryId = JArrayHelper::getValue(\$data, 'catid', \$this->input->getInt('id'), 'int');
+	\$categoryId = JArrayHelper::getValue(\$data, 'catid', \$this->input->getInt('catid'), 'int');
 	\$allow      = null;
 
 	if (\$categoryId)

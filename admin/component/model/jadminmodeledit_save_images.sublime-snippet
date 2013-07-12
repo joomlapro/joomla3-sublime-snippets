@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[if (isset(\$data['images']) && is_array(\$data['images']))
+{
+	\$registry = new JRegistry;
+	\$registry->loadArray(\$data['images']);
+	\$data['images'] = (string) \$registry;
+}]]></content>
+	<tabTrigger>jadminmodeledit_save_images</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

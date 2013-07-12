@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_COMPONENT/(.+)/\u\1/g} Component Model for a ${1/(.+)/\u\1/g} record.
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @package     Joomla.Site
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
@@ -11,7 +11,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	/**
 	 * Model context string.
 	 *
-	 * @access  protected
 	 * @var     string
 	 */
 	protected \$_context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
@@ -28,14 +27,17 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	protected function populateState()
 	{
 		// Initialiase variables.
-		\$app    = JFactory::getApplication();
-		\$params = \$app->getParams();
+		\$app = JFactory::getApplication('site');
 
-		// Load the object state.
-		\$id = \$app->input->getInt('id');
-		\$this->setState('${1/(.+)/\L\1/g}.id', \$id);
+		// Load state from the request.
+		\$pk = \$app->input->getInt('id');
+		\$this->setState('${1/(.+)/\L\1/g}.id', \$pk);
+
+		\$offset = \$app->input->getUInt('limitstart');
+		\$this->setState('list.offset', \$offset);
 
 		// Load the parameters.
+		\$params = \$app->getParams();
 		\$this->setState('params', \$params);
 
 		// Get the current user object.
@@ -46,64 +48,177 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$this->setState('filter.published', 1);
 			\$this->setState('filter.archived', 2);
 		}
+
+		\$this->setState('filter.language', JLanguageMultilang::isEnabled());
 	}
 
 	/**
-	 * Method to get an object.
+	 * Method to get ${1/(.+)/\L\1/g} data.
 	 *
-	 * @param   integer  \$id  The id of the object to get.
+	 * @param   integer  \$pk  The id of the ${1/(.+)/\L\1/g}.
 	 *
-	 * @return  mixed  Object on success, false on failure.
-	 */
-	public function &getItem(\$id = null)
-	{
-		if (\$this->_item === null)
-		{
-			\$this->_item = false;
-
-			if (empty(\$id))
-			{
-				\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
-			}
-
-			// Get a level row instance.
-			\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
-
-			// Attempt to load the row.
-			if (\$table->load(\$id))
-			{
-				// Check published state.
-				if (\$published = \$this->getState('filter.published'))
-				{
-					if (\$table->state != \$published)
-					{
-						return \$this->_item;
-					}
-				}
-
-				// Convert the JTable to a clean JObject.
-				\$properties = \$table->getProperties(1);
-				\$this->_item = JArrayHelper::toObject(\$properties, 'JObject');
-			}
-			elseif (\$error = \$table->getError())
-			{
-				\$this->setError(\$error);
-			}
-		}
-
-		return \$this->_item;
-	}
-
-	/**
-	 * Method to increment the hit counter for the ${1/(.+)/\L\1/g}
-	 *
-	 * @param   integer  \$id  Optional ID of the ${1/(.+)/\L\1/g}.
-	 *
-	 * @return  boolean  True on success.
+	 * @return  mixed  Menu item data object on success, false on failure.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function hit(\$id = null)
+	public function getItem(\$pk = null)
+	{
+		\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1/(.+)/\L\1/g}.id');
+
+		if (\$this->_item === null)
+		{
+			\$this->_item = array();
+		}
+
+		if (!isset(\$this->_item[\$pk]))
+		{
+			try
+			{
+				// Create a new query object.
+				\$db    = \$this->getDbo();
+				\$query = \$db->getQuery(true);
+
+				// Select the required fields from the table.
+				\$query->select(
+					\$this->getState(
+						'item.select',
+						'a.id, a.asset_id, a.${2:title}, a.alias' .
+							', a.created, a.created_by, a.created_by_alias' .
+							// Use created if modified is 0.
+							', CASE WHEN a.modified = ' . \$db->quote(\$db->getNullDate()) . ' THEN a.created ELSE a.modified END as modified' .
+							', a.modified_by, a.checked_out, a.checked_out_time, a.publish_up, a.publish_down' .
+							', a.state, a.ordering, a.access, a.images, a.language, a.version, a.hits' .
+							', a.metakey, a.metadesc, a.metadata, a.featured, a.xreference'
+					)
+				);
+				\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}$3 AS a');
+
+				// Join on user table.
+				\$query->select('u.name AS author')
+					->join('LEFT', '#__users AS u on u.id = a.created_by');
+
+				// Filter by language.
+				if (\$this->getState('filter.language'))
+				{
+					\$query->where('a.language in (' . \$db->quote(JFactory::getLanguage()->getTag()) . ',' . \$db->quote('*') . ')');
+				}
+
+				// Join on voting table.
+				\$query->select('ROUND(v.rating_sum / v.rating_count, 0) AS rating, v.rating_count as rating_count')
+					->join('LEFT', '#__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}_rating AS v ON a.id = v.${1/(.+)/\L\1/g}_id')
+					->where('a.id = ' . (int) \$pk);
+
+				// Filter by start and end dates.
+				\$nullDate = \$db->quote(\$db->getNullDate());
+				\$date = JFactory::getDate();
+
+				\$nowDate = \$db->quote(\$date->toSql());
+
+				\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
+					->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
+
+				// Filter by published state.
+				\$published = \$this->getState('filter.published');
+				\$archived = \$this->getState('filter.archived');
+
+				if (is_numeric(\$published))
+				{
+					\$query->where('(a.state = ' . (int) \$published . ' OR a.state =' . (int) \$archived . ')');
+				}
+
+				\$db->setQuery(\$query);
+
+				\$data = \$db->loadObject();
+
+				if (empty(\$data))
+				{
+					return JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
+				}
+
+				// Check for published state if filter set.
+				if (((is_numeric(\$published)) || (is_numeric(\$archived))) && ((\$data->state != \$published) && (\$data->state != \$archived)))
+				{
+					return JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
+				}
+
+				// Convert parameter fields to objects.
+				\$data->params = clone \$this->getState('params');
+				\$data->params->merge(\$registry);
+
+				\$registry = new JRegistry;
+				\$registry->loadString(\$data->metadata);
+				\$data->metadata = \$registry;
+
+				// Compute selected asset permissions.
+				\$user = JFactory::getUser();
+
+				// Technically guest could edit an ${1/(.+)/\L\1/g}, but lets not check that to improve performance a little.
+				if (!\$user->get('guest'))
+				{
+					\$userId = \$user->get('id');
+					\$asset = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
+
+					// Check general edit permission first.
+					if (\$user->authorise('core.edit', \$asset))
+					{
+						\$data->params->set('access-edit', true);
+					}
+					// Now check if edit.own is available.
+					elseif (!empty(\$userId) && \$user->authorise('core.edit.own', \$asset))
+					{
+						// Check for a valid user and that they are the owner.
+						if (\$userId == \$data->created_by)
+						{
+							\$data->params->set('access-edit', true);
+						}
+					}
+				}
+
+				// Compute view access permissions.
+				if (\$access = \$this->getState('filter.access'))
+				{
+					// If the access filter has been set, we already know this user can view.
+					\$data->params->set('access-view', true);
+				}
+				else
+				{
+					// If no access filter is set, the layout takes some responsibility for display of limited information.
+					\$user   = JFactory::getUser();
+					\$groups = \$user->getAuthorisedViewLevels();
+
+					\$data->params->set('access-view', in_array(\$data->access, \$groups));
+				}
+
+				\$this->_item[\$pk] = \$data;
+			}
+			catch (Exception \$e)
+			{
+				if (\$e->getCode() == 404)
+				{
+					// Need to go thru the error handler to allow Redirect to work.
+					JError::raiseError(404, \$e->getMessage());
+				}
+				else
+				{
+					\$this->setError(\$e);
+					\$this->_item[\$pk] = false;
+				}
+			}
+		}
+
+		return \$this->_item[\$pk];
+	}
+
+	/**
+	 * Method to increment the hit counter for the ${1/(.+)/\L\1/g}.
+	 *
+	 * @param   integer  \$pk  Optional primary key of the ${1/(.+)/\L\1/g} to increment.
+	 *
+	 * @return  boolean  True if successful; false otherwise and internal error set.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function hit(\$pk = null)
 	{
 		if (empty(\$id))
 		{

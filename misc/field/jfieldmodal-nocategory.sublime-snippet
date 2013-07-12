@@ -103,9 +103,9 @@ class JFormFieldModal_${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormField
 
 		\$db = JFactory::getDbo();
 		\$db->setQuery(
-			'SELECT ${2/(.+)/\L\1/g}' .
-			' FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}' .
-			' WHERE id = ' . (int) \$this->value
+			'SELECT ${2/(.+)/\L\1/g}'
+			. ' FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}}'
+			. ' WHERE id = ' . (int) \$this->value
 		);
 
 		try

@@ -1,0 +1,83 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to store a ${1/(.+)/\L\1/g}.
+ *
+ * @param   integer  \$pk    The id of the primary key.
+ *
+ * @param   integer  \$rate  The rate of ${1/(.+)/\L\1/g}.
+ *
+ * @return  boolean  True on success, false otherwise.
+ *
+ * @since   $TM_VERSION
+ */
+public function store${1:Vote}(\$pk = 0, \$rate = 0)
+{
+	if (\$rate >= 1 && \$rate <= 5 && \$pk > 0)
+	{
+		\$userIP = \$_SERVER['REMOTE_ADDR'];
+		\$db     = \$this->getDbo();
+
+		\$db->setQuery(
+			'SELECT *'
+			. ' FROM #__${TM_COMPONENT/(.+)/\L\1/g}$2_rating'
+			. ' WHERE ${3:singular}_id = ' . (int) \$pk
+		);
+
+		\$rating = \$db->loadObject();
+
+		if (!\$rating)
+		{
+			// There are no ratings yet, so lets insert our rating.
+			\$db->setQuery(
+				'INSERT INTO #__${TM_COMPONENT/(.+)/\L\1/g}_rating (${3/(.+)/\L\1/g}_id, lastip, rating_sum, rating_count)'
+				. ' VALUES (' . (int) \$pk . ', ' . \$db->quote(\$userIP) . ', ' . (int) \$rate . ', 1)'
+			);
+
+			try
+			{
+				\$db->execute();
+			}
+			catch (RuntimeException \$e)
+			{
+				\$this->setError(\$e->getMessage);
+
+				return false;
+			}
+		}
+		else
+		{
+			if (\$userIP != (\$rating->lastip))
+			{
+				\$db->setQuery(
+					'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_rating'
+					. ' SET rating_count = rating_count + 1, rating_sum = rating_sum + ' . (int) \$rate . ', lastip = ' . \$db->quote(\$userIP)
+					. ' WHERE ${3/(.+)/\L\1/g}_id = ' . (int) \$pk
+				);
+
+				try
+				{
+					\$db->execute();
+				}
+				catch (RuntimeException \$e)
+				{
+					\$this->setError(\$e->getMessage);
+
+					return false;
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	JError::raiseWarning('SOME_ERROR_CODE', JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_INVALID_RATING', \$rate), "JModelArticle::store${1/(.+)/\u\1/g}(\$rate)");
+
+	return false;
+}]]></content>
+	<tabTrigger>jsitemodelitem_storevote</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

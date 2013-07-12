@@ -1,0 +1,64 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get category data for the current category.
+ *
+ * @return  object
+ *
+ * @since   $TM_VERSION
+ */
+public function getCategory()
+{
+	if (!is_object(\$this->_item))
+	{
+		if (isset( \$this->state->params))
+		{
+			\$params  = \$this->state->params;
+			\$options = array();
+			\$options['countItems'] = \$params->get('show_cat_num_${1:plural}', 1) || !\$params->get('show_empty_categories_cat', 0);
+		}
+		else
+		{
+			\$options['countItems'] = 0;
+		}
+
+		\$categories  = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}', \$options);
+		\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
+
+		// Compute selected asset permissions.
+		if (is_object(\$this->_item))
+		{
+			// Get the current user object.
+			\$user  = JFactory::getUser();
+
+			\$asset = 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . \$this->_item->id;
+
+			// Check general create permission.
+			if (\$user->authorise('core.create', \$asset))
+			{
+				\$this->_item->getParams()->set('access-create', true);
+			}
+
+			// TODO: Why aren't we lazy loading the children and siblings?
+			\$this->_children = \$this->_item->getChildren();
+			\$this->_parent   = false;
+
+			if (\$this->_item->getParent())
+			{
+				\$this->_parent = \$this->_item->getParent();
+			}
+
+			\$this->_rightsibling = \$this->_item->getSibling();
+			\$this->_leftsibling  = \$this->_item->getSibling(false);
+		}
+		else
+		{
+			\$this->_children = false;
+			\$this->_parent   = false;
+		}
+	}
+
+	return \$this->_item;
+}]]></content>
+	<tabTrigger>jsitemodelcategory_getcategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

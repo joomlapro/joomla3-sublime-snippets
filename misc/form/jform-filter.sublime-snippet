@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$form->filter(\$${1:data}, '${2:group}');]]></content>
+	<tabTrigger>jform-filter</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

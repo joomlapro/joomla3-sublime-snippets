@@ -1,6 +1,7 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_COMPONENT/(.+)/\u\1/g} Component ${1:${TM_COMPONENT/(.+)(s\b)/\u\1/g}} Model.
+ * This models supports retrieving a category, the ${1/(.+)/\L\1/g} associated with the category,
+ * sibling, child and parent categories.
  *
  * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
@@ -9,19 +10,26 @@
 class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 {
 	/**
-	 * Category items data
+	 * Category items data.
 	 *
 	 * @var     array
 	 */
 	protected \$_item = null;
 
-	protected \$_articles = null;
+	protected \$_${1:plural} = null;
 
 	protected \$_siblings = null;
 
 	protected \$_children = null;
 
 	protected \$_parent = null;
+
+	/**
+	 * Model context string.
+	 *
+	 * @var     string
+	 */
+	protected \$_context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.category';
 
 	/**
 	 * The category that applies.
@@ -32,7 +40,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	protected \$_category = null;
 
 	/**
-	 * The list of other ${1/(.+)/\L\1/g} categories.
+	 * The list of other newfeed categories.
 	 *
 	 * @access  protected
 	 * @var     array
@@ -54,8 +62,21 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.title',
-				'hits', 'a.hits',
+				'alias', 'a.alias',
+				'checked_out', 'a.checked_out',
+				'checked_out_time', 'a.checked_out_time',
+				'catid', 'a.catid', 'category_title',
+				'state', 'a.state',
+				'access', 'a.access', 'access_level',
+				'created', 'a.created',
+				'created_by', 'a.created_by',
+				'modified', 'a.modified',
 				'ordering', 'a.ordering',
+				'featured', 'a.featured',
+				'language', 'a.language',
+				'hits', 'a.hits',
+				'publish_up', 'a.publish_up',
+				'publish_down', 'a.publish_down',
 			);
 		}
 
@@ -77,27 +98,75 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
 		// Initialiase variables.
-		\$app    = JFactory::getApplication();
-		\$input  = \$app->input;
-		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
+		\$app   = JFactory::getApplication('site');
+		\$input = \$app->input;
+		\$pk    = \$input->getInt('id');
 
-		// List state information.
-		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
-		\$this->setState('list.limit', \$limit);
+		\$this->setState('category.id', \$pk);
 
-		\$limitstart = \$input->get('limitstart', 0, 'uint');
-		\$this->setState('list.start', \$limitstart);
+		// Load the parameters. Merge Global and Menu Item params into new object.
+		\$params = \$app->getParams();
+		\$menuParams = new JRegistry;
 
-		\$orderCol = \$input->get('filter_order', 'ordering');
+		if (\$menu = \$app->getMenu()->getActive())
+		{
+			\$menuParams->loadString(\$menu->params);
+		}
+
+		\$mergedParams = clone \$menuParams;
+		\$mergedParams->merge(\$params);
+
+		// Load the parameters.
+		\$this->setState('params', \$mergedParams);
+
+		// Get the current user object.
+		\$user = JFactory::getUser();
+
+		// Create a new query object.
+		\$db    = \$this->getDbo();
+		\$query = \$db->getQuery(true);
+
+		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
+		{
+			// Limit to published for people who can't edit or edit.state.
+			\$this->setState('filter.published', 1);
+
+			// Filter by start and end dates.
+			\$nullDate = \$db->quote(\$db->getNullDate());
+			\$nowDate = \$db->quote(JFactory::getDate()->toSQL());
+
+			\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
+				->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
+		}
+		else
+		{
+			\$this->setState('filter.published', array(0, 1, 2));
+		}
+
+		// Process show_noauth parameter.
+		if (!\$params->get('show_noauth'))
+		{
+			\$this->setState('filter.access', true);
+		}
+		else
+		{
+			\$this->setState('filter.access', false);
+		}
+
+		// Optional filter text.
+		\$this->setState('list.filter', \$input->getString('filter-search'));
+
+		\$itemid = \$input->get('id', 0, 'int') . ':' . \$input->get('Itemid', 0, 'int');
+		\$orderCol = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order', 'filter_order', '', 'string');
 
 		if (!in_array(\$orderCol, \$this->filter_fields))
 		{
-			\$orderCol = 'ordering';
+			\$orderCol = 'a.ordering';
 		}
 
 		\$this->setState('list.ordering', \$orderCol);
 
-		\$listOrder = \$input->get('filter_order_Dir', 'ASC');
+		\$listOrder = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
 
 		if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
 		{
@@ -106,134 +175,149 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 
 		\$this->setState('list.direction', \$listOrder);
 
-		\$id = \$input->get('id', 0, 'int');
-		\$this->setState('category.id', \$id);
+		\$this->setState('list.start', \$input->get('limitstart', 0, 'uint'));
 
-		// Get the current user object.
-		\$user = JFactory::getUser();
-
-		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
+		// Set limit for query. If list, use parameter. If ${3/(.+)/\L\1/g}, add ${3/(.+)/\L\1/g} parameters for limit.
+		if ((\$input->get('layout') == '${3:blog}') || \$params->get('layout_type') == '${3/(.+)/\L\1/g}')
 		{
-			// Limit to published for people who can't edit or edit.state.
-			\$this->setState('filter.state', 1);
-
-			// Filter by start and end dates.
-			\$this->setState('filter.publish_date', true);
+			\$limit = \$params->get('num_leading_${1/(.+)/\L\1/g}') + \$params->get('num_intro_${1/(.+)/\L\1/g}') + \$params->get('num_links');
+			\$this->setState('list.links', \$params->get('num_links'));
+		}
+		else
+		{
+			\$limit = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.limit', 'limit', \$params->get('display_num'), 'uint');
 		}
 
-		\$this->setState('filter.language', \$app->getLanguageFilter());
+		\$this->setState('list.limit', \$limit);
 
-		// Load the parameters.
-		\$this->setState('params', \$params);
+		// Set the depth of the category query based on parameter.
+		\$showSubcategories = \$params->get('show_subcategory_${2/(.+)/\L\1/g}', '0');
+
+		if (\$showSubcategories)
+		{
+			\$this->setState('filter.max_category_levels', \$params->get('show_subcategory_${2/(.+)/\L\1/g}', '1'));
+			\$this->setState('filter.subcategories', true);
+		}
+
+		\$this->setState('filter.language', JLanguageMultilang::isEnabled());
+
+		\$this->setState('layout', \$input->get('layout'));
 	}
 
 	/**
-	 * Method to get a list of items.
+	 * Get the ${1/(.+)/\L\1/g} in the category
 	 *
-	 * @return  mixed  An array of objects on success, false on failure.
-	 */
-	public function getItems()
-	{
-		// Invoke the parent getItems method to get the main list.
-		\$items = parent::getItems();
-
-		// Convert the params field into an object, saving original in _params.
-		for (\$i = 0, \$n = count(\$items); \$i < \$n; \$i++)
-		{
-			if (!isset(\$this->_params))
-			{
-				\$params = new JRegistry;
-				\$params->loadString(\$items[\$i]->params);
-				\$items[\$i]->params = \$params;
-			}
-		}
-
-		return \$items;
-	}
-
-	/**
-	 * Method to build an SQL query to load the list data.
-	 *
-	 * @return  string  An SQL query.
+	 * @return  mixed  An array of ${1/(.+)/\L\1/g} or false if an error occurs.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	protected function getListQuery()
+	function getItems()
 	{
 		// Initialiase variables.
-		\$user   = JFactory::getUser();
-		\$groups = implode(',', \$user->getAuthorisedViewLevels());
+		\$limit = \$this->getState('list.limit');
 
-		// Create a new query object.
-		\$db     = \$this->getDbo();
-		\$query  = \$db->getQuery(true);
-
-		// Select required fields from the categories.
-		\$query->select(\$this->getState('list.select', 'a.*'))
-			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}') . ' AS a')
-			->where('a.access IN (' . \$groups . ')');
-
-		// Join over the categories.
-		\$query->select('c.title AS category_title, c.path AS category_route, c.access AS category_access, c.alias AS category_alias')
-			->join('LEFT', '#__categories AS c ON c.id = a.catid');
-
-		// Filter by category.
-		if (\$categoryId = \$this->getState('category.id'))
+		if (\$this->_${1/(.+)/\L\1/g} === null && \$category = \$this->getCategory())
 		{
-			\$query->where('a.catid = ' . (int) \$categoryId)
-				->where('c.access IN (' . \$groups . ')');
+			\$model = JModelLegacy::getInstance('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+			\$model->setState('params', JFactory::getApplication()->getParams());
+			\$model->setState('filter.category_id', \$category->id);
+			\$model->setState('filter.published', \$this->getState('filter.published'));
+			\$model->setState('filter.access', \$this->getState('filter.access'));
+			\$model->setState('filter.language', \$this->getState('filter.language'));
+			\$model->setState('list.ordering', \$this->_build${4/(.+)/\u\1/g}OrderBy());
+			\$model->setState('list.start', \$this->getState('list.start'));
+			\$model->setState('list.limit', \$limit);
+			\$model->setState('list.direction', \$this->getState('list.direction'));
+			\$model->setState('list.filter', \$this->getState('list.filter'));
 
-			// Filter by published category.
-			\$cpublished = \$this->getState('filter.c.published');
+			// The filter.subcategories indicates whether to include ${1/(.+)/\L\1/g} from subcategories in the list or ${3/(.+)/\L\1/g}.
+			\$model->setState('filter.subcategories', \$this->getState('filter.subcategories'));
+			\$model->setState('filter.max_category_levels', \$this->setState('filter.max_category_levels'));
+			\$model->setState('list.links', \$this->getState('list.links'));
 
-			if (is_numeric(\$cpublished))
+			if (\$limit >= 0)
 			{
-				\$query->where('c.published = ' . (int) \$cpublished);
+				\$this->_${1/(.+)/\L\1/g} = \$model->getItems();
+
+				if (\$this->_${1/(.+)/\L\1/g} === false)
+				{
+					\$this->setError(\$model->getError());
+				}
 			}
+			else
+			{
+				\$this->_${1/(.+)/\L\1/g} = array();
+			}
+
+			\$this->_pagination = \$model->getPagination();
 		}
 
-		// Join over the users for the author and modified_by names.
-		\$query->select("CASE WHEN a.created_by_alias > ' ' THEN a.created_by_alias ELSE ua.name END AS author")
-			->select("ua.email AS author_email")
-			->join('LEFT', '#__users AS ua ON ua.id = a.created_by')
-			->join('LEFT', '#__users AS uam ON uam.id = a.modified_by');
-
-		// Filter by state.
-		\$state = \$this->getState('filter.state');
-
-		if (is_numeric(\$state))
-		{
-			\$query->where('a.state = ' . (int) \$state);
-		}
-
-		// Do not show trashed links on the front-end.
-		\$query->where('a.state != -2');
-
-		// Filter by start and end dates.
-		\$nullDate = \$db->quote(\$db->getNullDate());
-		\$date = JFactory::getDate();
-		\$nowDate = \$db->quote(\$date->toSql());
-
-		if (\$this->getState('filter.publish_date'))
-		{
-			\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
-				->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
-		}
-
-		// Filter by language.
-		if (\$this->getState('filter.language'))
-		{
-			\$query->where('a.language in (' . \$db->quote(JFactory::getLanguage()->getTag()) . ', ' . \$db->quote('*') . ')');
-		}
-
-		// Add the list ordering clause.
-		\$query->order(\$db->escape(\$this->getState('list.ordering', 'a.ordering')) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
-
-		return \$query;
+		return \$this->_${1/(.+)/\L\1/g};
 	}
 
 	/**
-	 * Method to get category data for the current category
+	 * Build the orderby for the query
+	 *
+	 * @return  string  \$orderby portion of query.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function _build${4:${2/(.+)/\u\1/g}}OrderBy()
+	{
+		// Initialiase variables.
+		\$app       = JFactory::getApplication('site');
+		\$db        = \$this->getDbo();
+		\$params    = \$this->state->params;
+		\$itemid    = \$app->input->get('id', 0, 'int') . ':' . \$app->input->get('Itemid', 0, 'int');
+		\$orderCol  = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order', 'filter_order', '', 'string');
+		\$orderDirn = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
+		\$orderby   = ' ';
+
+		if (!in_array(\$orderCol, \$this->filter_fields))
+		{
+			\$orderCol = null;
+		}
+
+		if (!in_array(strtoupper(\$orderDirn), array('ASC', 'DESC', '')))
+		{
+			\$orderDirn = 'ASC';
+		}
+
+		if (\$orderCol && \$orderDirn)
+		{
+			\$orderby .= \$db->escape(\$orderCol) . ' ' . \$db->escape(\$orderDirn) . ', ';
+		}
+
+		\$${2:singular}Orderby      = \$params->get('orderby_sec', 'rdate');
+		\$${2/(.+)/\L\1/g}OrderDate    = \$params->get('order_date');
+		\$categoryOrderby = \$params->def('orderby_pri', '');
+		\$secondary       = ${TM_COMPONENT/(.+)/\L\1/g}HelperQuery::orderbySecondary(\$${2/(.+)/\L\1/g}Orderby, \$${2/(.+)/\L\1/g}OrderDate) . ', ';
+		\$primary         = ${TM_COMPONENT/(.+)/\L\1/g}HelperQuery::orderbyPrimary(\$categoryOrderby);
+
+		\$orderby .= \$primary . ' ' . \$secondary . ' a.created ';
+
+		return \$orderby;
+	}
+
+	/**
+	 * Method to get a JPagination object for the data set.
+	 *
+	 * @return  JPagination  A JPagination object for the data set.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getPagination()
+	{
+		if (empty(\$this->_pagination))
+		{
+			return null;
+		}
+
+		return \$this->_pagination;
+	}
+
+	/**
+	 * Method to get category data for the current category.
 	 *
 	 * @return  object
 	 *
@@ -243,26 +327,37 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	{
 		if (!is_object(\$this->_item))
 		{
-			// Initialiase variables.
-			\$app = JFactory::getApplication();
-			\$menu = \$app->getMenu();
-			\$active = \$menu->getActive();
-			\$params = new JRegistry;
-
-			if (\$active)
+			if (isset( \$this->state->params))
 			{
-				\$params->loadString(\$active->params);
+				\$params  = \$this->state->params;
+				\$options = array();
+				\$options['countItems'] = \$params->get('show_cat_num_${1/(.+)/\L\1/g}', 1) || !\$params->get('show_empty_categories_cat', 0);
+			}
+			else
+			{
+				\$options['countItems'] = 0;
 			}
 
-			\$options = array();
-			\$options['countItems'] = \$params->get('show_cat_num_links_cat', 1) || \$params->get('show_empty_categories', 0);
-			\$categories = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}', \$options);
+			\$categories  = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}', \$options);
 			\$this->_item = \$categories->get(\$this->getState('category.id', 'root'));
 
+			// Compute selected asset permissions.
 			if (is_object(\$this->_item))
 			{
+				// Get the current user object.
+				\$user  = JFactory::getUser();
+
+				\$asset = 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . \$this->_item->id;
+
+				// Check general create permission.
+				if (\$user->authorise('core.create', \$asset))
+				{
+					\$this->_item->getParams()->set('access-create', true);
+				}
+
+				// TODO: Why aren't we lazy loading the children and siblings?
 				\$this->_children = \$this->_item->getChildren();
-				\$this->_parent = false;
+				\$this->_parent   = false;
 
 				if (\$this->_item->getParent())
 				{
@@ -270,12 +365,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 				}
 
 				\$this->_rightsibling = \$this->_item->getSibling();
-				\$this->_leftsibling = \$this->_item->getSibling(false);
+				\$this->_leftsibling  = \$this->_item->getSibling(false);
 			}
 			else
 			{
 				\$this->_children = false;
-				\$this->_parent = false;
+				\$this->_parent   = false;
 			}
 		}
 
@@ -283,7 +378,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	}
 
 	/**
-	 * Get the parent category
+	 * Get the parent category.
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
@@ -300,13 +395,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	}
 
 	/**
-	 * Get the sibling (adjacent) categories.
+	 * Get the left sibling (adjacent) categories.
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function &getLeftSibling()
+	function &getLeftSibling()
 	{
 		if (!is_object(\$this->_item))
 		{
@@ -317,13 +412,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	}
 
 	/**
-	 * Get the sibling (adjacent) categories.
+	 * Get the right sibling (adjacent) categories.
 	 *
 	 * @return  mixed  An array of categories or false if an error occurs.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function &getRightSibling()
+	function &getRightSibling()
 	{
 		if (!is_object(\$this->_item))
 		{
@@ -340,14 +435,65 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function &getChildren()
+	function &getChildren()
 	{
 		if (!is_object(\$this->_item))
 		{
 			\$this->getCategory();
 		}
 
+		// Order subcategories.
+		if (count(\$this->_children))
+		{
+			\$params = \$this->getState()->get('params');
+
+			if (\$params->get('orderby_pri') == 'alpha' || \$params->get('orderby_pri') == 'ralpha')
+			{
+				jimport('joomla.utilities.arrayhelper');
+
+				JArrayHelper::sortObjects(\$this->_children, 'title', (\$params->get('orderby_pri') == 'alpha') ? 1 : - 1);
+			}
+		}
+
 		return \$this->_children;
+	}
+
+	/**
+	 * Increment the hit counter for the category.
+	 *
+	 * @param   int  \$pk  Optional primary key of the category to increment.
+	 *
+	 * @return  boolean True if successful; false otherwise and internal error set.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function hit(\$pk = 0)
+	{
+		// Initialise variables.
+		\$pk    = (!empty(\$pk)) ? \$pk : (int) \$this->getState('category.id');
+		\$db    = \$this->getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Create the base update statement.
+		\$query->update('#__categories')
+			->set('hits = hits + 1')
+			->where('id = ' . (int) \$pk);
+
+		// Set the query and execute the update.
+		\$db->setQuery(\$query);
+
+		try
+		{
+			\$db->execute();
+		}
+		catch (RuntimeException \$e)
+		{
+			\$this->setError(\$e->getMessage());
+
+			return false;
+		}
+
+		return true;
 	}
 }
 

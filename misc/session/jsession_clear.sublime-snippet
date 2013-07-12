@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->clear('${1:name}', '${2:namespace}');]]></content>
+	<tabTrigger>jsession_clear</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -27,7 +27,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	/**
 	 * Method to add a new record.
 	 *
-	 * @return  boolean True if the article can be added, false if not.
+	 * @return  mixed  True if the record can be added, a error object if not.
 	 *
 	 * @since   $TM_VERSION
 	 */
@@ -53,7 +53,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	{
 		// Initialiase variables.
 		\$user       = JFactory::getUser();
-		\$categoryId = JArrayHelper::getValue(\$data, 'catid', \$this->input->getInt('id'), 'int');
+		\$categoryId = JArrayHelper::getValue(\$data, 'catid', \$this->input->getInt('catid'), 'int');
 		\$allow      = null;
 
 		if (\$categoryId)
@@ -190,7 +190,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	{
 		// Need to override the parent method completely.
 		\$tmpl   = \$this->input->get('tmpl');
-		\$layout = \$this->input->get('layout', 'edit');
 		\$append = '';
 
 		// Setup redirect info.

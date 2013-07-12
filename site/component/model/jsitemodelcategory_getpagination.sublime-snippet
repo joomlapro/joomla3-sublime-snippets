@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get a JPagination object for the data set.
+ *
+ * @return  JPagination  A JPagination object for the data set.
+ *
+ * @since   $TM_VERSION
+ */
+public function getPagination()
+{
+	if (empty(\$this->_pagination))
+	{
+		return null;
+	}
+
+	return \$this->_pagination;
+}]]></content>
+	<tabTrigger>jsitemodelcategory_getpagination</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

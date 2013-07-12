@@ -42,17 +42,17 @@ public function set${1:Home}(\$id = 0)
 
 	// Reset the ${1/(.+)/\L\1/g} fields.
 	\$db->setQuery(
-		'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}s}' .
-		' SET ${1/(.+)/\L\1/g} = \'0\'' .
-		' WHERE ${1/(.+)/\L\1/g} = \'1\''
+		'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}s}'
+		. ' SET ${1/(.+)/\L\1/g} = \'0\''
+		. ' WHERE ${1/(.+)/\L\1/g} = \'1\''
 	);
 	\$db->execute();
 
 	// Set the new ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
 	\$db->setQuery(
-		'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}' .
-		' SET ${1/(.+)/\L\1/g} = \'1\'' .
-		' WHERE id = ' . (int) \$id
+		'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}'
+		. ' SET ${1/(.+)/\L\1/g} = \'1\''
+		. ' WHERE id = ' . (int) \$id
 	);
 	\$db->execute();
 
