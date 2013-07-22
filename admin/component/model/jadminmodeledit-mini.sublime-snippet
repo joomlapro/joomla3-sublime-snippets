@@ -94,6 +94,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function prepareTable(\$table)
 	{
+		// Initialiase variables.
 		\$table->${3:title} = htmlspecialchars_decode(\$table->${3/(.+)/\L\1/g}, ENT_QUOTES);
 
 		if (empty(\$table->id))

@@ -11,7 +11,8 @@
 			type: 'POST',
 			data: {
 				${3:user_}id: '<?php echo \$this->item->id; ?>',
-				${1/(.+)/\L\1/g}_id: \$('#${1/(.+)/\L\1/g}-id').val()
+				${1/(.+)/\L\1/g}_id: \$('#${1/(.+)/\L\1/g}-id').val(),
+				'<?php echo JSession::getFormToken(); ?>': 1
 			},
 			dataType: 'json',
 			success: function(data) {

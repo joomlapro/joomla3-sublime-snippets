@@ -8,6 +8,9 @@
  */
 public function get${1:Singular}Ajax()
 {
+	// Check for request forgeries.
+	JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+
 	// Initialiase variables.
 	\$app    = JFactory::getApplication();
 	\$input  = \$app->input;

@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method for ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
+ *
+ * @return  array  Array of resuls on success, Exception object otherwise.
+ *
+ * @since   $TM_VERSION
+ */
+public function ${1:get}${2:Name}()
+{
+	// Initialiase variables.
+	\$app     = JFactory::getApplication();
+	\$input   = \$app->input;
+	\$results = array();
+
+	try
+	{
+		//
+	}
+	catch (RuntimeException \$e)
+	{
+		return \$e;
+	}
+
+	return \$results;
+}
+]]></content>
+	<tabTrigger>jadminmodellist_response</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

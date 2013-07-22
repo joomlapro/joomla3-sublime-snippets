@@ -1,18 +1,29 @@
 <snippet>
-	<content><![CDATA[// Get ${1/(.+)/\L\1/g} list using AJAX.
+	<content><![CDATA[// Get ${2/(.+)/\L\1/g} list using AJAX.
 \$.ajax({
-	url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.get${2:${1/(.+)/\u\1/g}}Ajax&tmpl=component&format=json',
-	type: 'GET',
+	type: 'POST',
+	url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.get${2:${1/(.+)/\u\1/g}}Ajax&format=json',
 	data: {
-		${3:id}: '<?php echo \$this->item->id; ?>'
+		${3:singular}_id: '<?php echo \$this->item->id; ?>',
+		'<?php echo JSession::getFormToken(); ?>': 1
 	},
 	dataType: 'json',
-	success: function(data) {
-		\$("#${1/(.+)/\L\1/g}_list").tmpl(data, {
-			returnPage: function() {
-				return '<?php echo \$return; ?>';
-			}
-		}).prependTo("#${1/(.+)/\L\1/g}_body");
+	success: function(r) {
+		if (r.error && r.message) {
+			alert(r.message);
+		}
+
+		if (r.messages) {
+			Joomla.renderMessages(r.messages);
+		}
+
+		if (r.data) {
+			\$("#${4:plural}_list").tmpl(r.data, {
+				returnPage: function() {
+					return '<?php echo \$return; ?>';
+				}
+			}).prependTo("#${4/(.+)/\L\1/g}_boddy");
+		}
 	}
 });]]></content>
 	<tabTrigger>jjquery_ajax_get_with_tmpl</tabTrigger>

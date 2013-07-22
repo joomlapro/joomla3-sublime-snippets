@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to save a record.
+ *
+ * @param   string  \$key     The name of the primary key of the URL variable.
+ * @param   string  \$urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
+ *
+ * @return  boolean  True if successful, false otherwise.
+ *
+ * @since   $TM_VERSION
+ */
+public function save(\$key = null, \$urlVar = '${TM_COMPONENT/(.)(.+)/\L\1/g}_id')
+{
+	// Initialiase variables.
+	\$result = parent::save(\$key, \$urlVar);
+
+	// If ok, redirect to the return page.
+	if (\$result)
+	{
+		\$this->setRedirect(\$this->getReturnPage());
+	}
+
+	return \$result;
+}]]></content>
+	<tabTrigger>jsitecontrollerform_save_with_redirect</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

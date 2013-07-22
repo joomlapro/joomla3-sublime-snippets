@@ -121,6 +121,14 @@
 			label="JFIELD_XREFERENCE_LABEL"
 			description="JFIELD_XREFERENCE_DESC" />
 		<field
+			name="tags"
+			type="tag"
+			class="inputbox span12 small"
+			multiple="true"
+			label="JTAG"
+			description="JTAG_DESC">
+		</field>
+		<field
 			name="rules"
 			type="rules"
 			class="inputbox"
@@ -284,13 +292,6 @@
 		<fieldset
 			name="jmetadata"
 			label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
-			<field
-				name="tags"
-				type="tag"
-				class="inputbox"
-				multiple="true"
-				label="JTAG"
-				description="JTAG_DESC"></field>
 			<field
 				name="robots"
 				type="list"

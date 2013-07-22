@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to cancel an edit.
+ *
+ * @param   string  \$key  The name of the primary key of the URL variable.
+ *
+ * @return  boolean  True if access level checks pass, false otherwise.
+ *
+ * @since   $TM_VERSION
+ */
+public function cancel(\$key = '${TM_COMPONENT/(.)(.+)/\L\1/g}_id')
+{
+	parent::cancel(\$key);
+
+	// Redirect to the return page.
+	\$this->setRedirect(\$this->getReturnPage());
+}]]></content>
+	<tabTrigger>jsitecontrollerform_cancel_with_redirect</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

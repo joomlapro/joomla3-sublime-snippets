@@ -311,7 +311,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Attempt to store the user data.
 		\$result = parent::store(\$updateNulls);
 
-		return \$result && \$this->tagsHelper->postStoreProcess(\$this);
+		\$this->newTags = isset(\$this->newTags) ? \$this->newTags : array();
+
+		return \$result && \$this->tagsHelper->postStoreProcess(\$this, \$this->newTags);
 	}
 
 	/**

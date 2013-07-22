@@ -5,7 +5,8 @@
 		url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:controller}.${3:method}&format=json&tmpl=component',
 		type: 'GET',
 		data: {
-			${1/(.+)/\L\1/g}: \$('#${1/(.+)/\L\1/g}').val()
+			${1/(.+)/\L\1/g}: \$('#${1/(.+)/\L\1/g}').val(),
+			'<?php echo JSession::getFormToken(); ?>': 1
 		},
 		success: function (json) {
 			var options = '';

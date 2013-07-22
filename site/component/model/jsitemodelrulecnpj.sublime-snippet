@@ -9,14 +9,6 @@
 class JFormRule${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormRule
 {
 	/**
-	 * The regular expression to use in testing a form field value.
-	 *
-	 * @var     string
-	 * @since   $TM_VERSION
-	 */
-	protected \$regex = '/^\d{3}\.\d{3}\.\d{3}\-\d{2}\$/';
-
-	/**
 	 * Method to test for a valid ${1/(.+)/\U\1/g}.
 	 *
 	 * @param   SimpleXMLElement  &\$element  The SimpleXMLElement object representing the <field /> tag for the form field object.
@@ -33,40 +25,38 @@ class JFormRule${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormRule
 	 */
 	public function test(&\$element, \$value, \$group = null, &\$input = null, &\$form = null)
 	{
-		// Test the value against the regular expression.
-		if (preg_match(\$this->regex, \$value) == false)
+		// Initialiase variables.
+		\$${1/(.+)/\L\1/g} = preg_replace('/[^0-9]/', '', \$value);
+
+		if (strlen(\$${1/(.+)/\L\1/g}) <> 14)
 		{
 			return false;
 		}
 
-		// Initialiase variables.
-		\$${1/(.+)/\L\1/g}      = preg_replace('/[^0-9]/', '', \$value);
-		\$digitOne = 0;
-		\$digitTwo = 0;
+		\$calcOne = 0;
+		\$calcTwo = 0;
 
 		// Check first digit.
-		for (\$i = 0, \$x = 10; \$i <= 8; \$i++, \$x--)
+		for (\$i = 0, \$x = 5; \$i <= 11; \$i++, \$x--)
 		{
-			\$digitOne += \$${1/(.+)/\L\1/g}[\$i] * \$x;
+			\$x         = (\$x < 2) ? 9 : \$x;
+			\$numberOne = substr(\$${1/(.+)/\L\1/g}, \$i, 1);
+			\$calcOne   += \$numberOne * \$x;
 		}
-
-		\$calcOne = ((\$digitOne % 11) < 2) ? 0 : 11 - (\$digitOne % 11);
 
 		// Check second digit.
-		for (\$i = 0, \$x = 11; \$i <= 9; \$i++, \$x--)
+		for (\$i = 0, \$x = 6; \$i <= 12; \$i++, \$x--)
 		{
-			if (str_repeat(\$i, 11) == \$${1/(.+)/\L\1/g})
-			{
-				return false;
-			}
-
-			\$digitTwo += \$${1/(.+)/\L\1/g}[\$i] * \$x;
+			\$x         = (\$x < 2) ? 9 : \$x;
+			\$numberTwo = substr(\$${1/(.+)/\L\1/g}, \$i, 1);
+			\$calcTwo   += \$numberTwo * \$x;
 		}
 
-		\$calcTwo = ((\$digitTwo % 11) < 2) ? 0 : 11 - (\$digitTwo % 11);
+		\$digitOne = ((\$calcOne % 11) < 2) ? 0 : 11 - (\$calcOne % 11);
+		\$digitTwo = ((\$calcTwo % 11) < 2) ? 0 : 11 - (\$calcTwo % 11);
 
 		// Test the ${1/(.+)/\U\1/g} if is valid.
-		if (\$calcOne <> \$${1/(.+)/\L\1/g}[9] || \$calcTwo <> \$${1/(.+)/\L\1/g}[10])
+		if (\$digitOne <> substr(\$${1/(.+)/\L\1/g}, 12, 1) || \$digitTwo <> substr(\$${1/(.+)/\L\1/g}, 13, 1))
 		{
 			return false;
 		}
@@ -76,6 +66,6 @@ class JFormRule${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormRule
 }
 
 ]]></content>
-	<tabTrigger>jsitemodelrulecpf</tabTrigger>
+	<tabTrigger>jsitemodelrulecnpj</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

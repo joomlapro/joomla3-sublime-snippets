@@ -5,7 +5,8 @@
 	url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.${2:method}&tmpl=component&format=json',
 	type: 'GET',
 	data: {
-		id: '<?php echo \$this->item->id; ?>'
+		id: '<?php echo \$this->item->id; ?>',
+		'<?php echo JSession::getFormToken(); ?>': 1
 	},
 	success: function (data) {
 		\$("#${3:group}").tmpl(data, {

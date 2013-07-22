@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Trigger the on$1 event.
+\$dispatcher->trigger('on${1:Event}', array(\$${2:data}));]]></content>
+	<tabTrigger>jeventdispatcher-trigger</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

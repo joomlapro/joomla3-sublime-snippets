@@ -1,0 +1,167 @@
+<snippet>
+	<content><![CDATA[<?php if (\$this->item->id): ?>
+	<script type="text/javascript">
+		jQuery(document).ready(function(\$) {
+			// Get speakers list using AJAX.
+			\$.ajax({
+				type: 'POST',
+				url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=users.getSpeakersAjax&format=json',
+				data: {
+					lecture_id: '<?php echo \$this->item->id; ?>',
+					'<?php echo JSession::getFormToken(); ?>': 1
+				},
+				dataType: 'json',
+				success: function(r) {
+					if (r.error && r.message) {
+						alert(r.message);
+					}
+
+					if (r.messages) {
+						Joomla.renderMessages(r.messages);
+					}
+
+					if (r.data) {
+						\$("#speakers_list").tmpl(r.data, {
+							returnPage: function() {
+								return '<?php echo \$return; ?>';
+							}
+						}).prependTo("#speakers_boddy");
+					}
+				}
+			});
+
+			var labels,
+				mapped
+
+			// Call the typeahead.
+			\$('#search-speaker').typeahead({
+				source: function(query, process) {
+					\$.post('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=users.searchUsersAjax&format=json', {
+						name: query,
+						'<?php echo JSession::getFormToken(); ?>': 1
+					}, function(r) {
+						labels = []
+						mapped = {}
+
+						\$.each(r.data, function(i, item) {
+							mapped[item.name] = {
+								id: item.id,
+								name: item.name
+							}
+
+							labels.push(item.name)
+						})
+
+						process(labels)
+					})
+				},
+				items: 8,
+				minLength: 3,
+				updater: function(item) {
+					\$('#speaker-id').val(mapped[item].id);
+
+					return mapped[item].name
+				}
+			});
+
+			// Add speaker.
+			\$('#add-speaker').on('click', function(event) {
+				event.preventDefault();
+
+				var search = \$('#search-speaker').val(),
+					speaker_id = \$('#speaker-id').val();
+
+				if (search && speaker_id) {
+					\$.ajax({
+						url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=lecture.addSpeakerAjax&format=json',
+						type: 'POST',
+						data: {
+							lecture_id: '<?php echo \$this->item->id; ?>',
+							speaker_id: speaker_id,
+							'<?php echo JSession::getFormToken(); ?>': 1
+						},
+						dataType: 'json',
+						success: function(data) {
+							if (data == null) {
+								return false;
+							}
+
+							\$("#speakers_list").tmpl(data, {
+								returnPage: function() {
+									return '<?php echo \$return; ?>';
+								}
+							}).appendTo("#speakers_boddy");
+						}
+					});
+
+					\$('#search-speaker').val('');
+				}
+			});
+
+			// Delete the entry once we have confirmed that it should be deleted.
+			\$('a.delete').live('click', function(event) {
+				event.preventDefault();
+
+				var id = \$(this).data('id'),
+					row = \$(event.currentTarget).closest('tr');
+
+				\$.confirm('<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIRM_PROCEED'); ?>', {
+					title: '<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIRM_DIALOG'); ?>',
+					confirmButtonText: '<?php echo JText::_('JYES'); ?>',
+					cancelButtonText: '<?php echo JText::_('JNO'); ?>',
+					onConfirm: function() {
+						\$.ajax({
+							url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=lecture.deleteSpeakerAjax&tmpl=component',
+							type: 'POST',
+							data: {
+								id: id,
+								'<?php echo JSession::getFormToken(); ?>': 1
+							},
+							success: function() {
+								\$(row).remove();
+							}
+						});
+					}
+				});
+			});
+		});
+	</script>
+	<div>
+		<input type="text" id="search-speaker" class="input-xlarge typeahead" placeholder="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_TYPE_USERNAME'); ?>" autocomplete="off" data-provide="typeahead" />
+		<input type="hidden" id="speaker-id" name="speaker-id" value="" />
+		<a href="#" id="add-speaker" class="btn btn-success"><i class="icon-plus"></i> <?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ADD_USER'); ?></a>
+		<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.add'); ?>" class="btn btn-info" target="_blank"><i class="icon-user"></i> <?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_CREATE_USER'); ?></a>
+	</div>
+	<hr>
+	<?php
+	\$saveOrderingUrl = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=lectures.saveSpeakerOrderAjax&tmpl=component';
+	JHtml::_('sortablelist.sortable', 'speakersList', 'lecture-form', 'asc', \$saveOrderingUrl);
+	?>
+	<table class="table table-striped table-hover" id="speakersList" >
+		<thead>
+			<tr>
+				<th width="1%" class="nowrap center hidden-phone">
+					<i class="icon-menu-2"></i>
+				</th>
+				<th class="title">
+					<?php echo JText::_('JGLOBAL_USERNAME'); ?>
+				</th>
+				<th width="10%" class="nowrap hidden-phone">
+					<?php echo JText::_('JGLOBAL_EMAIL'); ?>
+				</th>
+				<th width="1%" class="nowrap"></th>
+				<th width="1%" class="nowrap center hidden-phone">
+					<?php echo JText::_('JGRID_HEADING_ID'); ?>
+				</th>
+			</tr>
+		</thead>
+		<tbody id="speakers_boddy"></tbody>
+	</table>
+<?php else: ?>
+	<div class="alert">
+		<strong><?php echo JText::_('WARNING'); ?></strong> <?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_SAVE_BEFORE'); ?>
+	</div>
+<?php endif; ?>]]></content>
+	<tabTrigger>jadminlayoutedit_ajax</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

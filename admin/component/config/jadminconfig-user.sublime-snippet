@@ -1,0 +1,188 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<config>
+	<fieldset name="component">
+		<field
+			name="allowUserRegistration"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="COM_${1:${TM_COMPONENT/(.+)/\U\1/g}}_CONFIG_FIELD_ALLOWREGISTRATION_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_ALLOWREGISTRATION_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="new_usertype"
+			type="usergroup"
+			default="2"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_NEW_USER_TYPE_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_NEW_USER_TYPE_DESC" />
+		<field
+			name="guest_usergroup"
+			type="usergroup"
+			default="1"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_GUEST_USER_GROUP_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_GUEST_USER_GROUP_DESC" />
+		<field
+			name="sendpassword"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_SENDPASSWORD_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_SENDPASSWORD_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="useractivation"
+			type="list"
+			default="1"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_USERACTIVATION_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_USERACTIVATION_DESC">
+			<option value="0">JNONE</option>
+			<option value="1">COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_USERACTIVATION_OPTION_SELFACTIVATION</option>
+			<option value="2">COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_USERACTIVATION_OPTION_ADMINACTIVATION</option>
+		</field>
+		<field
+			name="mail_to_admin"
+			type="radio"
+			class="btn-group"
+			default="0"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MAILTOADMIN_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MAILTOADMIN_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="captcha"
+			type="plugins"
+			folder="captcha"
+			default=""
+			filter="cmd"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_CAPTCHA_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_CAPTCHA_DESC">
+			<option value="">JOPTION_USE_DEFAULT</option>
+			<option value="0">JOPTION_DO_NOT_USE</option>
+		</field>
+		<field
+			name="frontend_userparams"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_FRONTEND_USERPARAMS_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_FRONTEND_USERPARAMS_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		<field
+			name="site_language"
+			type="radio"
+			class="btn-group"
+			default="0"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_FRONTEND_LANG_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_FRONTEND_LANG_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		<field
+			name="change_login_name"
+			type="radio"
+			class="btn-group"
+			default="0"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_CHANGEUSERNAME_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_CHANGEUSERNAME_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="reset_count"
+			type="integer"
+			first="0"
+			last="20"
+			step="1"
+			default="10"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_FRONTEND_RESET_COUNT_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_FRONTEND_RESET_COUNT_DESC" />
+		<field
+			name="reset_time"
+			type="integer"
+			first="1"
+			last="24"
+			step="1"
+			default="1"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_FRONTEND_RESET_TIME_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_FRONTEND_RESET_TIME_DESC" />
+		<field
+			name="minimum_length"
+			type="integer"
+			first="4"
+			last="99"
+			step="1"
+			default="4"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MINIMUM_PASSWORD_LENGTH"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MINIMUM_PASSWORD_LENGTH_DESC" />
+		<field
+			name="minimum_integers"
+			type="integer"
+			first="0"
+			last="98"
+			step="1"
+			default="0"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MINIMUM_INTEGERS"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MINIMUM_INTEGERS_DESC" />
+		<field
+			name="minimum_symbols"
+			type="integer"
+			first="0"
+			last="98"
+			step="1"
+			default="0"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MINIMUM_SYMBOLS"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MINIMUM_SYMBOLS_DESC" />
+		<field
+			name="minimum_uppercase"
+			type="integer"
+			first="0"
+			last="98"
+			step="1"
+			default="0"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MINIMUM_UPPERCASE"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MINIMUM_UPPERCASE_DESC" />
+	</fieldset>
+	<fieldset
+		name="massmail"
+		label="COM_${1/(.+)/\U\1/g}_MASS_MAIL"
+		description="COM_${1/(.+)/\U\1/g}_MASS_MAIL_DESC">
+		<field
+			name="mailSubjectPrefix"
+			type="text"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_SUBJECT_PREFIX_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_SUBJECT_PREFIX_DESC" />
+		<field
+			name="mailBodySuffix"
+			type="textarea"
+			rows="5"
+			cols="30"
+			label="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MAILBODY_SUFFIX_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_CONFIG_FIELD_MAILBODY_SUFFIX_DESC" />
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC">
+		<field
+			name="rules"
+			type="rules"
+			filter="rules"
+			validate="rules"
+			component="com_${1/(.+)/\L\1/g}"
+			section="component"
+			label="JCONFIG_PERMISSIONS_LABEL" />
+	</fieldset>
+</config>
+
+]]></content>
+	<tabTrigger>jadminconfig-user</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

@@ -5,13 +5,6 @@
 		name="jmetadata"
 		label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
 		<field
-			name="tags"
-			type="tag"
-			class="inputbox"
-			multiple="true"
-			label="JTAG"
-			description="JTAG_DESC"></field>
-		<field
 			name="robots"
 			type="list"
 			labelclass="control-label"

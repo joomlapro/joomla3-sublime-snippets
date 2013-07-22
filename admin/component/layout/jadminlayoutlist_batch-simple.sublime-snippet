@@ -1,8 +1,5 @@
 <snippet>
-	<content><![CDATA[// Include the component HTML helpers.
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-
-\$published = \$this->state->get('filter.state');
+	<content><![CDATA[\$published = \$this->state->get('filter.state');
 ?>
 <div class="modal hide fade" id="collapseModal">
 	<div class="modal-header">
@@ -14,13 +11,13 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 		<?php if (\$published >= 0): ?>
 			<div class="control-group">
 				<div class="controls">
-					<?php echo JHtml::_('${1:plural}.item', 'com_${TM_COMPONENT/(.+)/\L\1/g}'); ?>
+					<?php echo JHtml::_('${1:singular}.item', 'com_${TM_COMPONENT/(.+)/\L\1/g}'); ?>
 				</div>
 			</div>
 		<?php endif; ?>
 	</div>
 	<div class="modal-footer">
-		<button class="btn" type="button" onclick="document.id('batch-access').value='';document.id('batch-language-id').value=''" data-dismiss="modal">
+		<button class="btn" type="button" onclick="" data-dismiss="modal">
 			<?php echo JText::_('JCANCEL'); ?>
 		</button>
 		<button class="btn btn-primary" type="submit" onclick="Joomla.submitbutton('${1:singular}.batch');">

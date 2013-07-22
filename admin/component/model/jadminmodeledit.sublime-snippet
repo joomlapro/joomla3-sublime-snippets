@@ -321,7 +321,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			{
 				\$item->tags = new JHelperTags;
 				\$item->tags->getTagIds(\$item->id, \$this->option . '.${1/(.+)/\L\1/g}');
-				\$item->metadata['tags'] = \$item->tags;
 			}
 		}
 

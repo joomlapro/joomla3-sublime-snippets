@@ -1,12 +1,12 @@
 <snippet>
 	<content><![CDATA[/**
- * Supports an HTML select list of ${2:${1/(.+)/\L\1/g}s}.
+ * Supports an HTML select list of ${2:plural}.
  *
  * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class JFormField${1:Singular}Ordering extends JFormField
+class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormField
 {
 	/**
 	 * The form field type.
@@ -14,7 +14,7 @@ class JFormField${1:Singular}Ordering extends JFormField
 	 * @var     string
 	 * @since   $TM_VERSION
 	 */
-	protected \$type = '${1/(.+)/\u\1/g}Ordering';
+	protected \$type = '${1/(.+)/\u\1/g}';
 
 	/**
 	 * Method to get the field input markup.
@@ -37,11 +37,11 @@ class JFormField${1:Singular}Ordering extends JFormField
 		\$attr .= \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
 
 		// Get some field values from the form.
-		\$${4:${1/(.+)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
+		\$${4:${2/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
 
 		// Build the query for the ordering list.
 		\$query = 'SELECT ordering AS value, ${3:title} AS text' .
-				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${5:${1/(.+)/\L\1/g}s}' .
+				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}${5:_${2/(.+)/\L\1/g}}' .
 				' ORDER BY ordering';
 
 		// Create a read-only list (no name) with a hidden input to store the value.

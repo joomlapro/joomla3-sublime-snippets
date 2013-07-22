@@ -8,6 +8,9 @@
  */
 public function save${1:Singular}Ajax()
 {
+	// Check for request forgeries.
+	JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+
 	// Get the application.
 	\$app = JFactory::getApplication();
 

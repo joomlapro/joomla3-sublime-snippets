@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[elseif (\$view == '${1/(.+)/\L\1/g}' && \$layout == 'edit' && !\$this->checkEditId('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1:singular}', \$id))
+{
+	// Somehow the person just went to the form - we don't allow that.
+	\$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', \$id));
+	\$this->setMessage(\$this->getError(), 'error');
+	\$this->setRedirect(JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${2:${1/(.+)/\L\1/g}s}', false));
+
+	return false;
+}]]></content>
+	<tabTrigger>jadmincontroller_display_checkeditid</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

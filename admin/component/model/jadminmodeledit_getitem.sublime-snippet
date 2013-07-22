@@ -28,7 +28,6 @@ public function getItem(\$pk = null)
 		{
 			\$item->tags = new JHelperTags;
 			\$item->tags->getTagIds(\$item->id, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}');
-			\$item->metadata['tags'] = \$item->tags;
 		}
 	}
 

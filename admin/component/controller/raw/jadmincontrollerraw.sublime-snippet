@@ -1,7 +1,5 @@
 <snippet>
-	<content><![CDATA[jimport('joomla.application.component.controlleradmin');
-
-/**
+	<content><![CDATA[/**
  * ${1/(.+)/\u\1/g} list controller class.
  *
  * @package     $TM_COMPONENT

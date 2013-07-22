@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[/**
+ * The regular expression to use in testing a form field value.
+ *
+ * @var     string
+ * @since   $TM_VERSION
+ */
+protected \$regex = '${1:/^\\d\{3\}\\.\\d\{3\}\.\\d\{3\}\-\\d\{2\}\$/}';]]></content>
+	<tabTrigger>jsitemodelrule_regex</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

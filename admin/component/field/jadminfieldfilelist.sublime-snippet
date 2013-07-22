@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="filelist"
+	class="inputbox"
+	stripext="1"
+	directory="${2:path/to/directory/}"
+	hide_none="1"
+	hide_default="1"
+	required="true"
+	filter="${3:\\.gif\$}"
+	size="10"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
+]]></content>
+	<tabTrigger>jadminfieldfilelist</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

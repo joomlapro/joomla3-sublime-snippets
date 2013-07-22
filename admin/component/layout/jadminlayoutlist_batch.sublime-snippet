@@ -1,6 +1,5 @@
 <snippet>
-	<content><![CDATA[
-\$published = \$this->state->get('filter.state');
+	<content><![CDATA[\$published = \$this->state->get('filter.state');
 ?>
 <div class="modal hide fade" id="collapseModal">
 	<div class="modal-header">

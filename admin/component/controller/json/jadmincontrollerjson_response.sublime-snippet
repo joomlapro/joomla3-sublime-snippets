@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method for ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function ${1:get}${2:Name}Ajax()
+{
+	// Check for request forgeries.
+	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+
+	echo new JResponseJson(\$this->getModel('${3:${2/(.+)/\u\1/g}}', '${TM_COMPONENT/(.+)/\u\1/g}Model')->${1/(.+)/\L\1/g}${2/(.+)/\u\1/g}());
+}]]></content>
+	<tabTrigger>jadmincontrollerjson_response</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
