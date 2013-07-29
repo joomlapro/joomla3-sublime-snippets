@@ -5,7 +5,7 @@
 // Access check.
 if (!JFactory::getUser()->authorise('core.manage', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
 {
-	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+	throw new RuntimeException(JText::_('JERROR_ALERTNOAUTHOR'), 404);
 }
 
 // Register dependent classes.

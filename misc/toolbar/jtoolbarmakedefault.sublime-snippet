@@ -2,7 +2,6 @@
 	<content><![CDATA[if (\$canDo->get('core.edit.state'))
 {
 	JToolbarHelper::makeDefault('${1:plural}.setDefault', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_TOOLBAR_SET_${2:HOME}');
-	JToolbarHelper::divider();
 }]]></content>
 	<tabTrigger>jtoolbarmakedefault</tabTrigger>
 	<scope>source.php</scope>

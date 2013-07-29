@@ -1,22 +1,14 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to catch the onAfterDispatch event.
+ * After the framework has dispatched the application.
  *
- * @return  boolean  True on success.
+ * @return  void
  *
  * @since   $TM_VERSION
  */
 public function onAfterDispatch()
 {
-	// Check that we are in the site application.
-	if (JFactory::getApplication()->isAdmin())
-	{
-		return true;
-	}
-
-	//
-
-	return true;
+	$1
 }]]></content>
 	<tabTrigger>jplugin_onafterdispatch</tabTrigger>
 	<scope>source.php</scope>

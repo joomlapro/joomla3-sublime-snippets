@@ -271,7 +271,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		else
 		{
 			// New ${1/(.+)/\L\1/g}. A ${1/(.+)/\L\1/g} created and created_by field can be set by the user,
-			// so we don't touch either of these if they are set.
+			// so we do not touch either of these if they are set.
 			if (!(int) \$this->created)
 			{
 				\$this->created = \$date->toSql();

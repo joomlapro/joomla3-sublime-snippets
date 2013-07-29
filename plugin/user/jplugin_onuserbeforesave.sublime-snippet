@@ -9,14 +9,14 @@
  * @return  void
  *
  * @since   $TM_VERSION
- * @throws  Exception on error.
+ * @throws  RuntimeException on error.
  */
 public function onUserBeforeSave(\$user, \$isnew, \$new)
 {
 	// Initialiase variables.
 	\$app = JFactory::getApplication();
 
-	// throw new Exception('Some error occurred. Please do not save me');
+	// throw new RuntimeException('Some error occurred. Please do not save me');
 }
 
 ]]></content>

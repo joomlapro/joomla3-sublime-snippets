@@ -22,6 +22,6 @@ protected function getReturnPage()
 		return base64_decode(\$return);
 	}
 }]]></content>
-	<tabTrigger>jadmincontrolleredit_getreturnpage</tabTrigger>
+	<tabTrigger>jsitecontrollerform_getreturnpage</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

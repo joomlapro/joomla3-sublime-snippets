@@ -1,0 +1,43 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get a list of the user groups for filtering.
+ *
+ * @return  array  An array of JHtmlOption elements.
+ *
+ * @since   $TM_VERSION
+ */
+public static function getGroups()
+{
+	// Initialiase variables.
+	\$db    = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Create the base select statement.
+	\$query->select('a.id AS value, a.title AS text, COUNT(DISTINCT b.id) AS level')
+		->from('#__usergroups as a')
+		->join('LEFT', '#__usergroups  AS b ON a.lft > b.lft AND a.rgt < b.rgt')
+		->group('a.id, a.title, a.lft, a.rgt')
+		->order('a.lft ASC');
+
+	// Set the query and load the result.
+	\$db->setQuery(\$query);
+
+	try
+	{
+		\$options = \$db->loadObjectList();
+	}
+	catch (RuntimeException \$e)
+	{
+		throw new RuntimeException(\$e->getMessage(), \$e->getCode());
+	}
+
+	foreach (\$options as &\$option)
+	{
+		\$option->text = str_repeat('- ', \$option->level) . \$option->text;
+	}
+
+	return \$options;
+}]]></content>
+	<tabTrigger>jadminhelper_getgroups</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

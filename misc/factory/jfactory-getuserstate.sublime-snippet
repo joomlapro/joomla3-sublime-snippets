@@ -1,6 +1,5 @@
 <snippet>
-	<content><![CDATA[// Load the User state.
-\$${3/(.+)/\L\1/g} = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:edit}.${2:view}.${3:id}');]]></content>
+	<content><![CDATA[\$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1:singular}.data', array());]]></content>
 	<tabTrigger>jfactory-getuserstate</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

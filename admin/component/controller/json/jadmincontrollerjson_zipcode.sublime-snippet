@@ -8,12 +8,11 @@
  */
 public function getZipCode()
 {
-	// Initialiase variables.
-	\$app   = JFactory::getApplication();
-	\$input = \$app->input;
+	// Get the application.
+	\$app     = JFactory::getApplication();
 
-	\$request = 'http://republicavirtual.com.br/web_cep.php?cep=' . urlencode(\$input->get('zipcode')) . '&formato=json';
-	\$return = file_get_contents(\$request);
+	\$request = 'http://republicavirtual.com.br/web_cep.php?cep=' . urlencode(\$app->input->get('zipcode')) . '&formato=json';
+	\$return  = file_get_contents(\$request);
 
 	// Check the data.
 	if (empty(\$return))

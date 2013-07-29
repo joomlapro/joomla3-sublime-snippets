@@ -30,24 +30,24 @@ public function ${1:action}()
 		{
 			if (!\$user->authorise('core.edit.state', \$this->option . '.category.' . (int) \$item->catid))
 			{
-				// Prune items that you can't change.
+				// Prune items that you can not change.
 				unset(\$ids[\$i]);
 
-				JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+				throw new RuntimeException(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 403);
 			}
 		}
 	}
 
 	if (empty(\$ids))
 	{
-		JError::raiseWarning(500, JText::_('JGLOBAL_NO_ITEM_SELECTED'));
+		throw new RuntimeException(JText::_('JGLOBAL_NO_ITEM_SELECTED'), 500);
 	}
 	else
 	{
 		// Publish the items.
 		if (!\$model->${1/(.+)/\L\1/g}(\$ids, \$value))
 		{
-			JError::raiseWarning(500, \$model->getError());
+			throw new RuntimeException(\$model->getError(), 500);
 		}
 	}
 

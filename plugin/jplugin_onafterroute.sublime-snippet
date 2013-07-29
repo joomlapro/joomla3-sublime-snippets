@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * After the framework load, application initialised & route of client request.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function onAfterRoute()
+{
+	$1
+}]]></content>
+	<tabTrigger>jplugin_onafterroute</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

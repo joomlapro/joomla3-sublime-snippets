@@ -40,9 +40,7 @@ try
 }
 catch (RuntimeException \$e)
 {
-	JError::raiseWarning(500, \$e->getMessage());
-
-	return false;
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 }]]></content>
 	<tabTrigger>jdbo-insert_advanced</tabTrigger>
 	<scope>source.php</scope>

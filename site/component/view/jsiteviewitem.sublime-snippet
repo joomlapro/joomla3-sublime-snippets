@@ -43,7 +43,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))
 		{
-			JError::raiseWarning(500, implode("\n", \$errors));
+			throw new RuntimeException(implode("\n", \$errors), 500);
 
 			return false;
 		}
@@ -116,7 +116,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		// Check the view access to the ${1/(.+)/\L\1/g} (the model has already computed the values).
 		if (\$item->params->get('access-view') != true && ((\$item->params->get('show_noauth') != true && \$user->get('guest'))))
 		{
-			JError::raiseWarning(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			throw new RuntimeException(JText::_('JERROR_ALERTNOAUTHOR'), 403);
 			return;
 		}
 

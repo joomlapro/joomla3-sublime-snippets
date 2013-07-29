@@ -16,7 +16,7 @@ public function ${1:add}${2:user}(\$${3:pks} = null, \$${4:group} = null)
 
 	if (empty(\$${3/(.+)/\L\1/g}))
 	{
-		return JError::raiseWarning(500, JText::_(\$this->text_prefix . '_ERROR_NO_ITEMS_SELECTED'));
+		throw new RuntimeException(JText::_(\$this->text_prefix . '_ERROR_NO_ITEMS_SELECTED'), 500);
 	}
 
 	// ${1/(.+)/\u\1/g} ${2/(.+)/\L\1/g}s records.
@@ -27,7 +27,7 @@ public function ${1:add}${2:user}(\$${3:pks} = null, \$${4:group} = null)
 		// Access checks.
 		if (!\$this->canEditState(\$table))
 		{
-			// Prune items that you can't change.
+			// Prune items that you can not change.
 			unset(\$${3/(.+)/\L\1/g}[\$i]);
 			JLog::add(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), JLog::WARNING, 'jerror');
 		}
@@ -40,7 +40,7 @@ public function ${1:add}${2:user}(\$${3:pks} = null, \$${4:group} = null)
 		}
 	}
 
-	// Clear the component's cache.
+	// Clear the cache.
 	\$this->cleanCache();
 
 	return true;

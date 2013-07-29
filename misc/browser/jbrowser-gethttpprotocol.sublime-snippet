@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$browser->getHTTPProtocol();]]></content>
+	<tabTrigger>jbrowser-gethttpprotocol</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

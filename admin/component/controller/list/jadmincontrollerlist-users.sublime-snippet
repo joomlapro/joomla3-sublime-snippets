@@ -9,12 +9,10 @@
 class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerAdmin
 {
 	/**
-	 * The prefix to use with controller messages.
-	 *
-	 * @var    string
+	 * @var    string  The prefix to use with controller messages.
 	 * @since  $TM_VERSION
 	 */
-	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+	protected \$text_prefix = 'COM_USERS_USERS';
 
 	/**
 	 * Constructor.
@@ -30,6 +28,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 
 		\$this->registerTask('block', 'changeBlock');
 		\$this->registerTask('unblock', 'changeBlock');
+
+		// Load the users component language file.
+		\$lang = JFactory::getLanguage();
+		\$lang->load('com_users', JPATH_ADMINISTRATOR);
 	}
 
 	/**
@@ -43,7 +45,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function getModel(\$name = '${2:${1/(.+)(s\b)/\u\1/g}}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
+	public function getModel(\$name = 'User', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
 	{
 		return parent::getModel(\$name, \$prefix, \$config);
 	}
@@ -68,7 +70,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 
 		if (empty(\$ids))
 		{
-			JError::raiseWarning(500, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+			throw new RuntimeException(JText::_('COM_USERS_USERS_NO_ITEM_SELECTED'), 500);
 		}
 		else
 		{
@@ -78,17 +80,17 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 			// Change the state of the records.
 			if (!\$model->block(\$ids, \$value))
 			{
-				JError::raiseWarning(500, \$model->getError());
+				throw new RuntimeException(\$model->getError(), 500);
 			}
 			else
 			{
 				if (\$value == 1)
 				{
-					\$this->setMessage(JText::plural('COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${1/(.+)/\U\1/g}_BLOCKED', count(\$ids)));
+					\$this->setMessage(JText::plural('COM_USERS_N_USERS_BLOCKED', count(\$ids)));
 				}
 				elseif (\$value == 0)
 				{
-					\$this->setMessage(JText::plural('COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${1/(.+)/\U\1/g}_UNBLOCKED', count(\$ids)));
+					\$this->setMessage(JText::plural('COM_USERS_N_USERS_UNBLOCKED', count(\$ids)));
 				}
 			}
 		}
@@ -108,11 +110,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
+		// Initialiase variables.
 		\$ids = \$this->input->get('cid', array(), 'array');
 
 		if (empty(\$ids))
 		{
-			JError::raiseWarning(500, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+			throw new RuntimeException(JText::_('COM_USERS_USERS_NO_ITEM_SELECTED'), 500);
 		}
 		else
 		{
@@ -122,11 +125,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 			// Change the state of the records.
 			if (!\$model->activate(\$ids))
 			{
-				JError::raiseWarning(500, \$model->getError());
+				throw new RuntimeException(\$model->getError(), 500);
 			}
 			else
 			{
-				\$this->setMessage(JText::plural('COM_${TM_COMPONENT/(.+)/\U\1/g}_N_${1/(.+)/\U\1/g}_ACTIVATED', count(\$ids)));
+				\$this->setMessage(JText::plural('COM_USERS_N_USERS_ACTIVATED', count(\$ids)));
 			}
 		}
 

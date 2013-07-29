@@ -8,14 +8,29 @@
  */
 class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 {
+	/**
+	 * Model state object.
+	 *
+	 * @var     object
+	 */
 	protected \$state;
 
+	/**
+	 * List of update items.
+	 *
+	 * @var     array
+	 */
 	protected \$items;
 
 	protected \$category;
 
-	protected \$categories;
+	protected \$children;
 
+	/**
+	 * List pagination.
+	 *
+	 * @var     JPagination
+	 */
 	protected \$pagination;
 
 	/**
@@ -59,7 +74,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 
 		if (!in_array(\$category->access, \$groups))
 		{
-			return JError::raiseError(403, JText::_('JERROR_ALERTNOAUTHOR'));
+			throw new RuntimeException(403, JText::_('JERROR_ALERTNOAUTHOR'));
 		}
 
 		// Prepare the data.
@@ -72,9 +87,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 			\$item->link     = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug, \$item->catslug);
 			\$item->cat_link = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$item->catslug);
 
-			\$temp          = new JRegistry;
+			\$temp           = new JRegistry;
 			\$temp->loadString(\$item->params);
-			\$item->params  = clone(\$params);
+			\$item->params   = clone(\$params);
 			\$item->params->merge(\$temp);
 		}
 

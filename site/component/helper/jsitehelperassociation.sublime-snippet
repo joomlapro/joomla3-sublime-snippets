@@ -28,10 +28,9 @@ abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperAssociation extends CategoryHelp
 		jimport('helper.route', JPATH_COMPONENT_SITE);
 
 		// Initialiase variables.
-		\$app    = JFactory::getApplication();
-		\$jinput = \$app->input;
-		\$view   = is_null(\$view) ? \$jinput->get('view') : \$view;
-		\$id     = empty(\$id) ? \$jinput->getInt('id') : \$id;
+		\$app  = JFactory::getApplication();
+		\$view = is_null(\$view) ? \$app->input->get('view') : \$view;
+		\$id   = empty(\$id) ? \$app->input->getInt('id') : \$id;
 
 		if (\$view == '${1:singular}')
 		{

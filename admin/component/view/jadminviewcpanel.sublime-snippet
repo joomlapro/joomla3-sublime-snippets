@@ -23,7 +23,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Cpanel} extends JViewLegacy
 	 */
 	public function display(\$tpl = null)
 	{
-		// Initialise variables.
+		// Get the input.
 		\$input = JFactory::getApplication()->input;
 
 		/*

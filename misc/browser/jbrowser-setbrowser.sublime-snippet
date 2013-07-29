@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$browser->setBrowser();]]></content>
+	<tabTrigger>jbrowser-setbrowser</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

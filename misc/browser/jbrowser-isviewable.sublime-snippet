@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$browser->isViewable(\$${1:mimetype});]]></content>
+	<tabTrigger>jbrowser-isviewable</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

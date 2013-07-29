@@ -8,11 +8,12 @@
  */
 public function saveOrderAjax()
 {
-	// Get the input.
+	// Get the application.
 	\$app   = JFactory::getApplication();
-	\$input = \$app->input;
-	\$pks   = \$input->post->get('cid', array(), 'array');
-	\$order = \$input->post->get('order', array(), 'array');
+
+	// Get the input.
+	\$pks   = \$app->input->post->get('cid', array(), 'array');
+	\$order = \$app->input->post->get('order', array(), 'array');
 
 	// Sanitize the input.
 	JArrayHelper::toInteger(\$pks);

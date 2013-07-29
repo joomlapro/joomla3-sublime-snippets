@@ -9,15 +9,16 @@
  *
  * @since   $TM_VERSION
  */
-public function save(\$key = null, \$urlVar = 'id')
+public function save(\$key = null, \$urlVar = null)
 {
 	// Initialiase variables.
 	\$result = parent::save(\$key, \$urlVar);
+	\$return = \$this->input->get('return', null, 'base64');
 
-	// If ok, redirect to the return page.
-	if (\$result)
+	if (\$this->getTask() == 'save' && \$return)
 	{
-		\$this->setRedirect(\$this->getReturnPage());
+		// Redirect to the return page.
+		\$this->setRedirect(base64_decode(\$return));
 	}
 
 	return \$result;

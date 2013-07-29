@@ -53,7 +53,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller extends JControllerLegacy
 		// Check for edit form.
 		if (\$vName == '${3:form}' && !\$this->checkEditId('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${2:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}', \$id))
 		{
-			// Somehow the person just went to the form - we don't allow that.
+			// Somehow the person just went to the form - we do not allow that.
 			return JError::raiseError(403, JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', \$id));
 		}
 

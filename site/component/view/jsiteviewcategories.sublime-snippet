@@ -33,19 +33,20 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewCategories extends JViewLegacy
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))
 		{
-			JError::raiseWarning(500, implode("\n", \$errors));
-			return false;
+			throw new RuntimeException(implode("\n", \$errors), 500);
 		}
 
 		if (\$items === false)
 		{
 			JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_CATEGORY_NOT_FOUND'));
+
 			return false;
 		}
 
 		if (\$parent == false)
 		{
 			JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_PARENT_CATEGORY_NOT_FOUND'));
+
 			return false;
 		}
 

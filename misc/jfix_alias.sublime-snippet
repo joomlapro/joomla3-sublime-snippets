@@ -9,14 +9,14 @@
 
 // Set the query and load the result.
 \$db->setQuery(\$query);
-\$items = \$db->loadObjectList();
 
-// Check for a database error.
-if (\$db->getErrorNum())
+try
 {
-	JError::raiseWarning(500, \$db->getErrorMsg());
-
-	return false;
+	\$items = \$db->loadObjectList();
+}
+catch (RuntimeException $e)
+{
+	throw new RuntimeException($e->getMessage(), $e->getCode());
 }
 
 foreach (\$items as \$item)
@@ -36,7 +36,7 @@ foreach (\$items as \$item)
 	}
 	catch (RuntimeException \$e)
 	{
-		JError::raiseWarning(500, \$e->getMessage());
+		throw new RuntimeException(500, \$e->getMessage());
 
 		return false;
 	}

@@ -52,20 +52,19 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		// Get the configuration options.
 		\$app    = JFactory::getApplication();
-		\$input  = \$app->input;
 		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$user   = JFactory::getUser();
-		\$itemid = \$input->get('Itemid', 0, 'int');
+		\$itemid = \$app->input->get('Itemid', 0, 'int');
 
 		// Optional filter text.
-		\$search = \$input->getString('filter-search');
+		\$search = \$app->input->getString('filter-search');
 		\$this->setState('list.filter', \$search);
 
 		// List state information.
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
 		\$this->setState('list.limit', \$limit);
 
-		\$limitstart = \$input->get('limitstart', 0, 'uint');
+		\$limitstart = \$app->input->get('limitstart', 0, 'uint');
 		\$this->setState('list.start', \$limitstart);
 
 		// Load the ordering.
@@ -93,7 +92,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
-			// Limit to published for people who can't edit or edit.state.
+			// Limit to published for people who can not edit or edit.state.
 			\$this->setState('filter.state', 1);
 
 			// Filter by start and end dates.
@@ -101,7 +100,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 
 		// Load the layout.
-		\$this->setState('layout', \$input->get('layout'));
+		\$this->setState('layout', \$app->input->get('layout'));
 	}
 
 	/**

@@ -8,11 +8,26 @@
  */
 class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 {
+	/**
+	 * Model state object.
+	 *
+	 * @var     object
+	 */
+	protected \$state;
+
+	/**
+	 * List of update items.
+	 *
+	 * @var     array
+	 */
 	protected \$items;
 
+	/**
+	 * List pagination.
+	 *
+	 * @var     JPagination
+	 */
 	protected \$pagination;
-
-	protected \$state;
 
 	/**
 	 * Method to display the view.
@@ -26,9 +41,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 	public function display(\$tpl = null)
 	{
 		// Initialise variables.
+		\$this->state      = \$this->get('State');
 		\$this->items      = \$this->get('Items');
 		\$this->pagination = \$this->get('Pagination');
-		\$this->state      = \$this->get('State');
 		\$this->authors    = \$this->get('Authors');
 
 		// Check for errors.

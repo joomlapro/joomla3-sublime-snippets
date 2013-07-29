@@ -6,7 +6,7 @@
  */
 function onExtensionBeforeInstall(\$method, \$type, \$manifest, \$eid)
 {
-	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionBeforeInstall: Installing ' . \$type . ' from ' . \$method . (\$method == 'install' ? ' with manifest supplied' : ' using discovered extension ID ' . \$eid));
+	throw new RuntimeException('plgExtensionExample::onExtensionBeforeInstall: Installing ' . \$type . ' from ' . \$method . (\$method == 'install' ? ' with manifest supplied' : ' using discovered extension ID ' . \$eid, -1));
 }
 
 ]]></content>

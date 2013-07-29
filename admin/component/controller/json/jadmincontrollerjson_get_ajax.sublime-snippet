@@ -13,7 +13,6 @@ public function get${1:Singular}Ajax()
 
 	// Initialiase variables.
 	\$app    = JFactory::getApplication();
-	\$input  = \$app->input;
 	\$return = array();
 
 	//

@@ -8,11 +8,26 @@
  */
 class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 {
+	/**
+	 * Model state object.
+	 *
+	 * @var     object
+	 */
+	protected \$state;
+
+	/**
+	 * List of update items.
+	 *
+	 * @var     array
+	 */
 	protected \$items;
 
+	/**
+	 * List pagination.
+	 *
+	 * @var     JPagination
+	 */
 	protected \$pagination;
-
-	protected \$state;
 
 	/**
 	 * Method to display the view.
@@ -26,9 +41,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 	public function display(\$tpl = null)
 	{
 		// Initialise variables.
+		\$this->state      = \$this->get('State');
 		\$this->items      = \$this->get('Items');
 		\$this->pagination = \$this->get('Pagination');
-		\$this->state      = \$this->get('State');
 
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))
@@ -38,7 +53,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 			return false;
 		}
 
-		// We don't need toolbar in the modal window.
+		// We do not need toolbar in the modal window.
 		if (\$this->getLayout() !== 'modal')
 		{
 			// Load the submenu.

@@ -31,14 +31,14 @@ abstract class Mod${1:$TM_MODULE}Helper
 
 		// Inject the query and load the items.
 		\$db->setQuery(\$query);
-		\$items = \$db->loadObjectList();
 
-		// Check for a database error.
-		if (\$db->getErrorNum())
+		try
 		{
-			JError::raiseWarning(500, \$db->getErrorMsg());
-
-			return false;
+			\$items = \$db->loadObjectList();
+		}
+		catch (RuntimeException \$e)
+		{
+			throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 		}
 
 		return \$items;

@@ -6,7 +6,7 @@
  */
 function onExtensionBeforeUpdate(\$type, \$manifest)
 {
-	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionBeforeUpdate: Updating a ' . \$type);
+	throw new RuntimeException('plgExtensionExample::onExtensionBeforeUpdate: Updating a ' . \$type, -1);
 }
 
 ]]></content>

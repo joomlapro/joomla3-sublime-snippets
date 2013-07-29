@@ -114,7 +114,7 @@ class JFormFieldModal_${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormField
 		}
 		catch (RuntimeException \$e)
 		{
-			JError::raiseWarning(500, \$e->getMessage());
+			throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 		}
 
 		if (empty(\$${2/(.+)/\L\1/g}))

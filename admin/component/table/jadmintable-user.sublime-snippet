@@ -298,7 +298,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 		}
 		else
 		{
-			// Don't have a table key, insert the row.
+			// Do not have a table key, insert the row.
 			\$this->_db->insertObject(\$this->_tbl, \$this, \$this->_tbl_key);
 		}
 

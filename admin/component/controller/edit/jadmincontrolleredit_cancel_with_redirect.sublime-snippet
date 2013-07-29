@@ -10,12 +10,17 @@
  */
 public function cancel(\$key = null)
 {
-	\$return = parent::cancel(\$key);
+	// Initialiase variables.
+	\$result = parent::cancel(\$key);
+	\$return = \$this->input->get('return', null, 'base64');
 
-	// Redirect to the return page.
-	\$this->setRedirect(\$this->getReturnPage());
+	if (\$return)
+	{
+		// Redirect to the return page.
+		\$this->setRedirect(base64_decode(\$return));
+	}
 
-	return \$return;
+	return \$result;
 }]]></content>
 	<tabTrigger>jadmincontrolleredit_cancel_with_redirect</tabTrigger>
 	<scope>source.php</scope>

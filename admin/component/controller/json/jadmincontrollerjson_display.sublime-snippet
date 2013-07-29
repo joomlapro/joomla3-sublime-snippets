@@ -13,7 +13,6 @@ public function display(\$cachable = false, \$urlparams = false)
 {
 	// Initialiase variables.
 	\$app    = JFactory::getApplication();
-	\$input  = \$app->input;
 	\$return = array();
 
 	// Load the parameters.

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$browser->getVersion();]]></content>
+	<tabTrigger>jbrowser-getversion</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

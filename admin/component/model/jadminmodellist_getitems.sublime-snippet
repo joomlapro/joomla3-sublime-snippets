@@ -20,7 +20,7 @@ public function getItems()
 
 		for (\$x = 0, \$count = count(\$items); \$x < \$count; \$x++)
 		{
-			// Check the access level. Remove ${TM_FILENAME/(.*?)(\..+)/\L$1/} the user shouldn't see.
+			// Check the access level. Remove ${TM_FILENAME/(.*?)(\..+)/\L$1/} the user should not see.
 			if (!in_array(\$items[\$x]->access, \$groups))
 			{
 				unset(\$items[\$x]);

@@ -34,7 +34,7 @@ public function _migrate()
 
 					if (!\$db->query())
 					{
-						JError::raiseWarning(1, JText::sprintf('JLIB_INSTALLER_ERROR_SQL_ERROR', \$db->stderr(true)));
+						throw new RuntimeException(JText::sprintf('JLIB_INSTALLER_ERROR_SQL_ERROR', \$db->stderr(true)), 1);
 						return;
 					}
 				}
@@ -47,7 +47,7 @@ public function _migrate()
 
 				if (!\$db->query())
 				{
-					JError::raiseWarning(1, JText::sprintf('JLIB_INSTALLER_ERROR_SQL_ERROR', \$db->stderr(true)));
+					throw new RuntimeException(JText::sprintf('JLIB_INSTALLER_ERROR_SQL_ERROR', \$db->stderr(true)), 1);
 					return;
 				}
 			}

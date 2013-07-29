@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Save the data in the session.
+\$app->setUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1:singular}.data', \$data);]]></content>
+	<tabTrigger>jfactory-setuserstate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

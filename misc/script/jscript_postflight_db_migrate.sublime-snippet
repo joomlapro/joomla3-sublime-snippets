@@ -23,14 +23,14 @@ if (\$type == 'update')
 
 		// Set the query and load the result.
 		\$db->setQuery(\$query);
-		\$result = \$db->loadObjectList('${1/(.+)/\L\1/g}_id');
 
-		// Check for a database error.
-		if (\$db->getErrorNum())
+		try
 		{
-			JError::raiseWarning(500, \$db->getErrorMsg());
-
-			return false;
+			\$result = \$db->loadObjectList('${1/(.+)/\L\1/g}_id');
+		}
+		catch (RuntimeException $e)
+		{
+			throw new RuntimeException($e->getMessage(), $e->getCode());
 		}
 
 		foreach (\$result as \$${1/(.+)/\L\1/g})

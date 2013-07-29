@@ -9,12 +9,12 @@
 public static function getStateOptions()
 {
 	// Build the filter options.
-	\$options = array();
+	\$options   = array();
 	\$options[] = JHtml::_('select.option', '0', JText::_('JENABLED'));
 	\$options[] = JHtml::_('select.option', '1', JText::_('JDISABLED'));
 
 	return \$options;
 }]]></content>
-	<tabTrigger>getstateoptions</tabTrigger>
+	<tabTrigger>jadminhelper_getstateoptions</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

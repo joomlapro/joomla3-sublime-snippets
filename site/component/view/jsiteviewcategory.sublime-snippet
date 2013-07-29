@@ -8,14 +8,31 @@
  */
 class ${TM_COMPONENT/(.+)/\u\1/g}ViewCategory extends JViewLegacy
 {
+	/**
+	 * Model state object.
+	 *
+	 * @var     object
+	 */
 	protected \$state;
 
+	/**
+	 * List of update items.
+	 *
+	 * @var     array
+	 */
 	protected \$items;
 
 	protected \$category;
 
-	protected \$categories;
+	protected \$children;
 
+	protected \$parent;
+
+	/**
+	 * List pagination.
+	 *
+	 * @var     JPagination
+	 */
 	protected \$pagination;
 
 	/**

@@ -44,7 +44,7 @@ public function ${1:action}(\$pks, \$value = 0)
 
 	\$table->reorder();
 
-	// Clean component's cache.
+	// Clear the cache.
 	\$this->cleanCache();
 
 	return true;

@@ -147,7 +147,7 @@ class PlgFinder${1:${TM_COMPONENT/(.+)/\u\1/g}} extends FinderIndexerAdapter
 		// We only want to handle news feeds here.
 		if (\$context == 'com_${TM_COMPONENT/(.+)/\L\1/g}.${6/(.+)/\L\1/g}')
 		{
-			// Query the database for the old access level if the item isn't new.
+			// Query the database for the old access level if the item is not new.
 			if (!\$isNew)
 			{
 				\$this->checkItemAccess(\$row);

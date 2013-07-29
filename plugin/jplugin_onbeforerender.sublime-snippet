@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * Before the framework renders the application.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function onBeforeRender()
+{
+	$1
+}]]></content>
+	<tabTrigger>jplugin_onbeforerender</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

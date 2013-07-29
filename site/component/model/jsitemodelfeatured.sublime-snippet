@@ -78,17 +78,16 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		// Initialise variables.
 		\$app    = JFactory::getApplication();
-		\$input  = \$app->input;
 		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
 
 		// List state information.
 		\$limit = \$app->getUserStateFromRequest('global.list.limit', 'limit', \$app->getCfg('list_limit'), 'uint');
 		\$this->setState('list.limit', \$limit);
 
-		\$limitstart = \$input->get('limitstart', 0, 'uint');
+		\$limitstart = \$app->input->get('limitstart', 0, 'uint');
 		\$this->setState('list.start', \$limitstart);
 
-		\$orderCol = \$input->get('filter_order', 'ordering');
+		\$orderCol = \$app->input->get('filter_order', 'ordering');
 
 		if (!in_array(\$orderCol, \$this->filter_fields))
 		{
@@ -97,7 +96,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		\$this->setState('list.ordering', \$orderCol);
 
-		\$listOrder = \$input->get('filter_order_Dir', 'ASC');
+		\$listOrder = \$app->input->get('filter_order_Dir', 'ASC');
 
 		if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
 		{
@@ -111,7 +110,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) && (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
-			// Limit to published for people who can't edit or edit.state.
+			// Limit to published for people who can not edit or edit.state.
 			\$this->setState('filter.published', 1);
 
 			// Filter by start and end dates.

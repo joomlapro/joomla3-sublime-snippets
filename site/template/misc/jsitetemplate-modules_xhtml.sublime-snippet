@@ -16,7 +16,7 @@ function modChrome_${1:style}(\$module, &\$params, &\$attribs)
 
 	if (!empty (\$content))
 	{
-		\$html  = "<div class=\"module{\$moduleClassSfx}\">";
+		\$html = "<div class=\"module{\$moduleClassSfx}\">";
 
 		if ((bool) \$module->showtitle)
 		{

@@ -32,7 +32,7 @@ class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormField
 		\$readonly  = ((string) \$this->element['readonly'] == 'true') ? ' readonly="readonly"' : '';
 		\$disabled  = ((string) \$this->element['disabled'] == 'true') ? ' disabled="disabled"' : '';
 
-		// Make sure somebody doesn't put in a too large ${2/(.+)/\L\1/g} size value:
+		// Make sure somebody does not put in a too large ${2/(.+)/\L\1/g} size value:
 		if (\$size > 10)
 		{
 			\$size = 10;

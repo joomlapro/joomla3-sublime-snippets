@@ -25,9 +25,7 @@ if (\$type == 'install')
 	}
 	catch (RuntimeException \$e)
 	{
-		JError::raiseWarning(500, \$e->getMessage());
-
-		return false;
+		throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 	}
 }]]></content>
 	<tabTrigger>jscript_postflight_default_data</tabTrigger>

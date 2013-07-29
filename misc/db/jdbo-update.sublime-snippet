@@ -17,11 +17,8 @@ try
 }
 catch (RuntimeException \$e)
 {
-	JError::raiseWarning(500, \$e->getMessage());
-
-	return false;
-}
-]]></content>
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
+}]]></content>
 	<tabTrigger>jdbo-update</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

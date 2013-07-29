@@ -17,9 +17,7 @@ try
 }
 catch (RuntimeException \$e)
 {
-	JError::raiseWarning(500, \$e->getMessage());
-
-	return false;
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 }]]></content>
 	<tabTrigger>jscript_postflight_enabled</tabTrigger>
 	<scope>source.php</scope>

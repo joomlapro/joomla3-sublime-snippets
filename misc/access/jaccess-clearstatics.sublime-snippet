@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Clear the static caches.
+JAccess::clearStatics();]]></content>
+	<tabTrigger>jaccess-clearstatics</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

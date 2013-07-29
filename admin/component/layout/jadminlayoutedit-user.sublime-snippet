@@ -1,36 +1,34 @@
 <snippet>
 	<content><![CDATA[// Include the component HTML helpers.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+JHtml::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_users/helpers/html');
 
 // Load the behavior script.
-JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 
-// Get the application.
-\$app = JFactory::getApplication();
-\$input = \$app->input;
+// Get the input.
+\$input = JFactory::getApplication()->input;
 
 // Initialise variables.
-\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions();
+\$canDo = UsersHelper::getActions();
 
 // Get the form fieldsets.
 \$fieldsets = \$this->form->getFieldsets();
 ?>
 <script type="text/javascript">
-	Joomla.submitbutton = function(task)
-	{
-		if (task == '${1:user}.cancel' || document.formvalidator.isValid(document.id('${1/(.+)/\L\1/g}-form')))
-		{
+	Joomla.submitbutton = function(task) {
+		if (task == '${1:user}.cancel' || document.formvalidator.isValid(document.id('${1/(.+)/\L\1/g}-form'))) {
 			Joomla.submitform(task, document.getElementById('${1/(.+)/\L\1/g}-form'));
 		}
 	}
 </script>
 <form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1/(.+)/\L\1/g}-form" class="form-validate form-horizontal" enctype="multipart/form-data">
+	<?php echo JLayoutHelper::render('joomla.edit.item_title', \$this); ?>
 	<fieldset>
-		<?php echo JHtml::_('bootstrap.startPane', 'myTab', array('active' => 'details')); ?>
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'details', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_ACCOUNT_DETAILS', true)); ?>
-				<?php foreach (\$this->form->getFieldset('${1/(.+)/\L\1/g}_details') as \$field): ?>
+		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+			<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_USERS_USER_ACCOUNT_DETAILS', true)); ?>
+				<?php foreach (\$this->form->getFieldset('user_details') as \$field): ?>
 					<div class="control-group">
 						<div class="control-label">
 							<?php echo \$field->label; ?>
@@ -40,19 +38,19 @@ JHtml::_('formbehavior.chosen', 'select');
 						</div>
 					</div>
 				<?php endforeach; ?>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
+			<?php echo JHtml::_('bootstrap.endTab'); ?>
 			<?php if (\$this->grouplist): ?>
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'groups', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ASSIGNED_GROUPS', true)); ?>
+				<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'groups', JText::_('COM_USERS_ASSIGNED_GROUPS', true)); ?>
 					<?php echo \$this->loadTemplate('groups'); ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
+				<?php echo JHtml::_('bootstrap.endTab'); ?>
 			<?php endif; ?>
 			<?php
-			foreach (\$fieldsets as \$fieldset) :
-				if (\$fieldset->name == '${1/(.+)/\L\1/g}_details') :
+			foreach (\$fieldsets as \$fieldset):
+				if (\$fieldset->name == 'user_details'):
 					continue;
 				endif;
-			?>
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', \$fieldset->name, JText::_(\$fieldset->label, true)); ?>
+				?>
+				<?php echo JHtml::_('bootstrap.addTab', 'myTab', \$fieldset->name, JText::_(\$fieldset->label, true)); ?>
 					<?php foreach (\$this->form->getFieldset(\$fieldset->name) as \$field): ?>
 						<?php if (\$field->hidden): ?>
 							<div class="control-group">
@@ -71,9 +69,9 @@ JHtml::_('formbehavior.chosen', 'select');
 							</div>
 						<?php endif; ?>
 					<?php endforeach; ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
+				<?php echo JHtml::_('bootstrap.endTab'); ?>
 			<?php endforeach; ?>
-		<?php echo JHtml::_('bootstrap.endPane'); ?>
+		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
 	</fieldset>
 	<div>
 		<input type="hidden" name="task" value="" />

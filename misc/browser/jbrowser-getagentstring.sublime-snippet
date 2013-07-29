@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$browser->getAgentString();]]></content>
+	<tabTrigger>jbrowser-getagentstring</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

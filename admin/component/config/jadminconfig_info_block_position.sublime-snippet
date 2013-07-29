@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[<field
+	name="info_block_position"
+	type="list"
+	default="0"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_LABEL"
+	description="COM_${TM_COMPONENT/(.+)/\U\1/G}_FIELD_INFOBLOCK_POSITION_DESC">
+	<option value="0">COM_${TM_COMPONENT/(.+)/\U\1/G}_FIELD_OPTION_ABOVE</option>
+	<option value="1">COM_${TM_COMPONENT/(.+)/\U\1/G}_FIELD_OPTION_BELOW</option>
+	<option value="2">COM_${TM_COMPONENT/(.+)/\U\1/G}_FIELD_OPTION_SPLIT</option>
+</field>]]></content>
+	<tabTrigger>jadminconfig_info_block_position</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

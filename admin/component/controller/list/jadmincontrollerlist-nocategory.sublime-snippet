@@ -62,15 +62,16 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		{
 			if (!\$user->authorise('core.edit.state', \$this->option . '.${2/(.+)/\L\1/g}.' . (int) \$id))
 			{
-				// Prune items that you can't change.
+				// Prune items that you can not change.
 				unset(\$ids[\$i]);
-				JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+
+				throw new RuntimeException(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 403);
 			}
 		}
 
 		if (empty(\$ids))
 		{
-			JError::raiseWarning(500, JText::_('JERROR_NO_ITEMS_SELECTED'));
+			throw new RuntimeException(JText::_('JERROR_NO_ITEMS_SELECTED'), 500);
 		}
 		else
 		{
@@ -80,7 +81,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 			// Publish the items.
 			if (!\$model->featured(\$ids, \$value))
 			{
-				JError::raiseWarning(500, \$model->getError());
+				throw new RuntimeException(\$model->getError(), 500);
 			}
 		}
 

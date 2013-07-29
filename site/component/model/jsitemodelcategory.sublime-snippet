@@ -98,9 +98,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
 		// Initialiase variables.
-		\$app   = JFactory::getApplication('site');
-		\$input = \$app->input;
-		\$pk    = \$input->getInt('id');
+		\$app = JFactory::getApplication('site');
+		\$pk  = \$app->input->getInt('id');
 
 		\$this->setState('category.id', \$pk);
 
@@ -128,7 +127,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 
 		if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
-			// Limit to published for people who can't edit or edit.state.
+			// Limit to published for people who can not edit or edit.state.
 			\$this->setState('filter.published', 1);
 
 			// Filter by start and end dates.
@@ -154,9 +153,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 		}
 
 		// Optional filter text.
-		\$this->setState('list.filter', \$input->getString('filter-search'));
+		\$this->setState('list.filter', \$app->input->getString('filter-search'));
 
-		\$itemid = \$input->get('id', 0, 'int') . ':' . \$input->get('Itemid', 0, 'int');
+		\$itemid = \$app->input->get('id', 0, 'int') . ':' . \$app->input->get('Itemid', 0, 'int');
 		\$orderCol = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order', 'filter_order', '', 'string');
 
 		if (!in_array(\$orderCol, \$this->filter_fields))
@@ -175,10 +174,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 
 		\$this->setState('list.direction', \$listOrder);
 
-		\$this->setState('list.start', \$input->get('limitstart', 0, 'uint'));
+		\$this->setState('list.start', \$app->input->get('limitstart', 0, 'uint'));
 
 		// Set limit for query. If list, use parameter. If ${3/(.+)/\L\1/g}, add ${3/(.+)/\L\1/g} parameters for limit.
-		if ((\$input->get('layout') == '${3:blog}') || \$params->get('layout_type') == '${3/(.+)/\L\1/g}')
+		if ((\$app->input->get('layout') == '${3:blog}') || \$params->get('layout_type') == '${3/(.+)/\L\1/g}')
 		{
 			\$limit = \$params->get('num_leading_${1/(.+)/\L\1/g}') + \$params->get('num_intro_${1/(.+)/\L\1/g}') + \$params->get('num_links');
 			\$this->setState('list.links', \$params->get('num_links'));
@@ -201,7 +200,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 
 		\$this->setState('filter.language', JLanguageMultilang::isEnabled());
 
-		\$this->setState('layout', \$input->get('layout'));
+		\$this->setState('layout', \$app->input->get('layout'));
 	}
 
 	/**
@@ -355,7 +354,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategory extends JModelList
 					\$this->_item->getParams()->set('access-create', true);
 				}
 
-				// TODO: Why aren't we lazy loading the children and siblings?
+				// TODO: Why are not we lazy loading the children and siblings?
 				\$this->_children = \$this->_item->getChildren();
 				\$this->_parent   = false;
 

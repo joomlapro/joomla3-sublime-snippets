@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Optional filter text.
-\$search = \$input->getString('filter-search');
+\$search = \$app->input->getString('filter-search');
 \$this->setState('list.filter', \$search);]]></content>
 	<tabTrigger>jsitemodellist_state_search</tabTrigger>
 	<scope>source.php</scope>

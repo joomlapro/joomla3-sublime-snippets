@@ -11,7 +11,7 @@
  */
 function onExtensionAfterUpdate(\$installer, \$eid)
 {
-	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionAfterUpdate: ' . (\$eid === false ? 'Failed extension update: ' . \$installer->getError() : 'Extension update successful') . (\$eid ? ' with updated extension ID ' . \$eid : ' with no extension ID detected or multiple extension IDs assigned'));
+	throw new RuntimeException('plgExtensionExample::onExtensionAfterUpdate: ' . (\$eid === false ? 'Failed extension update: ' . \$installer->getError() : 'Extension update successful') . (\$eid ? ' with updated extension ID ' . \$eid : ' with no extension ID detected or multiple extension IDs assigned'), -1);
 }
 
 ]]></content>

@@ -54,7 +54,7 @@ public function &getItem(\$pk = null)
 
 			if (empty(\$data))
 			{
-				throw new Exception(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
+				throw new RuntimeException(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
 			}
 
 			// Check for published state if filter set.

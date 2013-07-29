@@ -35,7 +35,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategories extends JModelList
 	 *
 	 * @since   $TM_VERSION
 	 */
-	protected function populateState()
+	protected function populateState(\$ordering = null, \$direction = null)
 	{
 		// Initialiase variables.
 		\$app = JFactory::getApplication();
@@ -100,10 +100,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelCategories extends JModelList
 				\$params->loadString(\$active->params);
 			}
 
-			\$options = array();
+			\$options               = array();
 			\$options['countItems'] = \$params->get('show_cat_num_${2:${1/(.+)/\L\1/g}s}_cat', 1) || !\$params->get('show_empty_categories_cat', 0);
-			\$categories = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}', \$options);
-			\$this->_parent = \$categories->get(\$this->getState('filter.parentId', 'root'));
+			\$categories            = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}', \$options);
+			\$this->_parent         = \$categories->get(\$this->getState('filter.parentId', 'root'));
 
 			if (is_object(\$this->_parent))
 			{

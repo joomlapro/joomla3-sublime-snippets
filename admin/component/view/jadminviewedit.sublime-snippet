@@ -61,7 +61,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		\$isNew      = (\$this->item->id == 0);
 		\$checkedOut = !(\$this->item->checked_out == 0 || \$this->item->checked_out == \$userId);
 
-		// Since we don't track these assets at the item level, use the category id.
+		// Since we do not track these assets at the item level, use the category id.
 		\$canDo      = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$this->state->get('filter.category_id'), \$this->item->id);
 
 		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_PAGE_' . (\$checkedOut ? 'VIEW_${1/(.+)/\U\1/g}' : (\$isNew ? 'ADD_${1/(.+)/\U\1/g}' : 'EDIT_${1/(.+)/\U\1/g}'))), '${1/(.+)/\L\1/g}-add.png');
@@ -77,7 +77,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		}
 		else
 		{
-			// Can't save the record if it's checked out.
+			// Can not save the record if it's checked out.
 			if (!\$checkedOut)
 			{
 				// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
@@ -103,7 +103,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 			JToolbarHelper::cancel('${1/(.+)/\L\1/g}.cancel', 'JTOOLBAR_CLOSE');
 		}
 
-		JToolbarHelper::divider();
 		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
 	}
 }

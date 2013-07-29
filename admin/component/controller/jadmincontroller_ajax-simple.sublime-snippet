@@ -10,11 +10,10 @@ public function ${1:delete}${2:User}Ajax()
 {
 	// Get the application.
 	\$app   = JFactory::getApplication();
-	\$input = \$app->input;
 
 	// Get the input.
-	\$${3:pk}   = \$input->post->getInt('${4:${3/(.+)/\L\1/g}}');
-	\$${5:group} = \$input->post->getInt('${6:${5/(.+)/\L\1/g}}');
+	\$${3:pk}   = \$app->input->post->getInt('${4:${3/(.+)/\L\1/g}}');
+	\$${5:group} = \$app->input->post->getInt('${6:${5/(.+)/\L\1/g}}');
 
 	// Get the model.
 	\$model = \$this->getModel();

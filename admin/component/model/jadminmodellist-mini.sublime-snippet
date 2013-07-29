@@ -45,9 +45,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
-		// Initialise variables.
-		\$app = JFactory::getApplication('administrator');
-		\$input = \$app->input;
+		// Get the input.
+		\$input = JFactory::getApplication()->input;
 
 		// Adjust the context to support modal layouts.
 		if (\$layout = \$input->get('layout'))

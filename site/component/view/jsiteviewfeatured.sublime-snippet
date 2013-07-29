@@ -8,14 +8,31 @@
  */
 class ${TM_COMPONENT/(.+)/\u\1/g}ViewFeatured extends JViewLegacy
 {
+	/**
+	 * Model state object.
+	 *
+	 * @var     object
+	 */
 	protected \$state;
 
+	/**
+	 * List of update items.
+	 *
+	 * @var     array
+	 */
 	protected \$items;
 
 	protected \$category;
 
-	protected \$categories;
+	protected \$children;
 
+	protected \$parent;
+
+	/**
+	 * List pagination.
+	 *
+	 * @var     JPagination
+	 */
 	protected \$pagination;
 
 	/**
@@ -44,9 +61,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewFeatured extends JViewLegacy
 		// Check for errors.
 		if (count(\$errors = \$this->get('Errors')))
 		{
-			JError::raiseWarning(500, implode("\n", \$errors));
-
-			return false;
+			throw new RuntimeException(implode("\n", \$errors), 500);
 		}
 
 		// Check whether category access level allows access.

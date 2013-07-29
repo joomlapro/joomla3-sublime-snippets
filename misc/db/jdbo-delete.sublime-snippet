@@ -17,9 +17,7 @@ try
 }
 catch (RuntimeException \$e)
 {
-	\$this->setError(\$e->getMessage());
-
-	return false;
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 }]]></content>
 	<tabTrigger>jdbo-delete</tabTrigger>
 	<scope>source.php</scope>

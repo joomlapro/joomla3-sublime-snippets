@@ -7,9 +7,8 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('formbehavior.chosen', 'select');
 
-// Get the application.
-\$app = JFactory::getApplication();
-\$input = \$app->input;
+// Get the input.
+\$input = JFactory::getApplication()->input;
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task) {

@@ -133,9 +133,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Archive} extends ${TM_COMPONENT/(.+)/\
 	 */
 	public function getData()
 	{
+		// Get the application.
 		\$app = JFactory::getApplication();
 
-		// Lets load the content if it doesn't already exist.
+		// Lets load the content if it does not already exist.
 		if (empty(\$this->_data))
 		{
 			// Get the page/component configuration.

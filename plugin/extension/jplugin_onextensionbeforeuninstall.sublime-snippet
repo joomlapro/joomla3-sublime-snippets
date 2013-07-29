@@ -8,7 +8,7 @@
  */
 function onExtensionBeforeUninstall(\$eid)
 {
-	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionBeforeUninstall: Uninstalling ' . \$eid);
+	throw new RuntimeException('plgExtensionExample::onExtensionBeforeUninstall: Uninstalling ' . \$eid, -1);
 }
 
 ]]></content>

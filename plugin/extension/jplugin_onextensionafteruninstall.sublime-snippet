@@ -12,7 +12,7 @@
  */
 function onExtensionAfterUninstall(\$installer, \$eid, \$result)
 {
-	JError::raiseWarning(-1, 'plgExtensionExample::onExtensionAfterUninstall: Uninstallation of ' . \$eid . ' was a ' . (\$result ? 'success' : 'failure'));
+	throw new RuntimeException('plgExtensionExample::onExtensionAfterUninstall: Uninstallation of ' . \$eid . ' was a ' . (\$result ? 'success' : 'failure'), -1);
 }
 
 ]]></content>

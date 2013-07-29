@@ -11,10 +11,27 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	/**
 	 * The prefix to use with controller messages.
 	 *
-	 * @var    string
-	 * @since  $TM_VERSION
+	 * @var     string
+	 * @since   $TM_VERSION
 	 */
-	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+	protected \$text_prefix = 'COM_USERS_USER';
+
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  \$config  An optional associative array of configuration settings.
+	 *
+	 * @since   $TM_VERSION
+	 * @see     JController
+	 */
+	public function __construct(\$config = array())
+	{
+		parent::__construct(\$config);
+
+		// Load the users component language file.
+		\$lang = JFactory::getLanguage();
+		\$lang->load('com_users', JPATH_ADMINISTRATOR);
+	}
 
 	/**
 	 * Overrides JControllerForm::allowEdit.
@@ -52,7 +69,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function  batch(\$model = null)
+	public function batch(\$model = null)
 	{
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
@@ -78,7 +95,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 */
 	public function save(\$key = null, \$urlVar = null)
 	{
-		// Get the data from POST.
+		// Initialiase variables.
 		\$data = \$this->input->post->get('jform', array(), 'array');
 
 		// TODO: JForm should really have a validation handler for this.
@@ -109,26 +126,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 */
 	protected function postSaveHook(JModelLegacy \$model, \$validData = array())
 	{
-		// Initialiase variables.
-		\$task = \$this->getTask();
-		\$item = \$model->getItem();
-		\$id   = \$item->get('id');
-
-		if (empty(\$validData['tags']) && !empty(\$item->tags))
-		{
-			\$oldTags = new JTags;
-			\$oldTags->unTagItem(\$id, 'com_${TM_TEMPLATE/(.+)/\L\1/g}.${1/(.+)/\L\1/g}');
-			return;
-		}
-
-		\$tags = \$validData['tags'];
-
-		if (\$tags[0] != '')
-		{
-			\$tagsHelper = new JTags;
-			\$tagsHelper->tagItem(\$id, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$isNew, \$item, \$tags, null);
-		}
-
 		return;
 	}
 }

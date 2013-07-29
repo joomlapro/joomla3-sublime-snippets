@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JAccess::checkGroup(\$${1:groupId}, '${2:core.admin}');]]></content>
+	<tabTrigger>jaccess-checkgroup</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

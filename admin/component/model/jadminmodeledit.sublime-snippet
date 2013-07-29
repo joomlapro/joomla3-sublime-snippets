@@ -45,6 +45,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				{
 					// Fatal error.
 					\$this->setError(\$error);
+
 					return false;
 				}
 				else
@@ -580,6 +581,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 
 		\$table->reorder();
+
+		// Clear the cache.
 		\$this->cleanCache();
 
 		return true;

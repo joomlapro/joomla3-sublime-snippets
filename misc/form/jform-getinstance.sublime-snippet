@@ -1,12 +1,9 @@
 <snippet>
-	<content><![CDATA[// Get the application.
-\$app = JFactory::getApplication();
-
-// Get the form.
+	<content><![CDATA[// Get the form.
 JForm::addFormPath(JPATH_COMPONENT . '/models/forms');
 JForm::addFieldPath(JPATH_COMPONENT . '/models/fields');
 
-\$form = JForm::getInstance('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:form}', '${2:${1/(.+)/\L\1/g}}', array('load_data' => \$loadData));
+\$form = JForm::getInstance('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:form}', '${2:${1/(.+)/\L\1/g}}', array('control' => 'jform', 'load_data' => \$loadData));
 
 // Check for an error.
 if (\$form == false)

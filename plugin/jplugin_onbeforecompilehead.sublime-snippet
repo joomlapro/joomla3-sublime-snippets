@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * Before the framework creates the head section of the document.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function onBeforeCompileHead()
+{
+	$1
+}]]></content>
+	<tabTrigger>jplugin_onbeforecompilehead</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

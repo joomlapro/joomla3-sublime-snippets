@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * After framework load and application initialise.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function onAfterInitialise()
+{
+	$1
+}]]></content>
+	<tabTrigger>jplugin_onafterinitialise</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

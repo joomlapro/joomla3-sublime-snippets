@@ -6,7 +6,7 @@
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelList
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Users} extends JModelList
 {
 	/**
 	 * Constructor.
@@ -30,7 +30,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				'registerDate', 'a.registerDate',
 				'lastvisitDate', 'a.lastvisitDate',
 				'activation', 'a.activation',
-				);
+			);
 		}
 
 		parent::__construct(\$config);
@@ -50,12 +50,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
-		// Initialiase variables.
-		\$app  = JFactory::getApplication('administrator');
-		$input = \$app->input;
+		// Get the application.
+		\$app = JFactory::getApplication('administrator');
 
 		// Adjust the context to support modal layouts.
-		if (\$layout = \$input->get('layout', 'default', 'cmd'))
+		if (\$layout = \$app->input->get('layout', 'default', 'cmd'))
 		{
 			\$this->context .= '.' . \$layout;
 		}
@@ -76,7 +75,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$range = \$this->getUserStateFromRequest(\$this->context . '.filter.range', 'filter_range');
 		\$this->setState('filter.range', \$range);
 
-		\$groups = json_decode(base64_decode(\$input->get('groups', '', 'BASE64')));
+		\$groups = json_decode(base64_decode(\$app->input->get('groups', '', 'BASE64')));
 
 		if (isset(\$groups))
 		{
@@ -85,7 +84,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		\$this->setState('filter.groups', \$groups);
 
-		\$excluded = json_decode(base64_decode(\$input->get('excluded', '', 'BASE64')));
+		\$excluded = json_decode(base64_decode(\$app->input->get('excluded', '', 'BASE64')));
 
 		if (isset(\$excluded))
 		{
@@ -95,7 +94,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$this->setState('filter.excluded', \$excluded);
 
 		// Load the parameters.
-		\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
+		\$params = JComponentHelper::getParams('com_users');
 		\$this->setState('params', \$params);
 
 		// List state information.
@@ -128,7 +127,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	}
 
 	/**
-	 * Gets the list of ${1/(.+)/\L\1/g} and adds expensive joins to the result set.
+	 * Gets the list of users and adds expensive joins to the result set.
 	 *
 	 * @return  mixed  An array of data items on success, false on failure.
 	 *
@@ -165,35 +164,36 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Joining the groups with the main query is a performance hog.
 			// Find the information only on the result set.
 
-			// First pass: get list of the ${2/(.+)/\L\1/g} id's and reset the counts.
-			\$${2/(.+)/\L\1/g}Ids = array();
+			// First pass: get list of the user id's and reset the counts.
+			\$userIds = array();
 
 			foreach (\$items as \$item)
 			{
-				\$${2/(.+)/\L\1/g}Ids[] = (int) \$item->id;
+				\$userIds[] = (int) \$item->id;
 				\$item->group_count = 0;
 				\$item->group_names = '';
 				\$item->note_count = 0;
 			}
 
-			// Get the counts from the database only for the ${1/(.+)/\L\1/g} in the list.
+			// Get the counts from the database only for the users in the list.
 			\$db = \$this->getDbo();
 			\$query = \$db->getQuery(true);
 
 			// Join over the group mapping table.
 			\$query->select('map.user_id, COUNT(map.group_id) AS group_count')
 				->from('#__user_usergroup_map AS map')
-				->where('map.user_id IN (' . implode(',', \$${2/(.+)/\L\1/g}Ids) . ')')
+				->where('map.user_id IN (' . implode(',', \$userIds) . ')')
 				->group('map.user_id')
-					// Join over the ${2/(.+)/\L\1/g} groups table.
+
+				// Join over the user groups table.
 				->join('LEFT', '#__usergroups AS g2 ON g2.id = map.group_id');
 
 			\$db->setQuery(\$query);
 
-			// Load the counts into an array indexed on the ${2/(.+)/\L\1/g} id field.
+			// Load the counts into an array indexed on the user id field.
 			try
 			{
-				\$${2/(.+)/\L\1/g}Groups = \$db->loadObjectList('user_id');
+				\$userGroups = \$db->loadObjectList('user_id');
 			}
 			catch (RuntimeException \$e)
 			{
@@ -205,16 +205,16 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$query->clear()
 				->select('n.user_id, COUNT(n.id) As note_count')
 				->from('#__user_notes AS n')
-				->where('n.user_id IN (' . implode(',', \$${2/(.+)/\L\1/g}Ids) . ')')
+				->where('n.user_id IN (' . implode(',', \$userIds) . ')')
 				->where('n.state >= 0')
 				->group('n.user_id');
 
-			\$db->setQuery((string) \$query);
+			\$db->setQuery(\$query);
 
 			// Load the counts into an array indexed on the aro.value field (the user id).
 			try
 			{
-				\$${2/(.+)/\L\1/g}Notes = \$db->loadObjectList('user_id');
+				\$userNotes = \$db->loadObjectList('user_id');
 			}
 			catch (RuntimeException \$e)
 			{
@@ -226,17 +226,17 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Second pass: collect the group counts into the master items array.
 			foreach (\$items as &\$item)
 			{
-				if (isset(\$${2/(.+)/\L\1/g}Groups[\$item->id]))
+				if (isset(\$userGroups[\$item->id]))
 				{
-					\$item->group_count = \$${2/(.+)/\L\1/g}Groups[\$item->id]->group_count;
+					\$item->group_count = \$userGroups[\$item->id]->group_count;
 
 					// Group_concat in other databases is not supported.
-					\$item->group_names = \$this->_get${2/(.+)/\u\1/g}DisplayedGroups(\$item->id);
+					\$item->group_names = \$this->_getUserDisplayedGroups(\$item->id);
 				}
 
-				if (isset(\$${2/(.+)/\L\1/g}Notes[\$item->id]))
+				if (isset(\$userNotes[\$item->id]))
 				{
-					\$item->note_count = \$${2/(.+)/\L\1/g}Notes[\$item->id]->note_count;
+					\$item->note_count = \$userNotes[\$item->id]->note_count;
 				}
 			}
 
@@ -265,8 +265,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$this->getState(
 				'list.select',
 				'a.*'
-				)
-			);
+			)
+		);
 
 		\$query->from(\$db->quoteName('#__users') . ' AS a');
 
@@ -314,13 +314,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 
 		// Filter the items over the search string if set.
-		if (\$this->getState('filter.search') !== '')
+		if (\$this->getState('filter.search') !== '' && \$this->getState('filter.search') !== null)
 		{
 			// Escape the search token.
 			\$token = \$db->quote('%' . \$db->escape(\$this->getState('filter.search')) . '%');
 
 			// Compile the different search clauses.
-			\$searches   = array();
+			\$searches = array();
 			\$searches[] = 'a.name LIKE ' . \$token;
 			\$searches[] = 'a.username LIKE ' . \$token;
 			\$searches[] = 'a.email LIKE ' . \$token;
@@ -333,7 +333,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$range = \$this->getState('filter.range');
 
 		// Apply the range filter.
-		if (\$range = \$this->getState('filter.range'))
+		if (\$range)
 		{
 			// Get UTC for now.
 			\$dNow = new JDate;
@@ -342,57 +342,57 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			switch (\$range)
 			{
 				case 'past_week':
-				\$dStart->modify('-7 day');
-				break;
+					\$dStart->modify('-7 day');
+					break;
 
 				case 'past_1month':
-				\$dStart->modify('-1 month');
-				break;
+					\$dStart->modify('-1 month');
+					break;
 
 				case 'past_3month':
-				\$dStart->modify('-3 month');
-				break;
+					\$dStart->modify('-3 month');
+					break;
 
 				case 'past_6month':
-				\$dStart->modify('-6 month');
-				break;
+					\$dStart->modify('-6 month');
+					break;
 
 				case 'post_year':
 				case 'past_year':
-				\$dStart->modify('-1 year');
-				break;
+					\$dStart->modify('-1 year');
+					break;
 
 				case 'today':
 					// Ranges that need to align with local 'days' need special treatment.
-				\$app    = JFactory::getApplication();
-				\$offset = \$app->getCfg('offset');
+					\$app = JFactory::getApplication();
+					\$offset = \$app->getCfg('offset');
 
 					// Reset the start time to be the beginning of today, local time.
-				\$dStart = new JDate('now', \$offset);
-				\$dStart->setTime(0, 0, 0);
+					\$dStart = new JDate('now', \$offset);
+					\$dStart->setTime(0, 0, 0);
 
 					// Now change the timezone back to UTC.
-				\$tz = new DateTimeZone('GMT');
-				\$dStart->setTimezone(\$tz);
-				break;
+					\$tz = new DateTimeZone('GMT');
+					\$dStart->setTimezone(\$tz);
+					break;
 			}
 
 			if (\$range == 'post_year')
 			{
 				\$query->where(
-					\$db->quoteName('a.registerDate') . ' < ' . \$db->quote(\$dStart->format('Y-m-d H:i:s'))
-					);
+					'a.registerDate < ' . \$db->quote(\$dStart->format('Y-m-d H:i:s'))
+				);
 			}
 			else
 			{
 				\$query->where(
-					\$db->quoteName('a.registerDate') . ' >= ' . \$db->quote(\$dStart->format('Y-m-d H:i:s')) .
-					' AND ' . \$db->quoteName('a.registerDate') . ' <=' . \$db->quote(\$dNow->format('Y-m-d H:i:s'))
-					);
+					'a.registerDate >= ' . \$db->quote(\$dStart->format('Y-m-d H:i:s'))
+					. ' AND a.registerDate <=' . \$db->quote(\$dNow->format('Y-m-d H:i:s'))
+				);
 			}
 		}
 
-		// Filter by excluded ${1/(.+)/\L\1/g}
+		// Filter by excluded users.
 		\$excluded = \$this->getState('filter.excluded');
 
 		if (!empty(\$excluded))
@@ -407,23 +407,26 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	}
 
 	/**
-	 * Sqlsrv change
+	 * Method to get displayed user groups.
 	 *
-	 * @param   integer  \$${2/(.+)/\L\1/g}_id  The ${2/(.+)/\L\1/g} id.
+	 * @param   integer  \$user_id  The id of user.
 	 *
 	 * @return  array
 	 *
 	 * @since   $TM_VERSION
 	 */
-	function _get${2/(.+)/\u\1/g}DisplayedGroups(\$${2/(.+)/\L\1/g}_id)
+	public function _getUserDisplayedGroups(\$user_id)
 	{
 		// Initialiase variables.
-		\$db  = JFactory::getDbo();
-		\$sql = "SELECT title FROM " . \$db->quoteName('#__usergroups') . " ug left join " .
-		\$db->quoteName('#__user_usergroup_map') . " map on (ug.id = map.group_id)" .
-		" WHERE map.user_id=" . \$${2/(.+)/\L\1/g}_id;
+		\$db = JFactory::getDbo();
 
-		\$db->setQuery(\$sql);
+		// Create the base select statement.
+		\$query = "SELECT title FROM " . \$db->quoteName('#__usergroups') . " ug LEFT JOIN "
+			. \$db->quoteName('#__user_usergroup_map') . " map ON (ug.id = map.group_id)"
+			. " WHERE map.user_id=" . \$user_id;
+
+		// Set the query and load the result.
+		\$db->setQuery(\$query);
 		\$result = \$db->loadColumn();
 
 		return implode("\n", \$result);

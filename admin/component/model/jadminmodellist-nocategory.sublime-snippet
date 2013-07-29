@@ -57,9 +57,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function populateState(\$ordering = null, \$direction = null)
 	{
-		// Initialise variables.
-		\$app = JFactory::getApplication('administrator');
-		\$input = \$app->input;
+		// Get the input.
+		\$input = JFactory::getApplication()->input;
 
 		// Adjust the context to support modal layouts.
 		if (\$layout = \$input->get('layout'))
@@ -74,7 +73,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$accessId = \$this->getUserStateFromRequest(\$this->context . '.filter.access', 'filter_access', null, 'int');
 		\$this->setState('filter.access', \$accessId);
 
-		\$authorId = \$app->getUserStateFromRequest(\$this->context . '.filter.author_id', 'filter_author_id');
+		\$authorId = \$this->getUserStateFromRequest(\$this->context . '.filter.author_id', 'filter_author_id');
 		\$this->setState('filter.author_id', \$authorId);
 
 		\$published = \$this->getUserStateFromRequest(\$this->context . '.filter.state', 'filter_state', '', 'string');
@@ -313,7 +312,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 			for (\$x = 0, \$count = count(\$items); \$x < \$count; \$x++)
 			{
-				// Check the access level. Remove ${TM_FILENAME/(.*?)(\..+)/\L$1/} the user shouldn't see.
+				// Check the access level. Remove ${TM_FILENAME/(.*?)(\..+)/\L$1/} the user should not see.
 				if (!in_array(\$items[\$x]->access, \$groups))
 				{
 					unset(\$items[\$x]);

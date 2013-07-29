@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[/**
+ * Creates a list of range options used in filter select list
+ * used in com_${TM_COMPONENT/(.+)/\L\1/g} on users view.
+ *
+ * @return  array
+ *
+ * @since   $TM_VERSION
+ */
+public static function getRangeOptions()
+{
+	\$options = array(
+		JHtml::_('select.option', 'today', JText::_('COM_USERS_OPTION_RANGE_TODAY')),
+		JHtml::_('select.option', 'past_week', JText::_('COM_USERS_OPTION_RANGE_PAST_WEEK')),
+		JHtml::_('select.option', 'past_1month', JText::_('COM_USERS_OPTION_RANGE_PAST_1MONTH')),
+		JHtml::_('select.option', 'past_3month', JText::_('COM_USERS_OPTION_RANGE_PAST_3MONTH')),
+		JHtml::_('select.option', 'past_6month', JText::_('COM_USERS_OPTION_RANGE_PAST_6MONTH')),
+		JHtml::_('select.option', 'past_year', JText::_('COM_USERS_OPTION_RANGE_PAST_YEAR')),
+		JHtml::_('select.option', 'post_year', JText::_('COM_USERS_OPTION_RANGE_POST_YEAR')),
+	);
+
+	return \$options;
+}]]></content>
+	<tabTrigger>jadminhelper_getrangeoptions</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

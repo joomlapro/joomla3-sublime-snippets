@@ -17,7 +17,7 @@ public function saveorder(\$pks = null, \$order = null)
 
 	if (empty(\$pks))
 	{
-		return JError::raiseWarning(500, JText::_(\$this->text_prefix . '_ERROR_NO_ITEMS_SELECTED'));
+		throw new RuntimeException(JText::_(\$this->text_prefix . '_ERROR_NO_ITEMS_SELECTED'), 500);
 	}
 
 	// Update ordering values.
@@ -28,7 +28,7 @@ public function saveorder(\$pks = null, \$order = null)
 		// Access checks.
 		if (!\$this->canEditState(\$table))
 		{
-			// Prune items that you can't change.
+			// Prune items that you can not change.
 			unset(\$pks[\$i]);
 			JLog::add(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), JLog::WARNING, 'jerror');
 		}
@@ -71,7 +71,7 @@ public function saveorder(\$pks = null, \$order = null)
 		\$table->reorder(\$cond[1]);
 	}
 
-	// Clear the component's cache.
+	// Clear the cache.
 	\$this->cleanCache();
 
 	return true;

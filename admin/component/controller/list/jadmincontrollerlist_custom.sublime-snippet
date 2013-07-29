@@ -19,7 +19,7 @@ public function ${1:action}()
 
 	if (empty(\$ids))
 	{
-		JError::raiseWarning(500, JText::_('JERROR_NO_ITEMS_SELECTED'));
+		throw new RuntimeException(JText::_('JERROR_NO_ITEMS_SELECTED'), 500);
 	}
 	else
 	{
@@ -32,7 +32,7 @@ public function ${1:action}()
 		// Change the state of the records.
 		if (!\$model->${1/(.+)/\L\1/g}(\$ids, \$value))
 		{
-			JError::raiseWarning(500, \$model->getError());
+			throw new RuntimeException(\$model->getError(), 500);
 		}
 		else
 		{

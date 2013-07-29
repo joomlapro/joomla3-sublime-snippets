@@ -161,7 +161,7 @@ function pagination_item_active(& \$item)
 		\$display = '<i class="icon-last"></i>';
 	}
 
-	// If the display object isn't set already, just render the item with its text
+	// If the display object is not set already, just render the item with its text
 	if (!isset(\$display))
 	{
 		\$display = \$item->text;
@@ -211,7 +211,7 @@ function pagination_item_inactive(& \$item)
 		return '<li class="active"><a>' . \$item->text . '</a></li>';
 	}
 
-	// Doesn't match any other condition, render a normal item
+	// Does not match any other condition, render a normal item
 	return '<li class="disabled"><a>' . \$item->text . '</a></li>';
 }
 

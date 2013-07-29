@@ -46,7 +46,7 @@ class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormFieldCheckbox
 		}
 		catch (RuntimeException \$e)
 		{
-			JError::raiseWarning(500, \$db->getMessage());
+			throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 		}
 
 		// Merge any additional options in the XML definition.

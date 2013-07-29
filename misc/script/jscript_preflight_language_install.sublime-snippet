@@ -16,7 +16,7 @@
 // Get extension_id
 \$extension_id = \$extension->find(array('name' => 'com_${TM_COMPONENT/(.+)/\L\1/g}'));
 
-// Do not install if ${TM_COMPONENT/(.+)/\u\1/g} doesn't exist.
+// Do not install if ${TM_COMPONENT/(.+)/\u\1/g} does not exist.
 if (!\$extension_id)
 {
 	\$app->enqueueMessage(sprintf('${TM_COMPONENT/(.+)/\u\1/g} %s has not been installed, aborting!', '1.0'), 'notice');

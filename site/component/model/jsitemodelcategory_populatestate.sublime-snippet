@@ -14,9 +14,8 @@
 protected function populateState(\$ordering = null, \$direction = null)
 {
 	// Initialiase variables.
-	\$app   = JFactory::getApplication('site');
-	\$input = \$app->input;
-	\$pk    = \$input->getInt('id');
+	\$app = JFactory::getApplication('site');
+	\$pk  = \$app->input->getInt('id');
 
 	\$this->setState('category.id', \$pk);
 
@@ -44,7 +43,7 @@ protected function populateState(\$ordering = null, \$direction = null)
 
 	if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 	{
-		// Limit to published for people who can't edit or edit.state.
+		// Limit to published for people who can not edit or edit.state.
 		\$this->setState('filter.published', 1);
 
 		// Filter by start and end dates.
@@ -70,9 +69,9 @@ protected function populateState(\$ordering = null, \$direction = null)
 	}
 
 	// Optional filter text.
-	\$this->setState('list.filter', \$input->getString('filter-search'));
+	\$this->setState('list.filter', \$app->input->getString('filter-search'));
 
-	\$itemid = \$input->get('id', 0, 'int') . ':' . \$input->get('Itemid', 0, 'int');
+	\$itemid = \$app->input->get('id', 0, 'int') . ':' . \$app->input->get('Itemid', 0, 'int');
 	\$orderCol = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order', 'filter_order', '', 'string');
 
 	if (!in_array(\$orderCol, \$this->filter_fields))
@@ -91,10 +90,10 @@ protected function populateState(\$ordering = null, \$direction = null)
 
 	\$this->setState('list.direction', \$listOrder);
 
-	\$this->setState('list.start', \$input->get('limitstart', 0, 'uint'));
+	\$this->setState('list.start', \$app->input->get('limitstart', 0, 'uint'));
 
 	// Set limit for query. If list, use parameter. If blog, add blog parameters for limit.
-	if ((\$input->get('layout') == 'blog') || \$params->get('layout_type') == 'blog')
+	if ((\$app->input->get('layout') == 'blog') || \$params->get('layout_type') == 'blog')
 	{
 		\$limit = \$params->get('num_leading_${1:plural}') + \$params->get('num_intro_${1/(.+)/\L\1/g}') + \$params->get('num_links');
 		\$this->setState('list.links', \$params->get('num_links'));
@@ -117,7 +116,7 @@ protected function populateState(\$ordering = null, \$direction = null)
 
 	\$this->setState('filter.language', JLanguageMultilang::isEnabled());
 
-	\$this->setState('layout', \$input->get('layout'));
+	\$this->setState('layout', \$app->input->get('layout'));
 }]]></content>
 	<tabTrigger>jsitemodelcategory_populatestate</tabTrigger>
 	<scope>source.php</scope>

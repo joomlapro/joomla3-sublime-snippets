@@ -32,15 +32,16 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Featured} extends ${TM_COMPONENT/
 		{
 			if (!\$user->authorise('core.delete', \$this->option . '.${3:${2/(.+)(s\b)/\L\1/g}}.' . (int) \$id))
 			{
-				// Prune items that you can't delete.
+				// Prune items that you can not delete.
 				unset(\$ids[\$i]);
-				JError::raiseNotice(403, JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
+
+				throw new RuntimeException(JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'), 403);
 			}
 		}
 
 		if (empty(\$ids))
 		{
-			JError::raiseWarning(500, JText::_('JERROR_NO_ITEMS_SELECTED'));
+			throw new RuntimeException(JText::_('JERROR_NO_ITEMS_SELECTED'), 500);
 		}
 		else
 		{
@@ -50,7 +51,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Featured} extends ${TM_COMPONENT/
 			// Remove the items.
 			if (!\$model->${1/(.+)/\L\1/g}(\$ids, 0))
 			{
-				JError::raiseWarning(500, \$model->getError());
+				throw new RuntimeException(\$model->getError(), 500);
 			}
 		}
 

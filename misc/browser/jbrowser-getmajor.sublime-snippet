@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$browser->getMajor();]]></content>
+	<tabTrigger>jbrowser-getmajor</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

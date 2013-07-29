@@ -8,6 +8,7 @@
  */
 protected function getRedirectToListAppend()
 {
+	// Initialiase variables.
 	\$append = parent::getRedirectToListAppend();
 
 	return \$append;

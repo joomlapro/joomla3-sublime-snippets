@@ -13,7 +13,6 @@ public function display(\$cachable = false, \$urlparams = false)
 {
 	// Initialiase variables.
 	\$app    = JFactory::getApplication();
-	\$input  = \$app->input;
 	\$return = array();
 
 	// Load the parameters.
@@ -25,7 +24,7 @@ public function display(\$cachable = false, \$urlparams = false)
 	\$model->setState('list.limit', 5);
 	\$model->setState('list.ordering', 'a.id');
 	\$model->setState('list.direction', 'asc');
-	// \$model->setState('filter.search', \$input->getString('${2:${1/(.+)(s\b)/\L\1/g}}'));
+	// \$model->setState('filter.search', \$app->input->getString('${2:${1/(.+)(s\b)/\L\1/g}}'));
 
 	\$return = \$model->getItems();
 

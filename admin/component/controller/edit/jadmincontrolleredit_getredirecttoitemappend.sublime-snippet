@@ -13,23 +13,11 @@ protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = 'id')
 {
 	// Initialiase variables.
 	\$append = parent::getRedirectToItemAppend(\$recordId, \$urlVar);
-	\$itemId = \$this->input->getInt('Itemid');
-	\$catId  = \$this->input->getInt('catid', null, 'get');
-	\$return = \$this->getReturnPage();
-
-	if (\$itemId)
-	{
-		\$append .= '&Itemid=' . \$itemId;
-	}
-
-	if (\$catId)
-	{
-		\$append .= '&catid=' . \$catId;
-	}
+	\$return = \$this->input->get('return', null, 'base64');
 
 	if (\$return)
 	{
-		\$append .= '&return=' . base64_encode(\$return);
+		\$append .= '&return=' . \$return;
 	}
 
 	return \$append;

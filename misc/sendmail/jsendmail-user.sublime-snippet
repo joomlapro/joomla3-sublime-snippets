@@ -36,7 +36,7 @@
 
 if (!\$mail->Send()) {
 	// TODO: Probably should raise a plugin error but this event is not error checked.
-	JError::raiseWarning(500, JText::_('ERROR_SENDING_EMAIL'));
+	throw new RuntimeException(JText::_('ERROR_SENDING_EMAIL'), 500);
 }]]></content>
 	<tabTrigger>jsendmail-user</tabTrigger>
 	<scope>source.php</scope>
