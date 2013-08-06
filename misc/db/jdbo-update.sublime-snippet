@@ -4,7 +4,7 @@
 \$query = \$db->getQuery(true);
 
 // Create the base update statement.
-\$query->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:_table}'))
+\$query->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:table}'))
 	->set(\$db->quoteName('${2:column1}') . ' = ' . \$db->quote(${3:\$value1}))
 	->where(\$db->quoteName('${4:column2}') . ' = ' . \$db->quote(${5:\$value2}));
 
