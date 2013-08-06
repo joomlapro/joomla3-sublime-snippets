@@ -3,7 +3,7 @@
 \$db = JFactory::getDbo();
 \$db->setQuery(
 	'SELECT ${1:title}'
-	. ' FROM #__${TM_COMPONENT/(.+)/\L\1/g}_${2:table}'
+	. ' FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:table}'
 	. ' WHERE ${3:id} = ' . (int) \$this->id
 );
 
