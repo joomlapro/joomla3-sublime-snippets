@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$toolbar->appendButton('Confirm', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${4:${1/(.+)/\U\1/g}}_MSG', '${3:${1/(.+)/\L\1/g}}', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_TOOLBAR_${2:${1/(.+)/\U\1/g}}', '${1:export}', true);]]></content>
+	<tabTrigger>jtoolbar-appendbutton-confirm</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

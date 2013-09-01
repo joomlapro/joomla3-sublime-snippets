@@ -4,6 +4,7 @@
  *
  * @package     $TM_COMPONENT
  * @subpackage  plg_quickicon_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 class plgQuickicon${TM_COMPONENT/(.+)/\u\1/g} extends JPlugin

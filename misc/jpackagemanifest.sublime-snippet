@@ -7,7 +7,7 @@
 	<description>${1/(.+)/\u\1/g} package to combine multiple extensions.</description>
 	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>
 	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<license>$TM_LICENSE</license>
 	<author>$TM_FULLNAME</author>
 	<authorEmail>$TM_EMAIL</authorEmail>
 	<authorUrl>$TM_WEBSITE</authorUrl>

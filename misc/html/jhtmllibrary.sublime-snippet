@@ -4,6 +4,7 @@
  *
  * @package     Joomla.Libraries
  * @subpackage  HTML
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JHtmlJquery

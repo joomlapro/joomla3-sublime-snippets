@@ -1,10 +1,12 @@
 <snippet>
 	<content><![CDATA[<?php
 /**
- * @package    Joomla.${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
+ * @package     Joomla.Libraries
+ * @subpackage  ${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
  *
- * @copyright  Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
+ * @license     $TM_LICENSE
  */
 
 // No direct access.

@@ -6,6 +6,7 @@
  *
  * @package     $TM_COMPONENT
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelList

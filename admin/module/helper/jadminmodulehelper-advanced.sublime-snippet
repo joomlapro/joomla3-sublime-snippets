@@ -7,6 +7,7 @@ JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONE
  *
  * @package     ${TM_MODULE/(.+)/\u\1/g}
  * @subpackage  mod_${TM_MODULE/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 abstract class Mod${1:${TM_MODULE/(\_+)//g}}Helper

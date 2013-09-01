@@ -4,6 +4,7 @@
  *
  * @package     Joomla.Plugin
  * @subpackage  ${2:${TM_PLUGIN_GROUP/(.+)/\u\1/g}}.${1/(.+)/\u\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 class PlgSystem${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JPlugin

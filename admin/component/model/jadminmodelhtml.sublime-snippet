@@ -4,6 +4,7 @@
  *
  * @package     $TM_COMPONENT
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 abstract class JHtml${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}}

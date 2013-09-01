@@ -4,6 +4,7 @@
  *
  * @package     $TM_COMPONENT
  * @subpackage  ${1/(.+)/\u\1/g}.${2/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 class Plg${1:${TM_PLUGIN_GROUP/(.+)/\u\1/g}}${2:${TM_PLUGIN/(.+)/\u\1/g}} extends JPlugin

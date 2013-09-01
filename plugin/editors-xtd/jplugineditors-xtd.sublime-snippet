@@ -4,6 +4,7 @@
  *
  * @package     Joomla.Plugin
  * @subpackage  Editors-xtd.${1/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 class PlgButton${1:Field} extends JPlugin

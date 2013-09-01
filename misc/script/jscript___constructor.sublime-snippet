@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * Constructor.
+ *
+ * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
+ *
+ * @return  void
+ */
+public function __constructor(JAdapterInstance \$adapter)
+{
+
+}]]></content>
+	<tabTrigger>jscript___constructor</tabTrigger>
+	<scope>source.python</scope>
+</snippet>

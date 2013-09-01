@@ -4,22 +4,11 @@
  *
  * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 class Com_${TM_COMPONENT/(.+)/\u\1/g}InstallerScript
 {
-	/**
-	 * Constructor.
-	 *
-	 * @param   JAdapterInstance  \$adapter  The object responsible for running this script.
-	 *
-	 * @return  void
-	 */
-	public function __constructor(JAdapterInstance \$adapter)
-	{
-
-	}
-
 	/**
 	 * Called before any type of action.
 	 *

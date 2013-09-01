@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>name</key>
@@ -36,6 +36,13 @@
 			</dict>
 			<dict>
 				<key>name</key>
+				<string>TM_LICENSE</string>
+				<key>value</key>
+				<string><![CDATA[GNU General Public License version 2 or later; see LICENSE.txt]]></string>
+				<!-- <string><![CDATA[Commercial License]]></string> -->
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>TM_COMPONENT</string>
 				<key>value</key>
 				<string><![CDATA[Component]]></string>
@@ -68,13 +75,14 @@
 				<key>name</key>
 				<string>TM_LANGUAGE</string>
 				<key>value</key>
-				<string><![CDATA[pt-BR]]></string>
+				<string><![CDATA[en-GB]]></string>
+				<!-- <string><![CDATA[pt-BR]]></string> -->
 			</dict>
 			<dict>
 				<key>name</key>
 				<string>TM_MANIFEST_VERSION</string>
 				<key>value</key>
-				<string><![CDATA[3.1.2]]></string>
+				<string><![CDATA[3.1.6]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -104,7 +112,7 @@
 				<key>name</key>
 				<string>TM_MONTH</string>
 				<key>value</key>
-				<string><![CDATA[May]]></string>
+				<string><![CDATA[Sep]]></string>
 			</dict>
 		</array>
 	</dict>

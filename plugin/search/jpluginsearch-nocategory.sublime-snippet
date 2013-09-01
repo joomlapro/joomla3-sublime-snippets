@@ -6,6 +6,7 @@
  *
  * @package     Joomla.Plugin
  * @subpackage  Search.${1/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 class PlgSearch${1:${TM_COMPONENT/(.+)/\u\1/g}} extends JPlugin

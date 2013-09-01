@@ -4,8 +4,9 @@
  * @package     ${1:$TM_MODULE}
  * @subpackage  mod_${1/(.+)/\L\1/g}
  *
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     $TM_LICENSE
  */
 
 // No direct access.

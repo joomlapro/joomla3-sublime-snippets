@@ -5,6 +5,7 @@
  * @static
  * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute

@@ -6,6 +6,7 @@
  *
  * @package     Joomla.Plugin
  * @subpackage  User.${1:client}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 class JFormFieldTos extends JFormFieldRadio

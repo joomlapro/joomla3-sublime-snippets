@@ -4,6 +4,7 @@
  *
  * @package     ${TM_COMPONENT/(.+)/\u\1/g}_Quickicon
  * @subpackage  mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon
+ * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
 abstract class Mod${TM_COMPONENT/(.+)/\u\1/g}QuickIconHelper
