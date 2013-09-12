@@ -14,7 +14,7 @@
 // Define path.
 \$path     = \$this->baseurl . '/templates/' . \$this->template;
 
-// Add Stylesheets.
+// Add Stylesheet.
 \$this->addStyleSheet(\$path . '/css/template.css');
 
 // Load additional CSS styles for rtl sites.

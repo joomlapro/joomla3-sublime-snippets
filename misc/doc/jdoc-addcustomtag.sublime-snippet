@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->addCustomTag(${1:\$html});]]></content>
+	<tabTrigger>jdoc-addcustomtag</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -4,7 +4,7 @@
 \$query = \$db->getQuery(true);
 
 // Create the base insert statement.
-\$query->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:table}'))
+\$query->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:_table}'))
 	->columns(array(\$db->quoteName('${2:column}'), \$db->quoteName('${3:column}')))
 	->values(\$db->quote(\$value) . ', ' . \$db->quote(\$value));
 

@@ -3,11 +3,7 @@
 JForm::addFormPath(JPATH_COMPONENT . '/models/forms');
 JForm::addFieldPath(JPATH_COMPONENT . '/models/fields');
 
-<<<<<<< HEAD
 \$form = JForm::getInstance('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:form}', '${2:${1/(.+)/\L\1/g}}', array('control' => 'jform', 'load_data' => true));
-=======
-\$form = JForm::getInstance('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:form}', '${2:${1/(.+)/\L\1/g}}', array('control' => 'jform', 'load_data' => \$loadData));
->>>>>>> ff0da3195c4f63c6ace6c6fa1928b382f056e942
 
 // Check for an error.
 if (\$form == false)

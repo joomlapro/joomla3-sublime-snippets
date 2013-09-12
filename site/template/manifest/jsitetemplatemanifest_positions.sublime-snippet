@@ -1,14 +1,17 @@
 <snippet>
 	<content><![CDATA[<positions>
 	<position>debug</position>
-	<position>${TM_TEMPLATE/(.+)/\L\1/g}-topmenu</position>
-	<position>${TM_TEMPLATE/(.+)/\L\1/g}-mainmenu</position>
-	<position>${TM_TEMPLATE/(.+)/\L\1/g}-search</position>
-	<position>${TM_TEMPLATE/(.+)/\L\1/g}-breadcrumbs</position>
-	<position>${TM_TEMPLATE/(.+)/\L\1/g}-slideshow</position>
-	<position>${TM_TEMPLATE/(.+)/\L\1/g}-sidebar</position>
-	<position>${TM_TEMPLATE/(.+)/\L\1/g}-footer</position>
-	<position>${TM_TEMPLATE/(.+)/\L\1/g}-footermenu</position>
+	<position>position-0</position>
+	<position>position-1</position>
+	<position>position-2</position>
+	<position>position-3</position>
+	<position>position-4</position>
+	<position>position-5</position>
+	<position>position-6</position>
+	<position>position-7</position>
+	<position>position-8</position>
+	<position>position-9</position>
+	<position>position-10</position>
 </positions>]]></content>
 	<tabTrigger>jsitetemplatemanifest_positions</tabTrigger>
 	<scope>text.xml</scope>

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<jdoc:include type="modules" name="${TM_TEMPLATE/(.+)/\L\1/g}-${1:position}" style="${2:none}" />]]></content>
+	<content><![CDATA[<jdoc:include type="modules" name="position-${1:0}" style="${2:none}" />]]></content>
 	<tabTrigger>jdocinclude-modules</tabTrigger>
 	<scope>text.html</scope>
 </snippet>

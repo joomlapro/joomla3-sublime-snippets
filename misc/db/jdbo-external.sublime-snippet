@@ -17,7 +17,7 @@
 \$query->select('a.*')
 	->from(\$db->quoteName('#__${7:table}') . ' AS a')
 	->where(\$db->quoteName('a.state') . ' = ' . \$db->quote('1'))
-	->order(\$db->quoteName('a.ordering') . ' ASC');
+	->order(\$db->quoteName('a.ordering') . ' ' . \$db->quote('ASC'));
 
 // Set the query and load the result.
 \$db->setQuery(\$query);

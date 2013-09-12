@@ -14,29 +14,32 @@
 		<filename>component.php</filename>
 		<filename>error.php</filename>
 		<filename>favicon.ico</filename>
+		<filename>index.html</filename>
 		<filename>index.php</filename>
 		<filename>offline.php</filename>
 		<filename>template_preview.png</filename>
 		<filename>template_thumbnail.png</filename>
 		<filename>templateDetails.xml</filename>
 		<folder>css</folder>
-		<folder>font</folder>
 		<folder>html</folder>
 		<folder>images</folder>
-		<folder>img</folder>
 		<folder>js</folder>
+		<folder>language</folder>
 		<folder>less</folder>
 	</files>
 	<positions>
 		<position>debug</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-topmenu</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-mainmenu</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-search</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-breadcrumbs</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-slideshow</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-sidebar</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footer</position>
-		<position>${TM_TEMPLATE/(.+)/\L\1/g}-footermenu</position>
+		<position>position-0</position>
+		<position>position-1</position>
+		<position>position-2</position>
+		<position>position-3</position>
+		<position>position-4</position>
+		<position>position-5</position>
+		<position>position-6</position>
+		<position>position-7</position>
+		<position>position-8</position>
+		<position>position-9</position>
+		<position>position-10</position>
 	</positions>
 	<languages folder="language">
 		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.ini</language>

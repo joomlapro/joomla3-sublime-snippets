@@ -27,7 +27,7 @@ foreach (${1:\$data} as \$k => \$v)
 }
 
 // Create the base insert statement.
-\$query->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:table}'))
+\$query->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_table}'))
 	->columns(\$fields)
 	->values(implode(', ', \$values));
 

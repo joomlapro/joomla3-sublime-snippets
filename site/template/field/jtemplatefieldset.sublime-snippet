@@ -1,7 +1,8 @@
 <snippet>
 	<content><![CDATA[<fieldset
 	name="${1:fieldset}"
-	label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}_LABEL">
+	label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}_LABEL"
+	description="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}_DESC">
 
 </fieldset>]]></content>
 	<tabTrigger>jtemplatefieldset</tabTrigger>
