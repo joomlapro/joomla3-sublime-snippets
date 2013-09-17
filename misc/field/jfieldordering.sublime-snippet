@@ -38,7 +38,7 @@ class JFormFieldOrdering extends JFormField
 		\$attr .= \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
 
 		// Get some field values from the form.
-		\$${3:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
+		\$${3:${1/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
 		\$categoryId = (int) \$this->form->getValue('catid');
 
 		// Build the query for the ordering list.

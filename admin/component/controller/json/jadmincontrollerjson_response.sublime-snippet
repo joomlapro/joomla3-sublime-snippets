@@ -9,7 +9,7 @@
 public function ${1:get}${2:Name}Ajax()
 {
 	// Check for request forgeries.
-	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
 	echo new JResponseJson(\$this->getModel('${3:${2/(.+)/\u\1/g}}', '${TM_COMPONENT/(.+)/\u\1/g}Model')->${1/(.+)/\L\1/g}${2/(.+)/\u\1/g}());
 }]]></content>

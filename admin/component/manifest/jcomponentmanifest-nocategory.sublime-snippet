@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <extension type="component" version="$TM_VERSION" method="upgrade">
 	<name>com_${TM_COMPONENT/(.+)/\L\1/g}</name>
 	<author>$TM_FULLNAME</author>

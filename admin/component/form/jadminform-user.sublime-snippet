@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<fieldset
 		name="user_details">

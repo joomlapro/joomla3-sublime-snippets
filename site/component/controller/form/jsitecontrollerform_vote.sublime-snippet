@@ -9,7 +9,7 @@
 public function ${1:vote}()
 {
 	// Check for request forgeries.
-	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
 	\$user_rating = \$this->input->getInt('user_rating', -1);
 

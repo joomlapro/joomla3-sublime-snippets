@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Use the correct xml mime-type.
+header('Content-Type: text/xml');]]></content>
+	<tabTrigger>jmimexml</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

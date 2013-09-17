@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" version="$TM_VERSION" client="administrator" method="upgrade">
 	<name>mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon</name>
 	<author>$TM_FULLNAME</author>

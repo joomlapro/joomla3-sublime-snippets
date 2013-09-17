@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<fieldset
 		name="${1:plural}"
@@ -273,6 +273,23 @@
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
+		<field
+			name="save_history"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="JGLOBAL_SAVE_HISTORY_OPTIONS_LABEL"
+			description="JGLOBAL_SAVE_HISTORY_OPTIONS_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="history_limit"
+			type="text"
+			default="10"
+			filter="integer"
+			label="JGLOBAL_HISTORY_LIMIT_OPTIONS_LABEL"
+			description="JGLOBAL_HISTORY_LIMIT_OPTIONS_DESC" />
 		<field
 			name="show_urls_images_frontend"
 			type="radio"

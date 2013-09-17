@@ -1,0 +1,2252 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"template",
+				"templateParams"
+			],
+			[
+				"jfacgette",
+				"jfactory-gettemplate_params	jfactory-gettemplate_params"
+			],
+			[
+				"jtemplate",
+				"jfactory-gettemplate_template	jfactory-gettemplate_template"
+			],
+			[
+				"jjson",
+				"jadmincontrollerjson_display	jadmincontrollerjson_display"
+			],
+			[
+				"jbootst",
+				"jhtml_bootstrap_framework	jhtml_bootstrap_framework"
+			],
+			[
+				"jdocscrip",
+				"jdoc-addscriptdeclaration_advanced	jdoc-addscriptdeclaration_advanced"
+			],
+			[
+				"jdocaddscr",
+				"jdoc-addscriptdeclaration_advanced	jdoc-addscriptdeclaration_advanced"
+			],
+			[
+				"jdocadds",
+				"jdoc-addscriptdeclaration	jdoc-addscriptdeclaration"
+			],
+			[
+				"para",
+				"parallax"
+			],
+			[
+				"jsitetemplate",
+				"jsitetemplate-modules_html5	jsitetemplate-modules_html5"
+			],
+			[
+				"jcou",
+				"jcountmodules	jcountmodules"
+			],
+			[
+				"jdoc",
+				"jdocinclude-modules	jdocinclude-modules"
+			],
+			[
+				"jtext",
+				"jtext	jtext"
+			],
+			[
+				"jdocm",
+				"jdocinclude-message	jdocinclude-message"
+			],
+			[
+				"jsitetemplatemodu",
+				"jsitetemplate-modules_xhtml	jsitetemplate-modules_xhtml"
+			],
+			[
+				"logo",
+				"logoText"
+			],
+			[
+				"jhtmltop",
+				"jhtml_bootstrap_tooltip	jhtml_bootstrap_tooltip"
+			],
+			[
+				"jtoolti",
+				"jhtml_tooltip	jhtml_tooltip"
+			],
+			[
+				"jpluginfieldte",
+				"jpluginfieldtext	jpluginfieldtext"
+			],
+			[
+				"juri",
+				"juri-getinstance_tostring	juri-getinstance_tostring"
+			],
+			[
+				"jroute",
+				"jroute	jroute"
+			],
+			[
+				"jbootstra",
+				"jhtml_bootstrap_tooltip	jhtml_bootstrap_tooltip"
+			],
+			[
+				"jsitemodulemanifest",
+				"jsitemodulemanifest	jsitemodulemanifest"
+			],
+			[
+				"adds",
+				"addslashes"
+			],
+			[
+				"jdocadd",
+				"jdoc-addscriptdeclaration_advanced	jdoc-addscriptdeclaration_advanced"
+			],
+			[
+				"link",
+				"linktype"
+			],
+			[
+				"jlang",
+				"jdoc-getlanguage	jdoc-getlanguage"
+			],
+			[
+				"jquery",
+				"jquery_tmpl	jquery_tmpl"
+			],
+			[
+				"jdoco",
+				"jdocinclude-modules	jdocinclude-modules"
+			],
+			[
+				"jtemplatefieldte",
+				"jtemplatefieldtextarea	jtemplatefieldtextarea"
+			],
+			[
+				"site",
+				"sitename"
+			],
+			[
+				"jfacgetta",
+				"jfactory-gettemplate_params	jfactory-gettemplate_params"
+			],
+			[
+				"body",
+				"body-font"
+			],
+			[
+				"bacl",
+				"background-color"
+			],
+			[
+				"nav",
+				"navigation"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"paddin",
+				"padding"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"lists",
+				"list-style"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"to",
+				"top"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"margi",
+				"margin-bottom"
+			],
+			[
+				"borderco",
+				"border-color"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"jadminaccess",
+				"jadminaccess_section	jadminaccess_section"
+			],
+			[
+				"jbrowser",
+				"jbrowser-getinstance	jbrowser-getinstance"
+			],
+			[
+				"jadmincontrolleredit_cance",
+				"jadmincontrolleredit_cancel_with_redirect	jadmincontrolleredit_cancel_with_redirect"
+			],
+			[
+				"jadmincontrollereditcance",
+				"jadmincontrolleredit_cancel_with_redirect	jadmincontrolleredit_cancel_with_redirect"
+			],
+			[
+				"jadmincontrollereditget",
+				"jadmincontrolleredit_getredirecttolistappend	jadmincontrolleredit_getredirecttolistappend"
+			],
+			[
+				"jadmincontrollereditgetredit",
+				"jadmincontrolleredit_getredirecttoitemappend	jadmincontrolleredit_getredirecttoitemappend"
+			],
+			[
+				"jsitehelperroute_item",
+				"jsitehelperroute_item-simple	jsitehelperroute_item-simple"
+			],
+			[
+				"jfieldmoda",
+				"jfieldmodal-mini	jfieldmodal-mini"
+			],
+			[
+				"jfieldorder",
+				"jfieldordering-custom	jfieldordering-custom"
+			],
+			[
+				"jadminlan",
+				"jadminlang	jadminlang"
+			],
+			[
+				"jadminlangvi",
+				"jadminlang-view	jadminlang-view"
+			],
+			[
+				"jhtmlse",
+				"jhtml_select_options_complete	jhtml_select_options_complete"
+			],
+			[
+				"jadmincontrollerjson",
+				"jadmincontrollerjson	jadmincontrollerjson"
+			],
+			[
+				"jadminfieldli",
+				"jadminfieldlist_custom	jadminfieldlist_custom"
+			],
+			[
+				"jadmincontrollereditvi",
+				"jadmincontrolleredit_view_list	jadmincontrolleredit_view_list"
+			],
+			[
+				"jadminviewedi",
+				"jadminviewedit-mini	jadminviewedit-mini"
+			],
+			[
+				"jadminli",
+				"jadminlang_list	jadminlang_list"
+			],
+			[
+				"jhtmlsidebar",
+				"jhtmlsidebar-addentry	jhtmlsidebar-addentry"
+			],
+			[
+				"jfieldorderingn",
+				"jfieldordering-custom_nocategory	jfieldordering-custom_nocategory"
+			],
+			[
+				"jadminvi",
+				"jadminlang-views	jadminlang-views"
+			],
+			[
+				"jadminhtml",
+				"jadminhtml_batch_item	jadminhtml_batch_item"
+			],
+			[
+				"jfieldordering",
+				"jfieldordering-custom_nocategory	jfieldordering-custom_nocategory"
+			],
+			[
+				"jadminfielcu",
+				"jadminfieldcustom	jadminfieldcustom"
+			],
+			[
+				"jsor",
+				"jtablesortable	jtablesortable"
+			],
+			[
+				"jeventd",
+				"jeventdispatcher-getinstance	jeventdispatcher-getinstance"
+			],
+			[
+				"jadminmodeleadd",
+				"jadminmodeledit_adduser-simple	jadminmodeledit_adduser-simple"
+			],
+			[
+				"jadmincontrollerjso",
+				"jadmincontrollerjson	jadmincontrollerjson"
+			],
+			[
+				"jjqueryajax",
+				"jjquery_ajax_add	jjquery_ajax_add_with_tmpl"
+			],
+			[
+				"jtoken",
+				"jsession_getformtoken	jsession_getformtoken"
+			],
+			[
+				"jtyp",
+				"jjquery_typeahead	jjquery_typeahead"
+			],
+			[
+				"jtype",
+				"jjquery_typeahead_with_abort	jjquery_typeahead_with_abort"
+			],
+			[
+				"jloader",
+				"jloader-register	jloader-register"
+			],
+			[
+				"jmodelget",
+				"jmodellegacy-getinstance_advanced	jmodellegacy-getinstance_advanced"
+			],
+			[
+				"jajax",
+				"jadmincontrollerjson_get_ajax	jadmincontrollerjson_get_ajax"
+			],
+			[
+				"jadminhelpergetop",
+				"jadminhelper_getoptions	jadminhelper_getoptions"
+			],
+			[
+				"jfieldmodal",
+				"jfieldmodal-nocategory	jfieldmodal-nocategory"
+			],
+			[
+				"jadminhtm",
+				"jadminhtml	jadminhtml"
+			],
+			[
+				"jadminlayoutlistba",
+				"jadminlayoutlist_batch-nocategory	jadminlayoutlist_batch-nocategory"
+			],
+			[
+				"jhtmlsidebaraddcate",
+				"jhtmlsidebar-addentry-categories	jhtmlsidebar-addentry-categories"
+			],
+			[
+				"jdb",
+				"jdb	jdb"
+			],
+			[
+				"jadminviewlist",
+				"jadminviewlist	jadminviewlist"
+			],
+			[
+				"jscriptcate",
+				"jscript_postflight_content_type-category	jscript_postflight_content_type-category"
+			],
+			[
+				"jscriptpost",
+				"jscript_postflight__addcategory	jscript_postflight__addcategory"
+			],
+			[
+				"jscriptpre",
+				"jscript_preflight_version	jscript_preflight_version"
+			],
+			[
+				"jplugincon",
+				"jplugin___construct	jplugin___construct"
+			],
+			[
+				"jcheckeditid",
+				"jadmincontroller_display_checkeditid	jadmincontroller_display_checkeditid"
+			],
+			[
+				"jcheckout",
+				"jadminmodeledit_checkout	jadminmodeledit_checkout"
+			],
+			[
+				"jregex",
+				"jregex-only_numbers	jregex-only_numbers"
+			],
+			[
+				"jformtok",
+				"jsession_getformtoken	jsession_getformtoken"
+			],
+			[
+				"jgettoke",
+				"jsession_gettoken	jsession_gettoken"
+			],
+			[
+				"jgettoken",
+				"jsession_getformtoken	jsession_getformtoken"
+			],
+			[
+				"jtoke",
+				"jchecktoken	jchecktoken"
+			],
+			[
+				"jsitemodelform",
+				"jsitemodelform_getform	jsitemodelform_getform"
+			],
+			[
+				"jsitemodelformget",
+				"jsitemodelform_gettable	jsitemodelform_gettable"
+			],
+			[
+				"pro",
+				"projeto_id"
+			],
+			[
+				"jadminhelpergetoptio",
+				"jadminhelper_getoptions_custom	jadminhelper_getoptions_custom"
+			],
+			[
+				"jsiteformm",
+				"jsiteform-mini	jsiteform-mini"
+			],
+			[
+				"jadminmodeledit",
+				"jadminmodeledit	jadminmodeledit"
+			],
+			[
+				"jadminmodeleditsi",
+				"jadminmodeledit-simple	jadminmodeledit-simple"
+			],
+			[
+				"jsitehelperrou",
+				"jsitehelperroute_form	jsitehelperroute_form"
+			],
+			[
+				"jreturn",
+				"juri-getinstance_return	juri-getinstance_return"
+			],
+			[
+				"jsitehelperroute_",
+				"jsitehelperroute_form	jsitehelperroute_form"
+			],
+			[
+				"jsession",
+				"jsession_set	jsession_set"
+			],
+			[
+				"jhtmlbootstrap",
+				"jhtml_bootstrap_framework	jhtml_bootstrap_framework"
+			],
+			[
+				"jhtmltoo",
+				"jhtml_bootstrap_tooltip	jhtml_bootstrap_tooltip"
+			],
+			[
+				"jformhel",
+				"jformhelper-addfieldpath	jformhelper-addfieldpath"
+			],
+			[
+				"jsitehelperroute",
+				"jsitehelperroute_list	jsitehelperroute_list"
+			],
+			[
+				"jhtmllis",
+				"jhtml_select_options	jhtml_select_options"
+			],
+			[
+				"jsiteform",
+				"jsiteform-simple	jsiteform-simple"
+			],
+			[
+				"jformgetin",
+				"jform-getinstance	jform-getinstance"
+			],
+			[
+				"jformget",
+				"jform-getinstance	jform-getinstance"
+			],
+			[
+				"jfieldre",
+				"jfield-require	jfield-require"
+			],
+			[
+				"jfieldlist",
+				"jfieldlist-advanced	jfieldlist-advanced"
+			],
+			[
+				"projeto",
+				"projetopessoalistapagamento"
+			],
+			[
+				"ie",
+				"ies_id"
+			],
+			[
+				"var",
+				"var_dump"
+			],
+			[
+				"input",
+				"input-hidden	input-hidden"
+			],
+			[
+				"jadminmodeleditsave",
+				"jadminmodeledit_save-parent	jadminmodeledit_save-parent"
+			],
+			[
+				"jrequi",
+				"jrequire-helper	jrequire-helper"
+			],
+			[
+				"numbe",
+				"number_format"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<!-- Shortcuts -->\n<section class=\"shortcuts\">\n	<div class=\"container\">\n		<div class=\"well\">\n			<div class=\"row\">\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-file\"></i>\n						<article>\n							<h5><a href=\"#\" data-container=\"body\" data-toggle=\"popover\" data-placement=\"top\" data-title=\"2&ordf; Via Carnê Declaração IR\" data-content=\"Quo, facilis voluptates totam inventore sapiente saepe. Veniam libero necessitatibus veritatis illum quisquam odio officiis sint sit! Qui est fugit culpa in.\">2&ordf; Via Carnê Declaração IR</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-cogs\"></i>\n						<article>\n							<h5><a href=\"#\">Processos Administrativos</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-calendar\"></i>\n						<article>\n							<h5><a href=\"#\">Simulação de Parcelas</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-flag\"></i>\n						<article>\n							<h5><a href=\"#\">Regularização Fundiária</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-calendar\"></i>\n						<article>\n							<h5><a href=\"#\">Simulação de Parcelas</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-flag\"></i>\n						<article>\n							<h5><a href=\"#\">Regularização Fundiária</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-user\"></i>\n						<article>\n							<h5><a href=\"#\">Cadastro Rural</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-globe\"></i>\n						<article>\n							<h5><a href=\"#\">Cartografia &amp; Geodési</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-info\"></i>\n						<article>\n							<h5><a href=\"#\">Manual Verde Noroeste</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-trophy\"></i>\n						<article>\n							<h5><a href=\"#\">Autent. de Contracheque</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-user\"></i>\n						<article>\n							<h5><a href=\"#\">Portal do Servidor</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n				<div class=\"col-xs-6 col-sm-6 col-md-4 col-lg-3\">\n					<!-- Shortcut -->\n					<div class=\"shortcut\">\n						<i class=\"icon-trophy\"></i>\n						<article>\n							<h5><a href=\"#\">Autent. de Contracheque</a></h5>\n						</article>\n					</div>\n					<!-- End Shortcut -->\n				</div>\n			</div>\n		</div>\n	</div>\n</section>\n<!-- End Shortcuts -->",
+			"settings":
+			{
+				"buffer_size": 3774,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/js/main.js",
+			"settings":
+			{
+				"buffer_size": 1796,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/templateDetails.xml",
+			"settings":
+			{
+				"buffer_size": 4461,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/index.php",
+			"settings":
+			{
+				"buffer_size": 9596,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/css/custom.css.php",
+			"settings":
+			{
+				"buffer_size": 1329,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/F/Companies/Total Propaganda/Passwords/Security.key",
+			"settings":
+			{
+				"buffer_size": 129,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/joomla/uri/uri.php",
+			"settings":
+			{
+				"buffer_size": 17436,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/css/template.css",
+			"settings":
+			{
+				"buffer_size": 41208,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "							<div class=\"posts\">\n								<div class=\"pull-right\">\n									<a href=\"#\"><i class=\"icon-plus\"></i> Mais Notícias</a>\n								</div>\n								<!-- Post -->\n								<div class=\"post\">\n									<div class=\"date\">\n										<span class=\"day\">21</span>\n										<span class=\"month\">Ago</span>\n									</div>\n									<article>\n										<h5><a href=\"#\"> Empresa argentina vem conhecer o Capital Digital, onde poderá se instalar</a></h5>\n										<p>Ex, soluta, repudiandae, obcaecati accusamus repellat dolores ducimus eaque in sequi adipisci illum quod fuga.</p>\n										<a href=\"#\"><i class=\"icon-double-angle-right\"></i> Saiba mais</a>\n									</article>\n								</div>\n								<!-- End Post -->\n								<!-- Post -->\n								<div class=\"post\">\n									<div class=\"date\">\n										<span class=\"day\">10</span>\n										<span class=\"month\">Ago</span>\n									</div>\n									<article>\n										<h5><a href=\"#\">Livro sobre a história de Brasília é lançado na Torre Digital</a></h5>\n										<p>Molestiae, distinctio ea ducimus minus obcaecati blanditiis illo quas! Ipsa, vero, ratione laborum iusto qui.</p>\n										<a href=\"#\"><i class=\"icon-double-angle-right\"></i> Saiba mais</a>\n									</article>\n								</div>\n								<!-- End Post -->\n								<!-- Post -->\n								<div class=\"post\">\n									<div class=\"date\">\n										<span class=\"day\">3</span>\n										<span class=\"month\">Ago</span>\n									</div>\n									<article>\n										<h5><a href=\"#\">Terracap oferece 107 lotes na licitação do dia 29</a></h5>\n										<p>Quibusdam, atque repellendus ex excepturi labore provident natus ut nulla eveniet corporis beatae id ea aliquid.</p>\n										<a href=\"#\"><i class=\"icon-double-angle-right\"></i> Saiba mais</a>\n									</article>\n								</div>\n								<!-- End Post -->\n								<!-- Post -->\n								<div class=\"post\">\n									<div class=\"date\">\n										<span class=\"day\">24</span>\n										<span class=\"month\">Jun</span>\n									</div>\n									<article>\n										<h5><a href=\"#\">Perferendis, possimus, consequuntur itaque saepe porro nobis.</a></h5>\n										<p>Libero, quo, deserunt, laudantium sapiente mollitia voluptatum ratione minima quibusdam alias amet consectetur unde!</p>\n										<a href=\"#\"><i class=\"icon-double-angle-right\"></i> Saiba mais</a>\n									</article>\n								</div>\n								<!-- End Post -->\n							</div>",
+			"settings":
+			{
+				"buffer_size": 2376,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "								<ul class=\"list-unstyled main-menu fading\">\n									<li class=\"active\">\n										<a href=\"index.php\"><i class=\"icon-home\"></i></a>\n									</li>\n									<li>\n										<a href=\"institucional.php\">Institucional</a>\n										<!-- Mega Menu -->\n										<div class=\"cols3\">\n											<div class=\"col3\">\n												<div class=\"page-header\">\n													<h3>Saiba mais sobre a Terracap nos links abaixo!</h3>\n												</div>\n											</div>\n											<div class=\"col1\">\n												<h4>Terracap</h4>\n												<!-- First Level -->\n												<ul>\n													<li><a href=\"#\">A Empresa</a></li>\n													<li><a href=\"#\">Missão</a></li>\n													<li><a href=\"#\">Visão</a></li>\n													<li><a href=\"#\">Valores</a></li>\n													<li><a href=\"#\">Competências</a></li>\n												</ul>\n												<!-- End First Level -->\n											</div>\n											<div class=\"col1\">\n												<h4>Mais Informações</h4>\n												<ul>\n													<li><a href=\"#\">Regimento Interno</a></li>\n													<li><a href=\"#\">Horário de Funcionamento</a></li>\n													<li><a href=\"#\">Equipe Terracap</a></li>\n													<li><a href=\"#\">Estatuto Social</a></li>\n												</ul>\n											</div>\n											<div class=\"col1\">\n												<h4>Terracap <strong>40 Anos</strong></h4>\n												<p>A Terracap está comemorando 40 anos de existência, saiba mais <a href=\"#\">clicando aqui</a>!</p>\n											</div>\n										</div>\n										<!-- End Mega Menu -->\n									</li>\n									<li>\n										<a href=\"licitacoes.php\">Licitações <span class=\"badge\">3</span></a>\n										<!-- First Level -->\n										<ul>\n											<li>\n												<a href=\"#\"><i class=\"icon-file-text-alt\"></i> Editais</a>\n												<!-- Second Level -->\n												<ul>\n													<li>\n														<a href=\"#\">Publicações</a>\n													</li>\n													<li>\n														<a href=\"#\">Publicações</a>\n														<!-- Third Level -->\n														<ul>\n															<li><a href=\"#\">Publicações</a></li>\n															<li><a href=\"#\">Publicações</a></li>\n														</ul>\n														<!-- End Third Level -->\n													</li>\n												</ul>\n												<!-- End Second Level -->\n											</li>\n											<li><a href=\"#\"><i class=\"icon-question-sign\"></i> Perguntas Frequentes</a></li>\n										</ul>\n										<!-- End First Level -->\n									</li>\n									<li>\n										<a href=\"#\">Projetos</a>\n										<!-- First Level -->\n										<ul>\n											<li><a href=\"#\">Parque Tecnológico Capital Digital</a></li>\n											<li><a href=\"#\">Digital Capital Science and Technology Park</a></li>\n											<li><a href=\"#\">Centro Esportivo de Brasília</a></li>\n											<li><a href=\"#\">Projetos Futuros</a></li>\n											<li><a href=\"#\">Publicações</a></li>\n										</ul>\n										<!-- End First Level -->\n									</li>\n									<li>\n										<a href=\"#\">Serviços</a>\n										<!-- First Level -->\n										<ul>\n											<li><a href=\"#\">Carta de Serviços</a></li>\n											<li><a href=\"#\">Demarcação de Lotes</a></li>\n											<li><a href=\"#\">Consulta Processos Administrativos</a></li>\n											<li><a href=\"#\">Simulação de Parcelas</a></li>\n											<li><a href=\"#\">2º Via de Carnê</a></li>\n											<li><a href=\"#\">Autenticação de Contracheque</a></li>\n											<li><a href=\"#\">Inscrição de Imóveis</a></li>\n											<li><a href=\"#\">SDE Acesso Restrito</a></li>\n										</ul>\n										<!-- End First Level -->\n									</li>\n									<li>\n										<a href=\"#\">Notícias</a>\n										<!-- First Level -->\n										<ul>\n											<li><a href=\"#\">Notícias em Destaque</a></li>\n											<li><a href=\"#\">Categorias de Notícias</a></li>\n										</ul>\n										<!-- End First Level -->\n									</li>\n									<li>\n										<a href=\"#\">Transparência</a>\n										<!-- First Level -->\n										<ul>\n											<li><a href=\"#\">Ações e Programas</a></li>\n											<li><a href=\"#\">Auditorias</a></li>\n											<li><a href=\"#\">Contratos e Convênios</a></li>\n											<li><a href=\"#\">Despesas</a></li>\n											<li><a href=\"#\">Licitações</a></li>\n											<li><a href=\"#\">Concursos</a></li>\n											<li><a href=\"#\">Empregados / Colaboradores</a></li>\n											<li><a href=\"#\">Contratos de Publicidade</a></li>\n											<li><a href=\"#\">Perguntas Frequentes LAI</a></li>\n											<li><a href=\"#\">Serviço de Informação ao Cidadão</a></li>\n										</ul>\n										<!-- End First Level -->\n									</li>\n								</ul>",
+			"settings":
+			{
+				"buffer_size": 4501,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/less/template.less",
+			"settings":
+			{
+				"buffer_size": 26462,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 196.0,
+		"selected_items":
+		[
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby"
+			],
+			[
+				"rub",
+				"Set Syntax: Ruby"
+			],
+			[
+				"ry",
+				"Set Syntax: Ruby"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"listpa",
+				"Package Control: List Packages"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"up",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"ru",
+				"Set Syntax: Ruby"
+			],
+			[
+				"min",
+				"Minify Javascript"
+			],
+			[
+				"u",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"ruy",
+				"Set Syntax: Ruby"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"uo",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"pla",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"plai",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"text",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"form",
+				"Snippet: tform-control-group_input"
+			],
+			[
+				"upgra",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"pl",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"listapa",
+				"Package Control: Install Package"
+			],
+			[
+				"plain",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"xml",
+				"Set Syntax: XML"
+			],
+			[
+				"te",
+				"Set Syntax: Plain Text"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/js/main.js",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/templateDetails.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/index.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/css/custom.css.php",
+		"/F/Companies/Total Propaganda/Passwords/Security.key",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/joomla/uri/uri.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/css/template.css",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/misc/jloadsystem.sublime-snippet",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/misc/factory/jfactory-gettemplate.sublime-snippet",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/misc/factory/jfactory-gettemplate_template.sublime-snippet",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/administrator/components/com_config/views/component/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/legacy/application/application.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/cli/deletefiles.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/cli/update_cron.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/administrator/index.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/import.legacy.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/less/template.less",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/less/custom.less",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/misc/mime/jmimexml.sublime-snippet",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/misc/mime/jmimecss.sublime-snippet",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/css/custom.php",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/site/template/jsitetemplate.sublime-snippet",
+		"/C/Users/Bruno/Documents/GitHub/joomla3-scaffold/templates/site/tpl_hello/css/ie.css",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/cms/html/bootstrap.php",
+		"/C/Users/Bruno/Desktop/bootstrap-responsive.min.css",
+		"/C/Users/Bruno/Documents/GitHub/joomla3-sublime-snippets/site/template/jsitetemplate.sublime-snippet",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/beez3/index.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/protostar/index.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/js/jui/jquery.min.js",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/joomla/document/renderer.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/joomla/document/html/renderer/head.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/joomla/document/html/html.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/cms/html/behavior.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/plugins/system/debug/debug.php",
+		"/C/Users/Bruno/Documents/GitHub/mod_fontsize/mod_fontsize.xml",
+		"/C/Users/Bruno/Documents/GitHub/mod_fontsize/language/es-ES/es-ES.mod_fontsize.ini",
+		"/C/Users/Bruno/Documents/GitHub/mod_fontsize/language/en-GB/en-GB.mod_fontsize.ini",
+		"/C/Users/Bruno/Documents/GitHub/mod_fontsize/language/pt-BR/pt-BR.mod_fontsize.ini",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/media/mod_fontsize/less/template.less",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_fontsize/mod_fontsize.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_fontsize/mod_fontsize.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_fontsize/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/beez3/templateDetails.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/joomla/document/document.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/joomla/factory.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/cms/error/page.php",
+		"/C/Users/Bruno/AppData/Local/Temp/Temp1_jbetolo-2.5.0.44e92e4(1).zip/script.jbetolo.php",
+		"/C/Users/Bruno/AppData/Local/Temp/Temp1_plg_jch_optimize_2.1.1(1).zip/jch_optimize.php",
+		"/C/Users/Bruno/AppData/Local/Temp/Temp1_plg_scriptsdown.zip/scriptsdown.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/cms/html/dropdown.php",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_placeholder/placeholder.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/protostar/html/pagination.php",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/site/template/misc/jsitetemplate-pagination.sublime-snippet",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/pagination.php",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_placeholder/media/js/jquery.placeholder.js",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_placeholder/placeholder.xml",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_placeholder/README.md",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_placeholder/language/pt-BR/pt-BR.plg_system_placeholder.ini",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_placeholder/script.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_biddings/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_slideshow/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/administrator/language/en-GB/en-GB.plg_system_menuplus.ini",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/administrator/language/pt-BR/pt-BR.plg_system_menuplus.ini",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_menuplus/language/pt-BR/pt-BR.plg_system_menuplus.ini",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_menuplus/language/pt-BR/pt-BR.plg_system_menuplus.sys.ini",
+		"/C/Users/Bruno/Documents/GitHub/plg_system_menuplus/language/en-GB/en-GB.plg_system_menuplus.ini",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/site/component/layout/jsitelayout_pagination.sublime-snippet",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/administrator/templates/isis/html/pagination.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/cms/pagination/pagination.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_breadcrumbs/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_breadcrumbs/alternative.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/language/pt-BR/pt-BR.tpl_clearview.sys.ini",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_gallery/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/modules.php",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/misc/jcountmodules.sublime-snippet",
+		"/C/Users/Bruno/Documents/GitHub/joomla3-sublime-snippets/misc/jcountmodules.sublime-snippet",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_rss/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_projects/tmpl/horizontal.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_projects/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_videos/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/language/pt-BR/pt-BR.tpl_clearview.ini",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_languages/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_breadcrumbs/helper.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/plugins/system/templateplus/templateplus.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/plugins/system/templateplus/forms/advanced.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/plugins/system/templateplus/templateplus.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/administrator/components/com_modules/models/forms/module.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/administrator/components/com_modules/models/forms/advanced.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/plugins/system/templateplus/forms/item.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/plugins/system/templateplus/script.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/beez3/html/modules.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/language/pt-BR/pt-BR.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_slideshow/mod_slideshow.xml",
+		"/C/Users/Bruno/Documents/GitHub/mod_fontsize/media/js/rv-jquery-fontsize.js",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/Default.tmPreferences",
+		"/C/Users/Bruno/Documents/GitHub/mod_social/language/en-GB/en-GB.mod_social.ini",
+		"/C/Users/Bruno/Documents/GitHub/mod_social/language/es-ES/es-ES.mod_social.ini",
+		"/C/Users/Bruno/Documents/GitHub/mod_social/language/pt-BR/pt-BR.mod_social.ini",
+		"/C/Users/Bruno/Documents/GitHub/mod_fontsize/language/pt-BR/pt-BR.mod_fontsize.sys.ini",
+		"/D/Servers/OpenCMS/Vagrantfile",
+		"/C/Users/Bruno/Documents/GitHub/mod_fontsize/tmpl/default.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_social/tmpl/default.php",
+		"/C/Users/Bruno/Documents/GitHub/mod_fontsize/mod_fontsize.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_social/mod_social.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_social/mod_social.xml",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/admin/component/field/jadminfieldspacer.sublime-snippet",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/misc/toolbar/jtoolbarhelper-spacer.sublime-snippet",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/site/template/field/jtemplatefieldspacer.sublime-snippet",
+		"/C/Users/Bruno/AppData/Roaming/Sublime Text 2/Packages/Joomla! 3.x Snippets/module/field/jmodulefieldspacer.sublime-snippet",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_languages/horizontal.php",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/D/Servers/AtomTech/Vagrantfile",
+		"/D/Servers/Terracap/Vagrantfile",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_slideshow/mod_slideshow.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/modules/mod_slideshow/helper.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/plugins/system/menuplus/forms/item.xml",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/topmenu.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/topmenu_component.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/topmenu_heading.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/topmenu_separator.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/topmenu_url.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/mainmenu.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/mainmenu_component.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/mainmenu_heading.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/mainmenu_separator.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/mainmenu_url.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/searchmenu.php",
+		"/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/html/mod_menu/searchmenu_component.php"
+	],
+	"find":
+	{
+		"height": 42.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\templates\\protostar",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\templates\\clearview\\html\\mod_menu",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\templates\\clearview",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\templates\\clearview\\html\\mod_menu",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\templates\\clearview\\html\\mod_menu",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\templates\\protostar",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\templates\\beez3",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\administrator\\modules",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\administrator\\modules\\mod_menu",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br\\administrator\\templates\\isis",
+			"D:\\Servers\\Terracap\\www\\joomla.terracap.df.gov.br",
+			"D:\\Servers\\Terracap\\www\\html.terracap.df.gov.br",
+			"D:\\Servers\\Terracap\\www\\html.terracap.df.gov.br\\less",
+			"D:\\Servers\\Terracap\\www\\html.terracap.df.gov.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_config",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\libraries",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_config",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_config",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar\\controllers",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar - Copy",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\language",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar\\controllers",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_languages\\controllers",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_login",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\media",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\libraries",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\media",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar\\models",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar\\language",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar\\helpers",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar\\help",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar\\controllers",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_seminar",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_content",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br\\administrator\\components\\com_content",
+			"D:\\Web Server\\www\\seminar.atomtech.com.br",
+			"D:\\Web Server\\www\\members.atomtech.com.br",
+			"D:\\Web Server\\www\\members.atomtech.com.br\\plugins",
+			"D:\\Web Server\\www\\members.atomtech.com.br",
+			"D:\\Web Server\\www\\members.atomtech.com.br\\plugins",
+			"D:\\Web Server\\www\\members.atomtech.com.br",
+			"D:\\Web Server\\www\\members.atomtech.com.br\\plugins",
+			"D:\\Web Server\\www\\members.atomtech.com.br",
+			"D:\\Web Server\\www\\members.atomtech.com.br\\includes",
+			"D:\\Web Server\\www\\members.atomtech.com.br",
+			"D:\\Web Server\\www\\members.atomtech.com.br\\plugins\\system",
+			"D:\\Web Server\\www\\members.atomtech.com.br",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\components\\com_users",
+			"D:\\Web Server\\www\\funadesp.org.br\\components\\com_bolsas",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\components\\com_bolsas\\models",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\components\\com_bolsas",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\components\\com_bolsas",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\components",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\components\\com_bolsas",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\components\\com_bolsas",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\components",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\templates\\dashboard",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\templates\\isis",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\templates\\dashboard",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components\\com_bolsas",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\plugins",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components\\com_bolsas",
+			"D:\\Web Server\\www\\funadesp.org.br",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components\\com_content",
+			"D:\\Web Server\\www\\funadesp.org.br\\libraries",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components\\com_content",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components\\com_templates",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components",
+			"D:\\Web Server\\www\\funadesp.org.br\\administrator\\components\\com_bolsas",
+			"D:\\Web Server\\www\\funadesp.org.br"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"JFactory::getApplication(",
+			"header",
+			"$",
+			")->template",
+			"Get the template name.",
+			"getTemplate(",
+			"->getTemplate(",
+			"defines.php",
+			"defines",
+			"header",
+			"application/rss+xml",
+			"header('Content-Type: application/rss+xml; charset=ISO-8859-1');",
+			"bootstrap-responsive.min.css",
+			"JHtmlBootstrap::loadCss(",
+			"bootstrap",
+			"/media/jui/js/bootstrap.min.js",
+			"bootstrap.min.js",
+			"_scripts",
+			"position",
+			"_scripts",
+			"parallax",
+			"loadcss",
+			"parallax",
+			"animate",
+			"JDocument::get",
+			"_scripts",
+			"plugins.js",
+			"'bootstrap.framework'",
+			"params",
+			"flexslider",
+			"pagination_item_inactive",
+			"pagination_list_footer",
+			"breadcrumb",
+			"breadcrumbs",
+			"tool",
+			") :",
+			"menu",
+			"Menuplus",
+			"bootstrap_size",
+			"jdoc",
+			"header {",
+			"text-sha",
+			"Debug",
+			"rvfs-controllers",
+			"#rvfs-controllers",
+			"rvfs-controllers",
+			"fontsize-controllers",
+			"rvfs-reset",
+			"SOCIAL",
+			"resetButton",
+			"class=\"hasTooltip\" data-placement=\"bottom\" ",
+			"resetButton",
+			"data-toggle=\"tooltip\" data-placement=\"bottom\" ",
+			"SOCIAL",
+			"type=\"spacer\"",
+			"<?php echo $path; ?>",
+			"RSS 2.0",
+			"_links",
+			"function _link(",
+			"function _links(",
+			"addHeadLink",
+			"RSS 2.0",
+			"?format=feed&type=rss",
+			"?format=feed&amp;type=rss",
+			"index.php?format=feed&type=rss",
+			"application/rss+xml",
+			"social-me",
+			"pt-BR",
+			"search-menu",
+			"chosen",
+			" :",
+			"text",
+			") :",
+			" :",
+			"searchmenu",
+			"<span class=\"label ",
+			"ENT_QUOTES",
+			"helper",
+			"en-GB",
+			"params",
+			"catch (RuntimeException \\$e) ",
+			"throw new RuntimeException($e->getMessage()",
+			"throw new RuntimeException(",
+			"throw new RuntimeException(\\\\",
+			"throw new RuntimeException($e->getMessage()",
+			"throw new RuntimeException($e->getMessage(), $e->getCode());",
+			"(Exception $e)",
+			"Browserwarning",
+			"pt-BR",
+			"tcpin_",
+			"pt-BR",
+			"$path",
+			"$browser",
+			"pt-BR",
+			"window.addEvent('load', function() {",
+			"addHeadLink",
+			"	",
+			"addCustomTag",
+			"link",
+			"stylesheet",
+			"rel",
+			"apple-touch",
+			"apple-touch-icon",
+			"em",
+			"px",
+			"demo-control",
+			"images/",
+			"<?php echo $path; ?>/",
+			"js/",
+			" : ?>",
+			";?>",
+			"onContentPrepareForm",
+			"CONTENT",
+			"jerro",
+			"content",
+			"1",
+			"11",
+			"default",
+			"shortcut-menu",
+			".text",
+			"shortcut-menu",
+			".text",
+			"shortcut-menu",
+			"_MOD_",
+			"fieldset",
+			"filter=\"raw\"",
+			"params",
+			"images"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": true,
+		"regex": false,
+		"replace_history":
+		[
+			"\\$",
+			"Templateplus",
+			"FONTSIZE",
+			"",
+			"FONTSIZE",
+			"",
+			"es-ES",
+			"en-GB",
+			":",
+			"):",
+			"<option value=\"",
+			"es-ES",
+			"Browsehappy",
+			"en-GB",
+			"tcpex_",
+			"en-GB",
+			"JUri::root()",
+			"en-GB",
+			"$doc->addCustomTag('",
+			"<?php echo $path; ?>/images/",
+			"",
+			"<?php echo $path; ?>/js/",
+			"<?php echo $path; ?>/",
+			": ?>",
+			"; ?>",
+			"SYSTEM",
+			"system",
+			"en-GB",
+			"tcpex_",
+			"10.50.3.3:8080",
+			"terracapnet\\geovani.geraldi",
+			"macaquinho",
+			"10.50.3.3:8080",
+			"h6",
+			"h5",
+			"Ago",
+			"",
+			"h4",
+			".navigation",
+			"",
+			"20px",
+			"@menu",
+			"menu",
+			"<li class=\"list-group-item\">",
+			"@color-darken-20",
+			"@color-darken-10",
+			"main-menu",
+			"navigation",
+			"",
+			"images/slider/",
+			"sections/",
+			"<div class=\"col-lg-3\">",
+			"</div>",
+			"h5",
+			"p",
+			"h4",
+			"h6",
+			"",
+			"8123",
+			"10.27.1.97",
+			"&",
+			"#",
+			"@color",
+			"#__",
+			"\\$",
+			"SPONSOR_GROUP",
+			"sponsor",
+			"seminar",
+			"sponsor",
+			"seminar",
+			"sponsor",
+			"seminar",
+			"sponsor",
+			"sponsors",
+			"sponsor",
+			"seminar",
+			"sponsor",
+			"SPONSORS_GROUPS",
+			"workshop",
+			"teacher",
+			"student",
+			"teacher",
+			"student",
+			"teacher",
+			"workshop",
+			"teacher",
+			"workshop",
+			"teacher",
+			"student",
+			"teacher",
+			"workshop",
+			"student",
+			"teacher",
+			"workshop",
+			"student",
+			"teacher",
+			"WORKSHOP",
+			"Workshop",
+			"workshop",
+			"teacher",
+			"Teacher",
+			"Student",
+			"student",
+			"Workshop",
+			"workshop",
+			"subscriber",
+			"\\$",
+			"fndsp_bolsas_1_pessoas",
+			"${",
+			"\\$",
+			"SUBMENU",
+			"",
+			"en-GB",
+			"\\$",
+			"${1/(.+)/\\U\\1/g}",
+			"$this->item->i",
+			"'<?php echo $return; ?>'",
+			"\\$",
+			"007B32",
+			"\\$",
+			"bolsas_2_status_bolsistas_projeto",
+			"bolsas_2_tipos_projetos_alteracoes",
+			"bolsas_2_status_bolsistas_projeto",
+			"bolsas_2_status_projetos",
+			"\\$",
+			"#_",
+			"adminForm",
+			"\\$"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"settings":
+					{
+						"buffer_size": 3774,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2819,
+								2819
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1023.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/js/main.js",
+					"settings":
+					{
+						"buffer_size": 1796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"ensure_newline_at_eof_on_save": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/templateDetails.xml",
+					"settings":
+					{
+						"buffer_size": 4461,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"ensure_newline_at_eof_on_save": false,
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/index.php",
+					"settings":
+					{
+						"buffer_size": 9596,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"ensure_newline_at_eof_on_save": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/css/custom.css.php",
+					"settings":
+					{
+						"buffer_size": 1329,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"ensure_newline_at_eof_on_save": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/F/Companies/Total Propaganda/Passwords/Security.key",
+					"settings":
+					{
+						"buffer_size": 129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/libraries/joomla/uri/uri.php",
+					"settings":
+					{
+						"buffer_size": 17436,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"ensure_newline_at_eof_on_save": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/css/template.css",
+					"settings":
+					{
+						"buffer_size": 41208,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"ensure_newline_at_eof_on_save": false,
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"settings":
+					{
+						"buffer_size": 2376,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								133,
+								133
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"settings":
+					{
+						"buffer_size": 4501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1184,
+								1184
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 585.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/D/Servers/Terracap/www/joomla.terracap.df.gov.br/templates/clearview/less/template.less",
+					"settings":
+					{
+						"buffer_size": 26462,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2956,
+								2956
+							]
+						],
+						"settings":
+						{
+							"ensure_newline_at_eof_on_save": false,
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false,
+							"trim_trailing_white_space_on_save": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2467.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"uri",
+				"libraries/joomla/uri/uri.php"
+			],
+			[
+				"template.css",
+				"templates/clearview/css/template.css"
+			],
+			[
+				"template.l",
+				"templates/clearview/less/template.less"
+			],
+			[
+				"template.",
+				"templates/clearview/less/template.less"
+			],
+			[
+				"htmlboo",
+				"libraries/cms/html/bootstrap.php"
+			],
+			[
+				"render",
+				"libraries/joomla/document/renderer.php"
+			],
+			[
+				"behav",
+				"libraries/cms/html/behavior.php"
+			],
+			[
+				"htmlbootstrap",
+				"libraries/cms/html/bootstrap.php"
+			],
+			[
+				"html/html",
+				"libraries/joomla/document/html/html.php"
+			],
+			[
+				"head.php",
+				"libraries/joomla/document/html/renderer/head.php"
+			],
+			[
+				"template.less",
+				"templates/clearview/less/template.less"
+			],
+			[
+				"fontsiless",
+				"media/mod_fontsize/less/template.less"
+			],
+			[
+				"dom",
+				"libraries/joomla/document/document.php"
+			],
+			[
+				"menuplus",
+				"administrator/language/pt-BR/pt-BR.plg_system_menuplus.ini"
+			],
+			[
+				"template.les",
+				"templates/clearview/less/template.less"
+			],
+			[
+				"pt-br.xm",
+				"language/pt-BR/pt-BR.xml"
+			],
+			[
+				"boot",
+				"libraries/cms/html/bootstrap.php"
+			],
+			[
+				"socialt",
+				"modules/mod_social/tmpl/default.php"
+			],
+			[
+				"plg_system_menu",
+				"administrator/language/pt-BR/pt-BR.plg_system_menuplus.ini"
+			],
+			[
+				"menupl",
+				"plugins/system/menuplus/menuplus.xml"
+			],
+			[
+				"do",
+				"libraries/joomla/document/document.php"
+			],
+			[
+				"feed",
+				"libraries/joomla/document/feed/feed.php"
+			],
+			[
+				"rss",
+				"libraries/joomla/feed/parser/rss.php"
+			],
+			[
+				"document",
+				"libraries/joomla/document/document.php"
+			],
+			[
+				"docum",
+				"libraries/joomla/document/renderer.php"
+			],
+			[
+				"docu",
+				"libraries/joomla/document/document.php"
+			],
+			[
+				"bootstrap",
+				"libraries/cms/html/bootstrap.php"
+			],
+			[
+				"main",
+				"templates/clearview/js/main.js"
+			],
+			[
+				"html",
+				"libraries/cms/html/html.php"
+			],
+			[
+				"docuem",
+				"tests/unit/suites/libraries/joomla/document/html/renderer/JDocumentRendererMessageTest.php"
+			],
+			[
+				"index.php",
+				"templates/clearview/index.php"
+			],
+			[
+				"templateless",
+				"templates/clearview/less/template.less"
+			],
+			[
+				"mod_fontcss",
+				"media/mod_fontsize/css/template.css"
+			],
+			[
+				"clearviewindex.php",
+				"templates/clearview/index.php"
+			],
+			[
+				"applica",
+				"libraries/legacy/application/application.php"
+			],
+			[
+				"inde",
+				"index.php"
+			],
+			[
+				"index",
+				"index.php"
+			],
+			[
+				"fontawesome.ph",
+				"plugins/system/fontawesome/fontawesome.php"
+			],
+			[
+				"defines",
+				"includes/defines.php"
+			],
+			[
+				"browser",
+				"libraries/joomla/environment/browser.php"
+			],
+			[
+				"factory",
+				"libraries/joomla/factory.php"
+			],
+			[
+				"docume",
+				"libraries/joomla/document/document.php"
+			],
+			[
+				"documen",
+				"libraries/joomla/document/document.php"
+			],
+			[
+				"languagefilter",
+				"plugins/system/languagefilter/languagefilter.php"
+			],
+			[
+				"fieldlayou",
+				"libraries/legacy/form/field/modulelayout.php"
+			],
+			[
+				"field/media",
+				"libraries/cms/form/field/media.php"
+			],
+			[
+				"ptbr.",
+				"language/pt-BR/pt-BR.ini"
+			],
+			[
+				"fieldtextare",
+				"libraries/joomla/form/fields/textarea.php"
+			],
+			[
+				"htm",
+				"libraries/cms/html/html.php"
+			],
+			[
+				"brow",
+				"libraries/joomla/environment/browser.php"
+			],
+			[
+				"tplisis",
+				"administrator/language/en-GB/en-GB.tpl_isis.ini"
+			],
+			[
+				"pt-brmodpo",
+				"administrator/language/pt-BR/pt-BR.mod_popular.ini"
+			],
+			[
+				"pt-brpo",
+				"administrator/language/pt-BR/pt-BR.mod_popular.ini"
+			],
+			[
+				"ptbrmolo",
+				"administrator/language/pt-BR/pt-BR.mod_logged.ini"
+			],
+			[
+				"navi",
+				"includes/modules/navigation.php"
+			],
+			[
+				"ind",
+				"index.php"
+			],
+			[
+				"slide",
+				"includes/sections/slideshow.php"
+			],
+			[
+				"las",
+				"includes/modules/last-news.php"
+			],
+			[
+				"bidd",
+				"includes/sections/biddings.php"
+			],
+			[
+				"bid",
+				"includes/modules/bidding.php"
+			],
+			[
+				"galler",
+				"includes/modules/gallery.php"
+			],
+			[
+				"pro",
+				"includes/sections/projects.php"
+			],
+			[
+				"proj",
+				"includes/modules/projects.php"
+			],
+			[
+				"vide",
+				"includes/modules/video.php"
+			],
+			[
+				"news",
+				"includes/modules/last-news.php"
+			],
+			[
+				"last",
+				"includes/modules/last-news.php"
+			],
+			[
+				"gall",
+				"includes/modules/gallery.php"
+			],
+			[
+				"proje",
+				"includes/modules/projects.php"
+			],
+			[
+				"biddin",
+				"includes/sections/biddings.php"
+			],
+			[
+				"laste",
+				"includes/modules/last-news.php"
+			],
+			[
+				"navig",
+				"includes/modules/navigation.php"
+			],
+			[
+				"ma",
+				"js/main.js"
+			],
+			[
+				"foo",
+				"includes/footer.php"
+			],
+			[
+				"gallery",
+				"includes/modules/gallery.php"
+			],
+			[
+				"footo",
+				"includes/modules/footer-top.php"
+			],
+			[
+				"footer",
+				"includes/footer.php"
+			],
+			[
+				"footerto",
+				"includes/modules/footer-top.php"
+			],
+			[
+				"rssve",
+				"includes/modules/rss-vertical.php"
+			],
+			[
+				"ser",
+				"includes/sections/shortcuts.php"
+			],
+			[
+				"footet",
+				"includes/modules/footer-top.php"
+			],
+			[
+				"men",
+				"includes/modules/menus.php"
+			],
+			[
+				"top",
+				"includes/topbar.php"
+			],
+			[
+				"shot",
+				"includes/sections/shortcuts.php"
+			],
+			[
+				"footerb",
+				"includes/modules/footer-bottom.php"
+			],
+			[
+				"menu",
+				"includes/modules/menus.php"
+			],
+			[
+				"short",
+				"includes/sections/shortcuts.php"
+			],
+			[
+				"topb",
+				"includes/topbar.php"
+			],
+			[
+				"shor",
+				"includes/sections/shortcuts.php"
+			],
+			[
+				"sear",
+				"includes/modules/search-menu.php"
+			],
+			[
+				"header",
+				"includes/header.php"
+			],
+			[
+				"insti",
+				"institucional.php"
+			],
+			[
+				"in",
+				"includes/sections/institutional.php"
+			],
+			[
+				"lici",
+				"licitacoes.php"
+			],
+			[
+				"nav",
+				"includes/modules/navigation.php"
+			],
+			[
+				"main.",
+				"css/main.css"
+			],
+			[
+				"projc",
+				"includes/modules/projects.php"
+			],
+			[
+				"footerboo",
+				"includes/modules/footer-bottom.php"
+			],
+			[
+				"searc",
+				"includes/modules/search-menu.php"
+			],
+			[
+				"foot",
+				"includes/footer.php"
+			],
+			[
+				"edi",
+				"includes/modules/edicts.php"
+			],
+			[
+				"ins",
+				"includes/sections/institutional.php"
+			],
+			[
+				"hea",
+				"includes/header.php"
+			],
+			[
+				"menus",
+				"includes/modules/menus.php"
+			],
+			[
+				"para",
+				"js/vendor/jquery.parallax.js"
+			],
+			[
+				"intro",
+				"includes/sections/intro.php"
+			],
+			[
+				"inti",
+				"institucional.php"
+			],
+			[
+				"inst",
+				"institucional.php"
+			],
+			[
+				"mem",
+				"includes/sections/members.php"
+			],
+			[
+				"member",
+				"swap/members.html"
+			],
+			[
+				"into",
+				"includes/topbar.php"
+			],
+			[
+				"new",
+				"swap/news.html"
+			],
+			[
+				"style",
+				"new/css/style.css"
+			],
+			[
+				"stye",
+				"new/css/style.css"
+			],
+			[
+				"less",
+				"new/css/lesshat.less"
+			],
+			[
+				"boo",
+				"new/css/bootstrap.css"
+			],
+			[
+				"css",
+				"build/phpcs/Joomla/Sniffs/WhiteSpace/CastSpacingSniff.php"
+			],
+			[
+				"drver",
+				"libraries/joomla/database/driver.php"
+			],
+			[
+				"query",
+				"libraries/joomla/database/query.php"
+			],
+			[
+				"drier",
+				"libraries/joomla/database/driver.php"
+			],
+			[
+				"modalsponso",
+				"administrator/components/com_seminar/models/fields/modal/sponsors.php"
+			],
+			[
+				"controllerform",
+				"libraries/legacy/controller/form.php"
+			],
+			[
+				"controlleradmin",
+				"libraries/legacy/controller/admin.php"
+			],
+			[
+				"ptbrseminar",
+				"administrator/components/com_seminar/language/pt-BR/pt-BR.com_seminar.ini"
+			],
+			[
+				"pt-br",
+				"administrator/language/pt-BR/pt-BR.ini"
+			],
+			[
+				"lecture",
+				"administrator/components/com_seminar/controllers/lecture.php"
+			],
+			[
+				"lectures",
+				"administrator/components/com_seminar/controllers/lectures.php"
+			],
+			[
+				"lecturejs",
+				"administrator/components/com_seminar/controllers/lecture.json.php"
+			],
+			[
+				"users",
+				"administrator/components/com_seminar/models/users.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/D/Projects/html.terranet.sublime-project"
+			],
+			[
+				"htmlterra",
+				"/D/Projects/html.terranet.sublime-project"
+			],
+			[
+				"hmtl",
+				"/D/Web Server/Projects/html.citynightlife.com.br.sublime-project"
+			],
+			[
+				"html",
+				"/D/Web Server/Projects/html.citynightlife.com.br.sublime-project"
+			],
+			[
+				"joomlab",
+				"/D/Web Server/Projects/joomladaybrasil.org.sublime-project"
+			],
+			[
+				"jooml",
+				"/D/Web Server/Projects/joomladaybrasil.org.sublime-project"
+			],
+			[
+				"fu",
+				"/D/Web Server/Projects/funadesp.org.br.sublime-project"
+			],
+			[
+				"test",
+				"/D/Web Server/Projects/test.com.br.sublime-project"
+			],
+			[
+				"teste",
+				"/D/Web Server/Projects/test.com.br.sublime-project"
+			],
+			[
+				"f",
+				"/D/Web Server/Projects/joomla.citynightlife.com.br.sublime-project"
+			],
+			[
+				"joom",
+				"/D/Web Server/Projects/joomla.citynightlife.com.br.sublime-project"
+			],
+			[
+				"joo",
+				"/D/Web Server/Projects/joomla.citynightlife.com.br.sublime-project"
+			],
+			[
+				"aca",
+				"/D/Web Server/Projects/mobile.acasadosindico.com"
+			],
+			[
+				"j",
+				"/D/Web Server/Projects/joomla.citynightlife.com.br.sublime-project"
+			],
+			[
+				"niv",
+				"/D/Web Server/Projects/nivoslider.atomtech.com.br.sublime-project"
+			],
+			[
+				"pla",
+				"/D/Web Server/Projects/Joomla! 3.x Snippets.sublime-project"
+			],
+			[
+				"vi",
+				"/D/Web Server/Projects/videos.atomtech.com.br.sublime-project"
+			],
+			[
+				"te",
+				"/D/Web Server/Projects/test.com.br.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 271.0,
+	"status_bar_visible": true
+}

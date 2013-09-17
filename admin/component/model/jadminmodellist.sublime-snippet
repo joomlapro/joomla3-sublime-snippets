@@ -14,7 +14,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
-	 * @see     JController
+	 * @see     JModelList
 	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())

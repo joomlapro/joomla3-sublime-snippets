@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[addrulepath="/${1:administrator/}components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/rules"]]></content>
+	<tabTrigger>jaddrulepath</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

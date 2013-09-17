@@ -12,7 +12,7 @@ function check$4(value) {
 
 check${4:${3/(.+)/\u\1/g}}(\$('input:radio[name="jform[${3:field}]"]:checked').val());
 
-\$('#jform_${3/(.+)/\L\1/g}').on('click', function () {
+\$('#jform_${3/(.+)/\L\1/g}').on('click', function() {
 	check$4(\$('input:radio[name="jform[${3/(.+)/\L\1/g}]"]:checked').val());
 });]]></content>
 	<tabTrigger>jjquery_radio_checked</tabTrigger>

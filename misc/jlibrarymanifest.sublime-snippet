@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <extension type="library" version="$TM_VERSION" method="upgrade">
 	<name>${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}</name>
 	<libraryname>${2:${1/(.+)/\L\1/g}}</libraryname>

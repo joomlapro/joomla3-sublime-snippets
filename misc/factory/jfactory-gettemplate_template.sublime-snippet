@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Get the template name.
-\$app->getTemplate(true)->template;]]></content>
+\$template = \$app->getTemplate(true)->template;]]></content>
 	<tabTrigger>jfactory-gettemplate_template</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

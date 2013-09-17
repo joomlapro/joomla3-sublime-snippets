@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Use the correct json mime-type.
+header('Content-Type: application/json');]]></content>
+	<tabTrigger>jmimejson</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

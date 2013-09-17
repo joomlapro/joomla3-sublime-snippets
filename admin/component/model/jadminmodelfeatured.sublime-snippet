@@ -17,7 +17,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
-	 * @see     JController
+	 * @see     ${TM_COMPONENT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
 	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
@@ -75,7 +75,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 		);
 		\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${2/(.+)/\L\1/g}} AS a');
 
-		// Join over the language
+		// Join over the language.
 		\$query->select('l.title AS language_title')
 			->join('LEFT', \$db->quoteName('#__languages') . ' AS l ON l.lang_code = a.language');
 

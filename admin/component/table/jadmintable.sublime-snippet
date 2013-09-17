@@ -10,26 +10,15 @@
 class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JTable
 {
 	/**
-	 * Helper object for storing and deleting tag information.
+	 * Constructor.
 	 *
-	 * @var     JHelperTags
-	 * @since   $TM_VERSION
-	 */
-	protected \$tagsHelper = null;
-
-	/**
-	 * Constructor
-	 *
-	 * @param   JDatabase  &\$db  Driver A database connector object.
+	 * @param   JDatabaseDriver  &\$db  A database connector object.
 	 *
 	 * @since   $TM_VERSION
 	 */
 	public function __construct(& \$db)
 	{
 		parent::__construct('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'id', \$db);
-
-		\$this->tagsHelper = new JHelperTags;
-		\$this->tagsHelper->typeAlias = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
 	}
 
 	/**
@@ -44,6 +33,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	protected function _getAssetName()
 	{
 		\$k = \$this->_tbl_key;
+
 		return 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$this->\$k;
 	}
 
@@ -69,7 +59,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 *
 	 * @since   $TM_VERSION
 	 */
-	protected function _getAssetParentId(\$table = null, \$id = null)
+	protected function _getAssetParentId(JTable \$table = null, \$id = null)
 	{
 		\$assetId = null;
 
@@ -230,25 +220,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	}
 
 	/**
-	 * Override parent delete method to delete tags information.
-	 *
-	 * @param   integer  \$pk  Primary key to delete.
-	 *
-	 * @return  boolean  True on success, false on failure.
-	 *
-	 * @since   $TM_VERSION
-	 * @throws  UnexpectedValueException
-	 */
-	public function delete(\$pk = null)
-	{
-		\$result = parent::delete(\$pk);
-
-		\$this->tagsHelper->typeAlias = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
-
-		return \$result && \$this->tagsHelper->deleteTagData(\$this, \$pk);
-	}
-
-	/**
 	 * Overload the store method for the ${3:${1/(.+)/\u\1/g}s} table.
 	 *
 	 * @param   boolean  \$updateNulls  Toggle whether null values should be updated.
@@ -306,15 +277,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			return false;
 		}
 
-		\$this->tagsHelper->typeAlias = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
-		\$this->tagsHelper->preStoreProcess(\$this);
-
-		// Attempt to store the user data.
-		\$result = parent::store(\$updateNulls);
-
-		\$this->newTags = isset(\$this->newTags) ? \$this->newTags : array();
-
-		return \$result && \$this->tagsHelper->postStoreProcess(\$this, \$this->newTags);
+		return parent::store(\$updateNulls);
 	}
 
 	/**

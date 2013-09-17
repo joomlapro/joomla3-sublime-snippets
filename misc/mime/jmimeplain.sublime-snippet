@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Use the correct text/plain mime-type.
+header('Content-Type: text/plain');]]></content>
+	<tabTrigger>jmimeplain</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

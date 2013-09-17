@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Use the correct jpeg mime-type.
+header('Content-Type: image/jpeg');]]></content>
+	<tabTrigger>jmimejpeg</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

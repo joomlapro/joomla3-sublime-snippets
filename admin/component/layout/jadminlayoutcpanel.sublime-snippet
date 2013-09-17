@@ -21,6 +21,7 @@
 			\$output = JModuleHelper::renderModule(\$module, array('style' => 'well'));
 			\$params = new JRegistry;
 			\$params->loadString(\$module->params);
+
 			echo \$output;
 		}
 		?>
@@ -32,6 +33,7 @@
 			\$output = JModuleHelper::renderModule(\$iconmodule, array('style' => 'well'));
 			\$params = new JRegistry;
 			\$params->loadString(\$iconmodule->params);
+
 			echo \$output;
 		}
 		?>

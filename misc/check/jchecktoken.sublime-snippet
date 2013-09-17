@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[// Check for request forgeries.
-JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));]]></content>
+JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));]]></content>
 	<tabTrigger>jchecktoken</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

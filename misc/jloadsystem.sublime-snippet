@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[// Load system defines.
+if (file_exists('../../../defines.php'))
+{
+	require_once '../../../defines.php';
+}
+
+if (!defined('_JDEFINES'))
+{
+	define('JPATH_BASE', '../../..');
+	require_once JPATH_BASE . '/includes/defines.php';
+}
+
+// Get the framework.
+require_once JPATH_LIBRARIES . '/import.legacy.php';
+
+// Bootstrap the CMS libraries.
+require_once JPATH_LIBRARIES . '/cms.php';]]></content>
+	<tabTrigger>jloadsystem</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

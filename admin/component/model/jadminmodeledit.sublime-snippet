@@ -1,5 +1,8 @@
 <snippet>
-	<content><![CDATA[/**
+	<content><![CDATA[// Load the helper class.
+require_once JPATH_COMPONENT_ADMINISTRATOR . '/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php';
+
+/**
  * Item Model for an ${1/(.+)/\u\1/g}.
  *
  * @package     ${TM_COMPONENT/(.+)/\u\1/g}
@@ -16,6 +19,14 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 * @since   $TM_VERSION
 	 */
 	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+
+	/**
+	 * The type alias for this content type (for example, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}').
+	 *
+	 * @var      string
+	 * @since    $TM_VERSION
+	 */
+	public \$typeAlias = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
 
 	/**
 	 * Batch copy items to a new category or current.
@@ -45,13 +56,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				if (\$error = \$categoryTable->getError())
 				{
 					// Fatal error.
-					\$this->setError(\$error);
+					JFactory::getApplication()->enqueueMessage(\$error);
 
 					return false;
 				}
 				else
 				{
-					\$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_MOVE_CATEGORY_NOT_FOUND'));
+					JFactory::getApplication()->enqueueMessage(JText::_('JLIB_APPLICATION_ERROR_BATCH_MOVE_CATEGORY_NOT_FOUND'));
 
 					return false;
 				}
@@ -60,7 +71,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		if (empty(\$categoryId))
 		{
-			\$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_MOVE_CATEGORY_NOT_FOUND'));
+			JFactory::getApplication()->enqueueMessage(JText::_('JLIB_APPLICATION_ERROR_BATCH_MOVE_CATEGORY_NOT_FOUND'));
 
 			return false;
 		}
@@ -71,7 +82,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		if (!\$user->authorise('core.create', \$extension . '.category.' . \$categoryId))
 		{
-			\$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_CREATE'));
+			JFactory::getApplication()->enqueueMessage(JText::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_CREATE'));
 
 			return false;
 		}
@@ -90,14 +101,15 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				if (\$error = \$table->getError())
 				{
 					// Fatal error.
-					\$this->setError(\$error);
+					JFactory::getApplication()->enqueueMessage(\$error);
 
 					return false;
 				}
 				else
 				{
 					// Not fatal error.
-					\$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', \$pk));
+					JFactory::getApplication()->enqueueMessage(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', \$pk));
+
 					continue;
 				}
 			}
@@ -119,7 +131,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Check the row.
 			if (!\$table->check())
 			{
-				\$this->setError(\$table->getError());
+				JFactory::getApplication()->enqueueMessage(\$table->getError());
 
 				return false;
 			}
@@ -127,7 +139,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Store the row.
 			if (!\$table->store())
 			{
-				\$this->setError(\$table->getError());
+				JFactory::getApplication()->enqueueMessage(\$table->getError());
 
 				return false;
 			}
@@ -498,7 +510,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		if (empty(\$pks))
 		{
-			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+			JFactory::getApplication()->enqueueMessage(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
 
 			return false;
 		}
@@ -576,7 +588,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 		catch (Exception \$e)
 		{
-			\$this->setError(\$e->getMessage());
+			JFactory::getApplication()->enqueueMessage(\$e->getMessage());
 
 			return false;
 		}

@@ -13,13 +13,13 @@ require_once __DIR__ . '/${2:singular}.php';
 class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Feature} extends ${TM_COMPONENT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
 {
 	/**
-	 * Returns a Table object, always creating it.
+	 * Method to get a table object, load it if necessary.
 	 *
-	 * @param   type    \$type    The table type to instantiate.
-	 * @param   string  \$prefix  A prefix for the table class name. Optional.
+	 * @param   string  \$type    The table name. Optional.
+	 * @param   string  \$prefix  The class prefix. Optional.
 	 * @param   array   \$config  Configuration array for model. Optional.
 	 *
-	 * @return  JTable    A database object.
+	 * @return  JTable  A JTable object.
 	 *
 	 * @since   $TM_VERSION
 	 */
@@ -31,9 +31,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Feature} extends ${TM_COMPONENT/(.+)/\
 	/**
 	 * A protected method to get a set of ordering conditions.
 	 *
-	 * @param   object  \$table  A record object.
+	 * @param   JTable  \$table  A JTable object.
 	 *
-	 * @return  array  An array of conditions to add to add to ordering queries.
+	 * @return  array  An array of conditions to add to ordering queries.
 	 *
 	 * @since   $TM_VERSION
 	 */

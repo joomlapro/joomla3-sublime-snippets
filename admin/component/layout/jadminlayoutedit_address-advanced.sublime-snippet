@@ -17,13 +17,13 @@ JHtml::script('com_${TM_COMPONENT/(.+)/\L\1/g}/gmaps.js', false, true);
 	jQuery.noConflict();
 
 	(function (\$) {
-		\$(function () {
+		\$(function() {
 			var map;
 			var marker;
 			var latitude = \$('#jform_address_latitude');
 			var longitude = \$('#jform_address_longitude');
 
-			\$(document).ready(function () {
+			\$(document).ready(function() {
 				map = new GMaps({
 					div: '#map',
 					lat: '<?php echo \$latitude; ?>',
@@ -72,7 +72,7 @@ JHtml::script('com_${TM_COMPONENT/(.+)/\L\1/g}/gmaps.js', false, true);
 					});
 				});
 
-				\$('.nav-tabs li').live('click', function () {
+				\$('.nav-tabs li').live('click', function() {
 					map.refresh();
 					map.setCenter(
 						'<?php echo \$latitude; ?>',

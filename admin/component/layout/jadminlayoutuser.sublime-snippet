@@ -16,7 +16,7 @@ JHtml::_('formbehavior.chosen', 'select');
 \$sortFields = \$this->getSortFields();
 ?>
 <script type="text/javascript">
-	Joomla.orderTable = function () {
+	Joomla.orderTable = function() {
 		table = document.getElementById("sortTable");
 		direction = document.getElementById("directionTable");
 		order = table.options[table.selectedIndex].value;
@@ -71,7 +71,7 @@ JHtml::_('formbehavior.chosen', 'select');
 			<thead>
 				<tr>
 					<th width="1%" class="hidden-phone">
-						<input type="checkbox" name="checkall-toggle" value="" title="<?php echo JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
+						<?php echo JHtml::_('grid.checkall'); ?>
 					</th>
 					<th class="title">
 						<?php echo JHtml::_('grid.sort', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_NAME', 'u.name', \$listDirn, \$listOrder); ?>

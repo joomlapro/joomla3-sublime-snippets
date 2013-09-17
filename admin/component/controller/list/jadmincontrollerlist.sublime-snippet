@@ -22,7 +22,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
-	 * @see     JController
+	 * @see     JControllerAdmin
 	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
@@ -45,11 +45,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 * @return  void
 	 *
 	 * @since   $TM_VERSION
+	 * @throws  Exception
 	 */
 	public function featured()
 	{
 		// Check for request forgeries.
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
 		// Initialiase variables.
 		\$user   = JFactory::getUser();
@@ -61,18 +62,18 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		// Access checks.
 		foreach (\$ids as \$i => \$id)
 		{
-			if (!\$user->authorise('core.edit.state', \$this->option . '.${2/(.+)/\L\1/g}.' . (int) \$id))
+			if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . (int) \$id))
 			{
 				// Prune items that you can not change.
 				unset(\$ids[\$i]);
 
-				throw new RuntimeException(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 403);
+				throw new Exception(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 403);
 			}
 		}
 
 		if (empty(\$ids))
 		{
-			throw new RuntimeException(JText::_('JERROR_NO_ITEMS_SELECTED'), 500);
+			throw new Exception(JText::_('JERROR_NO_ITEMS_SELECTED'), 500);
 		}
 		else
 		{
@@ -82,7 +83,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 			// Publish the items.
 			if (!\$model->featured(\$ids, \$value))
 			{
-				throw new RuntimeException(\$model->getError(), 500);
+				throw new Exception(\$model->getError(), 500);
 			}
 		}
 
@@ -96,28 +97,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 * @param   string  \$prefix  The class prefix. Optional.
 	 * @param   array   \$config  Configuration array for model. Optional.
 	 *
-	 * @return  object  The model.
+	 * @return  JModelLegacy
 	 *
 	 * @since   $TM_VERSION
 	 */
 	public function getModel(\$name = '${2:${1/(.+)(s\b)/\u\1/g}}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
 	{
 		return parent::getModel(\$name, \$prefix, \$config);
-	}
-
-	/**
-	 * Method to provide child classes the opportunity to process after the delete task.
-	 *
-	 * @param   JModelLegacy  \$model  The model for the component
-	 * @param   mixed         \$ids    Array of ids deleted.
-	 *
-	 * @return  void
-	 *
-	 * @since   $TM_VERSION
-	 */
-	protected function postDeleteHook(JModelLegacy \$model, \$ids = null)
-	{
-
 	}
 }
 

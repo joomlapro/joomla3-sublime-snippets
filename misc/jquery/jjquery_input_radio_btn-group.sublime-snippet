@@ -2,7 +2,7 @@
 	<content><![CDATA[// Turn radios into btn-group.
 \$('.radio.btn-group label').addClass('btn');
 
-\$(".btn-group label:not(.active)").click(function () {
+\$(".btn-group label:not(.active)").click(function() {
 	var label = \$(this);
 	var input = \$('#' + label.attr('for'));
 
@@ -19,7 +19,7 @@
 	}
 });
 
-\$(".btn-group input[checked=checked]").each(function () {
+\$(".btn-group input[checked=checked]").each(function() {
 	if (\$(this).val() == '') {
 		\$("label[for=" + \$(this).attr('id') + "]").addClass('active btn-primary');
 	} else if (\$(this).val() == 0) {

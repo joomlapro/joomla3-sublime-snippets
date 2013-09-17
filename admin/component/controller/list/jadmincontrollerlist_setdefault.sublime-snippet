@@ -9,7 +9,7 @@
 public function setDefault()
 {
 	// Check for request forgeries.
-	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
 	\$pks = \$this->input->post->get('cid', array(), 'array');
 

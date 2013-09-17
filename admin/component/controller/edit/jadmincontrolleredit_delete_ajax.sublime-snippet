@@ -9,7 +9,7 @@
 public function delete${1:Singular}Ajax()
 {
 	// Check for request forgeries.
-	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
 	// Get the input.
 	\$id = \$this->input->post->getInt('id');

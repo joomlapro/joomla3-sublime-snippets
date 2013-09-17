@@ -31,10 +31,10 @@ class JFormFieldZipcode extends JFormFieldText
 
 		\$script = <<<ENDSCRIPT
 		function getZipcode() {
-			var onRequest = function () {
+			var onRequest = function() {
 				document.id('loader').setStyle('display', 'inline-block');
 			};
-			var onComplete = function () {
+			var onComplete = function() {
 				document.id('loader').setStyle('display', 'none');
 			};
 			var onSuccess = function (response) {

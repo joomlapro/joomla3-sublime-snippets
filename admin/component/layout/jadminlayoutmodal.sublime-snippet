@@ -5,7 +5,7 @@
 if (\$app->isSite())
 {
 	// Check for request forgeries.
-	JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+	JSession::checkToken('get') or die(JText::_('JINVALID_TOKEN'));
 }
 
 // Load dependent classes.
@@ -16,6 +16,9 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 // Load the tooltip bootstrap script.
 JHtml::_('bootstrap.tooltip');
+
+// Load the modal behavior script.
+JHtml::_('behavior.framework', true);
 
 // Initialiase variables.
 \$function  = \$app->input->getCmd('function', 'jSelect${2:Singular}');
@@ -32,10 +35,10 @@ JHtml::_('bootstrap.tooltip');
 				<input type="text" name="filter_search" id="filter_search" value="<?php echo \$this->escape(\$this->state->get('filter.search')); ?>" size="30" title="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FILTER_SEARCH_DESC'); ?>" />
 			</div>
 			<div class="btn-group pull-left">
-				<button type="submit" class="btn hasTooltip" data-placement="bottom" title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>">
+				<button type="submit" class="btn hasTooltip" data-placement="bottom" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
 					<span class="icon-search"></span><?php echo '&#160;' . JText::_('JSEARCH_FILTER_SUBMIT'); ?>
 				</button>
-				<button type="button" class="btn hasTooltip" data-placement="bottom" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
+				<button type="button" class="btn hasTooltip" data-placement="bottom" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
 					<span class="icon-remove"></span><?php echo '&#160;' . JText::_('JSEARCH_FILTER_CLEAR'); ?>
 				</button>
 			</div>
@@ -76,7 +79,7 @@ JHtml::_('bootstrap.tooltip');
 	<table class="table table-striped table-condensed">
 		<thead>
 			<tr>
-				<th class="title">
+				<td>
 					<?php echo JHtml::_('grid.sort', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${3/(.+)/\U\1/g}', 'a.${3:title}', \$listDirn, \$listOrder); ?>
 				</th>
 				<th width="15%" class="center nowrap">
@@ -98,7 +101,7 @@ JHtml::_('bootstrap.tooltip');
 		</thead>
 		<tfoot>
 			<tr>
-				<td colspan="15">
+				<td colspan="6">
 					<?php echo \$this->pagination->getListFooter(); ?>
 				</td>
 			</tr>

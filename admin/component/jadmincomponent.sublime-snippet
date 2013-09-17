@@ -1,6 +1,6 @@
 <snippet>
-	<content><![CDATA[// Get the input.
-\$input = JFactory::getApplication()->input;
+	<content><![CDATA[// Load the tabstate behavior script.
+JHtml::_('behavior.tabstate');
 
 // Access check.
 if (!JFactory::getUser()->authorise('core.manage', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
@@ -13,7 +13,7 @@ JLoader::register('${TM_COMPONENT/(.+)/\u\1/g}Helper', __DIR__ . '/helpers/${TM_
 
 // Execute the task.
 \$controller = JControllerLegacy::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
-\$controller->execute(\$input->get('task'));
+\$controller->execute(JFactory::getApplication()->input->get('task'));
 \$controller->redirect();
 
 ]]></content>

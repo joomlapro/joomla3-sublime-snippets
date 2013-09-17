@@ -419,7 +419,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 			}
 			else
 			{
-				jexit('No ${1/(.+)/\L\1/g}id in setLastVisit');
+				die('No ${1/(.+)/\L\1/g}id in setLastVisit');
 			}
 		}
 

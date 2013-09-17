@@ -13,7 +13,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:Featured} extends JTable
 	 * Whether the ${4/(.+)/\L\1/g} is or is not checked out.
 	 *
 	 * @var     boolean
-	 * @since   $TM_VERSION
 	 */
 	public \$checked_out = 0;
 

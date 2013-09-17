@@ -10,7 +10,7 @@
 			"platforms": {
 				"*": [
 					{
-						"version": "2.1.5",
+						"version": "2.1.6",
 						"url": "https://nodeload.github.com/joomlapro/joomla3-sublime-snippets/zip/master"
 					}
 				]

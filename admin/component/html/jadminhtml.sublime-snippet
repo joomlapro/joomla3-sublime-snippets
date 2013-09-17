@@ -33,11 +33,11 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 
 		if (\$canChange)
 		{
-			\$html = '<a href="#" onclick="return listItemTask(\'cb' . \$i . '\',\'' . \$state[1] . '\')" class="btn btn-micro hasTooltip' . (\$value == 1 ? ' active' : '') . '" title="' . JText::_(\$state[3]) . '"><i class="icon-' . \$icon . '"></i></a>';
+			\$html = '<a href="#" onclick="return listItemTask(\'cb' . \$i . '\',\'' . \$state[1] . '\')" class="btn btn-micro hasTooltip' . (\$value == 1 ? ' active' : '') . '" title="' . JHtml::tooltipText(\$state[3]) . '"><i class="icon-' . \$icon . '"></i></a>';
 		}
 		else
 		{
-			\$html = '<a class="btn btn-micro hasTooltip disabled' . (\$value == 1 ? ' active' : '') . '" title="' . JText::_(\$state[2]) . '"><i class="icon-' . \$icon . '"></i></a>';
+			\$html = '<a class="btn btn-micro hasTooltip disabled' . (\$value == 1 ? ' active' : '') . '" title="' . JHtml::tooltipText(\$state[2]) . '"><i class="icon-' . \$icon . '"></i></a>';
 		}
 
 		return \$html;

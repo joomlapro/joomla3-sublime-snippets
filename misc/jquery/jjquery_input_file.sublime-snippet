@@ -7,7 +7,7 @@
 	jQuery.noConflict();
 
 	(function (\$) {
-		\$(function () {
+		\$(function() {
 			var input = \$('#jform_${1:field}');
 
 			input.hide();

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[\$this->countModules('${TM_TEMPLATE/(.+)/\L\1/g}-${1:position}');]]></content>
+	<content><![CDATA[\$this->countModules('position-${1:1}');]]></content>
 	<tabTrigger>jcountmodules</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

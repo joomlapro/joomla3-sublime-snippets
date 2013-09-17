@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[\$('#${1:field1}').change(function () {
+	<content><![CDATA[\$('#${1:field1}').change(function() {
 	\$.ajax({
 		dataType: 'json',
 		url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${2:controller}.${3:method}&format=json&tmpl=component',

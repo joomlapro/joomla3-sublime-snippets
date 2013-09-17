@@ -9,7 +9,7 @@
 public function add${1:Singular}Ajax()
 {
 	// Check for request forgeries.
-	JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
 	// Get the input.
 	\$${3:${TM_FILENAME/(.*?)(\..+)/\L$1/}}Id = \$this->input->post->getInt('${3/(.+)/\L\1/g}_id');
