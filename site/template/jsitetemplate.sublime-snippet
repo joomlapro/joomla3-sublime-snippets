@@ -45,7 +45,11 @@ if (\$browser->getBrowser() == 'msie' && intval(\$browser->getMajor()) <= 9)
 }
 
 // Set MetaData.
-\$this->setMetaData('X-UA-Compatible', 'IE=edge,chrome=1', true);
+if (\$browser->getBrowser() == 'msie')
+{
+	\$this->setMetaData('X-UA-Compatible', 'IE=edge,chrome=1', true);
+}
+
 \$this->setMetaData('viewport', 'width=device-width, initial-scale=1.0', false);
 
 ]]></content>

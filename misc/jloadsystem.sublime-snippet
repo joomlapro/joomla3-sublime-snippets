@@ -1,5 +1,11 @@
 <snippet>
-	<content><![CDATA[// Load system defines.
+	<content><![CDATA[/**
+ * Constant that is checked in included files to prevent direct access.
+ * define() is used in the installation folder rather than "const" to not error for PHP 5.2 and lower.
+ */
+define('_JEXEC', 1);
+
+// Load system defines.
 if (file_exists('../../../defines.php'))
 {
 	require_once '../../../defines.php';
@@ -7,15 +13,12 @@ if (file_exists('../../../defines.php'))
 
 if (!defined('_JDEFINES'))
 {
-	define('JPATH_BASE', '../../..');
+	define('JPATH_BASE', realpath(__DIR__ . '/../../..'));
 	require_once JPATH_BASE . '/includes/defines.php';
 }
 
 // Get the framework.
-require_once JPATH_LIBRARIES . '/import.legacy.php';
-
-// Bootstrap the CMS libraries.
-require_once JPATH_LIBRARIES . '/cms.php';]]></content>
+require_once JPATH_BASE . '/includes/framework.php';]]></content>
 	<tabTrigger>jloadsystem</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

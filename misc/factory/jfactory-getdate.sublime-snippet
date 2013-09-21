@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Get the date object.
+\$date = JFactory::getDate();]]></content>
+	<tabTrigger>jfactory-getdate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

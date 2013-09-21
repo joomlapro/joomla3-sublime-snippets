@@ -1,0 +1,9 @@
+
+Sublime Text Snippets for Joomla! 3.x
+=====================================
+
+Snippets for Joomla! now supports 3.2 the last version of Joomla!.
+
+------------------------------
+Follow me on Twitter: @joomlapro_
+------------------------------

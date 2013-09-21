@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="list"
+	default="_self"
+	class="inputbox"
+	size="1"
+	filter="string"
+	label="${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_DESC">
+	<option value="_self">JBROWSERTARGET_PARENT</option>
+	<option value="_blank">JBROWSERTARGET_NEW</option>
+</field>]]></content>
+	<tabTrigger>jmodulefieldlist_target</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

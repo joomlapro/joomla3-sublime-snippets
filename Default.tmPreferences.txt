@@ -82,7 +82,7 @@
 				<key>name</key>
 				<string>TM_MANIFEST_VERSION</string>
 				<key>value</key>
-				<string><![CDATA[3.1.6]]></string>
+				<string><![CDATA[3.2.0]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -94,7 +94,7 @@
 				<key>name</key>
 				<string>TM_VERSION</string>
 				<key>value</key>
-				<string><![CDATA[3.1]]></string>
+				<string><![CDATA[3.2]]></string>
 			</dict>
 			<dict>
 				<key>name</key>
