@@ -3,8 +3,8 @@
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 // Load the behavior script.
-JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
+JHtml::_('behavior.keepalive');
 JHtml::_('formbehavior.chosen', 'select');
 
 // Get the input.
@@ -12,13 +12,14 @@ JHtml::_('formbehavior.chosen', 'select');
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task) {
-		if (task == '${1:singular}.cancel' || document.formvalidator.isValid(document.id('${1/(.+)/\L\1/g}-form'))) {
+		if (task == '${1:singular}.cancel' || document.formvalidator.isValid(document.getElementById('${1/(.+)/\L\1/g}-form'))) {
 			<?php echo \$this->form->getField('description')->save(); ?>
 			Joomla.submitform(task, document.getElementById('${1/(.+)/\L\1/g}-form'));
 		}
 	}
 </script>
 <form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${1/(.+)/\L\1/g}-form" class="form-validate">
+	<?php echo JLayoutHelper::render('joomla.edit.item_title', \$this); ?>
 	<div class="row-fluid">
 		<!-- Begin ${2:${1/(.+)/\u\1/g}s} -->
 		<div class="span10 form-horizontal">
@@ -79,7 +80,6 @@ JHtml::_('formbehavior.chosen', 'select');
 							</div>
 						<?php endforeach; ?>
 					<?php echo JHtml::_('bootstrap.endTab'); ?>
-
 					<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'publishing', JText::_('JGLOBAL_FIELDSET_PUBLISHING', true)); ?>
 						<div class="control-group">
 							<div class="control-label">
@@ -178,7 +178,6 @@ JHtml::_('formbehavior.chosen', 'select');
 							</div>
 						<?php endif; ?>
 					<?php echo JHtml::_('bootstrap.endTab'); ?>
-
 					<?php \$fieldSets = \$this->form->getFieldsets('params'); ?>
 					<?php foreach (\$fieldSets as \$name => \$fieldSet): ?>
 						<?php \$paramstabs = 'params-' . \$name; ?>
@@ -186,7 +185,6 @@ JHtml::_('formbehavior.chosen', 'select');
 							<?php echo \$this->loadTemplate('params'); ?>
 						<?php echo JHtml::_('bootstrap.endTab'); ?>
 					<?php endforeach; ?>
-
 					<?php \$fieldSets = \$this->form->getFieldsets('metadata'); ?>
 					<?php foreach (\$fieldSets as \$name => \$fieldSet): ?>
 						<?php \$metadatatabs = 'metadata-' . \$name; ?>
@@ -194,7 +192,6 @@ JHtml::_('formbehavior.chosen', 'select');
 							<?php echo JLayoutHelper::render('joomla.edit.metadata', \$this); ?>
 						<?php echo JHtml::_('bootstrap.endTab'); ?>
 					<?php endforeach; ?>
-
 					<?php if (\$this->canDo->get('core.admin')): ?>
 						<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'permissions', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_RULES', true)); ?>
 							<fieldset>
@@ -202,13 +199,12 @@ JHtml::_('formbehavior.chosen', 'select');
 							</fieldset>
 						<?php echo JHtml::_('bootstrap.endTab'); ?>
 					<?php endif; ?>
-
-					<div>
-						<input type="hidden" name="task" value="" />
-						<input type="hidden" name="return" value="<?php echo \$input->getCmd('return'); ?>" />
-						<?php echo JHtml::_('form.token'); ?>
-					</div>
 				<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+				<div>
+					<input type="hidden" name="task" value="" />
+					<input type="hidden" name="return" value="<?php echo \$input->getCmd('return'); ?>" />
+					<?php echo JHtml::_('form.token'); ?>
+				</div>
 			</fieldset>
 		</div>
 		<!-- End ${2/(.+)/\u\1/g} -->

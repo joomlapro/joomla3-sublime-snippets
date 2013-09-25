@@ -3,7 +3,7 @@
   `${4:singular}_id` int(11) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`${4/(.+)/\L\1/g}_id`)
-) DEFAULT CHARSET=utf8;]]></content>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;]]></content>
 	<tabTrigger>jdb-frontend</tabTrigger>
 	<scope>text.plain,source.sql</scope>
 </snippet>

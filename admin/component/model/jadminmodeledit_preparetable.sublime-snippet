@@ -29,8 +29,16 @@ protected function prepareTable(\$table)
 		// Set ordering to the last item if not set.
 		if (empty(\$table->ordering))
 		{
-			\$db = JFactory::getDbo();
-			\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:_list}');
+			// Initialiase variables.
+			\$db    = JFactory::getDbo();
+			\$query = \$db->getQuery(true);
+
+			// Create the base select statement.
+			\$query->select('MAX(ordering)');
+			\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_list}');
+
+			// Set the query and load the result.
+			\$db->setQuery(\$query);
 			\$max = \$db->loadResult();
 
 			\$table->ordering = \$max + 1;

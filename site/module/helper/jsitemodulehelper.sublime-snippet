@@ -39,7 +39,7 @@ abstract class Mod${1:$TM_MODULE}Helper
 		}
 		catch (RuntimeException \$e)
 		{
-			throw new RuntimeException(\$e->getMessage(), \$e->getCode());
+			JError::raiseWarning(500, \$e->getMessage());
 		}
 
 		return \$items;

@@ -37,7 +37,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		if (\$categoryId)
 		{
 			// If the category has been passed in the data or URL check it.
-			\$allow = \$user->authorise('core.create', \$this->option . '.category.' . \$categoryId);
+			\$allow = \$user->authorise('core.create', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . \$categoryId);
 		}
 
 		if (\$allow === null)
@@ -75,7 +75,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		if (\$categoryId)
 		{
 			// The category has been set. Check the category permissions.
-			return JFactory::getUser()->authorise('core.edit', \$this->option . '.category.' . \$categoryId);
+			return JFactory::getUser()->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . \$categoryId);
 		}
 		else
 		{

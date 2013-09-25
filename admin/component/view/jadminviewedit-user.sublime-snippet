@@ -9,14 +9,39 @@
  */
 class ${TM_COMPONENT/(.+)/\u\1/g}View${1:User} extends JViewLegacy
 {
+	/**
+	 * The form to use for the view.
+	 *
+	 * @var     JForm
+	 */
 	protected \$form;
 
+	/**
+	 * The item to edit.
+	 *
+	 * @var     JObject
+	 */
 	protected \$item;
 
+	/**
+	 * The group list.
+	 *
+	 * @var     array
+	 */
 	protected \$grouplist;
 
+	/**
+	 * The groups.
+	 *
+	 * @var     array
+	 */
 	protected \$groups;
 
+	/**
+	 * The model state.
+	 *
+	 * @var     JObject
+	 */
 	protected \$state;
 
 	/**
@@ -50,17 +75,18 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:User} extends JViewLegacy
 	 */
 	public function display(\$tpl = null)
 	{
-		// Initialiase variables.
-		\$this->form      = \$this->get('Form');
-		\$this->item      = \$this->get('Item');
-		\$this->grouplist = \$this->get('Groups');
-		\$this->groups    = \$this->get('AssignedGroups');
-		\$this->state     = \$this->get('State');
-
-		// Check for errors.
-		if (count(\$errors = \$this->get('Errors')))
+		try
 		{
-			JError::raiseError(500, implode("\n", \$errors));
+			// Initialiase variables.
+			\$this->form      = \$this->get('Form');
+			\$this->item      = \$this->get('Item');
+			\$this->grouplist = \$this->get('Groups');
+			\$this->groups    = \$this->get('AssignedGroups');
+			\$this->state     = \$this->get('State');
+		}
+		catch (Exception \$e)
+		{
+			JErrorPage::render(\$e);
 
 			return false;
 		}

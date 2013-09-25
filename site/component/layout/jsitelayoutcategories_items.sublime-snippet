@@ -17,7 +17,7 @@ if (count(\$this->items[\$this->parent->id]) > 0 && \$this->maxLevelcat != 0): ?
 				<h3 class="page-header item-title">
 					<a href="<?php echo JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$item->id)); ?>"><?php echo \$this->escape(\$item->title); ?></a>
 					<?php if (\$this->params->get('show_cat_num_${1:plural}_cat') == 1): ?>
-						<span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_${TM_COMPONENT/(.+)/\U\1/g}_NUM_ITEMS'); ?>"><?php echo \$item->numitems; ?></span>
+						<span class="badge badge-info hasTooltip" title="<?php echo JHtml::tooltipText('COM_${TM_COMPONENT/(.+)/\U\1/g}_NUM_ITEMS'); ?>"><?php echo \$item->numitems; ?></span>
 					<?php endif; ?>
 					<?php if (count(\$item->getChildren()) > 0): ?>
 						<a href="#category-<?php echo \$item->id; ?>" data-toggle="collapse" data-toggle="button" class="btn btn-mini pull-right"><span class="icon-plus"></span></a>

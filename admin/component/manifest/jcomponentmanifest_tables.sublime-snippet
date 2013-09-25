@@ -4,8 +4,7 @@
 	ones marked optional are only backed up if they exist.
 -->
 <tables>
-	<table>#__alpha_install</table>
-	<table type="optional">#__alpha_update</table>
+	<table>#__${TM_COMPONENT/(.+)/\L\1/g}</table>
 </tables>]]></content>
 	<tabTrigger>jcomponentmanifest_tables</tabTrigger>
 	<scope>text.xml</scope>

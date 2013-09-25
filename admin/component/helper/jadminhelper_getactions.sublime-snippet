@@ -3,38 +3,41 @@
  * Gets a list of the actions that can be performed.
  *
  * @param   integer  \$categoryId  The category ID.
- * @param   integer  \$${1/(.+)/\L\1/g}Id  The ${1/(.+)/\L\1/g} ID.
+ * @param   integer  \$id          The item ID.
+ * @param   string   \$assetName   The asset name.
  *
  * @return  JObject  A JObject containing the allowed actions.
  *
  * @since   $TM_VERSION
  */
-public static function getActions(\$categoryId = 0, \$${1/(.+)/\L\1/g}Id = 0)
+public static function getActions(\$categoryId = 0, \$id = 0, \$assetName = '')
 {
 	// Initialiase variables.
-	\$user    = JFactory::getUser();
-	\$result  = new JObject;
+	\$user   = JFactory::getUser();
+	\$result = new JObject;
 
-	if (empty(\$${1/(.+)/\L\1/g}Id) && empty(\$categoryId))
+	\$path = JPATH_ADMINISTRATOR . '/components/' . \$assetName . '/access.xml';
+
+	if (empty(\$id) && empty(\$categoryId))
 	{
-		\$assetName = self::\$extension;
+		\$section = 'component';
 	}
-	elseif (empty(\$${1/(.+)/\L\1/g}Id))
+	elseif (empty(\$id))
 	{
-		\$assetName = self::\$extension . '.category.' . (int) \$categoryId;
+		\$section = 'category';
+		\$assetName .= '.category.' . (int) \$categoryId;
 	}
 	else
 	{
-		\$assetName = self::\$extension . '.${1:singular}.' . (int) \$${1/(.+)/\L\1/g}Id;
+		\$section = '${1:singular}';
+		\$assetName .= '.${1/(.+)/\L\1/g}.' . (int) \$id;
 	}
 
-	\$actions = array(
-		'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.own', 'core.edit.state', 'core.delete'
-	);
+	\$actions = JAccess::getActionsFromFile(\$path, "/access/section[@name='" . \$section . "']/");
 
 	foreach (\$actions as \$action)
 	{
-		\$result->set(\$action, \$user->authorise(\$action, \$assetName));
+		\$result->set(\$action->name, \$user->authorise(\$action->name, \$assetName));
 	}
 
 	return \$result;

@@ -10,14 +10,6 @@
 class ${TM_COMPONENT/(.+)/\u\1/g}Helper
 {
 	/**
-	 * The extension name.
-	 *
-	 * @var     string
-	 * @since   $TM_VERSION
-	 */
-	public static \$extension = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
-
-	/**
 	 * Configure the Linkbar.
 	 *
 	 * @param   string  \$vName  The name of the active view.
@@ -50,34 +42,36 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Helper
 	/**
 	 * Gets a list of the actions that can be performed.
 	 *
-	 * @param   integer  \$${3/(.+)/\L\1/g}Id  The ${3/(.+)/\L\1/g} ID.
+	 * @param   integer  \$id         The item ID.
+	 * @param   string   \$assetName  The asset name.
 	 *
 	 * @return  JObject  A JObject containing the allowed actions.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public static function getActions(\$${3/(.+)/\L\1/g}Id = 0)
+	public static function getActions(\$id = 0, \$assetName = '')
 	{
 		// Initialiase variables.
-		\$user    = JFactory::getUser();
-		\$result  = new JObject;
+		\$user   = JFactory::getUser();
+		\$result = new JObject;
 
-		if (empty(\$${3/(.+)/\L\1/g}Id))
+		\$path = JPATH_ADMINISTRATOR . '/components/' . \$assetName . '/access.xml';
+
+		if (empty(\$id))
 		{
-			\$assetName = self::\$extension;
+			\$section = 'component';
 		}
 		else
 		{
-			\$assetName = self::\$extension . '.${3:${2/(.+)(s\b)/\L\1/g}}.' . (int) \$${3/(.+)/\L\1/g}Id;
+			\$section = '${3:${2/(.+)(s\b)/\L\1/g}}';
+			\$assetName .= '.${3/(.+)/\L\1/g}.' . (int) \$id;
 		}
 
-		\$actions = array(
-			'core.admin', 'core.manage', 'core.create', 'core.edit', 'core.edit.own', 'core.edit.state', 'core.delete'
-		);
+		\$actions = JAccess::getActionsFromFile(\$path, "/access/section[@name='" . \$section . "']/");
 
 		foreach (\$actions as \$action)
 		{
-			\$result->set(\$action, \$user->authorise(\$action, \$assetName));
+			\$result->set(\$action->name, \$user->authorise(\$action->name, \$assetName));
 		}
 
 		return \$result;

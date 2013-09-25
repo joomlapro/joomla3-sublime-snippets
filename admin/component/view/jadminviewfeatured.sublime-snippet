@@ -10,9 +10,9 @@
 class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 {
 	/**
-	 * Model state object.
+	 * The model state.
 	 *
-	 * @var     object
+	 * @var     JObject
 	 */
 	protected \$state;
 
@@ -31,6 +31,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 	protected \$pagination;
 
 	/**
+	 * List of authors.
+	 *
+	 * @var     array
+	 */
+	protected \$authors;
+
+	/**
 	 * Method to display the view.
 	 *
 	 * @param   string  \$tpl  A template file to load. [optional]
@@ -41,22 +48,20 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 	 */
 	public function display(\$tpl = null)
 	{
-		// Initialise variables.
-		\$this->state      = \$this->get('State');
-		\$this->items      = \$this->get('Items');
-		\$this->pagination = \$this->get('Pagination');
-		\$this->authors    = \$this->get('Authors');
-
-		// Check for errors.
-		if (count(\$errors = \$this->get('Errors')))
+		try
 		{
-			JError::raiseError(500, implode("\n", \$errors));
+			// Initialise variables.
+			\$this->state      = \$this->get('State');
+			\$this->items      = \$this->get('Items');
+			\$this->pagination = \$this->get('Pagination');
+			\$this->authors    = \$this->get('Authors');
+		}
+		catch (Exception \$e)
+		{
+			JErrorPage::render(\$e);
 
 			return false;
 		}
-
-		// Load the submenu.
-		${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
 
 		// Levels filter.
 		\$options   = array();
@@ -73,8 +78,15 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 
 		\$this->f_levels = \$options;
 
-		\$this->addToolbar();
-		\$this->sidebar = JHtmlSidebar::render();
+		// We do not need toolbar in the modal window.
+		if (\$this->getLayout() !== 'modal')
+		{
+			// Load the submenu.
+			${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+
+			\$this->addToolbar();
+			\$this->sidebar = JHtmlSidebar::render();
+		}
 
 		parent::display(\$tpl);
 	}
@@ -90,7 +102,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 	{
 		// Initialise variables.
 		\$state = \$this->get('State');
-		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$this->state->get('filter.category_id'));
+		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(\$this->state->get('filter.category_id'), 0, 'com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$user  = JFactory::getUser();
 
 		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_TITLE'), '${1/(.+)/\L\1/g}.png');
@@ -113,7 +125,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 			JToolbarHelper::checkin('${4/(.+)/\L\1/g}.checkin');
 		}
 
-		if (\$state->get('filter.published') == - 2 && \$canDo->get('core.delete'))
+		if (\$state->get('filter.state') == - 2 && \$canDo->get('core.delete'))
 		{
 			JToolbarHelper::deleteList('', '${4/(.+)/\L\1/g}.delete', 'JTOOLBAR_EMPTY_TRASH');
 		}
@@ -133,8 +145,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Featured} extends JViewLegacy
 
 		JHtmlSidebar::addFilter(
 			JText::_('JOPTION_SELECT_PUBLISHED'),
-			'filter_published',
-			JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', \$this->state->get('filter.published'), true)
+			'filter_state',
+			JHtml::_('select.options', JHtml::_('jgrid.publishedOptions'), 'value', 'text', \$this->state->get('filter.state'), true)
 		);
 
 		JHtmlSidebar::addFilter(

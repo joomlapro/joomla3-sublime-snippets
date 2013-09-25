@@ -1,0 +1,85 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="$TM_VERSION" method="upgrade">
+	<name>com_${TM_COMPONENT/(.+)/\L\1/g}</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>${1:$TM_MONTH} $TM_YEAR</creationDate>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>$TM_LICENSE</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_PROJECT_VERSION</version>
+	<description>COM_${TM_COMPONENT/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile />
+	<!-- Runs on install. -->
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<!-- Runs on uninstall. -->
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>metadata.xml</filename>
+		<filename>router.php</filename>
+		<filename>${TM_COMPONENT/(.+)/\L\1/g}.php</filename>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+	<languages folder="site">
+		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${TM_COMPONENT/(.+)/\L\1/g}.ini</language>
+	</languages>
+	<administration>
+		<menu img="class:${TM_COMPONENT/(.+)/\L\1/g}">com_${TM_COMPONENT/(.+)/\L\1/g}</menu>
+		<submenu>
+			<!--
+				Note that all & must be escaped to &amp; for the file to be valid
+				XML and be parsed by the installer.
+			-->
+			<menu link="option=com_${TM_COMPONENT/(.+)/\L\1/g}&amp;view=${2:${TM_COMPONENT/(.+)/\L\1/g}}" view="${2/(.+)/\L\1/g}" img="class:${TM_COMPONENT/(.+)/\L\1/g}-${2/(.+)/\L\1/g}" alt="${TM_COMPONENT/(.+)/\u\1/g}/${2/(.+)/\u\1/g}">com_${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>${TM_COMPONENT/(.+)/\L\1/g}.php</filename>
+			<folder>controllers</folder>
+			<folder>help</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${TM_COMPONENT/(.+)/\L\1/g}.ini</language>
+			<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${TM_COMPONENT/(.+)/\L\1/g}.sys.ini</language>
+		</languages>
+	</administration>
+	<!--
+		These are used for backups to determine which tables to backup;
+		ones marked optional are only backed up if they exist.
+	-->
+	<tables>
+		<table>#__${TM_COMPONENT/(.+)/\L\1/g}</table>
+	</tables>
+</extension>
+
+]]></content>
+	<tabTrigger>jcomponentmanifest-mini</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

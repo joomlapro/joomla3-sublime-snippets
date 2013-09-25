@@ -13,7 +13,7 @@ JHtml::_('behavior.formvalidation');
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function (task) {
-		if (task == '${1:singular}.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
+		if (task == '${1:singular}.cancel' || document.formvalidator.isValid(document.getElementById('adminForm'))) {
 			<?php echo \$this->form->getField('description')->save(); ?>
 			Joomla.submitform(task);
 		} else {

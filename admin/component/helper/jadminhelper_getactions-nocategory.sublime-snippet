@@ -2,18 +2,32 @@
 	<content><![CDATA[/**
  * Gets a list of the actions that can be performed.
  *
+ * @param   integer  \$id         The item ID.
+ * @param   string   \$assetName  The asset name.
+ *
  * @return  JObject  A JObject containing the allowed actions.
  *
  * @since   $TM_VERSION
  */
-public static function getActions()
+public static function getActions(\$id = 0, \$assetName = '')
 {
 	// Initialiase variables.
-	\$user      = JFactory::getUser();
-	\$result    = new JObject;
-	\$assetName = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
+	\$user   = JFactory::getUser();
+	\$result = new JObject;
 
-	\$actions   = JAccess::getActions(\$assetName, 'component');
+	\$path = JPATH_ADMINISTRATOR . '/components/' . \$assetName . '/access.xml';
+
+	if (empty(\$id))
+	{
+		\$section = 'component';
+	}
+	else
+	{
+		\$section = '${1:singular}';
+		\$assetName .= '.${1/(.+)/\L\1/g}.' . (int) \$id;
+	}
+
+	\$actions = JAccess::getActionsFromFile(\$path, "/access/section[@name='" . \$section . "']/");
 
 	foreach (\$actions as \$action)
 	{

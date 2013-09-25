@@ -190,7 +190,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Get the current user object.
 			\$user = JFactory::getUser();
 
-			return \$user->authorise('core.delete', \$this->option . '.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+			return \$user->authorise('core.delete', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
 		}
 	}
 
@@ -211,17 +211,17 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Check for existing ${1/(.+)/\L\1/g}.
 		if (!empty(\$record->id))
 		{
-			return \$user->authorise('core.edit.state', \$this->option . '.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+			return \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
 		}
 		// New ${1/(.+)/\L\1/g}, so check against the category.
 		elseif (!empty(\$record->catid))
 		{
-			return \$user->authorise('core.edit.state', \$this->option . '.category.' . (int) \$record->catid);
+			return \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . (int) \$record->catid);
 		}
 		// Default to component settings if neither ${1/(.+)/\L\1/g} nor category known.
 		else
 		{
-			return parent::canEditState(\$this->option);
+			return parent::canEditState('com_${TM_COMPONENT/(.+)/\L\1/g}');
 		}
 	}
 
@@ -250,13 +250,19 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		if (empty(\$table->id))
 		{
-			// Set the values.
-
 			// Set ordering to the last item if not set.
 			if (empty(\$table->ordering))
 			{
-				\$db = JFactory::getDbo();
-				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}');
+				// Initialiase variables.
+				\$db    = JFactory::getDbo();
+				\$query = \$db->getQuery(true);
+
+				// Create the base select statement.
+				\$query->select('MAX(ordering)');
+				\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}');
+
+				// Set the query and load the result.
+				\$db->setQuery(\$query);
 				\$max = \$db->loadResult();
 
 				\$table->ordering = \$max + 1;
@@ -334,7 +340,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			if (!empty(\$item->id))
 			{
 				\$item->tags = new JHelperTags;
-				\$item->tags->getTagIds(\$item->id, \$this->option . '.${1/(.+)/\L\1/g}');
+				\$item->tags->getTagIds(\$item->id, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}');
 			}
 		}
 
@@ -354,7 +360,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	public function getForm(\$data = array(), \$loadData = true)
 	{
 		// Get the form.
-		\$form = \$this->loadForm(\$this->option . '.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+		\$form = \$this->loadForm('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
 
 		if (empty(\$form))
 		{
@@ -396,8 +402,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		// Check for existing ${1/(.+)/\L\1/g}.
 		// Modify the form based on Edit State access controls.
-		if (\$id != 0 && (!\$user->authorise('core.edit.state', \$this->option . '.${1/(.+)/\L\1/g}.' . (int) \$id))
-			|| (\$id == 0 && !\$user->authorise('core.edit.state', \$this->option)))
+		if (\$id != 0 && (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$id))
+			|| (\$id == 0 && !\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
 		{
 			// Disable fields for display.
 			\$form->setFieldAttribute('state', 'disabled', 'true');
@@ -429,7 +435,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		// Check the session for previously entered form data.
 		\$app  = JFactory::getApplication();
-		\$data = \$app->getUserState(\$this->option . '.edit.${1/(.+)/\L\1/g}.data', array());
+		\$data = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
 
 		if (empty(\$data))
 		{
@@ -438,11 +444,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Prime some default values.
 			if (\$this->getState('${1/(.+)/\L\1/g}.id') == 0)
 			{
-				\$data->set('catid', \$app->input->getInt('catid', \$app->getUserState(\$this->option . '.${3:${1/(.+)/\L\1/g}s}.filter.category_id')));
+				\$data->set('catid', \$app->input->getInt('catid', \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.${3:${1/(.+)/\L\1/g}s}.filter.category_id')));
 			}
 		}
 
-		\$this->preprocessData(\$this->option . '.${1/(.+)/\L\1/g}', \$data);
+		\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
 
 		return \$data;
 	}

@@ -28,7 +28,7 @@ public function ${1:action}()
 
 		if (isset(\$item->catid))
 		{
-			if (!\$user->authorise('core.edit.state', \$this->option . '.category.' . (int) \$item->catid))
+			if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . (int) \$item->catid))
 			{
 				// Prune items that you can not change.
 				unset(\$ids[\$i]);

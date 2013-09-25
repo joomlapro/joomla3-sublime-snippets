@@ -21,7 +21,7 @@ public function featured()
 	// Access checks.
 	foreach (\$ids as \$i => \$id)
 	{
-		if (!\$user->authorise('core.edit.state', \$this->option . '.${1:singular}.' . (int) \$id))
+		if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}.' . (int) \$id))
 		{
 			// Prune items that you can not change.
 			unset(\$ids[\$i]);

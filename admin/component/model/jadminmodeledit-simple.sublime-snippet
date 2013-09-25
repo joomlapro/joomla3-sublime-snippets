@@ -109,13 +109,19 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		if (empty(\$table->id))
 		{
-			// Set the values.
-
 			// Set ordering to the last item if not set.
 			if (empty(\$table->ordering))
 			{
-				\$db = JFactory::getDbo();
-				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}');
+				// Initialiase variables.
+				\$db    = JFactory::getDbo();
+				\$query = \$db->getQuery(true);
+
+				// Create the base select statement.
+				\$query->select('MAX(ordering)');
+				\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}');
+
+				// Set the query and load the result.
+				\$db->setQuery(\$query);
 				\$max = \$db->loadResult();
 
 				\$table->ordering = \$max + 1;

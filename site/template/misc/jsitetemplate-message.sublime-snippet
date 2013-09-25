@@ -11,13 +11,13 @@
 function renderMessage(\$msgList)
 {
 	// Build the return string.
-	\$buffer = null;
-	\$buffer .= "\n<div id=\"system-message-container\">";
+	\$buffer = '';
 	\$alert  = array('error' => 'alert-error', 'warning' => '', 'notice' => 'alert-info', 'message' => 'alert-success');
 
-	// Only render the message list and the close button if $msgList has items.
+	// Only render the message list and the close button if has items.
 	if (is_array(\$msgList) && (count(\$msgList) >= 1))
 	{
+		\$buffer .= "\n<div id=\"system-message-container\">";
 		\$buffer .= "\n<div id=\"system-message\">";
 
 		foreach (\$msgList as \$type => \$msgs)
@@ -44,9 +44,8 @@ function renderMessage(\$msgList)
 		}
 
 		\$buffer .= "\n</div>";
+		\$buffer .= "\n</div>";
 	}
-
-	\$buffer .= "\n</div>";
 
 	return \$buffer;
 }

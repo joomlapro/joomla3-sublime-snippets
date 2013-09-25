@@ -45,7 +45,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 * @return  void
 	 *
 	 * @since   $TM_VERSION
-	 * @throws  Exception
 	 */
 	public function featured()
 	{
@@ -67,13 +66,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 				// Prune items that you can not change.
 				unset(\$ids[\$i]);
 
-				throw new Exception(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), 403);
+				JError::raiseNotice(403, JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
 			}
 		}
 
 		if (empty(\$ids))
 		{
-			throw new Exception(JText::_('JERROR_NO_ITEMS_SELECTED'), 500);
+			JError::raiseWarning(500, JText::_('JERROR_NO_ITEMS_SELECTED'));
 		}
 		else
 		{
@@ -83,7 +82,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 			// Publish the items.
 			if (!\$model->featured(\$ids, \$value))
 			{
-				throw new Exception(\$model->getError(), 500);
+				JError::raiseWarning(500, \$model->getError());
 			}
 		}
 

@@ -114,21 +114,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 
 		return parent::save();
 	}
-
-	/**
-	 * Function that allows child controller access to model data after the data has been saved.
-	 *
-	 * @param   JModelLegacy  \$model      The data model object.
-	 * @param   array         \$validData  The validated data.
-	 *
-	 * @return  void
-	 *
-	 * @since   $TM_VERSION
-	 */
-	protected function postSaveHook(JModelLegacy \$model, \$validData = array())
-	{
-		return;
-	}
 }
 
 ]]></content>

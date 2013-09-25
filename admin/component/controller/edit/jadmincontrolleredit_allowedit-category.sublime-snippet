@@ -23,7 +23,7 @@ protected function allowEdit(\$data = array(), \$key = 'id')
 	if (\$categoryId)
 	{
 		// The category has been set. Check the category permissions.
-		return JFactory::getUser()->authorise('core.edit', \$this->option . '.category.' . \$categoryId);
+		return JFactory::getUser()->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . \$categoryId);
 	}
 	else
 	{

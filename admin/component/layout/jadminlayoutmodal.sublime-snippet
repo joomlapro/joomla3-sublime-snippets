@@ -22,8 +22,8 @@ JHtml::_('behavior.framework', true);
 
 // Initialiase variables.
 \$function  = \$app->input->getCmd('function', 'jSelect${2:Singular}');
-\$listOrder = \$this->escape(\$this->state->get('list.ordering'));
 \$listDirn  = \$this->escape(\$this->state->get('list.direction'));
+\$listOrder = \$this->escape(\$this->state->get('list.ordering'));
 ?>
 <form action="<?php echo JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1:plural}&layout=modal&tmpl=component&function=' . \$function . '&' . JSession::getFormToken() . '=1'); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
 	<fieldset class="filter clearfix">
@@ -38,7 +38,7 @@ JHtml::_('behavior.framework', true);
 				<button type="submit" class="btn hasTooltip" data-placement="bottom" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_SUBMIT'); ?>">
 					<span class="icon-search"></span><?php echo '&#160;' . JText::_('JSEARCH_FILTER_SUBMIT'); ?>
 				</button>
-				<button type="button" class="btn hasTooltip" data-placement="bottom" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();">
+				<button type="button" class="btn hasTooltip" data-placement="bottom" title="<?php echo JHtml::tooltipText('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.getElementById('filter_search').value='';this.form.submit();">
 					<span class="icon-remove"></span><?php echo '&#160;' . JText::_('JSEARCH_FILTER_CLEAR'); ?>
 				</button>
 			</div>

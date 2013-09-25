@@ -1,9 +1,8 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset
-		name="${1:component}"
-		addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields"
+		name="${1:plural}"
 		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_LABEL"
 		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_DESC">
 		<field
@@ -25,8 +24,9 @@
 		<field
 			name="rules"
 			type="rules"
-			filter="rules"
+			class="inputbox"
 			validate="rules"
+			filter="rules"
 			component="com_${TM_COMPONENT/(.+)/\L\1/g}"
 			section="component"
 			label="JCONFIG_PERMISSIONS_LABEL" />

@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Register Observer for Version History.
+JObserverMapper::addObserverClassToClass('JTableObserverContenthistory', '${TM_COMPONENT/(.+)/\u\1/g}Table${1/(.+)/\u\1/g}', array('typeAlias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}'));
+]]></content>
+	<tabTrigger>jobservermapper-addobserverclasstoclass_contenthistory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -18,7 +18,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Featured} extends ${TM_COMPONENT/
 	 * @return  void
 	 *
 	 * @since   $TM_VERSION
-	 * @throws  Exception
 	 */
 	public function delete()
 	{
@@ -37,13 +36,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Featured} extends ${TM_COMPONENT/
 				// Prune items that you can not delete.
 				unset(\$ids[\$i]);
 
-				throw new Exception(JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'), 403);
+				JError::raiseNotice(403, JText::_('JERROR_CORE_DELETE_NOT_PERMITTED'));
 			}
 		}
 
 		if (empty(\$ids))
 		{
-			throw new Exception(JText::_('JERROR_NO_ITEMS_SELECTED'), 500);
+			JError::raiseWarning(500, JText::_('JERROR_NO_ITEMS_SELECTED'));
 		}
 		else
 		{
@@ -53,7 +52,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:Featured} extends ${TM_COMPONENT/
 			// Remove the items.
 			if (!\$model->${1/(.+)/\L\1/g}(\$ids, 0))
 			{
-				throw new Exception(\$model->getError(), 500);
+				JError::raiseWarning(500, \$model->getError());
 			}
 		}
 

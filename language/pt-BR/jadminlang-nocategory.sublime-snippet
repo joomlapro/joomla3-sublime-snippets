@@ -4,35 +4,41 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_XML_DESCRIPTION="Componente para gerenciamento d
 
 ; ACCESS
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_ACCESS_DELETE_DESC="Nova configuração para <strong>ações de exclusão</strong> neste registro e calcula a configuração baseado na categoria pai ou nas permissões do grupo."
-COM_${TM_COMPONENT/(.+)/\U\1/g}_ACCESS_EDITSTATE_DESC="Nova configuração parar <strong>ações de edição de estado</strong> neste registro e calcula a configuração baseado na categoria pai ou nas permissões do grupo."
-COM_${TM_COMPONENT/(.+)/\U\1/g}_ACCESS_EDIT_DESC="Nova configuração para <strong>ações de edição</strong> neste registro e calcula a configuração baseado na categoria pai ou nas permissões do grupo."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ACCESS_DELETE_DESC="Nova configuração para <strong>ações de exclusão</strong> neste registro e calcula a configuração baseado nas permissões do grupo."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ACCESS_EDITSTATE_DESC="Nova configuração parar <strong>ações de edição de estado</strong> neste registro e calcula a configuração baseado nas permissões do grupo."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ACCESS_EDIT_DESC="Nova configuração para <strong>ações de edição</strong> neste registro e calcula a configuração baseado nas permissões do grupo."
 
 ; BATCH
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_OPTIONS="Processar em lote as ${5/(.+)/\L\1/g} selecionados"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_OPTIONS="Processar em lote as ${6/(.+)/\L\1/g} selecionados"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_BATCH_TIP="Se escolher copiar uma ${2:${1/(.+)(s\b)/\L\1/g}}, qualquer outra ação selecionada será aplicada para a ${2/(.+)/\L\1/g} copiada. Caso contrário, todas as ações são aplicadas à ${2/(.+)/\L\1/g} selecionada."
 
 ; CHANGE
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${3:SINGULAR}="Alterar ${4:${2/(.+)/\u\1/g}}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${3:SINGULAR}="Alterar ${5:${2/(.+)/\u\1/g}}"
 
 ; CONFIG
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de ${5/(.+)/\u\1/g}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_COMPONENT_LABEL="${5:${1/(.+)/\u\1/g}}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_COMPONENT_DESC="Estas configurações se aplicam às ${5/(.+)/\u\1/g}, a não ser que eles tenham sido alteradas por um menu específico, ou ${4/(.+)/\u\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de ${6/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${4:${3/(.+)/\U\1/g}S}_SETTINGS_LABEL="${6:${1/(.+)/\u\1/g}}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${4/(.+)/\U\1/g}_SETTINGS_DESC="Estas configurações se aplicam às ${6/(.+)/\u\1/g}, a não ser que eles tenham sido alteradas por um menu específico, ou ${5/(.+)/\u\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_DESC="Estas opções controlam o layout da página de edição do ${2/(.+)/\L\1/g}. "
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_LABEL="Edição de Layout"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_LIST_SETTINGS_DESC="Essas opções se aplicam aos layouts de listas, exceto se forem alterados por uma configuração de menu."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_DESC="Esta configurações se aplicam às Opções Compartilhadas em lista e destaques. A menos, que tenham sido alterados pelas configurações do menu."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_LABEL="Opções Compartilhadas"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_INTEGRATION_SETTINGS_DESC="Essas opções determinam como o Componente para Gerenciamento de ${6/(.+)/\u\1/g} ira se integrar com outras extensões."
 
 ; ERROR
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${6:TITLE}="Seu ${4/(.+)/\u\1/g} deve conter um ${7:título}."
-COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${6/(.+)/\U\1/g}_EXISTS="Já existe um ${4/(.+)/\L\1/g} com este ${7/(.+)/\L\1/g}. ${8:${7/(.+)/\u\1/g}s} devem ser únicos."
-COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_UNIQUE_ALIAS="Outra ${4/(.+)/\L\1/g} tem o mesmo apelido"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${7:TITLE}="Seu ${5/(.+)/\u\1/g} deve conter um ${8:título}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${7/(.+)/\U\1/g}_EXISTS="Já existe um ${5/(.+)/\L\1/g} com este ${8/(.+)/\L\1/g}. ${9:${8/(.+)/\u\1/g}s} devem ser únicos."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_UNIQUE_ALIAS="Outra ${5/(.+)/\L\1/g} tem o mesmo apelido"
 
 ; FIELD
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${6/(.+)/\U\1/g}_DESC=""
-COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${6/(.+)/\U\1/g}_LABEL="${7/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${7/(.+)/\U\1/g}_DESC=""
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${7/(.+)/\U\1/g}_LABEL="${8/(.+)/\u\1/g}"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC=""
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FEATURED_DESC=""
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_HITS_DESC=""
@@ -43,19 +49,29 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_VERSION_DESC="A quantidade de vezes que es
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_VERSION_LABEL="Revisão"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_DESC="Remove ItemID da URL"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_LABEL="SEF Modo Avançado"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_TAGS_DESC="Mostrar as tags de um ${2/(.+)/\L\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_TAGS_LABEL="Mostrar Tags"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_DESC="Exibir ou ocultar a barra de opções de publicação na lista de ${6/(.+)/\L\1/g} de edição. Estas opções permitem mudança de datas e identidades autor."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_LABEL="Opções de Publicação"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${3/(.+)/\U\1/g}_OPTIONS_DESC="Mostra ou esconde o slider de opções do ${2/(.+)/\L\1/g} na administração. Estas opções permitem a sobreposição das opções globais."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${3/(.+)/\U\1/g}_OPTIONS_LABEL="Opções do ${2/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_BACK_DESC="Exibir ou ocultar campos para inserir imagens padronizados no administrador"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_BACK_LABEL="Imagens da Admin"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIED_SHOW_IMAGES_FRONT_DESC="Exibir ou ocultar campos para inserir imagens padronizados quando na edição do frontend"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIED_SHOW_IMAGES_FRONT_LABEL="Imagens do Site"
 
 ; FIELDSET
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_MORE_OPTIONS_LABEL="Mais Opções"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_RULES="Permissões do ${4/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_RULES="Permissões do ${5/(.+)/\u\1/g}"
 
 ; FILTER
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_FILTER_SEARCH_DESC="Filtrar a lista por um ${7/(.+)/\L\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FILTER_SEARCH_DESC="Filtrar a lista por um ${8/(.+)/\L\1/g}."
 
 ; HEADING
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${6/(.+)/\U\1/g}="${7/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${7/(.+)/\U\1/g}="${8/(.+)/\u\1/g}"
 
 ; HEADER
 
@@ -65,34 +81,31 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADER_SUBMENU="Submenu"
 ; LINK
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_DASHBOARD="Painel de Controle"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_${9:${TM_COMPONENT/(.+)/\U\1/g}}="${5/(.+)/\u\1/g}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_FEATURED="${5/(.+)/\u\1/g} em Destaque"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_CATEGORIES="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_${0:${TM_COMPONENT/(.+)/\U\1/g}}="${6/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 
 ; MENU
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CPANEL="Painel de Controle"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_${9/(.+)/\U\1/g}="${5/(.+)/\u\1/g}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${5/(.+)/\u\1/g} em Destaque"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${0/(.+)/\U\1/g}="${6/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 
 ; MISC
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_SEARCH_IN_${6/(.+)/\U\1/g}="Buscar no ${7/(.+)/\u\1/g}"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_MATCHING_RESULTS="Sem Resultados"
+JGLOBAL_NEWITEMSLAST_DESC="Novos ${6/(.+)/\u\1/g} vão por padrão para a última posição. Ordenação pode ser alterada após este ${2/(.+)/\u\1/g} for salvo."
 
 ; OPTION
 
 ; SELECT
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_AN_PROPERTY="Selecione uma ${4/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_AN_${3/(.+)/\U\1/g}="Selecione uma ${5/(.+)/\u\1/g}"
 
 ; SUBMENU
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_CPANEL="Painel de Controle"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_${9/(.+)/\U\1/g}="${5/(.+)/\u\1/g}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_FEATURED="${5/(.+)/\u\1/g} em Destaque"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_CATEGORIES="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_${0/(.+)/\U\1/g}="${6/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 
 ; TOGGLE
 

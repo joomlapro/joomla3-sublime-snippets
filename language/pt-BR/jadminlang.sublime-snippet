@@ -22,12 +22,15 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${3:SINGULAR}="Alterar ${5:${2/(.+)/\u\1/
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de ${6/(.+)/\u\1/g}"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${4:${3/(.+)/\U\1/g}S}_SETTINGS_LABEL="${6:${1/(.+)/\u\1/g}}"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${4/(.+)/\U\1/g}_SETTINGS_DESC="Estas configurações se aplicam às ${6/(.+)/\u\1/g}, a não ser que eles tenham sido alteradas por um menu específico, ou ${5/(.+)/\u\1/g}."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_DESC="Estas opções controlam o layout da página de edição do ${2/(.+)/\L\1/g}. "
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_LABEL="Edição de Layout"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_CATEGORY_SETTINGS_DESC="Estas configurações se aplicam às opções de uma categoria de ${6/(.+)/\u\1/g}, a não ser que tenham sido alterados por um menu específico."
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_CATEGORIES_SETTINGS_DESC="Estas configurações se aplicam às opções de categorias de ${6/(.+)/\u\1/g}, a não ser que tenham sido alterados por um menu específico."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_CATEGORY_SETTINGS_DESC="Essas opções se aplicam às opções de uma categoria, exceto se forem alterados para uma configuração de menu ou categoria específica."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_CATEGORIES_SETTINGS_DESC="Essas opções se aplicam às opções de categorias, exceto se forem alterados para uma configuração de menu ou categoria específica."
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_LIST_SETTINGS_DESC="Essas opções se aplicam aos layouts de listas, exceto se forem alterados por uma configuração de menu ou categoria específica."
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_INTEGRATION_SETTINGS_DESC="Estas configurações determinam como o componente de ${6/(.+)/\u\1/g} se integra às outras extensões."
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_DESC="Esta configurações se aplicam às Opções Compartilhadas em lista e destaques. A menos, que tenham sido alterados pelas configurações do menu."
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_LABEL="Opções Compartilhadas"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_DESC="Esta configurações se aplicam às Opções Compartilhadas em lista e destaques. A menos, que tenham sido alterados pelas configurações do menu."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_LABEL="Opções Compartilhadas"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_INTEGRATION_SETTINGS_DESC="Essas opções determinam como o Componente para Gerenciamento de ${6/(.+)/\u\1/g} ira se integrar com outras extensões."
 
 ; ERROR
 
@@ -57,6 +60,14 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_NUMBER_CATEGORY_ITEMS_DESC="Se configurado
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_NUMBER_CATEGORY_ITEMS_LABEL="Exibir Contagem de Registros"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_NO_${4/(.+)/\U\1/g}_DESC="Se configurado como exibir, a mensagem 'Não há ${6/(.+)/\L\1/g} nesta categoria' será exibido quando não houver ${6/(.+)/\L\1/g} na categoria ou quando 'Categorias Vazias' está configurado para exibir."
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_NO_${4/(.+)/\U\1/g}_LABEL="Mensagem Sem ${6/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_DESC="Exibir ou ocultar a barra de opções de publicação na lista de ${6/(.+)/\L\1/g} de edição. Estas opções permitem mudança de datas e identidades autor."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_LABEL="Opções de Publicação"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${3/(.+)/\U\1/g}_OPTIONS_DESC="Mostra ou esconde o slider de opções do ${2/(.+)/\L\1/g} na administração. Estas opções permitem a sobreposição das opções globais."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${3/(.+)/\U\1/g}_OPTIONS_LABEL="Opções do ${2/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_BACK_DESC="Exibir ou ocultar campos para inserir imagens padronizados no administrador"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_BACK_LABEL="Imagens da Admin"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIED_SHOW_IMAGES_FRONT_DESC="Exibir ou ocultar campos para inserir imagens padronizados quando na edição do frontend"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIED_SHOW_IMAGES_FRONT_LABEL="Imagens do Site"
 
 ; FIELDSET
 
@@ -80,19 +91,20 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADER_SUBMENU="Submenu"
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_DASHBOARD="Painel de Controle"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_${0:${TM_COMPONENT/(.+)/\U\1/g}}="${6/(.+)/\u\1/g}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_CATEGORIES="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 
 ; MENU
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CPANEL="Painel de Controle"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_${0/(.+)/\U\1/g}="${6/(.+)/\u\1/g}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 
 ; MISC
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_MATCHING_RESULTS="Sem Resultados"
+JGLOBAL_NEWITEMSLAST_DESC="Novos ${6/(.+)/\u\1/g} vão por padrão para a última posição. Ordenação pode ser alterada após este ${2/(.+)/\u\1/g} for salvo."
 
 ; OPTION
 
@@ -104,8 +116,8 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_AN_${3/(.+)/\U\1/g}="Selecione uma ${5/(.
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_CPANEL="Painel de Controle"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_${0/(.+)/\U\1/g}="${6/(.+)/\u\1/g}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_CATEGORIES="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_SUBMENU_FEATURED="${6/(.+)/\u\1/g} em Destaque"
 
 ; TOGGLE
 

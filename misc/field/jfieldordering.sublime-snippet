@@ -1,13 +1,15 @@
 <snippet>
-	<content><![CDATA[/**
- * Supports an HTML select list of ${1:plural}.
+	<content><![CDATA[JFormHelper::loadFieldClass('ordering');
+
+/**
+ * Supports an HTML select list of ${2:plural}.
  *
  * @package     ${TM_COMPONENT/(.+)/\u\1/g}
  * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class JFormFieldOrdering extends JFormField
+class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormFieldOrdering
 {
 	/**
 	 * The form field type.
@@ -15,51 +17,29 @@ class JFormFieldOrdering extends JFormField
 	 * @var     string
 	 * @since   $TM_VERSION
 	 */
-	protected \$type = 'Ordering';
+	protected \$type = '${1/(.+)/\u\1/g}';
 
 	/**
-	 * Method to get the field input markup.
+	 * Builds the query for the ordering list.
 	 *
-	 * @return  string  The field input markup.
+	 * @return  JDatabaseQuery  The query for the ordering form field.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	protected function getInput()
+	protected function getQuery()
 	{
-		\$html = array();
-		\$attr = '';
-
-		// Initialize some field attributes.
-		\$attr .= \$this->element['class'] ? ' class="' . (string) \$this->element['class'] . '"' : '';
-		\$attr .= ((string) \$this->element['disabled'] == 'true') ? ' disabled="disabled"' : '';
-		\$attr .= \$this->element['size'] ? ' size="' . (int) \$this->element['size'] . '"' : '';
-
-		// Initialize JavaScript field attributes.
-		\$attr .= \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
-
-		// Get some field values from the form.
-		\$${3:${1/(.+)(s\b)/\L\1/g}}Id  = (int) \$this->form->getValue('id');
+		// Initialiase variables.
 		\$categoryId = (int) \$this->form->getValue('catid');
+		\$db         = JFactory::getDbo();
+		\$query      = \$db->getQuery(true);
 
-		// Build the query for the ordering list.
-		\$query = 'SELECT ordering AS value, ${2:title} AS text' .
-				' FROM #__${TM_COMPONENT/(.+)/\L\1/g}$4' .
-				' WHERE catid = ' . (int) \$categoryId .
-				' ORDER BY ordering';
+		// Create the base select statement.
+		\$query->select(array(\$db->quoteName('ordering', 'value'), \$db->quoteName('${3:title}', 'text')))
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}$4'))
+			->where(\$db->quoteName('catid') . ' = ' . (int) \$categoryId)
+			->order('ordering');
 
-		// Create a read-only list (no name) with a hidden input to store the value.
-		if ((string) \$this->element['readonly'] == 'true')
-		{
-			\$html[] = JHtml::_('list.ordering', '', \$query, trim(\$attr), \$this->value, \$${3/(.+)/\L\1/g}Id ? 0 : 1);
-			\$html[] = '<input type="hidden" name="' . \$this->name . '" value="' . \$this->value . '"/>';
-		}
-		// Create a regular list.
-		else
-		{
-			\$html[] = JHtml::_('list.ordering', \$this->name, \$query, trim(\$attr), \$this->value, \$${3/(.+)/\L\1/g}Id ? 0 : 1);
-		}
-
-		return implode(\$html);
+		return \$query;
 	}
 }
 

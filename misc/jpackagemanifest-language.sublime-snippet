@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <extension type="package" version="$TM_VERSION" method="upgrade">
 	<name>${1:Name} Language Pack</name>
 	<packagename>${3:${1/(.+)/\L\1/g}}_languages</packagename>

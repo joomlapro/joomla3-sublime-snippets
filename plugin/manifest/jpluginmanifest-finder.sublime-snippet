@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <extension version="$TM_VERSION" type="plugin" group="finder" method="upgrade">
 	<name>plg_finder_${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}</name>
 	<author>$TM_FULLNAME</author>

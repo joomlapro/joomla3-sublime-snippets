@@ -143,7 +143,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 		// Add the list ordering clause.
 		\$query->order(\$db->escape(\$this->getState('list.ordering', 'a.${3/(.+)/\L\1/g}')) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
 
-		// echo nl2br(str_replace('#__', 'jos_', (string) \$query));
+		// echo \$query->dump();
 
 		return \$query;
 	}

@@ -9,8 +9,8 @@
 		<p>One fine body…</p>
 	</div>
 	<div class="modal-footer">
-		<button class="btn btn-primary"><?php echo JText::_('JYES'); ?></button>
-		<button class="btn" data-dismiss="modal" aria-hidden="true"><?php echo JText::_('JCANCEL'); ?></button>
+		<button type="button" class="btn btn-primary"><?php echo JText::_('JYES'); ?></button>
+		<button type="button" class="btn" data-dismiss="modal" aria-hidden="true"><?php echo JText::_('JCANCEL'); ?></button>
 	</div>
 </div>]]></content>
 	<tabTrigger>jmodal</tabTrigger>

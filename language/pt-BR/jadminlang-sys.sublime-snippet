@@ -6,8 +6,8 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_XML_DESCRIPTION="Componente para gerenciamento d
 
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CPANEL="Painel de Controle"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_${2:PLURAL}="${3:Plural}"
-COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${3/(.+)/\u\1/g} em Destaque"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${3/(.+)/\u\1/g} em Destaque"
 
 ; SCRIPT
 

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="$TM_VERSION" method="upgrade">
 	<name>com_${TM_COMPONENT/(.+)/\L\1/g}</name>
 	<author>$TM_FULLNAME</author>
@@ -49,6 +49,7 @@
 				Note that all & must be escaped to &amp; for the file to be valid
 				XML and be parsed by the installer.
 			-->
+			<menu link="option=com_${TM_COMPONENT/(.+)/\L\1/g}" view="cpanel" img="class:${TM_COMPONENT/(.+)/\L\1/g}-cpanel" alt="${TM_COMPONENT/(.+)/\u\1/g}/Cpanel">com_${TM_COMPONENT/(.+)/\L\1/g}_cpanel</menu>
 			<menu link="option=com_${TM_COMPONENT/(.+)/\L\1/g}&amp;view=${2:${TM_COMPONENT/(.+)/\L\1/g}}" view="${2/(.+)/\L\1/g}" img="class:${TM_COMPONENT/(.+)/\L\1/g}-${2/(.+)/\L\1/g}" alt="${TM_COMPONENT/(.+)/\u\1/g}/${2/(.+)/\u\1/g}">com_${TM_COMPONENT/(.+)/\L\1/g}_${2/(.+)/\L\1/g}</menu>
 		</submenu>
 		<files folder="admin">

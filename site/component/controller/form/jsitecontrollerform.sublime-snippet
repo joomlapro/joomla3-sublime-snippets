@@ -60,7 +60,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		if (\$categoryId)
 		{
 			// If the category has been passed in the URL check it.
-			\$allow = \$user->authorise('core.create', \$this->option . '.category.' . \$categoryId);
+			\$allow = \$user->authorise('core.create', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . \$categoryId);
 		}
 
 		if (\$allow === null)

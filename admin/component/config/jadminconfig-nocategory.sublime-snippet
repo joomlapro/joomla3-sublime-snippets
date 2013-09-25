@@ -1,13 +1,12 @@
 <snippet>
-	<content><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset
-		name="${1:component}"
-		addfieldpath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields"
+		name="${1:plural}"
 		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_LABEL"
 		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_DESC">
 		<field
-			name="${2:singular}_layout"
+			name="${2:${1/(.+)(s\b)/\L\1/g}}_layout"
 			type="componentlayout"
 			menuitems="true"
 			extension="com_${TM_COMPONENT/(.+)/\L\1/g}"
@@ -145,6 +144,7 @@
 			label="JGLOBAL_SHOW_READMORE_LIMIT_LABEL"
 			description="JGLOBAL_SHOW_READMORE_LIMIT_DESC" />
 		<field
+			id="show_tags"
 			name="show_tags"
 			type="radio"
 			class="btn-group"
@@ -208,67 +208,178 @@
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
+	</fieldset>
+	<fieldset
+		name="editinglayout"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_DESC">
 		<field
-			name="sef_advanced_link"
+			name="show_publishing_options"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="show_${2/(.+)/\L\1/g}_options"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${2/(.+)/\U\1/g}_OPTIONS_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${2/(.+)/\U\1/g}_OPTIONS_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="save_history"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="JGLOBAL_SAVE_HISTORY_OPTIONS_LABEL"
+			description="JGLOBAL_SAVE_HISTORY_OPTIONS_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="history_limit"
+			type="text"
+			default="10"
+			filter="integer"
+			label="JGLOBAL_HISTORY_LIMIT_OPTIONS_LABEL"
+			description="JGLOBAL_HISTORY_LIMIT_OPTIONS_DESC" />
+		<field
+			name="show_images_frontend"
 			type="radio"
 			class="btn-group"
 			default="0"
-			filter="integer"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_DESC">
-			<option value="1">JYES</option>
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIED_SHOW_IMAGES_FRONT_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_FRONT_DESC">
 			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="show_images_backend"
+			type="radio"
+			class="btn-group"
+			default="0"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_BACK_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_BACK_DESC">
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
 		</field>
 	</fieldset>
 	<fieldset
-		name="list_layout"
+		name="list_default_parameters"
 		label="JGLOBAL_LIST_LAYOUT_OPTIONS"
-		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_LIST_LAYOUT_SETTINGS_DESC">
-		<field
-			name="filter_field"
-			type="list"
-			default="1"
-			label="JGLOBAL_FILTER_FIELD_LABEL"
-			description="JGLOBAL_FILTER_FIELD_DESC">
-			<option value="hide">JHIDE</option>
-			<option value="1">JSHOW</option>
-		</field>
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_LIST_SETTINGS_DESC">
 		<field
 			name="show_pagination_limit"
 			type="radio"
-			default="1"
 			class="btn-group"
+			default="1"
 			label="JGLOBAL_DISPLAY_SELECT_LABEL"
 			description="JGLOBAL_DISPLAY_SELECT_DESC">
 			<option value="0">JHIDE</option>
 			<option value="1">JSHOW</option>
 		</field>
 		<field
+			name="filter_field"
+			type="list"
+			default="hide"
+			label="JGLOBAL_FILTER_FIELD_LABEL"
+			description="JGLOBAL_FILTER_FIELD_DESC">
+			<option value="hide">JHIDE</option>
+			<option value="title">JGLOBAL_TITLE</option>
+			<option value="author">JAUTHOR</option>
+			<option value="hits">JGLOBAL_HITS</option>
+		</field>
+		<field
 			name="show_headings"
 			type="radio"
-			default="1"
 			class="btn-group"
+			default="1"
 			label="JGLOBAL_SHOW_HEADINGS_LABEL"
 			description="JGLOBAL_SHOW_HEADINGS_DESC">
 			<option value="0">JHIDE</option>
 			<option value="1">JSHOW</option>
 		</field>
 		<field
-			name="show_hits"
+			name="list_show_date"
+			type="list"
+			default="0"
+			label="JGLOBAL_SHOW_DATE_LABEL"
+			description="JGLOBAL_SHOW_DATE_DESC">
+			<option value="0">JHIDE</option>
+			<option value="created">JGLOBAL_CREATED</option>
+			<option value="modified">JGLOBAL_MODIFIED</option>
+			<option value="published">JPUBLISHED</option>
+		</field>
+		<field
+			name="date_format"
+			type="text"
+			size="15"
+			label="JGLOBAL_DATE_FORMAT_LABEL"
+			description="JGLOBAL_DATE_FORMAT_DESC" />
+		<field
+			name="list_show_hits"
 			type="radio"
 			class="btn-group"
 			default="1"
-			label="JGLOBAL_SHOW_HITS_LABEL"
-			description="JGLOBAL_SHOW_HITS_DESC">
+			label="JGLOBAL_LIST_HITS_LABEL"
+			description="JGLOBAL_LIST_HITS_DESC">
 			<option value="0">JHIDE</option>
 			<option value="1">JSHOW</option>
+		</field>
+		<field
+			name="list_show_author"
+			type="radio"
+			class="btn-group"
+			default="1"
+			label="JGLOBAL_LIST_AUTHOR_LABEL"
+			description="JGLOBAL_LIST_AUTHOR_DESC">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+	</fieldset>
+	<fieldset
+		name="shared"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_DESC">
+		<field
+			name="orderby_sec"
+			type="list"
+			default="rdate"
+			label="JGLOBAL_ARTICLE_ORDER_LABEL"
+			description="JGLOBAL_ARTICLE_ORDER_DESC">
+			<option value="rdate">JGLOBAL_MOST_RECENT_FIRST</option>
+			<option value="date">JGLOBAL_OLDEST_FIRST</option>
+			<option value="alpha">JGLOBAL_TITLE_ALPHABETICAL</option>
+			<option value="ralpha">JGLOBAL_TITLE_REVERSE_ALPHABETICAL</option>
+			<option value="author">JGLOBAL_AUTHOR_ALPHABETICAL</option>
+			<option value="rauthor">JGLOBAL_AUTHOR_REVERSE_ALPHABETICAL</option>
+			<option value="hits">JGLOBAL_MOST_HITS</option>
+			<option value="rhits">JGLOBAL_LEAST_HITS</option>
+			<option value="order">JGLOBAL_ARTICLE_MANAGER_ORDER</option>
+		</field>
+		<field
+			name="order_date"
+			type="list"
+			default="published"
+			label="JGLOBAL_ORDERING_DATE_LABEL"
+			description="JGLOBAL_ORDERING_DATE_DESC">
+			<option value="created">JGLOBAL_CREATED</option>
+			<option value="modified">JGLOBAL_MODIFIED</option>
+			<option value="published">JPUBLISHED</option>
 		</field>
 		<field
 			name="show_pagination"
 			type="list"
 			default="2"
-			label="JGLOBAL_PAGINATION_LABEL"
-			description="JGLOBAL_PAGINATION_DESC">
+			label="JGLOBAL_Pagination_Label"
+			description="JGLOBAL_Pagination_Desc">
 			<option value="0">JHIDE</option>
 			<option value="1">JSHOW</option>
 			<option value="2">JGLOBAL_AUTO</option>
@@ -325,8 +436,9 @@
 		<field
 			name="rules"
 			type="rules"
-			filter="rules"
+			class="inputbox"
 			validate="rules"
+			filter="rules"
 			component="com_${TM_COMPONENT/(.+)/\L\1/g}"
 			section="component"
 			label="JCONFIG_PERMISSIONS_LABEL" />

@@ -61,7 +61,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		// Access checks.
 		foreach (\$ids as \$i => \$id)
 		{
-			if (!\$user->authorise('core.edit.state', \$this->option . '.${2/(.+)/\L\1/g}.' . (int) \$id))
+			if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . (int) \$id))
 			{
 				// Prune items that you can not change.
 				unset(\$ids[\$i]);

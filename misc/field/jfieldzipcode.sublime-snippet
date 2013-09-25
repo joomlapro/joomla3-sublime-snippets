@@ -32,22 +32,22 @@ class JFormFieldZipcode extends JFormFieldText
 		\$script = <<<ENDSCRIPT
 		function getZipcode() {
 			var onRequest = function() {
-				document.id('loader').setStyle('display', 'inline-block');
+				document.getElementById('loader').setStyle('display', 'inline-block');
 			};
 			var onComplete = function() {
-				document.id('loader').setStyle('display', 'none');
+				document.getElementById('loader').setStyle('display', 'none');
 			};
 			var onSuccess = function (response) {
 				var responseJSON = JSON.parse(response);
-				document.id('jform_address_street').value = responseJSON.tipo_logradouro + ', ' + responseJSON.logradouro;
-				document.id('jform_address_district').value = responseJSON.bairro;
-				document.id('jform_address_city').value = responseJSON.cidade;
-				document.id('jform_address_state').value = responseJSON.uf;
+				document.getElementById('jform_address_street').value = responseJSON.tipo_logradouro + ', ' + responseJSON.logradouro;
+				document.getElementById('jform_address_district').value = responseJSON.bairro;
+				document.getElementById('jform_address_city').value = responseJSON.cidade;
+				document.getElementById('jform_address_state').value = responseJSON.uf;
 			};
 			var queryString = {
 				'option': 'com_${TM_COMPONENT/(.+)/\L\1/g}',
 				'task': '${1:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}.getzipcode',
-				'zipcode': document.id('jform_address_zipcode').value,
+				'zipcode': document.getElementById('jform_address_zipcode').value,
 				'format': 'json'
 			};
 			var options = {
@@ -79,7 +79,7 @@ ENDSCRIPT;
 
 		\$html[] = '<div class="input-append">';
 		\$html[] = '<input type="text" name="' . \$this->name . '" id="' . \$this->id . '"' . ' value="' . htmlspecialchars(\$this->value, ENT_COMPAT, 'UTF-8') . '"' . \$class . \$size . \$disabled . \$readonly . \$onchange . \$maxLength . '/>';
-		\$html[] = '<button class="btn btn-primary" onclick="getZipcode()" type="button">' . JText::_('JSEARCH_FILTER_SUBMIT') . '</button>';
+		\$html[] = '<button type="button" class="btn btn-primary" onclick="getZipcode()">' . JText::_('JSEARCH_FILTER_SUBMIT') . '</button>';
 		\$html[] = '</div>';
 
 		\$html[] = '<div id="loader" style="display:none;margin-left:10px;"><img src="' . JUri::root() . 'media/system/images/mootree_loader.gif" alt="" /></div>';

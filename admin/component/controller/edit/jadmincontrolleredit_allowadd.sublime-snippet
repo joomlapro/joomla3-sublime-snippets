@@ -18,7 +18,7 @@ protected function allowAdd(\$data = array())
 	if (\$categoryId)
 	{
 		// If the category has been passed in the data or URL check it.
-		\$allow = \$user->authorise('core.create', \$this->option . '.category.' . \$categoryId);
+		\$allow = \$user->authorise('core.create', 'com_${TM_COMPONENT/(.+)/\L\1/g}.category.' . \$categoryId);
 	}
 
 	if (\$allow === null)

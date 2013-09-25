@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[<!-- Runs on install. -->
+<install>
+	<sql>
+		<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+	</sql>
+</install>]]></content>
+	<tabTrigger>jcomponentmanifest_install</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

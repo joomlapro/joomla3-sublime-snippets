@@ -119,7 +119,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Archive} extends ${TM_COMPONENT/(.+)/\
 			\$query->where('YEAR(' . \$queryDate . ') = ' . \$year);
 		}
 
-		// echo nl2br(str_replace('#__', 'jos_', \$query));
+		// echo \$query->dump();
 
 		return \$query;
 	}

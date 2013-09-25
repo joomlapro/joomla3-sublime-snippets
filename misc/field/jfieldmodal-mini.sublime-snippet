@@ -85,8 +85,8 @@ class JFormFieldModal_${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormField
 		// Build the script.
 		\$script = array();
 		\$script[] = '	function jSelect${1/(.+)/\u\1/g}_' . \$this->id . '(id, ${2:title}) {';
-		\$script[] = '		document.id("' . \$this->id . '_id").value = id;';
-		\$script[] = '		document.id("' . \$this->id . '_name").value = ${2/(.+)/\L\1/g};';
+		\$script[] = '		document.getElementById("' . \$this->id . '_id").value = id;';
+		\$script[] = '		document.getElementById("' . \$this->id . '_name").value = ${2/(.+)/\L\1/g};';
 		\$script[] = '		SqueezeBox.close();';
 		\$script[] = '	}';
 

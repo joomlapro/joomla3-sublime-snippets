@@ -81,7 +81,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 	{
 		// Initialise variables.
 		\$state = \$this->get('State');
-		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions();
+		\$canDo = ${TM_COMPONENT/(.+)/\u\1/g}Helper::getActions(0, 0, 'com_${TM_COMPONENT/(.+)/\L\1/g}');
 		\$user  = JFactory::getUser();
 
 		// Get the toolbar object instance.

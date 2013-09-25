@@ -133,7 +133,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Get the current user object.
 			\$user = JFactory::getUser();
 
-			return \$user->authorise('core.delete', \$this->option . '.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+			return \$user->authorise('core.delete', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
 		}
 	}
 
@@ -154,7 +154,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Check for existing ${1/(.+)/\L\1/g}.
 		if (!empty(\$record->id))
 		{
-			return \$user->authorise('core.edit.state', \$this->option . '.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+			return \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
 		}
 		// Default to component settings if ${1/(.+)/\L\1/g} not known.
 		else
@@ -193,8 +193,16 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Set ordering to the last item if not set.
 			if (empty(\$table->ordering))
 			{
-				\$db = JFactory::getDbo();
-				\$db->setQuery('SELECT MAX(ordering) FROM #__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}');
+				// Initialiase variables.
+				\$db    = JFactory::getDbo();
+				\$query = \$db->getQuery(true);
+
+				// Create the base select statement.
+				\$query->select('MAX(ordering)');
+				\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}');
+
+				// Set the query and load the result.
+				\$db->setQuery(\$query);
 				\$max = \$db->loadResult();
 
 				\$table->ordering = \$max + 1;

@@ -12,7 +12,7 @@ JHtml::_('formbehavior.chosen', 'select');
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task) {
-		if (task == '${1:singular}.cancel' || document.formvalidator.isValid(document.id('${1/(.+)/\L\1/g}-form'))) {
+		if (task == '${1:singular}.cancel' || document.formvalidator.isValid(document.getElementById('${1/(.+)/\L\1/g}-form'))) {
 			<?php echo \$this->form->getField('description')->save(); ?>
 			Joomla.submitform(task, document.getElementById('${1/(.+)/\L\1/g}-form'));
 		}
