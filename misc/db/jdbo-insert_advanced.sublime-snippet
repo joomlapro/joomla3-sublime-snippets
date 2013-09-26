@@ -27,7 +27,7 @@ foreach (${1:\$data} as \$k => \$v)
 }
 
 // Create the base insert statement.
-\$query->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_table}'))
+\$query->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:table}'))
 	->columns(\$fields)
 	->values(implode(', ', \$values));
 
@@ -40,7 +40,7 @@ try
 }
 catch (RuntimeException \$e)
 {
-	JError::raiseWarning(500, \$e->getMessage());
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 }]]></content>
 	<tabTrigger>jdbo-insert_advanced</tabTrigger>
 	<scope>source.php</scope>
