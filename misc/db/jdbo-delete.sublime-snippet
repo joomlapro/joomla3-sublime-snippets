@@ -5,7 +5,7 @@
 
 // Create the base delete statement.
 \$query->delete()
-	->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:_table}'))
+	->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:table}'))
 	->where(\$db->quoteName('${2:column}') . ' = ' . \$db->quote((int) ${3:\$value}));
 
 // Set the query and execute the delete.
@@ -17,7 +17,7 @@ try
 }
 catch (RuntimeException \$e)
 {
-	JError::raiseWarning(500, \$e->getMessage());
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 }]]></content>
 	<tabTrigger>jdbo-delete</tabTrigger>
 	<scope>source.php</scope>

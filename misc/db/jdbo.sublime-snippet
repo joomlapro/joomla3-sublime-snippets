@@ -5,7 +5,7 @@
 
 // Create the base select statement.
 \$query->select('a.*')
-	->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1:table}') . ' AS a')
+	->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:table}') . ' AS a')
 	->where(\$db->quoteName('a.state') . ' = ' . \$db->quote('1'))
 	->order(\$db->quoteName('a.ordering') . ' ASC');
 
@@ -18,7 +18,7 @@ try
 }
 catch (RuntimeException \$e)
 {
-	JError::raiseWarning(500, \$e->getMessage());
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
 }]]></content>
 	<tabTrigger>jdbo</tabTrigger>
 	<scope>source.php</scope>
