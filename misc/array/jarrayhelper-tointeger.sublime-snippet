@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Sanitize the input.
+JArrayHelper::toInteger(${1:\$pk});]]></content>
+	<tabTrigger>jarrayhelper-tointeger</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

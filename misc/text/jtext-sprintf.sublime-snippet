@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JText::sprintf('$1', \$${2:variable});]]></content>
+	<tabTrigger>jtext-sprintf</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[// Include the component helpers.
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
+
+// Load the caption behavior script.
+JHtml::_('behavior.caption');
+?>
+<div class="category-list<?php echo \$this->pageclass_sfx; ?>">
+	<?php
+	\$this->subtemplatename = 'items';
+
+	echo JLayoutHelper::render('joomla.content.category_default', \$this);
+	?>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayoutcategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[?>
+<div class="items-more">
+	<ol class="nav nav-tabs nav-stacked">
+		<?php foreach (\$this->link_items as &\$item): ?>
+			<li>
+				<a href="<?php echo JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${2:Singular}Route(\$item->slug, \$item->catid)); ?>"><?php echo \$item->${3:title}; ?></a>
+			</li>
+		<?php endforeach; ?>
+	</ol>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayoutcategory_blog_links</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

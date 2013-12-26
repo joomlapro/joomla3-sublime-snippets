@@ -1,0 +1,66 @@
+<snippet>
+	<content><![CDATA[<fieldset
+	name="address"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_ADDRESS">
+	<field
+		name="address_zipcode"
+		type="zipcode"
+		class="inputbox zip"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZIPCODE_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ZIPCODE_DESC"
+		id="address_zipcode"
+		message="COM_${TM_COMPONENT/(.+)/\U\1/g}_ZIPCODE_MESSAGE" />
+	<field
+		name="address_street"
+		type="textarea"
+		class="inputbox"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STREET_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STREET_DESC"
+		id="address_street"
+		rows="1"
+		cols="40"
+		message="COM_${TM_COMPONENT/(.+)/\U\1/g}_STREET_MESSAGE" />
+	<field
+		name="address_district"
+		type="text"
+		class="inputbox"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DISTRICT_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DISTRICT_DESC"
+		id="address_district"
+		message="COM_${TM_COMPONENT/(.+)/\U\1/g}_DISTRICT_MESSAGE" />
+	<field
+		name="address_city"
+		type="text"
+		class="inputbox"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CITY_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CITY_DESC"
+		id="address_city"
+		message="COM_${TM_COMPONENT/(.+)/\U\1/g}_CITY_MESSAGE" />
+	<field
+		name="address_state"
+		type="state"
+		class="inputbox"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STATE_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_STATE_DESC"
+		id="address_state"
+		message="COM_${TM_COMPONENT/(.+)/\U\1/g}_STATE_MESSAGE" />
+	<field
+		name="latitude"
+		type="text"
+		class="inputbox"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LATITUDE_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LATITUDE_DESC"
+		id="latitude"
+		message="COM_${TM_COMPONENT/(.+)/\U\1/g}_LATITUDE_MESSAGE" />
+	<field
+		name="longitude"
+		type="text"
+		class="inputbox"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LONGITUDE_DESC"
+		id="longitude"
+		message="COM_${TM_COMPONENT/(.+)/\U\1/g}_LONGITUDE_MESSAGE" />
+</fieldset>]]></content>
+	<tabTrigger>jsiteform_address</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

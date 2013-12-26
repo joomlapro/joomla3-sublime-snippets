@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$browser->isRobot();]]></content>
+	<tabTrigger>jbrowser-isrobot</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

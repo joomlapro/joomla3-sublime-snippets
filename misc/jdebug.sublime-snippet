@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[if (defined('JDEBUG') && JDEBUG)
+{
+	$1
+}]]></content>
+	<tabTrigger>jdebug</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

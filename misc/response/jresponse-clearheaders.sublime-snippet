@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::clearHeaders();]]></content>
+	<tabTrigger>jresponse-clearheaders</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

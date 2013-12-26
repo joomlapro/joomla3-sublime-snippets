@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[<field
+	id="${1/(.+)/\L\1/g}"
+	name="${1:field}"
+	type="calendar"
+	class="inputbox"
+	size="22"
+	format="%Y-%m-%d %H:%M:%S"
+	filter="user_utc"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jsitefieldcalendar</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

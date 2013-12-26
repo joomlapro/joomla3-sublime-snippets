@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<?php echo JHtml::_('bootstrap.addTab', 'myTab', '${1:name}', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}', true)); ?>
+
+<?php echo JHtml::_('bootstrap.endTab'); ?>]]></content>
+	<tabTrigger>jhtml_bootstrap_addtab</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

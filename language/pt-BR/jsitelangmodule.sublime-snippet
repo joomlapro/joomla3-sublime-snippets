@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[MOD_${TM_MODULE/(.+)/\U\1/g}="$1"
+MOD_${TM_MODULE/(.+)/\U\1/g}_XML_DESCRIPTION="$2"
+
+; LAYOUT
+
+MOD_${TM_MODULE/(.+)/\U\1/g}_LAYOUT_DEFAULT="Padrão"
+
+]]></content>
+	<tabTrigger>jsitelangmodule</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

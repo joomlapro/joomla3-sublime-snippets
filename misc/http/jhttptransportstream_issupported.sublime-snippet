@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHttpTransportStream::isSupported();]]></content>
+	<tabTrigger>jhttptransportstream_issupported</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

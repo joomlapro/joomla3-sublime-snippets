@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::script('${1:com_${TM_COMPONENT/(.+)/\L\1/g}}/${2:jquery.custom}.js', false, true);]]></content>
+	<tabTrigger>jhtml-script</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

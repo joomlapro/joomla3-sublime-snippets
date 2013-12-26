@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Display button list.
+\$this->buttons = ${1:Plural}Helper::getButtons();]]></content>
+	<tabTrigger>jadminviewcpanel_getbuttons</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

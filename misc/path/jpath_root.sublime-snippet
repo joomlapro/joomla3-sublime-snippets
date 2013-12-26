@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JPATH_ROOT]]></content>
+	<tabTrigger>jpath_root</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

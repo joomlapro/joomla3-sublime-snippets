@@ -1,0 +1,51 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to sort a column in a grid.
+ *
+ * @param   string  \$title          The link title.
+ * @param   string  \$order          The order field for the column.
+ * @param   string  \$direction      The current direction.
+ * @param   string  \$selected       The selected ordering.
+ * @param   string  \$task           An optional task override.
+ * @param   string  \$new_direction  An optional direction for the new column.
+ * @param   string  \$tip            An optional text shown as tooltip title instead of \$title.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+public static function sort(\$title, \$order, \$direction = 'asc', \$selected = 0, \$task = null, \$new_direction = 'asc', \$tip = '')
+{
+	// Load the tooltip behavior script.
+	JHtml::_('behavior.tooltip');
+
+	// Initialiase variables.
+	\$direction = strtolower(\$direction);
+	\$icon      = array('angle-up', 'angle-down');
+	\$index     = (int) (\$direction == 'desc');
+
+	if (\$order != \$selected)
+	{
+		\$direction = \$new_direction;
+	}
+	else
+	{
+		\$direction = (\$direction == 'desc') ? 'asc' : 'desc';
+	}
+
+	\$html = '<a href="#" onclick="Joomla.tableOrdering(\'' . \$order . '\',\'' . \$direction . '\',\'' . \$task . '\');return false;"'
+		. ' class="hasTip" title="' . JText::_(\$tip ? \$tip : \$title) . '::' . JText::_('JGLOBAL_CLICK_TO_SORT_THIS_COLUMN') . '">';
+	\$html .= JText::_(\$title);
+
+	if (\$order == \$selected)
+	{
+		\$html .= ' <i class="icon-' . \$icon[\$index] . '"></i>';
+	}
+
+	\$html .= '</a>';
+
+	return \$html;
+}]]></content>
+	<tabTrigger>jsitehtml_sort</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[// Load the tabstate behavior script.
+JHtml::_('behavior.tabstate');
+
+// Include dependancies.
+require_once JPATH_COMPONENT . '/helpers/route.php';
+require_once JPATH_COMPONENT . '/helpers/query.php';
+
+// Execute the task.
+\$controller = JControllerLegacy::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
+\$controller->execute(JFactory::getApplication()->input->get('task'));
+\$controller->redirect();
+
+]]></content>
+	<tabTrigger>jsitecomponent</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

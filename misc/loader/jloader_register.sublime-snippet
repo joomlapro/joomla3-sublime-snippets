@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Register dependent classes.
+JLoader::register('${4:${TM_COMPONENT/(.+)/\u\1/g}${2/(.+)/\u\1/g}${3/(.+)/\u\1/g}}', JPATH_${1:ADMINISTRATOR} . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/${2:controllers}/${3:${TM_COMPONENT/(.+)/\L\1/g}}.php');]]></content>
+	<tabTrigger>jloader_register</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

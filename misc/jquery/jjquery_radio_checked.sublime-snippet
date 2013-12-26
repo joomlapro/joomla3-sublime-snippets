@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[// Hide ${1/(.+)/\L\1/g} or ${2/(.+)/\L\1/g} field if not checked.
+function check$4(value) {
+	if (value == 2) {
+		\$('#${1:id}').hide();
+		\$('#${2:id}').show();
+	} else if (value == 1) {
+		\$('#${1/(.+)/\L\1/g}').show();
+		\$('#${2/(.+)/\L\1/g}').hide();
+	}
+}
+
+check${4:${3/(.+)/\u\1/g}}(\$('input:radio[name="jform[${3:field}]"]:checked').val());
+
+\$('#jform_${3/(.+)/\L\1/g}').on('click', function() {
+	check$4(\$('input:radio[name="jform[${3/(.+)/\L\1/g}]"]:checked').val());
+});]]></content>
+	<tabTrigger>jjquery_radio_checked</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

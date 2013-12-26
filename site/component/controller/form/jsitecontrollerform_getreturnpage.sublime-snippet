@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get the return URL.
+ *
+ * If a "return" variable has been passed in the request.
+ *
+ * @return  string  The return URL.
+ *
+ * @since   $TM_VERSION
+ */
+protected function getReturnPage()
+{
+	// Initialiase variables.
+	\$return = \$this->input->get('return', null, 'base64');
+
+	if (empty(\$return) || !JUri::isInternal(base64_decode(\$return)))
+	{
+		return JUri::base();
+	}
+	else
+	{
+		return base64_decode(\$return);
+	}
+}]]></content>
+	<tabTrigger>jsitecontrollerform_getreturnpage</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

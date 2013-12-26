@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Use the correct pdf mime-type.
+header('Content-Type: application/pdf');]]></content>
+	<tabTrigger>jmimepdf</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

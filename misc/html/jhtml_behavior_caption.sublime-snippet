@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the caption behavior script.
+JHtml::_('behavior.caption');]]></content>
+	<tabTrigger>jhtml_behavior_caption</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

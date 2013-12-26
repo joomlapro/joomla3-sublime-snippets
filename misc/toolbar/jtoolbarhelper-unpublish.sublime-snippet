@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolbarHelper::unpublish('${1:plural}.unpublish', 'JTOOLBAR_UNPUBLISH', true);]]></content>
+	<tabTrigger>jtoolbarhelper-unpublish</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,44 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadFieldClass('list');
+
+/**
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_COMPONENT/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormField${1:Range} extends JFormFieldList
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = '${1/(.+)/\u\1/g}';
+
+	/**
+	 * Method to get the field options.
+	 *
+	 * @return  array  The field option objects.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getOptions()
+	{
+		// Initialiase variables.
+		\$options = range(${2:0}, ${3:100});
+
+		// Merge any additional options in the XML definition.
+		\$options = array_merge(parent::getOptions(), \$options);
+
+		return \$options;
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield-range</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

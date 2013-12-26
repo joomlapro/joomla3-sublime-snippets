@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Load any ie$1 variation.
+if (\$browser->getBrowser() == 'msie' && intval(\$browser->getMajor()) ${2:<} ${1:9})
+{
+	$3
+}]]></content>
+	<tabTrigger>jbrowser-verify</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

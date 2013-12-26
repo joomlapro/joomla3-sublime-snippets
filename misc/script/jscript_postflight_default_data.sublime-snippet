@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[// Setting some default values for params on install.
+if (\$type == 'install')
+{
+	\$params = array();
+	\$params['data'] = '"data":['
+		. '"${TM_COMPONENT/(.+)/\L\1/g}:date","${TM_COMPONENT/(.+)/\L\1/g}:player"'
+	. ']';
+
+	// Initialiase variables.
+	\$db    = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Create the base update statement.
+	\$query->update(\$db->quoteName('#__extensions'))
+		->set(\$db->quoteName('params') . ' = ' . \$db->quote('{' . implode(',', \$params) . '}'))
+		->where(\$db->quoteName('name') . ' = ' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}'));
+
+	// Set the query and execute the update.
+	\$db->setQuery(\$query);
+
+	try
+	{
+		\$db->execute();
+	}
+	catch (RuntimeException \$e)
+	{
+		throw new RuntimeException(\$e->getMessage(), \$e->getCode());
+	}
+}]]></content>
+	<tabTrigger>jscript_postflight_default_data</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

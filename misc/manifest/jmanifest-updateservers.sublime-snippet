@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[<updateservers>
+	<server
+		name="Extension Update Site"
+		type="extension"
+		priority="1">$TM_WEBSITE/updates/extension.xml</server>
+	<server
+		name="Collection Update Site"
+		type="collection"
+		priority="2">$TM_WEBSITE/updates/collection.xml</server>
+</updateservers>]]></content>
+	<tabTrigger>jmanifest-updateservers</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

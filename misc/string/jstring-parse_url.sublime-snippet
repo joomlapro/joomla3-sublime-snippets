@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JString::parse_url(${1:\$url});]]></content>
+	<tabTrigger>jstring-parse_url</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

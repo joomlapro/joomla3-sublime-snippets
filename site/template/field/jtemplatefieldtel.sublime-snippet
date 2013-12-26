@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="tel"
+	size="30"
+	filter="string"
+	label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	<tabTrigger>jtemplatefieldtel</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

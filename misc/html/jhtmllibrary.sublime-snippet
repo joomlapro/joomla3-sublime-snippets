@@ -1,0 +1,69 @@
+<snippet>
+	<content><![CDATA[/**
+ * $4 Utility class for jQuery JavaScript behaviors.
+ *
+ * @package     Joomla.Libraries
+ * @subpackage  HTML
+ * @since       $TM_VERSION
+ */
+abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JHtmlJquery
+{
+	/**
+	 * Array containing information for loaded files.
+	 *
+	 * @var    array
+	 * @since  $TM_VERSION
+	 */
+	protected static \$loaded = array();
+
+	/**
+	 * Method to load the jQuery $4 into the document head.
+	 *
+	 * @param   string  \$selector  The HTML selector.
+	 * @param   mixed   \$debug     Is debugging mode on? [optional]
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function ${2:${1/(.+)/\L\1/g}}(\$selector = '$3', \$debug = null)
+	{
+		// Only load once
+		if (isset(static::\$loaded[__METHOD__][\$selector]))
+		{
+			return;
+		}
+
+		// Include jQuery framework.
+		static::framework();
+
+		// If no debugging value is set, use the configuration setting.
+		if (\$debug === null)
+		{
+			\$config = JFactory::getConfig();
+			\$debug  = (boolean) \$config->get('debug');
+		}
+
+		// Add Stylesheet.
+		JHtml::_('stylesheet', 'plg_system_${1/(.+)/\L\1/g}/${4:$2}.min.css', false, true, false, false, \$debug);
+
+		// Add JavaScript.
+		JHtml::_('script', 'plg_system_${1/(.+)/\L\1/g}/jquery.$4.min.js', false, true, false, false, \$debug);
+
+		// Attach the $4 to the document.
+		JFactory::getDocument()->addScriptDeclaration(
+			"jQuery(document).ready(function() {
+				jQuery('\$selector').$4();
+			});"
+		);
+
+		static::\$loaded[__METHOD__][\$selector] = true;
+
+		return;
+	}
+}
+
+]]></content>
+	<tabTrigger>jhtmllibrary</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

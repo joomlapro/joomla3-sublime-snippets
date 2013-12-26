@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[/**
+ * @package     Joomla.${TM_FILENAME/(.*?)(\..+)/\u$1/}
+ * @subpackage  JavaScript
+ *
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
+ * @license     $TM_LICENSE
+ */
+
+]]></content>
+	<tabTrigger>jheaderjs</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

@@ -1,0 +1,66 @@
+<snippet>
+	<content><![CDATA[/**
+ * Prepares the document.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+protected function _prepareDocument()
+{
+	// Initialiase variables.
+	\$app   = JFactory::getApplication();
+	\$menus = \$app->getMenu();
+	\$title = null;
+
+	// Because the application sets a default page title,
+	// we need to get it from the menu item itself.
+	\$menu = \$menus->getActive();
+
+	if (\$menu)
+	{
+		\$this->params->def('page_heading', \$this->params->get('page_title', \$menu->title));
+	}
+	else
+	{
+		\$this->params->def('page_heading', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${1:VIEW}_DEFAULT_PAGE_TITLE'));
+	}
+
+	\$title = \$this->params->get('page_title', '');
+
+	if (empty(\$title))
+	{
+		\$title = \$app->getCfg('sitename');
+	}
+	elseif (\$app->getCfg('sitename_pagetitles', 0) == 1)
+	{
+		\$title = JText::sprintf('JPAGETITLE', \$app->getCfg('sitename'), \$title);
+	}
+	elseif (\$app->getCfg('sitename_pagetitles', 0) == 2)
+	{
+		\$title = JText::sprintf('JPAGETITLE', \$title, \$app->getCfg('sitename'));
+	}
+
+	\$this->document->setTitle(\$title);
+
+	// Configure the document meta-description.
+	if (\$this->params->get('menu-meta_description'))
+	{
+		\$this->document->setDescription(\$this->params->get('menu-meta_description'));
+	}
+
+	// Configure the document meta-keywords.
+	if (\$this->params->get('menu-meta_keywords'))
+	{
+		\$this->document->setMetadata('keywords', \$this->params->get('menu-meta_keywords'));
+	}
+
+	// Configure the document robots.
+	if (\$this->params->get('robots'))
+	{
+		\$this->document->setMetadata('robots', \$this->params->get('robots'));
+	}
+}]]></content>
+	<tabTrigger>jsiteview__preparedocument</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

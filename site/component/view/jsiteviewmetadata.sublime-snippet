@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<view title="${1:View}">
+		<message><![CDATA[TYPE${1/(.+)/\U\1/g}LAYDESC]${-1}]></message>
+	</view>
+</metadata>
+
+]]></content>
+	<tabTrigger>jsiteviewmetadata</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JPath::isOwner(${1:path})]]></content>
+	<tabTrigger>jpath_isowner</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JString::ucwords(${1:\$str});]]></content>
+	<tabTrigger>jstring-ucwords</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

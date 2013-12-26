@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to delete one or more records.
+ *
+ * @param   array  &\$pks  An array of record primary keys.
+ *
+ * @return  boolean  True if successful, false if an error occurs.
+ *
+ * @since   $TM_VERSION
+ */
+public function delete(& \$pks)
+{
+	return parent::delete(\$pks);
+}
+]]></content>
+	<tabTrigger>jadminmodeledit_delete</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

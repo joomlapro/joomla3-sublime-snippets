@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$user = JFactory::getUser();
+
+// Logged users must load the logout sublayout.
+if (\$user->guest)
+{
+	include __DIR__ . '/login.php';
+}
+else
+{
+	include __DIR__ . '/dashboard.php';
+}
+
+]]></content>
+	<tabTrigger>jsitetemplate_sublayout</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

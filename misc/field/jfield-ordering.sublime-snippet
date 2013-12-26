@@ -1,0 +1,49 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadFieldClass('ordering');
+
+/**
+ * Supports an HTML select list of ${2:plural}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormFieldOrdering
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = '${1/(.+)/\u\1/g}';
+
+	/**
+	 * Builds the query for the ordering list.
+	 *
+	 * @return  JDatabaseQuery  The query for the ordering form field.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getQuery()
+	{
+		// Initialiase variables.
+		\$categoryId = (int) \$this->form->getValue('catid');
+		\$db         = JFactory::getDbo();
+		\$query      = \$db->getQuery(true);
+
+		// Create the base select statement.
+		\$query->select(array(\$db->quoteName('ordering', 'value'), \$db->quoteName('${3:title}', 'text')))
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}$4'))
+			->where(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$categoryId))
+			->order(\$db->quoteName('ordering'));
+
+		return \$query;
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield-ordering</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

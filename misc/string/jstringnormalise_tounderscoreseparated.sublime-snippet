@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JStringNormalise::toUnderscoreSeparated(${1:\$input});]]></content>
+	<tabTrigger>jstringnormalise_tounderscoreseparated</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

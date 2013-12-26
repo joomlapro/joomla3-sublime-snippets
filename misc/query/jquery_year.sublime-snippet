@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$query->year($1)]]></content>
+	<tabTrigger>jquery_year</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

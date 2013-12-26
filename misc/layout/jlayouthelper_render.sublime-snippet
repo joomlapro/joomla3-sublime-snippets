@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JLayoutHelper::render('${1:path/to/layout}', ${2:\$this});]]></content>
+	<tabTrigger>jlayouthelper_render</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

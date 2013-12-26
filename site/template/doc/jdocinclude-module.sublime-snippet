@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<jdoc:include type="module" name="position-${1:0}" style="${2:none}" />]]></content>
+	<tabTrigger>jdocinclude-module</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

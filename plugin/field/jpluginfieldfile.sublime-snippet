@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="file"
+	class="inputbox"
+	label="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	accept="audio/*,video/*,image/*"
+	size="40" />]]></content>
+	<tabTrigger>jpluginfieldfile</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

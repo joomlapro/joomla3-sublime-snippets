@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JAccess::check(\$${1:userId}, '${2:core.edit}', \$${3:assetname});]]></content>
+	<tabTrigger>jaccess-check</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

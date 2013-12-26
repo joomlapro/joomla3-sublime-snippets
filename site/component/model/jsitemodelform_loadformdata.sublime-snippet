@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get the data that should be injected in the form.
+ *
+ * @return  mixed  The data for the form.
+ *
+ * @since   $TM_VERSION
+ */
+protected function loadFormData()
+{
+	// Check the session for previously entered form data.
+	\$app  = JFactory::getApplication();
+	\$data = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1:singular}.data', array());
+
+	if (empty(\$data))
+	{
+		\$data = \$this->getItem();
+	}
+
+	\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
+
+	return \$data;
+}]]></content>
+	<tabTrigger>jsitemodelform_loadformdata</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

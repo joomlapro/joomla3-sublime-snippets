@@ -1,0 +1,73 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
+ *
+ * @param   integer  \$id        The route of the ${1/(.+)/\L\1/g} item.
+ * @param   integer  \$catid     The id of the category.
+ * @param   string   \$language  The language code, default value of * means all.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+public static function get${1:Singular}Route(\$id, \$catid = 0, \$language = 0)
+{
+	// Initialiase variables.
+	\$needles = array(
+		'${1/(.+)/\L\1/g}'  => array((int) \$id)
+	);
+
+	// Create the link.
+	\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$id;
+
+	if ((int) \$catid > 1)
+	{
+		\$categories = JCategories::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
+		\$category = \$categories->get((int) \$catid);
+
+		if (\$category)
+		{
+			\$needles['category']   = array_reverse(\$category->getPath());
+			\$needles['categories'] = \$needles['category'];
+
+			\$link .= '&catid=' . \$catid;
+		}
+	}
+
+	if (\$language && \$language != "*" && JLanguageMultilang::isEnabled())
+	{
+		// Initialiase variables.
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true)
+			->select('a.sef AS sef')
+			->select('a.lang_code AS lang_code')
+			->from('#__languages AS a');
+
+		// Set the query and load the result.
+		\$db->setQuery(\$query);
+		\$langs = \$db->loadObjectList();
+
+		foreach (\$langs as \$lang)
+		{
+			if (\$language == \$lang->lang_code)
+			{
+				\$link .= '&lang=' . \$lang->sef;
+				\$needles['language'] = \$language;
+			}
+		}
+	}
+
+	if (\$item = self::_findItem(\$needles))
+	{
+		\$link .= '&Itemid=' . \$item;
+	}
+	elseif (\$item = self::_findItem())
+	{
+		\$link .= '&Itemid=' . \$item;
+	}
+
+	return \$link;
+}]]></content>
+	<tabTrigger>jsitehelperroute_item</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

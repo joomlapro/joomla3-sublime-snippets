@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$query->month($1)]]></content>
+	<tabTrigger>jquery_month</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

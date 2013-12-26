@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFile::getExt($1);]]></content>
+	<tabTrigger>jfile-getext</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

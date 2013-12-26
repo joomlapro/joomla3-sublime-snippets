@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * After the framework has dispatched the application.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function onAfterDispatch()
+{
+	$1
+}]]></content>
+	<tabTrigger>jplugin_onafterdispatch</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

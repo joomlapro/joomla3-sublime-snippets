@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to save a record.
+ *
+ * @param   string  \$key     The name of the primary key of the URL variable.
+ * @param   string  \$urlVar  The name of the URL variable if different from the primary key (sometimes required to avoid router collisions).
+ *
+ * @return  boolean  True if successful, false otherwise.
+ *
+ * @since   $TM_VERSION
+ */
+public function save(\$key = null, \$urlVar = null)
+{
+	// Initialiase variables.
+	\$result = parent::save(\$key, \$urlVar);
+	\$return = \$this->input->get('return', null, 'base64');
+
+	if (\$this->getTask() == 'save' && \$return)
+	{
+		// Redirect to the return page.
+		\$this->setRedirect(base64_decode(\$return));
+	}
+
+	return \$result;
+}]]></content>
+	<tabTrigger>jadmincontrolleredit_save_with_return</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

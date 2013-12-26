@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Join on voting table.
+\$query->select('ROUND(v.rating_sum / v.rating_count, 0) AS rating, v.rating_count as rating_count')
+	->join('LEFT', '#__${TM_COMPONENT/(.+)/\L\1/g}$1_rating AS v ON a.id = v.${TM_COMPONENT/(.+)/\L\1/g}_id');]]></content>
+	<tabTrigger>jjoin_rating</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

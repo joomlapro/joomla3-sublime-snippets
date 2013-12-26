@@ -1,0 +1,20 @@
+{
+	"schema_version": "1.2",
+	"packages": [
+		{
+			"name": "Joomla! 3.x Snippets",
+			"description": "Sublime Text Snippets for CMS Joomla! 3.x",
+			"author": "Bruno Batista <bruno@joomlapro.com.br>",
+			"homepage": "https://github.com/joomlapro/joomla3-sublime-snippets",
+			"last_modified": "2013-12-14 15:17:00",
+			"platforms": {
+				"*": [
+					{
+						"version": "2.2.7",
+						"url": "https://nodeload.github.com/joomlapro/joomla3-sublime-snippets/zip/master"
+					}
+				]
+			}
+		}
+	]
+}

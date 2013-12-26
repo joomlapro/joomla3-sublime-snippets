@@ -1,0 +1,47 @@
+<snippet>
+	<content><![CDATA[/**
+ * Build the orderby for the query
+ *
+ * @return  string  \$orderby portion of query.
+ *
+ * @since   $TM_VERSION
+ */
+protected function _build${1:Singular}OrderBy()
+{
+	// Initialiase variables.
+	\$app       = JFactory::getApplication('site');
+	\$db        = \$this->getDbo();
+	\$params    = \$this->state->params;
+	\$itemid    = \$app->input->get('id', 0, 'int') . ':' . \$app->input->get('Itemid', 0, 'int');
+	\$orderCol  = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order', 'filter_order', '', 'string');
+	\$orderDirn = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
+	\$orderby   = ' ';
+
+	if (!in_array(\$orderCol, \$this->filter_fields))
+	{
+		\$orderCol = null;
+	}
+
+	if (!in_array(strtoupper(\$orderDirn), array('ASC', 'DESC', '')))
+	{
+		\$orderDirn = 'ASC';
+	}
+
+	if (\$orderCol && \$orderDirn)
+	{
+		\$orderby .= \$db->escape(\$orderCol) . ' ' . \$db->escape(\$orderDirn) . ', ';
+	}
+
+	\$${2:singular}Orderby   = \$params->get('orderby_sec', 'rdate');
+	\$${2/(.+)/\L\1/g}OrderDate = \$params->get('order_date');
+	\$categoryOrderby = \$params->def('orderby_pri', '');
+	\$secondary       = ${TM_COMPONENT/(.+)/\u\1/g}HelperQuery::orderbySecondary(\$${2/(.+)/\L\1/g}Orderby, \$${2/(.+)/\L\1/g}OrderDate) . ', ';
+	\$primary         = ${TM_COMPONENT/(.+)/\u\1/g}HelperQuery::orderbyPrimary(\$categoryOrderby);
+
+	\$orderby .= \$primary . ' ' . \$secondary . ' a.created ';
+
+	return \$orderby;
+}]]></content>
+	<tabTrigger>jsitemodelcategory__buildcontentorderby</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

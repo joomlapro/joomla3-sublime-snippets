@@ -1,0 +1,260 @@
+<snippet>
+	<content><![CDATA[/**
+ * HTML ${1/(.+)/\u\1/g} View class for the ${TM_COMPONENT/(.+)/\u\1/g} component.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Search} extends JViewLegacy
+{
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  The name of the template file to parse; automatically searches through the template paths.
+	 *
+	 * @return  mixed  A string if successful, otherwise a Error object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function display(\$tpl = null)
+	{
+		// Load the backend helper.
+		JLoader::register('${TM_COMPONENT/(.+)/\u\1/g}Helper', JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php');
+
+		// Initialiase variables.
+		\$app     = JFactory::getApplication();
+		\$uri     = JUri::getInstance();
+
+		\$error   = null;
+		\$rows    = null;
+		\$results = null;
+		\$total   = 0;
+
+		// Get some data from the model.
+		\$areas      = \$this->get('areas');
+		\$state      = \$this->get('state');
+		\$searchword = \$state->get('keyword');
+		\$params     = \$app->getParams();
+
+		// Built select lists.
+		\$orders   = array();
+		\$orders[] = JHtml::_('select.option', 'newest', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NEWEST_FIRST'));
+		\$orders[] = JHtml::_('select.option', 'oldest', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_OLDEST_FIRST'));
+		\$orders[] = JHtml::_('select.option', 'popular', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MOST_POPULAR'));
+		\$orders[] = JHtml::_('select.option', 'alpha', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ALPHABETICAL'));
+		\$orders[] = JHtml::_('select.option', 'category', JText::_('JCATEGORY'));
+
+		\$lists             = array();
+		\$lists['ordering'] = JHtml::_('select.genericlist', \$orders, 'ordering', 'class="inputbox"', 'value', 'text', \$state->get('ordering'));
+
+		\$searchphrases         = array();
+		\$searchphrases[]       = JHtml::_('select.option', 'all', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ALL_WORDS'));
+		\$searchphrases[]       = JHtml::_('select.option', 'any', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ANY_WORDS'));
+		\$searchphrases[]       = JHtml::_('select.option', 'exact', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_EXACT_PHRASE'));
+		\$lists['searchphrase'] = JHtml::_('select.radiolist', \$searchphrases, 'searchphrase', '', 'value', 'text', \$state->get('match'));
+
+		// Log the search.
+		JSearchHelper::logSearch(\$searchword, 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+
+		// Limit searchword.
+		\$lang        = JFactory::getLanguage();
+		\$upper_limit = \$lang->getUpperLimitSearchWord();
+		\$lower_limit = \$lang->getLowerLimitSearchWord();
+
+		if (${2:Plural}Helper::limit${1/(.+)/\u\1/g}Word(\$searchword))
+		{
+			\$error = JText::sprintf('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_MESSAGE', \$lower_limit, \$upper_limit);
+		}
+
+		// Sanitise searchword.
+		if (${2/(.+)/\u\1/g}Helper::santise${1/(.+)/\u\1/g}Word(\$searchword, \$state->get('match')))
+		{
+			\$error = JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_IGNOREKEYWORD');
+		}
+
+		if (!\$searchword && !empty(\$this->input) && count(\$this->input->post))
+		{
+			// \$error = JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_ENTERKEYWORD');
+		}
+
+		// Put the filtered results back into the model
+		// for next release, the checks should be done in the model perhaps...
+		\$state->set('keyword', \$searchword);
+
+		if (\$error == null)
+		{
+			\$results    = \$this->get('data');
+			\$total      = \$this->get('total');
+			\$pagination = \$this->get('pagination');
+
+			require_once JPATH_SITE . '/components/com_content/helpers/route.php';
+
+			for (\$i = 0, \$count = count(\$results); \$i < \$count; \$i++)
+			{
+				\$row = & \$results[\$i]->text;
+
+				if (\$state->get('match') == 'exact')
+				{
+					\$searchwords = array(\$searchword);
+					\$needle      = \$searchword;
+				}
+				else
+				{
+					\$searchworda = preg_replace('#\xE3\x80\x80#s', ' ', \$searchword);
+					\$searchwords = preg_split("/\s+/u", \$searchworda);
+					\$needle      = \$searchwords[0];
+				}
+
+				\$row         = ${2/(.+)/\u\1/g}Helper::prepare${1/(.+)/\u\1/g}Content(\$row, \$needle);
+				\$searchwords = array_values(array_unique(\$searchwords));
+				\$srow        = strtolower(${2/(.+)/\u\1/g}Helper::remove_accents(\$row));
+				\$hl1         = '<span class="highlight">';
+				\$hl2         = '</span>';
+				\$cnt         = 0;
+
+				foreach (\$searchwords as \$hlword)
+				{
+					if (extension_loaded('mbstring'))
+					{
+						if ((\$pos = mb_strpos(\$srow, strtolower(${2/(.+)/\u\1/g}Helper::remove_accents(\$hlword)))) !== false)
+						{
+							\$pos += \$cnt++ * mb_strlen(\$hl1 . \$hl2);
+
+							// Iconv transliterates '€' to 'EUR'
+							// TODO: add other expanding translations?
+							\$eur_compensation = \$pos > 0 ? substr_count(\$row, "\xE2\x82\xAC", 0, \$pos) * 2 : 0;
+							\$pos -= \$eur_compensation;
+							\$row = mb_substr(\$row, 0, \$pos) . \$hl1 . mb_substr(\$row, \$pos, mb_strlen(\$hlword)) . \$hl2 . mb_substr(\$row, \$pos + mb_strlen(\$hlword));
+						}
+					}
+					else
+					{
+						if ((\$pos = JString::strpos(\$srow, strtolower(${2/(.+)/\u\1/g}Helper::remove_accents(\$hlword)))) !== false)
+						{
+							\$pos += \$cnt++ * JString::strlen(\$hl1 . \$hl2);
+
+							// Iconv transliterates '€' to 'EUR'
+							// TODO: add other expanding translations?
+							\$eur_compensation = \$pos > 0 ? substr_count(\$row, "\xE2\x82\xAC", 0, \$pos) * 2 : 0;
+							\$pos -= \$eur_compensation;
+							\$row = JString::substr(\$row, 0, \$pos) . \$hl1 . JString::substr(\$row, \$pos, JString::strlen(\$hlword)) . \$hl2 . JString::substr(\$row, \$pos + JString::strlen(\$hlword));
+						}
+					}
+				}
+
+				\$result = & \$results[\$i];
+
+				if (\$result->created)
+				{
+					\$created = JHtml::_('date', \$result->created, JText::_('DATE_FORMAT_LC3'));
+				}
+				else
+				{
+					\$created = '';
+				}
+
+				\$result->text    = JHtml::_('content.prepare', \$result->text, '', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}');
+				\$result->created = \$created;
+				\$result->count   = \$i + 1;
+			}
+		}
+
+		// Escape strings for HTML output.
+		\$this->pageclass_sfx = htmlspecialchars(\$params->get('pageclass_sfx'));
+		\$this->pagination    = &\$pagination;
+		\$this->results       = &\$results;
+		\$this->lists         = &\$lists;
+		\$this->params        = &\$params;
+		\$this->ordering      = \$state->get('ordering');
+		\$this->searchword    = \$searchword;
+		\$this->origkeyword   = \$state->get('origkeyword');
+		\$this->searchphrase  = \$state->get('match');
+		\$this->searchareas   = \$areas;
+		\$this->total         = \$total;
+		\$this->error         = \$error;
+		\$this->action        = \$uri;
+
+		// Check for layout override only if this is not the active menu item
+		\$active = \$app->getMenu()->getActive();
+
+		if (isset(\$active->query['layout']))
+		{
+			// We need to set the layout in case this is an alternative menu item (with an alternative layout).
+			\$this->setLayout(\$active->query['layout']);
+		}
+
+		\$this->_prepareDocument();
+
+		parent::display(\$tpl);
+	}
+
+	/**
+	 * Prepares the document.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function _prepareDocument()
+	{
+		// Initialiase variables.
+		\$app   = JFactory::getApplication();
+		\$menus = \$app->getMenu();
+		\$title = null;
+
+		// Because the application sets a default page title,
+		// we need to get it from the menu item itself.
+		\$menu = \$menus->getActive();
+
+		if (\$menu)
+		{
+			\$this->params->def('page_heading', \$this->params->get('page_title', \$menu->title));
+		}
+		else
+		{
+			\$this->params->def('page_heading', JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE'));
+		}
+
+		\$title = \$this->params->get('page_title', '');
+
+		if (empty(\$title))
+		{
+			\$title = \$app->getCfg('sitename');
+		}
+		elseif (\$app->getCfg('sitename_pagetitles', 0) == 1)
+		{
+			\$title = JText::sprintf('JPAGETITLE', \$app->getCfg('sitename'), \$title);
+		}
+		elseif (\$app->getCfg('sitename_pagetitles', 0) == 2)
+		{
+			\$title = JText::sprintf('JPAGETITLE', \$title, \$app->getCfg('sitename'));
+		}
+
+		\$this->document->setTitle(\$title);
+
+		// Configure the document meta-description.
+		if (\$this->params->get('menu-meta_description'))
+		{
+			\$this->document->setDescription(\$this->params->get('menu-meta_description'));
+		}
+
+		// Configure the document meta-keywords.
+		if (\$this->params->get('menu-meta_keywords'))
+		{
+			\$this->document->setMetadata('keywords', \$this->params->get('menu-meta_keywords'));
+		}
+
+		// Configure the document robots.
+		if (\$this->params->get('robots'))
+		{
+			\$this->document->setMetadata('robots', \$this->params->get('robots'));
+		}
+	}
+}
+
+]]></content>
+	<tabTrigger>jsiteviewsearch</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

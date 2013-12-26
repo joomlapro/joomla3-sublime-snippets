@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JLoader::loadByAlias('${1:class}')]]></content>
+	<tabTrigger>jloader_loadbyalias</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

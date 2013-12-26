@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[try
+{
+	$1
+}
+catch (RuntimeException \$e)
+{
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
+}]]></content>
+	<tabTrigger>jtry</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

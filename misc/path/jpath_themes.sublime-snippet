@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JPATH_THEMES]]></content>
+	<tabTrigger>jpath_themes</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

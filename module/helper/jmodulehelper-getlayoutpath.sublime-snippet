@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JModuleHelper::getLayoutPath('mod_${1:${TM_MODULE/(.+)/\L\1/g}}', \$params->get('layout', '${2:default}')${3: . '_${4:items}'});]]></content>
+	<tabTrigger>jmodulehelper-getlayoutpath</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

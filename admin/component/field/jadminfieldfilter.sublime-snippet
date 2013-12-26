@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="${2:type}"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FILTER_${3:${1/(.+)/\U\1/g}}_LABEL"
+	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FILTER_${3/(.+)/\U\1/g}_DESC"
+	onchange="this.form.submit();">
+	<option value="">COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_SELECT_${3/(.+)/\U\1/g}</option>
+</field>]]></content>
+	<tabTrigger>jadminfieldfilter</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[/**
+ * Whether the seminar is or is not checked out.
+ *
+ * @var     boolean
+ * @since   $TM_VERSION
+ */
+public \$checked_out = 0;]]></content>
+	<tabTrigger>jadmintable_checked_out</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

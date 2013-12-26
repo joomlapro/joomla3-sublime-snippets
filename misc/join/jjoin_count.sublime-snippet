@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Join over the ${1/(.+)/\L\1/g} for counting.
+\$query->select('COUNT(${2:${1/(.)(.+)/\L\1/g}}.id) as n${1/(.+)/\L\1/g}')
+	->join('LEFT', '#__${TM_COMPONENT/(.+)/\L\1/g}_${1:table} AS ${2/(.+)/\L\1/g} ON a.id = ${2/(.+)/\L\1/g}.${3:id}');]]></content>
+	<tabTrigger>jjoin_count</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

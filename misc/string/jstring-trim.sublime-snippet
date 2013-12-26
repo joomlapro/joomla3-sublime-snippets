@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JString::trim(${1:\$str});]]></content>
+	<tabTrigger>jstring-trim</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[<fieldset
+	name="${1:fieldset}"
+	label="${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELDSET_${1/(.+)/\U\1/g}_LABEL">
+
+</fieldset>]]></content>
+	<tabTrigger>jmodulefieldset</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

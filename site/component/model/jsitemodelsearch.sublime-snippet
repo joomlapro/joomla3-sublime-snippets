@@ -1,0 +1,243 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component ${1/(.+)/\u\1/g} Model.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelLegacy
+{
+	/**
+	 * ${1/(.+)/\u\1/g} data array.
+	 *
+	 * @var     array
+	 */
+	protected \$_data = null;
+
+	/**
+	 * ${1/(.+)/\u\1/g} total.
+	 *
+	 * @var     integer
+	 */
+	protected \$_total = null;
+
+	/**
+	 * ${1/(.+)/\u\1/g} ${2/(.+)/\L\1/g}.
+	 *
+	 * @var     integer
+	 */
+	protected  \$_${2:areas} = null;
+
+	/**
+	 * Pagination object.
+	 *
+	 * @var     object
+	 */
+	protected \$_pagination = null;
+
+	/**
+	 * Constructor.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function __construct()
+	{
+		parent::__construct();
+
+		// Get configuration.
+		\$app    = JFactory::getApplication();
+		\$config = JFactory::getConfig();
+
+		// Get the pagination request variables.
+		\$this->setState('limit', \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.limit', 'limit', \$config->get('list_limit'), 'uint'));
+		\$this->setState('limitstart', \$app->input->get('limitstart', 0, 'uint'));
+
+		// Set the ${1/(.+)/\L\1/g} parameters.
+		\$keyword  = urldecode(\$app->input->getString('searchword'));
+		\$match    = \$app->input->get('searchphrase', 'all', 'word');
+		\$ordering = \$app->input->get('ordering', 'newest', 'word');
+		\$this->set${1/(.+)/\u\1/g}(\$keyword, \$match, \$ordering);
+
+		// Set the ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
+		\$${2/(.+)/\L\1/g} = \$app->input->get('${2/(.+)/\L\1/g}', null, 'array');
+		\$this->set${2/(.+)/\u\1/g}(\$${2/(.+)/\L\1/g});
+	}
+
+	/**
+	 * Method to set the ${1/(.+)/\L\1/g} parameters.
+	 *
+	 * @param   string  \$keyword   ${1/(.+)/\u\1/g} string.
+	 * @param   string  \$match     Mathcing option, exact|any|all.
+	 * @param   string  \$ordering  Ordering option, newest|oldest|popular|alpha|category.
+	 *
+	 * @return  void
+	 *
+	 * @access  public
+	 * @since   $TM_VERSION
+	 */
+	public function set${1/(.+)/\u\1/g}(\$keyword, \$match = 'all', \$ordering = 'newest')
+	{
+		if (isset(\$keyword))
+		{
+			\$this->setState('origkeyword', \$keyword);
+
+			if (\$match !== 'exact')
+			{
+				\$keyword = preg_replace('#\xE3\x80\x80#s', ' ', \$keyword);
+			}
+
+			\$this->setState('keyword', \$keyword);
+		}
+
+		if (isset(\$match))
+		{
+			\$this->setState('match', \$match);
+		}
+
+		if (isset(\$ordering))
+		{
+			\$this->setState('ordering', \$ordering);
+		}
+	}
+
+	/**
+	 * Method to set the ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
+	 *
+	 * @param   array  \$active  Active ${2/(.+)/\L\1/g}.
+	 * @param   array  \$${1/(.+)/\L\1/g}  ${1/(.+)/\u\1/g} ${2/(.+)/\L\1/g}.
+	 *
+	 * @return  void
+	 *
+	 * @access  public
+	 * @since   $TM_VERSION
+	 */
+	public function set${2/(.+)/\u\1/g}(\$active = array(), \$${1/(.+)/\L\1/g} = array())
+	{
+		\$this->_${2/(.+)/\L\1/g}['active'] = \$active;
+		\$this->_${2/(.+)/\L\1/g}['${1/(.+)/\L\1/g}'] = \$${1/(.+)/\L\1/g};
+	}
+
+	/**
+	 * Method to get weblink item data for the category.
+	 *
+	 * @return  array
+	 *
+	 * @access  public
+	 * @since   $TM_VERSION
+	 */
+	public function getData()
+	{
+		// Lets load the content if it doesn't already exist.
+		if (empty(\$this->_data))
+		{
+			\$${2/(.+)/\L\1/g} = \$this->get${2/(.+)/\u\1/g}();
+
+			// Load the search plugin group.
+			JPluginHelper::importPlugin('search');
+
+			// Get the event dispatcher.
+			\$dispatcher = JEventDispatcher::getInstance();
+
+			\$results = \$dispatcher->trigger('onContentSearch', array(
+				\$this->getState('keyword'),
+				\$this->getState('match'),
+				\$this->getState('ordering'),
+				\$${2/(.+)/\L\1/g}['active'])
+			);
+
+			\$rows = array();
+
+			foreach (\$results as \$result)
+			{
+				\$rows = array_merge((array) \$rows, (array) \$result);
+			}
+
+			\$this->_total = count(\$rows);
+
+			if (\$this->getState('limit') > 0)
+			{
+				\$this->_data = array_splice(\$rows, \$this->getState('limitstart'), \$this->getState('limit'));
+			}
+			else
+			{
+				\$this->_data = \$rows;
+			}
+		}
+
+		return \$this->_data;
+	}
+
+	/**
+	 * Method to get the total number of weblink items for the category.
+	 *
+	 * @return  integer
+	 *
+	 * @access  public
+	 * @since   $TM_VERSION
+	 */
+	public function getTotal()
+	{
+		return \$this->_total;
+	}
+
+	/**
+	 * Method to get a pagination object of the weblink items for the category.
+	 *
+	 * @return  integer
+	 *
+	 * @access  public
+	 * @since   $TM_VERSION
+	 */
+	public function getPagination()
+	{
+		// Lets load the content if it doesn't already exist.
+		if (empty(\$this->_pagination))
+		{
+			\$this->_pagination = new JPagination(\$this->getTotal(), \$this->getState('limitstart'), \$this->getState('limit'));
+		}
+
+		return \$this->_pagination;
+	}
+
+	/**
+	 * Method to get the ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
+	 *
+	 * @return  array
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function get${2/(.+)/\u\1/g}()
+	{
+		// Load the Category data.
+		if (empty(\$this->_${2/(.+)/\L\1/g}['${1/(.+)/\L\1/g}']))
+		{
+			\$${2/(.+)/\L\1/g} = array();
+
+			// Load the search plugin group.
+			JPluginHelper::importPlugin('search');
+
+			// Get the event dispatcher.
+			\$dispatcher = JEventDispatcher::getInstance();
+
+			\$${1/(.+)/\L\1/g}${2/(.+)/\L\1/g} = \$dispatcher->trigger('onContent${1/(.+)/\u\1/g}${2/(.+)/\u\1/g}');
+
+			foreach (\$${1/(.+)/\L\1/g}${2/(.+)/\L\1/g} as \$area)
+			{
+				if (is_array(\$area))
+				{
+					\$${2/(.+)/\L\1/g} = array_merge(\$${2/(.+)/\L\1/g}, \$area);
+				}
+			}
+
+			\$this->_${2/(.+)/\L\1/g}['${1/(.+)/\L\1/g}'] = \$${2/(.+)/\L\1/g};
+		}
+
+		return \$this->_${2/(.+)/\L\1/g};
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodelsearch</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadFieldType('${1:field}', ${2:false});]]></content>
+	<tabTrigger>jformhelper-loadfieldtype</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

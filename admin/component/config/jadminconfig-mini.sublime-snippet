@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="${1:plural}"
+		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_LABEL"
+		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_DESC">
+		<field
+			name="sef_advanced_link"
+			type="radio"
+			class="btn-group"
+			default="0"
+			filter="integer"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SEF_ADVANCED_LINK_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC">
+		<field
+			name="rules"
+			type="rules"
+			class="inputbox"
+			validate="rules"
+			filter="rules"
+			component="com_${TM_COMPONENT/(.+)/\L\1/g}"
+			section="component"
+			label="JCONFIG_PERMISSIONS_LABEL" />
+	</fieldset>
+</config>
+
+]]></content>
+	<tabTrigger>jadminconfig-mini</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

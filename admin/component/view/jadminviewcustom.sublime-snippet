@@ -1,0 +1,69 @@
+<snippet>
+	<content><![CDATA[/**
+ * HTML View class for the ${1/(.+)/\u\1/g} component.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Custom} extends JViewLegacy
+{
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  A string if successful, otherwise a JError object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function display(\$tpl = null)
+	{
+		// Get the input.
+		\$input = JFactory::getApplication()->input;
+
+		/*
+		 * Set the template - this will display cpanel.php
+		 * from the selected admin template.
+		 */
+		\$input->set('tmpl', 'cpanel');
+
+		// Load the submenu.
+		${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+
+		\$this->addToolbar();
+		\$this->sidebar = JHtmlSidebar::render();
+
+		parent::display(\$tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function addToolbar()
+	{
+		// Initialise variables.
+		\$canDo = ${1/(.+)/\u\1/g}Helper::getActions(0, 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+		\$user  = JFactory::getUser();
+
+		// Set toolbar items for the page.
+		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_TITLE'), '${1/(.+)/\L\1/g}');
+
+		if (\$user->authorise('core.admin', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+		{
+			JToolbarHelper::preferences('com_${TM_COMPONENT/(.+)/\L\1/g}');
+		}
+
+		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminviewcustom</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

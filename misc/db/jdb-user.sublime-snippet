@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[CREATE TABLE `${1:$TM_PREFIX}_${2:${TM_COMPONENT/(.+)/\L\1/g}}$3` (
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `address1` varchar(255) NOT NULL DEFAULT '',
+  `address2` varchar(255) NOT NULL DEFAULT '',
+  `city` varchar(255) NOT NULL DEFAULT '',
+  `region` varchar(255) NOT NULL DEFAULT '',
+  `country` varchar(255) NOT NULL DEFAULT '',
+  `postal_code` varchar(255) NOT NULL DEFAULT '',
+  `phone` varchar(255) NOT NULL DEFAULT '',
+  `website` varchar(255) NOT NULL DEFAULT '',
+  `favoritebook` varchar(255) NOT NULL DEFAULT '',
+  `aboutme` varchar(255) NOT NULL DEFAULT '',
+  `dob` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+]]></content>
+	<tabTrigger>jdb-user</tabTrigger>
+	<scope>text.plain,source.sql</scope>
+</snippet>

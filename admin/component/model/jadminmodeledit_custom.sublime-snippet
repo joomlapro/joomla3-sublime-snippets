@@ -1,0 +1,54 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to toggle the ${1/(.+)/\L\1/g} setting of ${3:${2/(.+)/\L\1/g}}.
+ *
+ * @param   array    \$pks    The ids of the items to toggle.
+ * @param   integer  \$value  The value to toggle to.
+ *
+ * @return  boolean  True on success.
+ *
+ * @since   $TM_VERSION
+ */
+public function ${1:action}(\$pks, \$value = 0)
+{
+	// Sanitize the ids.
+	\$pks = (array) \$pks;
+	JArrayHelper::toInteger(\$pks);
+
+	if (empty(\$pks))
+	{
+		\$this->setError(JText::_('JGLOBAL_NO_ITEM_SELECTED'));
+
+		return false;
+	}
+
+	\$table = \$this->getTable();
+
+	try
+	{
+		\$db = \$this->getDbo();
+
+		\$db->setQuery(
+			'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}_${2:table}'
+			. ' SET ${1/(.+)/\L\1/g} = ' . (int) \$value
+			. ' WHERE id IN (' . implode(', ', \$pks) . ')'
+		);
+		\$db->execute();
+	}
+	catch (Exception \$e)
+	{
+		\$this->setError(\$e->getMessage());
+
+		return false;
+	}
+
+	\$table->reorder();
+
+	// Clear the cache.
+	\$this->cleanCache();
+
+	return true;
+}]]></content>
+	<tabTrigger>jadminmodeledit_custom</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

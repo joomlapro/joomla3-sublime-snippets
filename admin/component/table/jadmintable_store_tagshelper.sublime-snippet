@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[\$this->tagsHelper->preStoreProcess(\$this);
+
+// Attempt to store the user data.
+\$result = parent::store(\$updateNulls);
+
+return \$result && \$this->tagsHelper->postStoreProcess(\$this);]]></content>
+	<tabTrigger>jadmintable_store_tagshelper</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

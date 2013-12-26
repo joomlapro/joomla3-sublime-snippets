@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[<?php
+/**
+ * @package     ${1:${TM_COMPONENT/(.+)/\u\1/g}}
+ * @subpackage  ${2:com}_${1/(.+)/\L\1/g}
+ *
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @copyright   Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
+ * @license     $TM_LICENSE
+ */
+
+// No direct access.
+defined('JPATH_BASE') or die;
+
+]]></content>
+	<tabTrigger>jheaderfield</tabTrigger>
+	<!-- <scope>source.php</scope> -->
+</snippet>

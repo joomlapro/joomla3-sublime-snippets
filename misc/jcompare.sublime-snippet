@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[# COMPLETE
+
+search:
+
+# NOCATEGORY
+
+search: catid|c\.|level|category|categories|featured|cat|frontpage
+
+# SIMPLE
+
+search: catid|c\.|level|category|categories|featured|cat|frontpage|images
+
+# MINI
+
+search: catid|c\.|level|category|categories|featured|cat|frontpage|images|asset_id|alias|description|access|params|language|publish_up|publish_down|version|hits|metadesc|metakey|metadata|xreference|rules|tag|level|assoc|authorise|batch|save2copy|lang|editor
+
+# REPLACE
+
+orderby_sec => orderby_pri
+attribs     => params
+urls        =>
+introtext   =>
+fulltext    =>
+
+]]></content>
+	<tabTrigger>jcompare</tabTrigger>
+	<!-- <scope>source.python</scope> -->
+</snippet>

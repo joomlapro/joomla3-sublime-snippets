@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<th width="5%" class="nowrap hidden-phone">
+	<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${1:TITLE}'); ?>
+</th>]]></content>
+	<tabTrigger>jtableth-text</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

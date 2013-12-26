@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get the record form.
+ *
+ * @param   array    \$data      An optional array of data for the form to interogate.
+ * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not.
+ *
+ * @return  JForm  A JForm object on success, false on failure.
+ *
+ * @since   $TM_VERSION
+ */
+public function getForm(\$data = array(), \$loadData = true)
+{
+	// Get the form.
+	\$form = \$this->loadForm('com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+
+	if (empty(\$form))
+	{
+		return false;
+	}
+
+	// Modify the form based on access controls.
+	if (!\$this->canEditState((object) \$data))
+	{
+		// Disable fields for display.
+		\$form->setFieldAttribute('ordering', 'disabled', 'true');
+		\$form->setFieldAttribute('state', 'disabled', 'true');
+
+		// Disable fields while saving.
+		// The controller has already verified this is a record you can edit.
+		\$form->setFieldAttribute('ordering', 'filter', 'unset');
+		\$form->setFieldAttribute('state', 'filter', 'unset');
+	}
+
+	return \$form;
+}]]></content>
+	<tabTrigger>jsitemodelform_getform</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

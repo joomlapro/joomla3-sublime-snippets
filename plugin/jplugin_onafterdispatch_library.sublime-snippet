@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to catch the onAfterDispatch event.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function onAfterDispatch()
+{
+	// Check that we are in the site application.
+	if (JFactory::getApplication()->isAdmin())
+	{
+		return;
+	}
+
+	// Register dependent classes.
+	JLoader::register('JHtml${1/(.+)/\u\1/g}', __DIR__ . '/helpers/html/${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}.php');
+
+	// Register a function.
+	JHtml::register('jquery.$2', array('JHtml${1/(.+)/\u\1/g}', '${2:$1}'));
+
+	// Force load script.
+	if (\$this->params->get('force'))
+	{
+		// Load the $2 jquery script.
+		JHtml::_('jquery.$2', \$this->params->get('selector', '$3'));
+	}
+
+	return;
+}]]></content>
+	<tabTrigger>jplugin_onafterdispatch_library</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

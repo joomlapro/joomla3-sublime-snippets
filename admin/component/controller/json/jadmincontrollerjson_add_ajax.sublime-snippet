@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to add ${2:${1/(.+)/\L\1/g}} via AJAX.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function add${1:Singular}Ajax()
+{
+	// Check for request forgeries.
+	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
+
+	// Get the input.
+	\$${3:${TM_FILENAME/(.*?)(\..+)/\L$1/}}Id = \$this->input->post->getInt('${3/(.+)/\L\1/g}_id');
+	\$${2/(.+)/\L\1/g}Id = \$this->input->post->getInt('${2/(.+)/\L\1/g}_id');
+
+	// Get the model.
+	\$model = \$this->getModel();
+
+	// Add the ${2/(.+)/\L\1/g}.
+	\$return = \$model->add${1/(.+)/\u\1/g}(\$${3/(.+)/\L\1/g}Id, \$${2/(.+)/\L\1/g}Id);
+
+	if (\$return)
+	{
+		echo "1";
+	}
+
+	// Close the application.
+	JFactory::getApplication()->close();
+}]]></content>
+	<tabTrigger>jadmincontrollerjson_add_ajax</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

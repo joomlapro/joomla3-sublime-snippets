@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[if (\$table->load(array('type_alias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.category')))
+{
+	\$table->delete();
+}]]></content>
+	<tabTrigger>jscript_uninstall_content_type-category</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

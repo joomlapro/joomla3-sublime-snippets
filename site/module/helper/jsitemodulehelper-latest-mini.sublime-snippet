@@ -1,0 +1,93 @@
+<snippet>
+	<content><![CDATA[// Load dependent classes.
+require_once JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/route.php';
+
+// Include the component models.
+JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models', '${TM_COMPONENT/(.+)/\u\1/g}Model');
+
+/**
+ * Helper for mod_${1/(.+)/\L\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  mod_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+abstract class Mod${1:${TM_MODULE/(.+)/\u\1/g}Latest}Helper
+{
+	/**
+	 * Get a list of the ${3/(.+)/\L\1/g} items.
+	 *
+	 * @param   JRegistry  &\$params  The module options.
+	 *
+	 * @return  array
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function getList(& \$params)
+	{
+		// Get the dbo.
+		\$db = JFactory::getDbo();
+
+		// Get an instance of the generic ${2/(.+)/\L\1/g} model.
+		\$model = JModelLegacy::getInstance('${2:Plural}', '${TM_COMPONENT/(.+)/\u\1/g}Model', array('ignore_request' => true));
+
+		// Set application parameters in model.
+		\$app       = JFactory::getApplication();
+		\$appParams = \$app->getParams();
+		\$model->setState('params', \$appParams);
+
+		// Set the filters based on the module params.
+		\$model->setState('list.start', 0);
+		\$model->setState('list.limit', (int) \$params->get('count', 5));
+		\$model->setState('filter.state', 1);
+
+		// User filter.
+		\$userId = JFactory::getUser()->get('id');
+
+		switch (\$params->get('user_id'))
+		{
+			case 'by_me':
+				\$model->setState('filter.author_id', (int) \$userId);
+				break;
+			case 'not_me':
+				\$model->setState('filter.author_id', (int) \$userId);
+				\$model->setState('filter.author_id.include', false);
+				break;
+
+			case '0':
+				break;
+
+			default:
+				\$model->setState('filter.author_id', (int) \$params->get('user_id'));
+				break;
+		}
+
+		// Set ordering.
+		\$order_map = array(
+			'm_dsc'  => 'a.modified DESC, a.created',
+			'mc_dsc' => 'CASE WHEN (a.modified = ' . \$db->quote(\$db->getNullDate()) . ') THEN a.created ELSE a.modified END',
+			'c_dsc'  => 'a.created',
+			'random' => 'RAND()',
+		);
+		\$ordering  = JArrayHelper::getValue(\$order_map, \$params->get('ordering'), 'a.created');
+		\$dir       = 'DESC';
+
+		\$model->setState('list.ordering', \$ordering);
+		\$model->setState('list.direction', \$dir);
+
+		\$items = \$model->getItems();
+
+		foreach (\$items as &\$item)
+		{
+			\$item->link = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${3:${2/(.+)(s\b)/\u\1/g}}Route(\$item->id);
+		}
+
+		return \$items;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodulehelper-latest-mini</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

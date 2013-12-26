@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->form->getControlGroup('${1:field}');]]></content>
+	<tabTrigger>jform-getcontrolgroup</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

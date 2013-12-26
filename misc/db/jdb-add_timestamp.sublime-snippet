@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[ALTER TABLE ${1:$TM_PREFIX}_${TM_COMPONENT/(.+)/\L\1/g}
+ADD `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+ADD `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+ADD `created_by_alias` varchar(255) NOT NULL DEFAULT '',
+ADD `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+ADD `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+ADD `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+ADD `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00']]></content>
+	<tabTrigger>jdb-add_timestamp</tabTrigger>
+	<scope>text.plain,source.sql</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtmlSidebar::setAction('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1:plural}');]]></content>
+	<tabTrigger>jhtmlsidebar-setaction</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

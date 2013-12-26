@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('bootstrap.startAccordion', '${1:singular}Options', array('active' => 'collapse0'));]]></content>
+	<tabTrigger>jhtml_bootstrap_startaccordion</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

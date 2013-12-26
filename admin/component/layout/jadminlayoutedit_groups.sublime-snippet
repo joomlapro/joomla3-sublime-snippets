@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[// Include the component HTML helpers.
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+
+echo JHtml::_('access.usergroups', 'jform[groups]', \$this->groups, true);
+
+]]></content>
+	<tabTrigger>jadminlayoutedit_groups</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,54 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to add a default category "uncategorised".
+ *
+ * @return  integer  Id of the created category.
+ *
+ * @since   $TM_VERSION
+ */
+public function _addCategory()
+{
+	// Include dependancies.
+	JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_categories/models', 'CategoriesModel');
+	JTable::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_categories/tables');
+
+	// Get an instance of the generic category model.
+	\$model = JModelLegacy::getInstance('Category', 'CategoriesModel', array('ignore_request' => true));
+
+	// Attempt to save the category.
+	\$data  = array(
+		'id'          => 0,
+		'parent_id'   => 0,
+		'level'       => 1,
+		'path'        => 'uncategorised',
+		'extension'   => 'com_${TM_COMPONENT/(.+)/\L\1/g}',
+		'title'       => 'Uncategorised',
+		'alias'       => 'uncategorised',
+		'description' => '',
+		'published'   => 1,
+		'params'      => '{"target":"","image":""}',
+		'metadata'    => '{"page_title":"","author":"","robots":""}',
+		'language'    => '*'
+	);
+
+	// Save the data.
+	\$model->save(\$data);
+
+	// Initialiase variables.
+	\$id    = \$model->getItem()->id;
+	\$db    = JFactory::getDbo();
+
+	// Updating all ${TM_COMPONENT/(.+)/\L\1/g} without category to have this new one.
+	\$query = \$db->getQuery(true)
+		->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}'))
+		->set(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$id))
+		->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
+
+	\$db->setQuery(\$query)
+		->query();
+
+	return;
+}]]></content>
+	<tabTrigger>jscript__addcategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

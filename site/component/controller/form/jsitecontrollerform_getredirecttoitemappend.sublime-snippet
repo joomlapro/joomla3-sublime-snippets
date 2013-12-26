@@ -1,0 +1,54 @@
+<snippet>
+	<content><![CDATA[/**
+ * Gets the URL arguments to append to an item redirect.
+ *
+ * @param   integer  \$recordId  The primary key id for the item.
+ * @param   string   \$urlVar    The name of the URL variable for the id.
+ *
+ * @return  string  The arguments to append to the redirect URL.
+ *
+ * @since   $TM_VERSION
+ */
+protected function getRedirectToItemAppend(\$recordId = null, \$urlVar = '${TM_COMPONENT/(.)(.+)/\L\1/g}_id')
+{
+	// Need to override the parent method completely.
+	\$tmpl   = \$this->input->get('tmpl');
+	\$append = '';
+
+	// Setup redirect info.
+	if (\$tmpl)
+	{
+		\$append .= '&tmpl=' . \$tmpl;
+	}
+
+	\$append .= '&layout=edit';
+
+	if (\$recordId)
+	{
+		\$append .= '&' . \$urlVar . '=' . \$recordId;
+	}
+
+	\$itemId = \$this->input->getInt('Itemid');
+	\$catId  = \$this->input->getInt('catid', null, 'get');
+	\$return = \$this->getReturnPage();
+
+	if (\$itemId)
+	{
+		\$append .= '&Itemid=' . \$itemId;
+	}
+
+	if (\$catId)
+	{
+		\$append .= '&catid=' . \$catId;
+	}
+
+	if (\$return)
+	{
+		\$append .= '&return=' . base64_encode(\$return);
+	}
+
+	return \$append;
+}]]></content>
+	<tabTrigger>jsitecontrollerform_getredirecttoitemappend</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

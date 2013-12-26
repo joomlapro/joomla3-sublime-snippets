@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Use the correct css mime-type.
+header('Content-Type: text/css');]]></content>
+	<tabTrigger>jmimecss</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to clone and existing ${1:singular}.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function duplicate()
+{
+	// Check for request forgeries.
+	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
+
+	\$pks = \$this->input->post->get('cid', array(), 'array');
+
+	try
+	{
+		if (empty(\$pks))
+		{
+			throw new Exception(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_${1/(.+)/\U\1/g}_SELECTED'));
+		}
+
+		JArrayHelper::toInteger(\$pks);
+
+		\$model = \$this->getModel();
+		\$model->duplicate(\$pks);
+		\$this->setMessage(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SUCCESS_DUPLICATED'));
+	}
+	catch (Exception \$e)
+	{
+		JError::raiseWarning(500, \$e->getMessage());
+	}
+
+	\$this->setRedirect('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${2:${1/(.+)/\L\1/g}s}');
+}]]></content>
+	<tabTrigger>jadmincontrollerlist_duplicate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

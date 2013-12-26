@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="checkboxes"
+	class="inputbox"
+	label="${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	value=""
+	${3:checked="true"} />]]></content>
+	<tabTrigger>jmodulefieldcheckbox</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

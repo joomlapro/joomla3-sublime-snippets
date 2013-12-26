@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::getBody();]]></content>
+	<tabTrigger>jresponse-getbody</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

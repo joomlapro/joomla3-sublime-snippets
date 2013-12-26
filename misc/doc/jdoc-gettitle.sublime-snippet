@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->getTitle();]]></content>
+	<tabTrigger>jdoc-gettitle</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

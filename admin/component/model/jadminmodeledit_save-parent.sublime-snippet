@@ -1,0 +1,40 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to save the form data.
+ *
+ * @param   array  \$data  The form data.
+ *
+ * @return  boolean  True on success, False on error.
+ *
+ * @since   $TM_VERSION
+ */
+public function save(\$data)
+{
+	// Initialiase variables.
+	\$app = JFactory::getApplication();
+
+	if (isset(\$data['${1:images}']) && is_array(\$data['${1/(.+)/\L\1/g}']))
+	{
+		\$registry = new JRegistry;
+		\$registry->loadArray(\$data['${1/(.+)/\L\1/g}']);
+		\$data['${1/(.+)/\L\1/g}'] = (string) \$registry;
+	}
+
+	// Alter the ${2/(.+)/\L\1/g} for save as copy.
+	if (\$app->input->get('task') == 'save2copy')
+	{
+		list(\$${2/(.+)/\L\1/g}, \$alias) = \$this->generateNewTitle(\$data['catid'], \$data['alias'], \$data['${2/(.+)/\L\1/g}']);
+		\$data['${2:title}'] = \$${2/(.+)/\L\1/g};
+		\$data['alias'] = \$alias;
+	}
+
+	if (parent::save(\$data))
+	{
+		return true;
+	}
+
+	return false;
+}]]></content>
+<tabTrigger>jadminmodeledit_save-parent</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

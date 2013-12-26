@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[// If the user is a guest, redirect to the login page.
+if (\$user->get('guest') == 1)
+{
+	// Get the full current URI.
+	\$uri    = JUri::getInstance();
+	\$return = base64_encode(\$uri);
+
+	// Redirect to login page.
+	\$this->setRedirect(JRoute::_('index.php?option=com_users&view=login&return=' . \$return, false));
+	return;
+}]]></content>
+	<tabTrigger>jsitecontroller_guest</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

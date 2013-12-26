@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the parameters.
+\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');]]></content>
+	<tabTrigger>jcomponenthelper-getparams</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

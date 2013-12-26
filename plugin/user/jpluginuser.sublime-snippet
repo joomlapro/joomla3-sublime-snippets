@@ -1,0 +1,350 @@
+<snippet>
+	<content><![CDATA[/**
+ * Joomla ${1/(.+)/\u\1/g} plugin.
+ *
+ * @package     Joomla.Plugin
+ * @subpackage  User.${1/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class PlgUser${1:$TM_PLUGIN} extends JPlugin
+{
+	/**
+	 * Called after the data for a JForm has been retrieved.
+	 *
+	 * It can be used to modify the data for a JForm object in memory before rendering.
+	 *
+	 * @param   string   \$context  The context for the data.
+	 * @param   integer  \$data     The user id.
+	 *
+	 * @return  boolean
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function onContentPrepareData(\$context, \$data)
+	{
+		// Check we are manipulating a valid form.
+		if (!in_array(\$context, array('com_users.profile', 'com_users.user', 'com_users.registration', 'com_admin.profile')))
+		{
+			return true;
+		}
+
+		if (is_object(\$data))
+		{
+			\$userId = isset(\$data->id) ? \$data->id : 0;
+
+			if (!isset(\$data->profile) and \$userId > 0)
+			{
+				// Load the profile data from the database.
+				\$db = JFactory::getDbo();
+				\$db->setQuery('SELECT * FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s} WHERE user_id = ' . (int) \$userId);
+
+				try
+				{
+					\$data->profile = \$db->loadAssoc();
+				}
+				catch (RuntimeException \$e)
+				{
+					\$this->_subject->setError(\$e->getMessage());
+
+					return false;
+				}
+			}
+
+			if (!JHtml::isRegistered('users.url'))
+			{
+				JHtml::register('users.url', array(__CLASS__, 'url'));
+			}
+
+			if (!JHtml::isRegistered('users.calendar'))
+			{
+				JHtml::register('users.calendar', array(__CLASS__, 'calendar'));
+			}
+
+			if (!JHtml::isRegistered('users.tos'))
+			{
+				JHtml::register('users.tos', array(__CLASS__, 'tos'));
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * URL Field.
+	 *
+	 * @param   integer  \$value  The value.
+	 *
+	 * @return  string
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function url(\$value)
+	{
+		if (empty(\$value))
+		{
+			return JHtml::_('users.value', \$value);
+		}
+		else
+		{
+			\$value = htmlspecialchars(\$value);
+
+			if (substr(\$value, 0, 4) == "http")
+			{
+				return '<a href="' . \$value . '">' . \$value . '</a>';
+			}
+			else
+			{
+				return '<a href="http://' . \$value . '">' . \$value . '</a>';
+			}
+		}
+	}
+
+	/**
+	 * Calendar Field.
+	 *
+	 * @param   integer  \$value  The value.
+	 *
+	 * @return  string
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function calendar(\$value)
+	{
+		if (empty(\$value))
+		{
+			return JHtml::_('users.value', \$value);
+		}
+		else
+		{
+			return JHtml::_('date', \$value, null, null);
+		}
+	}
+
+	/**
+	 * TOS Field
+	 *
+	 * @param   integer  \$value  The value.
+	 *
+	 * @return  string
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function tos(\$value)
+	{
+		if (\$value)
+		{
+			return JText::_('JYES');
+		}
+		else
+		{
+			return JText::_('JNO');
+		}
+	}
+
+	/**
+	 * Called before a JForm is rendered.
+	 *
+	 * It can be used to modify the JForm object in memory before rendering.
+	 *
+	 * @param   JForm  \$form  The form to be altered.
+	 * @param   array  \$data  The associated data for the form.
+	 *
+	 * @return  boolean
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function onContentPrepareForm(\$form, \$data)
+	{
+		// Check we have a form.
+		if (!(\$form instanceof JForm))
+		{
+			\$this->_subject->setError('JERROR_NOT_A_FORM');
+
+			return false;
+		}
+
+		// Check we are manipulating a valid form.
+		\$name = \$form->getName();
+
+		if (!in_array(\$name, array('com_admin.profile', 'com_users.user', 'com_users.profile', 'com_users.registration')))
+		{
+			return true;
+		}
+
+		// Add the registration fields to the form.
+		JForm::addFormPath(__DIR__ . '/profiles');
+		\$form->loadFile('profile', false);
+
+		\$fields = array(
+			'address1',
+			'address2',
+			'city',
+			'region',
+			'country',
+			'postal_code',
+			'phone',
+			'website',
+			'favoritebook',
+			'aboutme',
+			'dob',
+		);
+
+		\$tosarticle = \$this->params->get('register_tos_article');
+		\$tosenabled = \$this->params->get('register-require_tos', 0);
+
+		// We need to be in the registration form, field needs to be enabled and we need an article ID.
+		if (\$name != 'com_users.registration' || !\$tosenabled || !\$tosarticle)
+		{
+			// We only want the TOS in the registration form.
+			\$form->removeField('tos', 'profile');
+		}
+		else
+		{
+			// Push the TOS article ID into the TOS field.
+			\$form->setFieldAttribute('tos', 'article', \$tosarticle, 'profile');
+		}
+
+		foreach (\$fields as \$field)
+		{
+			// Case using the users manager in admin.
+			if (\$name == 'com_users.user')
+			{
+				// Remove the field if it is disabled in registration and profile
+				if (\$this->params->get('register-require_' . \$field, 1) == 0
+					&& \$this->params->get('profile-require_' . \$field, 1) == 0)
+				{
+					\$form->removeField(\$field, 'profile');
+				}
+			}
+			// Case registration.
+			elseif (\$name == 'com_users.registration')
+			{
+				// Toggle whether the field is required.
+				if (\$this->params->get('register-require_' . \$field, 1) > 0)
+				{
+					\$form->setFieldAttribute(\$field, 'required', (\$this->params->get('register-require_' . \$field) == 2) ? 'required' : '', 'profile');
+				}
+				else
+				{
+					\$form->removeField(\$field, 'profile');
+				}
+			}
+			// Case profile in site or admin.
+			elseif (\$name == 'com_users.profile' || \$name == 'com_admin.profile')
+			{
+				// Toggle whether the field is required.
+				if (\$this->params->get('profile-require_' . \$field, 1) > 0)
+				{
+					\$form->setFieldAttribute(\$field, 'required', (\$this->params->get('profile-require_' . \$field) == 2) ? 'required' : '', 'profile');
+				}
+				else
+				{
+					\$form->removeField(\$field, 'profile');
+				}
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Utility method to act on a user after it has been saved.
+	 *
+	 * This method sends a registration email to new users created in the backend.
+	 *
+	 * @param   array    \$data    Holds the new user data.
+	 * @param   boolean  \$isNew   True if a new user is stored.
+	 * @param   boolean  \$result  True if user was succesfully stored in the database.
+	 * @param   string   \$error   Message.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function onUserAfterSave(\$data, \$isNew, \$result, \$error)
+	{
+		\$userId = JArrayHelper::getValue(\$data, 'id', 0, 'int');
+
+		if (\$userId && \$result && isset(\$data['profile']) && (count(\$data['profile'])))
+		{
+			try
+			{
+				// Sanitize the date.
+				if (!empty(\$data['profile']['dob']))
+				{
+					\$date = new JDate(\$data['profile']['dob']);
+					\$data['profile']['dob'] = \$date->format('Y-m-d');
+				}
+
+				\$db = JFactory::getDbo();
+				\$db->setQuery('DELETE FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId);
+				\$db->execute();
+
+				\$values = array();
+
+				foreach (\$data['profile'] as \$k => \$v)
+				{
+					\$values[] = '"' . \$v . '"';
+				}
+
+				\$db->setQuery('INSERT INTO #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} VALUES ("' . \$userId . '", ' . implode(', ', \$values) . ')');
+				\$db->execute();
+			}
+			catch (RuntimeException \$e)
+			{
+				\$this->_subject->setError(\$e->getMessage());
+
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Remove all user profile information for the given user ID.
+	 *
+	 * Method is called after user data is deleted from the database.
+	 *
+	 * @param   array    \$user     Holds the user data.
+	 * @param   boolean  \$success  True if user was succesfully stored in the database.
+	 * @param   string   \$msg      Message.
+	 *
+	 * @return  boolean
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function onUserAfterDelete(\$user, \$success, \$msg)
+	{
+		if (!\$success)
+		{
+			return false;
+		}
+
+		\$userId = JArrayHelper::getValue(\$user, 'id', 0, 'int');
+
+		if (\$userId)
+		{
+			try
+			{
+				\$db = JFactory::getDbo();
+				\$db->setQuery('DELETE FROM #__${TM_COMPONENT/(.+)/\L\1/g}${2/(.+)/\L\1/g} WHERE user_id = ' . (int) \$userId);
+				\$db->execute();
+			}
+			catch (Exception \$e)
+			{
+				\$this->_subject->setError(\$e->getMessage());
+
+				return false;
+			}
+		}
+
+		return true;
+	}
+}
+
+]]></content>
+	<tabTrigger>jpluginuser</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

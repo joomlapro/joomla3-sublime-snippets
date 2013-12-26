@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_WEBSITE_LABEL="Website"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_EMAIL_LABEL="E-mail"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PHONE_LABEL="Telefone"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MOBILE_LABEL="Celular"]]></content>
+	<tabTrigger>jlangcontact</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

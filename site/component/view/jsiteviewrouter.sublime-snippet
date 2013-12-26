@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[// Add router helpers.
+\$item->slug        = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
+\$item->catslug     = \$item->category_alias ? (\$item->catid . ':' . \$item->category_alias) : \$item->catid;
+\$item->parent_slug = \$item->category_alias ? (\$item->parent_id . ':' . \$item->parent_alias) : \$item->parent_id;
+\$item->link        = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug, \$item->catslug);
+\$item->cat_link    = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(\$item->catslug);]]></content>
+	<tabTrigger>jsiteviewrouter</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

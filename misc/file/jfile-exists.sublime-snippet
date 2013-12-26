@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFile::exists($1)]]></content>
+	<tabTrigger>jfile-exists</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

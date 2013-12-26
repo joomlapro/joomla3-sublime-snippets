@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[// Bind the rules.
+if (isset(\$data['rules']))
+{
+	\$rules = new JAccessRules(\$data['rules']);
+	\$${1:table}->setRules(\$rules);
+}]]></content>
+	<tabTrigger>jtable-setrules</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

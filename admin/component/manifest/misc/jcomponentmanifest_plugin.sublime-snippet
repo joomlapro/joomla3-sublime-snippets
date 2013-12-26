@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[<plugins>
+	<plugin
+		folder="plugins"
+		plugin="plg_${1:${TM_PLUGIN_GROUP/(.+)/\L\1/g}}_${2:${TM_PLUGIN/(.+)/\L\1/g}}"
+		group="${1/(.+)/\L\1/g}" />
+</plugins>]]></content>
+	<tabTrigger>jcomponentmanifest_plugin</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JString::ucfirst(${1:\$str});]]></content>
+	<tabTrigger>jstring-ucfirst</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,44 @@
+<snippet>
+	<content><![CDATA[// Get the current user object.
+\$user = JFactory::getUser();
+?>
+<div class="row-fluid">
+	<div class="span2">
+		<div class="sidebar-nav">
+			<ul class="nav nav-list">
+				<li class="nav-header"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADER_SUBMENU'); ?></li>
+				<li class="active"><a href="<?php echo \$this->baseurl; ?>/index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_DASHBOARD'); ?></a></li>
+				<li><a href="<?php echo \$this->baseurl; ?>/index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&amp;view=${1:${TM_COMPONENT/(.+)/\L\1/g}}"><?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_LINK_${1/(.+)/\U\1/g}'); ?></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="span6">
+		<?php
+		foreach (\$this->modules as \$module)
+		{
+			\$output = JModuleHelper::renderModule(\$module, array('style' => 'well'));
+			\$params = new JRegistry;
+			\$params->loadString(\$module->params);
+
+			echo \$output;
+		}
+		?>
+	</div>
+	<div class="span4">
+		<?php
+		foreach (\$this->iconmodules as \$iconmodule)
+		{
+			\$output = JModuleHelper::renderModule(\$iconmodule, array('style' => 'well'));
+			\$params = new JRegistry;
+			\$params->loadString(\$iconmodule->params);
+
+			echo \$output;
+		}
+		?>
+	</div>
+</div>
+
+]]></content>
+	<tabTrigger>jadminlayoutcpanel-mini</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

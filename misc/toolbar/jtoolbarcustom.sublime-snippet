@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolBarHelper::custom('${1:controller}.${2:method}', '${2/(.+)/\L\1/g}.png', '${2/(.+)/\L\1/g}.png', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}', ${3:true});]]></content>
+	<tabTrigger>jtoolbarcustom</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

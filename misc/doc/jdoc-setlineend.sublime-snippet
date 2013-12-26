@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->setLineEnd('${1:unix}');]]></content>
+	<tabTrigger>jdoc-setlineend</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

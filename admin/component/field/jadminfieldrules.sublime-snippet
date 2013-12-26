@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="rules"
+	class="inputbox"
+	label="JFIELD_RULES_LABEL"
+	translate_label="false"
+	filter="rules"
+	component="com_${TM_COMPONENT/(.+)/\L\1/g}"
+	section="${2:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}"
+	validate="rules" />]]></content>
+	<tabTrigger>jadminfieldrules</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

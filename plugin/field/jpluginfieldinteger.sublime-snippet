@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="integer"
+	label="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_PLUGIN/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	default="${2:1}"
+	first="${3:0}"
+	last="${4:12}"
+	step="${5:1}" />
+]]></content>
+	<tabTrigger>jpluginfieldinteger</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

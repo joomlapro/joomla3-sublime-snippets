@@ -1,0 +1,41 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get ${1/(.+)/\L\1/g} by ${2/(.+)/\L\1/g} id.
+ *
+ * @param   integer  \$id     The id of ${2/(.+)/\L\1/g}.
+ * @param   integer  \$limit  The limit of results.
+ *
+ * @return  array
+ *
+ * @since   $TM_VERSION
+ */
+public static function get${1:Plural}By${2:Segment}(\$id, \$limit = 5)
+{
+	// Initialiase variables.
+	\$db    = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Create the base select statement.
+	\$query->select('a.id, a.${3:title}, a.alias')
+		->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}$4') . ' AS a')
+		->where(\$db->quoteName('a.state') . ' = ' . \$db->quote('1'))
+		->where(\$db->quoteName('a.$5') . ' = ' . \$db->quote((int) \$id))
+		->order(\$db->quoteName('a.${6:hits}') . ' ASC limit 0,' . (int) \$limit);
+
+	// Set the query and load the result.
+	\$db->setQuery(\$query);
+
+	try
+	{
+		\$items = \$db->loadObjectList();
+	}
+	catch (RuntimeException \$e)
+	{
+		JError::raiseWarning(500, \$e->getMessage());
+	}
+
+	return \$items;
+}]]></content>
+	<tabTrigger>jadminhelper_getby</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

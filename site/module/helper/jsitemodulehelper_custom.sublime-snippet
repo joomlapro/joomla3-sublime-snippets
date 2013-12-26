@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get a list of the ${2:${1/(.+)(s\b)/\L\1/g}} items.
+ *
+ * @param   JRegistry  &\$params  The module options.
+ *
+ * @return  array
+ *
+ * @since   $TM_VERSION
+ */
+public static function get${1:Plural}(& \$params)
+{
+	// Initialiase variables.
+	\$db = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Prepare query.
+	\$query->select('a.*')
+		->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}') . ' AS a')
+		->where(\$db->quoteName('a.state') . ' = ' . \$db->quote('1'))
+		->order(\$db->quoteName('a.ordering') . ' ASC');
+
+	// Inject the query and load the items.
+	\$db->setQuery(\$query);
+
+	try
+	{
+		\$items = \$db->loadObjectList();
+	}
+	catch (RuntimeException \$e)
+	{
+		JError::raiseWarning(500, \$e->getMessage());
+	}
+
+	return \$items;
+}]]></content>
+	<tabTrigger>jsitemodulehelper_custom</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

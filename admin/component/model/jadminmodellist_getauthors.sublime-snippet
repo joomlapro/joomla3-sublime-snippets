@@ -1,0 +1,30 @@
+<snippet>
+	<content><![CDATA[/**
+ * Build a list of authors.
+ *
+ * @return  JDatabaseQuery
+ *
+ * @since   $TM_VERSION
+ */
+public function getAuthors()
+{
+	// Create a new query object.
+	\$db = \$this->getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Construct the query.
+	\$query->select('u.id AS value, u.name AS text')
+		->from(\$db->quoteName('#__users') . ' AS u')
+		->join('INNER', \$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:_${TM_FILENAME/(.*?)(\..+)/\L$1/}}') . ' AS c ON c.created_by = u.id')
+		->group(\$db->quoteName(array('u.id', 'u.name')))
+		->order(\$db->quoteName('u.name'));
+
+	// Setup the query.
+	\$db->setQuery(\$query);
+
+	// Return the result.
+	return \$db->loadObjectList();
+}]]></content>
+	<tabTrigger>jadminmodellist_getauthors</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

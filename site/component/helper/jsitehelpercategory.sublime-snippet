@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component Category Tree.
+ *
+ * @static
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Categories extends JCategories
+{
+	/**
+	 * Class constructor.
+	 *
+	 * @param   array  \$options  Array of options.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(\$options = array())
+	{
+		\$options['table']     = '#__${TM_COMPONENT/(.+)/\L\1/g}';
+		\$options['extension'] = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
+
+		parent::__construct(\$options);
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitehelpercategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

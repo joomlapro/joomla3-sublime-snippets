@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->getGenerator();]]></content>
+	<tabTrigger>jdoc-getgenerator</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

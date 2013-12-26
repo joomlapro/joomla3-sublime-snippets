@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${2/(.+)/\u\1/g} ${1/(.+)/\u\1/g} plugin.
+ *
+ * @package     $TM_COMPONENT
+ * @subpackage  ${1/(.+)/\u\1/g}.${2/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class Plg${1:${TM_PLUGIN_GROUP/(.+)/\u\1/g}}${2:${TM_PLUGIN/(.+)/\u\1/g}} extends JPlugin
+{
+	/**
+	 * Constructor.
+	 *
+	 * @param   object  &\$subject  The object to observe.
+	 * @param   array   \$config    An array that holds the plugin configuration.
+	 *
+	 * @access  protected
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(& \$subject, \$config)
+	{
+		parent::__construct(\$subject, \$config);
+
+		\$this->loadLanguage();
+	}
+}
+
+]]></content>
+	<tabTrigger>jplugin</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

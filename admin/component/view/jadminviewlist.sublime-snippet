@@ -1,0 +1,184 @@
+<snippet>
+	<content><![CDATA[/**
+ * View class for a list of ${1/(.+)/\L\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
+{
+	/**
+	 * List of update items.
+	 *
+	 * @var     array
+	 */
+	protected \$items;
+
+	/**
+	 * List pagination.
+	 *
+	 * @var     JPagination
+	 */
+	protected \$pagination;
+
+	/**
+	 * The model state.
+	 *
+	 * @var     JObject
+	 */
+	protected \$state;
+
+	/**
+	 * List of authors.
+	 *
+	 * @var     array
+	 */
+	protected \$authors;
+
+	/**
+	 * The form filter.
+	 *
+	 * @var     JForm
+	 */
+	public \$filterForm;
+
+	/**
+	 * List of active filters.
+	 *
+	 * @var     array
+	 */
+	public \$activeFilters;
+
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  Exception on failure, void on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function display(\$tpl = null)
+	{
+		try
+		{
+			// Initialise variables.
+			\$this->items         = \$this->get('Items');
+			\$this->pagination    = \$this->get('Pagination');
+			\$this->state         = \$this->get('State');
+			\$this->authors       = \$this->get('Authors');
+			\$this->filterForm    = \$this->get('FilterForm');
+			\$this->activeFilters = \$this->get('ActiveFilters');
+		}
+		catch (Exception \$e)
+		{
+			JErrorPage::render(\$e);
+
+			return false;
+		}
+
+		// Levels filter.
+		\$options   = array();
+		\$options[] = JHtml::_('select.option', '1', JText::_('J1'));
+		\$options[] = JHtml::_('select.option', '2', JText::_('J2'));
+		\$options[] = JHtml::_('select.option', '3', JText::_('J3'));
+		\$options[] = JHtml::_('select.option', '4', JText::_('J4'));
+		\$options[] = JHtml::_('select.option', '5', JText::_('J5'));
+		\$options[] = JHtml::_('select.option', '6', JText::_('J6'));
+		\$options[] = JHtml::_('select.option', '7', JText::_('J7'));
+		\$options[] = JHtml::_('select.option', '8', JText::_('J8'));
+		\$options[] = JHtml::_('select.option', '9', JText::_('J9'));
+		\$options[] = JHtml::_('select.option', '10', JText::_('J10'));
+
+		\$this->f_levels = \$options;
+
+		// We do not need toolbar in the modal window.
+		if (\$this->getLayout() !== 'modal')
+		{
+			// Load the submenu.
+			${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+
+			\$this->addToolbar();
+			\$this->sidebar = JHtmlSidebar::render();
+		}
+
+		parent::display(\$tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function addToolbar()
+	{
+		// Initialise variables.
+		\$state = \$this->get('State');
+		\$canDo = ${1/(.+)/\u\1/g}Helper::getActions(\$state->get('filter.category_id'), 0, 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+		\$user  = JFactory::getUser();
+
+		// Get the toolbar object instance.
+		\$bar   = JToolBar::getInstance('toolbar');
+
+		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_TITLE'), 'stack ${1/(.+)/\L\1/g}');
+
+		if (\$canDo->get('core.create') && count(\$user->getAuthorisedCategories('com_${TM_COMPONENT/(.+)/\L\1/g}', 'core.create')) > 0)
+		{
+			JToolbarHelper::addNew('${2:${1/(.+)(s\b)/\L\1/g}}.add');
+		}
+
+		if ((\$canDo->get('core.edit')) || (\$canDo->get('core.edit.own')))
+		{
+			JToolbarHelper::editList('${2/(.+)/\L\1/g}.edit');
+		}
+
+		if (\$canDo->get('core.edit.state'))
+		{
+			JToolbarHelper::publish('${1/(.+)/\L\1/g}.publish', 'JTOOLBAR_PUBLISH', true);
+			JToolbarHelper::unpublish('${1/(.+)/\L\1/g}.unpublish', 'JTOOLBAR_UNPUBLISH', true);
+			JToolbarHelper::custom('${1/(.+)/\L\1/g}.featured', 'featured.png', 'featured_f2.png', 'JFEATURED', true);
+			JToolbarHelper::archiveList('${1/(.+)/\L\1/g}.archive');
+			JToolbarHelper::checkin('${1/(.+)/\L\1/g}.checkin');
+		}
+
+		if (\$state->get('filter.state') == -2 && \$canDo->get('core.delete'))
+		{
+			JToolbarHelper::deleteList('', '${1/(.+)/\L\1/g}.delete', 'JTOOLBAR_EMPTY_TRASH');
+		}
+		elseif (\$canDo->get('core.edit.state'))
+		{
+			JToolbarHelper::trash('${1/(.+)/\L\1/g}.trash');
+		}
+
+		// Add a batch button.
+		if (\$user->authorise('core.create', 'com_${TM_COMPONENT/(.+)/\L\1/g}') && \$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}') && \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+		{
+			// Load the modal bootstrap script.
+			JHtml::_('bootstrap.modal', 'collapseModal');
+
+			// Instantiate a new JLayoutFile instance and render the batch button.
+			\$layout = new JLayoutFile('joomla.toolbar.batch');
+
+			\$title = JText::_('JTOOLBAR_BATCH');
+			\$dhtml = \$layout->render(array('title' => \$title));
+
+			\$bar->appendButton('Custom', \$dhtml, 'batch');
+		}
+
+		if (\$user->authorise('core.admin', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+		{
+			JToolbarHelper::preferences('com_${TM_COMPONENT/(.+)/\L\1/g}');
+		}
+
+		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminviewlist</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

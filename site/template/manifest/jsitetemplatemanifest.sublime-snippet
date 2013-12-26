@@ -1,0 +1,63 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension
+	version="$TM_VERSION"
+	type="template"
+	client="site"
+	method="upgrade">
+	<name>${1:${TM_TEMPLATE/(.+)/\L\1/g}}</name>
+	<version>$TM_PROJECT_VERSION</version>
+	<creationDate>${2:${TM_MONTH/(.+)/\u\1/g}} $TM_YEAR</creationDate>
+	<author>$TM_FULLNAME</author>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<description>TPL_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile />
+	<files>
+		<filename>component.php</filename>
+		<filename>error.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>offline.php</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>templateDetails.xml</filename>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>language</folder>
+		<folder>less</folder>
+	</files>
+	<positions>
+		<position>debug</position>
+		<position>position-0</position>
+		<position>position-1</position>
+		<position>position-2</position>
+		<position>position-3</position>
+		<position>position-4</position>
+		<position>position-5</position>
+		<position>position-6</position>
+		<position>position-7</position>
+		<position>position-8</position>
+		<position>position-9</position>
+		<position>position-10</position>
+	</positions>
+	<languages folder="language">
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.tpl_${1/(.+)/\L\1/g}.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic" />
+			<fieldset name="advanced" />
+		</fields>
+	</config>
+</extension>
+
+]]></content>
+	<tabTrigger>jsitetemplatemanifest</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

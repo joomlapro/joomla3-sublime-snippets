@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JStringNormalise::toVariable(${1:\$input});]]></content>
+	<tabTrigger>jstringnormalise_tovariable</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

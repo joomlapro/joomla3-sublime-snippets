@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC="$3"
+TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1:FIELD_NAME}_LABEL="$2"]]></content>
+	<tabTrigger>jlangfieldtpl</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

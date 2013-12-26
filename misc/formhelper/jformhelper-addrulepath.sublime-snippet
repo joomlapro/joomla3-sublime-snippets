@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFormHelper::addRulePath(${1:JPATH_COMPONENT} . '/models/rules');]]></content>
+	<tabTrigger>jformhelper-addrulepath</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

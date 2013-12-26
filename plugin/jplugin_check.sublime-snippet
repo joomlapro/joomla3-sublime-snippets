@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Check that we are in the site application.
+if (${1:JFactory::getApplication()}->isAdmin())
+{
+	return;
+}]]></content>
+	<tabTrigger>jplugin_check</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

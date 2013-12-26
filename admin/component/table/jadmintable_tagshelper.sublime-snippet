@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[/**
+ * Helper object for storing and deleting tag information.
+ *
+ * @var     JHelperTags
+ * @since   $TM_VERSION
+ */
+protected \$tagsHelper = null;
+
+]]></content>
+	<tabTrigger>jadmintable_tagshelper</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

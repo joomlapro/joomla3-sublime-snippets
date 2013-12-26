@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('select.genericlist', ${1:\$data}, ${2:\$name}, ${3:null}, '${4:value}', '${5:text}', ${6:\$selected});]]></content>
+	<tabTrigger>jhtml_select_genericlist</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

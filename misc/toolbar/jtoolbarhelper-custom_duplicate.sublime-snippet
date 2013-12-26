@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolbarHelper::custom('${1:plural}.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);]]></content>
+	<tabTrigger>jtoolbarhelper-custom_duplicate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

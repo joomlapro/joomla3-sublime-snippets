@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get zipcode.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function getZipCode()
+{
+	// Get the application.
+	\$app     = JFactory::getApplication();
+
+	\$request = 'http://republicavirtual.com.br/web_cep.php?cep=' . urlencode(\$app->input->get('zipcode')) . '&formato=json';
+	\$return  = file_get_contents(\$request);
+
+	// Check the data.
+	if (empty(\$return))
+	{
+		\$return = '{"resultado":"0","resultado_txt":"sucesso - cep n\u00e3o encontrado","uf":"","cidade":"","bairro":"","tipo_logradouro":"","logradouro":""}';
+	}
+
+	// Use the correct json mime-type.
+	header('Content-Type: application/json');
+
+	// Send the response.
+	echo \$return;
+
+	\$app->close();
+}]]></content>
+	<tabTrigger>jadmincontrollerjson_zipcode</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

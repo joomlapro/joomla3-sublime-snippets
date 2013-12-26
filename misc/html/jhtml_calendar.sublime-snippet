@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('calendar', ${1:\$value}, ${2:\$name}, ${3:\$id}, ${4:'%Y-%m-%d'}, array('class' => '${5:inputbox}'));]]></content>
+	<tabTrigger>jhtml_calendar</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

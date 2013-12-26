@@ -1,0 +1,123 @@
+<snippet>
+	<content><![CDATA[/**
+ * Utility class working with ${1/(.+)/\L\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
+{
+	/**
+	 * Render the list of associated items.
+	 *
+	 * @param   int  \$${1/(.+)/\L\1/g}id  The ${1/(.+)/\L\1/g} item id.
+	 *
+	 * @return  string  The language HTML.
+	 */
+	public static function association(\$${1/(.+)/\L\1/g}id)
+	{
+		// Defaults.
+		\$html = '';
+
+		// Get the associations.
+		if (\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}$2', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$${1/(.+)/\L\1/g}id))
+		{
+			foreach (\$associations as \$tag => \$associated)
+			{
+				\$associations[\$tag] = (int) \$associated->id;
+			}
+
+			// Get the associated menu items.
+			\$db = JFactory::getDbo();
+			\$query = \$db->getQuery(true);
+
+			// Create the base select statement.
+			\$query->select('${3/(.+)/\L\1/g}.*')
+				->select('l.sef as lang_sef')
+				->from('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s} as ${3:${1/(.)(.+)/\L\1/g}}')
+				->select('cat.title as category_title')
+				->join('LEFT', '#__categories as cat ON cat.id = ${3/(.+)/\L\1/g}.catid')
+				->where('${3/(.+)/\L\1/g}.id IN (' . implode(',', array_values(\$associations)) . ')')
+				->join('LEFT', '#__languages as l ON ${3/(.+)/\L\1/g}.language = l.lang_code')
+				->select('l.image')
+				->select('l.title as language_title');
+
+			// Set the query and load the result.
+			\$db->setQuery(\$query);
+
+			try
+			{
+				\$items = \$db->loadObjectList('id');
+			}
+			catch (RuntimeException \$e)
+			{
+				throw new Exception(\$e->getMessage(), 500);
+			}
+
+			if (\$items)
+			{
+				foreach (\$items as &\$item)
+				{
+					\$text = strtoupper(\$item->lang_sef);
+					\$url = JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&id=' . (int) \$item->id);
+					\$tooltipParts = array(
+						JHtml::_('image', 'mod_languages/' . \$item->image . '.gif',
+							\$item->language_title,
+							array('title' => \$item->language_title),
+							true
+						),
+						\$item->title,
+						'(' . \$item->category_title . ')'
+					);
+
+					\$item->link = JHtml::_('tooltip', implode(' ', \$tooltipParts), null, null, \$text, \$url, null, 'hasTooltip label label-association label-' . \$item->lang_sef);
+				}
+			}
+
+			\$html = JLayoutHelper::render('joomla.content.associations', \$items);
+		}
+
+		return \$html;
+	}
+
+	/**
+	 * Show the feature/unfeature links.
+	 *
+	 * @param   int      \$value      The state value.
+	 * @param   int      \$i          Row number.
+	 * @param   boolean  \$canChange  Is user allowed to change?
+	 *
+	 * @return  string  HTML code.
+	 */
+	public static function featured(\$value = 0, \$i = 0, \$canChange = true)
+	{
+		// Load the tooltip bootstrap script.
+		JHtml::_('bootstrap.tooltip');
+
+		// Array of image, task, title, action.
+		\$states = array(
+			0 => array('unfeatured', '${4:${1/(.+)/\L\1/g}s}.featured', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_UNFEATURED', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_TOGGLE_TO_FEATURE'),
+			1 => array('featured', '${4/(.+)/\L\1/g}.unfeatured', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE'),
+		);
+		\$state  = JArrayHelper::getValue(\$states, (int) \$value, \$states[1]);
+		\$icon   = \$state[0];
+
+		if (\$canChange)
+		{
+			\$html = '<a href="#" onclick="return listItemTask(\'cb' . \$i . '\',\'' . \$state[1] . '\')" class="btn btn-micro hasTooltip' . (\$value == 1 ? ' active' : '') . '" title="' . JHtml::tooltipText(\$state[3]) . '"><i class="icon-' . \$icon . '"></i></a>';
+		}
+		else
+		{
+			\$html = '<a class="btn btn-micro hasTooltip disabled' . (\$value == 1 ? ' active' : '') . '" title="' . JHtml::tooltipText(\$state[2]) . '"><i class="icon-' . \$icon . '"></i></a>';
+		}
+
+		return \$html;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminhtml</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

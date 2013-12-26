@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[// Include the ${TM_COMPONENT/(.+)/\L\1/g} quickicon functions only once.
+require_once __DIR__ . '/helper.php';
+
+// Get the ${TM_COMPONENT/(.+)/\L\1/g} quickicon.
+\$buttons = Mod${TM_COMPONENT/(.+)/\u\1/g}QuickIconHelper::getButtons(\$params);
+
+// Initialise variables.
+\$moduleclass_sfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
+
+// Render the module.
+require JModuleHelper::getLayoutPath('mod_${TM_COMPONENT/(.+)/\L\1/g}_quickicon', \$params->get('layout', 'default'));
+
+]]></content>
+	<tabTrigger>jadminmodule-quickicon</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

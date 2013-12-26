@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[<div class="tab-pane" id="${1:group}">
+	<div class="row-fluid">
+		<div class="span12">
+			<input id="search-${1/(.+)/\L\1/g}" type="text" class="input-xlarge typeahead" placeholder="<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_TYPE_${2/(.+)/\U\1/g}_${3/(.+)/\U\1/g}'); ?>" autocomplete="off" data-provide="typeahead" />
+			<input id="${2/(.+)/\L\1/g}-id" type="hidden" name="id" value="" />
+			<button id="add-${2:${1/(.+)(s\b)/\L\1/g}}" class="btn btn-success"><i class="icon-plus"></i> <?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ADD_${2/(.+)/\U\1/g}'); ?></button>
+			<hr>
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th width="1%" class="nowrap hidden-phone">
+							<?php echo JText::_('JGRID_HEADING_ID'); ?>
+						</th>
+						<th class="title">
+							<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${3:TITLE}'); ?>
+						</th>
+						<th width="1%" class="nowrap center">
+							<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_ACTIONS'); ?>
+						</th>
+					</tr>
+				</thead>
+				<tbody id="body-${1/(.+)/\L\1/g}"></tbody>
+			</table>
+		</div>
+	</div>
+</div>]]></content>
+	<tabTrigger>jtab-pane_typeahead</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

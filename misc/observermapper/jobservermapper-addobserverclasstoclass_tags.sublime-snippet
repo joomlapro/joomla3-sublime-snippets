@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Register Observer for Tags.
+JObserverMapper::addObserverClassToClass('JTableObserverTags', '${TM_COMPONENT/(.+)/\u\1/g}Table${1/(.+)/\u\1/g}', array('typeAlias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}'));
+]]></content>
+	<tabTrigger>jobservermapper-addobserverclasstoclass_tags</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

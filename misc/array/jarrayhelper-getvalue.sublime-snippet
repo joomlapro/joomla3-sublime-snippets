@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JArrayHelper::getValue(${1:\$array}, ${2:\$name}, ${3:\$default}${4:, ${5:\$type}});]]></content>
+	<tabTrigger>jarrayhelper-getvalue</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

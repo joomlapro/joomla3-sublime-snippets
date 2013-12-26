@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:model}->getTable($2);]]></content>
+	<tabTrigger>jmodel-gettable</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

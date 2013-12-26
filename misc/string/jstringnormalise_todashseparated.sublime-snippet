@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JStringNormalise::toDashSeparated(${1:\$input});]]></content>
+	<tabTrigger>jstringnormalise_todashseparated</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

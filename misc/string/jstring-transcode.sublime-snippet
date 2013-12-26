@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JString::transcode(${1:\$source}, ${2:\$from_encoding}, ${3:\$to_encoding});]]></content>
+	<tabTrigger>jstring-transcode</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

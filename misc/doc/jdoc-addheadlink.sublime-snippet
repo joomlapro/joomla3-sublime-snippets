@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->addHeadLink(${1:\$href}, ${2:\$relation}, ${3:\$relType}, ${4:\$attribs});]]></content>
+	<tabTrigger>jdoc-addheadlink</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

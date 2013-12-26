@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::tooltipText('$1');]]></content>
+	<tabTrigger>jhtml_tooltiptext</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

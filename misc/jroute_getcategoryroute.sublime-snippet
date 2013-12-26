@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JRoute::_(${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::getCategoryRoute(${1:\$item->catslug}));]]></content>
+	<tabTrigger>jroute_getcategoryroute</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

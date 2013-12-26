@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JRoute::_('index.php?option=com_users&task=user.logout');]]></content>
+	<tabTrigger>jroute</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

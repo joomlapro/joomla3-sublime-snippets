@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[PLG_SEARCH_${1:${TM_COMPONENT/(.+)/\U\1/g}}="Buscar - ${2:Plural}"
+PLG_SEARCH_${1/(.+)/\U\1/g}_XML_DESCRIPTION="Habilita a busca nos ${3:${2/(.+)/\L\1/g}}."
+
+; FIELD
+
+PLG_SEARCH_${1/(.+)/\U\1/g}_FIELD_ARCHIVED_DESC="Buscar ${3/(.+)/\L\1/g} arquivados?"
+PLG_SEARCH_${1/(.+)/\U\1/g}_FIELD_ARCHIVED_LABEL="${3/(.+)/\u\1/g} Arquivados"
+PLG_SEARCH_${1/(.+)/\U\1/g}_FIELD_CONTENT_DESC="Habilitar a busca em todos os ${3/(.+)/\L\1/g}."
+PLG_SEARCH_${1/(.+)/\U\1/g}_FIELD_CONTENT_LABEL="${3/(.+)/\u\1/g}"
+PLG_SEARCH_${1/(.+)/\U\1/g}_FIELD_SEARCHLIMIT_DESC="Número de itens a retornar."
+PLG_SEARCH_${1/(.+)/\U\1/g}_FIELD_SEARCHLIMIT_LABEL="Limite da Busca"
+
+; MISC
+
+PLG_SEARCH_FAQS_${2:${1/(.+)/\U\1/g}}="Perguntas Frequentes"
+
+]]></content>
+	<tabTrigger>jpluginlang-search</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

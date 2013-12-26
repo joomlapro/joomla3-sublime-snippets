@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:this}->addFavicon('templates/' . \$${1/(.+)/\L\1/g}->template . '/favicon.ico');]]></content>
+	<tabTrigger>jdoc-addfavicon</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

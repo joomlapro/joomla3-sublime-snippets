@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->addStyleSheet(${1:\$url}${2:, 'text/css', null, array('id' => 'custom')});]]></content>
+	<tabTrigger>jdoc-addstylesheet</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

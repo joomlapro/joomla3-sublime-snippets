@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JLoader::getClassList();]]></content>
+	<tabTrigger>jloader_getclasslist</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

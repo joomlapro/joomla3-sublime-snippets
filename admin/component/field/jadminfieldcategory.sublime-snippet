@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[<field
+	name="id"
+	type="category"
+	label="JGLOBAL_CHOOSE_CATEGORY_LABEL"
+	description="JGLOBAL_CHOOSE_CATEGORY_DESC"
+	show_root="true"
+	required="true"
+	extension="com_${TM_COMPONENT/(.+)/\L\1/g}" />]]></content>
+	<tabTrigger>jadminfieldcategory</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

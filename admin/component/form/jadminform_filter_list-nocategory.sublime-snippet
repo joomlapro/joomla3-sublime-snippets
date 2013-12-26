@@ -1,0 +1,103 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="filter">
+		<field
+			name="search"
+			type="text"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FILTER_SEARCH_DESC"
+			hint="JSEARCH_FILTER" />
+		<field
+			name="state"
+			type="status"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FILTER_STATE_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FILTER_STATE_DESC"
+			onchange="this.form.submit();">
+			<option value="">JOPTION_SELECT_PUBLISHED</option>
+		</field>
+		<field
+			name="access"
+			type="accesslevel"
+			label="JOPTION_FILTER_ACCESS"
+			description="JOPTION_FILTER_ACCESS_DESC"
+			onchange="this.form.submit();">
+			<option value="">JOPTION_SELECT_ACCESS</option>
+		</field>
+		<field
+			name="author_id"
+			type="author"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FILTER_AUTHOR_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FILTER_AUTHOR_DESC"
+			onchange="this.form.submit();">
+			<option value="">JOPTION_SELECT_AUTHOR</option>
+		</field>
+		<field
+			name="language"
+			type="contentlanguage"
+			label="JOPTION_FILTER_LANGUAGE"
+			description="JOPTION_FILTER_LANGUAGE_DESC"
+			onchange="this.form.submit();">
+			<option value="">JOPTION_SELECT_LANGUAGE</option>
+			<option value="*">JALL</option>
+		</field>
+		<field
+			name="tag"
+			type="tag"
+			label="JOPTION_FILTER_TAG"
+			description="JOPTION_FILTER_TAG_DESC"
+			mode="nested"
+			onchange="this.form.submit();">
+			<option value="">JOPTION_SELECT_TAG</option>
+		</field>
+	</fields>
+	<fields name="list">
+		<field
+			name="fullordering"
+			type="list"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LIST_FULL_ORDERING_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LIST_FULL_ORDERING_DESC"
+			onchange="this.form.submit();"
+			default="a.${1/(.+)/\L\1/g} ASC">
+			<option value="">JGLOBAL_SORT_BY</option>
+			<option value="a.ordering ASC">JGRID_HEADING_ORDERING_ASC</option>
+			<option value="a.ordering DESC">JGRID_HEADING_ORDERING_DESC</option>
+			<option value="a.state ASC">JSTATUS_ASC</option>
+			<option value="a.state DESC">JSTATUS_DESC</option>
+			<option value="a.featured ASC">JFEATURED_ASC</option>
+			<option value="a.featured DESC">JFEATURED_DESC</option>
+			<option value="a.${1:title} ASC">COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${1/(.+)/\U\1/g}_ASC</option>
+			<option value="a.${1/(.+)/\L\1/g} DESC">COM_${TM_COMPONENT/(.+)/\U\1/g}_HEADING_${1/(.+)/\U\1/g}_DESC</option>
+			<option
+				value="association ASC"
+				requires="associations">JASSOCIATIONS_ASC</option>
+			<option
+				value="association DESC"
+				requires="associations">JASSOCIATIONS_DESC</option>
+			<option value="a.access ASC">JGRID_HEADING_ACCESS_ASC</option>
+			<option value="a.access DESC">JGRID_HEADING_ACCESS_DESC</option>
+			<option value="a.created_by ASC">JAUTHOR_ASC</option>
+			<option value="a.created_by DESC">JAUTHOR_DESC</option>
+			<option value="a.language ASC">JGRID_HEADING_LANGUAGE_ASC</option>
+			<option value="a.language DESC">JGRID_HEADING_LANGUAGE_DESC</option>
+			<option value="a.created ASC">JDATE_ASC</option>
+			<option value="a.created DESC">JDATE_DESC</option>
+			<option value="a.hits ASC">JGLOBAL_HITS_ASC</option>
+			<option value="a.hits DESC">JGLOBAL_HITS_DESC</option>
+			<option value="a.id ASC">JGRID_HEADING_ID_ASC</option>
+			<option value="a.id DESC">JGRID_HEADING_ID_DESC</option>
+		</field>
+		<field
+			name="limit"
+			type="limitbox"
+			class="inputbox input-mini"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LIST_LIMIT_LABEL"
+			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LIST_LIMIT_DESC"
+			default="25"
+			onchange="this.form.submit();" />
+	</fields>
+</form>
+
+]]></content>
+	<tabTrigger>jadminform_filter_list-nocategory</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

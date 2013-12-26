@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Get the session object.
+\$session = JFactory::getSession();]]></content>
+	<tabTrigger>jfactory-getsession</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[else
+{
+	\$component  = JComponentHelper::getComponent('com_${TM_COMPONENT/(.+)/\L\1/g}');
+	\$attributes = array('component_id');
+	\$values     = array(\$component->id);
+
+	if (\$language != '*')
+	{
+		\$attributes[] = 'language';
+		\$values[] = array(\$needles['language'], '*');
+	}
+
+	\$items = \$menus->getItems(\$attributes, \$values);
+
+	foreach (\$items as \$item)
+	{
+		if (\$view === \$item->query['view'])
+		{
+			return \$item->id;
+		}
+	}
+}]]></content>
+	<tabTrigger>jsitehelperroute__finditem_fix</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

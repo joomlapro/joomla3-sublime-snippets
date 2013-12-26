@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->form->getValue('${1:name}', '${2:group}', '${3:default}');]]></content>
+	<tabTrigger>jform-getvalue</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

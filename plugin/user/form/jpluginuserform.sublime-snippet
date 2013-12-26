@@ -1,0 +1,109 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields
+		name="profile"
+		addrulepath="/plugins/user/${1:${TM_PLUGIN/(.+)/\L\1/g}}/rules"
+		addfieldpath="/plugins/user/${1:${TM_PLUGIN/(.+)/\L\1/g}}/fields">
+		<fieldset
+			name="profile"
+			label="PLG_USER_${1:${TM_PLUGIN/(.+)/\U\1/g}}_PROFILE_LABEL">
+			<field
+				name="address1"
+				type="text"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS1_DESC"
+				id="address1"
+				filter="string"
+				size="30" />
+			<field
+				name="address2"
+				type="text"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS2_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ADDRESS2_DESC"
+				id="address2"
+				filter="string"
+				size="30" />
+			<field
+				name="city"
+				type="text"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_CITY_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_CITY_DESC"
+				id="city"
+				filter="string"
+				size="30" />
+			<field
+				name="region"
+				type="text"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_REGION_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_REGION_DESC"
+				id="region"
+				filter="string"
+				size="30" />
+			<field
+				name="country"
+				type="text"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_COUNTRY_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_COUNTRY_DESC"
+				id="country"
+				filter="string"
+				size="30" />
+			<field
+				name="postal_code"
+				type="text"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_POSTAL_CODE_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_POSTAL_CODE_DESC"
+				id="postal_code"
+				size="30"
+				filter="string" />
+			<field
+				name="phone"
+				type="tel"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_PHONE_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_PHONE_DESC"
+				id="phone"
+				filter="string"
+				size="30" />
+			<field
+				name="website"
+				type="url"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_WEB_SITE_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_WEB_SITE_DESC"
+				id="website"
+				filter="string"
+				size="30" />
+			<field
+				name="favoritebook"
+				type="text"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_FAVORITE_BOOK_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_FAVORITE_BOOK_DESC"
+				filter="string"
+				size="30" />
+			<field
+				name="aboutme"
+				type="textarea"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_ABOUT_ME_DESC"
+				cols="30"
+				rows="5"
+				filter="safehtml" />
+			<field
+				name="dob"
+				type="calendar"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_DOB_DESC" />
+			<field
+				name="tos"
+				type="tos"
+				label="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_LABEL"
+				description="PLG_USER_${1/(.+)/\U\1/g}_FIELD_TOS_DESC">
+				<option value="1">PLG_USER_${1/(.+)/\U\1/g}_OPTION_AGREE</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>
+
+]]></content>
+	<tabTrigger>jpluginuserform</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

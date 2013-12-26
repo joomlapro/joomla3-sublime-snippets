@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[// Include the component HTML helpers.
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
+
+// Load the behavior script.
+JHtml::_('behavior.caption');
+
+echo JLayoutHelper::render('joomla.content.categories_default', \$this);
+
+echo \$this->loadTemplate('items');
+?>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayoutcategories</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

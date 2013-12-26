@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[// Template Fixes.
+\$this->_html5 = true;
+\$this->_tab   = '	';
+
+// Define path.
+\$path = \$this->baseurl . '/templates/' . \$this->template;
+
+// Add Stylesheet.
+\$this->addStyleSheet(\$this->baseurl . '/templates/system/css/general.css');
+\$this->addStyleSheet(\$path . '/css/template.css');
+
+// Load additional CSS styles for rtl sites.
+if (\$this->direction == 'rtl')
+{
+	\$this->addStyleSheet(\$path . '/css/template_rtl.css');
+}
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>"> <!--<![endif]-->
+<head>
+<jdoc:include type="head" /></head>
+<body class="contentpane">
+	<jdoc:include type="message" />
+	<jdoc:include type="component" />
+</body>
+</html>
+
+]]></content>
+	<tabTrigger>jsitetemplate-component</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

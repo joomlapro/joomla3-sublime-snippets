@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${3:${2/(.+)/\L\1/g}} = new JRegistry(\$${1:field}->${2:params});]]></content>
+	<tabTrigger>jregistry</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

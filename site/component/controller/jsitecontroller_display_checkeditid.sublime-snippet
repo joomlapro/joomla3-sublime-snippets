@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[elseif (\$vName == '${2:${1/(.+)/\L\1/g}}form' && !\$this->checkEditId('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1:singular}', \$id))
+{
+	// Somehow the person just went to the form - we do not allow that.
+	return JError::raiseError(403, JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', \$id));
+}]]></content>
+	<tabTrigger>jsitecontroller_display_checkeditid</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

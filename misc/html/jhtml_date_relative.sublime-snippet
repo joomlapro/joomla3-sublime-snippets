@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('date.relative', ${1:\$item->created});]]></content>
+	<tabTrigger>jhtml_date_relative</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

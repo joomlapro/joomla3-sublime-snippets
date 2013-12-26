@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Set the query and load the result.
+\$db->setQuery(\$query${1:, 0, 1});]]></content>
+	<tabTrigger>jdb_setquery</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->getDirection();]]></content>
+	<tabTrigger>jdoc-getdirection</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

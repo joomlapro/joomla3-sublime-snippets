@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JString::valid(${1:\$str});]]></content>
+	<tabTrigger>jstring-valid</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

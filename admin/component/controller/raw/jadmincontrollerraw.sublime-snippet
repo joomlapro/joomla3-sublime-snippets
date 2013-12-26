@@ -1,0 +1,29 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} list controller class.
+ *
+ * @package     $TM_COMPONENT
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerAdmin
+{
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  \$config  An optional associative array of configuration settings.
+	 *
+	 * @see     JController
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(\$config = array())
+	{
+		parent::__construct(\$config);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadmincontrollerraw</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

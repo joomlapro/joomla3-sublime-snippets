@@ -1,0 +1,57 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to santise ${1/(.+)/\L\1/g} word.
+ *
+ * @param   string  &\$searchword   The searchword to select around.
+ * @param   string  \$searchphrase  The searchphrase to select around.
+ *
+ * @return  string
+ */
+public static function santise${1:Search}Word(&\$searchword, \$searchphrase)
+{
+	// Initialiase variables.
+	\$ignored       = false;
+	\$lang          = JFactory::getLanguage();
+	\$tag           = \$lang->getTag();
+	\$search_ignore = \$lang->getIgnoredSearchWords();
+
+	// Deprecated in 1.6 use \$lang->getIgnoredSearchWords instead.
+	\$ignoreFile = \$lang->getLanguagePath() . '/' . \$tag . '/' . \$tag . '.ignore.php';
+
+	if (file_exists(\$ignoreFile))
+	{
+		include \$ignoreFile;
+	}
+
+	// Check for words to ignore.
+	\$aterms = explode(' ', JString::strtolower(\$searchword));
+
+	// First case is single ignored word.
+	if (count(\$aterms) == 1 && in_array(JString::strtolower(\$searchword), \$search_ignore))
+	{
+		\$ignored = true;
+	}
+
+	// Filter out search terms that are too small.
+	\$lower_limit = \$lang->getLowerLimitSearchWord();
+
+	foreach (\$aterms as \$aterm)
+	{
+		if (JString::strlen(\$aterm) < \$lower_limit)
+		{
+			\$search_ignore[] = \$aterm;
+		}
+	}
+
+	// Next is to remove ignored words from type 'all' or 'any' (not exact) searches with multiple words.
+	if (count(\$aterms) > 1 && \$searchphrase != 'exact')
+	{
+		\$pruned     = array_diff(\$aterms, \$search_ignore);
+		\$searchword = implode(' ', \$pruned);
+	}
+
+	return \$ignored;
+}]]></content>
+	<tabTrigger>jadminhelper_santisesearchword</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

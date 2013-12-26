@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->getBuffer('${1:head}');]]></content>
+	<tabTrigger>jdoc-getbuffer</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

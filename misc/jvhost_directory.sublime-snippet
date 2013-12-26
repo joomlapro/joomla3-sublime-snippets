@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[<VirtualHost *:80>
+        DocumentRoot /vagrant/www/${1:domain.com}}
+        <Directory /vagrant/www/${1/(.+)/\L\1/g}/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        ErrorLog \${APACHE_LOG_DIR}/error.log
+
+        CustomLog \${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>]]></content>
+	<tabTrigger>jvhost_directory</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

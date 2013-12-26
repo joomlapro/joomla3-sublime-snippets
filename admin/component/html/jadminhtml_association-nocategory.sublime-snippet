@@ -1,0 +1,69 @@
+<snippet>
+	<content><![CDATA[/**
+ * Render the list of associated items.
+ *
+ * @param   int  \$${1/(.+)/\L\1/g}id  The ${1/(.+)/\L\1/g} item id.
+ *
+ * @return  string  The language HTML.
+ */
+public static function association(\$${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}id)
+{
+	// Defaults.
+	\$html = '';
+
+	// Get the associations.
+	if (\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}$2', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$${1/(.+)/\L\1/g}id))
+	{
+		foreach (\$associations as \$tag => \$associated)
+		{
+			\$associations[\$tag] = (int) \$associated->id;
+		}
+
+		// Get the associated menu items.
+		\$db = JFactory::getDbo();
+		\$query = \$db->getQuery(true)
+			->select('c.*')
+			->select('l.sef as lang_sef')
+			->from('#__${TM_COMPONENT/(.+)/\L\1/g}$2 as c')
+			->where('c.id IN (' . implode(',', array_values(\$associations)) . ')')
+			->join('LEFT', '#__languages as l ON c.language = l.lang_code')
+			->select('l.image')
+			->select('l.title as language_title');
+		\$db->setQuery(\$query);
+
+		try
+		{
+			\$items = \$db->loadObjectList('id');
+		}
+		catch (RuntimeException \$e)
+		{
+			throw new Exception(\$e->getMessage(), 500);
+		}
+
+		if (\$items)
+		{
+			foreach (\$items as &\$item)
+			{
+				\$text = strtoupper(\$item->lang_sef);
+				\$url = JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&id=' . (int) \$item->id);
+				\$tooltipParts = array(
+					JHtml::_('image', 'mod_languages/' . \$item->image . '.gif',
+						\$item->language_title,
+						array('title' => \$item->language_title),
+						true
+					),
+					\$item->title
+				);
+
+				\$item->link = JHtml::_('tooltip', implode(' ', \$tooltipParts), null, null, \$text, \$url, null, 'hasTooltip label label-association label-' . \$item->lang_sef);
+			}
+		}
+
+		\$html = JLayoutHelper::render('joomla.content.associations', \$items);
+	}
+
+	return \$html;
+}]]></content>
+	<tabTrigger>jadminhtml_association-nocategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

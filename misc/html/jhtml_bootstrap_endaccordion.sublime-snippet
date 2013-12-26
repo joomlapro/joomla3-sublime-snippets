@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('bootstrap.endAccordion');]]></content>
+	<tabTrigger>jhtml_bootstrap_endaccordion</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to change the ${1/(.+)/\L\1/g} & alias.
+ *
+ * @param   integer  \$parent  The id of the parent.
+ * @param   string   \$alias   The alias.
+ * @param   string   \$name    The ${1/(.+)/\L\1/g}.
+ *
+ * @return  array  Contains the modified ${1/(.+)/\L\1/g} and alias.
+ *
+ * @since   $TM_VERSION
+ */
+protected function generateNewTitle(\$parent, \$alias, \$name)
+{
+	// Alter the ${1/(.+)/\L\1/g} & alias.
+	\$table = \$this->getTable();
+
+	while (\$table->load(array('alias' => \$alias)))
+	{
+		if (\$name == \$table->${1:title})
+		{
+			\$name = JString::increment(\$name);
+		}
+
+		\$alias = JString::increment(\$alias, 'dash');
+	}
+
+	return array(\$name, \$alias);
+}]]></content>
+	<tabTrigger>jadminmodeledit_generatenewtitle-nocategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

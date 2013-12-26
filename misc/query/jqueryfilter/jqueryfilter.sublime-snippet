@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[// Filter by ${4:${1/_id|id_//g}}.
+if (\$${2:${1/(.+)/\L\1/g}} = \$this->getState('filter.${1:field}'))
+{
+	\$query->where('${3:a}.${1/(.+)/\L\1/g} = ' . (int) \$$2);
+}]]></content>
+	<tabTrigger>jqueryfilter</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

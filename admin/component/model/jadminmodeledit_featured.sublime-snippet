@@ -1,0 +1,59 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to toggle the featured setting of ${1:plural}.
+ *
+ * @param   array    \$pks    The ids of the items to toggle.
+ * @param   integer  \$value  The value to toggle to.
+ *
+ * @return  boolean  True on success.
+ *
+ * @since   $TM_VERSION
+ */
+public function featured(\$pks, \$value = 0)
+{
+	// Sanitize the ids.
+	\$pks = (array) \$pks;
+
+	JArrayHelper::toInteger(\$pks);
+
+	if (empty(\$pks))
+	{
+		\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
+
+		return false;
+	}
+
+	\$table = \$this->getTable();
+
+	try
+	{
+		// Initialiase variables.
+		\$db = \$this->getDbo();
+
+		// Create the base update statement.
+		\$query = \$db->getQuery(true)
+			->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}}'))
+			->set('featured = ' . (int) \$value)
+			->where('id IN (' . implode(',', \$pks) . ')');
+
+		// Set the query and execute the update.
+		\$db->setQuery(\$query);
+		\$db->execute();
+	}
+	catch (Exception \$e)
+	{
+		\$this->setError(\$e->getMessage());
+
+		return false;
+	}
+
+	\$table->reorder();
+
+	// Clear the cache.
+	\$this->cleanCache();
+
+	return true;
+}]]></content>
+	<tabTrigger>jadminmodeledit_featured</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

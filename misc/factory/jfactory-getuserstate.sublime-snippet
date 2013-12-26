@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1:singular}.data', array());]]></content>
+	<tabTrigger>jfactory-getuserstate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

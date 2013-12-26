@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[// Include the component HTML helpers.
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+
+// Create shortcuts to some parameters.
+\$params  = \$this->item->params;
+\$images  = json_decode(\$this->item->images);
+\$canEdit = \$params->get('access-edit');
+\$user    = JFactory::getUser();
+
+// Load the tooltip behavior script.
+JHtml::_('behavior.caption');
+?>
+<div class="${TM_COMPONENT/(.+)/\L\1/g} ${1:singular}-item<?php echo \$this->pageclass_sfx; ?>">
+	<?php if (\$this->params->get('show_page_heading', 1)): ?>
+		<div class="page-header">
+			<h1>
+				<?php echo \$this->escape(\$this->params->get('page_heading')); ?>
+			</h1>
+		</div>
+	<?php endif; ?>
+
+	<div class="page-header">
+		<h2>
+			<?php echo \$this->escape(\$this->item->${2:title}); ?>
+		</h2>
+	</div>
+
+	<?php var_dump(\$this->item); ?>
+</div>
+
+]]></content>
+	<tabTrigger>jsitelayoutitem</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

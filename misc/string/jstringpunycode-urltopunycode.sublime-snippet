@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Convert IDN urls to punycode.
+\$this->url = JStringPunycode::urlToPunycode(\$this->url);]]></content>
+	<tabTrigger>jstringpunycode-urltopunycode</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

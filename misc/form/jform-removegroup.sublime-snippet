@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->form->removeGroup('${1:group}');]]></content>
+	<tabTrigger>jform-removegroup</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

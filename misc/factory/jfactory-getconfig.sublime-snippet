@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Get the configuration object.
+\$config = JFactory::getConfig();]]></content>
+	<tabTrigger>jfactory-getconfig</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

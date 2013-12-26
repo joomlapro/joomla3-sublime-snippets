@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::toString();]]></content>
+	<tabTrigger>jresponse-tostring</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

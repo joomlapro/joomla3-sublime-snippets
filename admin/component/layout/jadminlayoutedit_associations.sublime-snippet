@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[echo JLayoutHelper::render('joomla.edit.associations', \$this);
+
+]]></content>
+	<tabTrigger>jadminlayoutedit_associations</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

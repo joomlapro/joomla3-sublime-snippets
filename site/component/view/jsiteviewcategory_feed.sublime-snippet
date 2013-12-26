@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[/**
+ * HTML Category View class for the ${TM_COMPONENT/(.+)/\u\1/g} component.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}ViewCategory extends JViewCategoryfeed
+{
+	/**
+	 * The name of the view to link individual items to.
+	 *
+	 * @var    string
+	 * @since  $TM_VERSION
+	 */
+	protected \$viewName = '${1:singular}';
+
+	/**
+	 * Method to reconcile non standard names from components to usage in this class.
+	 * Typically overriden in the component feed view class.
+	 *
+	 * @param   object  \$item  The item for a feed, an element of the \$items array.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function reconcileNames(\$item)
+	{
+		// Get description, author and date.
+		\$app    = JFactory::getApplication();
+		\$params = \$app->getParams();
+
+		// Add readmore link to description.
+		if (!\$item->params->get('feed_summary', 0) && \$item->params->get('feed_show_readmore', 0) && \$item->description)
+		{
+			\$item->description .= '<p class="feed-readmore"><a target="_blank" href ="' . \$item->link . '">' . JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FEED_READMORE') . '</a></p>';
+		}
+
+		\$item->author = \$item->created_by_alias ? \$item->created_by_alias : \$item->author;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsiteviewcategory_feed</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

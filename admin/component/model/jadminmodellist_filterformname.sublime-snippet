@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[/**
+ * Name of the filter form to load.
+ *
+ * @var    string
+ * @since  $TM_VERSION
+ */
+protected \$filterFormName = 'filter_${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}';]]></content>
+	<tabTrigger>jadminmodellist_filterformname</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

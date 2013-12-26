@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[${1:JFactory::getApplication()}->enqueueMessage(\$e->getMessage(), '${2:error}');]]></content>
+	<tabTrigger>jfactory-getapplication_enqueuemessage</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,115 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadFieldClass('checkboxes');
+
+/**
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_COMPONENT/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormFieldCheckboxes
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = '${1/(.+)/\u\1/g}';
+
+	/**
+	 * Method to get the field input markup for check boxes.
+	 *
+	 * @return  string  The field input markup.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getInput()
+	{
+		\$html = array();
+
+		// Initialize some field attributes.
+		\$class = \$this->element['class'] ? ' class="btn checkboxes ' . (string) \$this->element['class'] . '"' : ' class="checkboxes"';
+		\$checkedOptions = explode(',', (string) \$this->element['checked']);
+
+		// Get the field options.
+		\$options = \$this->getOptions();
+
+		foreach (\$options as \$option)
+		{
+			// Add heading to box.
+			\$html[] = '<h5>' . \$option->text . '</h5>';
+
+			\$html[] = '<div class="well">';
+
+			// Start the checkbox field output.
+			\$html[] = '<fieldset id="' . \$this->id . '"' . \$class . '>';
+
+			// Build the checkbox field output.
+			\$html[] = '<ul>';
+
+			foreach (\$option->${2:${1/(.+)/\L\1/g}} as \$i => \$${3:${2/(.+)(s\b)/\L\1/g}})
+			{
+				// Initialize some ${3/(.+)/\L\1/g} attributes.
+				if (!isset(\$this->value) || empty(\$this->value))
+				{
+					\$checked = (in_array((string) \$${3/(.+)/\L\1/g}->value, (array) \$checkedOptions) ? ' checked="checked"' : '');
+				}
+				else
+				{
+					\$value = !is_array(\$this->value) ? explode(',', \$this->value) : \$this->value;
+					\$checked = (in_array((string) \$${3/(.+)/\L\1/g}->value, \$value) ? ' checked="checked"' : '');
+				}
+
+				\$class2 = !empty(\$${3/(.+)/\L\1/g}->class) ? ' class="' . \$${3/(.+)/\L\1/g}->class . '"' : '';
+				\$disabled = !empty(\$${3/(.+)/\L\1/g}->disable) ? ' disabled="disabled"' : '';
+
+				// Initialize some JavaScript ${3/(.+)/\L\1/g} attributes.
+				\$onclick = !empty(\$${3/(.+)/\L\1/g}->onclick) ? ' onclick="' . \$${3/(.+)/\L\1/g}->onclick . '"' : '';
+
+				\$html[] = '<li>';
+				\$html[] = '<label for="' . \$this->id . \$i . '"' . \$class2 . '>' . JText::_(\$${3/(.+)/\L\1/g}->text) . '</label>';
+				\$html[] = '<div class="switch" data-on="success" data-off="danger" data-on-label="<i class=\'icon-ok\'></i>" data-off-label="<i class=\'icon-remove\'></i>">';
+				\$html[] = '<input type="checkbox" id="' . \$this->id . \$i . '" name="' . \$this->name . '"' . ' value="'
+					. htmlspecialchars(\$${3/(.+)/\L\1/g}->value, ENT_COMPAT, 'UTF-8') . '"' . \$checked . \$class2 . \$onclick . \$disabled . '/>';
+
+				\$html[] = '</div>';
+				\$html[] = '</li>';
+			}
+
+			\$html[] = '</ul>';
+
+			// End the checkbox field output.
+			\$html[] = '</fieldset>';
+
+			\$html[] = '</div>';
+		}
+
+		return implode(\$html);
+	}
+
+	/**
+	 * Method to get the field options.
+	 *
+	 * @return  array  The field option objects.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getOptions()
+	{
+		// Initialiase variables.
+		\$options = ${4:Plural}Helper::get${1/(.+)/\u\1/g}Options();
+
+		// Merge any additional options in the XML definition.
+		\$options = array_merge(parent::getOptions(), \$options);
+
+		return \$options;
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield-checkboxes-multiple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[<?php foreach (\$this->form->getFieldset('${1:fieldset}') as \$field): ?>
+	<div class="control-group">
+		<div class="control-label">
+			<?php echo \$field->label; ?>
+		</div>
+		<div class="controls">
+			<?php echo \$field->input; ?>
+		</div>
+	</div>
+<?php endforeach; ?>]]></content>
+	<tabTrigger>jform-getfieldset</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

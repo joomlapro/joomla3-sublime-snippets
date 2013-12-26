@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[## Begin - Enable Cache-Control and Expires Header.
+<IfModule mod_headers.c>
+	Header unset ETag
+</IfModule>
+FileETag None
+## End - Enable Cache-Control and Expires Header.
+
+]]></content>
+	<tabTrigger>jhtaccess_etag</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

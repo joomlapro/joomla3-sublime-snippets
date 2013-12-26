@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to limit search word.
+ *
+ * @param   string  &\$searchword  The searchword to select around.
+ *
+ * @return  array
+ *
+ * @since   $TM_VERSION
+ */
+public static function limit${1:Search}Word(&\$searchword)
+{
+	\$restriction = false;
+
+	// Get the language.
+	\$lang = JFactory::getLanguage();
+
+	// Limit searchword to a maximum of characters.
+	\$upper_limit = \$lang->getUpperLimitSearchWord();
+
+	if (JString::strlen(\$searchword) > \$upper_limit)
+	{
+		\$searchword  = JString::substr(\$searchword, 0, \$upper_limit - 1);
+		\$restriction = true;
+	}
+
+	// Searchword must contain a minimum of characters.
+	if (\$searchword && JString::strlen(\$searchword) < \$lang->getLowerLimitSearchWord())
+	{
+		\$searchword  = '';
+		\$restriction = true;
+	}
+
+	return \$restriction;
+}]]></content>
+	<tabTrigger>jadminhelper_limitsearchword</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

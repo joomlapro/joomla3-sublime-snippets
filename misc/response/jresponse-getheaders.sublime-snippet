@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::getHeaders();]]></content>
+	<tabTrigger>jresponse-getheaders</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

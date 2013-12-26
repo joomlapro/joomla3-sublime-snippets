@@ -1,0 +1,123 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to auto-populate the model state.
+ *
+ * Note. Calling getState in this method will result in recursion.
+ *
+ * @param   string  \$ordering   An optional ordering field.
+ * @param   string  \$direction  An optional direction (asc|desc).
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+protected function populateState(\$ordering = null, \$direction = null)
+{
+	// Initialiase variables.
+	\$app = JFactory::getApplication('site');
+	\$pk  = \$app->input->getInt('id');
+
+	\$this->setState('category.id', \$pk);
+
+	// Load the parameters. Merge Global and Menu Item params into new object.
+	\$params = \$app->getParams();
+	\$menuParams = new JRegistry;
+
+	if (\$menu = \$app->getMenu()->getActive())
+	{
+		\$menuParams->loadString(\$menu->params);
+	}
+
+	\$mergedParams = clone \$menuParams;
+	\$mergedParams->merge(\$params);
+
+	// Load the parameters.
+	\$this->setState('params', \$mergedParams);
+
+	// Get the current user object.
+	\$user = JFactory::getUser();
+
+	// Create a new query object.
+	\$db    = \$this->getDbo();
+	\$query = \$db->getQuery(true);
+
+	if ((!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')) &&  (!\$user->authorise('core.edit', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
+	{
+		// Limit to published for people who can not edit or edit.state.
+		\$this->setState('filter.state', 1);
+
+		// Filter by start and end dates.
+		\$nullDate = \$db->quote(\$db->getNullDate());
+		\$nowDate = \$db->quote(JFactory::getDate()->toSQL());
+
+		\$query->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
+			->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')');
+	}
+	else
+	{
+		\$this->setState('filter.state', array(0, 1, 2));
+	}
+
+	// Process show_noauth parameter.
+	if (!\$params->get('show_noauth'))
+	{
+		\$this->setState('filter.access', true);
+	}
+	else
+	{
+		\$this->setState('filter.access', false);
+	}
+
+	// Optional filter text.
+	\$this->setState('list.filter', \$app->input->getString('filter-search'));
+
+	\$itemid = \$app->input->get('id', 0, 'int') . ':' . \$app->input->get('Itemid', 0, 'int');
+	\$orderCol = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order', 'filter_order', '', 'string');
+
+	if (!in_array(\$orderCol, \$this->filter_fields))
+	{
+		\$orderCol = 'a.ordering';
+	}
+
+	\$this->setState('list.ordering', \$orderCol);
+
+	\$listOrder = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
+
+	if (!in_array(strtoupper(\$listOrder), array('ASC', 'DESC', '')))
+	{
+		\$listOrder = 'ASC';
+	}
+
+	\$this->setState('list.direction', \$listOrder);
+
+	\$this->setState('list.start', \$app->input->get('limitstart', 0, 'uint'));
+
+	// Set limit for query. If list, use parameter. If blog, add blog parameters for limit.
+	if ((\$app->input->get('layout') == 'blog') || \$params->get('layout_type') == 'blog')
+	{
+		\$limit = \$params->get('num_leading_${1:plural}') + \$params->get('num_intro_${1/(.+)/\L\1/g}') + \$params->get('num_links');
+		\$this->setState('list.links', \$params->get('num_links'));
+	}
+	else
+	{
+		\$limit = \$app->getUserStateFromRequest('com_${TM_COMPONENT/(.+)/\L\1/g}.category.list.' . \$itemid . '.limit', 'limit', \$params->get('display_num'), 'uint');
+	}
+
+	\$this->setState('list.limit', \$limit);
+
+	// Set the depth of the category query based on parameter.
+	\$showSubcategories = \$params->get('show_subcategory_${TM_COMPONENT/(.+)/\L\1/g}', '0');
+
+	if (\$showSubcategories)
+	{
+		\$this->setState('filter.max_category_levels', \$params->get('show_subcategory_${TM_COMPONENT/(.+)/\L\1/g}', '1'));
+		\$this->setState('filter.subcategories', true);
+	}
+
+	\$this->setState('filter.language', JLanguageMultilang::isEnabled());
+
+	\$this->setState('layout', \$app->input->getString('layout'));
+}]]></content>
+	<tabTrigger>jsitemodelcategory_populatestate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

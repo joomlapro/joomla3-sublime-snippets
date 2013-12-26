@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<noscript>
+	<?php echo JText::_('JGLOBAL_WARNJAVASCRIPT'); ?>
+</noscript>]]></content>
+	<tabTrigger>jnoscript</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

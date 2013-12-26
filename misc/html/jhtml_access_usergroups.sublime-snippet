@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('access.usergroups', 'jform[groups]', ${1:\$this->groups}, true);]]></content>
+	<tabTrigger>jhtml_access_usergroups</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Add the logger.
+JLog::addLogger(array('text_file' => '$1.php'));]]></content>
+	<tabTrigger>jlog-addlogger</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

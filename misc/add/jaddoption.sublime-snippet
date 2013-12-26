@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[<option value="$1">${TM_FILENAME/(.*?)(\..+)/\U$1/}_OPTION_${2:${1/(.+)/\U\1/g}}</option>]]></content>
+	<tabTrigger>jaddoption</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

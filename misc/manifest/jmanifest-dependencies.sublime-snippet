@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<dependencies>
+	<dependency
+		version="${3:1.0}"
+		name="${1:library}"
+		type="library"
+		operator="${2:>=}" />
+</dependencies>]]></content>
+	<tabTrigger>jmanifest-dependencies</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

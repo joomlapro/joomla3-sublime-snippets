@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Get the cache object.
+\$cache = JFactory::getCache();]]></content>
+	<tabTrigger>jfactory-getcache</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

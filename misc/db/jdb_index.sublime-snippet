@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[ALTER TABLE `${1:$TM_PREFIX}_${2:${TM_COMPONENT/(.+)/\L\1/g}}$3` ADD INDEX `idx_${4/(.+)/\L\1/g}` (`${4:field}`);]]></content>
+	<tabTrigger>jdb_index</tabTrigger>
+	<scope>text.plain,source.sql</scope>
+</snippet>

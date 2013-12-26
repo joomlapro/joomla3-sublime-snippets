@@ -1,0 +1,300 @@
+<snippet>
+	<content><![CDATA[/**
+ * Build the route for the com_${TM_COMPONENT/(.+)/\L\1/g} component.
+ *
+ * @param   array  &\$query  An array of URL arguments.
+ *
+ * @return  array  The URL arguments to use to assemble the subsequent URL.
+ *
+ * @since   $TM_VERSION
+ */
+function ${TM_COMPONENT/(.+)/\L\1/g}BuildRoute(&\$query)
+{
+	\$segments = array();
+
+	// Get a menu item based on Itemid or currently active.
+	\$app      = JFactory::getApplication();
+	\$menu     = \$app->getMenu();
+	\$params   = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
+	\$advanced = \$params->get('sef_advanced_link', 0);
+
+	// We need a menu item. Either the one specified in the query, or the current active one if none specified.
+	if (empty(\$query['Itemid']))
+	{
+		\$menuItem = \$menu->getActive();
+		\$menuItemGiven = false;
+	}
+	else
+	{
+		\$menuItem = \$menu->getItem(\$query['Itemid']);
+		\$menuItemGiven = true;
+	}
+
+	// Check again.
+	if (\$menuItemGiven && isset(\$menuItem) && \$menuItem->component != 'com_${TM_COMPONENT/(.+)/\L\1/g}')
+	{
+		\$menuItemGiven = false;
+
+		unset(\$query['Itemid']);
+	}
+
+	if (isset(\$query['view']))
+	{
+		\$view = \$query['view'];
+	}
+	else
+	{
+		// We need to have a view in the query or it is an invalid URL.
+		return \$segments;
+	}
+
+	// Are we dealing with an ${1/(.+)/\L\1/g} that is attached to a menu item?
+	if ((\$menuItem instanceof stdClass) && \$menuItem->query['view'] == \$query['view'] && isset(\$query['id']) && \$menuItem->query['id'] == (int) \$query['id'])
+	{
+		unset(\$query['view']);
+
+		if (isset(\$query['layout']))
+		{
+			unset(\$query['layout']);
+		}
+
+		unset(\$query['id']);
+
+		return \$segments;
+	}
+
+	if (\$view == '${1:singular}')
+	{
+		if (!\$menuItemGiven)
+		{
+			\$segments[] = \$view;
+		}
+
+		unset(\$query['view']);
+
+		if (\$view == '${1/(.+)/\L\1/g}')
+		{
+			if (isset(\$query['id']))
+			{
+				// Make sure we have the id and the alias.
+				if (strpos(\$query['id'], ':') === false)
+				{
+					\$db = JFactory::getDbo();
+					\$dbQuery = \$db->getQuery(true)
+						->select('alias')
+						->from('#__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}')
+						->where('id = ' . (int) \$query['id']);
+					\$db->setQuery(\$dbQuery);
+					\$alias = \$db->loadResult();
+
+					\$query['id'] = \$query['id'] . ':' . \$alias;
+				}
+			}
+			else
+			{
+				// We should have these two set for this view. If we don't, it is an error.
+				return \$segments;
+			}
+		}
+		else
+		{
+			// We should have id set for this view. If we don't, it is an error.
+			return \$segments;
+		}
+
+		if (\$view == '${1/(.+)/\L\1/g}')
+		{
+			if (\$advanced)
+			{
+				list(\$tmp, \$id) = explode(':', \$query['id'], 2);
+			}
+			else
+			{
+				\$id = \$query['id'];
+			}
+
+			\$segments[] = \$id;
+		}
+
+		unset(\$query['id']);
+	}
+
+	if (\$view == 'archive')
+	{
+		if (!\$menuItemGiven)
+		{
+			\$segments[] = \$view;
+
+			unset(\$query['view']);
+		}
+
+		if (isset(\$query['year']))
+		{
+			if (\$menuItemGiven)
+			{
+				\$segments[] = \$query['year'];
+
+				unset(\$query['year']);
+			}
+		}
+
+		if (isset(\$query['year']) && isset(\$query['month']))
+		{
+			if (\$menuItemGiven)
+			{
+				\$segments[] = \$query['month'];
+
+				unset(\$query['month']);
+			}
+		}
+	}
+
+	// If the layout is specified and it is the same as the layout in the menu item, we
+	// unset it so it doesn't go into the query string.
+	if (isset(\$query['layout']))
+	{
+		if (\$menuItemGiven && isset(\$menuItem->query['layout']))
+		{
+			if (\$query['layout'] == \$menuItem->query['layout'])
+			{
+				unset(\$query['layout']);
+			}
+		}
+		else
+		{
+			if (\$query['layout'] == 'default')
+			{
+				unset(\$query['layout']);
+			}
+		}
+	}
+
+	return \$segments;
+}
+
+/**
+ * Parse the segments of a URL.
+ *
+ * @param   array  \$segments  The segments of the URL to parse.
+ *
+ * @return  array  The URL attributes to be used by the application.
+ *
+ * @since   $TM_VERSION
+ */
+function ${TM_COMPONENT/(.+)/\L\1/g}ParseRoute(\$segments)
+{
+	\$vars = array();
+
+	// Get the active menu item.
+	\$app      = JFactory::getApplication();
+	\$menu     = \$app->getMenu();
+	\$item     = \$menu->getActive();
+	\$params   = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
+	\$advanced = \$params->get('sef_advanced_link', 0);
+	\$db       = JFactory::getDbo();
+
+	// Count route segments.
+	\$count    = count(\$segments);
+
+	// Standard routing for ${2:${1/(.+)/\L\1/g}s}. If we don't pick up an Itemid then we get the view from the segments
+	// the first segment is the view and the last segment is the id of the ${1/(.+)/\L\1/g}.
+	if (!isset(\$item))
+	{
+		\$vars['view'] = \$segments[0];
+		\$vars['id'] = \$segments[\$count - 1];
+
+		return \$vars;
+	}
+
+	if (\$count == 1)
+	{
+		// We check to see if an alias is given. If not, we assume it is an ${1/(.+)/\L\1/g}.
+		if (strpos(\$segments[0], ':') === false)
+		{
+			\$vars['view'] = '${1/(.+)/\L\1/g}';
+			\$vars['id'] = (int) \$segments[0];
+
+			return \$vars;
+		}
+
+		list(\$id, \$alias) = explode(':', \$segments[0], 2);
+
+		\$query = 'SELECT alias FROM #__${TM_COMPONENT/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}} WHERE id = ' . (int) \$id;
+		\$db->setQuery(\$query);
+		\$${1/(.+)/\L\1/g} = \$db->loadObject();
+
+		if (\$${1/(.+)/\L\1/g})
+		{
+			if (\$${1/(.+)/\L\1/g}->alias == \$alias)
+			{
+				\$vars['view']  = '${1/(.+)/\L\1/g}';
+				\$vars['id']    = (int) \$id;
+
+				return \$vars;
+			}
+		}
+	}
+
+	if (!\$advanced)
+	{
+		\$${1/(.+)/\L\1/g}_id = (int) \$segments[\$count - 1];
+
+		if (\$${1/(.+)/\L\1/g}_id > 0)
+		{
+			\$vars['view']  = '${1/(.+)/\L\1/g}';
+			\$vars['id']    = \$${1/(.+)/\L\1/g}_id;
+		}
+
+		return \$vars;
+	}
+
+	\$id = \$item->query['id'];
+
+	\$vars['id']    = \$id;
+	\$found         = 0;
+
+	foreach (\$segments as \$segment)
+	{
+		\$segment = str_replace(':', '-', \$segment);
+
+		if (\$found == 0)
+		{
+			if (\$advanced)
+			{
+				\$db = JFactory::getDbo();
+				\$query = \$db->getQuery(true)
+					->select(\$db->quoteName('id'))
+					->from('#__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}')
+					->where(\$db->quoteName('alias') . ' = ' . \$db->quote(\$db->quote(\$segment)));
+				\$db->setQuery(\$query);
+				\$cid = \$db->loadResult();
+			}
+			else
+			{
+				\$cid = \$segment;
+			}
+
+			\$vars['id'] = \$cid;
+
+			if (\$item->query['view'] == 'archive' && \$count != 1)
+			{
+				\$vars['year']  = \$count >= 2 ? \$segments[\$count - 2] : null;
+				\$vars['month'] = \$segments[\$count - 1];
+				\$vars['view']  = 'archive';
+			}
+			else
+			{
+				\$vars['view']  = '${1/(.+)/\L\1/g}';
+			}
+		}
+
+		\$found = 0;
+	}
+
+	return \$vars;
+}
+
+]]></content>
+	<tabTrigger>jsiterouter-nocategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

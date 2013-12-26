@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$browser->isMobile();]]></content>
+	<tabTrigger>jbrowser-ismobile</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

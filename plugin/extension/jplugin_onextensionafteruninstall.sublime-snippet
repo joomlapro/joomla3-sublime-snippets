@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[/**
+ * Handle extension uninstall
+ *
+ * @param   JInstaller  \$installer  Installer instance.
+ * @param   integer     \$eid        Extension id.
+ * @param   integer     \$result     Installation result.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+function onExtensionAfterUninstall(\$installer, \$eid, \$result)
+{
+	throw new RuntimeException('plgExtensionExample::onExtensionAfterUninstall: Uninstallation of ' . \$eid . ' was a ' . (\$result ? 'success' : 'failure'), -1);
+}
+
+]]></content>
+	<tabTrigger>jplugin_onextensionafteruninstall</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

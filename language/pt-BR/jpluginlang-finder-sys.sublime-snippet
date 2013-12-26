@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[PLG_FINDER_${1:${TM_COMPONENT/(.+)/\U\1/g}}="Busca Inteligente - ${2:Component}"
+PLG_FINDER_${1/(.+)/\U\1/g}_XML_DESCRIPTION="Este plugin indexa os ${3:plural} no Joomla!"
+
+; ERROR
+
+PLG_FINDER_${1/(.+)/\U\1/g}_ERROR_ACTIVATING_PLUGIN="Não foi possível ativar automaticamente o plugin "_QQ_"Busca Inteligente - $2"_QQ_""
+
+; MISC
+
+PLG_FINDER_${1/(.+)/\U\1/g}_UNINSTALL_TEXT="Plugin de busca inteligente para ${2:Component} foi desinstalado com sucesso."
+
+]]></content>
+	<tabTrigger>jpluginlang-finder-sys</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

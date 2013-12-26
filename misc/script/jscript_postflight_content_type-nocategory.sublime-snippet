@@ -1,0 +1,121 @@
+<snippet>
+	<content><![CDATA[// Adding content type for ${2:${1/(.+)/\L\1/g}s}.
+\$table = JTable::getInstance('Contenttype', 'JTable');
+
+if (!\$table->load(array('type_alias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}')))
+{
+	// Table column.
+	\$special = new stdClass;
+	\$special->dbtable = '#__${TM_COMPONENT/(.+)/\L\1/g}$3';
+	\$special->key     = 'id';
+	\$special->type    = '${1/(.+)/\u\1/g}';
+	\$special->prefix  = '${TM_COMPONENT/(.+)/\u\1/g}Table';
+	\$special->config  = 'array()';
+
+	\$common = new stdClass;
+	\$common->dbtable  = '#__ucm_content';
+	\$common->key      = 'ucm_id';
+	\$common->type     = 'Corecontent';
+	\$common->prefix   = 'JTable';
+	\$common->config   = 'array()';
+
+	\$table_object = new stdClass;
+	\$table_object->special = \$special;
+	\$table_object->common  = \$common;
+
+	// Field mappings column.
+	\$common = new stdClass;
+	\$common->core_content_item_id = 'id';
+	\$common->core_title           = '${4:title}';
+	\$common->core_state           = 'state';
+	\$common->core_alias           = 'alias';
+	\$common->core_created_time    = 'created';
+	\$common->core_modified_time   = 'modified';
+	\$common->core_body            = 'description';
+	\$common->core_hits            = 'hits';
+	\$common->core_publish_up      = 'publish_up';
+	\$common->core_publish_down    = 'publish_down';
+	\$common->core_access          = 'access';
+	\$common->core_params          = 'params';
+	\$common->core_featured        = 'featured';
+	\$common->core_metadata        = 'metadata';
+	\$common->core_language        = 'language';
+	\$common->core_images          = 'images';
+	\$common->core_urls            = 'null';
+	\$common->core_version         = 'version';
+	\$common->core_ordering        = 'ordering';
+	\$common->core_metakey         = 'metakey';
+	\$common->core_metadesc        = 'metadesc';
+	\$common->core_catid           = 'null';
+	\$common->core_xreference      = 'xreference';
+	\$common->asset_id             = 'asset_id';
+
+	\$field_mappings = new stdClass;
+	\$field_mappings->common  = \$common;
+	\$field_mappings->special = new stdClass;
+
+	// Content history options column.
+	\$hideFields = array(
+		'asset_id',
+		'checked_out',
+		'checked_out_time',
+		'version'
+	);
+
+	\$ignoreChanges = array(
+		'modified_by',
+		'modified',
+		'checked_out',
+		'checked_out_time',
+		'version',
+		'hits'
+	);
+
+	\$convertToInt = array(
+		'publish_up',
+		'publish_down',
+		'featured',
+		'ordering'
+	);
+
+	\$displayLookup = array(
+		array(
+			'sourceColumn' => 'created_by',
+			'targetTable' => '#__users',
+			'targetColumn' => 'id',
+			'displayColumn' => 'name'
+		),
+		array(
+			'sourceColumn' => 'access',
+			'targetTable' => '#__viewlevels',
+			'targetColumn' => 'id',
+			'displayColumn' => 'title'
+		),
+		array(
+			'sourceColumn' => 'modified_by',
+			'targetTable' => '#__users',
+			'targetColumn' => 'id',
+			'displayColumn' => 'name'
+		)
+	);
+
+	\$content_history_options = new stdClass;
+	\$content_history_options->formFile      = 'administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/forms/${1/(.+)/\L\1/g}.xml';
+	\$content_history_options->hideFields    = \$hideFields;
+	\$content_history_options->ignoreChanges = \$ignoreChanges;
+	\$content_history_options->convertToInt  = \$convertToInt;
+	\$content_history_options->displayLookup = \$displayLookup;
+
+	\$content_types['type_title']              = '${1/(.+)/\u\1/g}';
+	\$content_types['type_alias']              = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
+	\$content_types['table']                   = json_encode(\$table_object);
+	\$content_types['rules']                   = '';
+	\$content_types['field_mappings']          = json_encode(\$field_mappings);
+	\$content_types['router']                  = '${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route';
+	\$content_types['content_history_options'] = json_encode(\$content_history_options);
+
+	\$table->save(\$content_types);
+}]]></content>
+	<tabTrigger>jscript_postflight_content_type-nocategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

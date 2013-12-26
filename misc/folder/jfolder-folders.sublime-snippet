@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFolder::folders($1);]]></content>
+	<tabTrigger>jfolder-folders</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

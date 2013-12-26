@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * Class constructor.
+ *
+ * @param   array  \$config  A named array of configuration variables.
+ *
+ * @since   $TM_VERSION
+ */
+public function __construct(\$config = array())
+{
+	parent::__construct(\$config);
+}]]></content>
+	<tabTrigger>jadmincontroller__construct</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

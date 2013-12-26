@@ -1,0 +1,53 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g}
+ *
+ * @param   object  \$module    The module data.
+ * @param   object  &\$params   The module params.
+ * @param   array   &\$attribs  The module attribs.
+ *
+ * @return  string
+ */
+function modChrome_${1:bootstrap}(\$module, &\$params, &\$attribs)
+{
+	// Initialiase variables.
+	\$moduleTag   = \$params->get('module_tag');
+	\$moduleClass = trim(\$params->get('bootstrap_size')) ? ' class="' . htmlspecialchars(\$params->get('bootstrap_size')) . '"' : '';
+	\$headerTag   = \$params->get('header_tag');
+	\$headerClass = trim(\$params->get('header_class')) ? ' class="' . htmlspecialchars(\$params->get('header_class')) . '"' : '';
+
+	if (\$module->showtitle)
+	{
+		// Set up the variables we will need during processing.
+		\$icons = array();
+		\$icon  = '';
+
+		preg_match('(icon([\-a-zA-Z0-9]){1,})', \$module->title, \$icons);
+
+		// Icon text (if exists).
+		if (count(\$icons) > 0)
+		{
+			\$icon = '<i class="' . \$icons[0] . '"></i>';
+		}
+
+		\$title = preg_replace('@(\[icon([\-a-zA-Z0-9]){1,}\])@', '', \$module->title);
+	}
+
+	if (!empty (\$module->content))
+	{
+		\$html  = "<{\$moduleTag}{\$moduleClass}>";
+
+		if ((bool) \$module->showtitle)
+		{
+			\$html .= "<{\$headerTag}{\$headerClass}>{\$icon}{\$title}</{\$headerTag}>";
+		}
+
+		\$html .= \$module->content;
+		\$html .= "</{\$moduleTag}>";
+
+		echo \$html;
+	}
+}]]></content>
+	<tabTrigger>jsitetemplate-modules_bootstrap</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:_$2}') . ' AS a');]]></content>
+	<tabTrigger>jquery_from</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

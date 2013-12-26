@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[\$db = JFactory::getDbo();
+\$aquery = \$db->setQuery(\$db->getQuery(true)
+	->select('alias')
+	->from('#__${TM_COMPONENT/(.+)/\L\1/g}')
+	->where('id=' . (int) \$query['id'])
+);
+\$alias = \$db->loadResult();
+\$query['id'] = \$query['id'] . ':' . \$alias;
+
+]]></content>
+	<tabTrigger>jsiterouter_alias</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

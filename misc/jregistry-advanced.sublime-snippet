@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+// Convert the ${1/(.+)/\L\1/g} field to an array.
+\$registry = new JRegistry;
+\$registry->loadString(\$${2/(.+)/\L\1/g}->${1/(.+)/\L\1/g});
+\$${2:item}->${1:field} = \$registry->toArray();
+]]></content>
+	<tabTrigger>jregistry-advanced</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

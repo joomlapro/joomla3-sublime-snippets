@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[/*
+ * Translated default messages for the jQuery validation plugin.
+ */
+\$.extend(\$.validator.messages, {
+	required: "<?php echo JText::_('${1:COM}_${2:${TM_COMPONENT/(.+)/\U\1/g}}_VALIDATOR_MESSAGE_REQUIRED'); ?>",
+	remote: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_REMOTE'); ?>",
+	email: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_EMAIL'); ?>",
+	url: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_URL'); ?>",
+	date: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_DATE'); ?>",
+	dateISO: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_DATEISO'); ?>",
+	number: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_NUMBER'); ?>",
+	digits: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_DIGITS'); ?>",
+	creditcard: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_CREDITCARD'); ?>",
+	equalTo: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_EQUALTO'); ?>",
+	accept: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_ACCEPT'); ?>",
+	maxlength: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_MAXLENGTH'); ?>",
+	minlength: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_MINLENGTH'); ?>",
+	rangelength: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_RANGELENGTH'); ?>",
+	range: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_RANGE'); ?>",
+	max: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_MAX'); ?>",
+	min: "<?php echo JText::_('${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_MIN'); ?>"
+});]]></content>
+	<tabTrigger>jjquery_validator_messages</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

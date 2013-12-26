@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::allowCache(${1:true});]]></content>
+	<tabTrigger>jresponse-allowcache</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

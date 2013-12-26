@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$model->setState('list.select', 'a.*');]]></content>
+	<tabTrigger>jmodel-setstate_list_select</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

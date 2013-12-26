@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->getIterator();]]></content>
+	<tabTrigger>jsession_getiterator</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

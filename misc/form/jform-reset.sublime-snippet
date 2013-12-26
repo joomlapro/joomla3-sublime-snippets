@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->form->reset();]]></content>
+	<tabTrigger>jform-reset</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,100 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$app          = JFactory::getApplication('site');
+\$doc          = JFactory::getDocument();
+\$config       = JFactory::getConfig();
+
+// Template Fixes.
+\$this->_html5 = true;
+\$this->_tab   = '	';
+
+// Define path.
+\$path = \$this->baseurl . '/templates/' . \$this->template;
+
+// Get the template params.
+\$templateParams = \$app->getTemplate(true)->params;
+
+if (!isset(\$this->error))
+{
+	\$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+	\$this->debug = false;
+}
+
+// Get language and direction.
+\$this->language  = \$doc->language;
+\$this->direction = \$doc->direction;
+
+// Get Favicon.
+\$favicon = \$templateParams->get('favicon');
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo \$this->language; ?>" dir="<?php echo \$this->direction; ?>"> <!--<![endif]-->
+<head>
+	<meta charset="<?php echo \$doc->_charset; ?>" />
+	<base href="<?php echo JUri::base(); ?>" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="keywords" content="<?php echo \$config->get('MetaKeys'); ?>" />
+	<meta name="description" content="<?php echo \$config->get('MetaDesc'); ?>" />
+	<meta name="generator" content="<?php echo \$doc->_generator; ?>" />
+	<title><?php echo \$this->error->getCode(); ?> - <?php echo htmlspecialchars(\$this->error->getMessage()); ?></title>
+	<link href="<?php echo JUri::getInstance()->toString(); ?>" rel="canonical" />
+	<link href="<?php echo \$favicon ? JUri::root(true) . '/' . \$favicon : \$path . '/images/favicon.ico'; ?>" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+	<link rel="stylesheet" href="<?php echo \$path; ?>/css/error.css" type="text/css" />
+	<?php if (\$this->direction == 'rtl') : ?>
+		<link rel="stylesheet" href="<?php echo \$path; ?>/css/error_rtl.css" type="text/css" />
+	<?php endif; ?>
+	<?php \$debug = JFactory::getConfig()->get('debug_lang'); ?>
+	<?php if (JDEBUG || \$debug): ?>
+		<link rel="stylesheet" href="<?php echo \$this->baseurl ?>/media/cms/css/debug.css" type="text/css" />
+	<?php endif ?>
+</head>
+<body>
+	<div class="error">
+		<div id="outline">
+		<div id="errorboxoutline">
+			<div id="errorboxheader"><?php echo \$this->error->getCode(); ?> - <?php echo htmlspecialchars(\$this->error->getMessage()); ?></div>
+				<div id="errorboxbody">
+					<p>
+						<strong><?php echo JText::_('JERROR_LAYOUT_NOT_ABLE_TO_VISIT'); ?></strong>
+					</p>
+					<ol>
+						<li><?php echo JText::_('JERROR_LAYOUT_AN_OUT_OF_DATE_BOOKMARK_FAVOURITE'); ?></li>
+						<li><?php echo JText::_('JERROR_LAYOUT_SEARCH_ENGINE_OUT_OF_DATE_LISTING'); ?></li>
+						<li><?php echo JText::_('JERROR_LAYOUT_MIS_TYPED_ADDRESS'); ?></li>
+						<li><?php echo JText::_('JERROR_LAYOUT_YOU_HAVE_NO_ACCESS_TO_THIS_PAGE'); ?></li>
+						<li><?php echo JText::_('JERROR_LAYOUT_REQUESTED_RESOURCE_WAS_NOT_FOUND'); ?></li>
+						<li><?php echo JText::_('JERROR_LAYOUT_ERROR_HAS_OCCURRED_WHILE_PROCESSING_YOUR_REQUEST'); ?></li>
+					</ol>
+					<p>
+						<strong><?php echo JText::_('JERROR_LAYOUT_PLEASE_TRY_ONE_OF_THE_FOLLOWING_PAGES'); ?></strong>
+					</p>
+					<ul>
+						<li><a href="<?php echo \$this->baseurl; ?>/index.php" title="<?php echo JText::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?>"><?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></li>
+					</ul>
+					<p>
+						<?php echo JText::_('JERROR_LAYOUT_PLEASE_CONTACT_THE_SYSTEM_ADMINISTRATOR'); ?>.
+					</p>
+					<div id="techinfo">
+						<p>
+							<?php echo htmlspecialchars(\$this->error->getMessage()); ?>
+						</p>
+						<p>
+							<?php if (\$this->debug): ?>
+								<?php echo \$this->renderBacktrace(); ?>
+							<?php endif; ?>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+]]></content>
+	<tabTrigger>jsitetemplate-error</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

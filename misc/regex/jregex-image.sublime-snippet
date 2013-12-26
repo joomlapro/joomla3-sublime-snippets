@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[preg_match_all('/\<img.*src=.*?\>/', ${1:\$item->introtext}, ${2:\$matches});]]></content>
+	<tabTrigger>jregex-image</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

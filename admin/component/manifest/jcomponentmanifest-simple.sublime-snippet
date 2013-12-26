@@ -1,0 +1,103 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension
+	version="$TM_VERSION"
+	type="component"
+	method="upgrade">
+	<name>com_${1:${TM_COMPONENT/(.+)/\L\1/g}}</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>$TM_LICENSE</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_PROJECT_VERSION</version>
+	<description>COM_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile />
+	<!-- Runs on install. -->
+	<install>
+		<sql>
+			<file
+				driver="mysql"
+				charset="utf8">sql/install.mysql.utf8.sql</file>
+			<file
+				driver="postgresql"
+				charset="utf8">sql/install.postgresql.utf8.sql</file>
+		</sql>
+	</install>
+	<!-- Runs on uninstall. -->
+	<uninstall>
+		<sql>
+			<file
+				driver="mysql"
+				charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+			<file
+				driver="postgresql"
+				charset="utf8">sql/uninstall.postgresql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+			<schemapath type="postgresql">sql/updates/postgresql</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>metadata.xml</filename>
+		<filename>router.php</filename>
+		<filename>${1/(.+)/\L\1/g}.php</filename>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+	<languages folder="site">
+		<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${1/(.+)/\L\1/g}.ini</language>
+	</languages>
+	<administration>
+		<menu img="class:${1/(.+)/\L\1/g}">com_${1/(.+)/\L\1/g}</menu>
+		<submenu>
+			<!--
+				Note that all & must be escaped to &amp;
+				for the file to be valid XML and be parsed by the installer.
+			-->
+			<menu
+				link="option=com_${1/(.+)/\L\1/g}&amp;view=${3:plural}"
+				view="${3/(.+)/\L\1/g}"
+				img="class:${1/(.+)/\L\1/g}-${3/(.+)/\L\1/g}"
+				alt="${1/(.+)/\u\1/g}/${3/(.+)/\u\1/g}">com_${1/(.+)/\L\1/g}_${3/(.+)/\L\1/g}</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<filename>${1/(.+)/\L\1/g}.php</filename>
+			<folder>controllers</folder>
+			<folder>help</folder>
+			<folder>helpers</folder>
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>
+		</files>
+		<languages folder="admin">
+			<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${1/(.+)/\L\1/g}.ini</language>
+			<language tag="$TM_LANGUAGE">language/$TM_LANGUAGE/$TM_LANGUAGE.com_${1/(.+)/\L\1/g}.sys.ini</language>
+		</languages>
+	</administration>
+	<!--
+		These are used for backups to determine which tables to backup;
+		ones marked optional are only backed up if they exist.
+	-->
+	<tables>
+		<table>#__${1/(.+)/\L\1/g}</table>
+	</tables>
+</extension>
+
+]]></content>
+	<tabTrigger>jcomponentmanifest-simple</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[/**
+ * JFormRule for com_${TM_COMPONENT/(.+)/\L\1/g} to make sure the ${1/(.+)/\L\1/g} if is valid.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormRule${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormRule
+{
+	/**
+	 * Method to test for a valid ${1/(.+)/\L\1/g}.
+	 *
+	 * @param   SimpleXMLElement  &\$element  The SimpleXMLElement object representing the <field /> tag for the form field object.
+	 * @param   mixed             \$value     The form field value to validate.
+	 * @param   string            \$group     The field name group control value. This acts as as an array container for the field.
+	 *                                       For example if the field has name="foo" and the group value is set to "bar" then the
+	 *                                       full field name would end up being "bar[foo]".
+	 * @param   object            &\$input    An optional JRegistry object with the entire data set to validate against the entire form.
+	 * @param   object            &\$form     The form object for which the field is being tested.
+	 *
+	 * @return  boolean  True if the value is valid, false otherwise.
+	 */
+	public function test(&\$element, \$value, \$group = null, &\$input = null, &\$form = null)
+	{
+		return true;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodelrule</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

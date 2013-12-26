@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Include dependancies.
+JForm::addFieldPath(JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/fields');]]></content>
+	<tabTrigger>jform-addfieldpath</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

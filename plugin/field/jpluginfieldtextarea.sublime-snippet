@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="textarea"
+	class="inputbox"
+	label="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	cols="30"
+	rows="3"
+	filter="safehtml" />]]></content>
+	<tabTrigger>jpluginfieldtextarea</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::setBody(${1:\$content});]]></content>
+	<tabTrigger>jresponse-setbody</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

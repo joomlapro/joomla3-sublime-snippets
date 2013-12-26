@@ -1,0 +1,163 @@
+<snippet>
+	<content><![CDATA[/**
+ * Supports a modal ${1/(.+)/\L\1/g} picker.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @since       $TM_VERSION
+ */
+class JFormFieldModal_${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormField
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = 'Modal_${1/(.+)/\u\1/g}';
+
+	/**
+	 * Method to get the field input markup.
+	 *
+	 * @return  string  The field input markup.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getInput()
+	{
+		// Initialiase variables.
+		\$allowEdit  = ((string) \$this->element['edit'] == 'true') ? true : false;
+		\$allowClear = ((string) \$this->element['clear'] != 'false') ? true : false;
+
+		// Load language.
+		JFactory::getLanguage()->load('com_${TM_COMPONENT/(.+)/\L\1/g}', JPATH_ADMINISTRATOR);
+
+		// Load the modal behavior script.
+		JHtml::_('behavior.modal', 'a.modal');
+
+		// Build the script.
+		\$script = array();
+
+		// Select button script.
+		\$script[] = 'function jSelect${1/(.+)/\u\1/g}_' . \$this->id . '(id, ${4/(.+)/\L\1/g}, catid, object) {';
+		\$script[] = '	document.getElementById("' . \$this->id . '_id").value = id;';
+		\$script[] = '	document.getElementById("' . \$this->id . '_name").value = ${4/(.+)/\L\1/g};';
+
+		if (\$allowEdit)
+		{
+			\$script[] = '	jQuery("#' . \$this->id . '_edit").removeClass("hidden");';
+		}
+
+		if (\$allowClear)
+		{
+			\$script[] = '	jQuery("#' . \$this->id . '_clear").removeClass("hidden");';
+		}
+
+		\$script[] = '	SqueezeBox.close();';
+		\$script[] = '}';
+
+		// Clear button script.
+		static \$scriptClear;
+
+		if (\$allowClear && !\$scriptClear)
+		{
+			\$scriptClear = true;
+
+			\$script[] = 'function jClear${1/(.+)/\u\1/g}(id) {';
+			\$script[] = '	document.getElementById(id + "_id").value = "";';
+			\$script[] = '	document.getElementById(id + "_name").value = "' . htmlspecialchars(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_AN_${1/(.+)/\U\1/g}', true), ENT_COMPAT, 'UTF-8') . '";';
+			\$script[] = '	jQuery("#"+id + "_clear").addClass("hidden");';
+			\$script[] = '	if (document.getElementById(id + "_edit")) {';
+			\$script[] = '		jQuery("#"+id + "_edit").addClass("hidden");';
+			\$script[] = '	}';
+			\$script[] = '	return false;';
+			\$script[] = '}';
+		}
+
+		// Add the script to the document head.
+		JFactory::getDocument()->addScriptDeclaration(implode("\n", \$script));
+
+		// Setup variables for display.
+		\$html = array();
+		\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&amp;view=${2:${1/(.+)/\L\1/g}s}&amp;layout=modal&amp;tmpl=component&amp;function=jSelect${1/(.+)/\u\1/g}_' . \$this->id;
+
+		if (isset(\$this->element['language']))
+		{
+			\$link .= '&amp;forcedLanguage=' . \$this->element['language'];
+		}
+
+		// Initialiase variables.
+		\$db    = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Create the base select statement.
+		\$query->select('${4:title}')
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}s}'))
+			->where(\$db->quoteName('id') . ' = ' . \$db->quote((int) \$this->value));
+
+		// Set the query and load the result.
+		\$db->setQuery(\$query);
+
+		try
+		{
+			\$${4/(.+)/\L\1/g} = \$db->loadResult();
+		}
+		catch (RuntimeException \$e)
+		{
+			JError::raiseWarning(500, \$e->getMessage());
+		}
+
+		if (empty(\$${4/(.+)/\L\1/g}))
+		{
+			\$${4/(.+)/\L\1/g} = JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_SELECT_AN_${1/(.+)/\U\1/g}');
+		}
+
+		\$${4/(.+)/\L\1/g} = htmlspecialchars(\$${4/(.+)/\L\1/g}, ENT_QUOTES, 'UTF-8');
+
+		// The active ${1/(.+)/\L\1/g} id field.
+		if (0 == (int) \$this->value)
+		{
+			\$value = '';
+		}
+		else
+		{
+			\$value = (int) \$this->value;
+		}
+
+		// The current ${1/(.+)/\L\1/g} display field.
+		\$html[] = '<span class="input-append">';
+		\$html[] = '<input type="text" class="input-medium" id="' . \$this->id . '_name" value="' . \$${4/(.+)/\L\1/g} . '" disabled="disabled" size="35" />';
+		\$html[] = '<a class="modal btn hasTooltip" title="' . JHtml::tooltipText('COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${1/(.+)/\U\1/g}') . '" href="' . \$link . '&amp;' . JSession::getFormToken() . '=1" rel="{handler: \'iframe\', size: {x: 800, y: 450}}"><i class="icon-file"></i> ' . JText::_('JSELECT') . '</a>';
+
+		// Edit ${1/(.+)/\L\1/g} button.
+		if (\$allowEdit)
+		{
+			\$html[] = '<a class="btn hasTooltip' . (\$value ? '' : ' hidden') . '" href="index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&layout=modal&tmpl=component&task=${1/(.+)/\L\1/g}.edit&id=' . \$value . '" target="_blank" title="' . JHtml::tooltipText('COM_${TM_COMPONENT/(.+)/\U\1/g}_EDIT_${1/(.+)/\U\1/g}') . '" ><span class="icon-edit"></span> ' . JText::_('JACTION_EDIT') . '</a>';
+		}
+
+		// Clear ${1/(.+)/\L\1/g} button.
+		if (\$allowClear)
+		{
+			\$html[] = '<button id="' . \$this->id . '_clear" class="btn' . (\$value ? '' : ' hidden') . '" onclick="return jClear${1/(.+)/\u\1/g}(\'' . \$this->id . '\')"><span class="icon-remove"></span> ' . JText::_('JCLEAR') . '</button>';
+		}
+
+		\$html[] = '</span>';
+
+		// Set class='required' for client side validation.
+		\$class = '';
+
+		if (\$this->required)
+		{
+			\$class = ' class="required modal-value"';
+		}
+
+		\$html[] = '<input type="hidden" id="' . \$this->id . '_id"' . \$class . ' name="' . \$this->name . '" value="' . \$value . '" />';
+
+		return implode("\n", \$html);
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield-modal</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

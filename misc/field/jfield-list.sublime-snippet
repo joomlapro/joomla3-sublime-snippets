@@ -1,0 +1,61 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadFieldClass('list');
+
+/**
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_COMPONENT/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormFieldList
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = '${1/(.+)/\u\1/g}';
+
+	/**
+	 * Method to get the field options.
+	 *
+	 * @return  array  The field option objects.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getOptions()
+	{
+		// Initialiase variables.
+		\$options = array();
+		\$db      = JFactory::getDbo();
+		\$query   = \$db->getQuery(true);
+
+		// Create the base select statement.
+		\$query->select('id AS value, name AS text')
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_table}') . ' AS a')
+			->order(\$db->quoteName('a.name'));
+
+		// Get the options.
+		\$db->setQuery(\$query);
+
+		try
+		{
+			\$options = \$db->loadObjectList();
+		}
+		catch (RuntimeException \$e)
+		{
+			throw new RuntimeException(\$e->getMessage(), \$e->getCode());
+		}
+
+		// Merge any additional options in the XML definition.
+		return array_merge(parent::getOptions(), \$options);
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield-list</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

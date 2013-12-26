@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('string.truncate', \$item->${1:description}, ${2:\$this->params->get('${1/(.+)/\L\1/g}_limit')}, true, true);]]></content>
+	<tabTrigger>jhtml_string_truncate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::prependBody(${1:\$content});]]></content>
+	<tabTrigger>jresponse-prependbody</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,32 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1:${TM_COMPONENT/(.+)/\u\1/g}} categories view.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}ViewCategories extends JViewCategories
+{
+	/**
+	 * Language key for default page heading.
+	 *
+	 * @var    string
+	 * @since  $TM_VERSION
+	 */
+	protected \$pageHeading = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_DEFAULT_PAGE_TITLE';
+
+	/**
+	 * The name of the extension for the category.
+	 *
+	 * @var    string
+	 * @since  $TM_VERSION
+	 */
+	protected \$extension = 'com_${TM_COMPONENT/(.+)/\L\1/g}';
+}
+
+]]></content>
+	<tabTrigger>jsiteviewcategories</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

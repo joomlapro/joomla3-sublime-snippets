@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$bar->appendButton('Link', '${1:list}', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${2/(.+)/\U\1/g}', 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${2:view}');]]></content>
+	<tabTrigger>jbar-appendbutton_link</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[if (!JPluginHelper::isEnabled('${1:system}', '${2:${TM_FILENAME/(.*?)(\..+)/\L$1/}}'))
+{
+	$app->enqueueMessage(JText::_('MOD_${TM_FILENAME/(.*?)(\..+)/\U$1/}_ERROR_ENABLE_${2/(.+)/\U\1/g}'), '${3:notice}');
+
+	return false;
+}]]></content>
+	<tabTrigger>jverify_plugin</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

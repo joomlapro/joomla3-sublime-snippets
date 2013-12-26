@@ -1,0 +1,41 @@
+<snippet>
+	<content><![CDATA[/**
+ * Gets a list of the actions that can be performed.
+ *
+ * @param   integer  \$id         The item ID.
+ * @param   string   \$assetName  The asset name.
+ *
+ * @return  JObject  A JObject containing the allowed actions.
+ *
+ * @since   $TM_VERSION
+ */
+public static function getActions(\$id = 0, \$assetName = '')
+{
+	// Initialiase variables.
+	\$user   = JFactory::getUser();
+	\$result = new JObject;
+
+	\$path = JPATH_ADMINISTRATOR . '/components/' . \$assetName . '/access.xml';
+
+	if (empty(\$id))
+	{
+		\$section = 'component';
+	}
+	else
+	{
+		\$section = '${1:singular}';
+		\$assetName .= '.${1/(.+)/\L\1/g}.' . (int) \$id;
+	}
+
+	\$actions = JAccess::getActionsFromFile(\$path, "/access/section[@name='" . \$section . "']/");
+
+	foreach (\$actions as \$action)
+	{
+		\$result->set(\$action->name, \$user->authorise(\$action->name, \$assetName));
+	}
+
+	return \$result;
+}]]></content>
+	<tabTrigger>jadminhelper_getactions-nocategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

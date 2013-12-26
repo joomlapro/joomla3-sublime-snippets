@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JApplication::stringURLSafe($1);]]></content>
+	<tabTrigger>japplication-stringurlsafe</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[<field
+	name="spacer${1:1}"
+	type="spacer"
+	class="text"
+	label="${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_SPACER$1_LABEL"
+	hr="false" />]]></content>
+	<tabTrigger>jmodulefieldspacer</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

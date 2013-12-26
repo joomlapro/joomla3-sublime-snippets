@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::sendHeaders();]]></content>
+	<tabTrigger>jresponse-sendheaders</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

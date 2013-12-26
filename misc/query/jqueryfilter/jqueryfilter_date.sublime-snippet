@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[// Filter by begin date.
+\$begin = \$this->getState('filter.begin');
+
+if (!empty(\$begin))
+{
+	\$query->where('${2:a}.${1:created} >= ' . \$db->quote(\$begin));
+}
+
+// Filter by end date.
+\$end = \$this->getState('filter.end');
+
+if (!empty(\$end))
+{
+	\$query->where('${2/(.+)/\L\1/g}.${1/(.+)/\L\1/g} <= ' . \$db->quote(\$end));
+}]]></content>
+	<tabTrigger>jqueryfilter_date</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JStringNormalise::toSpaceSeparated(${1:\$input});]]></content>
+	<tabTrigger>jstringnormalise_tospaceseparated</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

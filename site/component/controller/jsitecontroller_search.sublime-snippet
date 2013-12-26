@@ -1,0 +1,72 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to ${1/(.+)/\L\1/g}.
+ *
+ * @since   $TM_VERSION
+ *
+ * @return  void
+ */
+public function ${1:search}()
+{
+	// Slashes cause errors, <> get stripped anyway later on. # causes problems.
+	\$badchars = array('#', '>', '<', '\\\');
+	\$searchword = trim(str_replace(\$badchars, '', \$this->input->getString('searchword', null, 'post')));
+
+	// If searchword enclosed in double quotes, strip quotes and do exact match.
+	if (substr(\$searchword, 0, 1) == '"' && substr(\$searchword, -1) == '"')
+	{
+		\$post['searchword'] = substr(\$searchword, 1, -1);
+		\$this->input->set('searchphrase', 'exact');
+	}
+	else
+	{
+		\$post['searchword'] = \$searchword;
+	}
+
+	\$post['ordering']     = \$this->input->getWord('ordering', null, 'post');
+	\$post['searchphrase'] = \$this->input->getWord('searchphrase', 'all', 'post');
+	\$post['limit']        = \$this->input->getUInt('limit', null, 'post');
+
+	if (\$post['limit'] === null)
+	{
+		unset(\$post['limit']);
+	}
+
+	\$${2/(.+)/\L\1/g} = \$this->input->post->get('${2:areas}', null, 'array');
+
+	if (\$${2/(.+)/\L\1/g})
+	{
+		foreach (\$${2/(.+)/\L\1/g} as \$${3:${2/(.+)(s\b)/\L\1/g}})
+		{
+			\$post['${2/(.+)/\L\1/g}'][] = JFilterInput::getInstance()->clean(\$${3/(.+)/\L\1/g}, 'cmd');
+		}
+	}
+
+	// Set Itemid id for links from menu.
+	\$app   = JFactory::getApplication();
+	\$menu  = \$app->getMenu();
+	\$items = \$menu->getItems('link', 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${4:${1/(.+)/\L\1/g}}');
+
+	if (isset(\$items[0]))
+	{
+		\$post['Itemid'] = \$items[0]->id;
+	}
+	elseif (\$this->input->getInt('Itemid') > 0)
+	{
+		// Use Itemid from requesting page only if there is no existing menu.
+		\$post['Itemid'] = \$this->input->getInt('Itemid');
+	}
+
+	unset(\$post['task']);
+	unset(\$post['submit']);
+
+	// Get the full current URI.
+	\$uri = JUri::getInstance();
+	\$uri->setQuery(\$post);
+	\$uri->setVar('option', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+
+	\$this->setRedirect(JRoute::_('index.php' . \$uri->toString(array('query', 'fragment')), false));
+}]]></content>
+	<tabTrigger>jsitecontroller_search</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

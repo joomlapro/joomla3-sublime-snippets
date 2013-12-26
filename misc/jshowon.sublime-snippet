@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[showon="${1:field}:${2:value}"]]></content>
+	<tabTrigger>jshowon</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

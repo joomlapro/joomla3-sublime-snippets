@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->form->getName();]]></content>
+	<tabTrigger>jform-getname</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

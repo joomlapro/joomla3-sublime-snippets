@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[/**
+ * Get a list of filter options for the ${3/(.+)/\L\1/g}.
+ *
+ * @return  array  An array of JHtmlOption elements.
+ *
+ * @return  $TM_VERSION
+ */
+public static function get${1:Field}Options()
+{
+	// Initialize variables.
+	\$options = array();
+	\$db      = JFactory::getDbo();
+	\$query   = \$db->getQuery(true);
+
+	// Create the base select statement.
+	\$query->select('a.id AS value, a.${2:title} AS text')
+		->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${3:${1/(.+)/\L\1/g}s}') . ' AS a')
+		->order(\$db->quoteName('a.${4:ordering}'));
+
+	// Get the options.
+	\$db->setQuery(\$query);
+
+	try
+	{
+		\$options = \$db->loadObjectList();
+	}
+	catch (RuntimeException \$e)
+	{
+		throw new RuntimeException(\$e->getMessage(), \$e->getCode());
+	}
+
+	return \$options;
+}]]></content>
+	<tabTrigger>jadminhelper_getoptions</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JPATH_ADMINISTRATOR]]></content>
+	<tabTrigger>jpath_administrator</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

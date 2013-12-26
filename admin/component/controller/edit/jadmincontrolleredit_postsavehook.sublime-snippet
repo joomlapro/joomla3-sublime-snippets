@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * Function that allows child controller access to model data after the data has been saved.
+ *
+ * @param   JModelLegacy  \$model      The data model object.
+ * @param   array         \$validData  The validated data.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+protected function postSaveHook(JModelLegacy \$model, \$validData = array())
+{
+	return;
+}]]></content>
+	<tabTrigger>jadmincontrolleredit_postsavehook</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[var labels,
+	mapped
+
+// Call the typeahead.
+\$('#search-${3:singular}').typeahead({
+	source: function(query, process) {
+		\$.post('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.search${2:${1/(.+)/\u\1/g}}Ajax&format=json', {
+			name: query,
+			'<?php echo JSession::getFormToken(); ?>': 1
+		}, function(r) {
+			labels = []
+			mapped = {}
+
+			\$.each(r.data, function(i, item) {
+				mapped[item.name] = {
+					id: item.id,
+					name: item.name
+				}
+
+				labels.push(item.name)
+			})
+
+			process(labels)
+		})
+	},
+	items: 8,
+	minLength: 3,
+	updater: function(item) {
+		\$('#${3/(.+)/\L\1/g}-id').val(mapped[item].id);
+
+		return mapped[item].name
+	}
+});]]></content>
+	<tabTrigger>jjquery_typeahead</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

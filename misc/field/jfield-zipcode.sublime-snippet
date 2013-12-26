@@ -1,0 +1,94 @@
+<snippet>
+	<content><![CDATA[/**
+ * Zipcode Field class for the ${TM_COMPONENT/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormFieldZipcode extends JFormFieldText
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = 'Zipcode';
+
+	/**
+	 * Method to get the field input markup.
+	 *
+	 * @return  string  The field input markup.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getInput()
+	{
+		// Initialiase variables.
+		\$doc = JFactory::getDocument();
+
+		\$script = <<<ENDSCRIPT
+		function getZipcode() {
+			var onRequest = function() {
+				document.getElementById('loader').setStyle('display', 'inline-block');
+			};
+			var onComplete = function() {
+				document.getElementById('loader').setStyle('display', 'none');
+			};
+			var onSuccess = function (response) {
+				var responseJSON = JSON.parse(response);
+				document.getElementById('jform_address_street').value = responseJSON.tipo_logradouro + ', ' + responseJSON.logradouro;
+				document.getElementById('jform_address_district').value = responseJSON.bairro;
+				document.getElementById('jform_address_city').value = responseJSON.cidade;
+				document.getElementById('jform_address_state').value = responseJSON.uf;
+			};
+			var queryString = {
+				'option': 'com_${TM_COMPONENT/(.+)/\L\1/g}',
+				'task': '${1:${TM_COMPONENT/(.+)(s\b)/\L\1/g}}.getzipcode',
+				'zipcode': document.getElementById('jform_address_zipcode').value,
+				'format': 'json'
+			};
+			var options = {
+				url: 'index.php',
+				method: 'get',
+				update: null,
+				data: queryString,
+				onSuccess: onSuccess,
+				onComplete: onComplete,
+				onRequest: onRequest
+			};
+			var ajaxReq = new Request(options).send();
+		};
+ENDSCRIPT;
+
+		\$doc->addScriptDeclaration(\$script);
+
+		// Initialize some field attributes.
+		\$size = \$this->element['size'] ? ' size="' . (int) \$this->element['size'] . '"' : '';
+		\$maxLength = \$this->element['maxlength'] ? ' maxlength="' . (int) \$this->element['maxlength'] . '"' : '';
+		\$class = \$this->element['class'] ? ' class="input-small ' . (string) \$this->element['class'] . '"' : '';
+		\$readonly = ((string) \$this->element['readonly'] == 'true') ? ' readonly="readonly"' : '';
+		\$disabled = ((string) \$this->element['disabled'] == 'true') ? ' disabled="disabled"' : '';
+
+		// Initialize JavaScript field attributes.
+		\$onchange = \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
+
+		\$html = array();
+
+		\$html[] = '<div class="input-append">';
+		\$html[] = '<input type="text" name="' . \$this->name . '" id="' . \$this->id . '"' . ' value="' . htmlspecialchars(\$this->value, ENT_COMPAT, 'UTF-8') . '"' . \$class . \$size . \$disabled . \$readonly . \$onchange . \$maxLength . '/>';
+		\$html[] = '<button type="button" class="btn btn-primary" onclick="getZipcode()">' . JText::_('JSEARCH_FILTER_SUBMIT') . '</button>';
+		\$html[] = '</div>';
+
+		\$html[] = '<div id="loader" style="display:none;margin-left:10px;"><img src="' . JUri::root() . 'media/system/images/mootree_loader.gif" alt="" /></div>';
+
+		return implode(\$html);
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield-zipcode</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

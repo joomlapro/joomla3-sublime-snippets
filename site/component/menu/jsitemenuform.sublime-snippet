@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout
+		title="COM_${TM_COMPONENT/(.+)/\U\1/g}_FORM_VIEW_DEFAULT_TITLE"
+		option="COM_${TM_COMPONENT/(.+)/\U\1/g}_FORM_VIEW_DEFAULT_OPTION">
+		<message>
+			<![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_FORM_VIEW_DEFAULT_DESC]${-1}]>
+		</message>
+	</layout>
+	<fields name="params">
+		<fieldset name="basic">
+			<field
+				name="enable_category"
+				type="radio"
+				class="btn-group btn-group-yesno"
+				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CREATE_${1:SINGULAR}_CATEGORY_LABEL"
+				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CREATE_${1/(.+)/\U\1/g}_CATEGORY_DESC"
+				default="0">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field
+				name="catid"
+				type="category"
+				label="JGLOBAL_CHOOSE_CATEGORY_LABEL"
+				description="JGLOBAL_CHOOSE_CATEGORY_DESC"
+				extension="com_${TM_COMPONENT/(.+)/\L\1/g}" />
+		</fieldset>
+	</fields>
+</metadata>
+
+]]></content>
+	<tabTrigger>jsitemenuform</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

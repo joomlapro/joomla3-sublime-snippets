@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JComponentHelper::isEnabled($1)]]></content>
+	<tabTrigger>jcomponenthelper-isenabled</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

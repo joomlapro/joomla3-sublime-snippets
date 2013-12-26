@@ -1,0 +1,202 @@
+<snippet>
+	<content><![CDATA[/**
+ * View class for a list of ${1/(.+)/\L\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Users} extends JViewLegacy
+{
+	/**
+	 * Model state object.
+	 *
+	 * @var     object
+	 */
+	protected \$state;
+
+	/**
+	 * List of update items.
+	 *
+	 * @var     array
+	 */
+	protected \$items;
+
+	/**
+	 * List pagination.
+	 *
+	 * @var     JPagination
+	 */
+	protected \$pagination;
+
+	/**
+	 * Constructor.
+	 *
+	 * @param   array  \$config  An optional associative array of configuration settings.
+	 *
+	 * @see     JViewLegacy
+	 * @since   $TM_VERSION
+	 */
+	public function __construct(\$config = array())
+	{
+		parent::__construct(\$config);
+
+		// Load the backend helper.
+		require_once JPATH_ADMINISTRATOR . '/components/com_users/helpers/users.php';
+
+		// Load the users component language file.
+		\$lang = JFactory::getLanguage();
+		\$lang->load('com_users', JPATH_ADMINISTRATOR);
+	}
+
+	/**
+	 * Method to display the view.
+	 *
+	 * @param   string  \$tpl  A template file to load. [optional]
+	 *
+	 * @return  mixed  Exception on failure, void on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function display(\$tpl = null)
+	{
+		try
+		{
+			// Initialise variables.
+			\$this->state      = \$this->get('State');
+			\$this->items      = \$this->get('Items');
+			\$this->pagination = \$this->get('Pagination');
+		}
+		catch (Exception \$e)
+		{
+			JErrorPage::render(\$e);
+
+			return false;
+		}
+
+		// We do not need toolbar in the modal window.
+		if (\$this->getLayout() !== 'modal')
+		{
+			// Load the submenu.
+			${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+
+			\$this->addToolbar();
+			\$this->sidebar = JHtmlSidebar::render();
+		}
+
+		parent::display(\$tpl);
+	}
+
+	/**
+	 * Add the page title and toolbar.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function addToolbar()
+	{
+		// Initialise variables.
+		\$canDo = ${1/(.+)/\u\1/g}Helper::getActions();
+		\$user  = JFactory::getUser();
+
+		// Get the toolbar object instance.
+		\$bar   = JToolBar::getInstance('toolbar');
+
+		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_TITLE'), '${1/(.+)/\L\1/g}');
+
+		if (\$canDo->get('core.create'))
+		{
+			JToolbarHelper::addNew('${2:${1/(.+)(s\b)/\L\1/g}}.add');
+		}
+		if (\$canDo->get('core.edit'))
+		{
+			JToolbarHelper::editList('${2/(.+)/\L\1/g}.edit');
+		}
+
+		if (\$canDo->get('core.edit.state'))
+		{
+			JToolbarHelper::publish('${1/(.+)/\L\1/g}.activate', 'COM_USERS_TOOLBAR_ACTIVATE', true);
+			JToolbarHelper::unpublish('${1/(.+)/\L\1/g}.block', 'COM_USERS_TOOLBAR_BLOCK', true);
+			JToolbarHelper::custom('${1/(.+)/\L\1/g}.unblock', 'unblock.png', 'unblock_f2.png', 'COM_USERS_TOOLBAR_UNBLOCK', true);
+		}
+
+		if (\$canDo->get('core.delete'))
+		{
+			JToolbarHelper::deleteList('', '${1/(.+)/\L\1/g}.delete');
+		}
+
+		// Add a batch button.
+		if (\$user->authorise('core.create', 'com_users') && \$user->authorise('core.edit', 'com_users') && \$user->authorise('core.edit.state', 'com_users'))
+		{
+			JHtml::_('bootstrap.modal', 'collapseModal');
+			\$title = JText::_('JTOOLBAR_BATCH');
+
+			// Instantiate a new JLayoutFile instance and render the batch button.
+			\$layout = new JLayoutFile('joomla.toolbar.batch');
+
+			\$dhtml = \$layout->render(array('title' => \$title));
+			\$bar->appendButton('Custom', \$dhtml, 'batch');
+		}
+
+		if (\$user->authorise('core.admin', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+		{
+			JToolbarHelper::preferences('com_${TM_COMPONENT/(.+)/\L\1/g}');
+		}
+
+		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
+
+		JHtmlSidebar::setAction('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+
+		JHtmlSidebar::addFilter(
+			JText::_('COM_USERS_FILTER_STATE'),
+			'filter_state',
+			JHtml::_('select.options', UsersHelper::getStateOptions(), 'value', 'text', \$this->state->get('filter.state'))
+		);
+
+		JHtmlSidebar::addFilter(
+			JText::_('COM_USERS_FILTER_ACTIVE'),
+			'filter_active',
+			JHtml::_('select.options', UsersHelper::getActiveOptions(), 'value', 'text', \$this->state->get('filter.active'))
+		);
+
+		JHtmlSidebar::addFilter(
+			JText::_('COM_USERS_FILTER_USERGROUP'),
+			'filter_group_id',
+			JHtml::_('select.options', UsersHelper::getGroups(), 'value', 'text', \$this->state->get('filter.group_id'))
+		);
+
+		JHtmlSidebar::addFilter(
+			JText::_('COM_USERS_OPTION_FILTER_DATE'),
+			'filter_range',
+			JHtml::_('select.options', UsersHelper::getRangeOptions(), 'value', 'text', \$this->state->get('filter.range'))
+		);
+	}
+
+	/**
+	 * Returns an array of fields the table can be sorted by.
+	 *
+	 * @return  array  Array containing the field name to sort by as the key and display text as value.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getSortFields()
+	{
+		return array(
+			'a.name' => JText::_('COM_USERS_HEADING_NAME'),
+			'a.username' => JText::_('JGLOBAL_USERNAME'),
+			'a.block' => JText::_('COM_USERS_HEADING_ENABLED'),
+			'a.activation' => JText::_('COM_USERS_HEADING_ACTIVATED'),
+			'a.email' => JText::_('JGLOBAL_EMAIL'),
+			'a.lastvisitDate' => JText::_('COM_USERS_HEADING_LAST_VISIT_DATE'),
+			'a.registerDate' => JText::_('COM_USERS_HEADING_REGISTRATION_DATE'),
+			'a.id' => JText::_('JGRID_HEADING_ID')
+		);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminviewlist-users</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

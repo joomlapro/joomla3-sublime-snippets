@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$db    = JFactory::getDbo();
+\$query = \$db->getQuery(true);
+
+// Create the base update statement.
+\$query->update(\$db->quoteName('#__extensions'))
+	->set(\$db->quoteName('enabled') . ' = ' . \$db->quote('1'))
+	->where(\$db->quoteName('name') . ' = ' . \$db->quote(\$adapter->get('name')));
+
+// Set the query and execute the update.
+\$db->setQuery(\$query);
+
+try
+{
+	\$db->execute();
+}
+catch (RuntimeException \$e)
+{
+	throw new RuntimeException(\$e->getMessage(), \$e->getCode());
+}]]></content>
+	<tabTrigger>jscript_postflight_enabled</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

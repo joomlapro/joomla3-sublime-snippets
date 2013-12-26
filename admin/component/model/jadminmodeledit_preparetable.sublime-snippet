@@ -1,0 +1,65 @@
+<snippet>
+	<content><![CDATA[/**
+ * Prepare and sanitise the table prior to saving.
+ *
+ * @param   JTable  \$table  A JTable object.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+protected function prepareTable(\$table)
+{
+	// Initialise variables.
+	\$date = JFactory::getDate();
+	\$user = JFactory::getUser();
+
+	\$table->${1:title} = htmlspecialchars_decode(\$table->${1/(.+)/\L\1/g}, ENT_QUOTES);
+	\$table->alias = JApplication::stringURLSafe(\$table->alias);
+
+	if (empty(\$table->alias))
+	{
+		\$table->alias = JApplication::stringURLSafe(\$table->${1/(.+)/\L\1/g});
+	}
+
+	if (empty(\$table->id))
+	{
+		// Set the values.
+
+		// Set ordering to the last item if not set.
+		if (empty(\$table->ordering))
+		{
+			// Initialiase variables.
+			\$db    = JFactory::getDbo();
+			\$query = \$db->getQuery(true);
+
+			// Create the base select statement.
+			\$query->select('MAX(ordering)');
+			\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_list}');
+
+			// Set the query and load the result.
+			\$db->setQuery(\$query);
+			\$max = \$db->loadResult();
+
+			\$table->ordering = \$max + 1;
+		}
+		else
+		{
+			// Set the values.
+			\$table->modified    = \$date->toSql();
+			\$table->modified_by = \$user->get('id');
+		}
+	}
+
+	// Increment the content version number.
+	\$table->version++;
+
+	// Reorder the ${3:plural} within the category so the new ${4:singular} is first.
+	if (empty(\$table->id))
+	{
+		\$table->reorder('catid = ' . (int) \$table->catid . ' AND state >= 0');
+	}
+}]]></content>
+	<tabTrigger>jadminmodeledit_preparetable</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

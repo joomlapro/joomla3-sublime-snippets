@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFolder::copy(\$src, \$dest);]]></content>
+	<tabTrigger>jfolder-copy</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

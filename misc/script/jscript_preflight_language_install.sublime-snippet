@@ -1,0 +1,60 @@
+<snippet>
+	<content><![CDATA[if (!in_array(\$type, array('install', 'update')))
+{
+	return true;
+}
+
+// Get the application.
+\$app = JFactory::getApplication();
+
+// Get the language.
+\$lang = JFactory::getLanguage();
+
+// Get an instance of the extension table.
+\$extension = JTable::getInstance('extension');
+
+// Get extension_id
+\$extension_id = \$extension->find(array('name' => 'com_${TM_COMPONENT/(.+)/\L\1/g}'));
+
+// Do not install if ${TM_COMPONENT/(.+)/\u\1/g} does not exist.
+if (!\$extension_id)
+{
+	\$app->enqueueMessage(sprintf('${TM_COMPONENT/(.+)/\u\1/g} %s has not been installed, aborting!', '1.0'), 'notice');
+
+	return false;
+}
+
+// Get list of languages to be installed.
+\$source    = \$parent->getParent()->getPath('source') . '/language';
+\$languages = \$lang->getKnownLanguages();
+\$files     = \$parent->manifest->files;
+
+foreach (\$languages as \$language)
+{
+	\$name   = 'com_${TM_COMPONENT/(.+)/\L\1/g}_' . \$language['tag'];
+	\$search = JFolder::files(\$source, \$name);
+
+	if (empty(\$search))
+	{
+		continue;
+	}
+
+	\$file = \$files->addChild('file', array_pop(\$search));
+	\$file->addAttribute('type', 'file');
+	\$file->addAttribute('client', 'site');
+	\$file->addAttribute('id', \$name);
+
+	echo sprintf('Installing language %s - %s ...', \$language['tag'], \$language['name']) . '<br />';
+}
+
+if (empty(\$files))
+{
+	\$app->enqueueMessage(sprintf('Your site is English only. There\'s no need to install ${TM_COMPONENT/(.+)/\u\1/g} language pack.'), 'notice');
+
+	return false;
+}
+
+return true;]]></content>
+	<tabTrigger>jscript_preflight_language_install</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

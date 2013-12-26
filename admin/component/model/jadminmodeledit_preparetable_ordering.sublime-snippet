@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[// Set ordering to the last item if not set.
+if (empty(\$table->ordering))
+{
+	// Initialiase variables.
+	\$db    = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Create the base select statement.
+	\$query->select('MAX(ordering)');
+	\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${3:_${2:plural}');
+
+	// Set the query and load the result.
+	\$db->setQuery(\$query);
+	\$max = \$db->loadResult();
+
+	\$table->ordering = \$max + 1;
+}]]></content>
+	<tabTrigger>jadminmodeledit_preparetable_ordering</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

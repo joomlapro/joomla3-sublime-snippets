@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->hasToken(${1:\$token});]]></content>
+	<tabTrigger>jsession_hastoken</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

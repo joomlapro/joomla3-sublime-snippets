@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[// Convert the images field to an array.
+\$registry = new JRegistry;
+\$registry->loadString(\$item->images);
+\$item->images = \$registry->toArray();]]></content>
+	<tabTrigger>jadminmodeledit_getitem_images</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

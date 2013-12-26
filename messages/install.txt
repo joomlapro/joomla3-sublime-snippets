@@ -1,0 +1,15 @@
+Thank you for installing Snippets for Joomla! 3.x -- This is a Sublime Text package which includes a bunch of handy snippets for doing CMS Joomla! 3.x development.
+
+Using Snippets
+==============
+
+For a better understanding of the use of snippets, I recommend using the structure of extensions ready, you can download at https://github.com/joomlapro/joomla3-scaffold
+
+https://github.com/joomlapro/joomla3-sublime-snippets
+
+Documentation and examples:
+http://joomlapro.com.br
+
+---------------------------------
+Follow me on Twitter: @joomlapro_
+---------------------------------

@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="filelist"
+	class="inputbox"
+	stripext="1"
+	directory="${2:path/to/directory/}"
+	hide_none="1"
+	hide_default="1"
+	required="true"
+	filter="${3:\\.gif\$}"
+	size="10"
+	label="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="TPL_${TM_TEMPLATE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />
+]]></content>
+	<tabTrigger>jtemplatefilelist</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

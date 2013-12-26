@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="editor"
+	label="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="PLG_${TM_PLUGIN_GROUP/(.+)/\U\1/g}_${TM_FILENAME/(.*?)(\..+)/\U$1/}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	syntax="${2:html}"
+	editor="codemirror|none"
+	buttons="no"
+	height="500px"
+	rows="20"
+	cols="80"
+	filter="raw" />]]></content>
+	<tabTrigger>jpluginfieldeditor_codemirror</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

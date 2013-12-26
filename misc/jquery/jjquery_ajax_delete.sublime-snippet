@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[// Delete the entry once we have confirmed that it should be deleted.
+\$('a.delete').live('click', function(event) {
+	event.preventDefault();
+
+	var row = \$(event.currentTarget).closest('tr');
+
+	bootbox.confirm('<?php echo JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIRM_PROCEED_DELETE'); ?>', '<?php echo JText::_('JNO'); ?>', '<?php echo JText::_('JYES'); ?>', function(result) {
+		if (result) {
+			\$.ajax({
+				url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.delete${2:${1/(.+)/\u\1/g}}Ajax&tmpl=component&format=json',
+				type: 'POST',
+				data: {
+					${3:cid}: \$(row).find('input[name="${3/(.+)/\L\1/g}"]').val(),
+					'<?php echo JSession::getFormToken(); ?>': 1
+				},
+				success: function() {
+					\$(row).remove();
+				}
+			});
+		};
+	});
+});]]></content>
+	<tabTrigger>jjquery_ajax_delete</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

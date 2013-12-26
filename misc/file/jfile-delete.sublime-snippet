@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFile::delete($1);]]></content>
+	<tabTrigger>jfile-delete</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

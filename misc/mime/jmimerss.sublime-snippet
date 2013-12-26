@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Use the correct rss mime-type.
+header('Content-Type: application/rss+xml; charset=ISO-8859-1');]]></content>
+	<tabTrigger>jmimerss</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

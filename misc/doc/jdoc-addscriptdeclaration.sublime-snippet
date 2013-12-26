@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->addScriptDeclaration(${1:\$content});]]></content>
+	<tabTrigger>jdoc-addscriptdeclaration</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[if (version_compare(\$this->oldRelease, '${1:1.0}', '<'))
+{
+	// Remove the folders.
+	JFolder::delete(JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}');
+	JFolder::delete(JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}');
+
+	// Array with files to remove.
+	\$files[] = JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}';
+	\$files[] = JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}';
+
+	// Remove the files.
+	JFile::delete(\$files);
+}]]></content>
+	<tabTrigger>jscript_update_delete</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[// Check the data.
+if (!\$${1:table}->check())
+{
+	\$this->setError(\$${1/(.+)/\L\1/g}->getError());
+
+	return false;
+}]]></content>
+	<tabTrigger>jtable-check</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

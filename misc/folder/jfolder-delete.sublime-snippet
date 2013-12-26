@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFolder::delete($1);]]></content>
+	<tabTrigger>jfolder-delete</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

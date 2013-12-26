@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Get the data from POST.
+\$data = \$this->input->post->get('jform', array(), 'array');]]></content>
+	<tabTrigger>jinput-post</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

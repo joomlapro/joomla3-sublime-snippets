@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Get the stream object.
+\$stream = JFactory::getStream();]]></content>
+	<tabTrigger>jfactory-getstream</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

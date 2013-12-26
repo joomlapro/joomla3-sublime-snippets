@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JText::plural('$1', \$${2:number})]]></content>
+	<tabTrigger>jtext-plural</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

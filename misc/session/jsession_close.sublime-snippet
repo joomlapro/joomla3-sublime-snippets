@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->close();]]></content>
+	<tabTrigger>jsession_close</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

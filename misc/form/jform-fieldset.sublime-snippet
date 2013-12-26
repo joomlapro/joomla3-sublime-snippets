@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[<fieldset
+	name="${1:name}"
+	label="${2:COM}_${3:${TM_COMPONENT/(.+)/\U\1/g}}_FIELDSET_${1/(.+)/\U\1/g}_LABEL"
+	description="${2/(.+)/\U\1/g}_${3/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}_DESC">
+
+</fieldset>]]></content>
+	<tabTrigger>jform-fieldset</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

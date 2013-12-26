@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[; VALIDATOR
+
+${1:COM}_${2:${TM_COMPONENT/(.+)/\U\1/g}}_VALIDATOR_MESSAGE_REQUIRED="Este campo é requerido."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_REMOTE="Por favor, corrija este campo."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_EMAIL="Por favor, forneça um endereço de e-mail válido."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_URL="Por favor, forneça uma URL válida."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_DATE="Por favor, forneça uma data válida."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_DATEISO="Por favor, forneça uma data válida (ISO)."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_NUMBER="Por favor, forneça um número válido."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_DIGITS="Por favor, forneça somente dígitos."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_CREDITCARD="Por favor, forneça um cartão de crédito válido."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_EQUALTO="Por favor, forneça o mesmo valor novamente."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_ACCEPT="Por favor, forneça um valor com uma extensão válida."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_MAXLENGTH="Por favor, forneça não mais que {0} caracteres."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_MINLENGTH="Por favor, forneça ao menos {0} caracteres."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_RANGELENGTH="Por favor, forneça um valor entre {0} e {1} caracteres de comprimento."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_RANGE="Por favor, forneça um valor entre {0} e {1}."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_MAX="Por favor, forneça um valor menor ou igual a {0}."
+${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}_VALIDATOR_MESSAGE_MIN="Por favor, forneça um valor maior ou igual a {0}."]]></content>
+	<tabTrigger>jlangvalidator_ptbr</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

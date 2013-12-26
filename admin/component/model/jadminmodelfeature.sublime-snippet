@@ -1,0 +1,51 @@
+<snippet>
+	<content><![CDATA[// Load dependent classes.
+require_once __DIR__ . '/${2:singular}.php';
+
+/**
+ * ${1/(.+)/\u\1/g} model.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Feature} extends ${TM_COMPONENT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
+{
+	/**
+	 * Method to get a table object, load it if necessary.
+	 *
+	 * @param   string  \$type    The table name. Optional.
+	 * @param   string  \$prefix  The class prefix. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+	 *
+	 * @return  JTable  A JTable object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getTable(\$type = '${3:Featured}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
+	{
+		return JTable::getInstance(\$type, \$prefix, \$config);
+	}
+
+	/**
+	 * A protected method to get a set of ordering conditions.
+	 *
+	 * @param   JTable  \$table  A JTable object.
+	 *
+	 * @return  array  An array of conditions to add to ordering queries.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getReorderConditions(\$table)
+	{
+		\$condition = array();
+
+		return \$condition;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodelfeature</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

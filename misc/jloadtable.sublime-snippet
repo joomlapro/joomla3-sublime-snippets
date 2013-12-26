@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Get an instance of the ${1/(.+)/\L\1/g} table.
+\$${1/(.+)/\L\1/g} = JTable::getInstance('${1:User}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
+\$${1/(.+)/\L\1/g}->load(\$item->${2:user_id});]]></content>
+	<tabTrigger>jloadtable</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

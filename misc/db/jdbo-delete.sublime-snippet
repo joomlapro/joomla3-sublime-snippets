@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$db    = JFactory::getDbo();
+\$query = \$db->getQuery(true);
+
+// Create the base delete statement.
+\$query->delete()
+	->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:_table}'))
+	->where(\$db->quoteName('${2:column}') . ' = ' . \$db->quote((int) ${3:\$value}));
+
+// Set the query and execute the delete.
+\$db->setQuery(\$query);
+
+try
+{
+	\$db->execute();
+}
+catch (RuntimeException \$e)
+{
+	JError::raiseWarning(500, \$e->getMessage());
+}]]></content>
+	<tabTrigger>jdbo-delete</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

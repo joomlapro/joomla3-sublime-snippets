@@ -1,0 +1,61 @@
+<snippet>
+	<content><![CDATA[/**
+ * Returns substring of characters around a searchword.
+ *
+ * @param   string   \$text        The source string.
+ * @param   integer  \$searchword  Number of chars to return.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+public static function _smartSubstr(\$text, \$searchword)
+{
+	// Initialiase variables.
+	\$lang        = JFactory::getLanguage();
+	\$length      = \$lang->getSearchDisplayedCharactersNumber();
+	\$ltext       = self::remove_accents(\$text);
+	\$textlen     = JString::strlen(\$ltext);
+	\$lsearchword = JString::strtolower(self::remove_accents(\$searchword));
+	\$wordfound   = false;
+	\$pos         = 0;
+
+	while (\$wordfound === false && \$pos < \$textlen)
+	{
+		if ((\$wordpos = @JString::strpos(\$ltext, ' ', \$pos + \$length)) !== false)
+		{
+			\$chunk_size = \$wordpos - \$pos;
+		}
+		else
+		{
+			\$chunk_size = \$length;
+		}
+
+		\$chunk     = JString::substr(\$ltext, \$pos, \$chunk_size);
+		\$wordfound = JString::strpos(JString::strtolower(\$chunk), \$lsearchword);
+
+		if (\$wordfound === false)
+		{
+			\$pos += \$chunk_size + 1;
+		}
+	}
+
+	if (\$wordfound !== false)
+	{
+		return ((\$pos > 0) ? '...&#160;' : '') . JString::substr(\$text, \$pos, \$chunk_size) . '&#160;...';
+	}
+	else
+	{
+		if ((\$wordpos = @JString::strpos(\$text, ' ', \$length)) !== false)
+		{
+			return JString::substr(\$text, 0, \$wordpos) . '&#160;...';
+		}
+		else
+		{
+			return JString::substr(\$text, 0, \$length);
+		}
+	}
+}]]></content>
+	<tabTrigger>jadminhelper__smartsubstr</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

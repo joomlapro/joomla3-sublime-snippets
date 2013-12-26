@@ -1,0 +1,288 @@
+<snippet>
+	<content><![CDATA[// Load the helper class.
+JLoader::register('${TM_COMPONENT/(.+)/\u\1/g}Helper', JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php');
+
+/**
+ * Item Model for an ${1/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelAdmin
+{
+	/**
+	 * The prefix to use with controller messages.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+
+	/**
+	 * Method to test whether a record can be deleted.
+	 *
+	 * @param   object  \$record  A record object.
+	 *
+	 * @return  boolean  True if allowed to delete the record. Defaults to the permission set in the component.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function canDelete(\$record)
+	{
+		if (!empty(\$record->id))
+		{
+			if (\$record->state != -2)
+			{
+				return;
+			}
+
+			// Get the current user object.
+			\$user = JFactory::getUser();
+
+			return \$user->authorise('core.delete', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+		}
+	}
+
+	/**
+	 * Method to test whether a record can have its state edited.
+	 *
+	 * @param   object  \$record  A record object.
+	 *
+	 * @return  boolean  True if allowed to change the state of the record. Defaults to the permission set in the component.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function canEditState(\$record)
+	{
+		// Get the current user object.
+		\$user = JFactory::getUser();
+
+		// Check for existing ${1/(.+)/\L\1/g}.
+		if (!empty(\$record->id))
+		{
+			return \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+		}
+		// Default to component settings if neither ${1/(.+)/\L\1/g}.
+		else
+		{
+			return parent::canEditState('com_${TM_COMPONENT/(.+)/\L\1/g}');
+		}
+	}
+
+	/**
+	 * Prepare and sanitise the table data prior to saving.
+	 *
+	 * @param   JTable  \$table  A JTable object.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function prepareTable(\$table)
+	{
+		// Reorder the ${3:${1/(.+)/\L\1/g}s} so the new ${1/(.+)/\L\1/g} is first.
+		if (empty(\$table->id))
+		{
+			\$table->reorder('state >= 0');
+		}
+	}
+
+	/**
+	 * Returns a Table object, always creating it.
+	 *
+	 * @param   type    \$type    The table type to instantiate.
+	 * @param   string  \$prefix  A prefix for the table class name. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+	 *
+	 * @return  JTable    A database object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
+	{
+		return JTable::getInstance(\$type, \$prefix, \$config);
+	}
+
+	/**
+	 * Method to get the record form.
+	 *
+	 * @param   array    \$data      Data for the form.
+	 * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not.
+	 *
+	 * @return  mixed  A JForm object on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getForm(\$data = array(), \$loadData = true)
+	{
+		// Get the form.
+		\$form = \$this->loadForm('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+
+		if (empty(\$form))
+		{
+			return false;
+		}
+
+		\$jinput = JFactory::getApplication()->input;
+
+		// The front end calls this model and uses ${TM_COMPONENT/(.)(.+)/\L\1/g}_id to avoid id clashes so we need to check for that first.
+		if (\$jinput->get('${TM_COMPONENT/(.)(.+)/\L\1/g}_id'))
+		{
+			\$id = \$jinput->get('${TM_COMPONENT/(.)(.+)/\L\1/g}_id', 0);
+		}
+		// The back end uses id so we use that the rest of the time and set it to 0 by default.
+		else
+		{
+			\$id = \$jinput->get('id', 0);
+		}
+
+		// Determine correct permissions to check.
+		if (\$this->getState('${1/(.+)/\L\1/g}.id'))
+		{
+			\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
+		}
+
+		// Get the current user object.
+		\$user = JFactory::getUser();
+
+		// Check for existing ${1/(.+)/\L\1/g}.
+		// Modify the form based on Edit State access controls.
+		if (\$id == 0 && !\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+		{
+			// Disable fields for display.
+			\$form->setFieldAttribute('state', 'disabled', 'true');
+			\$form->setFieldAttribute('ordering', 'disabled', 'true');
+
+			// Disable fields while saving.
+			// The controller has already verified this is an ${1/(.+)/\L\1/g} you can edit.
+			\$form->setFieldAttribute('state', 'filter', 'unset');
+			\$form->setFieldAttribute('ordering', 'filter', 'unset');
+		}
+
+		return \$form;
+	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return  mixed  The data for the form.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		\$app  = JFactory::getApplication();
+		\$data = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
+
+		if (empty(\$data))
+		{
+			\$data = \$this->getItem();
+		}
+
+		\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
+
+		return \$data;
+	}
+
+	/**
+	 * A protected method to get a set of ordering conditions.
+	 *
+	 * @param   object  \$table  A record object.
+	 *
+	 * @return  array  An array of conditions to add to add to ordering queries.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getReorderConditions(\$table)
+	{
+		\$condition = array();
+
+		return \$condition;
+	}
+
+	/**
+	 * Saves the manually set order of records.
+	 *
+	 * @param   array    \$pks    An array of primary key ids.
+	 * @param   integer  \$order  +1 or -1
+	 *
+	 * @return  mixed
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function saveorder(\$pks = null, \$order = null)
+	{
+		// Initialiase variables.
+		\$table      = \$this->getTable();
+		\$conditions = array();
+
+		if (empty(\$pks))
+		{
+			return JError::raiseWarning(500, JText::_(\$this->text_prefix . '_ERROR_NO_ITEMS_SELECTED'));
+		}
+
+		// Update ordering values.
+		foreach (\$pks as \$i => \$pk)
+		{
+			\$table->load((int) \$pk);
+
+			// Access checks.
+			if (!\$this->canEditState(\$table))
+			{
+				// Prune items that you can't change.
+				unset(\$pks[\$i]);
+
+				JLog::add(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'), JLog::WARNING, 'jerror');
+			}
+			elseif (\$table->ordering != \$order[\$i])
+			{
+				\$table->ordering = \$order[\$i];
+
+				if (!\$table->store())
+				{
+					\$this->setError(\$table->getError());
+					return false;
+				}
+
+				// Remember to reorder within position and client_id.
+				\$condition = \$this->getReorderConditions(\$table);
+				\$found = false;
+
+				foreach (\$conditions as \$cond)
+				{
+					if (\$cond[1] == \$condition)
+					{
+						\$found = true;
+						break;
+					}
+				}
+
+				if (!\$found)
+				{
+					\$key = \$table->getKeyName();
+					\$conditions[] = array(\$table->\$key, \$condition);
+				}
+			}
+		}
+
+		// Execute reorder for each category.
+		foreach (\$conditions as \$cond)
+		{
+			\$table->load(\$cond[0]);
+			\$table->reorder(\$cond[1]);
+		}
+
+		// Clear the component's cache.
+		\$this->cleanCache();
+
+		return true;
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodeledit-mini</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

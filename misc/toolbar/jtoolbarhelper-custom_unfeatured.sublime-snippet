@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolbarHelper::custom('${1:plural}.unfeatured', 'star-empty.png', 'star-empty.png', 'JUNFEATURED', true);]]></content>
+	<tabTrigger>jtoolbarhelper-custom_unfeatured</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

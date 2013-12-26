@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+function onExtensionBeforeUpdate(\$type, \$manifest)
+{
+	throw new RuntimeException('plgExtensionExample::onExtensionBeforeUpdate: Updating a ' . \$type, -1);
+}
+
+]]></content>
+	<tabTrigger>jplugin_onextensionbeforeupdate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

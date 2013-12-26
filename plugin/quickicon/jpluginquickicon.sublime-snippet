@@ -1,0 +1,44 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${TM_COMPONENT/(.+)/\u\1/g} Quickicon plugin.
+ *
+ * @package     $TM_COMPONENT
+ * @subpackage  plg_quickicon_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class plgQuickicon${TM_COMPONENT/(.+)/\u\1/g} extends JPlugin
+{
+	/**
+	 * This method is called when the Quick Icons module is constructing its set
+	 * of icons. You can return an array which defines a single icon and it will
+	 * be rendered right after the stock Quick Icons.
+	 *
+	 * @param   string  \$context  The calling context
+	 *
+	 * @return  array   A list of icon definition associative arrays, consisting of the
+	 *				    keys link, image, text and access.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function onGetIcons(\$context)
+	{
+		if (\$context != \$this->params->get('context', 'mod_quickicon') || !JFactory::getUser()->authorise('core.manage', 'com_installer'))
+		{
+			return;
+		}
+
+		return array(array(
+			'link' => 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}',
+			'image' => JUri::root() . 'media/com_${TM_COMPONENT/(.+)/\L\1/g}/images/icon/${TM_COMPONENT/(.+)(s\b)/\L\1/g}.png',
+			'text' => JText::_('PLG_QUICKICON_${TM_COMPONENT/(.+)/\U\1/g}_${TM_COMPONENT/(.+)/\U\1/g}'),
+			'id' => 'plg_quickicon_com_${TM_COMPONENT/(.+)/\L\1/g}',
+			'access' => array('core.manage', 'com_${TM_COMPONENT/(.+)/\L\1/g}')),
+		);
+	}
+}
+
+]]></content>
+	<tabTrigger>jpluginquickicon</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

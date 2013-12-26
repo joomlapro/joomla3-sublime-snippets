@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFolder::listFolderTree(\$path, \$filter, \$maxLevel, \$level, \$parent);]]></content>
+	<tabTrigger>jfolder-listfoldertree</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

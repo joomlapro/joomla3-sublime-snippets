@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:tags}"
+	type="tag"
+	class="inputbox"
+	label="JTAG"
+	description="JTAG_DESC"
+	multiple="true"></field>]]></content>
+	<tabTrigger>jadminfieldtag</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

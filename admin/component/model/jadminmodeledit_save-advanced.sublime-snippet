@@ -1,0 +1,168 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to save the form data.
+ *
+ * @param   array  \$data  The form data.
+ *
+ * @return  boolean  True on success, False on error.
+ *
+ * @since   $TM_VERSION
+ */
+public function save(\$data)
+{
+	// Initialiase variables.
+	\$dispatcher = JEventDispatcher::getInstance();
+	\$table = \$this->getTable();
+	\$key = \$table->getKeyName();
+	\$pk = (!empty(\$data[\$key])) ? \$data[\$key] : (int) \$this->getState(\$this->getName() . '.id');
+	\$isNew = true;
+	\$${1/(.+)/\L\1/g} = array();
+
+	if (isset(\$data['${1/(.+)/\L\1/g}']))
+	{
+		\$${1/(.+)/\L\1/g} = (array) \$data['${1:array}'];
+		unset(\$data['${1/(.+)/\L\1/g}']);
+	}
+
+	// Include the content plugins for the on save events.
+	JPluginHelper::importPlugin('content');
+
+	// Allow an exception to be thrown.
+	try
+	{
+		// Load the row if saving an existing record.
+		if (\$pk > 0)
+		{
+			\$table->load(\$pk);
+			\$isNew = false;
+		}
+
+		// Bind the data.
+		if (!\$table->bind(\$data))
+		{
+			\$this->setError(\$table->getError());
+
+			return false;
+		}
+
+		// Prepare the row for saving.
+		\$this->prepareTable(\$table);
+
+		// Check the data.
+		if (!\$table->check())
+		{
+			\$this->setError(\$table->getError());
+
+			return false;
+		}
+
+		// Trigger the onContentBeforeSave event.
+		\$result = \$dispatcher->trigger(\$this->event_before_save, array(\$this->option . '.' . \$this->name, \$table, \$isNew));
+
+		if (in_array(false, \$result, true))
+		{
+			\$this->setError(\$table->getError());
+
+			return false;
+		}
+
+		// Store the data.
+		if (!\$table->store())
+		{
+			\$this->setError(\$table->getError());
+
+			return false;
+		}
+
+		// Clean the cache.
+		\$this->cleanCache();
+
+		// Trigger the onContentAfterSave event.
+		\$dispatcher->trigger(\$this->event_after_save, array(\$this->option . '.' . \$this->name, \$table, \$isNew));
+	}
+	catch (Exception \$e)
+	{
+		\$this->setError(\$e->getMessage());
+
+		return false;
+	}
+
+	\$pkName = \$table->getKeyName();
+
+	if (isset(\$table->\$pkName))
+	{
+		\$this->setState(\$this->getName() . '.id', \$table->\$pkName);
+	}
+
+	\$this->setState(\$this->getName() . '.new', \$isNew);
+
+	\$properties = \$table->getProperties(1);
+	\$value = JArrayHelper::toObject(\$properties, 'JObject');
+
+	// Update the database.
+	\$db = JFactory::getDbo();
+	\$query = \$db->getQuery(true);
+
+	// Delete all ${1/(.+)/\L\1/g}.
+	\$query->delete()
+		->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'))
+		->where('${3:${2:column}_id} = ' . (int) \$value->id);
+
+	// Set the query and execute the delete.
+	\$db->setQuery(\$query);
+
+	if (\$db->execute())
+	{
+		foreach (\$${1/(.+)/\L\1/g} as \$i => \$${4:${1/(.+)(s\b)/\L\1/g}})
+		{
+			\$fields = array();
+			\$values = array();
+
+			// Iterate over the object variables to build the query fields and values.
+			foreach (\$${4/(.+)/\L\1/g} as \$k => \$v)
+			{
+				// Only process non-null scalars.
+				if (is_array(\$v) or is_object(\$v) or \$v === null)
+				{
+					continue;
+				}
+
+				// Ignore any internal fields.
+				if (\$k[0] == '_')
+				{
+					continue;
+				}
+
+				// Prepare and sanitize the fields and values for the database query.
+				\$fields[] = \$db->quoteName(\$k);
+				\$values[] = \$db->quote(\$v);
+			}
+
+
+			// Create the base insert statement.
+			\$query->clear()
+				->insert(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${1/(.+)/\L\1/g}'))
+				->columns(array(\$db->quoteName('${3/(.+)/\L\1/g}'), implode(', ', \$fields)))
+				->values(\$db->quote(\$value->id) . ', ' . implode(', ', \$values));
+
+			// Set the query and execute the insert.
+			\$db->setQuery(\$query);
+
+			try
+			{
+				\$db->execute();
+			}
+			catch (RuntimeException \$e)
+			{
+				\$this->setError(\$e->getMessage());
+
+				return false;
+			}
+		}
+	}
+
+	return true;
+}]]></content>
+	<tabTrigger>jadminmodeledit_save-advanced</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

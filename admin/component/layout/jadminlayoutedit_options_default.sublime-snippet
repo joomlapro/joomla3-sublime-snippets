@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[// Initialiase variables.
+\$this->fieldsname  = '${1:fieldset}';
+\$this->name        = JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}_LABEL');
+\$this->description = JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_${1/(.+)/\U\1/g}_DESC');
+
+echo JLayoutHelper::render('joomla.content.options_default', \$this);
+
+]]></content>
+	<tabTrigger>jadminlayoutedit_options_default</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

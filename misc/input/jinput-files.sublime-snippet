@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Get some data from the request.
+\$file = \$this->input->files->get('${1:jform}', '', 'array');]]></content>
+	<tabTrigger>jinput-files</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

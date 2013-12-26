@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFolder::makeSafe($1);]]></content>
+	<tabTrigger>jfolder-makesafe</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JLoader::loadByPsr0(${1:class});]]></content>
+	<tabTrigger>jloader_loadbypsr0</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[## Begin - Access to extension sql files.
+<Files ~ "\.sql\$">
+	Order allow,deny
+	Deny from all
+	Satisfy all
+</Files>
+## End - Access to extension sql files.
+
+]]></content>
+	<tabTrigger>jhtaccess_sql</tabTrigger>
+	<scope>text.plain</scope>
+</snippet>

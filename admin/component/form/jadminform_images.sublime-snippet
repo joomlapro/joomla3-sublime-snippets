@@ -1,0 +1,64 @@
+<snippet>
+	<content><![CDATA[<fields name="images">
+	<field
+		name="image_first"
+		type="media"
+		label="COM_FAQ_FIELD_FIRST_LABEL"
+		description="COM_FAQ_FIELD_FIRST_DESC" />
+	<field
+		name="float_first"
+		type="list"
+		label="COM_FAQ_FLOAT_LABEL"
+		description="COM_FAQ_FLOAT_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="right">JGLOBAL_RIGHT</option>
+		<option value="left">JGLOBAL_LEFT</option>
+		<option value="none">JFIELD_OPTION_NONE</option>
+	</field>
+	<field
+		name="image_first_alt"
+		type="text"
+		class="inputbox"
+		label="COM_FAQ_FIELD_IMAGE_ALT_LABEL"
+		description="COM_FAQ_FIELD_IMAGE_ALT_DESC"
+		size="20" />
+	<field
+		name="image_first_caption"
+		type="text"
+		class="inputbox"
+		label="COM_FAQ_FIELD_IMAGE_CAPTION_LABEL"
+		description="COM_FAQ_FIELD_IMAGE_CAPTION_DESC"
+		size="20" />
+	<field
+		name="image_second"
+		type="media"
+		label="COM_FAQ_FIELD_SECOND_LABEL"
+		description="COM_FAQ_FIELD_SECOND_DESC" />
+	<field
+		name="float_second"
+		type="list"
+		label="COM_FAQ_FLOAT_LABEL"
+		description="COM_FAQ_FLOAT_DESC">
+		<option value="">JGLOBAL_USE_GLOBAL</option>
+		<option value="right">JGLOBAL_RIGHT</option>
+		<option value="left">JGLOBAL_LEFT</option>
+		<option value="none">JFIELD_OPTION_NONE</option>
+	</field>
+	<field
+		name="image_second_alt"
+		type="text"
+		class="inputbox"
+		label="COM_FAQ_FIELD_IMAGE_ALT_LABEL"
+		description="COM_FAQ_FIELD_IMAGE_ALT_DESC"
+		size="20" />
+	<field
+		name="image_second_caption"
+		type="text"
+		class="inputbox"
+		label="COM_FAQ_FIELD_IMAGE_CAPTION_LABEL"
+		description="COM_FAQ_FIELD_IMAGE_CAPTION_DESC"
+		size="20" />
+</fields>]]></content>
+	<tabTrigger>jadminform_images</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

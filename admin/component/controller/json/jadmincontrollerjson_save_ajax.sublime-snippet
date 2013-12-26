@@ -1,0 +1,39 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to save the submitted ${2:${1/(.+)/\L\1/g}} values for records via AJAX.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function save${1:Singular}Ajax()
+{
+	// Check for request forgeries.
+	JSession::checkToken('get') or die(JText::_('JINVALID_TOKEN'));
+
+	// Get the application.
+	\$app = JFactory::getApplication();
+
+	// Get the input.
+	\$pks = \$this->input->post->get('cid', array(), 'array');
+
+	// Sanitize the input.
+	JArrayHelper::toInteger(\$pks);
+
+	// Get the model.
+	\$model = \$this->getModel();
+
+	// Save the ${2/(.+)/\L\1/g}.
+	\$return = \$model->save${1/(.+)/\L\1/g}(\$pks);
+
+	if (\$return)
+	{
+		echo "1";
+	}
+
+	// Close the application.
+	\$app->close();
+}]]></content>
+	<tabTrigger>jadmincontrollerjson_save_ajax</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

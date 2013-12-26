@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[/**
+ * Constructor
+ *
+ * @param   JDatabase  &\$db  Driver A database connector object.
+ *
+ * @since   $TM_VERSION
+ */
+public function __construct(& \$db)
+{
+	parent::__construct('#__${TM_COMPONENT/(.+)/\L\1/g}${1:_${2:plural}}', 'id', \$db);
+}]]></content>
+	<tabTrigger>jadmintable___construct</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

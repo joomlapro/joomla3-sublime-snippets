@@ -1,0 +1,68 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to set a ${2/(.+)/\L\1/g} as ${1/(.+)/\L\1/g}.
+ *
+ * @param   integer  \$id  The primary key ID for the ${2/(.+)/\L\1/g}.
+ *
+ * @return  boolean  True if successful.
+ *
+ * @throws  RuntimeException
+ * @since   $TM_VERSION
+ */
+public function set${1:Default}(\$id = 0)
+{
+	// Initialiase variables.
+	\$user = JFactory::getUser();
+	\$db   = \$this->getDbo();
+
+	// Access checks.
+	if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+	{
+		throw new RuntimeException(JText::_('JLIB_APPLICATION_ERROR_EDITSTATE_NOT_PERMITTED'));
+	}
+
+	\$${2/(.+)/\L\1/g} = JTable::getInstance('${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
+
+	if (!\$${2/(.+)/\L\1/g}->load((int) \$id))
+	{
+		throw new RuntimeException(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${2/(.+)/\U\1/g}_NOT_FOUND'));
+	}
+
+	// Detect disabled row.
+	if (\$${2/(.+)/\L\1/g}->state == 0 || \$${2/(.+)/\L\1/g}->state == -2)
+	{
+		throw new RuntimeException(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_SAVE_DISABLED_${2/(.+)/\U\1/g}'));
+	}
+
+	// Detect archived row.
+	if (\$${2/(.+)/\L\1/g}->state == 2)
+	{
+		throw new RuntimeException(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_SAVE_ARCHIVED_${2/(.+)/\U\1/g}'));
+	}
+
+	// Reset the ${1/(.+)/\L\1/g} fields.
+	\$db->setQuery(
+		'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}s}'
+		. ' SET `${1/(.+)/\L\1/g}` = \'0\''
+		. ' WHERE `${1/(.+)/\L\1/g}` = \'1\''
+	);
+
+	\$db->execute();
+
+	// Set the new ${1/(.+)/\L\1/g} ${2/(.+)/\L\1/g}.
+	\$db->setQuery(
+		'UPDATE #__${TM_COMPONENT/(.+)/\L\1/g}${3/(.+)/\L\1/g}'
+		. ' SET `${1/(.+)/\L\1/g}` = \'1\''
+		. ' WHERE id = ' . (int) \$id
+	);
+
+	\$db->execute();
+
+	// Clean the cache.
+	\$this->cleanCache();
+
+	return true;
+}]]></content>
+	<tabTrigger>jadminmodeledit_setdefault</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

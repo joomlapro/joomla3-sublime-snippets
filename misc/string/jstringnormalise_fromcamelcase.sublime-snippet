@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JStringNormalise::fromCamelCase(${1:\$input}${2:, true});]]></content>
+	<tabTrigger>jstringnormalise_fromcamelcase</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

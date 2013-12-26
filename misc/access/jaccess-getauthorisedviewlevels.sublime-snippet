@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JAccess::getAuthorisedViewLevels(${1:JFactory::getUser()->get('id')});]]></content>
+	<tabTrigger>jaccess-getauthorisedviewlevels</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

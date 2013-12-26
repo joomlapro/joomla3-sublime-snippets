@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JPATH_MANIFESTS]]></content>
+	<tabTrigger>jpath_manifests</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

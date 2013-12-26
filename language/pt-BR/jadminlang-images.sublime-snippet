@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[; FIELD
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INTRO_DESC="Imagem para os layouts de texto de introdução, como blogs e ${2:${1/(.+)/\L\1/g}s} em destaque"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INTRO_LABEL="Imagem da Introdução"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FULL_DESC="Imagem para exibição de ${1:singular} simples"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FULL_LABEL="Imagem do ${1/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FIRST_LABEL="Primeira Imagem"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FIRST_DESC="A imagem a ser exibida"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SECOND_DESC="A segunda imagem a ser exibida"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SECOND_LABEL="Segunda imagem"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FLOAT_LABEL="Imagem Flutuante"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FLOAT_DESC="Controla a posição da imagem"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_LABEL="Texto Alternativo"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_ALT_DESC="Texto alternativo usado para os visitantes sem acesso as imagens. Substitua com um texto de legenda se for necessário."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_LABEL="Legenda"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_IMAGE_CAPTION_DESC="Legenda colocada na imagem"
+
+; FIELDSET
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_IMAGES="Imagens"]]></content>
+	<tabTrigger>jadminlang-images</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

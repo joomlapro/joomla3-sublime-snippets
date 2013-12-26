@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[// Join over the categories.
+\$query->select('c.title AS category_title, c.path AS category_route, c.access AS category_access, c.alias AS category_alias')
+	->join('LEFT', '#__categories AS c ON c.id = a.catid');]]></content>
+	<tabTrigger>jjoin_categories</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}="${1:${TM_COMPONENT/(.+)/\u\1/g}}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_XML_DESCRIPTION="Componente para gerenciamento de ${1/(.+)/\u\1/g}."
+
+; MENU
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_${2:PLURAL}="${3:Plural}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES="Categorias"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FEATURED="${3/(.+)/\u\1/g} em Destaque"
+
+; SCRIPT
+
+COM_${TM_COMPONENT/(.+)/\U\1/g}_VERSION_UNSUPPORTED="Componente de ${1/(.+)/\u\1/g} não vai funcionar em sua instalação. Você precisa de pelo menos o CMS Joomla! %s."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_MAGIC_QUOTES="Antes de efetuar a instalação do componente de ${1/(.+)/\u\1/g} é necessário desabilitar o Magic Quotes."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_UPDATE_UNSUPPORTED="Componente de ${1/(.+)/\u\1/g} não pode ser instalado. A versão que você deseja instalar é menor que a versão atual."
+COM_${TM_COMPONENT/(.+)/\U\1/g}_UNINSTALL_TEXT="Componente de ${1/(.+)/\u\1/g} foi desinstalado com sucesso."
+
+]]></content>
+	<tabTrigger>jadminlang-sys</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

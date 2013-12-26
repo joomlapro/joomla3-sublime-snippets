@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="color"
+	class="inputbox"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	default="#${4:000000}"
+	validate="color" />]]></content>
+	<tabTrigger>jadminfieldcolor</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

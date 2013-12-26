@@ -1,0 +1,9 @@
+[
+	{
+		"caption": "Preferences: Joomla! 3.x Snippets Preferences – Default",
+		"command": "open_file",
+		"args": {
+			"file": "${packages}/Joomla! 3.x Snippets/Default.tmPreferences"
+		}
+	}
+]

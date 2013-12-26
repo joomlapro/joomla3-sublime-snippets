@@ -1,0 +1,88 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get a list of items.
+ *
+ * @return  mixed  An array of objects on success, false on failure.
+ *
+ * @since   $TM_VERSION
+ */
+public function getItems()
+{
+	// Initialiase variables.
+	\$items  = parent::getItems();
+	\$user   = JFactory::getUser();
+	\$userId = \$user->get('id');
+	\$guest  = \$user->get('guest');
+	\$groups = \$user->getAuthorisedViewLevels();
+	\$input  = JFactory::getApplication()->input;
+
+	// Convert the parameter fields into objects.
+	foreach (\$items as &\$item)
+	{
+		\$item->params = clone \$this->getState('params');
+
+		// Get display date.
+		switch (\$item->params->get('list_show_date'))
+		{
+			case 'modified':
+				\$item->displayDate = \$item->modified;
+				break;
+
+			case 'published':
+				\$item->displayDate = (\$item->publish_up == 0) ? \$item->created : \$item->publish_up;
+				break;
+
+			default:
+			case 'created':
+				\$item->displayDate = \$item->created;
+				break;
+		}
+
+		// Compute the asset access permissions.
+		// Technically guest could edit an ${1/(.+)/\L\1/g}, but lets not check that to improve performance a little.
+		if (!\$guest)
+		{
+			\$asset = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}.' . \$item->id;
+
+			// Check general edit permission first.
+			if (\$user->authorise('core.edit', \$asset))
+			{
+				\$item->params->set('access-edit', true);
+			}
+			// Now check if edit.own is available.
+			elseif (!empty(\$userId) && \$user->authorise('core.edit.own', \$asset))
+			{
+				// Check for a valid user and that they are the owner.
+				if (\$userId == \$item->created_by)
+				{
+					\$item->params->set('access-edit', true);
+				}
+			}
+		}
+
+		\$access = \$this->getState('filter.access');
+
+		if (\$access)
+		{
+			// If the access filter has been set, we already have only the ${2:${1/(.+)/\L\1/g}s} this user can view.
+			\$item->params->set('access-view', true);
+		}
+		else
+		{
+			// If no access filter is set, the layout takes some responsibility for display of limited information.
+			if (\$item->catid == 0 || \$item->category_access === null)
+			{
+				\$item->params->set('access-view', in_array(\$item->access, \$groups));
+			}
+			else
+			{
+				\$item->params->set('access-view', in_array(\$item->access, \$groups) && in_array(\$item->category_access, \$groups));
+			}
+		}
+	}
+
+	return \$items;
+}]]></content>
+	<tabTrigger>jsitemodellist_getitems</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[// Get the application.
+\$app = JFactory::getApplication();
+
+// Get the known languages.
+\$languages = \$app->getKnownLanguages();
+
+// Remove languages.
+foreach (\$languages as \$language)
+{
+	\$this->uninstallLanguage(\$language['tag']);
+}]]></content>
+	<tabTrigger>jscript_uninstall_languages</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

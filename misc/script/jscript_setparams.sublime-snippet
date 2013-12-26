@@ -1,0 +1,36 @@
+<snippet>
+	<content><![CDATA[/**
+ * Sets parameter values in the component's row of the extension table.
+ *
+ * @param   array  \$param_array  The params.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function setParams(\$param_array)
+{
+	if (count(\$param_array) > 0)
+	{
+		// Read the existing component value(s).
+		\$db = JFactory::getDbo();
+		\$db->setQuery('SELECT params FROM #__extensions WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"');
+		\$params = json_decode(\$db->loadResult(), true);
+
+		// Add the new variable(s) to the existing one(s).
+		foreach (\$param_array as \$name => \$value)
+		{
+			\$params[(string) \$name] = (string) \$value;
+		}
+
+		// Store the combined new and existing values back as a JSON string.
+		\$paramsString = json_encode(\$params);
+
+		\$db->setQuery('UPDATE #__extensions SET params = ' . \$db->quote(\$paramsString) . ' WHERE name = "com_${TM_COMPONENT/(.+)/\L\1/g}"');
+		\$db->query();
+	}
+}
+]]></content>
+	<tabTrigger>jscript_setparams</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,72 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} Field class for the ${TM_COMPONENT/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormField${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormField
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = '${1/(.+)/\u\1/g}';
+
+	/**
+	 * Method to get the field input markup.
+	 *
+	 * @return  string  The field input markup.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getInput()
+	{
+		// Initialize some field attributes.
+		\$size      = \$this->element['size'] ? abs((int) \$this->element['size']) : 5;
+		\$maxLength = \$this->element['maxlength'] ? ' maxlength="' . (int) \$this->element['maxlength'] . '"' : '';
+		\$class     = \$this->element['class'] ? ' class="' . (string) \$this->element['class'] . '"' : '';
+		\$readonly  = ((string) \$this->element['readonly'] == 'true') ? ' readonly="readonly"' : '';
+		\$disabled  = ((string) \$this->element['disabled'] == 'true') ? ' disabled="disabled"' : '';
+
+		// Make sure somebody does not put in a too large ${2/(.+)/\L\1/g} size value:
+		if (\$size > 10)
+		{
+			\$size = 10;
+		}
+
+		// Create the random ${2/(.+)/\L\1/g}:
+		\$${2:prefix}    = '';
+		\$chars     = range('a', 'z');
+		\$numbers   = range(0, 9);
+
+		// We want the fist character to be a random letter:
+		shuffle(\$chars);
+		\$${2/(.+)/\L\1/g} .= \$chars[0];
+
+		// Next we combine the numbers and characters to get the other characters:
+		\$symbols = array_merge(\$numbers, \$chars);
+		shuffle(\$symbols);
+
+		for (\$i = 0, \$j = \$size - 1; \$i < \$j; ++\$i)
+		{
+			\$${2/(.+)/\L\1/g} .= \$symbols[\$i];
+		}
+
+		// Initialize JavaScript field attributes.
+		\$onchange = \$this->element['onchange'] ? ' onchange="' . (string) \$this->element['onchange'] . '"' : '';
+
+		return '<input type="text" name="' . \$this->name . '" id="' . \$this->id . '"' .
+				' value="' . htmlspecialchars(\$${2/(.+)/\L\1/g}, ENT_COMPAT, 'UTF-8') . '"' .
+				\$class . \$disabled . \$readonly . \$onchange . \$maxLength . '/>';
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield-rand</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

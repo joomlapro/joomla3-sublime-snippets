@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JLoader::getNamespaces();]]></content>
+	<tabTrigger>jloader_getnamespaces</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

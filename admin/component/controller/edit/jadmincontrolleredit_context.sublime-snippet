@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[/**
+ * Context string for the model type.
+ *
+ * @var    string
+ * @since  $TM_VERSION
+ */
+protected \$context = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:singular}';]]></content>
+	<tabTrigger>jadmincontrolleredit_context</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

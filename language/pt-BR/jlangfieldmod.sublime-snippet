@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC="$3"
+MOD_${TM_MODULE/(.+)/\U\1/g}_FIELD_${1:FIELD_NAME}_LABEL="$2"]]></content>
+	<tabTrigger>jlangfieldmod</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

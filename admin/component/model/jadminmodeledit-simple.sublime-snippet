@@ -1,0 +1,528 @@
+<snippet>
+	<content><![CDATA[// Load the helper class.
+JLoader::register('${TM_COMPONENT/(.+)/\u\1/g}Helper', JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php');
+
+/**
+ * Item Model for an ${1/(.+)/\u\1/g}.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelAdmin
+{
+	/**
+	 * The prefix to use with controller messages.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+
+	/**
+	 * The type alias for this content type (for example, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}').
+	 *
+	 * @var      string
+	 * @since    $TM_VERSION
+	 */
+	public \$typeAlias = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
+
+	/**
+	 * Batch copy items to current.
+	 *
+	 * @param   integer  \$value     The new category.
+	 * @param   array    \$pks       An array of row IDs.
+	 * @param   array    \$contexts  An array of item contexts.
+	 *
+	 * @return  mixed  An array of new IDs on success, boolean false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function batchCopy(\$value, \$pks, \$contexts)
+	{
+		// Parent exists so we let's proceed.
+		while (!empty(\$pks))
+		{
+			// Pop the first ID off the stack.
+			\$pk = array_shift(\$pks);
+
+			\$this->table->reset();
+
+			// Check that the row actually exists.
+			if (!\$this->table->load(\$pk))
+			{
+				if (\$error = \$this->table->getError())
+				{
+					// Fatal error.
+					\$this->setError(\$error);
+
+					return false;
+				}
+				else
+				{
+					// Not fatal error.
+					\$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_BATCH_MOVE_ROW_NOT_FOUND', \$pk));
+
+					continue;
+				}
+			}
+
+			// Alter the ${2/(.+)/\L\1/g} & alias.
+			\$data = \$this->generateNewTitle(null, \$this->table->alias, \$this->table->${2:title});
+			\$this->table->${2/(.+)/\L\1/g} = \$data['0'];
+			\$this->table->alias = \$data['1'];
+
+			// Reset the ID because we are making a copy.
+			\$this->table->id = 0;
+
+			// Check the row.
+			if (!\$this->table->check())
+			{
+				\$this->setError(\$table->getError());
+
+				return false;
+			}
+
+			parent::createTagsHelper(\$this->tagsObserver, \$this->type, \$pk, \$this->typeAlias, \$this->table);
+
+			// Store the row.
+			if (!\$this->table->store())
+			{
+				\$this->setError(\$table->getError());
+
+				return false;
+			}
+		}
+
+		// Clean the cache.
+		\$this->cleanCache();
+
+		return \$newIds;
+	}
+
+	/**
+	 * Method to test whether a record can be deleted.
+	 *
+	 * @param   object  \$record  A record object.
+	 *
+	 * @return  boolean  True if allowed to delete the record. Defaults to the permission set in the component.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function canDelete(\$record)
+	{
+		if (!empty(\$record->id))
+		{
+			if (\$record->state != -2)
+			{
+				return;
+			}
+
+			// Get the current user object.
+			\$user = JFactory::getUser();
+
+			return \$user->authorise('core.delete', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+		}
+	}
+
+	/**
+	 * Method to test whether a record can have its state edited.
+	 *
+	 * @param   object  \$record  A record object.
+	 *
+	 * @return  boolean  True if allowed to change the state of the record. Defaults to the permission set in the component.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function canEditState(\$record)
+	{
+		// Get the current user object.
+		\$user = JFactory::getUser();
+
+		// Check for existing ${1/(.+)/\L\1/g}.
+		if (!empty(\$record->id))
+		{
+			return \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+		}
+		// Default to component settings if neither ${1/(.+)/\L\1/g}.
+		else
+		{
+			return parent::canEditState('com_${TM_COMPONENT/(.+)/\L\1/g}');
+		}
+	}
+
+	/**
+	 * Prepare and sanitise the table data prior to saving.
+	 *
+	 * @param   JTable  \$table  A JTable object.
+	 *
+	 * @return  void
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function prepareTable(\$table)
+	{
+		// Set the publish date to now.
+		\$db = \$this->getDbo();
+
+		if (\$table->state == 1 && (int) \$table->publish_up == 0)
+		{
+			\$table->publish_up = JFactory::getDate()->toSql();
+		}
+
+		if (\$table->state == 1 && intval(\$table->publish_down) == 0)
+		{
+			\$table->publish_down = \$db->getNullDate();
+		}
+
+		// Increment the ${4/(.+)/\L\1/g} version number.
+		\$table->version++;
+
+		// Reorder the ${4:${1/(.+)/\L\1/g}s} so the new ${1/(.+)/\L\1/g} is first.
+		if (empty(\$table->id))
+		{
+			\$table->reorder('state >= 0');
+		}
+	}
+
+	/**
+	 * Returns a Table object, always creating it.
+	 *
+	 * @param   type    \$type    The table type to instantiate.
+	 * @param   string  \$prefix  A prefix for the table class name. Optional.
+	 * @param   array   \$config  Configuration array for model. Optional.
+	 *
+	 * @return  JTable    A database object.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
+	{
+		return JTable::getInstance(\$type, \$prefix, \$config);
+	}
+
+	/**
+	 * Method to get a single record.
+	 *
+	 * @param   integer  \$pk  The id of the primary key.
+	 *
+	 * @return  mixed  Object on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getItem(\$pk = null)
+	{
+		if (\$item = parent::getItem(\$pk))
+		{
+			// Convert the metadata field to an array.
+			\$registry = new JRegistry;
+			\$registry->loadString(\$item->metadata);
+			\$item->metadata = \$registry->toArray();
+
+			if (!empty(\$item->id))
+			{
+				\$item->tags = new JHelperTags;
+				\$item->tags->getTagIds(\$item->id, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}');
+			}
+		}
+
+		// Load associated ${4/(.+)/\L\1/g} items.
+		\$app = JFactory::getApplication();
+		\$assoc = JLanguageAssociations::isEnabled();
+
+		if (\$assoc)
+		{
+			\$item->associations = array();
+
+			if (\$item->id != null)
+			{
+				\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}$3', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$item->id);
+
+				foreach (\$associations as \$tag => \$association)
+				{
+					\$item->associations[\$tag] = \$association->id;
+				}
+			}
+		}
+
+		return \$item;
+	}
+
+	/**
+	 * Method to get the record form.
+	 *
+	 * @param   array    \$data      Data for the form.
+	 * @param   boolean  \$loadData  True if the form is to load its own data (default case), false if not.
+	 *
+	 * @return  mixed  A JForm object on success, false on failure.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function getForm(\$data = array(), \$loadData = true)
+	{
+		// Get the form.
+		\$form = \$this->loadForm('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+
+		if (empty(\$form))
+		{
+			return false;
+		}
+
+		\$jinput = JFactory::getApplication()->input;
+
+		// The front end calls this model and uses ${TM_COMPONENT/(.)(.+)/\L\1/g}_id to avoid id clashes so we need to check for that first.
+		if (\$jinput->get('${TM_COMPONENT/(.)(.+)/\L\1/g}_id'))
+		{
+			\$id = \$jinput->get('${TM_COMPONENT/(.)(.+)/\L\1/g}_id', 0);
+		}
+		// The back end uses id so we use that the rest of the time and set it to 0 by default.
+		else
+		{
+			\$id = \$jinput->get('id', 0);
+		}
+
+		// Determine correct permissions to check.
+		if (\$this->getState('${1/(.+)/\L\1/g}.id'))
+		{
+			\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
+		}
+
+		// Get the current user object.
+		\$user = JFactory::getUser();
+
+		// Check for existing ${1/(.+)/\L\1/g}.
+		// Modify the form based on Edit State access controls.
+		if (\$id != 0 && (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$id))
+			|| (\$id == 0 && !\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
+		{
+			// Disable fields for display.
+			\$form->setFieldAttribute('state', 'disabled', 'true');
+			\$form->setFieldAttribute('ordering', 'disabled', 'true');
+			\$form->setFieldAttribute('publish_up', 'disabled', 'true');
+			\$form->setFieldAttribute('publish_down', 'disabled', 'true');
+
+			// Disable fields while saving.
+			// The controller has already verified this is an ${1/(.+)/\L\1/g} you can edit.
+			\$form->setFieldAttribute('state', 'filter', 'unset');
+			\$form->setFieldAttribute('ordering', 'filter', 'unset');
+			\$form->setFieldAttribute('publish_up', 'filter', 'unset');
+			\$form->setFieldAttribute('publish_down', 'filter', 'unset');
+		}
+
+		// Prevent messing with ${1/(.+)/\L\1/g} language.
+		\$app = JFactory::getApplication();
+		\$assoc = JLanguageAssociations::isEnabled();
+
+		if (\$app->isSite() && \$assoc && \$this->getState('${1/(.+)/\L\1/g}.id'))
+		{
+			\$form->setFieldAttribute('language', 'readonly', 'true');
+			\$form->setFieldAttribute('language', 'filter', 'unset');
+		}
+
+		return \$form;
+	}
+
+	/**
+	 * Method to get the data that should be injected in the form.
+	 *
+	 * @return  mixed  The data for the form.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function loadFormData()
+	{
+		// Check the session for previously entered form data.
+		\$app  = JFactory::getApplication();
+		\$data = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
+
+		if (empty(\$data))
+		{
+			\$data = \$this->getItem();
+		}
+
+		\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
+
+		return \$data;
+	}
+
+	/**
+	 * Method to save the form data.
+	 *
+	 * @param   array  \$data  The form data.
+	 *
+	 * @return  boolean  True on success.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function save(\$data)
+	{
+		// Get the application.
+		\$app = JFactory::getApplication();
+
+		// Alter the ${2/(.+)/\L\1/g} for save as copy.
+		if (\$app->input->get('task') == 'save2copy')
+		{
+			list(\$${2/(.+)/\L\1/g}, \$alias) = \$this->generateNewTitle(null, \$data['alias'], \$data['${2/(.+)/\L\1/g}']);
+
+			\$data['${2/(.+)/\L\1/g}'] = \$${2/(.+)/\L\1/g};
+			\$data['alias'] = \$alias;
+			\$data['state'] = 0;
+		}
+
+		if (parent::save(\$data))
+		{
+			\$assoc = JLanguageAssociations::isEnabled();
+
+			if (\$assoc)
+			{
+				\$id   = (int) \$this->getState(\$this->getName() . '.id');
+				\$item = \$this->getItem(\$id);
+
+				// Adding self to the association.
+				\$associations = \$data['associations'];
+
+				foreach (\$associations as \$tag => \$id)
+				{
+					if (empty(\$id))
+					{
+						unset(\$associations[\$tag]);
+					}
+				}
+
+				// Detecting all item menus.
+				\$all_language = \$item->language == '*';
+
+				if (\$all_language && !empty(\$associations))
+				{
+					JError::raiseNotice(403, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_ALL_LANGUAGE_ASSOCIATED'));
+				}
+
+				\$associations[\$item->language] = \$item->id;
+
+				// Deleting old association for these items.
+				\$db = JFactory::getDbo();
+				\$query = \$db->getQuery(true)
+					->delete('#__associations')
+					->where('context=' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}.item'))
+					->where('id IN (' . implode(',', \$associations) . ')');
+				\$db->setQuery(\$query);
+				\$db->execute();
+
+				if (\$error = \$db->getErrorMsg())
+				{
+					\$this->setError(\$error);
+
+					return false;
+				}
+
+				if (!\$all_language && count(\$associations))
+				{
+					// Adding new association for these items.
+					\$key = md5(json_encode(\$associations));
+					\$query->clear()
+						->insert('#__associations');
+
+					foreach (\$associations as \$id)
+					{
+						\$query->values(\$id . ',' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}.item') . ',' . \$db->quote(\$key));
+					}
+
+					\$db->setQuery(\$query);
+					\$db->execute();
+
+					if (\$error = \$db->getErrorMsg())
+					{
+						\$this->setError(\$error);
+
+						return false;
+					}
+				}
+			}
+
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * A protected method to get a set of ordering conditions.
+	 *
+	 * @param   object  \$table  A record object.
+	 *
+	 * @return  array  An array of conditions to add to add to ordering queries.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getReorderConditions(\$table)
+	{
+		\$condition = array();
+
+		return \$condition;
+	}
+
+	/**
+	 * Auto-populate the model state.
+	 *
+	 * Note. Calling getState in this method will result in recursion.
+	 *
+	 * @param   JForm   \$form   A JForm object.
+	 * @param   mixed   \$data   The data expected for the form.
+	 * @param   string  \$group  The name of the plugin group to import.
+	 *
+	 * @return  void
+	 *
+	 * @since   \$TM_VERSION
+	 */
+	protected function preprocessForm(JForm \$form, \$data, \$group = 'content')
+	{
+		// Association ${4/(.+)/\L\1/g} items.
+		\$app   = JFactory::getApplication();
+		\$assoc = JLanguageAssociations::isEnabled();
+
+		if (\$assoc)
+		{
+			\$languages = JLanguageHelper::getLanguages('lang_code');
+
+			// Force to array (perhaps move to \$this->loadFormData()).
+			\$data = (array) \$data;
+
+			\$addform  = new SimpleXMLElement('<form />');
+			\$fields   = \$addform->addChild('fields');
+			\$fields->addAttribute('name', 'associations');
+			\$fieldset = \$fields->addChild('fieldset');
+			\$fieldset->addAttribute('name', 'item_associations');
+			\$fieldset->addAttribute('description', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_ITEM_ASSOCIATIONS_FIELDSET_DESC');
+			\$add = false;
+
+			foreach (\$languages as \$tag => \$language)
+			{
+				if (empty(\$data['language']) || \$tag != \$data['language'])
+				{
+					\$add = true;
+					\$field = \$fieldset->addChild('field');
+					\$field->addAttribute('name', \$tag);
+					\$field->addAttribute('type', 'modal_article');
+					\$field->addAttribute('language', \$tag);
+					\$field->addAttribute('label', \$language->title);
+					\$field->addAttribute('translate_label', 'false');
+					\$field->addAttribute('edit', 'true');
+					\$field->addAttribute('clear', 'true');
+				}
+			}
+
+			if (\$add)
+			{
+				\$form->load(\$addform, false);
+			}
+		}
+
+		parent::preprocessForm(\$form, \$data, \$group);
+	}
+}
+
+]]></content>
+	<tabTrigger>jadminmodeledit-simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,44 @@
+<snippet>
+	<content><![CDATA[<fieldset name="publish">
+	<field
+		name="created"
+		type="calendar"
+		id="created"
+		filter="unset" />
+	<field
+		name="created_by"
+		type="text"
+		id="created_by"
+		filter="unset" />
+	<field
+		name="created_by_alias"
+		type="text"
+		class="inputbox"
+		label="JGLOBAL_FIELD_CREATED_BY_ALIAS_LABEL"
+		description="JGLOBAL_FIELD_CREATED_BY_ALIAS_DESC"
+		id="created_by_alias"
+		size="20" />
+	<field
+		name="publish_up"
+		type="calendar"
+		class="inputbox"
+		label="JGLOBAL_FIELD_PUBLISH_UP_LABEL"
+		description="JGLOBAL_FIELD_PUBLISH_UP_DESC"
+		id="publish_up"
+		format="%Y-%m-%d %H:%M:%S"
+		size="22"
+		filter="user_utc" />
+	<field
+		name="publish_down"
+		type="calendar"
+		class="inputbox"
+		label="JGLOBAL_FIELD_PUBLISH_DOWN_LABEL"
+		description="JGLOBAL_FIELD_PUBLISH_DOWN_DESC"
+		id="publish_down"
+		format="%Y-%m-%d %H:%M:%S"
+		size="22"
+		filter="user_utc" />
+</fieldset>]]></content>
+	<tabTrigger>jsiteform_publish</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

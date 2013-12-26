@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[// Filter by search in ${1/(.+)/\L\1/g}.
+\$search = \$this->getState('filter.search');
+
+if (!empty(\$search))
+{
+	if (stripos(\$search, 'id:') === 0)
+	{
+		\$query->where('a.id = ' . (int) substr(\$search, 3));
+	}
+	elseif (stripos(\$search, 'author:') === 0)
+	{
+		\$search = \$db->quote('%' . \$db->escape(substr(\$search, 7), true) . '%');
+		\$query->where('(ua.name LIKE ' . \$search . ' OR ua.username LIKE ' . \$search . ')');
+	}
+	else
+	{
+		\$search = \$db->quote('%' . \$db->escape(\$search, true) . '%');
+		\$query->where('(a.${1:title} LIKE ' . \$search . ' OR a.alias LIKE ' . \$search . ')');
+	}
+}]]></content>
+	<tabTrigger>jqueryfilter_search</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

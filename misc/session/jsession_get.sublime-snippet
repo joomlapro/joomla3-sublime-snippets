@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->get('${1:name}', '${2:default}', '${3:namespace}');]]></content>
+	<tabTrigger>jsession_get</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

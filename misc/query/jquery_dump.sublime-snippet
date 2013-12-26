@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[echo \$query->dump();]]></content>
+	<tabTrigger>jquery_dump</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

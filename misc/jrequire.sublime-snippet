@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load dependent classes.
+require_once __DIR__ . '/${1:file}.php';]]></content>
+	<tabTrigger>jrequire</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

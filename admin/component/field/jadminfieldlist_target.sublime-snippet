@@ -1,0 +1,16 @@
+<snippet>
+	<content><![CDATA[<field
+	name="${1:field}"
+	type="list"
+	class="inputbox"
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
+	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	default="_self"
+	size="1"
+	filter="string">
+	<option value="_self">JBROWSERTARGET_PARENT</option>
+	<option value="_blank">JBROWSERTARGET_NEW</option>
+</field>]]></content>
+	<tabTrigger>jadminfieldlist_target</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$${1:item}->${2:field} = sprintf("%02s", \$${1/(.+)/\L\1/g}->${2/(.+)/\L\1/g});]]></content>
+	<tabTrigger>jregex-number_with_zero</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

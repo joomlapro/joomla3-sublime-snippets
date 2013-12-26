@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[<!-- Runs on uninstall. -->
+<uninstall>
+	<sql>
+		<file
+			driver="mysql"
+			charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		<file
+			driver="postgresql"
+			charset="utf8">sql/uninstall.postgresql.utf8.sql</file>
+	</sql>
+</uninstall>]]></content>
+	<tabTrigger>jcomponentmanifest_uninstall</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

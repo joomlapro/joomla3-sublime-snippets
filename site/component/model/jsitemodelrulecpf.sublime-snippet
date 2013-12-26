@@ -1,0 +1,82 @@
+<snippet>
+	<content><![CDATA[/**
+ * JFormRule for com_${TM_COMPONENT/(.+)/\L\1/g} to make sure the ${1/(.+)/\U\1/g} if is valid.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormRule${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JFormRule
+{
+	/**
+	 * The regular expression to use in testing a form field value.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$regex = '/^\d{3}\.\d{3}\.\d{3}\-\d{2}\$/';
+
+	/**
+	 * Method to test for a valid ${1/(.+)/\U\1/g}.
+	 *
+	 * @param   SimpleXMLElement  &\$element  The SimpleXMLElement object representing the <field /> tag for the form field object.
+	 * @param   mixed             \$value     The form field value to validate.
+	 * @param   string            \$group     The field name group control value. This acts as as an array container for the field.
+	 *                                       For example if the field has name="foo" and the group value is set to "bar" then the
+	 *                                       full field name would end up being "bar[foo]".
+	 * @param   object            &\$input    An optional JRegistry object with the entire data set to validate against the entire form.
+	 * @param   object            &\$form     The form object for which the field is being tested.
+	 *
+	 * @return  boolean  True if the value is valid, false otherwise.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public function test(&\$element, \$value, \$group = null, &\$input = null, &\$form = null)
+	{
+		// Test the value against the regular expression.
+		if (preg_match(\$this->regex, \$value) == false)
+		{
+			return false;
+		}
+
+		// Initialiase variables.
+		\$${1/(.+)/\L\1/g}      = preg_replace('/[^0-9]/', '', \$value);
+		\$digitOne = 0;
+		\$digitTwo = 0;
+
+		// Check first digit.
+		for (\$i = 0, \$x = 10; \$i <= 8; \$i++, \$x--)
+		{
+			\$digitOne += \$${1/(.+)/\L\1/g}[\$i] * \$x;
+		}
+
+		\$calcOne = ((\$digitOne % 11) < 2) ? 0 : 11 - (\$digitOne % 11);
+
+		// Check second digit.
+		for (\$i = 0, \$x = 11; \$i <= 9; \$i++, \$x--)
+		{
+			if (str_repeat(\$i, 11) == \$${1/(.+)/\L\1/g})
+			{
+				return false;
+			}
+
+			\$digitTwo += \$${1/(.+)/\L\1/g}[\$i] * \$x;
+		}
+
+		\$calcTwo = ((\$digitTwo % 11) < 2) ? 0 : 11 - (\$digitTwo % 11);
+
+		// Test the ${1/(.+)/\U\1/g} if is valid.
+		if (\$calcOne <> \$${1/(.+)/\L\1/g}[9] || \$calcTwo <> \$${1/(.+)/\L\1/g}[10])
+		{
+			return false;
+		}
+
+		return true;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitemodelrulecpf</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

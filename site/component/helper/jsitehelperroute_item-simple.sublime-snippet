@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get a route configuration for the ${1/(.+)/\L\1/g} view.
+ *
+ * @param   integer  \$id  The route of the ${1/(.+)/\L\1/g} item.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+public static function get${1:Singular}Route(\$id)
+{
+	// Initialiase variables.
+	\$needles = array(
+		'${1/(.+)/\L\1/g}'  => array((int) \$id)
+	);
+
+	// Create the link.
+	\$link = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}&id=' . \$id;
+
+	if (\$item = self::_findItem(\$needles))
+	{
+		\$link .= '&Itemid=' . \$item;
+	}
+	elseif (\$item = self::_findItem())
+	{
+		\$link .= '&Itemid=' . \$item;
+	}
+
+	return \$link;
+}]]></content>
+	<tabTrigger>jsitehelperroute_item-simple</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

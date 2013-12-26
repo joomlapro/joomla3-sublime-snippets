@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$session->restart();]]></content>
+	<tabTrigger>jsession_restart</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

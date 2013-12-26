@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$doc->getDescription();]]></content>
+	<tabTrigger>jdoc-getdescription</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

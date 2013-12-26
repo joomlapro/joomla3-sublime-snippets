@@ -1,0 +1,145 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get ${1/(.+)/\L\1/g} data.
+ *
+ * @param   integer  \$pk  The id of the ${1/(.+)/\L\1/g}.
+ *
+ * @return  mixed  Menu item data object on success, false on failure.
+ *
+ * @since   $TM_VERSION
+ */
+public function &getItem(\$pk = null)
+{
+	\$pk = (!empty(\$pk)) ? \$pk : (int) \$this->getState('${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}.id');
+
+	if (\$this->_item === null)
+	{
+		\$this->_item = array();
+	}
+
+	if (!isset(\$this->_item[\$pk]))
+	{
+		try
+		{
+			\$db = \$this->getDbo();
+			\$query = \$db->getQuery(true);
+
+			\$query->select(\$this->getState('item.select', 'a.*'))
+				->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}_${2:${1/(.+)/\L\1/g}s}') . ' AS a');
+
+			// Join on category table.
+			\$query->select('c.title AS category_title, c.alias AS category_alias, c.access AS category_access')
+				->join('LEFT', '#__categories AS c on c.id = a.catid');
+
+			// Join on user table.
+			\$query->select('u.name AS author')
+				->join('LEFT', '#__users AS u on u.id = a.created_by');
+
+			// Join over the categories to get parent category titles.
+			\$query->select('parent.title as parent_title, parent.id as parent_id, parent.path as parent_route, parent.alias as parent_alias')
+				->join('LEFT', '#__categories as parent ON parent.id = c.parent_id');
+
+			\$query->where('a.id = ' . (int) \$pk);
+
+			// Filter by start and end dates.
+			\$nullDate = \$db->quote(\$db->getNullDate());
+			\$nowDate = \$db->quote(JFactory::getDate()->toSql());
+
+			// Filter by published state.
+			\$published = \$this->getState('filter.state');
+			\$archived = \$this->getState('filter.archived');
+
+			if (is_numeric(\$published))
+			{
+				\$query->where('(a.state = ' . (int) \$published . ' OR a.state =' . (int) \$archived . ')')
+					->where('(a.publish_up = ' . \$nullDate . ' OR a.publish_up <= ' . \$nowDate . ')')
+					->where('(a.publish_down = ' . \$nullDate . ' OR a.publish_down >= ' . \$nowDate . ')')
+					->where('(c.published = ' . (int) \$published . ' OR c.published =' . (int) \$archived . ')');
+			}
+
+			\$db->setQuery(\$query);
+
+			\$data = \$db->loadObject();
+
+			if (empty(\$data))
+			{
+				throw new RuntimeException(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'), 404);
+			}
+
+			// Check for published state if filter set.
+			if (((is_numeric(\$published)) || (is_numeric(\$archived))) && ((\$data->state != \$published) && (\$data->state != \$archived)))
+			{
+				JError::raiseError(404, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_NOT_FOUND'));
+			}
+
+			// Convert parameter fields to objects.
+			\$registry = new JRegistry;
+			\$registry->loadString(\$data->params);
+			\$data->params = clone \$this->getState('params');
+			\$data->params->merge(\$registry);
+
+			\$registry = new JRegistry;
+			\$registry->loadString(\$data->metadata);
+			\$data->metadata = \$registry;
+
+			// Compute selected asset permissions.
+			\$user = JFactory::getUser();
+
+			// Technically guest could edit an ${1/(.+)/\L\1/g}, but lets not check that to improve performance a little.
+			if (!\$user->get('guest'))
+			{
+				\$userId = \$user->get('id');
+				\$asset  = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . \$data->id;
+
+				// Check general edit permission first.
+				if (\$user->authorise('core.edit', \$asset))
+				{
+					\$data->params->set('access-edit', true);
+				}
+				// Now check if edit.own is available.
+				elseif (!empty(\$userId) && \$user->authorise('core.edit.own', \$asset))
+				{
+					// Check for a valid user and that they are the owner.
+					if (\$userId == \$data->created_by)
+					{
+						\$data->params->set('access-edit', true);
+					}
+				}
+			}
+
+			// Compute view access permissions.
+			if (\$access = \$this->getState('filter.access'))
+			{
+				// If the access filter has been set, we already know this user can view.
+				\$data->params->set('access-view', true);
+			}
+			else
+			{
+				// If no access filter is set, the layout takes some responsibility for display of limited information.
+				\$user = JFactory::getUser();
+				\$groups = \$user->getAuthorisedViewLevels();
+				\$data->params->set('access-view', in_array(\$data->access, \$groups) && in_array(\$data->category_access, \$groups));
+			}
+
+			\$this->_item[\$pk] = \$data;
+		}
+		catch (Exception \$e)
+		{
+			if (\$e->getCode() == 404)
+			{
+				// Need to go thru the error handler to allow Redirect to work.
+				JError::raiseError(404, \$e->getMessage());
+			}
+			else
+			{
+				\$this->setError(\$e);
+				\$this->_item[\$pk] = false;
+			}
+		}
+	}
+
+	return \$this->_item[\$pk];
+}]]></content>
+	<tabTrigger>jsitemodelitem_getitem</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

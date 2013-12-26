@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[/**
+ * Prepares results from search for display.
+ *
+ * @param   string  \$text        The source string.
+ * @param   string  \$searchword  The searchword to select around.
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+public static function prepare${1:Search}Content(\$text, \$searchword)
+{
+	// Strips tags won't remove the actual jscript.
+	\$text = preg_replace("'<script[^>]*>.*?</script>'si", "", \$text);
+	\$text = preg_replace('/{.+?}/', '', \$text);
+
+	// \$text = preg_replace('/<a\s+.*?href="([^"]+)"[^>]*>([^<]+)<\/a>/is','\2', \$text);
+
+	// Replace line breaking tags with whitespace.
+	\$text = preg_replace("'<(br[^/>]*?/|hr[^/>]*?/|/(div|h[1-6]|li|p|td))>'si", ' ', \$text);
+
+	return self::_smartSubstr(strip_tags(\$text), \$searchword);
+}]]></content>
+	<tabTrigger>jadminhelper_preparesearchcontent</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

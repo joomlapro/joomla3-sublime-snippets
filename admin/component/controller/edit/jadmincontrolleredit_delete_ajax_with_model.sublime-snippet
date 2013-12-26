@@ -1,0 +1,40 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to delete ${1/(.+)/\L\1/g} via AJAX using a model.
+ *
+ * @return  void
+ *
+ * @since   $TM_VERSION
+ */
+public function delete${1:Singular}Ajax()
+{
+	// Check for request forgeries.
+	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
+
+	// Get the application.
+	\$app = JFactory::getApplication();
+
+	// Get items to remove from the request.
+	\$${2/(.+)/\L\1/g} = \$app->input->get('${2:cid}', array(), 'array');
+
+	// Get the model.
+	\$model = \$this->getModel('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Model');
+
+	// Make sure the item ids are integers
+	jimport('joomla.utilities.arrayhelper');
+	JArrayHelper::toInteger(\$${2/(.+)/\L\1/g});
+
+	// Delete the ${1/(.+)/\L\1/g}.
+	\$return = \$model->delete(\$${2/(.+)/\L\1/g});
+
+	if (\$return)
+	{
+		echo "1";
+	}
+
+	// Close the application.
+	\$app->close();
+}]]></content>
+	<tabTrigger>jadmincontrolleredit_delete_ajax_with_model</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

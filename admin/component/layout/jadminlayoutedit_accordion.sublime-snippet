@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[echo JHtml::_('bootstrap.startAccordion', '${2:singular}Options', array('active' => 'collapse0'));
+	\$fieldSets = \$this->form->getFieldsets('${1:params}');
+	\$i         = 0;
+	foreach (\$fieldSets as \$name => \$fieldSet):
+		\$label = !empty(\$fieldSet->label) ? \$fieldSet->label : 'COM_${TM_COMPONENT/(.+)/\U\1/g}_' . \$name . '_FIELDSET_LABEL';
+		\$class = isset(\$fieldSet->class) && !empty(\$fieldSet->class) ? \$fieldSet->class : '';
+		echo JHtml::_('bootstrap.addSlide', '${2/(.+)/\L\1/g}Options', JText::_(\$label), 'collapse' . \$i++, \$class);
+			if (isset(\$fieldSet->description) && trim(\$fieldSet->description)):
+				echo '<p class="tip">' . \$this->escape(JText::_(\$fieldSet->description)) . '</p>';
+			endif;
+			foreach (\$this->form->getFieldset(\$name) as \$field): ?>
+				<div class="control-group">
+					<div class="control-label">
+						<?php echo \$field->label; ?>
+					</div>
+					<div class="controls">
+						<?php echo \$field->input; ?>
+					</div>
+				</div>
+			<?php endforeach;
+		echo JHtml::_('bootstrap.endSlide');
+	endforeach;
+echo JHtml::_('bootstrap.endAccordion');]]></content>
+	<tabTrigger>jadminlayoutedit_accordion</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

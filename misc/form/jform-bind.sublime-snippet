@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$form->bind(\$${1:data});]]></content>
+	<tabTrigger>jform-bind</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

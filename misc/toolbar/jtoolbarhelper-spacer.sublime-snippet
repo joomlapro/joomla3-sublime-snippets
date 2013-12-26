@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JToolbarHelper::spacer('${1:\$width}');]]></content>
+	<tabTrigger>jtoolbarhelper-spacer</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JResponse::setHeader('${1:name}', '${2:value}');]]></content>
+	<tabTrigger>jresponse-setheader</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

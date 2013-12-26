@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[// Detect disabled extension.
+\$extension = JTable::getInstance('Extension');
+
+if (\$extension->load(array('enabled' => 0, 'type' => '${1:template}', 'element' => \$${2:table}->${1/(.+)/\L\1/g}, 'client_id' => \$${2/(.+)/\L\1/g}->client_id)))
+{
+	throw new RuntimeException(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_SAVE_DISABLED_${TM_COMPONENT/(.+)/\U\1/g}'));
+}]]></content>
+	<tabTrigger>jcheckextension</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

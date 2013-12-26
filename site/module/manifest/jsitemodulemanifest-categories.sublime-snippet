@@ -1,0 +1,143 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<extension
+	version="$TM_VERSION"
+	type="module"
+	client="site"
+	method="upgrade">
+	<name>${1:${TM_FILENAME/(.*?)(\..+)/\L$1/}}</name>
+	<author>$TM_FULLNAME</author>
+	<creationDate>${2:$TM_MONTH} $TM_YEAR</creationDate>
+	<copyright>Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.</copyright>
+	<license>$TM_LICENSE</license>
+	<authorEmail>$TM_EMAIL</authorEmail>
+	<authorUrl>$TM_WEBSITE</authorUrl>
+	<version>$TM_MANIFEST_VERSION</version>
+	<description>${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
+	<scriptfile />
+	<files>
+		<filename module="${1/(.+)/\L\1/g}">${1/(.+)/\L\1/g}.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>${1/(.+)/\L\1/g}.xml</filename>
+		<folder>tmpl</folder>
+	</files>
+	<languages folder="language">
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.${1/(.+)/\L\1/g}.ini</language>
+		<language tag="$TM_LANGUAGE">$TM_LANGUAGE/$TM_LANGUAGE.${1/(.+)/\L\1/g}.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="parent"
+					type="category"
+					label="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_PARENT_LABEL"
+					description="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_PARENT_DESC"
+					extension="com_${TM_COMPONENT/(.+)/\L\1/g}"
+					published=""
+					show_root="true" />
+				<field
+					name="show_description"
+					type="radio"
+					class="btn-group"
+					label="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_SHOW_DESCRIPTION_LABEL"
+					description="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_SHOW_DESCRIPTION_DESC"
+					default="0">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+					name="show_children"
+					type="radio"
+					class="btn-group"
+					label="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_SHOW_CHILDREN_LABEL"
+					description="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_SHOW_CHILDREN_DESC"
+					default="0">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+					name="count"
+					type="list"
+					label="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_COUNT_LABEL"
+					description="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_COUNT_DESC"
+					default="0">
+					<option value="0">JALL</option>
+					<option value="1">J1</option>
+					<option value="2">J2</option>
+					<option value="3">J3</option>
+					<option value="4">J4</option>
+					<option value="5">J5</option>
+					<option value="6">J6</option>
+					<option value="7">J7</option>
+					<option value="8">J8</option>
+					<option value="9">J9</option>
+					<option value="10">J10</option>
+				</field>
+				<field
+					name="maxlevel"
+					type="list"
+					label="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_MAXLEVEL_LABEL"
+					description="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_FIELD_MAXLEVEL_DESC"
+					default="0">
+					<option value="0">JALL</option>
+					<option value="1">J1</option>
+					<option value="2">J2</option>
+					<option value="3">J3</option>
+					<option value="4">J4</option>
+					<option value="5">J5</option>
+					<option value="6">J6</option>
+					<option value="7">J7</option>
+					<option value="8">J8</option>
+					<option value="9">J9</option>
+					<option value="10">J10</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field
+					name="item_heading"
+					type="list"
+					label="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_TITLE_HEADING_LABEL"
+					description="MOD_${TM_COMPONENT/(.+)/\U\1/g}_CATEGORIES_TITLE_HEADING_DESC"
+					default="4">
+					<option value="1">JH1</option>
+					<option value="2">JH2</option>
+					<option value="3">JH3</option>
+					<option value="4">JH4</option>
+					<option value="5">JH5</option>
+				</field>
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field
+					name="owncache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC"
+					default="1">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+					name="cache_time"
+					type="text"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC"
+					default="900" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>
+
+]]></content>
+	<tabTrigger>jsitemodulemanifest-categories</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

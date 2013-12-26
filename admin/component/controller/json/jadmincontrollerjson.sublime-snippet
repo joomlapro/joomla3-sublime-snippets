@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g} JSON controller for ${TM_COMPONENT/(.+)/\u\1/g} Component.
+ *
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerLegacy
+{
+
+}
+
+]]></content>
+	<tabTrigger>jadmincontrollerjson</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

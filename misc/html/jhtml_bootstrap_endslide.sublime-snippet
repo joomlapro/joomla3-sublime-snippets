@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('bootstrap.endSlide');]]></content>
+	<tabTrigger>jhtml_bootstrap_endslide</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

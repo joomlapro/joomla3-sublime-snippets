@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[// Add ${2/(.+)/\L\1/g}.
+\$('#add-${2/(.+)/\L\1/g}').on('click', function(event) {
+	event.preventDefault();
+
+	var search = \$('#search-${2/(.+)/\L\1/g}').val(),
+		${2/(.+)/\L\1/g}_id = \$('#${2/(.+)/\L\1/g}-id').val();
+
+	if (search && ${2/(.+)/\L\1/g}_id) {
+		\$.ajax({
+			url: 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:controller}.add${2:Singular}Ajax&format=json',
+			type: 'POST',
+			data: {
+				${1/(.+)/\L\1/g}_id: '<?php echo \$this->item->id; ?>',
+				${2/(.+)/\L\1/g}_id: ${2/(.+)/\L\1/g}_id,
+				'<?php echo JSession::getFormToken(); ?>': 1
+			},
+			dataType: 'json',
+			success: function(data) {
+				if (data == null) {
+					return false;
+				}
+
+				\$("#${3:plural}_list").tmpl(data, {
+					returnPage: function() {
+						return '<?php echo \$return; ?>';
+					}
+				}).appendTo("#${3/(.+)/\L\1/g}_boddy");
+			}
+		});
+
+		\$('#search-${2/(.+)/\L\1/g}').val('');
+	}
+});]]></content>
+	<tabTrigger>jjquery_ajax_add</tabTrigger>
+	<scope>source.js</scope>
+</snippet>

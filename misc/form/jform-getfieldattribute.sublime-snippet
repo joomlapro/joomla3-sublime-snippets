@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$form->getFieldAttribute('${1:name}', '${2:attribute}', '${3:default}', ${4:group});]]></content>
+	<tabTrigger>jform-getfieldattribute</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

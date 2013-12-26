@@ -1,0 +1,216 @@
+<snippet>
+	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout
+		title="COM_${TM_COMPONENT/(.+)/\U\1/g}_ARCHIVE_VIEW_DEFAULT_TITLE"
+		option="COM_${TM_COMPONENT/(.+)/\U\1/g}_ARCHIVE_VIEW_DEFAULT_OPTION">
+		<message>
+			<![CDATA[COM_${TM_COMPONENT/(.+)/\U\1/g}_ARCHIVE_VIEW_DEFAULT_DESC]${-1}]>
+		</message>
+	</layout>
+	<!-- Add fields to the parameters object for the layout. -->
+	<fields name="params">
+		<!-- Basic options. -->
+		<fieldset
+			name="basic"
+			label="JGLOBAL_ARCHIVE_OPTIONS">
+			<field
+				name="orderby_sec"
+				type="list"
+				label="COM_${TM_COMPONENT/(.+)/\I\1/g}_FIELD_${2/(.+)/\U\1/g}_ORDER_LABEL"
+				description="COM_${TM_COMPONENT/(.+)/\I\1/g}_FIELD_${2/(.+)/\U\1/g}_ORDER_DESC"
+				default="alpha">
+				<option value="date">JGLOBAL_OLDEST_FIRST</option>
+				<option value="rdate">JGLOBAL_MOST_RECENT_FIRST</option>
+				<option value="alpha">JGLOBAL_TITLE_ALPHABETICAL</option>
+				<option value="ralpha">JGLOBAL_TITLE_REVERSE_ALPHABETICAL</option>
+				<option value="author">JGLOBAL_AUTHOR_ALPHABETICAL</option>
+				<option value="rauthor">JGLOBAL_AUTHOR_REVERSE_ALPHABETICAL</option>
+				<option value="hits">JGLOBAL_MOST_HITS</option>
+				<option value="rhits">JGLOBAL_LEAST_HITS</option>
+				<option value="order">JGLOBAL_ARTICLE_MANAGER_ORDER</option>
+			</field>
+			<field
+				name="order_date"
+				type="list"
+				label="JGLOBAL_ORDERING_DATE_LABEL"
+				description="JGLOBAL_ORDERING_DATE_DESC"
+				default="created">
+				<option value="created">JGLOBAL_Created</option>
+				<option value="modified">JGLOBAL_Modified</option>
+				<option value="published">JPUBLISHED</option>
+			</field>
+			<field
+				name="display_num"
+				type="list"
+				label="JGLOBAL_NUMBER_ITEMS_LIST_LABEL"
+				description="JGLOBAL_NUMBER_ITEMS_LIST_DESC"
+				default="5">
+				<option value="5">J5</option>
+				<option value="10">J10</option>
+				<option value="15">J15</option>
+				<option value="20">J20</option>
+				<option value="25">J25</option>
+				<option value="30">J30</option>
+				<option value="50">J50</option>
+				<option value="100">J100</option>
+				<option value="0">JALL</option>
+			</field>
+			<field
+				name="filter_field"
+				type="list"
+				label="JGLOBAL_FILTER_FIELD_LABEL"
+				description="JGLOBAL_FILTER_FIELD_DESC"
+				default="">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="hide">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="introtext_limit"
+				type="text"
+				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ARCHIVE_${1/(.+)/\U\1/g}_INTROTEXTLIMIT_LABEL"
+				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_ARCHIVE_${1/(.+)/\U\1/g}_INTROTEXTLIMIT_DESC"
+				default="100" />
+		</fieldset>
+		<!-- ${1/(.+)/\u\1/g} options. -->
+		<fieldset
+			name="${1:plural}"
+			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}_SETTINGS_LABEL">
+			<field
+				name="show_intro"
+				type="list"
+				label="JGLOBAL_SHOW_INTRO_LABEL"
+				description="JGLOBAL_SHOW_INTRO_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="info_block_position"
+				type="list"
+				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_LABEL"
+				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_DESC"
+				default="">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="use_${2:singular}">COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_USE_${2/(.+)/\U\1/g}_SETTINGS</option>
+				<option value="0">COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_ABOVE</option>
+				<option value="1">COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_BELOW</option>
+				<option value="2">COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_SPLIT</option>
+			</field>
+			<field
+				name="show_category"
+				type="list"
+				label="JGLOBAL_SHOW_CATEGORY_LABEL"
+				description="JGLOBAL_SHOW_CATEGORY_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="link_category"
+				type="list"
+				label="JGLOBAL_LINK_CATEGORY_LABEL"
+				description="JGLOBAL_LINK_CATEGORY_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JNo</option>
+				<option value="1">JYes</option>
+			</field>
+			<field
+				name="show_parent_category"
+				type="list"
+				label="JGLOBAL_SHOW_PARENT_CATEGORY_LABEL"
+				description="JGLOBAL_SHOW_PARENT_CATEGORY_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="link_parent_category"
+				type="list"
+				label="JGLOBAL_LINK_PARENT_CATEGORY_LABEL"
+				description="JGLOBAL_LINK_PARENT_CATEGORY_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="link_titles"
+				type="list"
+				label="JGLOBAL_LINKED_TITLES_LABEL"
+				description="JGLOBAL_LINKED_TITLES_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="show_author"
+				type="list"
+				label="JGLOBAL_SHOW_AUTHOR_LABEL"
+				description="JGLOBAL_SHOW_AUTHOR_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="link_author"
+				type="list"
+				label="JGLOBAL_LINK_AUTHOR_LABEL"
+				description="JGLOBAL_LINK_AUTHOR_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+			</field>
+			<field
+				name="show_create_date"
+				type="list"
+				label="JGLOBAL_SHOW_CREATE_DATE_LABEL"
+				description="JGLOBAL_SHOW_CREATE_DATE_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="show_modify_date"
+				type="list"
+				label="JGLOBAL_SHOW_MODIFY_DATE_LABEL"
+				description="JGLOBAL_SHOW_MODIFY_DATE_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="show_publish_date"
+				type="list"
+				label="JGLOBAL_SHOW_PUBLISH_DATE_LABEL"
+				description="JGLOBAL_SHOW_PUBLISH_DATE_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="show_item_navigation"
+				type="list"
+				label="JGLOBAL_SHOW_NAVIGATION_LABEL"
+				description="JGLOBAL_SHOW_NAVIGATION_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			<field
+				name="show_hits"
+				type="list"
+				label="JGLOBAL_SHOW_HITS_LABEL"
+				description="JGLOBAL_SHOW_HITS_DESC">
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+		</fieldset>
+	</fields>
+</metadata>
+
+]]></content>
+	<tabTrigger>jsitemenuarchive</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

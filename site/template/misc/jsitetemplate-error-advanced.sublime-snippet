@@ -1,0 +1,97 @@
+<snippet>
+	<content><![CDATA[jimport('joomla.environment.browser');
+
+// Initialiase variables.
+\$app          = JFactory::getApplication();
+\$browser      = JBrowser::getInstance();
+\$doc          = JFactory::getDocument();
+
+// Detecting Active Variables.
+\$sitename     = \$app->getCfg('sitename');
+
+// Template Fixes.
+\$doc->_tab    = '	';
+\$doc->title   = \$this->error->getCode() . ' -  ' . htmlspecialchars(\$this->error->getMessage());
+
+// Define path.
+\$path         = \$this->baseurl . '/templates/' . \$this->template;
+
+// Get the template params.
+\$doc->params = \$app->getTemplate(true)->params;
+
+// Add JavaScript Frameworks.
+JHtml::_('bootstrap.framework');
+
+// Load optional rtl Bootstrap css and Bootstrap bugfixes.
+JHtmlBootstrap::loadCss(false, \$doc->direction);
+
+// Add Stylesheet.
+\$doc->addStyleSheet(\$path . '/css/jui/bootstrap.min.css');
+\$doc->addStyleSheet(\$path . '/css/template.css');
+\$doc->addStyleSheet(\$path . '/css/error.css');
+
+// Load additional CSS styles for rtl sites.
+if (\$doc->direction == 'rtl')
+{
+	\$doc->addsTylesHeet(\$path . '/css/template_rtl.css');
+	\$doc->addsTylesHeet(\$path . '/css/error_rtl.css');
+}
+
+if (JDEBUG || \$app->getCfg('debug_lang'))
+{
+	\$doc->addsTylesHeet(\$this->baseur . '/media/cms/css/debug.css');
+}
+
+// Load Google Fonts.
+\$doc->addsTylesHeet('http://fonts.googleapis.com/css?family=' . \$doc->params->get('font', 'Open+Sans:400,600,400italic,700,300,800'));
+
+// IE Fixes.
+if (\$browser->getBrowser() == 'msie' && intval(\$browser->getMajor()) <= 9)
+{
+	\$doc->addsTylesHeet(\$path . '/css/ie.css');
+}
+
+// Set MetaData.
+if (\$browser->getBrowser() == 'msie')
+{
+	\$doc->setMetaData('X-UA-Compatible', 'IE=edge,chrome=1', true);
+
+	JResponse::setHeader('X-UA-Compatible', 'IE=edge,chrome=1');
+}
+
+\$doc->setMetaData('viewport', 'width=device-width, initial-scale=1.0', false);
+
+if (\$browser->getBrowser() == 'msie' && intval(\$browser->getMajor()) <= 8)
+{
+	\$doc->addScript(\$path . '/js/vendor/selectivizr.min.js');
+	\$doc->addScript(\$path . '/js/vendor/excanvas.min.js');
+	\$doc->addScript(\$path . '/js/vendor/respond.min.js');
+}
+
+\$doc->addScript(\$path . '/js/vendor/modernizr.min.js');
+
+if (\$browser->isMobile())
+{
+	// Apple Touch Icon.
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon.png', 'apple-touch-icon');
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon-57x57.png', 'apple-touch-icon', 'rel', array('sizes' => '57x57'));
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon-72x72.png', 'apple-touch-icon', 'rel', array('sizes' => '72x72'));
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon-114x114.png', 'apple-touch-icon', 'rel', array('sizes' => '114x114'));
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon-144x144.png', 'apple-touch-icon', 'rel', array('sizes' => '144x144'));
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon-60x60.png', 'apple-touch-icon', 'rel', array('sizes' => '57x57'));
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon-120x120.png', 'apple-touch-icon', 'rel', array('sizes' => '72x72'));
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon-76x76.png', 'apple-touch-icon', 'rel', array('sizes' => '114x114'));
+	\$doc->addHeadLink(\$path . '/images/icon/apple-touch-icon-152x152.png', 'apple-touch-icon', 'rel', array('sizes' => '144x144'));
+}
+
+// Add Favicon.
+\$doc->addFavicon(\$doc->params->get('favicon', \$path . '/images/favicon.ico'));
+
+if (!isset(\$this->error))
+{
+	\$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+	\$this->debug = false;
+}]]></content>
+	<tabTrigger>jsitetemplate-error-advanced</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

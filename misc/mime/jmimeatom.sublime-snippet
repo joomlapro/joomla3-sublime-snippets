@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Use the correct atom mime-type.
+header('Content-Type: application/atom+xml');]]></content>
+	<tabTrigger>jmimeatom</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

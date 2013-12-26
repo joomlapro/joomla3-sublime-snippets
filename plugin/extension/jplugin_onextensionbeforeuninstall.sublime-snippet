@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[/**
+ * @param   integer  \$eid  extension id
+ *
+ * @return  string
+ *
+ * @since   $TM_VERSION
+ */
+function onExtensionBeforeUninstall(\$eid)
+{
+	throw new RuntimeException('plgExtensionExample::onExtensionBeforeUninstall: Uninstalling ' . \$eid, -1);
+}
+
+]]></content>
+	<tabTrigger>jplugin_onextensionbeforeuninstall</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,34 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${1/(.+)/\u\1/g}
+ *
+ * @param   object  \$module    The module data.
+ * @param   object  &\$params   The module params.
+ * @param   array   &\$attribs  The module attribs.
+ *
+ * @return  string
+ */
+function modChrome_${1:style}(\$module, &\$params, &\$attribs)
+{
+	// Initialiase variables.
+	\$content        = trim(\$module->content);
+	\$moduleClassSfx = htmlspecialchars(\$params->get('moduleclass_sfx'));
+
+	if (!empty (\$content))
+	{
+		\$html = "<div class=\"module{\$moduleClassSfx}\">";
+
+		if ((bool) \$module->showtitle)
+		{
+			\$html .= "<h3>{\$module->title}</h3>";
+		}
+
+		\$html .= \$content;
+		\$html .= "</div>";
+
+		echo \$html;
+	}
+}]]></content>
+	<tabTrigger>jsitetemplate-modules_xhtml</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[// Parameters to be passed to the database driver.
+\$option = array();
+
+\$option['driver']   = '${1:mysql}';
+\$option['host']     = '${2:localhost}';
+\$option['user']     = '${3:root}';
+\$option['password'] = '${4:root}';
+\$option['database'] = '${5:database}';
+\$option['prefix']   = '${6:jos_}';
+
+// Initialiase variables.
+\$db    = JDatabaseDriver::getInstance(\$option);
+\$query = \$db->getQuery(true);
+
+// Create the base select statement.
+\$query->select('a.*')
+	->from(\$db->quoteName('#__${7:table}') . ' AS a')
+	->where(\$db->quoteName('a.state') . ' = ' . \$db->quote('1'))
+	->order(\$db->quoteName('a.ordering') . ' ' . \$db->quote('ASC'));
+
+// Set the query and load the result.
+\$db->setQuery(\$query);
+
+try
+{
+	\$result = \$db->loadObjectList();
+}
+catch (RuntimeException \$e)
+{
+	JError::raiseWarning(500, \$e->getMessage());
+}]]></content>
+	<tabTrigger>jdbo-external</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[// Load the tabstate behavior script.
+JHtml::_('behavior.tabstate');]]></content>
+	<tabTrigger>jhtml_behavior_tabstate</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

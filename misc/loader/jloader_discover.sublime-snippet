@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JLoader::discover('${1:Mylib}', JPATH_${2:LIBRARIES} . '/${3:${1/(.+)/\L\1/g}}');]]></content>
+	<tabTrigger>jloader_discover</tabTrigger>
+	<scope>source.php</scope>
+</snippet>
