@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * View class for a list of ${1/(.+)/\L\1/g}.
+ * View class for a list of ${2/(.+)/\L\1/g}.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Users} extends JViewLegacy
+class ${1:${TM_COMPONENT/(.+)/\u\1/g}}View${2:Users} extends JViewLegacy
 {
 	/**
 	 * Model state object.
@@ -79,7 +79,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Users} extends JViewLegacy
 		if (\$this->getLayout() !== 'modal')
 		{
 			// Load the submenu.
-			${TM_COMPONENT/(.+)/\u\1/g}Helper::addSubmenu('${1/(.+)/\L\1/g}');
+			${1/(.+)/\u\1/g}Helper::addSubmenu('${2/(.+)/\L\1/g}');
 
 			\$this->addToolbar();
 			\$this->sidebar = JHtmlSidebar::render();
@@ -98,33 +98,33 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Users} extends JViewLegacy
 	protected function addToolbar()
 	{
 		// Initialise variables.
-		\$canDo = ${1/(.+)/\u\1/g}Helper::getActions();
+		\$canDo = ${2/(.+)/\u\1/g}Helper::getActions();
 		\$user  = JFactory::getUser();
 
 		// Get the toolbar object instance.
 		\$bar   = JToolBar::getInstance('toolbar');
 
-		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_MANAGER_${1/(.+)/\U\1/g}_TITLE'), '${1/(.+)/\L\1/g}');
+		JToolbarHelper::title(JText::_('COM_${1/(.+)/\U\1/g}_MANAGER_${2/(.+)/\U\1/g}_TITLE'), '${2/(.+)/\L\1/g}');
 
 		if (\$canDo->get('core.create'))
 		{
-			JToolbarHelper::addNew('${2:${1/(.+)(s\b)/\L\1/g}}.add');
+			JToolbarHelper::addNew('${3:${2/(.+)(s\b)/\L\1/g}}.add');
 		}
 		if (\$canDo->get('core.edit'))
 		{
-			JToolbarHelper::editList('${2/(.+)/\L\1/g}.edit');
+			JToolbarHelper::editList('${3/(.+)/\L\1/g}.edit');
 		}
 
 		if (\$canDo->get('core.edit.state'))
 		{
-			JToolbarHelper::publish('${1/(.+)/\L\1/g}.activate', 'COM_USERS_TOOLBAR_ACTIVATE', true);
-			JToolbarHelper::unpublish('${1/(.+)/\L\1/g}.block', 'COM_USERS_TOOLBAR_BLOCK', true);
-			JToolbarHelper::custom('${1/(.+)/\L\1/g}.unblock', 'unblock.png', 'unblock_f2.png', 'COM_USERS_TOOLBAR_UNBLOCK', true);
+			JToolbarHelper::publish('${2/(.+)/\L\1/g}.activate', 'COM_USERS_TOOLBAR_ACTIVATE', true);
+			JToolbarHelper::unpublish('${2/(.+)/\L\1/g}.block', 'COM_USERS_TOOLBAR_BLOCK', true);
+			JToolbarHelper::custom('${2/(.+)/\L\1/g}.unblock', 'unblock.png', 'unblock_f2.png', 'COM_USERS_TOOLBAR_UNBLOCK', true);
 		}
 
 		if (\$canDo->get('core.delete'))
 		{
-			JToolbarHelper::deleteList('', '${1/(.+)/\L\1/g}.delete');
+			JToolbarHelper::deleteList('', '${2/(.+)/\L\1/g}.delete');
 		}
 
 		// Add a batch button.
@@ -140,14 +140,14 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Users} extends JViewLegacy
 			\$bar->appendButton('Custom', \$dhtml, 'batch');
 		}
 
-		if (\$user->authorise('core.admin', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+		if (\$user->authorise('core.admin', 'com_${1/(.+)/\L\1/g}'))
 		{
-			JToolbarHelper::preferences('com_${TM_COMPONENT/(.+)/\L\1/g}');
+			JToolbarHelper::preferences('com_${1/(.+)/\L\1/g}');
 		}
 
-		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
+		JToolBarHelper::help('${2/(.+)/\L\1/g}', \$com = true);
 
-		JHtmlSidebar::setAction('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+		JHtmlSidebar::setAction('index.php?option=com_${1/(.+)/\L\1/g}&view=${2/(.+)/\L\1/g}');
 
 		JHtmlSidebar::addFilter(
 			JText::_('COM_USERS_FILTER_STATE'),
