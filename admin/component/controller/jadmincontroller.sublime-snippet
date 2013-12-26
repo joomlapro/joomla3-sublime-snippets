@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * ${TM_COMPONENT/(.+)/\u\1/g} Component Controller.
+ * ${1/(.+)/\u\1/g} Component Controller.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Controller extends JControllerLegacy
+class ${1:${TM_COMPONENT/(.+)/\u\1/g}}Controller extends JControllerLegacy
 {
 	/**
 	 * The default view.
@@ -15,7 +15,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller extends JControllerLegacy
 	 * @var     string
 	 * @since   $TM_VERSION
 	 */
-	protected \$default_view = '${1:plural}';
+	protected \$default_view = '${2:plural}';
 
 	/**
 	 * Method to display a view.
@@ -35,12 +35,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller extends JControllerLegacy
 		\$id     = \$this->input->getInt('id');
 
 		// Check for edit form.
-		if (\$view == '${2/(.+)/\L\1/g}' && \$layout == 'edit' && !\$this->checkEditId('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${2:singular}', \$id))
+		if (\$view == '${3/(.+)/\L\1/g}' && \$layout == 'edit' && !\$this->checkEditId('com_${1/(.+)/\L\1/g}.edit.${3:${2/(.+)(s\b)/\L\1/g}}', \$id))
 		{
 			// Somehow the person just went to the form - we do not allow that.
 			\$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', \$id));
 			\$this->setMessage(\$this->getError(), 'error');
-			\$this->setRedirect(JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}', false));
+			\$this->setRedirect(JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&view=${2/(.+)/\L\1/g}', false));
 
 			return false;
 		}

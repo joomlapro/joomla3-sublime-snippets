@@ -3,17 +3,17 @@
 JHtml::_('behavior.tabstate');
 
 // Access check.
-if (!JFactory::getUser()->authorise('core.manage', 'com_${TM_COMPONENT/(.+)/\L\1/g}'))
+if (!JFactory::getUser()->authorise('core.manage', 'com_${1:${TM_COMPONENT/(.+)/\L\1/g}}'))
 {
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 }
 
 // Register dependent classes.
-JLoader::register('${TM_COMPONENT/(.+)/\u\1/g}Helper', __DIR__ . '/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php');
-JLoader::register('${1/(.+)/\u\1/g}Helper', __DIR__ . '/helpers/${1:plural}.php');
+JLoader::register('${1/(.+)/\u\1/g}Helper', __DIR__ . '/helpers/${1/(.+)/\L\1/g}.php');
+JLoader::register('${2/(.+)/\u\1/g}Helper', __DIR__ . '/helpers/${2:plural}.php');
 
 // Execute the task.
-\$controller = JControllerLegacy::getInstance('${TM_COMPONENT/(.+)/\u\1/g}');
+\$controller = JControllerLegacy::getInstance('${1/(.+)/\u\1/g}');
 \$controller->execute(JFactory::getApplication()->input->get('task'));
 \$controller->redirect();
 
