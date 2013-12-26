@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * Methods supporting a list of ${2:${1/(.+)(s\b)/\L\1/g}} records.
+ * Methods supporting a list of ${3:${2/(.+)(s\b)/\L\1/g}} records.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1/(.+)/\L\1/g}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelList
+class ${1:${TM_COMPONENT/(.+)/\u\1/g}}Model${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelList
 {
 	/**
 	 * Constructor.
@@ -23,7 +23,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		{
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
-				'${3:title}', 'a.${3/(.+)/\L\1/g}',
+				'${4:title}', 'a.${4/(.+)/\L\1/g}',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
 				'state', 'a.state',
@@ -72,7 +72,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$this->setState('filter.state', \$published);
 
 		// List state information.
-		parent::populateState('a.${3/(.+)/\L\1/g}', 'asc');
+		parent::populateState('a.${4/(.+)/\L\1/g}', 'asc');
 	}
 
 	/**
@@ -116,11 +116,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		\$query->select(
 			\$this->getState(
 				'list.select',
-				'a.id, a.${3/(.+)/\L\1/g}, a.checked_out, a.checked_out_time' .
+				'a.id, a.${4/(.+)/\L\1/g}, a.checked_out, a.checked_out_time' .
 					', a.state, a.ordering, a.created, a.created_by, a.created_by_alias'
 			)
 		);
-		\$query->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a');
+		\$query->from(\$db->quoteName('#__${1/(.+)/\L\1/g}${5:_${2/(.+)/\L\1/g}}') . ' AS a');
 
 		// Join over the users for the checked out user.
 		\$query->select('uc.name AS editor')
@@ -151,7 +151,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$query->where('a.created_by ' . \$type . (int) \$authorId);
 		}
 
-		// Filter by search in ${3/(.+)/\L\1/g}.
+		// Filter by search in ${4/(.+)/\L\1/g}.
 		\$search = \$this->getState('filter.search');
 
 		if (!empty(\$search))
@@ -168,12 +168,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			else
 			{
 				\$search = \$db->quote('%' . \$db->escape(\$search, true) . '%');
-				\$query->where('(a.${3/(.+)/\L\1/g} LIKE ' . \$search . ')');
+				\$query->where('(a.${4/(.+)/\L\1/g} LIKE ' . \$search . ')');
 			}
 		}
 
 		// Add the list ordering clause.
-		\$orderCol  = \$this->state->get('list.ordering', 'a.${3/(.+)/\L\1/g}');
+		\$orderCol  = \$this->state->get('list.ordering', 'a.${4/(.+)/\L\1/g}');
 		\$orderDirn = \$this->state->get('list.direction', 'asc');
 
 		\$query->order(\$db->escape(\$orderCol . ' ' . \$orderDirn));
@@ -197,7 +197,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Construct the query.
 		\$query->select('u.id AS value, u.name AS text')
 			->from(\$db->quoteName('#__users') . ' AS u')
-			->join('INNER', \$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}') . ' AS c ON c.created_by = u.id')
+			->join('INNER', \$db->quoteName('#__${1/(.+)/\L\1/g}${5/(.+)/\L\1/g}') . ' AS c ON c.created_by = u.id')
 			->group(\$db->quoteName(array('u.id', 'u.name')))
 			->order(\$db->quoteName('u.name'));
 

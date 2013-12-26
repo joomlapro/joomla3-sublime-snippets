@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset addrulepath="/administrator/components/com_${TM_COMPONENT/(.+)/\L\1/g}/models/rules">
+	<fieldset addrulepath="/administrator/components/com_${1:${TM_COMPONENT/(.+)/\L\1/g}}/models/rules">
 		<field
 			name="id"
 			type="text"
@@ -16,7 +16,7 @@
 			type="hidden"
 			filter="unset" />
 		<field
-			name="${1:title}"
+			name="${2:title}"
 			type="text"
 			class="inputbox input-xxlarge input-large-text"
 			label="JGLOBAL_TITLE"
@@ -42,8 +42,8 @@
 			name="description"
 			type="editor"
 			class="inputbox"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DESCRIPTION_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_DESCRIPTION_DESC"
 			filter="JComponentHelper::filterText"
 			buttons="true" />
 		<field
@@ -76,29 +76,29 @@
 			name="created"
 			type="calendar"
 			class="inputbox"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CREATED_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CREATED_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_CREATED_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_CREATED_DESC"
 			size="22"
 			format="%Y-%m-%d %H:%M:%S"
 			filter="user_utc" />
 		<field
 			name="created_by"
 			type="user"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CREATED_BY_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CREATED_BY_DESC" />
+			label="COM_${1/(.+)/\U\1/g}_FIELD_CREATED_BY_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_CREATED_BY_DESC" />
 		<field
 			name="created_by_alias"
 			type="text"
 			class="inputbox"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CREATED_BY_ALIAS_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_CREATED_BY_ALIAS_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_CREATED_BY_ALIAS_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_CREATED_BY_ALIAS_DESC"
 			size="20" />
 		<field
 			name="modified"
 			type="calendar"
 			class="readonly"
 			label="JGLOBAL_FIELD_MODIFIED_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_MODIFIED_DESC"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_MODIFIED_DESC"
 			size="22"
 			readonly="true"
 			format="%Y-%m-%d %H:%M:%S"
@@ -122,8 +122,8 @@
 			name="publish_up"
 			type="calendar"
 			class="inputbox"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PUBLISH_UP_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PUBLISH_UP_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_PUBLISH_UP_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_PUBLISH_UP_DESC"
 			format="%Y-%m-%d %H:%M:%S"
 			size="22"
 			filter="user_utc" />
@@ -131,8 +131,8 @@
 			name="publish_down"
 			type="calendar"
 			class="inputbox"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PUBLISH_DOWN_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_PUBLISH_DOWN_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_PUBLISH_DOWN_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_PUBLISH_DOWN_DESC"
 			format="%Y-%m-%d %H:%M:%S"
 			size="22"
 			filter="user_utc" />
@@ -140,8 +140,8 @@
 			name="version"
 			type="text"
 			class="readonly"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_VERSION_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_VERSION_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_VERSION_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_VERSION_DESC"
 			size="6"
 			readonly="true"
 			filter="unset" />
@@ -180,7 +180,7 @@
 			type="text"
 			class="readonly"
 			label="JGLOBAL_HITS"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_HITS_DESC"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_HITS_DESC"
 			size="6"
 			readonly="true"
 			filter="unset" />
@@ -188,7 +188,7 @@
 			name="language"
 			type="contentlanguage"
 			label="JFIELD_LANGUAGE_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_LANGUAGE_DESC">
+			description="COM_${1/(.+)/\U\1/g}_FIELD_LANGUAGE_DESC">
 			<option value="*">JALL</option>
 		</field>
 		<field
@@ -198,16 +198,16 @@
 			label="JFIELD_RULES_LABEL"
 			translate_label="false"
 			filter="rules"
-			component="com_${TM_COMPONENT/(.+)/\L\1/g}"
-			section="${2:${TM_FILENAME/(.*?)(\..+)/\L$1/}}"
+			component="com_${1/(.+)/\L\1/g}"
+			section="${3:${TM_FILENAME/(.*?)(\..+)/\L$1/}}"
 			validate="rules" />
 	</fieldset>
 	<fields
 		name="params"
-		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_PARAMS_LABEL">
+		label="COM_${1/(.+)/\U\1/g}_FIELDSET_PARAMS_LABEL">
 		<fieldset
 			name="jbasic"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_PARAMS_LABEL">
+			label="COM_${1/(.+)/\U\1/g}_FIELDSET_PARAMS_LABEL">
 			<field
 				name="show_title"
 				type="list"
@@ -232,8 +232,8 @@
 				name="show_tags"
 				type="list"
 				class="chzn-color"
-				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_TAGS_LABEL"
-				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_TAGS_DESC">
+				label="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_TAGS_LABEL"
+				description="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_TAGS_DESC">
 				<option value="">JGLOBAL_USE_GLOBAL</option>
 				<option value="1">JSHOW</option>
 				<option value="0">JHIDE</option>
@@ -251,13 +251,13 @@
 			<field
 				name="info_block_position"
 				type="list"
-				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_LABEL"
-				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_DESC"
+				label="COM_${1/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_LABEL"
+				description="COM_${1/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_DESC"
 				default="">
 				<option value="">JGLOBAL_USE_GLOBAL</option>
-				<option value="0">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_ABOVE</option>
-				<option value="1">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_BELOW</option>
-				<option value="2">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_SPLIT</option>
+				<option value="0">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_ABOVE</option>
+				<option value="1">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_BELOW</option>
+				<option value="2">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_SPLIT</option>
 			</field>
 			<field
 				name="show_author"
@@ -391,34 +391,34 @@
 				description="JFIELD_READMORE_DESC"
 				size="25" />
 			<field
-				name="${2/(.+)/\L\1/g}_layout"
+				name="${3/(.+)/\L\1/g}_layout"
 				type="componentlayout"
 				label="JFIELD_ALT_LAYOUT_LABEL"
 				description="JFIELD_ALT_COMPONENT_LAYOUT_DESC"
 				useglobal="true"
-				extension="com_${TM_COMPONENT/(.+)/\L\1/g}"
-				view="${2/(.+)/\L\1/g}" />
+				extension="com_${1/(.+)/\L\1/g}"
+				view="${3/(.+)/\L\1/g}" />
 		</fieldset>
 		<fieldset
 			name="editorConfig"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_EDITORCONFIG_LABEL">
+			label="COM_${1/(.+)/\U\1/g}_FIELDSET_EDITORCONFIG_LABEL">
 			<field
 				name="show_publishing_options"
 				type="list"
 				class="chzn-color"
-				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_LABEL"
-				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_DESC"
+				label="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_LABEL"
+				description="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_DESC"
 				default="">
 				<option value="">JGLOBAL_USE_GLOBAL</option>
 				<option value="0">JNO</option>
 				<option value="1">JYES</option>
 			</field>
 			<field
-				name="show_${2/(.+)/\L\1/g}_options"
+				name="show_${3/(.+)/\L\1/g}_options"
 				type="list"
 				class="chzn-color"
-				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${2/(.+)/\U\1/g}_OPTIONS_LABEL"
-				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${2/(.+)/\U\1/g}_OPTIONS_DESC"
+				label="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_${3/(.+)/\U\1/g}_OPTIONS_LABEL"
+				description="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_${3/(.+)/\U\1/g}_OPTIONS_DESC"
 				default="">
 				<option value="">JGLOBAL_USE_GLOBAL</option>
 				<option value="0">JNO</option>
@@ -427,7 +427,7 @@
 		</fieldset>
 		<fieldset
 			name="basic-limited"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_ATTRIBS_LABEL">
+			label="COM_${1/(.+)/\U\1/g}_FIELDSET_ATTRIBS_LABEL">
 			<field
 				name="show_title"
 				type="hidden"
@@ -526,13 +526,13 @@
 				description="JFIELD_READMORE_DESC"
 				size="25" />
 			<field
-				name="${2/(.+)/\L\1/g}_layout"
+				name="${3/(.+)/\L\1/g}_layout"
 				type="hidden"
 				label="JFIELD_ALT_LAYOUT_LABEL"
 				description="JFIELD_ALT_COMPONENT_LAYOUT_DESC"
 				useglobal="true"
-				extension="com_${TM_COMPONENT/(.+)/\L\1/g}"
-				view="${2/(.+)/\L\1/g}" />
+				extension="com_${1/(.+)/\L\1/g}"
+				view="${3/(.+)/\L\1/g}" />
 		</fieldset>
 	</fields>
 	<field
@@ -578,8 +578,8 @@
 				name="xreference"
 				type="text"
 				class="inputbox"
-				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_LABEL"
-				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_DESC"
+				label="COM_${1/(.+)/\U\1/g}_FIELD_XREFERENCE_LABEL"
+				description="COM_${1/(.+)/\U\1/g}_FIELD_XREFERENCE_DESC"
 				size="20" />
 		</fieldset>
 	</fields>
