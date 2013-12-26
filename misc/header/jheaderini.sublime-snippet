@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[; ${1:Hello}
+	<content><![CDATA[; ${1:${TM_COMPONENT/(.+)/\u\1/g}}
 ; Author $TM_FULLNAME <$TM_EMAIL>
 ; Copyright (C) $TM_YEAR $TM_ORGANIZATION_NAME. All rights reserved.
 ; License $TM_LICENSE
