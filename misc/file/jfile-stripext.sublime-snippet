@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JFile::stripExt(${1:\$file});]]></content>
+	<tabTrigger>jfile-stripext</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

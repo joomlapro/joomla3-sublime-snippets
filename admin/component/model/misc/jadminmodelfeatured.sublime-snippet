@@ -1,23 +1,23 @@
 	<snippet>
 	<content><![CDATA[// Load dependent classes.
-require_once __DIR__ . '/${2:plural}.php';
+require_once __DIR__ . '/${3:plural}.php';
 
 /**
- * ${1/(.+)/\u\1/g} Model.
+ * ${2/(.+)/\u\1/g} Model.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
+class ${1/(.+)/\u\1/g}Model${2:Featured} extends ${1/(.+)/\u\1/g}Model${3/(.+)/\u\1/g}
 {
 	/**
 	 * Constructor.
 	 *
 	 * @param   array  \$config  An optional associative array of configuration settings.
 	 *
-	 * @see     ${TM_COMPONENT/(.+)/\u\1/g}Model${2/(.+)/\u\1/g}
+	 * @see     ${1/(.+)/\u\1/g}Model${3/(.+)/\u\1/g}
 	 * @since   $TM_VERSION
 	 */
 	public function __construct(\$config = array())
@@ -26,7 +26,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 		{
 			\$config['filter_fields'] = array(
 				'id', 'a.id',
-				'${3:title}', 'a.${3/(.+)/\L\1/g}',
+				'${4:title}', 'a.${4/(.+)/\L\1/g}',
 				'alias', 'a.alias',
 				'checked_out', 'a.checked_out',
 				'checked_out_time', 'a.checked_out_time',
@@ -72,12 +72,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 		\$query->select(
 			\$this->getState(
 				'list.select',
-				'a.id, a.catid, a.${3/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time' .
+				'a.id, a.catid, a.${4/(.+)/\L\1/g}, a.alias, a.checked_out, a.checked_out_time' .
 					', a.state, a.access, a.language, a.created, a.created_by_alias, a.hits' .
 					', a.publish_up, a.publish_down, a.featured'
 			)
 		);
-		\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${2/(.+)/\L\1/g}} AS a');
+		\$query->from('#__${1/(.+)/\L\1/g}${5:_${3/(.+)/\L\1/g}} AS a');
 
 		// Join over the language.
 		\$query->select('l.title AS language_title')
@@ -85,7 +85,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 
 		// Join over the content table.
 		\$query->select('fp.ordering')
-			->join('INNER', '#__${TM_COMPONENT/(.+)/\L\1/g}${4/(.+)/\L\1/g}_frontpage AS fp ON fp.${5:${2/(.+)(s\b)/\L\1/g}}_id = a.id');
+			->join('INNER', '#__${1/(.+)/\L\1/g}${5/(.+)/\L\1/g}_frontpage AS fp ON fp.${6:${3/(.+)(s\b)/\L\1/g}}_id = a.id');
 
 		// Join over the users for the checked out user.
 		\$query->select('uc.name AS editor')
@@ -157,7 +157,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 			\$query->where('a.created_by ' . \$type . (int) \$authorId);
 		}
 
-		// Filter by search in ${3/(.+)/\L\1/g}.
+		// Filter by search in ${4/(.+)/\L\1/g}.
 		\$search = \$this->getState('filter.search');
 
 		if (!empty(\$search))
@@ -169,7 +169,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 			else
 			{
 				\$search = \$db->quote('%' . \$db->escape(\$search, true) . '%');
-				\$query->where('a.${3/(.+)/\L\1/g} LIKE ' . \$search . ' OR a.alias LIKE ' . \$search);
+				\$query->where('a.${4/(.+)/\L\1/g} LIKE ' . \$search . ' OR a.alias LIKE ' . \$search);
 			}
 		}
 
@@ -193,7 +193,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:Featured} extends ${TM_COMPONENT/(.+)/
 		}
 
 		// Add the list ordering clause.
-		\$query->order(\$db->escape(\$this->getState('list.ordering', 'a.${3/(.+)/\L\1/g}')) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
+		\$query->order(\$db->escape(\$this->getState('list.ordering', 'a.${4/(.+)/\L\1/g}')) . ' ' . \$db->escape(\$this->getState('list.direction', 'ASC')));
 
 		return \$query;
 	}

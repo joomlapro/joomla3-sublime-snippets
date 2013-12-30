@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * ${1/(.+)/\u\1/g} Table class.
+ * ${2/(.+)/\u\1/g} Table class.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JTable
+class ${1/(.+)/\u\1/g}Table${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JTable
 {
 	/**
 	 * Constructor.
@@ -18,7 +18,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	public function __construct(& \$db)
 	{
-		parent::__construct('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'id', \$db);
+		parent::__construct('#__${1/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}s}', 'id', \$db);
 	}
 
 	/**
@@ -34,7 +34,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		\$k = \$this->_tbl_key;
 
-		return 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$this->\$k;
+		return 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . (int) \$this->\$k;
 	}
 
 	/**
@@ -46,7 +46,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function _getAssetTitle()
 	{
-		return \$this->${4/(.+)/\L\1/g};
+		return \$this->${5/(.+)/\L\1/g};
 	}
 
 	/**
@@ -63,11 +63,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		\$assetId = null;
 
-		// Build the query to get the asset id for the parent ${1/(.+)/\L\1/g}.
+		// Build the query to get the asset id for the parent ${2/(.+)/\L\1/g}.
 		\$query = \$this->_db->getQuery(true)
 			->select(\$this->_db->quoteName('id'))
 			->from(\$this->_db->quoteName('#__assets'))
-			->where(\$this->_db->quoteName('name') . ' = ' . \$this->_db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}'));
+			->where(\$this->_db->quoteName('name') . ' = ' . \$this->_db->quote('com_${1/(.+)/\L\1/g}'));
 
 		// Get the asset id from the database.
 		\$this->_db->setQuery(\$query);
@@ -136,10 +136,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	public function check()
 	{
-		// Check for valid ${4/(.+)/\L\1/g}.
-		if (trim(\$this->${4:title}) == '')
+		// Check for valid ${5/(.+)/\L\1/g}.
+		if (trim(\$this->${5:title}) == '')
 		{
-			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERR_TABLES_${4/(.+)/\U\1/g}'));
+			\$this->setError(JText::_('COM_${1/(.+)/\U\1/g}_ERR_TABLES_${5/(.+)/\U\1/g}'));
 
 			return false;
 		}
@@ -147,7 +147,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Set alias.
 		if (trim(\$this->alias) == '')
 		{
-			\$this->alias = \$this->${4/(.+)/\L\1/g};
+			\$this->alias = \$this->${5/(.+)/\L\1/g};
 		}
 
 		\$this->alias = JApplication::stringURLSafe(\$this->alias);
@@ -198,7 +198,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	}
 
 	/**
-	 * Overload the store method for the ${3:${1/(.+)/\u\1/g}s} table.
+	 * Overload the store method for the ${4:${2/(.+)/\u\1/g}s} table.
 	 *
 	 * @param   boolean  \$updateNulls  Toggle whether null values should be updated.
 	 *
@@ -220,7 +220,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 		else
 		{
-			// New ${1/(.+)/\L\1/g}. A ${1/(.+)/\L\1/g} created and created_by field can be set by the user,
+			// New ${2/(.+)/\L\1/g}. A ${2/(.+)/\L\1/g} created and created_by field can be set by the user,
 			// so we do not touch either of these if they are set.
 			if (!(int) \$this->created)
 			{
@@ -234,11 +234,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 
 		// Verify that the alias is unique.
-		\$table = JTable::getInstance('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Table');
+		\$table = JTable::getInstance('${2/(.+)/\u\1/g}', '${1/(.+)/\u\1/g}Table');
 
 		if (\$table->load(array('alias' => \$this->alias)) && (\$table->id != \$this->id || \$this->id == 0))
 		{
-			\$this->setError(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_${1/(.+)/\U\1/g}_UNIQUE_ALIAS'));
+			\$this->setError(JText::_('COM_${1/(.+)/\U\1/g}_ERROR_${2/(.+)/\U\1/g}_UNIQUE_ALIAS'));
 
 			return false;
 		}

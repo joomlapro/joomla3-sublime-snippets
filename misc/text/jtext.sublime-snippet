@@ -1,5 +1,5 @@
 <snippet>
 	<content><![CDATA[JText::_('$1')]]></content>
 	<tabTrigger>jtext</tabTrigger>
-	<scope>source.php</scope>
+	<scope>source.php,source.js</scope>
 </snippet>

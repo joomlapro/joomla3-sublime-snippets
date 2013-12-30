@@ -1,28 +1,28 @@
 <snippet>
 	<content><![CDATA[/**
- * Utility class working with ${1/(.+)/\L\1/g}.
+ * Utility class working with ${2/(.+)/\L\1/g}.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
+abstract class JHtml${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 {
 	/**
 	 * Render the list of associated items.
 	 *
-	 * @param   int  \$${1/(.+)/\L\1/g}id  The ${1/(.+)/\L\1/g} item id.
+	 * @param   int  \$${2/(.+)/\L\1/g}id  The ${2/(.+)/\L\1/g} item id.
 	 *
 	 * @return  string  The language HTML.
 	 */
-	public static function association(\$${1/(.+)/\L\1/g}id)
+	public static function association(\$${2/(.+)/\L\1/g}id)
 	{
 		// Defaults.
 		\$html = '';
 
 		// Get the associations.
-		if (\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}$2', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$${1/(.+)/\L\1/g}id))
+		if (\$associations = JLanguageAssociations::getAssociations('com_${1/(.+)/\L\1/g}', '#__${1/(.+)/\L\1/g}$3', 'com_${1/(.+)/\L\1/g}.item', \$${2/(.+)/\L\1/g}id))
 		{
 			foreach (\$associations as \$tag => \$associated)
 			{
@@ -34,11 +34,11 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 			\$query = \$db->getQuery(true);
 
 			// Create the base select statement.
-			\$query->select('${3/(.+)/\L\1/g}.*')
+			\$query->select('${4/(.+)/\L\1/g}.*')
 				->select('l.sef as lang_sef')
-				->from('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s} as ${3:${1/(.)(.+)/\L\1/g}}')
-				->where('${3/(.+)/\L\1/g}.id IN (' . implode(',', array_values(\$associations)) . ')')
-				->join('LEFT', '#__languages as l ON ${3/(.+)/\L\1/g}.language = l.lang_code')
+				->from('#__${1/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}s} as ${4:${2/(.)(.+)/\L\1/g}}')
+				->where('${4/(.+)/\L\1/g}.id IN (' . implode(',', array_values(\$associations)) . ')')
+				->join('LEFT', '#__languages as l ON ${4/(.+)/\L\1/g}.language = l.lang_code')
 				->select('l.image')
 				->select('l.title as language_title');
 
@@ -59,7 +59,7 @@ abstract class JHtml${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 				foreach (\$items as &\$item)
 				{
 					\$text = strtoupper(\$item->lang_sef);
-					\$url = JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1/(.+)/\L\1/g}.edit&id=' . (int) \$item->id);
+					\$url = JRoute::_('index.php?option=com_${1/(.+)/\L\1/g}&task=${2/(.+)/\L\1/g}.edit&id=' . (int) \$item->id);
 					\$tooltipParts = array(
 						JHtml::_('image', 'mod_languages/' . \$item->image . '.gif',
 							\$item->language_title,

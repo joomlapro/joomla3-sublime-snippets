@@ -2,17 +2,17 @@
 	<content><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset
-		name="${1:plural}"
-		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_LABEL"
-		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${1/(.+)/\U\1/g}_SETTINGS_DESC">
+		name="${2:plural}"
+		label="COM_${1:${TM_COMPONENT/(.+)/\U\1/g}}_CONFIG_${2/(.+)/\U\1/g}_SETTINGS_LABEL"
+		description="COM_${1/(.+)/\U\1/g}_CONFIG_${2/(.+)/\U\1/g}_SETTINGS_DESC">
 		<field
-			name="${2/(.+)/\L\1/g}_layout"
+			name="${3/(.+)/\L\1/g}_layout"
 			type="componentlayout"
 			label="JGLOBAL_FIELD_LAYOUT_LABEL"
 			description="JGLOBAL_FIELD_LAYOUT_DESC"
 			menuitems="true"
-			extension="com_${TM_COMPONENT/(.+)/\L\1/g}"
-			view="${2:singular}" />
+			extension="com_${1/(.+)/\L\1/g}"
+			view="${3:singular}" />
 		<field
 			name="show_title"
 			type="radio"
@@ -46,12 +46,12 @@
 		<field
 			name="info_block_position"
 			type="list"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_INFOBLOCK_POSITION_DESC"
 			default="0">
-			<option value="0">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_ABOVE</option>
-			<option value="1">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_BELOW</option>
-			<option value="2">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_SPLIT</option>
+			<option value="0">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_ABOVE</option>
+			<option value="1">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_BELOW</option>
+			<option value="2">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_SPLIT</option>
 		</field>
 		<field
 			name="spacer1"
@@ -157,8 +157,8 @@
 			name="show_tags"
 			type="radio"
 			class="btn-group btn-group-yesno"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_TAGS_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_TAGS_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_TAGS_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_TAGS_DESC"
 			id="show_tags"
 			default="1">
 			<option value="1">JSHOW</option>
@@ -221,24 +221,24 @@
 	</fieldset>
 	<fieldset
 		name="editinglayout"
-		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_LABEL"
-		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_DESC">
+		label="COM_${1/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_LABEL"
+		description="COM_${1/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_DESC">
 		<field
 			name="show_publishing_options"
 			type="radio"
 			class="btn-group btn-group-yesno"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_PUBLISHING_OPTIONS_DESC"
 			default="1">
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
 		<field
-			name="show_${2/(.+)/\L\1/g}_options"
+			name="show_${3/(.+)/\L\1/g}_options"
 			type="radio"
 			class="btn-group btn-group-yesno"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${2/(.+)/\U\1/g}_OPTIONS_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SHOW_${2/(.+)/\U\1/g}_OPTIONS_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_${3/(.+)/\U\1/g}_OPTIONS_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_${3/(.+)/\U\1/g}_OPTIONS_DESC"
 			default="1">
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
@@ -267,38 +267,38 @@
 		<field
 			name="float_intro"
 			type="list"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FLOAT_INTRO_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FLOAT_INTRO_DESC">
-			<option value="right">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_RIGHT</option>
-			<option value="left">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_LEFT</option>
-			<option value="none">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_NONE</option>
+			label="COM_${1/(.+)/\U\1/g}_FIELD_FLOAT_INTRO_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_FLOAT_INTRO_DESC">
+			<option value="right">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_RIGHT</option>
+			<option value="left">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_LEFT</option>
+			<option value="none">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_NONE</option>
 		</field>
 		<field
 			name="float_fulltext"
 			type="list"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FLOAT_FULLTEXT_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_FLOAT_FULLTEXT_DESC">
-			<option value="right">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_RIGHT</option>
-			<option value="left">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_LEFT</option>
-			<option value="none">COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_OPTION_NONE</option>
+			label="COM_${1/(.+)/\U\1/g}_FIELD_FLOAT_FULLTEXT_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_FLOAT_FULLTEXT_DESC">
+			<option value="right">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_RIGHT</option>
+			<option value="left">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_LEFT</option>
+			<option value="none">COM_${1/(.+)/\U\1/g}_FIELD_OPTION_NONE</option>
 		</field>
 	</fieldset>
 	<fieldset
 		name="blog_default_parameters"
-		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_BLOG_SETTINGS_LABEL"
-		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_BLOG_SETTINGS_DESC">
+		label="COM_${1/(.+)/\U\1/g}_CONFIG_BLOG_SETTINGS_LABEL"
+		description="COM_${1/(.+)/\U\1/g}_CONFIG_BLOG_SETTINGS_DESC">
 		<field
-			name="num_leading_${1/(.+)/\L\1/g}"
+			name="num_leading_${2/(.+)/\L\1/g}"
 			type="text"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_NUM_LEADING_${1/(.+)/\U\1/g}_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_NUM_LEADING_${1/(.+)/\U\1/g}_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_NUM_LEADING_${2/(.+)/\U\1/g}_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_NUM_LEADING_${2/(.+)/\U\1/g}_DESC"
 			default="1">
 		</field>
 		<field
-			name="num_intro_${1/(.+)/\L\1/g}"
+			name="num_intro_${2/(.+)/\L\1/g}"
 			type="text"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_NUM_INTRO_${1/(.+)/\U\1/g}_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_NUM_INTRO_${1/(.+)/\U\1/g}_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_NUM_INTRO_${2/(.+)/\U\1/g}_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_NUM_INTRO_${2/(.+)/\U\1/g}_DESC"
 			default="4">
 		</field>
 		<field
@@ -328,7 +328,7 @@
 	<fieldset
 		name="list_default_parameters"
 		label="JGLOBAL_LIST_LAYOUT_OPTIONS"
-		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_LIST_LAYOUT_SETTINGS_DESC">
+		description="COM_${1/(.+)/\U\1/g}_CONFIG_LIST_LAYOUT_SETTINGS_DESC">
 		<field
 			name="show_pagination_limit"
 			type="radio"
@@ -400,13 +400,13 @@
 	</fieldset>
 	<fieldset
 		name="shared"
-		label="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_LABEL">
-		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_DESC">
+		label="COM_${1/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_LABEL">
+		description="COM_${1/(.+)/\U\1/g}_CONFIG_SHARED_SETTINGS_DESC">
 		<field
 			name="orderby_pri"
 			type="list"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_ORDER_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${2/(.+)/\U\1/g}_ORDER_DESC"
+			label="COM_${1/(.+)/\U\1/g}_FIELD_${3/(.+)/\U\1/g}_ORDER_LABEL"
+			description="COM_${1/(.+)/\U\1/g}_FIELD_${3/(.+)/\U\1/g}_ORDER_DESC"
 			default="rdate">
 			<option value="rdate">JGLOBAL_MOST_RECENT_FIRST</option>
 			<option value="date">JGLOBAL_OLDEST_FIRST</option>
@@ -416,7 +416,7 @@
 			<option value="rauthor">JGLOBAL_AUTHOR_REVERSE_ALPHABETICAL</option>
 			<option value="hits">JGLOBAL_MOST_HITS</option>
 			<option value="rhits">JGLOBAL_LEAST_HITS</option>
-			<option value="order">COM_${TM_COMPONENT/(.+)/\U\1/g}_OPTION_${2/(.+)/\U\1/g}_MANAGER_ORDER</option>
+			<option value="order">COM_${1/(.+)/\U\1/g}_OPTION_${3/(.+)/\U\1/g}_MANAGER_ORDER</option>
 		</field>
 		<field
 			name="order_date"
@@ -452,7 +452,7 @@
 	<fieldset
 		name="integration"
 		label="JGLOBAL_INTEGRATION_LABEL"
-		description="COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_INTEGRATION_SETTINGS_DESC">
+		description="COM_${1/(.+)/\U\1/g}_CONFIG_INTEGRATION_SETTINGS_DESC">
 		<field
 			name="show_feed_link"
 			type="radio"
@@ -494,7 +494,7 @@
 			label="JCONFIG_PERMISSIONS_LABEL"
 			validate="rules"
 			filter="rules"
-			component="com_${TM_COMPONENT/(.+)/\L\1/g}"
+			component="com_${1/(.+)/\L\1/g}"
 			section="component" />
 	</fieldset>
 </config>

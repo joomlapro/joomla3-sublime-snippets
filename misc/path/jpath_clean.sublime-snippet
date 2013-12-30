@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JPath::clean(${1:\$path});]]></content>
+	<tabTrigger>jpath_clean</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

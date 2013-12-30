@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * ${1/(.+)/\u\1/g} list controller class.
+ * ${2/(.+)/\u\1/g} list controller class.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerAdmin
+class ${1/(.+)/\u\1/g}Controller${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerAdmin
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -15,7 +15,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 * @var     string
 	 * @since   $TM_VERSION
 	 */
-	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+	protected \$text_prefix = 'COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}';
 
 	/**
 	 * Constructor.
@@ -29,7 +29,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	{
 		parent::__construct(\$config);
 
-		// ${1/(.+)/\u\1/g} default form can come from the ${1/(.+)/\L\1/g} or featured view.
+		// ${2/(.+)/\u\1/g} default form can come from the ${2/(.+)/\L\1/g} or featured view.
 		// Adjust the redirect view on the value of 'view' in the request.
 		if (\$this->input->get('view') == 'featured')
 		{
@@ -40,7 +40,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	}
 
 	/**
-	 * Method to toggle the featured setting of a list of ${1/(.+)/\L\1/g}.
+	 * Method to toggle the featured setting of a list of ${2/(.+)/\L\1/g}.
 	 *
 	 * @return  void
 	 *
@@ -61,7 +61,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 		// Access checks.
 		foreach (\$ids as \$i => \$id)
 		{
-			if (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . (int) \$id))
+			if (!\$user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}.${3/(.+)/\L\1/g}.' . (int) \$id))
 			{
 				// Prune items that you can not change.
 				unset(\$ids[\$i]);
@@ -86,7 +86,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 			}
 		}
 
-		\$this->setRedirect('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&view=${1/(.+)/\L\1/g}');
+		\$this->setRedirect('index.php?option=com_${1/(.+)/\L\1/g}&view=${2/(.+)/\L\1/g}');
 	}
 
 	/**
@@ -100,7 +100,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function getModel(\$name = '${2:${1/(.+)(s\b)/\u\1/g}}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
+	public function getModel(\$name = '${3:${2/(.+)(s\b)/\u\1/g}}', \$prefix = '${1/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
 	{
 		return parent::getModel(\$name, \$prefix, \$config);
 	}

@@ -1,16 +1,16 @@
 <snippet>
 	<content><![CDATA[// Load the helper class.
-JLoader::register('${TM_COMPONENT/(.+)/\u\1/g}Helper', JPATH_ADMINISTRATOR . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/helpers/${TM_COMPONENT/(.+)/\L\1/g}.php');
+JLoader::register('${1/(.+)/\u\1/g}Helper', JPATH_ADMINISTRATOR . '/components/com_${1/(.+)/\L\1/g}/helpers/${1/(.+)/\L\1/g}.php');
 
 /**
- * Item Model for an ${1/(.+)/\u\1/g}.
+ * Item Model for an ${2/(.+)/\u\1/g}.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelAdmin
+class ${1/(.+)/\u\1/g}Model${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelAdmin
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -18,15 +18,15 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 * @var     string
 	 * @since   $TM_VERSION
 	 */
-	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+	protected \$text_prefix = 'COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}';
 
 	/**
-	 * The type alias for this content type (for example, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}').
+	 * The type alias for this content type (for example, 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}').
 	 *
 	 * @var      string
 	 * @since    $TM_VERSION
 	 */
-	public \$typeAlias = 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}';
+	public \$typeAlias = 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}';
 
 	/**
 	 * Batch copy items to current.
@@ -68,9 +68,9 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				}
 			}
 
-			// Alter the ${2/(.+)/\L\1/g} & alias.
-			\$data = \$this->generateNewTitle(null, \$this->table->alias, \$this->table->${2:title});
-			\$this->table->${2/(.+)/\L\1/g} = \$data['0'];
+			// Alter the ${3/(.+)/\L\1/g} & alias.
+			\$data = \$this->generateNewTitle(null, \$this->table->alias, \$this->table->${3:title});
+			\$this->table->${3/(.+)/\L\1/g} = \$data['0'];
 			\$this->table->alias = \$data['1'];
 
 			// Reset the ID because we are making a copy.
@@ -122,7 +122,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			// Get the current user object.
 			\$user = JFactory::getUser();
 
-			return \$user->authorise('core.delete', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+			return \$user->authorise('core.delete', 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . (int) \$record->id);
 		}
 	}
 
@@ -140,15 +140,15 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Get the current user object.
 		\$user = JFactory::getUser();
 
-		// Check for existing ${1/(.+)/\L\1/g}.
+		// Check for existing ${2/(.+)/\L\1/g}.
 		if (!empty(\$record->id))
 		{
-			return \$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$record->id);
+			return \$user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . (int) \$record->id);
 		}
-		// Default to component settings if neither ${1/(.+)/\L\1/g}.
+		// Default to component settings if neither ${2/(.+)/\L\1/g}.
 		else
 		{
-			return parent::canEditState('com_${TM_COMPONENT/(.+)/\L\1/g}');
+			return parent::canEditState('com_${1/(.+)/\L\1/g}');
 		}
 	}
 
@@ -176,10 +176,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$table->publish_down = \$db->getNullDate();
 		}
 
-		// Increment the ${4/(.+)/\L\1/g} version number.
+		// Increment the ${5/(.+)/\L\1/g} version number.
 		\$table->version++;
 
-		// Reorder the ${4:${1/(.+)/\L\1/g}s} so the new ${1/(.+)/\L\1/g} is first.
+		// Reorder the ${5:${2/(.+)/\L\1/g}s} so the new ${2/(.+)/\L\1/g} is first.
 		if (empty(\$table->id))
 		{
 			\$table->reorder('state >= 0');
@@ -197,7 +197,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function getTable(\$type = '${1/(.+)/\u\1/g}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Table', \$config = array())
+	public function getTable(\$type = '${2/(.+)/\u\1/g}', \$prefix = '${1/(.+)/\u\1/g}Table', \$config = array())
 	{
 		return JTable::getInstance(\$type, \$prefix, \$config);
 	}
@@ -223,11 +223,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			if (!empty(\$item->id))
 			{
 				\$item->tags = new JHelperTags;
-				\$item->tags->getTagIds(\$item->id, 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}');
+				\$item->tags->getTagIds(\$item->id, 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}');
 			}
 		}
 
-		// Load associated ${4/(.+)/\L\1/g} items.
+		// Load associated ${5/(.+)/\L\1/g} items.
 		\$app = JFactory::getApplication();
 		\$assoc = JLanguageAssociations::isEnabled();
 
@@ -237,7 +237,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 			if (\$item->id != null)
 			{
-				\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}$3', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$item->id);
+				\$associations = JLanguageAssociations::getAssociations('com_${1/(.+)/\L\1/g}', '#__${1/(.+)/\L\1/g}${4:_${3/(.+)/\L\1/g}s}', 'com_${1/(.+)/\L\1/g}.item', \$item->id);
 
 				foreach (\$associations as \$tag => \$association)
 				{
@@ -262,7 +262,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	public function getForm(\$data = array(), \$loadData = true)
 	{
 		// Get the form.
-		\$form = \$this->loadForm('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', '${1/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
+		\$form = \$this->loadForm('com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}', '${2/(.+)/\L\1/g}', array('control' => 'jform', 'load_data' => \$loadData));
 
 		if (empty(\$form))
 		{
@@ -271,10 +271,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		\$jinput = JFactory::getApplication()->input;
 
-		// The front end calls this model and uses ${TM_COMPONENT/(.)(.+)/\L\1/g}_id to avoid id clashes so we need to check for that first.
-		if (\$jinput->get('${TM_COMPONENT/(.)(.+)/\L\1/g}_id'))
+		// The front end calls this model and uses ${1/(.)(.+)/\L\1/g}_id to avoid id clashes so we need to check for that first.
+		if (\$jinput->get('${1/(.)(.+)/\L\1/g}_id'))
 		{
-			\$id = \$jinput->get('${TM_COMPONENT/(.)(.+)/\L\1/g}_id', 0);
+			\$id = \$jinput->get('${1/(.)(.+)/\L\1/g}_id', 0);
 		}
 		// The back end uses id so we use that the rest of the time and set it to 0 by default.
 		else
@@ -283,18 +283,18 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		}
 
 		// Determine correct permissions to check.
-		if (\$this->getState('${1/(.+)/\L\1/g}.id'))
+		if (\$this->getState('${2/(.+)/\L\1/g}.id'))
 		{
-			\$id = \$this->getState('${1/(.+)/\L\1/g}.id');
+			\$id = \$this->getState('${2/(.+)/\L\1/g}.id');
 		}
 
 		// Get the current user object.
 		\$user = JFactory::getUser();
 
-		// Check for existing ${1/(.+)/\L\1/g}.
+		// Check for existing ${2/(.+)/\L\1/g}.
 		// Modify the form based on Edit State access controls.
-		if (\$id != 0 && (!\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}.' . (int) \$id))
-			|| (\$id == 0 && !\$user->authorise('core.edit.state', 'com_${TM_COMPONENT/(.+)/\L\1/g}')))
+		if (\$id != 0 && (!\$user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}.' . (int) \$id))
+			|| (\$id == 0 && !\$user->authorise('core.edit.state', 'com_${1/(.+)/\L\1/g}')))
 		{
 			// Disable fields for display.
 			\$form->setFieldAttribute('state', 'disabled', 'true');
@@ -303,18 +303,18 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$form->setFieldAttribute('publish_down', 'disabled', 'true');
 
 			// Disable fields while saving.
-			// The controller has already verified this is an ${1/(.+)/\L\1/g} you can edit.
+			// The controller has already verified this is an ${2/(.+)/\L\1/g} you can edit.
 			\$form->setFieldAttribute('state', 'filter', 'unset');
 			\$form->setFieldAttribute('ordering', 'filter', 'unset');
 			\$form->setFieldAttribute('publish_up', 'filter', 'unset');
 			\$form->setFieldAttribute('publish_down', 'filter', 'unset');
 		}
 
-		// Prevent messing with ${1/(.+)/\L\1/g} language.
+		// Prevent messing with ${2/(.+)/\L\1/g} language.
 		\$app = JFactory::getApplication();
 		\$assoc = JLanguageAssociations::isEnabled();
 
-		if (\$app->isSite() && \$assoc && \$this->getState('${1/(.+)/\L\1/g}.id'))
+		if (\$app->isSite() && \$assoc && \$this->getState('${2/(.+)/\L\1/g}.id'))
 		{
 			\$form->setFieldAttribute('language', 'readonly', 'true');
 			\$form->setFieldAttribute('language', 'filter', 'unset');
@@ -334,14 +334,14 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	{
 		// Check the session for previously entered form data.
 		\$app  = JFactory::getApplication();
-		\$data = \$app->getUserState('com_${TM_COMPONENT/(.+)/\L\1/g}.edit.${1/(.+)/\L\1/g}.data', array());
+		\$data = \$app->getUserState('com_${1/(.+)/\L\1/g}.edit.${2/(.+)/\L\1/g}.data', array());
 
 		if (empty(\$data))
 		{
 			\$data = \$this->getItem();
 		}
 
-		\$this->preprocessData('com_${TM_COMPONENT/(.+)/\L\1/g}.${1/(.+)/\L\1/g}', \$data);
+		\$this->preprocessData('com_${1/(.+)/\L\1/g}.${2/(.+)/\L\1/g}', \$data);
 
 		return \$data;
 	}
@@ -360,12 +360,12 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Get the application.
 		\$app = JFactory::getApplication();
 
-		// Alter the ${2/(.+)/\L\1/g} for save as copy.
+		// Alter the ${3/(.+)/\L\1/g} for save as copy.
 		if (\$app->input->get('task') == 'save2copy')
 		{
-			list(\$${2/(.+)/\L\1/g}, \$alias) = \$this->generateNewTitle(null, \$data['alias'], \$data['${2/(.+)/\L\1/g}']);
+			list(\$${3/(.+)/\L\1/g}, \$alias) = \$this->generateNewTitle(null, \$data['alias'], \$data['${3/(.+)/\L\1/g}']);
 
-			\$data['${2/(.+)/\L\1/g}'] = \$${2/(.+)/\L\1/g};
+			\$data['${3/(.+)/\L\1/g}'] = \$${3/(.+)/\L\1/g};
 			\$data['alias'] = \$alias;
 			\$data['state'] = 0;
 		}
@@ -395,7 +395,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 				if (\$all_language && !empty(\$associations))
 				{
-					JError::raiseNotice(403, JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_ERROR_ALL_LANGUAGE_ASSOCIATED'));
+					JError::raiseNotice(403, JText::_('COM_${1/(.+)/\U\1/g}_ERROR_ALL_LANGUAGE_ASSOCIATED'));
 				}
 
 				\$associations[\$item->language] = \$item->id;
@@ -404,7 +404,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 				\$db = JFactory::getDbo();
 				\$query = \$db->getQuery(true)
 					->delete('#__associations')
-					->where('context=' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}.item'))
+					->where('context=' . \$db->quote('com_${1/(.+)/\L\1/g}.item'))
 					->where('id IN (' . implode(',', \$associations) . ')');
 				\$db->setQuery(\$query);
 				\$db->execute();
@@ -425,7 +425,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 					foreach (\$associations as \$id)
 					{
-						\$query->values(\$id . ',' . \$db->quote('com_${TM_COMPONENT/(.+)/\L\1/g}.item') . ',' . \$db->quote(\$key));
+						\$query->values(\$id . ',' . \$db->quote('com_${1/(.+)/\L\1/g}.item') . ',' . \$db->quote(\$key));
 					}
 
 					\$db->setQuery(\$query);
@@ -477,7 +477,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 	 */
 	protected function preprocessForm(JForm \$form, \$data, \$group = 'content')
 	{
-		// Association ${4/(.+)/\L\1/g} items.
+		// Association ${5/(.+)/\L\1/g} items.
 		\$app   = JFactory::getApplication();
 		\$assoc = JLanguageAssociations::isEnabled();
 
@@ -493,7 +493,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 			\$fields->addAttribute('name', 'associations');
 			\$fieldset = \$fields->addChild('fieldset');
 			\$fieldset->addAttribute('name', 'item_associations');
-			\$fieldset->addAttribute('description', 'COM_${TM_COMPONENT/(.+)/\U\1/g}_ITEM_ASSOCIATIONS_FIELDSET_DESC');
+			\$fieldset->addAttribute('description', 'COM_${1/(.+)/\U\1/g}_ITEM_ASSOCIATIONS_FIELDSET_DESC');
 			\$add = false;
 
 			foreach (\$languages as \$tag => \$language)

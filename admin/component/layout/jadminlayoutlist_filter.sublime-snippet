@@ -1,8 +1,0 @@
-<snippet>
-	<content><![CDATA[<div class="filter-search btn-group pull-left">
-	<label for="filter_${1:singular}" class="element-invisible"><?php echo JText::_('COM_CLIPPING_SEARCH_IN_${2:TITLE}'); ?></label>
-	<input type="text" name="filter_${1/(.+)/\L\1/g}" id="filter_${1/(.+)/\L\1/g}" placeholder="<?php echo JText::_('COM_CLIPPING_SEARCH_IN_${2/(.+)/\U\1/g}'); ?>" value="<?php echo \$this->escape(\$this->state->get('filter.${1/(.+)/\L\1/g}')); ?>" title="<?php echo JText::_('COM_CLIPPING_SEARCH_IN_${2/(.+)/\U\1/g}'); ?>" />
-</div>]]></content>
-	<tabTrigger>jadminlayoutlist_filter</tabTrigger>
-	<scope>text.html</scope>
-</snippet>

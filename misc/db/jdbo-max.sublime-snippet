@@ -2,7 +2,7 @@
 	<content><![CDATA[\$db = JFactory::getDbo();
 \$query = \$db->getQuery(true)
 	->select('MAX(${1:ordering})')
-	->from('#__${TM_COMPONENT/(.+)/\L\1/g}$2');
+	->from('#__${TM_COMPONENT/(.+)/\L\1/g}${2:_plural}');
 
 \$db->setQuery(\$query);
 \$max = \$db->loadResult();

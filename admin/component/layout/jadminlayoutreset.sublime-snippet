@@ -1,6 +1,0 @@
-<snippet>
-	<content><![CDATA[<button type="button" onclick="document.getElementById('filter_published').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
-]]></content>
-	<tabTrigger>jadminlayoutreset</tabTrigger>
-	<scope>source.php</scope>
-</snippet>

@@ -6,7 +6,7 @@ if (!\$table->load(array('type_alias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:si
 {
 	// Table column.
 	\$special = new stdClass;
-	\$special->dbtable = '#__${TM_COMPONENT/(.+)/\L\1/g}$3';
+	\$special->dbtable = '#__${TM_COMPONENT/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}}';
 	\$special->key     = 'id';
 	\$special->type    = '${1/(.+)/\u\1/g}';
 	\$special->prefix  = '${TM_COMPONENT/(.+)/\u\1/g}Table';

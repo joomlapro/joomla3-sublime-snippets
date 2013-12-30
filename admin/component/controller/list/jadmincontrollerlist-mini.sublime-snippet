@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * ${1/(.+)/\u\1/g} list controller class.
+ * ${2/(.+)/\u\1/g} list controller class.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerAdmin
+class ${1/(.+)/\u\1/g}Controller${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JControllerAdmin
 {
 	/**
 	 * The prefix to use with controller messages.
@@ -15,7 +15,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 * @var     string
 	 * @since   $TM_VERSION
 	 */
-	protected \$text_prefix = 'COM_${TM_COMPONENT/(.+)/\U\1/g}_${1/(.+)/\U\1/g}';
+	protected \$text_prefix = 'COM_${1/(.+)/\U\1/g}_${2/(.+)/\U\1/g}';
 
 	/**
 	 * Method to get a model object, loading it if required.
@@ -28,7 +28,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Controller${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}}
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function getModel(\$name = '${2:${1/(.+)(s\b)/\u\1/g}}', \$prefix = '${TM_COMPONENT/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
+	public function getModel(\$name = '${3:${2/(.+)(s\b)/\u\1/g}}', \$prefix = '${1/(.+)/\u\1/g}Model', \$config = array('ignore_request' => true))
 	{
 		return parent::getModel(\$name, \$prefix, \$config);
 	}

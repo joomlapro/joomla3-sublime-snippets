@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * ${1/(.+)/\u\1/g} Table class.
+ * ${2/(.+)/\u\1/g} Table class.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:Featured} extends JTable
+class ${1/(.+)/\u\1/g}Table${2:Featured} extends JTable
 {
 	/**
 	 * Constructor
@@ -18,7 +18,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:Featured} extends JTable
 	 */
 	public function __construct(& \$db)
 	{
-		parent::__construct('#__${TM_COMPONENT/(.+)/\L\1/g}$2_frontpage', '${4:singular}_id', \$db);
+		parent::__construct('#__${1/(.+)/\L\1/g}${3:_plural}_frontpage', '${4:singular}_id', \$db);
 	}
 }
 

@@ -1,16 +1,16 @@
 <snippet>
 	<content><![CDATA[/**
- * ${2:${1/(.+)/\u\1/g}s} table.
+ * ${2:${2/(.+)/\u\1/g}s} table.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
+class ${1/(.+)/\u\1/g}Table${2:User} extends JTable
 {
 	/**
-	 * Associative array of group ids => group ids for the ${1/(.+)/\L\1/g}.
+	 * Associative array of group ids => group ids for the ${2/(.+)/\L\1/g}.
 	 *
 	 * @var     array
 	 * @since   $TM_VERSION
@@ -34,10 +34,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 	}
 
 	/**
-	 * Method to load a ${1/(.+)/\L\1/g}, ${1/(.+)/\L\1/g} groups, and any other necessary data
-	 * from the database so that it can be bound to the ${1/(.+)/\L\1/g} object.
+	 * Method to load a ${2/(.+)/\L\1/g}, ${2/(.+)/\L\1/g} groups, and any other necessary data
+	 * from the database so that it can be bound to the ${2/(.+)/\L\1/g} object.
 	 *
-	 * @param   integer  \$${1/(.+)/\L\1/g}Id  An optional ${1/(.+)/\L\1/g} id.
+	 * @param   integer  \$${2/(.+)/\L\1/g}Id  An optional ${2/(.+)/\L\1/g} id.
 	 * @param   boolean  \$reset   False if row not found or on error
 	 *                           (internal error state set in that case).
 	 *
@@ -45,20 +45,20 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function load(\$${1/(.+)/\L\1/g}Id = null, \$reset = true)
+	public function load(\$${2/(.+)/\L\1/g}Id = null, \$reset = true)
 	{
 		// Get the id to load.
-		if (\$${1/(.+)/\L\1/g}Id !== null)
+		if (\$${2/(.+)/\L\1/g}Id !== null)
 		{
-			\$this->id = \$${1/(.+)/\L\1/g}Id;
+			\$this->id = \$${2/(.+)/\L\1/g}Id;
 		}
 		else
 		{
-			\$${1/(.+)/\L\1/g}Id = \$this->id;
+			\$${2/(.+)/\L\1/g}Id = \$this->id;
 		}
 
 		// Check for a valid id to load.
-		if (\$${1/(.+)/\L\1/g}Id === null)
+		if (\$${2/(.+)/\L\1/g}Id === null)
 		{
 			return false;
 		}
@@ -66,11 +66,11 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 		// Reset the table.
 		\$this->reset();
 
-		// Load the ${1/(.+)/\L\1/g} data.
+		// Load the ${2/(.+)/\L\1/g} data.
 		\$query = \$this->_db->getQuery(true)
 			->select('*')
 			->from(\$this->_db->quoteName('#__users'))
-			->where(\$this->_db->quoteName('id') . ' = ' . (int) \$${1/(.+)/\L\1/g}Id);
+			->where(\$this->_db->quoteName('id') . ' = ' . (int) \$${2/(.+)/\L\1/g}Id);
 
 		\$this->_db->setQuery(\$query);
 		\$data = (array) \$this->_db->loadAssoc();
@@ -85,17 +85,17 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 
 		if (\$return !== false)
 		{
-			// Load the ${1/(.+)/\L\1/g} groups.
+			// Load the ${2/(.+)/\L\1/g} groups.
 			\$query->clear()
 				->select(\$this->_db->quoteName('g.id'))
 				->select(\$this->_db->quoteName('g.title'))
 				->from(\$this->_db->quoteName('#__usergroups') . ' AS g')
 				->join('INNER', \$this->_db->quoteName('#__user_usergroup_map') . ' AS m ON m.group_id = g.id')
-				->where(\$this->_db->quoteName('m.user_id') . ' = ' . (int) \$${1/(.+)/\L\1/g}Id);
+				->where(\$this->_db->quoteName('m.user_id') . ' = ' . (int) \$${2/(.+)/\L\1/g}Id);
 
 			\$this->_db->setQuery(\$query);
 
-			// Add the groups to the ${1/(.+)/\L\1/g} data.
+			// Add the groups to the ${2/(.+)/\L\1/g} data.
 			\$this->groups = \$this->_db->loadAssocList('id', 'id');
 		}
 
@@ -103,7 +103,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 	}
 
 	/**
-	 * Method to bind the ${1/(.+)/\L\1/g}, ${1/(.+)/\L\1/g} groups, and any other necessary data.
+	 * Method to bind the ${2/(.+)/\L\1/g}, ${2/(.+)/\L\1/g} groups, and any other necessary data.
 	 *
 	 * @param   array  \$array   The data to bind.
 	 * @param   mixed  \$ignore  An array or space separated list of fields to ignore.
@@ -130,7 +130,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 			// Set the group ids.
 			JArrayHelper::toInteger(\$this->groups);
 
-			// Get the titles for the ${1/(.+)/\L\1/g} groups.
+			// Get the titles for the ${2/(.+)/\L\1/g} groups.
 			\$query = \$this->_db->getQuery(true)
 				->select(\$this->_db->quoteName('id'))
 				->select(\$this->_db->quoteName('title'))
@@ -139,7 +139,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 
 			\$this->_db->setQuery(\$query);
 
-			// Set the titles for the ${1/(.+)/\L\1/g} groups.
+			// Set the titles for the ${2/(.+)/\L\1/g} groups.
 			\$this->groups = \$this->_db->loadAssocList('id', 'id');
 
 		}
@@ -156,13 +156,13 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 	 */
 	public function check()
 	{
-		// Set ${1/(.+)/\L\1/g} id to null istead of 0, if needed.
+		// Set ${2/(.+)/\L\1/g} id to null istead of 0, if needed.
 		if (\$this->id === 0)
 		{
 			\$this->id = null;
 		}
 
-		// Validate ${1/(.+)/\L\1/g} information.
+		// Validate ${2/(.+)/\L\1/g} information.
 		if (trim(\$this->name) == '')
 		{
 			\$this->setError(JText::_('JLIB_DATABASE_ERROR_PLEASE_ENTER_YOUR_NAME'));
@@ -307,10 +307,10 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 		\$this->groups = \$groups;
 		unset(\$groups);
 
-		// Store the group data if the ${1/(.+)/\L\1/g} data was saved.
+		// Store the group data if the ${2/(.+)/\L\1/g} data was saved.
 		if (is_array(\$this->groups) && count(\$this->groups))
 		{
-			// Delete the old ${1/(.+)/\L\1/g} group maps.
+			// Delete the old ${2/(.+)/\L\1/g} group maps.
 			\$query = \$this->_db->getQuery(true)
 				->delete()
 				->from(\$this->_db->quoteName('#__user_usergroup_map'))
@@ -319,7 +319,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 			\$this->_db->setQuery(\$query);
 			\$this->_db->execute();
 
-			// Set the new ${1/(.+)/\L\1/g} group maps.
+			// Set the new ${2/(.+)/\L\1/g} group maps.
 			\$query->clear()
 				->insert(\$this->_db->quoteName('#__user_usergroup_map'));
 				->columns(array(\$this->_db->quoteName('user_id'), \$this->_db->quoteName('group_id')));
@@ -339,25 +339,25 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 	}
 
 	/**
-	 * Method to delete a ${1/(.+)/\L\1/g}, ${1/(.+)/\L\1/g} groups, and any other necessary data from the database.
+	 * Method to delete a ${2/(.+)/\L\1/g}, ${2/(.+)/\L\1/g} groups, and any other necessary data from the database.
 	 *
-	 * @param   integer  \$${1/(.+)/\L\1/g}Id  An optional ${1/(.+)/\L\1/g} id.
+	 * @param   integer  \$${2/(.+)/\L\1/g}Id  An optional ${2/(.+)/\L\1/g} id.
 	 *
 	 * @return  boolean  True on success, false on failure.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function delete(\$${1/(.+)/\L\1/g}Id = null)
+	public function delete(\$${2/(.+)/\L\1/g}Id = null)
 	{
 		// Set the primary key to delete.
 		\$k = \$this->_tbl_key;
 
-		if (\$${1/(.+)/\L\1/g}Id)
+		if (\$${2/(.+)/\L\1/g}Id)
 		{
-			\$this->\$k = (int) \$${1/(.+)/\L\1/g}Id;
+			\$this->\$k = (int) \$${2/(.+)/\L\1/g}Id;
 		}
 
-		// Delete the ${1/(.+)/\L\1/g}.
+		// Delete the ${2/(.+)/\L\1/g}.
 		\$query = \$this->_db->getQuery(true)
 			->delete()
 			->from(\$this->_db->quoteName(\$this->_tbl))
@@ -366,7 +366,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 		\$this->_db->setQuery(\$query);
 		\$this->_db->execute();
 
-		// Delete the ${1/(.+)/\L\1/g} group maps.
+		// Delete the ${2/(.+)/\L\1/g} group maps.
 		\$query->clear()
 			->delete()
 			->from(\$this->_db->quoteName('#__user_usergroup_map'))
@@ -399,39 +399,39 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Table${1:User} extends JTable
 	}
 
 	/**
-	 * Updates last visit time of ${1/(.+)/\L\1/g}.
+	 * Updates last visit time of ${2/(.+)/\L\1/g}.
 	 *
 	 * @param   integer  \$timeStamp  The timestamp, defaults to 'now'.
-	 * @param   integer  \$${1/(.+)/\L\1/g}Id     The ${1/(.+)/\L\1/g} id (optional).
+	 * @param   integer  \$${2/(.+)/\L\1/g}Id     The ${2/(.+)/\L\1/g} id (optional).
 	 *
 	 * @return  boolean  False if an error occurs.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function setLastVisit(\$timeStamp = null, \$${1/(.+)/\L\1/g}Id = null)
+	public function setLastVisit(\$timeStamp = null, \$${2/(.+)/\L\1/g}Id = null)
 	{
-		// Check for ${1/(.+)/\u\1/g} ID.
-		if (is_null(\$${1/(.+)/\L\1/g}Id))
+		// Check for ${2/(.+)/\u\1/g} ID.
+		if (is_null(\$${2/(.+)/\L\1/g}Id))
 		{
 			if (isset(\$this))
 			{
-				\$${1/(.+)/\L\1/g}Id = \$this->id;
+				\$${2/(.+)/\L\1/g}Id = \$this->id;
 			}
 			else
 			{
-				die('No ${1/(.+)/\L\1/g}id in setLastVisit');
+				die('No ${2/(.+)/\L\1/g}id in setLastVisit');
 			}
 		}
 
 		// If no timestamp value is passed to function, than current time is used.
 		\$date = JFactory::getDate(\$timeStamp);
 
-		// Update the database row for the ${1/(.+)/\L\1/g}.
+		// Update the database row for the ${2/(.+)/\L\1/g}.
 		\$db = \$this->_db;
 		\$query = \$db->getQuery(true)
 			->update(\$db->quoteName(\$this->_tbl))
 			->set(\$db->quoteName('lastvisitDate') . '=' . \$db->quote(\$date->toSql()))
-			->where(\$db->quoteName('id') . '=' . (int) \$${1/(.+)/\L\1/g}Id);
+			->where(\$db->quoteName('id') . '=' . (int) \$${2/(.+)/\L\1/g}Id);
 
 		// Set the query and execute the update.
 		\$db->setQuery(\$query);

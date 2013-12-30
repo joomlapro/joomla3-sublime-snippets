@@ -1,13 +1,13 @@
 <snippet>
 	<content><![CDATA[/**
- * View to edit a ${1/(.+)/\L\1/g}.
+ * View to edit a ${2/(.+)/\L\1/g}.
  *
- * @package     ${TM_COMPONENT/(.+)/\u\1/g}
- * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @package     ${1/(.+)/\u\1/g}
+ * @subpackage  com_${1:${TM_COMPONENT/(.+)/\L\1/g}}
  * @author      $TM_FULLNAME <$TM_EMAIL>
  * @since       $TM_VERSION
  */
-class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
+class ${1/(.+)/\u\1/g}View${2:Singular} extends JViewLegacy
 {
 	/**
 	 * The form to use for the view.
@@ -47,7 +47,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 			\$this->form  = \$this->get('Form');
 			\$this->item  = \$this->get('Item');
 			\$this->state = \$this->get('State');
-			\$this->canDo = ${2:Plural}Helper::getActions(0, 'com_${TM_COMPONENT/(.+)/\L\1/g}');
+			\$this->canDo = ${3:Plural}Helper::getActions(0, 'com_${1/(.+)/\L\1/g}');
 		}
 		catch (Exception \$e)
 		{
@@ -81,16 +81,16 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		// Since we do not track these assets at the item level.
 		\$canDo      = \$this->canDo;
 
-		JToolbarHelper::title(JText::_('COM_${TM_COMPONENT/(.+)/\U\1/g}_PAGE_' . (\$checkedOut ? 'VIEW_${1/(.+)/\U\1/g}' : (\$isNew ? 'ADD_${1/(.+)/\U\1/g}' : 'EDIT_${1/(.+)/\U\1/g}'))), 'pencil-2 ${1/(.+)/\L\1/g}-add');
+		JToolbarHelper::title(JText::_('COM_${1/(.+)/\U\1/g}_PAGE_' . (\$checkedOut ? 'VIEW_${2/(.+)/\U\1/g}' : (\$isNew ? 'ADD_${2/(.+)/\U\1/g}' : 'EDIT_${2/(.+)/\U\1/g}'))), 'pencil-2 ${2/(.+)/\L\1/g}-add');
 
 		// Built the actions for new and existing records.
 		// For new records, check the create permission.
 		if (\$isNew)
 		{
-			JToolbarHelper::apply('${1/(.+)/\L\1/g}.apply');
-			JToolbarHelper::save('${1/(.+)/\L\1/g}.save');
-			JToolbarHelper::save2new('${1/(.+)/\L\1/g}.save2new');
-			JToolbarHelper::cancel('${1/(.+)/\L\1/g}.cancel');
+			JToolbarHelper::apply('${2/(.+)/\L\1/g}.apply');
+			JToolbarHelper::save('${2/(.+)/\L\1/g}.save');
+			JToolbarHelper::save2new('${2/(.+)/\L\1/g}.save2new');
+			JToolbarHelper::cancel('${2/(.+)/\L\1/g}.cancel');
 		}
 		else
 		{
@@ -100,21 +100,21 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 				// Since it's an existing record, check the edit permission, or fall back to edit own if the owner.
 				if (\$canDo->get('core.edit') || (\$canDo->get('core.edit.own') && \$this->item->created_by == \$userId))
 				{
-					JToolbarHelper::apply('${1/(.+)/\L\1/g}.apply');
-					JToolbarHelper::save('${1/(.+)/\L\1/g}.save');
+					JToolbarHelper::apply('${2/(.+)/\L\1/g}.apply');
+					JToolbarHelper::save('${2/(.+)/\L\1/g}.save');
 
 					// We can save this record, but check the create permission to see if we can return to make a new one.
 					if (\$canDo->get('core.create'))
 					{
-						JToolbarHelper::save2new('${1/(.+)/\L\1/g}.save2new');
+						JToolbarHelper::save2new('${2/(.+)/\L\1/g}.save2new');
 					}
 				}
 			}
 
-			JToolbarHelper::cancel('${1/(.+)/\L\1/g}.cancel', 'JTOOLBAR_CLOSE');
+			JToolbarHelper::cancel('${2/(.+)/\L\1/g}.cancel', 'JTOOLBAR_CLOSE');
 		}
 
-		JToolBarHelper::help('${1/(.+)/\L\1/g}', \$com = true);
+		JToolBarHelper::help('${2/(.+)/\L\1/g}', \$com = true);
 	}
 }
 
