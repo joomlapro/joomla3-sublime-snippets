@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[<div class="control-group">
+	<div class="control-label">
+		<label><?php echo JText::_('${1:// label}'); ?></label>
+	</div>
+	<div class="controls">
+		<span class="readonly">${2:// value}</span>
+	</div>
+</div>]]></content>
+	<tabTrigger>jcontrol-group_text</tabTrigger>
+	<scope>text.html</scope>
+</snippet>

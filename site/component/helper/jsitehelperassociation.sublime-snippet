@@ -37,7 +37,7 @@ abstract class ${TM_COMPONENT/(.+)/\u\1/g}HelperAssociation extends CategoryHelp
 		{
 			if (\$id)
 			{
-				\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}$2', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$id);
+				\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}${2:_${1/(.+)/\L\1/g}s}', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$id);
 				\$return       = array();
 
 				foreach (\$associations as \$tag => \$item)

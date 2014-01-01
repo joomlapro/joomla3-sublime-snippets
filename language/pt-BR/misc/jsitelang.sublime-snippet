@@ -3,7 +3,7 @@
 
 ; CHANGE
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${1:${TM_COMPONENT/(.+)(s\b)/\U\1/g}}="Alterar ${4/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${1:SINGULAR}="Alterar ${4/(.+)/\u\1/g}"
 
 ; FIELD
 
