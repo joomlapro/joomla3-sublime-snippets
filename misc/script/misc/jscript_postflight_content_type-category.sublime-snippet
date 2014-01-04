@@ -125,7 +125,7 @@ if (!\$table->load(array('type_alias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.catego
 	\$content_history_options->convertToInt  = \$convertToInt;
 	\$content_history_options->displayLookup = \$displayLookup;
 
-	\$content_types['type_title']              = '${1:${TM_COMPONENT/(.+)(s\b)/\u\1/g}} Category';
+	\$content_types['type_title']              = '${1:Singular} Category';
 	\$content_types['type_alias']              = 'com_${TM_COMPONENT/(.+)/\L\1/g}.category';
 	\$content_types['table']                   = json_encode(\$table_object);
 	\$content_types['rules']                   = '';

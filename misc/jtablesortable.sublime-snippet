@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[<?php
 \$saveOrderingUrl = 'index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:plural}.saveOrderAjax&tmpl=component';
-JHtml::_('sortablelist.sortable', '${2:sigular}List', '${3:sigular}-form', 'asc', \$saveOrderingUrl);
+JHtml::_('sortablelist.sortable', '${2:sigular}List', '${3:item}-form', 'asc', \$saveOrderingUrl);
 ?>
 <?php if (\$this->${1/(.+)/\L\1/g}): ?>
 	<table class="table table-striped table-hover" id="${2/(.+)/\L\1/g}List">
@@ -29,7 +29,7 @@ JHtml::_('sortablelist.sortable', '${2:sigular}List', '${3:sigular}-form', 'asc'
 						<input type="text" style="display:none" name="order[]" value="<?php echo \$${2/(.+)/\L\1/g}->ordering; ?>" />
 					</td>
 					<td class="nowrap">
-						<?php echo \$${2/(.+)/\L\1/g}->name; ?>
+						<?php echo \$${2/(.+)/\L\1/g}->${4:title}; ?>
 					</td>
 					<td class="center hidden-phone">
 						<?php echo (int) \$${2/(.+)/\L\1/g}->id; ?>
@@ -38,6 +38,10 @@ JHtml::_('sortablelist.sortable', '${2:sigular}List', '${3:sigular}-form', 'asc'
 			<?php endforeach; ?>
 		</tbody>
 	</table>
+<?php else: ?>
+	<div class="alert">
+		<?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
+	</div>
 <?php endif; ?>
 ]]></content>
 	<tabTrigger>jtablesortable</tabTrigger>

@@ -6,7 +6,7 @@ if (!\$table->load(array('type_alias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:si
 {
 	// Table column.
 	\$special = new stdClass;
-	\$special->dbtable = '#__${TM_COMPONENT/(.+)/\L\1/g}$3';
+	\$special->dbtable = '#__${TM_COMPONENT/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}}';
 	\$special->key     = 'id';
 	\$special->type    = '${1/(.+)/\u\1/g}';
 	\$special->prefix  = '${TM_COMPONENT/(.+)/\u\1/g}Table';
@@ -37,16 +37,16 @@ if (!\$table->load(array('type_alias' => 'com_${TM_COMPONENT/(.+)/\L\1/g}.${1:si
 	\$common->core_publish_down    = 'publish_down';
 	\$common->core_access          = 'access';
 	\$common->core_params          = 'params';
-	\$common->core_featured        = 'null';
+	\$common->core_featured        = null;
 	\$common->core_metadata        = 'metadata';
 	\$common->core_language        = 'language';
-	\$common->core_images          = 'null';
-	\$common->core_urls            = 'null';
+	\$common->core_images          = null;
+	\$common->core_urls            = null;
 	\$common->core_version         = 'version';
 	\$common->core_ordering        = 'ordering';
 	\$common->core_metakey         = 'metakey';
 	\$common->core_metadesc        = 'metadesc';
-	\$common->core_catid           = 'null';
+	\$common->core_catid           = null;
 	\$common->core_xreference      = 'xreference';
 	\$common->asset_id             = 'asset_id';
 

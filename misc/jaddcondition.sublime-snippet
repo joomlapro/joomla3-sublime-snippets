@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$condition[] = '${1:field} = ' . (int) \$table->${1/(.+)/\L\1/g};]]></content>
+	<tabTrigger>jaddcondition</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

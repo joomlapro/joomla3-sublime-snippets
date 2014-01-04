@@ -306,7 +306,7 @@
 			class="btn-group btn-group-yesno"
 			label="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_FRONT_LABEL"
 			description="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_FRONT_DESC"
-			default="0">
+			default="1">
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
@@ -316,7 +316,7 @@
 			class="btn-group btn-group-yesno"
 			label="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_BACK_LABEL"
 			description="COM_${1/(.+)/\U\1/g}_FIELD_SHOW_IMAGES_BACK_DESC"
-			default="0">
+			default="1">
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>

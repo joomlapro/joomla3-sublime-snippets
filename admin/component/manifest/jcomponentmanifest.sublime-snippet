@@ -103,7 +103,8 @@
 		ones marked optional are only backed up if they exist.
 	-->
 	<tables>
-		<table>#__${1/(.+)/\L\1/g}</table>
+		<table>#__${1/(.+)/\L\1/g}${4:_${3/(.+)/\L\1/g}}</table>
+		<table>#__${1/(.+)/\L\1/g}${4:_${3/(.+)/\L\1/g}}_frontpage</table>
 	</tables>
 </extension>
 

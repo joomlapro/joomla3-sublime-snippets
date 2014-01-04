@@ -237,7 +237,7 @@ class ${1/(.+)/\u\1/g}Model${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelA
 
 			if (\$item->id != null)
 			{
-				\$associations = JLanguageAssociations::getAssociations('com_${1/(.+)/\L\1/g}', '#__${1/(.+)/\L\1/g}${4:_${3/(.+)/\L\1/g}s}', 'com_${1/(.+)/\L\1/g}.item', \$item->id);
+				\$associations = JLanguageAssociations::getAssociations('com_${1/(.+)/\L\1/g}', '#__${1/(.+)/\L\1/g}${4:_${2/(.+)/\L\1/g}s}', 'com_${1/(.+)/\L\1/g}.item', \$item->id);
 
 				foreach (\$associations as \$tag => \$association)
 				{
