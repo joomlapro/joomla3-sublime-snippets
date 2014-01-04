@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[COM_${1:${TM_COMPONENT/(.+)/\U\1/g}}_N_${2:PLURAL}_${3:ACTION}="%d ${4:plural} ${5:action} com sucesso."
+COM_${1/(.+)/\U\1/g}_N_${2/(.+)/\U\1/g}_${3/(.+)/\U\1/g}_1="${6:Singular} ${7:${5/(.+)(s\b)/\L\1/g}} com sucesso."]]></content>
+	<tabTrigger>jlangplural</tabTrigger>
+	<scope>source.ini, text.plain</scope>
+</snippet>

@@ -1,0 +1,78 @@
+<snippet>
+	<content><![CDATA[JFormHelper::loadFieldClass('text');
+
+/**
+ * ${2/(.+)/\u\1/g} Field class for the ${1/(.+)/\u\1/g}.
+ *
+ * @package     ${1:${TM_COMPONENT/(.+)/\u\1/g}}
+ * @subpackage  com_${1/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class JFormField${2:${TM_FILENAME/(.*)[.](.*)/\u$1/g}} extends JFormFieldText
+{
+	/**
+	 * The form field type.
+	 *
+	 * @var     string
+	 * @since   $TM_VERSION
+	 */
+	protected \$type = '${2/(.+)/\u\1/g}';
+
+	/**
+	 * Method to get the field input markup.
+	 *
+	 * @return  string  The field input markup.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	protected function getInput()
+	{
+		// Translate placeholder text
+		\$hint = \$this->translateHint ? JText::_(\$this->hint) : \$this->hint;
+
+		// Initialize some field attributes.
+		\$size         = !empty(\$this->size) ? ' size="' . \$this->size . '"' : '';
+		\$maxLength    = !empty(\$this->maxLength) ? ' maxlength="' . \$this->maxLength . '"' : '';
+		\$class        = !empty(\$this->class) ? ' class="' . \$this->class . '"' : '';
+		\$readonly     = \$this->readonly ? ' readonly' : '';
+		\$disabled     = \$this->disabled ? ' disabled' : '';
+		\$required     = \$this->required ? ' required aria-required="true"' : '';
+		\$hint         = \$hint ? ' placeholder="' . \$hint . '"' : '';
+		\$autocomplete = !\$this->autocomplete ? ' autocomplete="off"' : ' autocomplete="' . \$this->autocomplete . '"';
+		\$autocomplete = \$autocomplete == ' autocomplete="on"' ? '' : \$autocomplete;
+		\$autofocus    = \$this->autofocus ? ' autofocus' : '';
+		\$spellcheck   = \$this->spellcheck ? '' : ' spellcheck="false"';
+		\$pattern      = !empty(\$this->pattern) ? ' pattern="' . \$this->pattern . '"' : '';
+		\$inputmode    = !empty(\$this->inputmode) ? ' inputmode="' . \$this->inputmode . '"' : '';
+		\$dirname      = !empty(\$this->dirname) ? ' dirname="' . \$this->dirname . '"' : '';
+		\$list         = '';
+
+		// Initialize JavaScript field attributes.
+		\$onchange = !empty(\$this->onchange) ? ' onchange="' . \$this->onchange . '"' : '';
+
+		// Including fallback code for HTML5 non supported browsers.
+		JHtml::_('jquery.framework');
+		JHtml::_('script', 'system/html5fallback.js', false, true);
+
+		// Get the field suggestions.
+		\$options = (array) \$this->getSuggestions();
+
+		if (!empty(\$options))
+		{
+			\$html[] = JHtml::_('select.suggestionlist', \$options, 'value', 'text', \$this->id . '_datalist"');
+			\$list = ' list="' . \$this->id . '_datalist"';
+		}
+
+		\$html[] = '<input type="text" name="' . \$this->name . '" id="' . \$this->id . '"' . \$dirname . ' value="'
+			. htmlspecialchars(\$this->value, ENT_COMPAT, 'UTF-8') . '"' . \$class . \$size . \$disabled . \$readonly . \$list
+			. \$hint . \$onchange . \$maxLength . \$required . \$autocomplete . \$autofocus . \$spellcheck . \$inputmode . \$pattern . ' />';
+
+		return implode(\$html);
+	}
+}
+
+]]></content>
+	<tabTrigger>jfield_text</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

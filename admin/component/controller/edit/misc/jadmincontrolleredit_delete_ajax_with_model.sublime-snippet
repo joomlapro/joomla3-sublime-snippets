@@ -1,39 +1,57 @@
 <snippet>
 	<content><![CDATA[/**
- * Method to delete ${1/(.+)/\L\1/g} via AJAX using a model.
+ * Method to delete ${2/(.+)/\L\1/g} using ajax.
  *
  * @return  void
  *
  * @since   $TM_VERSION
  */
-public function delete${1:Singular}Ajax()
+public function delete${2:Singular}Ajax()
 {
 	// Check for request forgeries.
 	JSession::checkToken() or die(JText::_('JINVALID_TOKEN'));
 
-	// Get the application.
-	\$app = JFactory::getApplication();
-
 	// Get items to remove from the request.
-	\$${2/(.+)/\L\1/g} = \$app->input->get('${2:cid}', array(), 'array');
+	\$cid = \$this->input->get('cid', array(), 'array');
 
-	// Get the model.
-	\$model = \$this->getModel('${1/(.+)/\u\1/g}', '${TM_COMPONENT/(.+)/\u\1/g}Model');
-
-	// Make sure the item ids are integers
-	jimport('joomla.utilities.arrayhelper');
-	JArrayHelper::toInteger(\$${2/(.+)/\L\1/g});
-
-	// Delete the ${1/(.+)/\L\1/g}.
-	\$return = \$model->delete(\$${2/(.+)/\L\1/g});
-
-	if (\$return)
+	if (!is_array(\$cid) || count(\$cid) < 1)
 	{
-		echo "1";
+		\$response = array(
+			'status' => '0',
+			'error' => JText::_('COM_${1/(.+)/\U\1/g}_NO_${3:${2/(.+)/\U\1/g}S}_SELECTED')
+		);
+	}
+	else
+	{
+		// Get the model.
+		\$model = \$this->getModel('${2/(.+)/\u\1/g}', '${1:${TM_COMPONENT/(.+)/\u\1/g}}Model');
+
+		// Make sure the item ids are integers.
+		jimport('joomla.utilities.arrayhelper');
+		JArrayHelper::toInteger(\$cid);
+
+		// Remove the items.
+		if (!\$model->delete(\$cid))
+		{
+			\$response = array(
+				'status' => '0',
+				'error' => \$model->getError()
+			);
+		}
+		else
+		{
+			\$response = array(
+				'status' => '1',
+				'error' => JText::plural('COM_${1/(.+)/\U\1/g}_N_${3/(.+)/\L\1/g}_DELETED', count(\$cid))
+			);
+		}
 	}
 
+	// Send the JSON response.
+	echo json_encode(\$response);
+
 	// Close the application.
-	\$app->close();
+	JFactory::getApplication()->close();
 }]]></content>
 	<tabTrigger>jadmincontrolleredit_delete_ajax_with_model</tabTrigger>
 	<scope>source.php</scope>
