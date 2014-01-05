@@ -158,8 +158,8 @@ COM_${1/(.+)/\U\1/g}_SUBMENU_FEATURED="${7/(.+)/\u\1/g} em Destaque"
 
 ; TOGGLE
 
-COM_${1/(.+)/\U\1/g}_TOGGLE_TO_FEATURE="Clique para mudar o estado do Registro para \"Em Destaque\""
-COM_${1/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE="Clique para mudar o estado do Registro para \"Não Destacado\""
+COM_${1/(.+)/\U\1/g}_TOGGLE_TO_FEATURE="Clique para mudar o estado do Registro para 'Em Destaque'"
+COM_${1/(.+)/\U\1/g}_TOGGLE_TO_UNFEATURE="Clique para mudar o estado do Registro para 'Não Destacado'"
 
 ; TOOLBAR
 
