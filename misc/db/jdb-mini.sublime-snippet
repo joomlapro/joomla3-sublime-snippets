@@ -1,5 +1,5 @@
 <snippet>
-  <content><![CDATA[CREATE TABLE `${1:$TM_PREFIX}_${2:${TM_COMPONENT/(.+)/\L\1/g}}$3` (
+  <content><![CDATA[CREATE TABLE `${1:$TM_PREFIX}_${2:${TM_COMPONENT/(.+)/\L\1/g}}${3:_plural}` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `${4:title}` varchar(255) NOT NULL DEFAULT '',
   `state` tinyint(3) NOT NULL DEFAULT '0',

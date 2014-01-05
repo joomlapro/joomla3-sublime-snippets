@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[JHtml::_('date', \$item->${1:created}, JText::_('${2:DATE_FORMAT_LC4}'));]]></content>
+	<content><![CDATA[JHtml::_('date', \$${1:item}->${2:created}, JText::_('${3:DATE_FORMAT_LC4}'));]]></content>
 	<tabTrigger>jhtml_date</tabTrigger>
 	<scope>source.php</scope>
 </snippet>

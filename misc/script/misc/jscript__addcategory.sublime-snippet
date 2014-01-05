@@ -6,7 +6,7 @@
  *
  * @since   $TM_VERSION
  */
-public function _addCategory()
+protected function _addCategory()
 {
 	// Include dependancies.
 	JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_categories/models', 'CategoriesModel');
@@ -40,7 +40,7 @@ public function _addCategory()
 
 	// Updating all ${TM_COMPONENT/(.+)/\L\1/g} without category to have this new one.
 	\$query = \$db->getQuery(true)
-		->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}'))
+		->update(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${1:_plural}'))
 		->set(\$db->quoteName('catid') . ' = ' . \$db->quote((int) \$id))
 		->where(\$db->quoteName('catid') . ' = ' . \$db->quote(0));
 
