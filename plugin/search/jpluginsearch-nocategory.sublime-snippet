@@ -12,6 +12,14 @@
 class PlgSearch${1:${TM_COMPONENT/(.+)/\u\1/g}} extends JPlugin
 {
 	/**
+	 * Load the language file on instantiation.
+	 *
+	 * @var     boolean
+	 * @since   $TM_VERSION
+	 */
+	protected \$autoloadLanguage = true;
+
+	/**
 	 * ${2:${1/(.+)(s\b)/\u\1/g}} Search Areas method.
 	 *
 	 * @return  array An array of search areas

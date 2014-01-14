@@ -117,7 +117,7 @@ if (\$this->item->state == 0): ?>
 	<?php echo \$this->item->event->afterDisplayTitle; ?>
 <?php endif; ?>
 <?php echo \$this->item->event->beforeDisplayContent; ?>
-<?php echo \$this->item->introtext; ?>
+<?php echo \$this->item->description; ?>
 <?php if (\$useDefList && (\$info == 1 ||  \$info == 2)): ?>
 	<dl class="${1/(.+)/\L\1/g}-info muted">
 		<dt class="${1/(.+)/\L\1/g}-info-term">

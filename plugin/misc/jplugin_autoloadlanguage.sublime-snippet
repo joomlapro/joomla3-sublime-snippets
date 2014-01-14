@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[/**
+ * Load the language file on instantiation.
+ *
+ * @var     boolean
+ * @since   $TM_VERSION
+ */
+protected \$autoloadLanguage = true;]]></content>
+	<tabTrigger>jplugin_autoloadlanguage</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

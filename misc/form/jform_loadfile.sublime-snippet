@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->form->loadFile(__DIR__ . '/${1:form}.xml');]]></content>
+	<tabTrigger>jform_loadfile</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -98,7 +98,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewFeatured extends JViewLegacy
 		\$numIntro   = (int) \$params->def('num_intro_${2/(.+)/\L\1/g}', 4);
 		\$numLinks   = (int) \$params->def('num_links', 4);
 
-		// Compute the ${3:singular} slugs and prepare introtext (runs content plugins).
+		// Compute the ${3:singular} slugs and prepare description (runs content plugins).
 		foreach (\$items as &\$item)
 		{
 			\$item->slug        = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
@@ -118,7 +118,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewFeatured extends JViewLegacy
 			// Old plugins: Ensure that text property is available.
 			if (!isset(\$item->text))
 			{
-				\$item->text = \$item->introtext;
+				\$item->text = \$item->description;
 			}
 
 			// Load the content plugin group.
@@ -126,8 +126,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewFeatured extends JViewLegacy
 
 			\$dispatcher->trigger('onContentPrepare', array ('com_${TM_COMPONENT/(.+)/\L\1/g}.featured', &\$item, &\$this->params, 0));
 
-			// Old plugins: Use processed text as introtext.
-			\$item->introtext = \$item->text;
+			// Old plugins: Use processed text as description.
+			\$item->description = \$item->text;
 
 			\$results = \$dispatcher->trigger('onContentAfterTitle', array('com_${TM_COMPONENT/(.+)/\L\1/g}.featured', &\$item, &\$item->params, 0));
 			\$item->event->afterDisplayTitle = trim(implode("\n", \$results));

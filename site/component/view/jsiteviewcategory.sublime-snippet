@@ -110,8 +110,8 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ViewCategory extends JViewCategory
 			JPluginHelper::importPlugin('content');
 			\$dispatcher->trigger('onContentPrepare', array ('com_${TM_COMPONENT/(.+)/\L\1/g}.category', &\$item, &\$this->params, 0));
 
-			// Old plugins: Use processed text as introtext.
-			\$item->introtext = \$item->text;
+			// Old plugins: Use processed text as description.
+			\$item->description = \$item->text;
 
 			\$results = \$dispatcher->trigger('onContentAfterTitle', array('com_${TM_COMPONENT/(.+)/\L\1/g}.category', &\$item, &\$item->params, 0));
 			\$item->event->afterDisplayTitle = trim(implode("\n", \$results));

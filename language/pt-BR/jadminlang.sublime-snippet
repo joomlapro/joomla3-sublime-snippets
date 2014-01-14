@@ -19,7 +19,7 @@ COM_${1/(.+)/\U\1/g}_CHANGE_${4:SINGULAR}="Alterar ${6:${3/(.+)/\u\1/g}}"
 
 ; CONFIG
 
-COM_${1/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de ${7/(.+)/\u\1/g}"
+COM_${1/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de $2"
 COM_${1/(.+)/\U\1/g}_CONFIG_${5/(.+)/\U\1/g}_SETTINGS_DESC="Estas configurações se aplicam às ${7/(.+)/\u\1/g}, a não ser que eles tenham sido alteradas por um menu específico, ou ${6/(.+)/\u\1/g}."
 COM_${1/(.+)/\U\1/g}_CONFIG_${5:${4/(.+)/\U\1/g}S}_SETTINGS_LABEL="${7:${6/(.+)/\u\1/g}s}"
 COM_${1/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_DESC="Estas opções controlam o layout da página de edição do ${3/(.+)/\L\1/g}."

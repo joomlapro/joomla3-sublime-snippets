@@ -13,6 +13,14 @@ require_once JPATH_SITE . '/components/com_${TM_COMPONENT/(.+)/\L\1/g}/router.ph
 class PlgSearch${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JPlugin
 {
 	/**
+	 * Load the language file on instantiation.
+	 *
+	 * @var     boolean
+	 * @since   $TM_VERSION
+	 */
+	protected \$autoloadLanguage = true;
+
+	/**
 	 * Faq Search Areas method.
 	 *
 	 * @return  array  An array of search areas.

@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[// Adding default params if installing or discovering.
+if (\$route != 'update')
+{
+	// Get an instance of the table table.
+	\$table = JTable::getInstance('Extension', 'JTable');
+	\$table->load(array('name' => 'com_${1:${TM_COMPONENT/(.+)/\L\1/g}}'));
+	\$table->params = '${2:{}}';
+	\$table->store();
+}]]></content>
+	<tabTrigger>jscript_postflight_add_params</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

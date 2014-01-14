@@ -136,7 +136,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}ModelFeatured extends ${TM_COMPONENT/(.+)/\u\1/
 		// Filter by frontpage.
 		if (\$this->getState('filter.frontpage'))
 		{
-			\$query->join('INNER', '#__${TM_COMPONENT/(.+)/\L\1/g}$3_frontpage AS fp ON fp.${2/(.+)/\L\1/g}_id = a.id');
+			\$query->join('INNER', '#__${TM_COMPONENT/(.+)/\L\1/g}${3:_plural}_frontpage AS fp ON fp.${2/(.+)/\L\1/g}_id = a.id');
 		}
 
 		// Filter by categories.

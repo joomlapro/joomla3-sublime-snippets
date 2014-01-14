@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$table->${1:field} = floatval(str_replace(',', '.', str_replace('.', '', \$table->${1/(.+)/\L\1/g})));]]></content>
+	<tabTrigger>jformat-decimal</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

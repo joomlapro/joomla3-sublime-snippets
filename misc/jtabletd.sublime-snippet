@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[<td class="small nowrap hidden-phone">
-	<?php echo \$this->escape(\$item->${1:name}); ?>
+	<?php echo \$this->escape(\$item->${1:title}); ?>
 </td>]]></content>
 	<tabTrigger>jtabletd</tabTrigger>
 	<scope>text.html</scope>

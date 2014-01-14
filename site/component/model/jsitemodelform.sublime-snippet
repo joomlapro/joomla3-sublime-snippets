@@ -168,7 +168,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 		// Associations are not edited in frontend ATM so we have to inherit them.
 		if (JLanguageAssociations::isEnabled() && !empty(\$data['id']))
 		{
-			if (\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}$3', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$data['id']))
+			if (\$associations = JLanguageAssociations::getAssociations('com_${TM_COMPONENT/(.+)/\L\1/g}', '#__${TM_COMPONENT/(.+)/\L\1/g}${3:_plural}', 'com_${TM_COMPONENT/(.+)/\L\1/g}.item', \$data['id']))
 			{
 				foreach (\$associations as \$tag => \$associated)
 				{

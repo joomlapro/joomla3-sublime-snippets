@@ -19,7 +19,7 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_CHANGE_${3:SINGULAR}="Alterar ${5:${2/(.+)/\u\1/
 
 ; CONFIG
 
-COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de ${6/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIGURATION="Opções do Gerenciador de $1"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${4/(.+)/\U\1/g}_SETTINGS_DESC="Estas configurações se aplicam às ${6/(.+)/\u\1/g}, a não ser que eles tenham sido alteradas por um menu específico, ou ${5/(.+)/\u\1/g}."
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_${4:${3/(.+)/\U\1/g}S}_SETTINGS_LABEL="${6:${1/(.+)/\u\1/g}}"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_CONFIG_EDITING_LAYOUT_SETTINGS_DESC="Estas opções controlam o layout da página de edição do ${2/(.+)/\L\1/g}."

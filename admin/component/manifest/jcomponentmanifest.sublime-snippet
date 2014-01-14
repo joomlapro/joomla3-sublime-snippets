@@ -13,7 +13,7 @@
 	<authorUrl>$TM_WEBSITE</authorUrl>
 	<version>$TM_PROJECT_VERSION</version>
 	<description>COM_${1/(.+)/\U\1/g}_XML_DESCRIPTION</description>
-	<scriptfile />
+	<scriptfile>script.php</scriptfile>
 	<!-- Runs on install. -->
 	<install>
 		<sql>
