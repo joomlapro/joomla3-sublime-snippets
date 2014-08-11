@@ -106,6 +106,7 @@ COM_${1/(.+)/\U\1/g}_FIELD_SELECT_${4/(.+)/\U\1/g}_LABEL="Selecione um ${3/(.+)/
 COM_${1/(.+)/\U\1/g}_FIELDSET_${4/(.+)/\U\1/g}_CONTENT="Conteúdo"
 COM_${1/(.+)/\U\1/g}_FIELDSET_PUBLISHING="Opções de Publicação"
 COM_${1/(.+)/\U\1/g}_FIELDSET_${4/(.+)/\U\1/g}_OPTIONS="Opções do ${6/(.+)/\u\1/g}"
+COM_${1/(.+)/\U\1/g}_FIELDSET_${4/(.+)/\U\1/g}_LABEL="Opções de Exibição de ${2/(.+)/\u\1/g}"
 COM_${1/(.+)/\U\1/g}_FIELDSET_SLIDER_EDITOR_CONFIG="Configurar Tela de Edição"
 COM_${1/(.+)/\U\1/g}_FIELDSET_RULES="Permissões do ${6/(.+)/\u\1/g}"
 COM_${1/(.+)/\U\1/g}_FIELDSET_PARAMS_LABEL="Opções do ${6/(.+)/\u\1/g}"
@@ -133,6 +134,7 @@ COM_${1/(.+)/\U\1/g}_FEATURED="${7/(.+)/\u\1/g} em Destaque"
 
 ; MISC
 
+COM_${1/(.+)/\U\1/g}_FEATURED_ORDER="Ordem dos ${2/(.+)/\u\1/g} em Destaque"
 COM_${1/(.+)/\U\1/g}_NO_MATCHING_RESULTS="Sem Resultados"
 JGLOBAL_NEWITEMSLAST_DESC="Novos ${7/(.+)/\u\1/g} vão por padrão para a última posição. Ordenação pode ser alterada após este ${3/(.+)/\u\1/g} for salvo."
 

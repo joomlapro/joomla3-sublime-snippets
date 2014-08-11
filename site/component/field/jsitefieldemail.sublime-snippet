@@ -4,10 +4,10 @@
 	name="${1:field}"
 	type="email"
 	class="inputbox"
-	size="40"
-	validate="email"
 	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL"
-	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC" />]]></content>
+	description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	size="40"
+	validate="email" />]]></content>
 	<tabTrigger>jsitefieldemail</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

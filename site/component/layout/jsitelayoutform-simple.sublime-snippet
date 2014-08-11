@@ -19,7 +19,7 @@ JHtml::_('behavior.formvalidation');
 		} else {
 			alert('<?php echo \$this->escape(JText::_("JGLOBAL_VALIDATION_FORM_FAILED")); ?>');
 		}
-	}
+	};
 </script>
 <div class="${TM_COMPONENT/(.+)/\L\1/g} edit item-page<?php echo \$this->pageclass_sfx; ?>">
 	<?php if (\$params->get('show_page_heading', 1)): ?>
@@ -63,14 +63,6 @@ JHtml::_('behavior.formvalidation');
 						</div>
 						<div class="controls">
 							<?php echo \$this->form->getInput('alias'); ?>
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="control-label">
-							<?php echo \$this->form->getLabel('ordering'); ?>
-						</div>
-						<div class="controls">
-							<?php echo \$this->form->getInput('ordering'); ?>
 						</div>
 					</div>
 					<?php echo \$this->form->getInput('description'); ?>

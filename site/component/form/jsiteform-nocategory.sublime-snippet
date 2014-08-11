@@ -35,13 +35,6 @@
 			id="alias"
 			size="45" />
 		<field
-			name="ordering"
-			type="ordering"
-			class="inputbox"
-			label="JFIELD_ORDERING_LABEL"
-			description="JFIELD_ORDERING_DESC"
-			id="ordering" />
-		<field
 			name="description"
 			type="editor"
 			class="inputbox"
@@ -113,14 +106,6 @@
 			id="metakey"
 			rows="5"
 			cols="50" />
-		<field
-			name="xreference"
-			type="text"
-			class="inputbox"
-			label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_LABEL"
-			description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_DESC"
-			id="xreference"
-			size="20" />
 	</fieldset>
 	<fieldset name="publish">
 		<field
@@ -260,6 +245,14 @@
 				cols="30"
 				rows="2"
 				labelclass="control-label" />
+			<field
+				name="xreference"
+				type="text"
+				class="inputbox"
+				label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_LABEL"
+				description="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_XREFERENCE_DESC"
+				id="xreference"
+				size="20" />
 		</fieldset>
 	</fields>
 </form>

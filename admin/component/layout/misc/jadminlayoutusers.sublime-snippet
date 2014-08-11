@@ -26,7 +26,7 @@ JHtml::_('formbehavior.chosen', 'select');
 			dirn = direction.options[direction.selectedIndex].value;
 		}
 		Joomla.tableOrdering(order, dirn, '');
-	}
+	};
 </script>
 <form action="<?php echo JRoute::_('index.php?option=com_${1:${TM_COMPONENT/(.+)/\L\1/g}}&view=${2:users}'); ?>" method="post" name="adminForm" id="adminForm">
 <?php if (!empty(\$this->sidebar)): ?>

@@ -48,7 +48,7 @@ if (isset(\$this->item->params['show_${2/(.+)/\L\1/g}_options']) && \$this->item
 
 			Joomla.submitform(task, document.getElementById('item-form'));
 		}
-	}
+	};
 </script>
 <div class="container-popup">
 	<div class="pull-right">

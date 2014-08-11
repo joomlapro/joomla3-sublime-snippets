@@ -94,6 +94,7 @@ COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_SELECT_${3/(.+)/\U\1/g}_LABEL="Selecione u
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_${3/(.+)/\U\1/g}_CONTENT="Conteúdo"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_PUBLISHING="Opções de Publicação"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_${3/(.+)/\U\1/g}_OPTIONS="Opções do ${5/(.+)/\u\1/g}"
+COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_${3/(.+)/\U\1/g}_LABEL="Opções de Exibição de ${1/(.+)/\u\1/g}"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_SLIDER_EDITOR_CONFIG="Configurar Tela de Edição"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_RULES="Permissões do ${5/(.+)/\u\1/g}"
 COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELDSET_PARAMS_LABEL="Opções do ${5/(.+)/\u\1/g}"

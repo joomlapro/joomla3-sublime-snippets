@@ -60,7 +60,7 @@ if (isset(\$this->item->params['show_images_backend']) && \$this->item->params['
 
 			Joomla.submitform(task, document.getElementById('item-form'));
 		}
-	}
+	};
 </script>
 <div class="container-popup">
 	<div class="pull-right">

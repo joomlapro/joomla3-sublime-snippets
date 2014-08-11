@@ -35,13 +35,6 @@
 			id="alias"
 			size="45" />
 		<field
-			name="ordering"
-			type="ordering"
-			class="inputbox"
-			label="JFIELD_ORDERING_LABEL"
-			description="JFIELD_ORDERING_DESC"
-			id="ordering" />
-		<field
 			name="description"
 			type="editor"
 			class="inputbox"

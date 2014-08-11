@@ -5,15 +5,15 @@ search:
 
 # NOCATEGORY
 
-search: catid|c\.|level|category|categories|featured|cat|frontpage
+search: catid|c\.|level|category|categories|featured|cat|frontpage|parent
 
 # SIMPLE
 
-search: catid|c\.|level|category|categories|featured|cat|frontpage|images
+search: catid|c\.|level|category|categories|featured|cat|frontpage|parent|images
 
 # MINI
 
-search: catid|c\.|level|category|categories|featured|cat|frontpage|images|asset_id|alias|description|access|params|language|publish_up|publish_down|version|hits|metadesc|metakey|metadata|xreference|rules|tag|level|assoc|authorise|batch|save2copy|lang|editor
+search: catid|c\.|level|category|categories|featured|cat|frontpage|parent|images|asset_id|alias|description|access|params|language|publish_up|publish_down|version|hits|metadesc|metakey|metadata|xreference|rules|tag|level|assoc|authorise|batch|save2copy|lang|editor
 
 # REPLACE
 

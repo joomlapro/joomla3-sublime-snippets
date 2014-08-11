@@ -33,7 +33,7 @@ JHtml::_('formbehavior.chosen', 'select');
 				jQuery('#' + el.id).show(0);
 			}
 		});
-	}
+	};
 </script>
 <form action="<?php echo JRoute::_('index.php?option=com_${1:${TM_COMPONENT/(.+)/\L\1/g}}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="${2/(.+)/\L\1/g}-form" class="form-validate form-horizontal" enctype="multipart/form-data">
 	<?php echo JLayoutHelper::render('joomla.edit.item_title', \$this); ?>

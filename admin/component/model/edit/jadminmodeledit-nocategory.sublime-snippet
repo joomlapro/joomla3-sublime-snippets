@@ -485,7 +485,7 @@ class ${1/(.+)/\u\1/g}Model${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JModelA
 			\$this->setError(JText::_('COM_${1/(.+)/\U\1/g}_NO_ITEM_SELECTED'));
 
 			return false;
-		}5
+		}
 
 		try
 		{

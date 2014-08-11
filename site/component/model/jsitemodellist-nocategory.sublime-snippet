@@ -182,12 +182,6 @@ class ${TM_COMPONENT/(.+)/\u\1/g}Model${1:${TM_FILENAME/(.*?)(\..+)/\u$1/}} exte
 
 		\$query->from('#__${TM_COMPONENT/(.+)/\L\1/g}${3:_${1/(.+)/\L\1/g}} AS a');
 
-		// Join over the frontpage ${1/(.+)/\L\1/g}.
-		if (\$this->context != 'com_${TM_COMPONENT/(.+)/\L\1/g}.featured')
-		{
-			\$query->join('LEFT', '#__${TM_COMPONENT/(.+)/\L\1/g}$3_frontpage AS fp ON fp.${4/(.+)/\L\1/g}_id = a.id');
-		}
-
 		// Join over the users for the author and modified_by names.
 		\$query->select("CASE WHEN a.created_by_alias > ' ' THEN a.created_by_alias ELSE ua.name END AS author")
 			->select("ua.email AS author_email")

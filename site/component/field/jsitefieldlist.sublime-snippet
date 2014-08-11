@@ -4,10 +4,10 @@
 	name="${1:field}"
 	type="list"
 	class="inputbox"
-	size="1"
-	filter="integer"
 	message="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_MESSAGE"
-	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC">
+	label="COM_${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_LABEL" description="${TM_COMPONENT/(.+)/\U\1/g}_FIELD_${1/(.+)/\U\1/g}_DESC"
+	size="1"
+	filter="integer">
 </field>]]></content>
 	<tabTrigger>jsitefieldlist</tabTrigger>
 	<scope>text.xml</scope>

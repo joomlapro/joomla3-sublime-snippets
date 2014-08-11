@@ -42,7 +42,7 @@ if (isset(\$this->item->params['show_${2/(.+)/\L\1/g}_options']) && \$this->item
 			<?php echo \$this->form->getField('description')->save(); ?>
 			Joomla.submitform(task, document.getElementById('item-form'));
 		}
-	}
+	};
 </script>
 <form action="<?php echo JRoute::_('index.php?option=com_${1:${TM_COMPONENT/(.+)/\L\1/g}}&layout=edit&id=' . (int) \$this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
 	<?php echo JLayoutHelper::render('joomla.edit.title_alias', \$this); ?>

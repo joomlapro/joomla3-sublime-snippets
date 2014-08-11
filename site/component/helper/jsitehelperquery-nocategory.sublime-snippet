@@ -1,0 +1,239 @@
+<snippet>
+	<content><![CDATA[/**
+ * ${TM_COMPONENT/(.+)/\u\1/g} Component Query Helper.
+ *
+ * @static
+ * @package     ${TM_COMPONENT/(.+)/\u\1/g}
+ * @subpackage  com_${TM_COMPONENT/(.+)/\L\1/g}
+ * @author      $TM_FULLNAME <$TM_EMAIL>
+ * @since       $TM_VERSION
+ */
+class ${TM_COMPONENT/(.+)/\u\1/g}HelperQuery
+{
+	/**
+	 * Translate an order code to a field for primary ordering.
+	 *
+	 * @param   string  \$orderby    The ordering code.
+	 * @param   string  \$orderDate  The ordering code for the date.
+	 *
+	 * @return  string  The SQL field(s) to order by.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function orderbyPrimary(\$orderby, \$orderDate = 'created')
+	{
+		\$queryDate = self::getQueryDate(\$orderDate);
+
+		switch (\$orderby)
+		{
+			case 'date' :
+				\$orderby = \$queryDate;
+				break;
+
+			case 'rdate' :
+				\$orderby = \$queryDate . ' DESC ';
+				break;
+
+			case 'alpha' :
+				\$orderby = 'a.title';
+				break;
+
+			case 'ralpha' :
+				\$orderby = 'a.title DESC';
+				break;
+
+			case 'hits' :
+				\$orderby = 'a.hits DESC';
+				break;
+
+			case 'rhits' :
+				\$orderby = 'a.hits';
+				break;
+
+			case 'order' :
+				\$orderby = 'a.ordering';
+				break;
+
+			case 'author' :
+				\$orderby = 'author';
+				break;
+
+			case 'rauthor' :
+				\$orderby = 'author DESC';
+				break;
+
+			default :
+				\$orderby = 'a.ordering';
+				break;
+		}
+
+		return \$orderby;
+	}
+
+	/**
+	 * Translate an order code to a field for primary ordering.
+	 *
+	 * @param   string  \$orderDate  The ordering code.
+	 *
+	 * @return  string  The SQL field(s) to order by.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function getQueryDate(\$orderDate)
+	{
+		\$db = JFactory::getDbo();
+
+		switch (\$orderDate)
+		{
+			case 'modified' :
+				\$queryDate = ' CASE WHEN a.modified = ' . \$db->quote(\$db->getNullDate()) . ' THEN a.created ELSE a.modified END';
+				break;
+
+			// Use created if publish_up is not set.
+			case 'published' :
+				\$queryDate = ' CASE WHEN a.publish_up = ' . \$db->quote(\$db->getNullDate()) . ' THEN a.created ELSE a.publish_up END ';
+				break;
+
+			case 'created' :
+			default :
+				\$queryDate = ' a.created ';
+				break;
+		}
+
+		return \$queryDate;
+	}
+
+	/**
+	 * Get join information for the voting query.
+	 *
+	 * @param   JRegistry  \$params  An options object for the ${1/(.+)/\L\1/g}.
+	 *
+	 * @return  array  A named array with "select" and "join" keys.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function buildVotingQuery(\$params = null)
+	{
+		if (!\$params)
+		{
+			\$params = JComponentHelper::getParams('com_${TM_COMPONENT/(.+)/\L\1/g}');
+		}
+
+		\$voting = \$params->get('show_vote');
+
+		if (\$voting)
+		{
+			// Calculate voting count.
+			\$select = ' , ROUND(v.rating_sum / v.rating_count) AS rating, v.rating_count';
+			\$join   = ' LEFT JOIN #__${TM_COMPONENT/(.+)/\L\1/g}_rating AS v ON a.id = v.${1:singular}_id';
+		}
+		else
+		{
+			\$select = '';
+			\$join   = '';
+		}
+
+		\$results = array ('select' => \$select, 'join' => \$join);
+
+		return \$results;
+	}
+
+	/**
+	 * Method to order the intro ${2/(.+)/\L\1/g} array for ordering
+	 * down the columns instead of across.
+	 * The layout always lays the introtext ${2/(.+)/\L\1/g} out across columns.
+	 * Array is reordered so that, when ${2/(.+)/\L\1/g} are displayed in index order
+	 * across columns in the layout, the result is that the
+	 * desired ${1/(.+)/\L\1/g} ordering is achieved down the columns.
+	 *
+	 * @param   array    &\$${2/(.+)/\L\1/g}   Array of intro text ${2/(.+)/\L\1/g}.
+	 * @param   integer  \$numColumns  Number of columns in the layout.
+	 *
+	 * @return  array  Reordered array to achieve desired ordering down columns.
+	 *
+	 * @since   $TM_VERSION
+	 */
+	public static function orderDownColumns(& \$${2:${1/(.+)/\L\1/g}s}, \$numColumns = 1)
+	{
+		\$count = count(\$${2/(.+)/\L\1/g});
+
+		// Just return the same array if there is nothing to change.
+		if (\$numColumns == 1 || !is_array(\$${2/(.+)/\L\1/g}) || \$count <= \$numColumns)
+		{
+			\$return = \$${2/(.+)/\L\1/g};
+		}
+		// We need to re-order the intro ${2/(.+)/\L\1/g} array.
+		else
+		{
+			// We need to preserve the original array keys.
+			\$keys     = array_keys(\$${2/(.+)/\L\1/g});
+
+			\$maxRows  = ceil(\$count / \$numColumns);
+			\$numCells = \$maxRows * \$numColumns;
+			\$numEmpty = \$numCells - \$count;
+			\$index    = array();
+
+			// Calculate number of empty cells in the array.
+
+			// Fill in all cells of the array
+			// put -1 in empty cells so we can skip later.
+
+			for (\$row = 1, \$i = 1; \$row <= \$maxRows; \$row++)
+			{
+				for (\$col = 1; \$col <= \$numColumns; \$col++)
+				{
+					if (\$numEmpty > (\$numCells - \$i))
+					{
+						// Put -1 in empty cells.
+						\$index[\$row][\$col] = -1;
+					}
+					else
+					{
+						// Put in zero as placeholder.
+						\$index[\$row][\$col] = 0;
+					}
+
+					\$i++;
+				}
+			}
+
+			// Layout the ${2/(.+)/\L\1/g} in column order, skipping empty cells.
+			\$i = 0;
+
+			for (\$col = 1; (\$col <= \$numColumns) && (\$i < \$count); \$col++)
+			{
+				for (\$row = 1; (\$row <= \$maxRows) && (\$i < \$count); \$row++)
+				{
+					if (\$index[\$row][\$col] != - 1)
+					{
+						\$index[\$row][\$col] = \$keys[\$i];
+
+						\$i++;
+					}
+				}
+			}
+
+			// Now read the \$index back row by row to get ${2/(.+)/\L\1/g} in right row/col
+			// so that they will actually be ordered down the columns (when read by row in the layout).
+			\$return = array();
+			\$i = 0;
+
+			for (\$row = 1; (\$row <= \$maxRows) && (\$i < \$count); \$row++)
+			{
+				for (\$col = 1; (\$col <= \$numColumns) && (\$i < \$count); \$col++)
+				{
+					\$return[\$keys[\$i]] = \$${2/(.+)/\L\1/g}[\$index[\$row][\$col]];
+
+					\$i++;
+				}
+			}
+		}
+
+		return \$return;
+	}
+}
+
+]]></content>
+	<tabTrigger>jsitehelperquery-nocategory</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

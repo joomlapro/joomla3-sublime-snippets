@@ -40,7 +40,7 @@ if (isset(\$this->item->params['show_publishing_options']) && \$this->item->para
 
 			Joomla.submitform(task, document.getElementById('item-form'));
 		}
-	}
+	};
 </script>
 <div class="container-popup">
 	<div class="pull-right">
