@@ -13,7 +13,7 @@ If you have the [Package Control][package_control] package installed, you can in
 
 If you have not got Package Control installed (seriously, go install it!) you will need to make a clone of this repository into your packages folder, like so:
 
-    git clone https://github.com/joomlapro/joomla3-sublime-snippets.git Joomla3
+    git clone https://github.com/joomlapro/joomla3-sublime-snippets.git "Joomla! 3.x Snippets"
 
 ## Settings ##
 
