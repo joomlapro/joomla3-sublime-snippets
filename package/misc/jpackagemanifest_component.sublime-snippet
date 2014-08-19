@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<file
+	type="component"
+	id="com_${3/(.+)/\L\1/g}">com_${3/(.+)/\L\1/g}</file>]]></content>
+	<tabTrigger>jpackagemanifest_component</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

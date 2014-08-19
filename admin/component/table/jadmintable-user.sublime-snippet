@@ -24,7 +24,7 @@ class ${1/(.+)/\u\1/g}Table${2:User} extends JTable
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function __construct(\$db)
+	public function __construct(JDatabaseDriver \$db)
 	{
 		parent::__construct('#__users', 'id', \$db);
 

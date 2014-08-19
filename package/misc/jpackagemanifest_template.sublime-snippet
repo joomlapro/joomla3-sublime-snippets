@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<file
+	type="template"
+	id="tpl_${3/(.+)/\L\1/g}"
+	client="site">tpl_${3/(.+)/\L\1/g}</file>]]></content>
+	<tabTrigger>jpackagemanifest_template</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

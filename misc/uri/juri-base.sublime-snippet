@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JUri::base(true);]]></content>
+	<tabTrigger>juri-base</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

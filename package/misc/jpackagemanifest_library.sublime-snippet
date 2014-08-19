@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[<file
+	type="library"
+	id="lib_${3/(.+)/\L\1/g}">lib_${3/(.+)/\L\1/g}</file>]]></content>
+	<tabTrigger>jpackagemanifest_library</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

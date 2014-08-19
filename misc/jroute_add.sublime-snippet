@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JRoute::_('index.php?option=com_${TM_COMPONENT/(.+)/\L\1/g}&task=${1:singular}.edit&${TM_COMPONENT/(.)(.+)/\L\1/g}_id=' . \$this->item->id . '&return=' . \$return);]]></content>
+	<tabTrigger>jroute_add</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

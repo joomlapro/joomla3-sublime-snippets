@@ -12,11 +12,11 @@ class ${1/(.+)/\u\1/g}Table${2:${TM_FILENAME/(.*?)(\..+)/\u$1/}} extends JTable
 	/**
 	 * Constructor.
 	 *
-	 * @param   JDatabaseDriver  &\$db  A database connector object.
+	 * @param   JDatabaseDriver  \$db  A database connector object.
 	 *
 	 * @since   $TM_VERSION
 	 */
-	public function __construct(& \$db)
+	public function __construct(JDatabaseDriver \$db)
 	{
 		parent::__construct('#__${1/(.+)/\L\1/g}${3:_${2/(.+)/\L\1/g}s}', 'id', \$db);
 	}

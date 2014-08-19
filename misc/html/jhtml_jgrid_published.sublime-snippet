@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[JHtml::_('jgrid.published', \$item->state, \$i, '${1:plural}.', ${2:\$canChange, 'cb', \$item->publish_up, \$item->publish_down});]]></content>
+	<tabTrigger>jhtml_jgrid_published</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<file
+	type="module"
+	id="mod_${3/(.+)/\L\1/g}"
+	client="site">mod_${3/(.+)/\L\1/g}</file>]]></content>
+	<tabTrigger>jpackagemanifest_module-site</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

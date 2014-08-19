@@ -1,0 +1,42 @@
+<snippet>
+	<content><![CDATA[/**
+ * Method to get the ${1/(.+)/\L\1/g}.
+ *
+ * @return  mixed
+ *
+ * @since   \$TM_VERSION
+ */
+public function get${1:Plural}()
+{
+	if (\$pk = \$this->getState('${2:singular}.id'))
+	{
+		// Initialiase variables.
+		\$db    = JFactory::getDbo();
+		\$query = \$db->getQuery(true);
+
+		// Create the base select statement.
+		\$query->select('a.id, a.${3:title}, a.ordering')
+			->from(\$db->quoteName('#__${TM_COMPONENT/(.+)/\L\1/g}${4:_${1/(.+)/\L\1/g}}') . ' AS a')
+			->where(\$db->quoteName('a.${5:${2/(.+)/\L\1/g}}_id') . ' = ' . \$db->quote(\$pk))
+			->order(\$db->quoteName('a.ordering') . ' ASC');
+
+		// Set the query and load the result.
+		\$db->setQuery(\$query);
+
+		try
+		{
+			\$result = \$db->loadObjectList();
+		}
+		catch (RuntimeException \$e)
+		{
+			JError::raiseWarning(500, \$e->getMessage());
+		}
+
+		return \$result;
+	}
+
+	return false;
+}]]></content>
+	<tabTrigger>jadminmodeledit_getlist</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

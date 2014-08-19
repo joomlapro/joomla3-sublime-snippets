@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[<file
+	type="language"
+	id="lng_${TM_LANGUAGE}"
+	client="site">lng_$TM_LANGUAGE</file>]]></content>
+	<tabTrigger>jpackagemanifest_language</tabTrigger>
+	<scope>text.xml</scope>
+</snippet>

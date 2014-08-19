@@ -4,7 +4,7 @@
 	version="$TM_VERSION"
 	type="package"
 	method="upgrade">
-	<name>${1:Name} Package</name>
+	<name>${1:${TM_COMPONENT/(.+)/\u\1/g}} Package</name>
 	<packagename>${3:${1/(.+)/\L\1/g}}</packagename>
 	<version>$TM_MANIFEST_VERSION</version>
 	<description>${1/(.+)/\u\1/g} package to combine multiple extensions.</description>
