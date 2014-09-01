@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[\$temp = new JRegistry;
 \$temp->loadString(\$item->params);
-\$item->params = clone(\$params);
+\$item->params = clone \$params;
 \$item->params->merge(\$temp);]]></content>
 	<tabTrigger>jregistry-merge</tabTrigger>
 	<scope>source.php</scope>

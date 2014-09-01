@@ -1,0 +1,5 @@
+<snippet>
+	<content><![CDATA[\$this->form->renderField('${1:title}');]]></content>
+	<tabTrigger>jform-renderfield</tabTrigger>
+	<scope>source.php</scope>
+</snippet>

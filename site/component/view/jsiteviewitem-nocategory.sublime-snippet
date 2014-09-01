@@ -92,7 +92,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Singular} extends JViewLegacy
 		// Otherwise, ${1/(.+)/\L\1/g} params override menu item params.
 		\$this->params = \$this->state->get('params');
 		\$active = \$app->getMenu()->getActive();
-		\$temp   = clone (\$this->params);
+		\$temp   = clone \$this->params;
 
 		// Check to see which parameters should take priority.
 		if (\$active)

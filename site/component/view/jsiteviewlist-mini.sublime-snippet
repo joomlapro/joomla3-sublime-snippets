@@ -67,7 +67,7 @@ class ${TM_COMPONENT/(.+)/\u\1/g}View${1:Plural} extends JViewLegacy
 			\$item->slug = \$item->alias ? (\$item->id . ':' . \$item->alias) : \$item->id;
 			\$item->link = ${TM_COMPONENT/(.+)/\u\1/g}HelperRoute::get${1/(.+)/\u\1/g}Route(\$item->slug);
 
-			\$item->params = clone(\$params);
+			\$item->params = clone \$params;
 		}
 
 		// Escape strings for HTML output.
