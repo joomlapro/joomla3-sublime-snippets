@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[<file
 	type="module"
-	id="mod_${3/(.+)/\L\1/g}_admin"
-	client="administrator">mod_${3/(.+)/\L\1/g}_admin</file>]]></content>
+	id="mod_${1/(.+)/\L\1/g}_admin"
+	client="administrator">mod_${1:${TM_MODULE/(.+)/\L\1/g}}_admin</file>]]></content>
 	<tabTrigger>jpackagemanifest_module-admin</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>

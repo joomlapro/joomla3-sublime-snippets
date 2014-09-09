@@ -1,8 +1,8 @@
 <snippet>
 	<content><![CDATA[<file
 	type="plugin"
-	id="plg_${4/(.+)/\L\1/g}_${3/(.+)/\L\1/g}"
-	group="${4:user}">plg_${4/(.+)/\L\1/g}_${3/(.+)/\L\1/g}</file>]]></content>
+	id="plg_${1/(.+)/\L\1/g}_${2/(.+)/\L\1/g}"
+	group="${1:${TM_PLUGIN_GROUP/(.+)/\L\1/g}}">plg_${1/(.+)/\L\1/g}_${2:${TM_PLUGIN/(.+)/\L\1/g}}</file>]]></content>
 	<tabTrigger>jpackagemanifest_plugin</tabTrigger>
 	<scope>text.xml</scope>
 </snippet>
