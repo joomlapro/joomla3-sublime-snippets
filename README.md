@@ -18,7 +18,6 @@ If you have not got Package Control installed (seriously, go install it!) you wi
 ## Settings ##
 
 * [Default.tmPreferences](https://raw.github.com/joomlapro/joomla3-sublime-snippets/master/Default.tmPreferences.example)
-* [Default (Windows).sublime-keymap](https://gist.github.com/brunobatista/4737853)
 
 ## Authors ##
 
